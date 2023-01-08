@@ -1,0 +1,11 @@
+@charset "UTF-8";
+#SNS-login-area{
+	display: flex;
+	text-align: center;
+	justify-content:center;
+	flex-direction: row;
+}
+
+#naver_id_login{
+	padding: 0px 20px 0px 20px;
+}
