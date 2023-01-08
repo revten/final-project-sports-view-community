@@ -1,4 +1,4 @@
-package com.tm.mp.account;
+package com.tm.nmp.account;
 
 public class AccountDTO {
 	private String ac_id;

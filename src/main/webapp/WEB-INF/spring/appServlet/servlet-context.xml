@@ -27,7 +27,7 @@
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
 
-	<context:component-scan base-package="com.tm.mp" />
+	<context:component-scan base-package="com.tm.nmp" />
 
 	<beans:bean id="dataSource"
 		class="org.apache.commons.dbcp2.BasicDataSource">
@@ -48,7 +48,7 @@
 		class="org.mybatis.spring.SqlSessionFactoryBean">
 		<beans:property name="dataSource" ref="dataSource" />
 		<beans:property name="typeAliasesPackage"
-			value="com.tm.mp" />
+			value="com.tm.nmp" />
 		<beans:property name="mapperLocations">
 			<beans:list>
 				<beans:value>classpath:account/accountMapper.xml</beans:value>
