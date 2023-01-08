@@ -1,4 +1,4 @@
-package com.tm.mp.news;
+package com.tm.nmp.news;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.tm.mp.account.AccountDAO;
+import com.tm.nmp.account.AccountDAO;
 
 @Controller
 public class NewsController {

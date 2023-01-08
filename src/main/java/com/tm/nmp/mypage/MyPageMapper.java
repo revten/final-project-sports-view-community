@@ -1,4 +1,4 @@
-package com.tm.mp.mypage;
+package com.tm.nmp.mypage;
 
 public interface MyPageMapper {
 }

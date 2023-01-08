@@ -1,4 +1,4 @@
-package com.tm.mp.mypage;
+package com.tm.nmp.mypage;
 
 
 import org.apache.ibatis.session.SqlSession;
