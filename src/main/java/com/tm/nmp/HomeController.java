@@ -1,4 +1,4 @@
-package com.tm.mp;
+package com.tm.nmp;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -7,8 +7,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.tm.mp.account.AccountDAO;
-import com.tm.mp.news.NewsDAO;
+import com.tm.nmp.account.AccountDAO;
+import com.tm.nmp.news.NewsDAO;
 
 @Controller
 public class HomeController {

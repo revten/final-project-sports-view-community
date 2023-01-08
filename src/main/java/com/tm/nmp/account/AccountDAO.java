@@ -1,4 +1,4 @@
-package com.tm.mp.account;
+package com.tm.nmp.account;
 
 import java.io.File;
 import java.io.UnsupportedEncodingException;
@@ -16,7 +16,7 @@ import org.springframework.stereotype.Service;
 
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
-import com.tm.mp.mypage.MyPageMapper;
+import com.tm.nmp.mypage.MyPageMapper;
 
 @Service
 public class AccountDAO {
