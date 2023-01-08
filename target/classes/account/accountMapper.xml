@@ -1,27 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.tm.mp.account.AccountMapper">
+<mapper namespace="com.tm.nmp.account.AccountMapper">
 
 	<select id="accountLogin"
-		resultType="com.tm.mp.account.AccountDTO">
+		resultType="com.tm.nmp.account.AccountDTO">
 		select * from account where ac_id = #{ac_id}
 	</select>
 
 	<insert id="regAccount"
-		parameterType="com.tm.mp.account.AccountDTO">
+		parameterType="com.tm.nmp.account.AccountDTO">
 		insert into account
 		values(#{ac_id},#{ac_pw},#{ac_name},#{ac_addr},#{ac_email},#{ac_pic},#{ac_linkWhere})
 	</insert>
 
 	<select id="searchId"
-		parameterType="com.tm.mp.account.AccountDTO"
-		resultType="com.tm.mp.account.AccountDTO">
+		parameterType="com.tm.nmp.account.AccountDTO"
+		resultType="com.tm.nmp.account.AccountDTO">
 		select * from account where ac_name = #{ac_name} and
 		ac_email = #{ac_email}
 	</select>
 
 	<update id="changePwDo"
-		parameterType="com.tm.mp.account.AccountDTO">
+		parameterType="com.tm.nmp.account.AccountDTO">
 		update account set ac_pw = #{ac_pw} where ac_id=
 		#{ac_id}
 	</update>
@@ -42,13 +42,13 @@
 	</select>
 
 	<update id="accountUpdate"
-		parameterType="com.tm.mp.account.AccountDTO">
+		parameterType="com.tm.nmp.account.AccountDTO">
 		update account set ac_pw = #{ac_pw}, ac_name = #{ac_name}, ac_addr =
 		#{ac_addr},
 		ac_email = #{ac_email}, ac_pic = #{ac_pic} where ac_id = #{ac_id}
 	</update>
 	
-	 <delete id="accountDelete" parameterType="com.tm.mp.account.AccountDTO">
+	 <delete id="accountDelete" parameterType="com.tm.nmp.account.AccountDTO">
 	delete from account where ac_id = #{ac_id}
 </delete> 
 
