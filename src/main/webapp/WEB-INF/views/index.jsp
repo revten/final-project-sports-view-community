@@ -43,7 +43,6 @@
 <!--=============== [JS MEMBER]===============-->
 <script src="resources/js/account/account_check.js"></script>
 <script src="resources/js/account/account_go.js"></script>
-<script src="resources/js/account/social_login.js"></script>
 <script src="resources/js/myPage/myPage.js"></script>
 <script src="resources/js/news/paging.js"></script>
 
