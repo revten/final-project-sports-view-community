@@ -46,6 +46,7 @@ public class HomeController {
 	public String newsMainGo(HttpServletRequest req) {
 		acDAO.loginCheck(req);
 		req.setAttribute("contentPage", "news/newsMain.jsp");
+			req.setAttribute("newsPage", "everyNews.jsp");
 		return "index";
 	}
 	

@@ -69,7 +69,7 @@
 						class="nav__link">경기장보기</a>
 					</li>
 
-					<li class="nav__item"><a href="news.main.go" class="nav__link">real뉴스</a></li>
+					<li class="nav__item"><a href="news.main.go" class="nav__link">뉴스</a></li>
 
 					<li><a href="community.main.go" class="nav__link">커뮤니티</a></li>
 
