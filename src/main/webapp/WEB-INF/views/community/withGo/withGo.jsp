@@ -13,6 +13,7 @@
 <br>
 <br>
 <br>
-<h1> 키움 히어로즈 같이 보러 가기 게시판</h1>
+<h1>위드 고 페이지</h1>
+<button onclick="commnunity_write_go()">글 작성</button>
 </body>
 </html>

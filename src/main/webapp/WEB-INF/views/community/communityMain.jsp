@@ -13,10 +13,16 @@
 <br>
 <br>
 <br>
-
-<h2>커뮤니티</h2>
-<h3>게시판</h3>
-<h3>여행메이트 찾기</h3>
-<h3>여행물품 사고팔기</h3>
+<div id="community_area">
+<ul id="community_list">
+<li><a style="cursor: pointer" onclick="">직관 후기 게시판</a></li>
+<li><a style="cursor: pointer" onclick="commnunity_with_go()">같이 직관/경기 게시판</a></li>
+<li><a style="cursor: pointer" onclick="">야구 게시판</a></li>
+<li><a style="cursor: pointer" onclick="">축구 게시판</a></li>
+<li><a style="cursor: pointer" onclick="">농구 게시판</a></li>
+<li><a style="cursor: pointer" onclick="">배구 게시판</a></li>
+<li><a style="cursor: pointer" onclick="">기타 게시판</a></li>
+</ul>
+</div>
 </body>
 </html>

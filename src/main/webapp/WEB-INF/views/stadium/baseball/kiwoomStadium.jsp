@@ -13,7 +13,7 @@
 <br>
 <br>
 <br>
-<h1>ssgStadium 좌석배치도</h1>
+<h1>kiwoomStadium 좌석배치도</h1>
 <button onclick="window.open('https://ticket.interpark.com/Contents/Sports/GoodsInfo?SportsCode=07001&TeamCode=PB003')">예매하러 가기</button>
 <br>
 <br>
@@ -22,6 +22,6 @@
 <br>
 <br>
 <h1>맵</h1>
-<button onclick="kiwoomStadiumWithGo()">같이 보러 가기</button>
+<button onclick="commnunity_write_go()">같이 보러 가기</button>
 </body>
 </html>
