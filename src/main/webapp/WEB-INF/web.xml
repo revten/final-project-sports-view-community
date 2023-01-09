@@ -44,7 +44,7 @@
     <description></description>
     <display-name>AccountController</display-name>
     <servlet-name>AccountController</servlet-name>
-    <servlet-class>com.tm.mp.account.AccountController</servlet-class>
+    <servlet-class>com.tm.nmp.account.AccountController</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>AccountController</servlet-name>
