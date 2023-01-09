@@ -3,28 +3,24 @@ function stadiumBaseball() {
 	location.href="baseball.go";
 }
 
-function ssgStadiumGo() {
-	location.href="ssgStadium.go";
+function WithGo() {
+	location.href="withGo.go";
 }
 
-function ssgStadiumWithGo() {
-	location.href="ssgStadiumWith.go";
+function ssgStadiumGo() {
+	location.href="ssgStadium.go";
 }
 
 function kiwoomStadiumGo() {
 	location.href="kiwoomStadium.go";
 }
 
-function kiwoomStadiumWithGo() {
-	location.href="kiwoomStadiumWith.go";
-}
-
 function lgStadiumGo() {
 	location.href="lgStadium.go";
 }
 
-function lgStadiumWithGo() {
-	location.href="lgStadiumWith.go";
+function ktStadiumGo() {
+	location.href="ktStadium.go";
 }
 
 /* 축구 */
