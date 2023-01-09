@@ -46,19 +46,3 @@
 	justify-content: space-evenly;
 	row-gap: 2rem;
 }
-
-#baseball_club_four{
-	display: flex;
-	flex-direction: row;
-	text-align: center;
-	justify-content: space-evenly;
-	row-gap: 2rem;
-}
-
-#baseball_club_five{
-	display: flex;
-	flex-direction: row;
-	text-align: center;
-	justify-content: space-evenly;
-	row-gap: 2rem;
-}
