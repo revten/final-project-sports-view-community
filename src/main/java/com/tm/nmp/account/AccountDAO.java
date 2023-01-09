@@ -1,8 +1,6 @@
 package com.tm.nmp.account;
 
-import java.io.File;
 import java.io.UnsupportedEncodingException;
-import java.net.URLDecoder;
 import java.util.Random;
 
 import javax.mail.internet.MimeMessage;
@@ -13,10 +11,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
-
-import com.oreilly.servlet.MultipartRequest;
-import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
-import com.tm.nmp.mypage.MyPageMapper;
 
 @Service
 public class AccountDAO {
@@ -38,36 +32,10 @@ public class AccountDAO {
 	}
 
 	public void accountRegDo(HttpServletRequest req, AccountDTO ac) {
-		String path = req.getSession().getServletContext().getRealPath("resources/files/account");
-		MultipartRequest mr = null;
-		try {
-			mr = new MultipartRequest(req, path, 10 * 1024 * 1024, "utf-8", new DefaultFileRenamePolicy());
-
-			String ac_id = mr.getParameter("ac_id");
-			String ac_pw = mr.getParameter("ac_pw");
-			String ac_name = mr.getParameter("ac_name");
-			String ac_addr = mr.getParameter("ac_addr");
-			String ac_email = mr.getParameter("ac_email");
-			String ac_pic = mr.getFilesystemName("ac_pic");
-			String ac_linkWhere = "1";
-
-			ac.setAc_id(ac_id);
-			ac.setAc_pw(ac_pw);
-			ac.setAc_name(ac_name);
-			ac.setAc_addr(ac_addr);
-			ac.setAc_email(ac_email);
-			ac.setAc_pic(ac_pic);
-			ac.setAc_linkWhere(ac_linkWhere);
-
-			if (ss.getMapper(AccountMapper.class).regAccount(ac) == 1) {
-				System.out.println("가입 성공");
-			} else {
-				System.out.println("가입 실패");
-			}
-
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		if (ss.getMapper(AccountMapper.class).regAccount(ac) == 1) {
+			System.out.println("가입 성공");
+		} else {
+			System.out.println("가입 실패");
 		}
 	}
 
@@ -142,110 +110,74 @@ public class AccountDAO {
 		}
 	}
 
-	public void accountUpdate(HttpServletRequest req) {
-		String path = req.getSession().getServletContext().getRealPath("resources/files/account");
-		MultipartRequest mr = null;
-
-		AccountDTO loginMember = (AccountDTO) req.getSession().getAttribute("loginAccount");
-
-		System.out.println(loginMember.toString());
-		String oldFile = loginMember.getAc_pic();
-		String newFile = null;
-
-		try {
-			mr = new MultipartRequest(req, path, 10 * 1024 * 1024, "utf-8", new DefaultFileRenamePolicy());
-			newFile = mr.getFilesystemName("ac_newpic");
-
-			if (newFile == null) {
-				newFile = oldFile;
-			}
-
-			String ac_id = mr.getParameter("ac_id");
-			String ac_pw = mr.getParameter("ac_pw");
-			String ac_name = mr.getParameter("ac_name");
-			String ac_addr = mr.getParameter("ac_addr");
-			String ac_email = mr.getParameter("ac_email");
-			String ac_newpic = newFile;
-
-			AccountDTO ac = new AccountDTO();
-
-			ac.setAc_id(ac_id);
-			ac.setAc_pw(ac_pw);
-			ac.setAc_name(ac_name);
-			ac.setAc_addr(ac_addr);
-			ac.setAc_email(ac_email);
-			ac.setAc_pic(ac_newpic);
-
-			System.out.println(ac.toString());
-
-			if (ss.getMapper(AccountMapper.class).accountUpdate(ac) == 1) {
-				req.setAttribute("result", "수정성공");
-				req.getSession().setAttribute("loginAccount", ac);
-
-				if (!oldFile.equals(newFile)) {
-					oldFile = URLDecoder.decode(oldFile, "utf-8");
-					new File(path + "/" + oldFile).delete();
-				}
-			} else {
-				req.setAttribute("result", "수정실패");
-				if (!oldFile.equals(newFile)) {
-					newFile = URLDecoder.decode(newFile, "utf-8");
-					new File(path + "/" + newFile).delete();
-				}
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-			req.setAttribute("result", "수정실패");
-			if (!oldFile.equals(newFile)) {
-				try {
-					newFile = URLDecoder.decode(newFile, "utf-8");
-				} catch (UnsupportedEncodingException e1) {
-
-				}
-				new File(path + "/" + newFile).delete();
-			}
+	public void accountUpdate(HttpServletRequest req, AccountDTO ac) {
+		if (ss.getMapper(AccountMapper.class).accountUpdate(ac) == 1) {
+			System.out.println("수정 완료");
+			req.getSession().setAttribute("loginAccount", ac);
+		} else {
+			System.out.println("수정 실패");
 		}
 	}
 
-	public void accountDelete(HttpServletRequest req) {
-		try {
-			AccountDTO a = (AccountDTO) req.getSession().getAttribute("loginAccount");
-
-			if (ss.getMapper(AccountMapper.class).accountDelete(a) == 1) {
-				req.setAttribute("result", "탈퇴 성공");
-
-				String path = req.getSession().getServletContext().getRealPath("resources/files/account");
-				String ac_newpic = a.getAc_pic();
-				ac_newpic = URLDecoder.decode(ac_newpic, "utf-8");
-				new File(path + "/" + ac_newpic).delete();
-
-				/*
-				 * logout(req); loginCheck(req);
-				 */
-
-			} else {
-				req.setAttribute("result", "탈퇴실패");
-			}
-
-		} catch (Exception e) {
-			e.printStackTrace();
+	public void accountDelete(HttpServletRequest req, AccountDTO ac) {
+		if (ss.getMapper(AccountMapper.class).accountDelete(ac) == 1) {
+			req.setAttribute("result", "탈퇴 성공");
+		} else {
 			req.setAttribute("result", "탈퇴실패");
 		}
-
 	}
 
-	/*
-	 * private void loginCheck(HttpServletRequest req) { AccountDTO a = (AccountDTO)
-	 * req.getSession().getAttribute("loginAccount"); if (a != null) {
-	 * req.setAttribute("loginPage", "account/loginSuccess.jsp"); } else {
-	 * req.setAttribute("loginPage", "account/login.jsp"); }
-	 * 
-	 * }
-	 * 
-	 * private void logout(HttpServletRequest req) {
-	 * req.getSession().setAttribute("loginAccount", null);
-	 * 
-	 * }
-	 */
+	public int socialIdCheck(AccountDTO ac) {
+		System.out.println(ac.getAc_id());
+		System.out.println(ac.getAc_linkWhere());
+		return ss.getMapper(AccountMapper.class).socialIdCheck(ac);
+	}
+
+	public void socialLogin(HttpServletRequest req, AccountDTO ac) {
+		AccountDTO dbMember = ss.getMapper(AccountMapper.class).accountLogin(ac);
+		if (dbMember != null) {
+			System.out.println("로그인 성공");
+			req.getSession().setAttribute("loginAccount", dbMember);
+			req.getSession().setMaxInactiveInterval(60 * 60);
+		} else {
+			System.out.println("로그인 실패");
+		}
+	}
+
+	public void socialReg(HttpServletRequest req, AccountDTO ac) {
+		try {
+
+			req.setCharacterEncoding("utf-8");
+
+			String ac_id = req.getParameter("ac_id");
+			System.out.println(ac_id);
+			String ac_pw = " ";
+			String ac_nick = " ";
+			String ac_name = req.getParameter("ac_name");
+			System.out.println(ac_name);
+			String ac_addr = " ";
+			String ac_email = req.getParameter("ac_email");
+			System.out.println(ac_email);
+			String ac_linkWhere = req.getParameter("ac_linkWhere");
+			System.out.println(ac_linkWhere);
+
+			ac.setAc_id(ac_id); // 네카구
+			ac.setAc_pw(ac_pw);
+			ac.setAc_nick(ac_nick);
+			ac.setAc_name(ac_name); // 네카구
+			ac.setAc_addr(ac_addr);
+			ac.setAc_email(ac_email); // 네
+			ac.setAc_linkWhere(ac_linkWhere);// 네카구
+
+			if (ss.getMapper(AccountMapper.class).regAccount(ac) == 1) {
+				System.out.println("회원 가입 성공");
+			} else {
+				System.out.println("회원 가입 실패");
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 
 }

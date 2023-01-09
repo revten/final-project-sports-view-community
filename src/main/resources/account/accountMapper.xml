@@ -10,7 +10,7 @@
 	<insert id="regAccount"
 		parameterType="com.tm.nmp.account.AccountDTO">
 		insert into account
-		values(#{ac_id},#{ac_pw},#{ac_name},#{ac_addr},#{ac_email},#{ac_pic},#{ac_linkWhere})
+		values(#{ac_id},#{ac_pw},#{ac_nick},#{ac_name},#{ac_addr},#{ac_email},#{ac_linkWhere},sysdate)
 	</insert>
 
 	<select id="searchId"
@@ -26,26 +26,15 @@
 		#{ac_id}
 	</update>
 
-	<select id="checkIdKakao" resultType="int">
+	<select id="socialIdCheck" resultType="int">
 		select count(*) from
-		account where ac_id = #{ac_id} and ac_linkWhere = 2
-	</select>
-
-	<select id="checkIdNaver" resultType="int">
-		select count(*) from
-		account where ac_id = #{ac_id} and ac_linkWhere = 3
-	</select>
-
-	<select id="checkIdGoogle" resultType="int">
-		select count(*) from
-		account where ac_id = #{ac_id} and ac_linkWhere = 4
+		account where ac_id = #{ac_id} and ac_linkWhere = #{ac_linkWhere}
 	</select>
 
 	<update id="accountUpdate"
 		parameterType="com.tm.nmp.account.AccountDTO">
-		update account set ac_pw = #{ac_pw}, ac_name = #{ac_name}, ac_addr =
-		#{ac_addr},
-		ac_email = #{ac_email}, ac_pic = #{ac_pic} where ac_id = #{ac_id}
+		update account set ac_pw = #{ac_pw}, ac_name = #{ac_name},ac_nick = #{ac_nick}, ac_addr =
+		#{ac_addr}, ac_email = #{ac_email} where ac_id = #{ac_id}
 	</update>
 	
 	 <delete id="accountDelete" parameterType="com.tm.nmp.account.AccountDTO">

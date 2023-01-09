@@ -92,28 +92,57 @@ public class AccountController {
 	}
 	
 	@RequestMapping(value = "/account.modify.go", method = RequestMethod.GET)
-	public String myPageModifyGo(HttpServletRequest req) {
+	public String accountModifyGo(HttpServletRequest req) {
 		acDAO.loginCheck(req);
 		req.setAttribute("contentPage", "myPage/myPageModify.jsp");
 		return "index";
 	}
 
 	@RequestMapping(value = "/account.modify.do", method = RequestMethod.POST)
-	public String myPageModifyDo(HttpServletRequest req) {
+	public String accountModifyDo(HttpServletRequest req, AccountDTO ac) {
 		acDAO.loginCheck(req);
-		acDAO.accountUpdate(req);
+		acDAO.accountUpdate(req, ac);
 		req.setAttribute("contentPage", "myPage/myPageInfo.jsp");
 		return "index";
 	}
 
 	@RequestMapping(value = "/account.delete.go", method = RequestMethod.GET)
 	public String myPageDeleteGo(HttpServletRequest req, AccountDTO ac) {
-		acDAO.accountDelete(req);
+		acDAO.accountDelete(req, ac);
 		acDAO.accountLogoutDo(req, ac);
 		acDAO.loginCheck(req);
 		req.setAttribute("contentPage", "home.jsp");
 		return "index";
 	}
 	
+	@RequestMapping(value = "/social.id.check", method = RequestMethod.GET)
+	@ResponseBody
+	public int socialIdCheck(HttpServletRequest req, AccountDTO ac) {
+		acDAO.loginCheck(req);
+		return acDAO.socialIdCheck(ac);
+	}
+	
+	@RequestMapping(value = "/social.login.do", method = RequestMethod.GET)
+	public String socialLoginDo(HttpServletRequest req, AccountDTO ac) {
+		if (req.getParameter("ac_id") != null) {
+			acDAO.socialLogin(req, ac);
+			acDAO.loginCheck(req);
+		} else {
+			System.out.println("로그인 실패");
+		}
+		req.setAttribute("contentPage", "home.jsp");
+
+		return "index";
+	}
+	
+	@RequestMapping(value = "/social.reg.do", method = RequestMethod.GET)
+	public String socialRegDo(HttpServletRequest req, AccountDTO ac) {
+		acDAO.socialReg(req, ac);
+		acDAO.accountLoginDo(req, ac);
+		acDAO.loginCheck(req);
+		req.setAttribute("contentPage", "home.jsp");
+
+		return "index";
+	}
 	
 }
