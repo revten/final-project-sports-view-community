@@ -39,20 +39,13 @@
 <link rel="stylesheet" href="resources/css/commnunity/commnunity.css" />
 <link rel="stylesheet" href="resources/css/news/news.css" />
 <link rel="stylesheet" href="resources/css/map/map.css" />
-<link rel="stylesheet" href="resources/css/stadium/stadium.css" />
-<link rel="stylesheet" href="//cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
 
 <!--=============== [JS MEMBER]===============-->
 <script src="resources/js/account/account_check.js"></script>
 <script src="resources/js/account/account_go.js"></script>
-<script src="resources/js/account/social_login.js"></script>
-<script src="resources/js/stadium/stadium_go.js"></script>
-<script src="resources/js/community/community_go.js"></script>
 <script src="resources/js/myPage/myPage.js"></script>
 <script src="resources/js/news/paging.js"></script>
-<script src="//cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
-<script src="https://cdn.ckeditor.com/ckeditor5/34.0.0/classic/ckeditor.js"></script>
-<script src="https://cdn.ckeditor.com/ckeditor5/34.0.0/classic/translations/ko.js"></script>
+
 <!-- ---------------------------------------------------------------------------- -->
 </head>
 
@@ -71,7 +64,7 @@
 						class="nav__link">경기장보기</a>
 					</li>
 
-					<li class="nav__item"><a href="news.main.go" class="nav__link">뉴스</a></li>
+					<li class="nav__item"><a href="news.main.go" class="nav__link">real뉴스</a></li>
 
 					<li><a href="community.main.go" class="nav__link">커뮤니티</a></li>
 

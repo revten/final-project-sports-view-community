@@ -51,25 +51,25 @@
 
 			<h5>간편 로그인</h5>
 			<br>
-			<div id="SNS-login-area">
-				<!-- 카카오로그인 -->
-				<a onclick="kakaoLogin()"> <img
-					src="https://www.myro.co.kr/myro_image/kakaolink_btn.png"
-					width="40" /></a>
-
-				<!-- 네이버로그인 -->
-				<div id="naver_id_login"></div>
-				<div id="g_id_onload"
-					data-client_id="567208941336-p92o44c3gigs2a282rhro3p6vni5fetb.apps.googleusercontent.com"
-					data-callback="handleCredentialResponse" data-auto_prompt="false"></div>
-
-				<!-- 구글로그인 -->
-				<div class="g_id_signin" data-type="icon" data-size="large"
-					data-theme="outline" data-text="sign_in_with"
-					data-shape="rectangular" data-logo_alignment="left"></div>
-
-			</div>
 		</form>
+		<div id="SNS-login-area">
+			<!-- 카카오로그인 -->
+			<a onclick="kakaoLogin()"> <img
+				src="https://www.myro.co.kr/myro_image/kakaolink_btn.png" width="40" /></a>
+
+			<!-- 네이버로그인 -->
+			<div id="naver_id_login"></div>
+
+			<!-- 구글로그인 -->
+			<div id="g_id_onload"
+				data-client_id="567208941336-p92o44c3gigs2a282rhro3p6vni5fetb.apps.googleusercontent.com"
+				data-callback="handleCredentialResponse" data-auto_prompt="false"></div>
+
+			<div class="g_id_signin" data-type="icon" data-size="large"
+				data-theme="outline" data-text="sign_in_with"
+				data-shape="rectangular" data-logo_alignment="left"></div>
+
+		</div>
 	</div>
 
 	<script>
@@ -99,11 +99,12 @@
 					console.log(res);
 					var ac_id = res.id;
 					var ac_name = res.kakao_account.profile.nickname;
-					var ac_pic = res.kakao_account.profile.thumbnail_image_url;
+					var ac_linkWhere = 'kakao';
+					var ac_email = 'kakaoMail';
 
-					console.log(ac_id, ac_name, ac_pic);
+					console.log(ac_id, ac_name, ac_linkWhere, ac_email);
 
-					checkInfoKakao(ac_id, ac_name, ac_pic);
+					checkInfoKakao(ac_id, ac_name, ac_linkWhere, ac_email);
 
 				},
 
@@ -114,24 +115,25 @@
 			});
 		}
 
-		function checkInfoKakao(ac_id, ac_name, ac_pic) {
+		function checkInfoKakao(ac_id, ac_name, ac_linkWhere, ac_email) {
 			$
 					.ajax({
-						url : "kakaoLogin.check",
+						url : "social.id.check",
 						type : "GET",
 						dataType : "text",
 						data : {
-							"ac_id" : ac_id
+							"ac_id" : ac_id,
+							"ac_linkWhere" : ac_linkWhere
 						},
 						success : function(data) {
 							console.log(data)
 							if (data >= 1) {
-								let kakaoLoginUrl = `kakaoLogin.do?ac_id=${ac_id}`;
+								let kakaoLoginUrl = `social.login.do?ac_id=${ac_id}`;
 								console.log(kakaoLoginUrl);
 								location.replace(kakaoLoginUrl);
 							} else {
 								alert('회원가입을 도와드리겠습니다.');
-								let kakaoJoinUrl = `kakaoJoin.go?ac_id=+${ac_id}+&ac_name=+${ac_name}+&ac_pic=+${ac_pic}`;
+								let kakaoJoinUrl = `social.reg.do?ac_id=+${ac_id}+&ac_name=+${ac_name}+&ac_linkWhere=+${ac_linkWhere}+&ac_email=+${ac_email}`;
 								console.log(kakaoJoinUrl);
 								location.replace(kakaoJoinUrl);
 							}
@@ -149,10 +151,11 @@
 	<script>
 		/* 네이버로그인 */
 		var naver_id_login = new naver_id_login("Q141vzvaIl6ZvPN2b4UJ",
-				"http://localhost/mp/naverLogin.go");
+				"http://localhost/nmp/social.login.go?ac_linkWhere=${ac_linkWhere}");
 		var state = naver_id_login.getUniqState();
+		let ac_linkWhere = "naver"
 		naver_id_login.setButton("green", 1, 40);
-		naver_id_login.setDomain("http://localhost/mp/naverLogin.go");
+		naver_id_login.setDomain("http://localhost/nmp/social.login.go");
 		naver_id_login.setState(state);
 		naver_id_login.setPopup();
 		naver_id_login.init_naver_id_login();
@@ -165,13 +168,11 @@
 
 			let ac_id = responsePayload.sub;
 			let ac_name = responsePayload.name;
-			let ac_pic = responsePayload.picture;
 			let ac_email = responsePayload.email;
+			let ac_linkWhere = "google";
 
-			console.log(ac_id, ac_name, ac_pic, ac_email);
-
-			checkInfoGoogle(ac_id, ac_name, ac_pic, ac_email);
-
+			console.log(ac_id, ac_name, ac_email, ac_linkWhere);
+			checkInfoGoogle(ac_id, ac_name, ac_email, ac_linkWhere);
 		}
 
 		function parseJwt(token) {
@@ -186,36 +187,40 @@
 
 			return JSON.parse(jsonPayload);
 		};
-		
 
+		function checkInfoGoogle(ac_id, ac_name, ac_email, ac_linkWhere) {
+			$
+					.ajax({
+						url : "social.id.check",
+						type : "GET",
+						dataType : "text",
+						data : {
+							"ac_id" : ac_id,
+							"ac_linkWhere" : ac_linkWhere
+						},
+						success : function(getData) {
+							console.log(getData);
+							if (getData >= 1) {
+								let googleLoginUrl = `social.login.do?ac_id=${ac_id}`;
+								console.log(googleLoginUrl);
+								location.replace(googleLoginUrl);
+							} else {
+								alert('회원가입을 도와드리겠습니다.');
+								let googleJoinUrl = `social.reg.do?ac_id=+${ac_id}+&ac_name=+${ac_name}+&ac_email=+${ac_email}+&ac_linkWhere=+${ac_linkWhere}`;
+								console.log(googleJoinUrl);
+								location.replace(googleJoinUrl);
+							}
 
-		function checkInfoGoogle(ac_id, ac_name, ac_pic, ac_email) { 
-		    $.ajax({
-				url:"googleLogin.check",
-				type:"GET",
-				dataType :"text",
-				data:{"ac_id":ac_id},
-				success: function(getData) {
-					console.log(getData);
-					if (getData >=1) {
-						let googleLoginUrl = `googleLogin.do?ac_id=${ac_id}`;
-						console.log(googleLoginUrl);
-						location.replace(googleLoginUrl);
-				}else {
-						alert('회원가입을 도와드리겠습니다.');
-						let googleJoinUrl = `googleJoin.go?ac_id=+${ac_id}+&ac_name=+${ac_name}+&ac_pic=+${ac_pic}+&ac_email=+${ac_email}`;
-						console.log(googleJoinUrl);
-						location.replace(googleJoinUrl);
-					}
-					
-				},
-				error : function(request,status,error) {
-					console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
-					
-				}
-			});
-		 }
+						},
+						error : function(request, status, error) {
+							console.log("code:" + request.status + "\n"
+									+ "message:" + request.responseText + "\n"
+									+ "error:" + error);
+
+						}
+					});
+		}
 	</script>
-	
+
 </body>
 </html>
