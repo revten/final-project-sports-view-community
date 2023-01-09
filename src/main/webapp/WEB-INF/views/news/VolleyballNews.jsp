@@ -10,16 +10,12 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/paginationjs/2.1.4/pagination.css"/>
 </head>
 <body>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
+	
 
 
 	<section>
 		<div id="data-container"></div>
-		<div id="pagination" class='paginationjs-theme-blue paginationjs-smallen'></div>
+		<div id="pagination"></div>
 	</section>
 	<script type="text/javascript">
 		$(function() {
