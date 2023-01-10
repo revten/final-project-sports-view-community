@@ -1,4 +1,4 @@
-package com.tm.nmp.news;
+package com.tm.nmp.infoEvent;
 
 import java.io.InputStream;
 import java.io.InputStreamReader;
