@@ -10,11 +10,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/paginationjs/2.1.4/pagination.css"/>
 </head>
 <body>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
+	
 
 
 	<section>
