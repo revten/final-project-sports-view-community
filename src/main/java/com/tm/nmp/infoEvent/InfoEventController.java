@@ -8,28 +8,32 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.tm.nmp.account.AccountDAO;
-import com.tm.nmp.news.NewsDAO;
 
 @Controller
-public class infoEventController {
+public class InfoEventController {
 
 	
 	@Autowired
 	private AccountDAO aDAO;
 	
 	@Autowired
-	private NewsDAO nDAO;
+	private InfoEventDAO iDAO;
+	
 	
 	@RequestMapping(value = "/team.event.main.go", method = RequestMethod.GET)
-	public String teamEventMainGo(HttpServletRequest req) {
+	public String teamEventMainGo(HttpServletRequest req, TeamEventDTO te) {
 		aDAO.loginCheck(req);
-		req.setAttribute("contentPage", "infoEvent/teamEvent.jsp");
+		iDAO.getteamEventAll(req, te);
+		
+		req.setAttribute("contentPage", "infoEvent/teamEvent/teamEvent.jsp");
 		return "index";
 	}
+	
+	
 	@RequestMapping(value = "/sports.info.main.go", method = RequestMethod.GET)
 	public String sportsInfoMainGo(HttpServletRequest req) {
 		aDAO.loginCheck(req);
-		req.setAttribute("contentPage", "infoEvent/sportsInfo.jsp");
+		req.setAttribute("contentPage", "infoEvent/sportsInfo/sportsInfo.jsp");
 		return "index";
 	}
 	
