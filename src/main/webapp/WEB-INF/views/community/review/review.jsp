@@ -16,15 +16,15 @@
 	<br>
 	<br>
 	<div class="row">
-		<form action="withGoList.go">
+		<form action="reviewList.go">
 			<div style="text-align: center;">
 				<div>
-					<a id="writeBtn" href='withGoWrite.go?wg_cat=${param.wg_cat}'
-						class="btn btn-success writeBtn">같이 보러 갈 사람 구하기</a>
+					<a id="writeBtn" href='reviewWrite.go?rv_cat=${param.rv_cat}'
+						class="btn btn-success writeBtn">직관 후기 작성하기</a>
 				</div>
 				<input type="text" id="searchInput" name="search"
 					placeholder="검색어를 입력해주세요"> <input type="hidden"
-					name="wg_cat" value="${param.wg_cat}">
+					name="rv_cat" value="${param.rv_cat}">
 				<button id="searchBtn" class="btn btn-success btn-sm">완료</button>
 			</div>
 		</form>
@@ -35,22 +35,22 @@
 				<th>번호</th>
 				<th>제목</th>
 				<th>작성자</th>
-				<th><a href="withGoList.go?wg_cat=${param.wg_cat}&sort=0">날짜</a></th>
-				<th><a href="withGoList.go?wg_cat=${param.wg_cat}&sort=1">조회수</a></th>
-				<th><a href="withGoList.go?wg_cat=${param.wg_cat}&sort=2">좋아요</a></th>
+				<th><a href="reviewList.go?rv_cat=${param.rv_cat}&sort=0">날짜</a></th>
+				<th><a href="reviewList.go?rv_cat=${param.rv_cat}&sort=1">조회수</a></th>
+				<th><a href="reviewList.go?rv_cat=${param.rv_cat}&sort=2">좋아요</a></th>
 			</tr>
 		</thead>
 		<tbody>
 			<c:forEach var="b" items="${posts}">
 
-				<tr onclick="location.href='withGoDetail.go?wg_no=${b.wg_no}'">
-					<td>${b.wg_no}</td>
-					<td style="width: 40%;">${b.wg_title}</td>
-					<td>${b.wg_id}</td>
-					<td><fmt:formatDate value="${b.wg_date}"
+				<tr onclick="location.href='reviewDetail.go?rv_no=${b.rv_no}'">
+					<td>${b.rv_no}</td>
+					<td style="width: 40%;">${b.rv_title}</td>
+					<td>${b.rv_id}</td>
+					<td><fmt:formatDate value="${b.rv_date}"
 							pattern="yy-MM-dd HH:mm" /></td>
-					<td>${b.wg_count}</td>
-					<td>${b.wg_like}</td>
+					<td>${b.rv_count}</td>
+					<td>${b.rv_like}</td>
 				</tr>
 			</c:forEach>
 		</tbody>
@@ -61,7 +61,7 @@
 		<!-- <li class="page-item active" aria-current="page"> <span class="page-link">1</span> </li> -->
 		<c:forEach var="i" begin="1" end="${r}">
 			<li class="page-item"><a class="page-link"
-				href="withGoList.go?wg_cat=${param.wg_cat}&vpage=${i}&search=${search}&sort=${sort}">${i}</a>
+				href="reviewList.go?rv_cat=${param.rv_cat}&vpage=${i}&search=${search}&sort=${sort}">${i}</a>
 			</li>
 		</c:forEach>
 	</ul>
