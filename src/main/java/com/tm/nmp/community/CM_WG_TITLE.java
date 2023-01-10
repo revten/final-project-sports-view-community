@@ -2,7 +2,7 @@ package com.tm.nmp.community;
 
 import java.util.Date;
 
-public class CommunityDTO {
+public class CM_WG_TITLE {
 private int wg_no;
 private String wg_nick;
 private String wg_id;
@@ -20,11 +20,11 @@ private int sort;
 private int rnStart;
 private int rnEnd;
 
-public CommunityDTO() {
+public CM_WG_TITLE() {
 	// TODO Auto-generated constructor stub
 }
 
-public CommunityDTO(int wg_no, String wg_nick, String wg_id, String wg_title, String wg_content, Date wg_date,
+public CM_WG_TITLE(int wg_no, String wg_nick, String wg_id, String wg_title, String wg_content, Date wg_date,
 		String wg_img, String wg_video, String wg_cat, int wg_count, int wg_like, String search, int sort, int rnStart,
 		int rnEnd) {
 	super();

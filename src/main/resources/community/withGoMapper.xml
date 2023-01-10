@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.tm.nmp.community.CommunityMapper">
-	<select id="getAllPostCount" resultType="int">
+<mapper namespace="com.tm.nmp.community.WithGoMapper">
+	<!-- 같이 보러 가기 -->
+	<select id="getWithGoPostCount" resultType="int">
 		select count(*) from
-		with_go_board where wg_cat = #{wg_cat} and wg_title
+		cm_wg_board where wg_cat = #{wg_cat} and wg_title
 		like
 		'%'||#{search}||'%'
 	</select>
-	
-	<select id="getPostList"
-		resultType="com.tm.nmp.community.CommunityDTO">
+
+	<select id="getWithGoPostList"
+		resultType="com.tm.nmp.community.CM_WG_TITLE">
 		select *
 		from (
 		select rownum as rn, wg_no, wg_id, wg_cat,
@@ -17,7 +18,7 @@
 		wg_content, wg_date, wg_img, wg_count, wg_like
 		from(
 		select * from
-		with_go_board
+		cm_wg_board
 		where wg_cat = #{wg_cat}
 		and wg_title like
 		'%'||#{search}||'%'
@@ -35,45 +36,51 @@
 		)
 		) where rn between #{rnStart} and #{rnEnd}
 	</select>
-	
-	<insert id="writePost"
-		parameterType="com.tm.nmp.community.CommunityDTO">
-		insert into with_go_board
-		values(with_go_board_seq.nextval, #{wg_nick},
+
+	<insert id="writeWithGoPost"
+		parameterType="com.tm.nmp.community.CM_WG_TITLE">
+		insert into cm_wg_board
+		values(cm_wg_board_seq.nextval,
+		#{wg_nick},
 		#{wg_id}, #{wg_title},
-		#{wg_content}, sysdate, #{wg_img}, #{wg_video},
+		#{wg_content}, sysdate, #{wg_img},
+		#{wg_video},
 		#{wg_cat}, 0, 0)
 	</insert>
-	
-	<select id="getPostNum" resultType="int">
+
+	<select id="getWithGoPostNum" resultType="int">
 		select wg_no from(
 		select
 		wg_no
-		from with_go_board
+		from cm_wg_board
 		where wg_title = #{wg_title}
 		and wg_id =
 		#{wg_id}
 		and wg_content like '%'||#{wg_content}||'%'
 		order by wg_date
 		desc
-		)where rownum = 1
+		)where
+		rownum = 1
 	</select>
-	
-	<select id="postDetail"
-		resultType="com.tm.nmp.community.CommunityDTO">
-		select * from with_go_board where wg_no = #{wg_no}
+
+	<select id="WithGoPostDetail"
+		resultType="com.tm.nmp.community.CM_WG_TITLE">
+		select * from cm_wg_board where wg_no = #{wg_no}
 	</select>
-	
-	<delete id="deletePost">
-		delete from with_go_board where wg_no = #{wg_no}
+
+	<delete id="deleteWithGoPost">
+		delete from cm_wg_board where wg_no = #{wg_no}
 	</delete>
-	
-	<update id="updatePost" parameterType="com.tm.nmp.community.CommunityDTO">
-	update with_go_board
-	set wg_title = #{wg_title}, 
-		wg_content = #{wg_content},
+
+	<update id="updateWithGoPost"
+		parameterType="com.tm.nmp.community.CM_WG_TITLE">
+		update cm_wg_board
+		set wg_title = #{wg_title},
+		wg_content
+		= #{wg_content},
 		wg_img = #{wg_img},
 		wg_video = #{wg_video}
-	where wg_no = #{wg_no}
-</update>
+		where wg_no =
+		#{wg_no}
+	</update>
 </mapper>

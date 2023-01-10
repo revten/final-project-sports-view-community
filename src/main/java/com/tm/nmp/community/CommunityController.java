@@ -16,12 +16,15 @@ public class CommunityController {
 	private AccountDAO acDAO;
 	
 	@Autowired
-	private CommunityDAO coDAO;
+	private CM_WG_DAO wgDAO;
+	
+	@Autowired
+	private CM_RV_DAO rvDAO;
 	
 	@RequestMapping(value = "withGoList.go", method = RequestMethod.GET)
-	public String withGoListGo(HttpServletRequest req, CommunityDTO co) {
+	public String withGoListGo(HttpServletRequest req, CM_WG_TITLE wg) {
 		acDAO.loginCheck(req);
-		coDAO.showWithGoList(req, co);
+		wgDAO.showWithGoList(req, wg);
 		req.setAttribute("contentPage", "community/withGo/withGo.jsp");
 
 		return "index";
@@ -35,41 +38,96 @@ public class CommunityController {
 	}
 	
 	@RequestMapping(value = "withGoWrite.do", method = RequestMethod.POST)
-	public String withGoWriteDo(HttpServletRequest req, CommunityDTO co) {
+	public String withGoWriteDo(HttpServletRequest req, CM_WG_TITLE wg) {
 		acDAO.loginCheck(req);
-		return "redirect:withGoDetail.go?wg_no="+coDAO.withGoWrite(req, co);
+		return "redirect:withGoDetail.go?wg_no="+wgDAO.withGoWrite(req, wg);
 	}
 	
 	@RequestMapping(value = "withGoDetail.go", method = RequestMethod.GET)
-	public String withGoDetailGo(HttpServletResponse res ,HttpServletRequest req, CommunityDTO co) {
+	public String withGoDetailGo(HttpServletResponse res ,HttpServletRequest req, CM_WG_TITLE wg) {
 		acDAO.loginCheck(req);
-		coDAO.showWithGoDetail(req, co);
+		wgDAO.showWithGoDetail(req, wg);
 		req.setAttribute("contentPage", "community/withGo/withGoDetail.jsp");
 		return "index";
 	}
 	
 	@RequestMapping(value = "withGoDelete.do", method = RequestMethod.GET)
-	public String withGoDeleteDo(HttpServletRequest req, CommunityDTO co) {
+	public String withGoDeleteDo(HttpServletRequest req, CM_WG_TITLE wg) {
 		acDAO.loginCheck(req);
-		coDAO.deleteWithGo(req, co);
-		coDAO.showWithGoList(req, co);
+		wgDAO.deleteWithGo(req, wg);
+		wgDAO.showWithGoList(req, wg);
 		req.setAttribute("contentPage", "community/withGo/withGo.jsp");
 		return "index";
 	}
 	
 	@RequestMapping(value = "withGoUpdate.go", method = RequestMethod.GET)
-	public String withGoUpdateGo(HttpServletRequest req, CommunityDTO co) {
+	public String withGoUpdateGo(HttpServletRequest req, CM_WG_TITLE wg) {
 		acDAO.loginCheck(req);
-		coDAO.showWithGoDetail(req, co);
+		wgDAO.showWithGoDetail(req, wg);
 		req.setAttribute("contentPage", "community/withGo/withGoUpdate.jsp");
 		return "index";
 	}
 	
 	@RequestMapping(value = "withGoUpdate.do", method = RequestMethod.POST)
-	public String withGoUpdateDo(HttpServletRequest req, CommunityDTO co) {
+	public String withGoUpdateDo(HttpServletRequest req, CM_WG_TITLE wg) {
 		acDAO.loginCheck(req);
-		coDAO.deleteWithGo(req, co);
+		wgDAO.deleteWithGo(req, wg);
 		req.setAttribute("contentPage", "community/withGo/withGoDetail.jsp");
+		return "index";
+	}
+	
+	@RequestMapping(value = "reviewList.go", method = RequestMethod.GET)
+	public String reviewListGo(HttpServletRequest req, CM_RV_TITLE rv) {
+		acDAO.loginCheck(req);
+		rvDAO.showReviewList(req, rv);
+		req.setAttribute("contentPage", "community/review/review.jsp");
+
+		return "index";
+	}
+	
+	@RequestMapping(value = "/reviewWrite.go", method = RequestMethod.GET)
+	public String reviewWriteGo(HttpServletRequest req) {
+		acDAO.loginCheck(req);
+		req.setAttribute("contentPage", "community/review/reviewWrite.jsp");
+		return "index";
+	}
+	
+	@RequestMapping(value = "reviewWrite.do", method = RequestMethod.POST)
+	public String reviewWriteDo(HttpServletRequest req, CM_RV_TITLE rv) {
+		acDAO.loginCheck(req);
+		return "redirect:reviewDetail.go?rv_no="+rvDAO.ReviewWrite(req, rv);
+	}
+	
+	@RequestMapping(value = "reviewDetail.go", method = RequestMethod.GET)
+	public String reviewDetailGo(HttpServletResponse res ,HttpServletRequest req, CM_RV_TITLE rv) {
+		acDAO.loginCheck(req);
+		rvDAO.showReviewDetail(req, rv);
+		req.setAttribute("contentPage", "community/review/reviewDetail.jsp");
+		return "index";
+	}
+	
+	@RequestMapping(value = "reviewDelete.do", method = RequestMethod.GET)
+	public String reviewDeleteDo(HttpServletRequest req, CM_RV_TITLE rv) {
+		acDAO.loginCheck(req);
+		rvDAO.deleteReview(req, rv);
+		rvDAO.showReviewList(req, rv);
+		req.setAttribute("contentPage", "community/review/review.jsp");
+		return "index";
+	}
+	
+	@RequestMapping(value = "reviewUpdate.go", method = RequestMethod.GET)
+	public String reviewUpdateGo(HttpServletRequest req, CM_RV_TITLE rv) {
+		acDAO.loginCheck(req);
+		rvDAO.showReviewDetail(req, rv);
+		req.setAttribute("contentPage", "community/review/reviewUpdate.jsp");
+		return "index";
+	}
+	
+	@RequestMapping(value = "reviewUpdate.do", method = RequestMethod.POST)
+	public String reviewUpdateDo(HttpServletRequest req, CM_RV_TITLE rv) {
+		acDAO.loginCheck(req);
+		rvDAO.deleteReview(req, rv);
+		req.setAttribute("contentPage", "community/review/reviewDetail.jsp");
 		return "index";
 	}
 	
