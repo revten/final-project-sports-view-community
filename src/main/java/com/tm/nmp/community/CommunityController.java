@@ -13,10 +13,14 @@ import com.tm.nmp.account.AccountDAO;
 public class CommunityController {
 	@Autowired
 	private AccountDAO acDAO;
-
+	
+	@Autowired
+	private CommunityDAO coDAO;
+	
 	@RequestMapping(value = "/communityWithGo.go", method = RequestMethod.GET)
-	public String communityWithGoGo(HttpServletRequest req) {
+	public String communityWithGoGo(HttpServletRequest req, CommunityDTO co) {
 		acDAO.loginCheck(req);
+		coDAO.showPostList(req, co);
 		req.setAttribute("contentPage", "community/withGo/withGo.jsp");
 		return "index";
 	}
@@ -27,4 +31,11 @@ public class CommunityController {
 		req.setAttribute("contentPage", "community/withGo/withGoWrite.jsp");
 		return "index";
 	}
+	
+	@RequestMapping(value = "withGoWrite.do", method = RequestMethod.POST)
+	public String withGoWrite(HttpServletRequest req, CommunityDTO co) {
+		acDAO.loginCheck(req);
+		return "redirect:post.detail?_num="+coDAO.createPost(req, co);
+	}
+	
 }

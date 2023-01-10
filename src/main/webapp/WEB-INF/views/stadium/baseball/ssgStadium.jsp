@@ -22,6 +22,6 @@
 <br>
 <br>
 <h1>맵</h1>
-<button onclick="commnunity_write_go()">같이 보러 가기</button>
+<a href="communityWrite.go?wg_cat=2">같이 보러 가기</a>
 </body>
 </html>
