@@ -50,6 +50,7 @@ position : iwPosition,
 content : iwContent,
 removable : iwRemoveable
 });
+infowindow.open(map, marker);
 kakao.maps.event.addListener(marker, 'click', function() {
 infowindow.open(map, marker); 
 });
