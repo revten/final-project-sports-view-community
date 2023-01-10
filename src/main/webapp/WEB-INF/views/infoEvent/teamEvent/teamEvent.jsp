@@ -60,7 +60,7 @@
 				<tr>
 					<td>${te.ie_te_no }</td>
 					<td>${te.ie_te_team }</td>
-					<td><a style="cursor: pointer; color: blue;" href="team.event.detail.go?no=${te.ie_te_no}">${te.ie_te_title }</a></td>
+					<td><a style="cursor: pointer; color: blue;" href="team.event.detail.go?ie_te_no=${te.ie_te_no}">${te.ie_te_title }</a></td>
 					<td>${te.ie_te_nick }</td>
 					<td>${te.ie_te_regdate }</td>
 					<td>${te.ie_te_views }</td>
