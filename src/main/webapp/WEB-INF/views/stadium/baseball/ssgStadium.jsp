@@ -21,13 +21,8 @@
 <br>
 <br>
 <br>
-<<<<<<< HEAD
 <h1>맵</h1>
-<a href="communityWrite.go?wg_cat=2">같이 보러 가기</a>
-=======
-<button onclick="commnunity_write_go()">같이 보러 가기</button>
-
-
+<a href="withGoWrite.go?wg_cat=2">같이 보러 가기</a>
 <!-- map div -->
 <div id="map" style="width: 500px; height: 300px;"></div>
 
@@ -59,6 +54,5 @@ kakao.maps.event.addListener(marker, 'click', function() {
 infowindow.open(map, marker);
 });
 </script>
->>>>>>> 542a17529a3fb032357973cf71395b08662a05b7
 </body>
 </html>
