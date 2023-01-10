@@ -6,7 +6,7 @@ public interface InfoEventMapper {
 
 	List<TeamEventDTO> showAllTeamEvent();
 
-	List<TeamEventDTO> showTeamEvent(TeamEventDTO te);
+	TeamEventDTO showTeamEvent(TeamEventDTO te);
 
 	int insertTeamEvent(TeamEventDTO te);
 
