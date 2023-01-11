@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <!DOCTYPE html>
@@ -9,14 +9,23 @@
 <title>Insert title here</title>
 </head>
 <body>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<h1>구단공식이벤트</h1>
+
+
 	<div>
-	<form action="teamEvent.search.do">
+	<form action="teamEvent.search.do"></form>
 		<select>
-			<option value="ie_te_title">제목</option>
 			<option value="ie_te_team">구단</option>
-		</select> <input type="text" placeholder="입력" name="ie_te_title">
+			<option value="ie_te_title">제목</option>
+		</select> <input type="text" placeholder="입력">
 		<button>검색</button>
-		</form>
 		<c:choose>
 			<c:when test="${sessionScope.loginAccount eq null}">
 				<a href="" onclick="alert('로그인하세요')">새글쓰기</a>
@@ -39,16 +48,7 @@
 			</tr>
 		</thead>
 		<tbody>
-			<tr>
-				<td>MainNo</td>
-				<td>MainTeam</td>
-				<td><a style="cursor: pointer; color: blue;"
-					onclick="location.href='team.event.detail.go'">MainTitle</a></td>
-				<td>MainWriter</td>
-				<td>MainTime</td>
-				<td>MainCount</td>
-			</tr>
-			<c:forEach var="te" items="${teamEvents }">
+			<c:forEach var="te" items="${SearchTeamEvent }">
 				<tr>
 					<td>${te.ie_te_no }</td>
 					<td>${te.ie_te_team }</td>

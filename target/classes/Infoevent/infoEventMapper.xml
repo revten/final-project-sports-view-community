@@ -15,11 +15,19 @@ insert into IE_TE_BOARD values(ie_te_no_seq.nextval,#{ie_te_id},#{ie_te_nick},#{
 </insert>
 
 <update id="updateTeamEvent" parameterType="com.tm.nmp.infoEvent.TeamEventDTO">
-update IE_TE_BOARD set ie_te_sports = #{ie_te_sports}, ie_te_team = #{ie_te_team}, ie_te_title = #{ie_te_title}, ie_te_content = #{ie_te_content}, ie_te_img = #{ie_te_img}
+update IE_TE_BOARD set ie_te_team = #{ie_te_team}, ie_te_title = #{ie_te_title}, ie_te_content = #{ie_te_content}, ie_te_img = #{ie_te_img} where  ie_te_no = #{ie_te_no}
 </update>
 
 <delete id="deleteTeamEvent"  parameterType="com.tm.nmp.infoEvent.TeamEventDTO">
 delete IE_TE_BOARD where ie_te_no = #{ie_te_no}
 </delete>
+
+<select id="showTeamEventBySearch" parameterType="com.tm.nmp.infoEvent.TeamEventDTO" resultType="com.tm.nmp.infoEvent.TeamEventDTO">
+select * from IE_TE_BOARD where ie_te_title like '%'||#{ie_te_title}||'%'
+</select>
+
+<select id="getTeamEventPostCount" resultType="int">
+select count(*) from ie_te_board where ie_te_team = #{ie_te_team} and ie_te_title like '%'||#{ie_te_title}||'%'
+</select>
 
 </mapper>
