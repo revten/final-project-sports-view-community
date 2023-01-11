@@ -1,4 +1,4 @@
-package com.tm.nmp.news;
+package com.tm.nmp.infoEvent;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -23,35 +23,35 @@ public class NewsController {
 	@RequestMapping(value = "/news.soccer.go", method = RequestMethod.GET)
 	public String goSoccerNews(HttpServletRequest req) {
 		acDAO.loginCheck(req);
-		req.setAttribute("contentPage", "news/newsMain.jsp");
+		req.setAttribute("contentPage", "infoEvent/news/newsMain.jsp");
 		req.setAttribute("newsPage", "soccerNews.jsp");
 		return "index";
 	}
 	@RequestMapping(value = "/news.baseball.go", method = RequestMethod.GET)
 	public String goBaseballNews(HttpServletRequest req) {
 		acDAO.loginCheck(req);
-		req.setAttribute("contentPage", "news/newsMain.jsp");
+		req.setAttribute("contentPage", "infoEvent/news/newsMain.jsp");
 		req.setAttribute("newsPage", "baseballNews.jsp");
 		return "index";
 	}
 	@RequestMapping(value = "/news.basketball.go", method = RequestMethod.GET)
 	public String goBasketballNews(HttpServletRequest req) {
 		acDAO.loginCheck(req);
-		req.setAttribute("contentPage", "news/newsMain.jsp");
+		req.setAttribute("contentPage", "infoEvent/news/newsMain.jsp");
 		req.setAttribute("newsPage", "basketballNews.jsp");
 		return "index";
 	}
 	@RequestMapping(value = "/news.volleyball.go", method = RequestMethod.GET)
 	public String goVolleyballNews(HttpServletRequest req) {
 		acDAO.loginCheck(req);
-		req.setAttribute("contentPage", "news/newsMain.jsp");
+		req.setAttribute("contentPage", "infoEvent/news/newsMain.jsp");
 		req.setAttribute("newsPage", "VolleyballNews.jsp");
 		return "index";
 	}
 	@RequestMapping(value = "/news.sports.go", method = RequestMethod.GET)
 	public String goSportsNews(HttpServletRequest req) {
 		acDAO.loginCheck(req);
-		req.setAttribute("contentPage", "news/newsMain.jsp");
+		req.setAttribute("contentPage", "infoEvent/news/newsMain.jsp");
 		req.setAttribute("newsPage", "sportsNews.jsp");
 		return "index";
 	}
