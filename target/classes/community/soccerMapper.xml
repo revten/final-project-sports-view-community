@@ -14,5 +14,11 @@
 		update cm_sc_board set cm_sc_title=#{cm_sc_title}, cm_sc_content = #{cm_sc_content}
 		where cm_sc_no=#{cm_sc_no}	
 	</update>
+	
+	<insert id="insertSoccer" parameterType="com.tm.nmp.community.CM_SC_TITLE">
+		insert into cm_sc_board values(cm_sc_board_seq.nextval,
+		#{cm_sc_nick},#{cm_sc_id},#{cm_sc_title},#{cm_sc_content},
+		sysdate,#{cm_sc_img},#{cm_sc_video},#{cm_sc_cat})
+	</insert>
 
 </mapper>
