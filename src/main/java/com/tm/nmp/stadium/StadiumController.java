@@ -15,6 +15,9 @@ public class StadiumController {
 	@Autowired
 	private AccountDAO acDAO;
 	
+	@Autowired
+	private StadiumDAO sdDAO;
+	
 	@RequestMapping(value = "/baseball.go", method = RequestMethod.GET)
 	public String baseballGo(HttpServletRequest req) {
 		acDAO.loginCheck(req);
@@ -25,6 +28,7 @@ public class StadiumController {
 	@RequestMapping(value = "/baseball.stadium.go.detail", method = RequestMethod.GET)
 	public String baseballStadiumGoDetail(HttpServletRequest req) {
 		acDAO.loginCheck(req);
+		sdDAO.viewBaseballSeat(req);
 		req.setAttribute("contentPage", "stadium/baseball/baseball_stadium_detail.jsp");
 		return "index";
 	}
@@ -39,6 +43,7 @@ public class StadiumController {
 	@RequestMapping(value = "/soccer.stadium.go.detail", method = RequestMethod.GET)
 	public String soccerStadiumGoDetail(HttpServletRequest req) {
 		acDAO.loginCheck(req);
+		sdDAO.viewSoccerSeat(req);
 		req.setAttribute("contentPage", "stadium/soccer/soccer_stadium_detail.jsp");
 		return "index";
 	}
@@ -53,6 +58,7 @@ public class StadiumController {
 	@RequestMapping(value = "/basketball.stadium.go.detail", method = RequestMethod.GET)
 	public String basketballStadiumGoDetail(HttpServletRequest req) {
 		acDAO.loginCheck(req);
+		sdDAO.viewBasketballSeat(req);
 		req.setAttribute("contentPage", "stadium/basketball/basketball_stadium_detail.jsp");
 		return "index";
 	}
@@ -67,6 +73,7 @@ public class StadiumController {
 	@RequestMapping(value = "/volleyball.stadium.go.detail", method = RequestMethod.GET)
 	public String volleyballStadiumGoDetail(HttpServletRequest req) {
 		acDAO.loginCheck(req);
+		sdDAO.viewVolleyballSeat(req);
 		req.setAttribute("contentPage", "stadium/volleyball/volleyball_stadium_detail.jsp");
 		return "index";
 	}
