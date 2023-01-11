@@ -12,7 +12,8 @@
 <br><br><br><br><br><br>
 <h1>축구게시판</h1>${result }
 
-<table border="1" >
+<table border="1" >	
+	<button onclick="location.href='soccerInsert.go'">게시글작성</button>
 		<thead>
 			<tr>
 				<th>탭</th>
