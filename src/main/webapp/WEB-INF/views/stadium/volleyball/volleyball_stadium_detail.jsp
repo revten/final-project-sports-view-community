@@ -13,8 +13,8 @@
 <br>
 <br>
 <br>
-<h1>좌석배치도</h1>
-<button id="reserveBtn" onclick="window.open(reserveUrl)">예매하러 가기</button>
+<img src="resources/files/stadium/volleyball/seating_chart/${seat}"><br>
+<button id="reserveBtn">예매하러 가기</button>
 <br>
 <br>
 <br>
