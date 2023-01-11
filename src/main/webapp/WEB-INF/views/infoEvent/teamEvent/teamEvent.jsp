@@ -9,28 +9,20 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<h1>구단공식이벤트</h1>
-
-
 	<div>
+	<form action="teamEvent.search.do">
 		<select>
-			<option>구단</option>
-			<option>제목</option>
-		</select> <input type="text" placeholder="입력">
+			<option value="ie_te_title">제목</option>
+			<option value="ie_te_team">구단</option>
+		</select> <input type="text" placeholder="입력" name="ie_te_title">
 		<button>검색</button>
+		</form>
 		<c:choose>
 			<c:when test="${sessionScope.loginAccount eq null}">
 				<a href="" onclick="alert('로그인하세요')">새글쓰기</a>
 			</c:when>
 			<c:otherwise>
-				<a href=""> 새글쓰기</a>
+				<a href="teamEvent.insert.go">새글쓰기</a>
 			</c:otherwise>
 		</c:choose>
 	</div>

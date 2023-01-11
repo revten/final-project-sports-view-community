@@ -7,7 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-<br><br><br><br><br><br><br>
 <h1>생활체육정보</h1>
 </body>
 </html>
