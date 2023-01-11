@@ -14,5 +14,9 @@ public interface InfoEventMapper {
 
 	int deleteTeamEvent(TeamEventDTO te);
 
+	List<TeamEventDTO> showTeamEventBySearch(TeamEventDTO te);
+
+	int getTeamEventPostCount(TeamEventDTO te);
+
 
 }

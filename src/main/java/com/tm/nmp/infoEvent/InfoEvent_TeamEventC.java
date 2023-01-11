@@ -26,4 +26,60 @@ public class InfoEvent_TeamEventC {
 		req.setAttribute("contentPage", "infoEvent/teamEvent/teamEventDetail.jsp");
 		return "index";
 	}
+	
+	@RequestMapping(value = "/teamEvent.update.go", method = RequestMethod.GET)
+	public String teamEventUpdateGo(HttpServletRequest req, TeamEventDTO te) {
+		aDAO.loginCheck(req);
+		iDAO.getteamEvent(req, te);
+		
+		req.setAttribute("contentPage", "infoEvent/teamEvent/teamEventUpdate.jsp");
+		return "index";
+	}
+	
+	@RequestMapping(value = "/teamEvent.update.do", method = RequestMethod.GET)
+	public String teamEventUpdateDo(HttpServletRequest req, TeamEventDTO te) {
+		aDAO.loginCheck(req);
+		iDAO.updateTeamEvent(req,te);
+		iDAO.getteamEvent(req, te);
+		
+		req.setAttribute("contentPage", "infoEvent/teamEvent/teamEventDetail.jsp");
+		return "index";
+	}
+	
+	@RequestMapping(value = "/teamEvent.delete.do", method = RequestMethod.GET)
+	public String teamEventDeleteDo(HttpServletRequest req, TeamEventDTO te) {
+		aDAO.loginCheck(req);
+		iDAO.deleteTeamEvent(req, te);
+		iDAO.getteamEventAll(req, te);
+		
+		req.setAttribute("contentPage", "infoEvent/teamEvent/teamEvent.jsp");
+		return "index";
+	}
+	
+	@RequestMapping(value = "/teamEvent.insert.go", method = RequestMethod.GET)
+	public String teamEventInsertGo(HttpServletRequest req, TeamEventDTO te) {
+		aDAO.loginCheck(req);
+		
+		req.setAttribute("contentPage", "infoEvent/teamEvent/teamEventReg.jsp");
+		return "index";
+	}
+	
+	@RequestMapping(value = "/teamEvent.insert.do", method = RequestMethod.POST)
+	public String teamEventInsertDo(HttpServletRequest req, TeamEventDTO te) {
+		aDAO.loginCheck(req);
+		iDAO.insertTeamEvent(req, te);
+		iDAO.getteamEventAll(req, te);
+		
+		req.setAttribute("contentPage", "infoEvent/teamEvent/teamEvent.jsp");
+		return "index";
+	}
+	
+	@RequestMapping(value = "/teamEvent.search.do", method = RequestMethod.GET)
+	public String teamEventSearchDo(HttpServletRequest req, TeamEventDTO te) {
+		aDAO.loginCheck(req);
+		iDAO.getteamEventSearch(req, te);
+		
+		req.setAttribute("contentPage", "infoEvent/teamEvent/teamEventSearch.jsp");
+		return "index";
+	}
 }

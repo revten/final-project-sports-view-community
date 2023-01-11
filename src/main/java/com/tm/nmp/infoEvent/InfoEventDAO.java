@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
+import com.tm.nmp.community.ReviewMapper;
 
 
 @Service
@@ -21,6 +22,7 @@ public class InfoEventDAO {
 
 	public void getteamEventAll(HttpServletRequest req, TeamEventDTO te) {
 		
+		
 		req.setAttribute("teamEvents", ss.getMapper(InfoEventMapper.class).showAllTeamEvent());
 	}
 
@@ -30,7 +32,7 @@ public class InfoEventDAO {
 	}
 	
 	public void insertTeamEvent(HttpServletRequest req, TeamEventDTO te) {
-		String path = req.getSession().getServletContext().getRealPath("resources/teamEventImg");
+		String path = req.getSession().getServletContext().getRealPath("resources/files/teamEventImg");
 		System.out.println(path);
 		
 		try {
@@ -91,7 +93,7 @@ public class InfoEventDAO {
 	}
 	
 	public void updateTeamEvent(HttpServletRequest req, TeamEventDTO te) {
-		String path = req.getSession().getServletContext().getRealPath("resources/teamEventImg");
+		String path = req.getSession().getServletContext().getRealPath("resources/files/teamEventImg");
 		System.out.println(path);
 		
 		try {
@@ -160,6 +162,13 @@ public void deleteTeamEvent(HttpServletRequest req, TeamEventDTO te) {
 			req.setAttribute("r", "삭제 실패");
 		}
 	}
+
+public void getteamEventSearch(HttpServletRequest req, TeamEventDTO te) {
+	req.setAttribute("SearchTeamEvent", ss.getMapper(InfoEventMapper.class).showTeamEventBySearch(te));
+	
+}
+
+
 	
 	
 }

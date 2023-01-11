@@ -17,6 +17,9 @@ public class TeamEventDTO {
 	private int ie_te_views;
 	private int ie_te_comtNo;
 	private String ie_te_ip;
+	private String ie_te_search;
+	private int ie_te_Start;
+	private int ie_te_End;
 	public TeamEventDTO() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -117,8 +120,10 @@ public class TeamEventDTO {
 	public void setIe_te_ip(String ie_te_ip) {
 		this.ie_te_ip = ie_te_ip;
 	}
-	
-	
+	public String getIe_te_search() {
+		return ie_te_search;
+	}
+
 	
 	
 	

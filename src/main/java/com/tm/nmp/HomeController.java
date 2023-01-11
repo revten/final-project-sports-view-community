@@ -60,6 +60,7 @@ public class HomeController {
 	public String infoEventMainGo(HttpServletRequest req) {
 		acDAO.loginCheck(req);
 		req.setAttribute("contentPage", "infoEvent/infoEventMain.jsp");
+		req.setAttribute("newsPage", "news/everyNews.jsp");
 		return "index";
 	}
 	
