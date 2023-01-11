@@ -21,6 +21,9 @@ public class CommunityController {
 	@Autowired
 	private CM_RV_DAO rvDAO;
 	
+	@Autowired
+	private CM_SC_DAO scDAO;
+	
 	@RequestMapping(value = "withGoList.go", method = RequestMethod.GET)
 	public String withGoListGo(HttpServletRequest req, CM_WG_TITLE wg) {
 		acDAO.loginCheck(req);
@@ -128,6 +131,25 @@ public class CommunityController {
 		acDAO.loginCheck(req);
 		rvDAO.deleteReview(req, rv);
 		req.setAttribute("contentPage", "community/review/reviewDetail.jsp");
+		return "index";
+	}
+	
+	//야구게시판
+	@RequestMapping(value = "baseballBoard.go", method = RequestMethod.GET)
+	public String baseballBoardGO(HttpServletRequest req) {
+		acDAO.loginCheck(req);
+		
+		req.setAttribute("contentPage", "community/baseball/baseballBoard.jsp");
+		return "index";
+	}
+	
+	//축구게시판
+	@RequestMapping(value = "soccerBoard.go", method = RequestMethod.GET)
+	public String soccerBoardGO(HttpServletRequest req, CM_SC_TITLE sc) {
+		acDAO.loginCheck(req);
+		scDAO.getSoccerBoard(req,sc);
+		
+		req.setAttribute("contentPage", "community/soccer/soccerBoard.jsp");
 		return "index";
 	}
 	

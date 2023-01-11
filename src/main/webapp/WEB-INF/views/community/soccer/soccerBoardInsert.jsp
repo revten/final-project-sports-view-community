@@ -7,12 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<h1>basketball</h1>
+<br><br><br><br><br><br>
+<h1>등록페이지</h1>
 </body>
 </html>

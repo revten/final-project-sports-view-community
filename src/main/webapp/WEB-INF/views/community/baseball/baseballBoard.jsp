@@ -7,12 +7,11 @@
 <title>Insert title here</title>
 </head>
 <body>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<h1>soccer</h1>
+<br><br><br><br><br><br>
+<h1>야구게시판</h1>
+
+
+
+
 </body>
 </html>

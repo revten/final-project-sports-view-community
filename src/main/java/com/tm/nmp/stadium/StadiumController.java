@@ -18,63 +18,56 @@ public class StadiumController {
 	@RequestMapping(value = "/baseball.go", method = RequestMethod.GET)
 	public String baseballGo(HttpServletRequest req) {
 		acDAO.loginCheck(req);
-		req.setAttribute("contentPage", "stadium/baseball/baseball.jsp");
+		req.setAttribute("contentPage", "stadium/baseball/baseball_stadium.jsp");
 		return "index";
 	}
 	
-	@RequestMapping(value = "/ssgStadium.go", method = RequestMethod.GET)
-	public String ssgStadiumGo(HttpServletRequest req) {
+	@RequestMapping(value = "/baseball.stadium.go.detail", method = RequestMethod.GET)
+	public String baseballStadiumGoDetail(HttpServletRequest req) {
 		acDAO.loginCheck(req);
-		req.setAttribute("contentPage", "stadium/baseball/ssgStadium.jsp");
-		return "index";
-	}
-	
-	@RequestMapping(value = "/kiwoomStadium.go", method = RequestMethod.GET)
-	public String kiwoomStadiumGo(HttpServletRequest req) {
-		acDAO.loginCheck(req);
-		req.setAttribute("contentPage", "stadium/baseball/kiwoomStadium.jsp");
-		return "index";
-	}
-	
-	@RequestMapping(value = "/lgStadium.go", method = RequestMethod.GET)
-	public String lgStadiumGo(HttpServletRequest req) {
-		acDAO.loginCheck(req);
-		req.setAttribute("contentPage", "stadium/baseball/lgStadium.jsp");
-		return "index";
-	}
-	
-	@RequestMapping(value = "/ktStadium.go", method = RequestMethod.GET)
-	public String ktStadiumGo(HttpServletRequest req) {
-		acDAO.loginCheck(req);
-		req.setAttribute("contentPage", "stadium/baseball/ktStadium.jsp");
-		return "index";
-	}
-	
-	@RequestMapping(value = "/withGo.go", method = RequestMethod.GET)
-	public String withGoGo(HttpServletRequest req) {
-		acDAO.loginCheck(req);
-		req.setAttribute("contentPage", "community/withGo/withGo.jsp");
+		req.setAttribute("contentPage", "stadium/baseball/baseball_stadium_detail.jsp");
 		return "index";
 	}
 	
 	@RequestMapping(value = "/soccer.go", method = RequestMethod.GET)
 	public String soccerGo(HttpServletRequest req) {
 		acDAO.loginCheck(req);
-		req.setAttribute("contentPage", "stadium/soccer.jsp");
+		req.setAttribute("contentPage", "stadium/soccer/soccer_stadium.jsp");
+		return "index";
+	}
+	
+	@RequestMapping(value = "/soccer.stadium.go.detail", method = RequestMethod.GET)
+	public String soccerStadiumGoDetail(HttpServletRequest req) {
+		acDAO.loginCheck(req);
+		req.setAttribute("contentPage", "stadium/soccer/soccer_stadium_detail.jsp");
 		return "index";
 	}
 	
 	@RequestMapping(value = "/basketball.go", method = RequestMethod.GET)
 	public String basketballGo(HttpServletRequest req) {
 		acDAO.loginCheck(req);
-		req.setAttribute("contentPage", "stadium/basketball.jsp");
+		req.setAttribute("contentPage", "stadium/basketball/basketball_stadium.jsp");
+		return "index";
+	}
+	
+	@RequestMapping(value = "/basketball.stadium.go.detail", method = RequestMethod.GET)
+	public String basketballStadiumGoDetail(HttpServletRequest req) {
+		acDAO.loginCheck(req);
+		req.setAttribute("contentPage", "stadium/basketball/basketball_stadium_detail.jsp");
 		return "index";
 	}
 	
 	@RequestMapping(value = "/volleyball.go", method = RequestMethod.GET)
 	public String volleyballGo(HttpServletRequest req) {
 		acDAO.loginCheck(req);
-		req.setAttribute("contentPage", "stadium/volleyball.jsp");
+		req.setAttribute("contentPage", "stadium/volleyball/volleyball_stadium.jsp");
+		return "index";
+	}
+	
+	@RequestMapping(value = "/volleyball.stadium.go.detail", method = RequestMethod.GET)
+	public String volleyballStadiumGoDetail(HttpServletRequest req) {
+		acDAO.loginCheck(req);
+		req.setAttribute("contentPage", "stadium/volleyball/volleyball_stadium_detail.jsp");
 		return "index";
 	}
 	
