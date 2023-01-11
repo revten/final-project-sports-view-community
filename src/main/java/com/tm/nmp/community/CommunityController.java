@@ -27,11 +27,4 @@ public class CommunityController {
 		req.setAttribute("contentPage", "community/withGo/withGoWrite.jsp");
 		return "index";
 	}
-	
-	@RequestMapping(value = "/communitySoccer.board.go", method = RequestMethod.GET)
-	public String communitySoccerGo(HttpServletRequest req) {
-		acDAO.loginCheck(req);
-		req.setAttribute("contentPage", "community/soccer/communitySoccerBoard.jsp");
-		return "index";
-	}
 }

@@ -53,7 +53,6 @@
 			<beans:list>
 				<beans:value>classpath:account/accountMapper.xml</beans:value>
 				<beans:value>classpath:myPage/myPageMapper.xml</beans:value>
-				<beans:value>classpath:community/communitysoccerboardMapper.xml</beans:value>
 			</beans:list>
 		</beans:property>
 	</beans:bean>
