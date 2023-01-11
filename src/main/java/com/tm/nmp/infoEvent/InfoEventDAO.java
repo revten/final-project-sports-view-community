@@ -2,6 +2,8 @@ package com.tm.nmp.infoEvent;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -11,7 +13,6 @@ import org.springframework.stereotype.Service;
 
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
-import com.tm.nmp.community.ReviewMapper;
 
 
 @Service
@@ -33,10 +34,11 @@ public class InfoEventDAO {
 	
 	public void insertTeamEvent(HttpServletRequest req, TeamEventDTO te) {
 		String path = req.getSession().getServletContext().getRealPath("resources/files/teamEventImg");
+		MultipartRequest mr = null;
 		System.out.println(path);
 		
 		try {
-			MultipartRequest mr = new MultipartRequest(req, path, 30*1024*1024, "utf-8", new DefaultFileRenamePolicy());
+			mr = new MultipartRequest(req, path, 30*1024*1024, "utf-8", new DefaultFileRenamePolicy());
 			
 			
 			String ie_te_id = mr.getParameter("ie_te_id");
@@ -86,8 +88,9 @@ public class InfoEventDAO {
 			}
 			
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
+			String fileName = mr.getFilesystemName("ie_te_vedio");
+			new File(path + "/" + fileName).delete();
 		}
 		
 	}
@@ -95,6 +98,8 @@ public class InfoEventDAO {
 	public void updateTeamEvent(HttpServletRequest req, TeamEventDTO te) {
 		String path = req.getSession().getServletContext().getRealPath("resources/files/teamEventImg");
 		System.out.println(path);
+		String ie_te_img_old = null;
+		String ie_te_img = null;
 		
 		try {
 			MultipartRequest mr = new MultipartRequest(req, path, 30*1024*1024, "utf-8", new DefaultFileRenamePolicy());
@@ -107,8 +112,8 @@ public class InfoEventDAO {
 			String ie_te_title = mr.getParameter("ie_te_title");
 			String ie_te_content = mr.getParameter("ie_te_content");
 			ie_te_content = ie_te_content.replace("\r\n", "<br>");
-			String ie_te_img_old = mr.getParameter("ie_te_img");
-			String ie_te_img = mr.getFilesystemName("ie_te_img");
+			ie_te_img_old = mr.getParameter("ie_te_img");
+			ie_te_img = mr.getFilesystemName("ie_te_img");
 			String ie_te_video_old = mr.getParameter("ie_te_video");
 			String ie_te_video = mr.getFilesystemName("ie_te_video");
 			
@@ -142,17 +147,33 @@ public class InfoEventDAO {
 			
 			if(ss.getMapper(InfoEventMapper.class).updateTeamEvent(te)==1){
 				req.setAttribute("r", "수정성공");
+				if(!ie_te_img_old.equals(ie_te_img)) {
+					ie_te_img_old = URLDecoder.decode(ie_te_img_old, "utf-8");
+					new File(path + "/" + ie_te_img_old).delete();
+					
+				}
 			}else {
 				req.setAttribute("r", "수정실패");
-				
+				if(!ie_te_img_old.equals(ie_te_img)) {
+					ie_te_img = URLDecoder.decode(ie_te_img, "utf-8");
+					new File(path + "/" + ie_te_img).delete();
+					
+				}
 			}
 			
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
+			req.setAttribute("r", "수정실패");
+			if(!ie_te_img_old.equals(ie_te_img)) {
+				try {
+				ie_te_img = URLDecoder.decode(ie_te_img, "utf-8");
+				} catch (UnsupportedEncodingException el) {
+				}
+				new File(path + "/" + ie_te_img).delete();
 		}
 		
 	}
+}
 	
 public void deleteTeamEvent(HttpServletRequest req, TeamEventDTO te) {
 		InfoEventMapper im = ss.getMapper(InfoEventMapper.class);
