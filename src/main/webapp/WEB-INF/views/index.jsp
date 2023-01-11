@@ -68,22 +68,22 @@
 			<div class="nav__menu" id="nav-menu">
 				<ul class="nav__list">
 					<li class="nav__item"><a href="stadium.main.go"
-						class="nav__link">경기장보기</a>
+						class="nav__link">Stdm</a>
 					</li>
 
 					<!-- <li class="nav__item"><a href="news.main.go" class="nav__link">뉴스</a></li> -->
 
-					<li><a href="community.main.go" class="nav__link">커뮤니티</a></li>
+					<li><a href="community.main.go" class="nav__link">Cmnty</a></li>
 
 					<li class="nav__item"><a href="infoEvent.main.go"
-						class="nav__link">정보/이벤트</a></li>
+						class="nav__link">Insider</a></li>
 						
 									<li class="nav__item"><a href="games.main.go"
-						class="nav__link">경기분석/토토</a></li>		
+						class="nav__link">Games</a></li>		
 
 					<%-- 					<c:if test="${sessionScope.loginAccount.ac_id eq 'qwe'}"> --%>
 					<li class="nav__item"><a href="admin.main.go"
-						class="nav__link">관리자모드</a></li>
+						class="nav__link">Admin</a></li>
 					<%-- </c:if> --%>
 
 					<li class="nav__item"><a class="nav__link"><jsp:include
