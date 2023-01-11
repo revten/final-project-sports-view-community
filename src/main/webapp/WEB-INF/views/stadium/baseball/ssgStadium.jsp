@@ -21,9 +21,8 @@
 <br>
 <br>
 <br>
-<button onclick="commnunity_write_go()">같이 보러 가기</button>
-
-
+<h1>맵</h1>
+<a href="withGoWrite.go?wg_cat=withGo">같이 보러 가기</a>
 <!-- map div -->
 <div id="map" style="width: 500px; height: 300px;"></div>
 
