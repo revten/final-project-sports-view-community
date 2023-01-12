@@ -217,6 +217,10 @@ function stadiumBasketball() {
 	location.href = "basketball.go";
 }
 
+function stadiumBasketball2() {
+	location.href = "basketball2.go";
+}
+
 function basketballStadiumGo(team) {
 	location.href = "basketball.stadium.go.detail?team=" + team;
 }
@@ -342,6 +346,10 @@ function basketballSetVal() {
 /* 배구 */
 function stadiumVolleyball() {
 	location.href = "volleyball.go";
+}
+
+function stadiumVolleyball2() {
+	location.href = "volleyball2.go";
 }
 
 function volleyballStadiumGo(team) {
