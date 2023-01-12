@@ -12,6 +12,8 @@ public interface SoccerMapper {
 
 	int updateSoccer(CM_SC_TITLE sc);
 
+	int insertSoccer(CM_SC_TITLE sc);
+
 
 
 
