@@ -11,7 +11,6 @@ import org.springframework.stereotype.Service;
 
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
-import com.tm.nmp.community.ReviewMapper;
 
 
 @Service
