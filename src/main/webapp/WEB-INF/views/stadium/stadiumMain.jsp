@@ -31,14 +31,14 @@
 	<div class="stadiumMain__container">
 		<p class="stadiumMain__header">오늘은 어떤 스포츠를 즐길까요?</p>
 		<div class="stadiumMain__content">
-			<div class="stadiumMain__wrapper-1">
+			<div class="stadiumMain__wrapper-1"  onclick="stadiumBaseball()">
 				<div class="stadiumMain__box stadiumMain__vintage">
 					<img src="resources/files/stadium/main/baseball.png" alt="baseball"> <!-- 그림크기 900x900이 반응형까지 최적화임 -->
 					<h2>KBO</h2>
 					<p>It ain't over till it's over.</p>
 				</div>
 			</div>
-			<div class="stadiumMain__wrapper-2">
+			<div class="stadiumMain__wrapper-2" onclick="stadiumSoccer()">
 				<div class="stadiumMain__box stadiumMain__w-content">
 					<img src="resources/files/stadium/main/soccer.png" alt="soccer">
 					<div class="stadiumMain__frame">
@@ -46,7 +46,7 @@
 					</div>
 				</div>
 			</div>
-			<div class="stadiumMain__wrapper-3">
+			<div class="stadiumMain__wrapper-3" onclick="stadiumBasketball()">
 				<div class="stadiumMain__box stadiumMain__postcard">
 					<img src="resources/files/stadium/main/basketballMen.png"
 						alt="basketballMen">
@@ -56,7 +56,7 @@
 					</h2>
 				</div>
 			</div>
-			<div class="stadiumMain__wrapper-4">
+			<div class="stadiumMain__wrapper-4" onclick="stadiumVolleyball()">
 				<div class="stadiumMain__box stadiumMain__zoom-in">
 					<img src="resources/files/stadium/main/volleyball.png"
 						"
@@ -65,7 +65,7 @@
 					<p>V-league men</p>
 				</div>
 			</div>
-			<div class="stadiumMain__wrapper-5">
+			<div class="stadiumMain__wrapper-5" onclick="stadiumVolleyball2()">
 				<div class="stadiumMain__box stadiumMain__blury-card">
 					<img src="resources/files/stadium/main/volleyballWomen.png"
 						"
@@ -76,7 +76,7 @@
 					</div>
 				</div>
 			</div>
-			<div class="stadiumMain__wrapper-6">
+			<div class="stadiumMain__wrapper-6" onclick="stadiumBasketball2()">
 				<div class="stadiumMain__box stadiumMain__zoom-out">
 					<img src="resources/files/stadium/main/basketballWomen.png"
 						"
@@ -91,15 +91,6 @@
 				</div>
 			</div>
 		</div>
-	</div>
-
-	<div id="stadium_area">
-		<ul id="sports_list">
-			<li><a style="cursor: pointer" onclick="stadiumBaseball()">야구</a></li>
-			<li><a style="cursor: pointer" onclick="stadiumSoccer()">축구</a></li>
-			<li><a style="cursor: pointer" onclick="stadiumBasketball()">농구</a></li>
-			<li><a style="cursor: pointer" onclick="stadiumVolleyball()">배구</a></li>
-		</ul>
 	</div>
 	<br>
 	<br>
