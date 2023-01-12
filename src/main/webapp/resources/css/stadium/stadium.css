@@ -1,0 +1,165 @@
+@charset "UTF-8";
+
+#sports_list {
+	display: flex;
+	flex-direction: row;
+	text-align: center;
+	justify-content: space-evenly;
+	row-gap: 2rem;
+}
+
+#baseball_club {
+	display: flex;
+	flex-direction: column;
+	text-align: center;
+	row-gap: 2rem;
+}
+
+#baseball_club_one{
+	display: flex;
+	flex-direction: row;
+	text-align: center;
+	justify-content: space-evenly;
+	row-gap: 2rem;
+}
+
+#baseball_club_one{
+	display: flex;
+	flex-direction: row;
+	text-align: center;
+	justify-content: space-evenly;
+	row-gap: 2rem;
+}
+
+#baseball_club_two{
+	display: flex;
+	flex-direction: row;
+	text-align: center;
+	justify-content: space-evenly;
+	row-gap: 2rem;
+}
+
+#baseball_club_three{
+	display: flex;
+	flex-direction: row;
+	text-align: center;
+	justify-content: space-evenly;
+	row-gap: 2rem;
+}
+
+#soccer_club {
+	display: flex;
+	flex-direction: column;
+	text-align: center;
+	row-gap: 2rem;
+}
+
+#soccer_club_one{
+	display: flex;
+	flex-direction: row;
+	text-align: center;
+	justify-content: space-evenly;
+	row-gap: 2rem;
+}
+
+#soccer_club_one{
+	display: flex;
+	flex-direction: row;
+	text-align: center;
+	justify-content: space-evenly;
+	row-gap: 2rem;
+}
+
+#soccer_club_two{
+	display: flex;
+	flex-direction: row;
+	text-align: center;
+	justify-content: space-evenly;
+	row-gap: 2rem;
+}
+
+#soccer_club_three{
+	display: flex;
+	flex-direction: row;
+	text-align: center;
+	justify-content: space-evenly;
+	row-gap: 2rem;
+}
+
+#basketball_club {
+	display: flex;
+	flex-direction: column;
+	text-align: center;
+	row-gap: 2rem;
+}
+
+#basketball_club_one{
+	display: flex;
+	flex-direction: row;
+	text-align: center;
+	justify-content: space-evenly;
+	row-gap: 2rem;
+}
+
+#basketball_club_one{
+	display: flex;
+	flex-direction: row;
+	text-align: center;
+	justify-content: space-evenly;
+	row-gap: 2rem;
+}
+
+#basketball_club_two{
+	display: flex;
+	flex-direction: row;
+	text-align: center;
+	justify-content: space-evenly;
+	row-gap: 2rem;
+}
+
+#basketball_club_three{
+	display: flex;
+	flex-direction: row;
+	text-align: center;
+	justify-content: space-evenly;
+	row-gap: 2rem;
+}
+
+#volleyball_club {
+	display: flex;
+	flex-direction: column;
+	text-align: center;
+	row-gap: 2rem;
+}
+
+#volleyball_club_one{
+	display: flex;
+	flex-direction: row;
+	text-align: center;
+	justify-content: space-evenly;
+	row-gap: 2rem;
+}
+
+#volleyball_club_one{
+	display: flex;
+	flex-direction: row;
+	text-align: center;
+	justify-content: space-evenly;
+	row-gap: 2rem;
+}
+
+#volleyball_club_two{
+	display: flex;
+	flex-direction: row;
+	text-align: center;
+	justify-content: space-evenly;
+	row-gap: 2rem;
+}
+
+#volleyball_club_three{
+	display: flex;
+	flex-direction: row;
+	text-align: center;
+	justify-content: space-evenly;
+	row-gap: 2rem;
+}

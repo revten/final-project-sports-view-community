@@ -7,7 +7,12 @@
 <title>회원가입 - Enjoy Sports</title>
 </head>
 <body>
-<br><br><br><br><br><br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
 	<h1>회원 가입</h1>
 	<div id="accountReg__contrainer">
 		<form action="account.reg.do" method="post"
@@ -42,12 +47,6 @@
 			<div class="accountReg__emailInput-2">
 				<input id="emailInput" name="ac_email">
 			</div>
-
-			<div class="accountReg__picInput-1">사진</div>
-			<div class="accountReg__picInput-2">
-				<input id="picInput" name="ac_pic" type="file">
-			</div>
-
 			<button>가입</button>
 			<br>
 			<button onclick='history.back(-1)'>뒤로가기</button>

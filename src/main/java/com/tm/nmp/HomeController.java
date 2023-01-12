@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.tm.nmp.account.AccountDAO;
-import com.tm.nmp.news.NewsDAO;
 
 @Controller
 public class HomeController {
@@ -45,7 +44,8 @@ public class HomeController {
 	@RequestMapping(value = "/news.main.go", method = RequestMethod.GET)
 	public String newsMainGo(HttpServletRequest req) {
 		acDAO.loginCheck(req);
-		req.setAttribute("contentPage", "news/newsMain.jsp");
+		req.setAttribute("contentPage", "infoEvent/news/newsMain.jsp");
+			req.setAttribute("newsPage", "everyNews.jsp");
 		return "index";
 	}
 	
@@ -60,6 +60,7 @@ public class HomeController {
 	public String infoEventMainGo(HttpServletRequest req) {
 		acDAO.loginCheck(req);
 		req.setAttribute("contentPage", "infoEvent/infoEventMain.jsp");
+		req.setAttribute("newsPage", "news/everyNews.jsp");
 		return "index";
 	}
 	

@@ -2,16 +2,18 @@ package com.tm.nmp.account;
 
 public interface AccountMapper {
 
-	int regAccount(AccountDTO ac);
-
 	AccountDTO accountLogin(AccountDTO ac);
 
-	AccountDTO searchId(AccountDTO ac);
+	int regAccount(AccountDTO ac);
 
 	int changePwDo(AccountDTO ac);
+
+	AccountDTO searchId(AccountDTO ac);
 
 	int accountUpdate(AccountDTO ac);
 
 	int accountDelete(AccountDTO ac);
+
+	int socialIdCheck(AccountDTO ac);
 
 }

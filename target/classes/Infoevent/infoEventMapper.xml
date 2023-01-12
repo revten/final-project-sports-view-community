@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tm.nmp.infoEvent.InfoEventMapper">
+
+<select id="showAllTeamEvent" resultType="com.tm.nmp.infoEvent.TeamEventDTO">
+select * from ie_te_board
+</select>
+
+<select id="showTeamEvent" parameterType="com.tm.nmp.infoEvent.TeamEventDTO" resultType="com.tm.nmp.infoEvent.TeamEventDTO">
+select * from ie_te_board where ie_te_no = #{ie_te_no}
+</select>
+
+<insert id="insertTeamEvent" parameterType="com.tm.nmp.infoEvent.TeamEventDTO">
+insert into IE_TE_BOARD values(ie_te_no_seq.nextval,#{ie_te_id},#{ie_te_nick},#{ie_te_sports},#{ie_te_team},#{ie_te_title},#{ie_te_content},sysdate,#{ie_te_img},#{ie_te_video},#{ie_te_views},#{ie_te_comtNo},#{ie_te_ip})
+</insert>
+
+<update id="updateTeamEvent" parameterType="com.tm.nmp.infoEvent.TeamEventDTO">
+update IE_TE_BOARD set ie_te_team = #{ie_te_team}, ie_te_title = #{ie_te_title}, ie_te_content = #{ie_te_content}, ie_te_img = #{ie_te_img} where  ie_te_no = #{ie_te_no}
+</update>
+
+<delete id="deleteTeamEvent"  parameterType="com.tm.nmp.infoEvent.TeamEventDTO">
+delete IE_TE_BOARD where ie_te_no = #{ie_te_no}
+</delete>
+
+<select id="showTeamEventBySearch" parameterType="com.tm.nmp.infoEvent.TeamEventDTO" resultType="com.tm.nmp.infoEvent.TeamEventDTO">
+select * from IE_TE_BOARD where ie_te_title like '%'||#{ie_te_title}||'%'
+</select>
+
+<select id="getTeamEventPostCount" resultType="int">
+select count(*) from ie_te_board where ie_te_team = #{ie_te_team} and ie_te_title like '%'||#{ie_te_title}||'%'
+</select>
+
+</mapper>
