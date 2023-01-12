@@ -28,7 +28,6 @@ public class CM_SC_DAO {
 	public void getSoccerDetail(HttpServletRequest req, CM_SC_TITLE sc) {
 		CM_SC_TITLE soccer = ss.getMapper(SoccerMapper.class).getSoccer(sc);
 		req.setAttribute("soccer", soccer);
-
 	}
 
 	public void deleteSoccer(HttpServletRequest req, CM_SC_TITLE sc) {
@@ -37,7 +36,6 @@ public class CM_SC_DAO {
 		} else {
 			req.setAttribute("result", "삭제실패");
 		}
-
 	}
 
 	public void updateSoccer(HttpServletRequest req, CM_SC_TITLE sc) {
@@ -52,9 +50,9 @@ public class CM_SC_DAO {
 		String path = req.getSession().getServletContext().getRealPath("resources/files/soccer_img");
 		System.out.println(path);
 		
-		
-		
-
+		AccountDTO loginMember = (AccountDTO) req.getSession().getAttribute("loginAccount");
+		String id = loginMember.getAc_id();
+		String nick = loginMember.getAc_name();
 		
 		try {
 
@@ -66,8 +64,7 @@ public class CM_SC_DAO {
 			String content = mr.getParameter("cm_sc_content");
 			String img = mr.getFilesystemName("cm_sc_img");
 			String video = mr.getFilesystemName("cm_sc_video");
-			String id = mr.getParameter("cm_sc_id");
-			String nick = mr.getParameter("cm_sc_nick");
+
 
 			System.out.println(cat);
 			System.out.println(title);
