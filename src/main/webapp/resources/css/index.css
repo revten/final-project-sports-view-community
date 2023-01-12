@@ -17,8 +17,8 @@
   --title-color: hsl(19, 16%, 15%);
   --text-color: hsl(19, 16%, 35%);
   --text-color-light: hsl(19, 8%, 55%);
-  --body-color: hsl(0, 0%, 99%);
-  --container-color: hsl(19, 100%, 97%);
+  --body-color: hsl(1, 1%, 93%);
+  --container-color: hsl(25, 100%, 97%);
 
   /*========== 폰트와 타이포그래피 ==========*/
   /*.5rem = 8px | 1rem = 16px ...*/
@@ -551,7 +551,7 @@ body.dark-theme {
 
 .newsletter__content {
   position: relative;
-  background-color: hsl(19, 24%, 15%);
+  background-color: hsl(119, 17%, 76%);
   border-radius: 2.5rem;
   padding: 5rem 1rem 3rem;
   text-align: center;

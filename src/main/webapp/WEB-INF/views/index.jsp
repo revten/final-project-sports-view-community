@@ -124,7 +124,7 @@
 				</a>
 
 				<p class="footer__description">
-					당신이 선택한 여행 <br /> 다양한 사람과 경험을 나누며 <br /> 여행할수 있도록 도와드립니다.
+					모두가 같이 <br /> 만들어가는 <br /> 스포츠 컬쳐
 				</p>
 			</div>
 
@@ -132,20 +132,19 @@
 				<div>
 					<h3 class="footer__title">Main Menu</h3>
 					<ul class="footer__links">
-						<li><a href="#" class="footer__link">코스</a></li>
-						<li><a href="#" class="footer__link">트립리뷰</a></li>
-						<li><a href="#" class="footer__link">커뮤니티</a></li>
-						<li><a href="#" class="footer__link">뉴스</a></li>
+						<li><a href="#" class="footer__link">Stdm</a></li>
+						<li><a href="#" class="footer__link">Cmnty</a></li>
+						<li><a href="#" class="footer__link">Insider</a></li>
+						<li><a href="#" class="footer__link">Games</a></li>
 					</ul>
 				</div>
 
 				<div>
 					<h3 class="footer__title">Information</h3>
 					<ul class="footer__links">
-						<li><a href="#" class="footer__link">Information</a></li>
 						<li><a href="#" class="footer__link">Team Miracle</a></li>
 						<li><a href="#" class="footer__link">Videos</a></li>
-						<li><a href="#" class="footer__link">Reservation</a></li>
+						<li><a href="#" class="footer__link">Contact</a></li>
 					</ul>
 				</div>
 

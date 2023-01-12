@@ -13,7 +13,7 @@
 			<img src="resources/files/home/home-main.png" alt="home image"
 				class="home__img">
 			<div class="home__data">
-			프로젝트 남은 기간 보고 정신 잡자
+			프로젝트 남은 시간 보고 정신 잡자
 				<h1 class="home__title">
 						<span id="days"></span>일 <span id="hours"></span>시간
 						<span id="minutes"></span>분 <span id="seconds"></span>초
@@ -44,15 +44,14 @@
 				<span class="section__subtitle">About Team Miracle</span>
 				<h2 class="section__title about__title">
 					<div>
-						최고의 관람을 <img src="resources/files/home/about-title.png"
+						팬들만의 쉼터 <img src="resources/files/home/about-title.png"
 							alt="about image">
 					</div>
-					도와드리립니다
 				</h2>
 
-				<p class="about__description">이제는 여행을 누군과 함께 떠나야 할 필요는 없습니다. 혼자
-					떠나는 여행만이 줄 수 있는 설렘과 감동을 느끼고 싶을때가 있습니다. 여기에서 많은 사람들과 소통하며 여행하세요.
-					홀로떠나지만 돌아올땐 좋은 사람들을 얻어서 돌아오는 경험을 드리겠습니다.</p>
+				<p class="about__description"> 스포츠를 사랑하는 다양한 팬들이 서로의 경험을 자연스럽게 공유합니다.
+					자신으로 인하여 다른 팬이 더 즐거운 경기를 관람하게 됩니다. 이러한 소통은 스포츠에 대한 몰입감을 높이고
+					국내 스포츠계에 자연스러운 선순환을 선사해드리겠습니다.</p>
 			</div>
 
 			<img src="resources/files/home/about-main.png" alt="about image"
@@ -66,7 +65,7 @@
 	<!--==================== POPULAR (유명섹션 - 인기리뷰)====================-->
 	<section class="popular section" id="popular">
 		<span class="section__subtitle">The Best Review</span>
-		<h2 class="section__title">멋진 리뷰를 감상하세요</h2>
+		<h2 class="section__title">멋진 후기를 추천해주세요</h2>
 
 		<div class="popular__container container grid">
 
@@ -111,13 +110,13 @@
 	<section class="recently section" id="recently">
 		<div class="recently__container container grid">
 			<div class="recently__data">
-				<span class="section__subtitle">Recent Hot Place</span>
+				<span class="section__subtitle">My Hot Point</span>
 				<h2 class="section__title">
-					떠오르는 여행지를 <br> 확인해보세요
+					자신만의 시선을 <br> 분석으로 보여주세요
 				</h2>
 
-				<p class="recently__description">1인 여행자들이 주목하는 최신 뉴스를 바로 접하세요.
-					댓글로 서로 정보와 의견을 교환해보세요.</p>
+				<p class="recently__description"> 많은 팬들이 팔로우할지도 모릅니다.
+					글과 댓글로 서로 정보와 의견을 교환해보세요.</p>
 				<a href="#" class="button"> 보러가기<i class="ri-arrow-right-line"></i>
 				</a> <img src="resources/files/home/spinach-leaf.png"
 					alt="recently image" class="recently__data-img">
@@ -144,7 +143,7 @@
 				<div class="newsletter__data">
 					<span class="section__subtitle">Newsletter</span>
 					<h2 class="section__title">
-						미라클 소식지를 <br> 이메일로 받아보세요
+						최신 소식과 이벤트를 <br> 메일로 받아보세요
 					</h2>
 
 					<form action="#" class="newsletter__form">
