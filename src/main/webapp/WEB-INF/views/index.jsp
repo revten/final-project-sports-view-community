@@ -68,22 +68,22 @@
 			<div class="nav__menu" id="nav-menu">
 				<ul class="nav__list">
 					<li class="nav__item"><a href="stadium.main.go"
-						class="nav__link">경기장보기</a>
+						class="nav__link">Stdm</a>
 					</li>
 
 					<!-- <li class="nav__item"><a href="news.main.go" class="nav__link">뉴스</a></li> -->
 
-					<li><a href="community.main.go" class="nav__link">커뮤니티</a></li>
+					<li><a href="community.main.go" class="nav__link">Cmnty</a></li>
 
 					<li class="nav__item"><a href="infoEvent.main.go"
-						class="nav__link">정보/이벤트</a></li>
+						class="nav__link">Insider</a></li>
 						
 									<li class="nav__item"><a href="games.main.go"
-						class="nav__link">경기분석/토토</a></li>		
+						class="nav__link">Games</a></li>		
 
 					<%-- 					<c:if test="${sessionScope.loginAccount.ac_id eq 'qwe'}"> --%>
 					<li class="nav__item"><a href="admin.main.go"
-						class="nav__link">관리자모드</a></li>
+						class="nav__link">Admin</a></li>
 					<%-- </c:if> --%>
 
 					<li class="nav__item"><a class="nav__link"><jsp:include
@@ -124,7 +124,7 @@
 				</a>
 
 				<p class="footer__description">
-					당신이 선택한 여행 <br /> 다양한 사람과 경험을 나누며 <br /> 여행할수 있도록 도와드립니다.
+					모두가 같이 <br /> 만들어가는 <br /> 스포츠 컬쳐
 				</p>
 			</div>
 
@@ -132,20 +132,19 @@
 				<div>
 					<h3 class="footer__title">Main Menu</h3>
 					<ul class="footer__links">
-						<li><a href="#" class="footer__link">코스</a></li>
-						<li><a href="#" class="footer__link">트립리뷰</a></li>
-						<li><a href="#" class="footer__link">커뮤니티</a></li>
-						<li><a href="#" class="footer__link">뉴스</a></li>
+						<li><a href="#" class="footer__link">Stdm</a></li>
+						<li><a href="#" class="footer__link">Cmnty</a></li>
+						<li><a href="#" class="footer__link">Insider</a></li>
+						<li><a href="#" class="footer__link">Games</a></li>
 					</ul>
 				</div>
 
 				<div>
 					<h3 class="footer__title">Information</h3>
 					<ul class="footer__links">
-						<li><a href="#" class="footer__link">Information</a></li>
 						<li><a href="#" class="footer__link">Team Miracle</a></li>
 						<li><a href="#" class="footer__link">Videos</a></li>
-						<li><a href="#" class="footer__link">Reservation</a></li>
+						<li><a href="#" class="footer__link">Contact</a></li>
 					</ul>
 				</div>
 

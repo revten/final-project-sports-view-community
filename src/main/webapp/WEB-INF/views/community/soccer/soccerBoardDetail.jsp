@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,28 +9,28 @@
 <title>Insert title here</title>
 </head>
 <body>
-<br><br><br><br><br><br>
-<h1>상세페이지</h1>
-
-<table border="1">
-	<tr>
-	
-		<td>제목:${soccer.cm_sc_title}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-		 작성날짜:<fmt:formatDate value="${soccer.cm_sc_date}" pattern="yy-MM-dd HH:mm" /></td>
-	</tr>
-	<tr>
-		<td>닉네임:${soccer.cm_sc_nick}</td>
-	</tr>
-	<tr>
-		<td>글내용:${soccer.cm_sc_content}</td>
-	</tr>
-	<tr>
-		<td>
-			<button onclick="location.href='soccerDelete.do?cm_sc_no=${soccer.cm_sc_no}'">삭제</button>
-			<button onclick="location.href='soccerUpdate.go?cm_sc_no=${soccer.cm_sc_no}'">수정</button>
-		</td>
-	</tr>
-</table>
-
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<h1>상세페이지</h1>
+	<table border="1">
+		<tr>
+			<td>제목:${soccer.cm_sc_title}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				작성날짜:<fmt:formatDate value="${soccer.cm_sc_date}"
+					pattern="yy-MM-dd HH:mm" />
+			</td>
+		</tr>
+		<tr>
+			<td>닉네임:${soccer.cm_sc_nick}</td>
+		</tr>
+		<tr>
+			<td>글내용:${soccer.cm_sc_content}</td>
+		</tr>
+		<tr>
+		</tr>
+	</table>
 </body>
 </html>
