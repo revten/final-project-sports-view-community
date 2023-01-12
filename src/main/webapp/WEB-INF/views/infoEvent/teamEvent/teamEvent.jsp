@@ -46,7 +46,7 @@
 			</div>
 	<div>
 	<form action="teamEvent.search.do">
-		<select>
+		<select name="">
 			<option value="ie_te_title">제목</option>
 			<option value="ie_te_team">구단</option>
 		</select> <input type="text" placeholder="입력" name="ie_te_title">
