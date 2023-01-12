@@ -9,12 +9,12 @@
 <style type="text/css">
 .thead{
  	display: inline-block;
-    width: 100px;
-    text-align: center;
+    width: 250px;
+    text-align: left;
 }
 .theadTitle{
 	display: inline-block;
-    width: 300px;
+    width: 400px;
     text-align: center;
 }
 .theadDate{
@@ -34,6 +34,14 @@
 	text-align: right;
 }
 </style>
+<script>
+	$(function() {
+		ClassicEditor.create(document.querySelector('#editor'), {
+			language : "ko"
+		});
+
+	});
+</script>
 <title>Insert title here</title>
 </head>
 <body>
@@ -74,11 +82,19 @@
 			</div>
 	<form action="teamEvent.insert.do" enctype="multipart/form-data" method="post">
 		<div style="border:1px solid;width:70%;align:center;">
-			<div class="thead">구단이름 : <input name="ie_te_team"></div>
+			<div class="thead">종목: 
+			<select name="ie_te_sports">
+				<option value="축구">축구</option>
+				<option value="야구">야구</option>
+				<option value="농구">농구</option>
+				<option value="배구">배구</option>
+			</select></div>
+			<div class="thead">구단명:<input name="ie_te_team"></div>
 			<div class="theadTitle">제목 : <input name="ie_te_title"></div>
 		</div>
-		<div class="tableContent"><input type="file"></div>
-		<div class="tableContent">내용 : <textarea maxlength="2084" name="ie_te_content" style="resize: none"></textarea></div>
+		<div class="tableContent">사진<input type="file" name="ie_te_img"></div>
+		<div class="tableContent">동영상<input type="file" name="ie_te_video"></div>
+		<div class="tableContent"><textarea id="editor" maxlength="2084" name="ie_te_content" style="resize: none"></textarea></div>
 		<div class="tableUD">
 					<button type="button" onclick="history.back()">이전으로</button>
 										<button>등록</button>
