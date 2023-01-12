@@ -309,7 +309,7 @@ body.dark-theme {
 }
 
 .home__title {
-  font-size: var(--biggest-font-size);
+  font-size: var(--h1-font-size);  /* 추가편집부분 */
   font-family: var(--title-font);
   margin-bottom: 1rem;
 }
@@ -388,6 +388,7 @@ body.dark-theme {
 }
 
 .about__container {
+	margin-top : 130px;  /* 추가편집부분 */
   row-gap: 3rem;
 }
 
@@ -441,6 +442,7 @@ body.dark-theme {
 
 .popular__img {
   width: 220px;
+  height: 150px;
   position: absolute;
   inset: 0;
   top: -2.5rem;
