@@ -60,7 +60,7 @@ public class CM_SC_DAO {
 			String title = mr.getParameter("cm_sc_title");
 			String content = mr.getParameter("cm_sc_content");
 			String img = mr.getFilesystemName("cm_sc_img");
-			String video = mr.getParameter("cm_sc_video");
+			String video = mr.getFilesystemName("cm_sc_video");
 			String id = mr.getParameter("cm_sc_id");
 			String nick = mr.getParameter("cm_sc_nick");
 						
@@ -69,6 +69,8 @@ public class CM_SC_DAO {
 			System.out.println(content);
 			System.out.println(img);
 			System.out.println(video);
+			System.out.println(id);
+			System.out.println(nick);
 			
 			
 			sc.setCm_sc_cat(cat);

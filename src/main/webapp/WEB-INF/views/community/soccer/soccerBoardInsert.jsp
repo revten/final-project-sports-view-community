@@ -30,8 +30,8 @@
 				</tr>
 				<tr>
 					<td>
-						<input type="hidden" name="cm_sc_id" value="${sessionScope.loginAccount.cm_sc_id}">
-						<input type="hidden" name="cm_sc_nick" value="${sessionScope.loginAccount.cm_sc_nick }">
+						<input type="hidden" name="cm_sc_id" value="${sessionScope.loginAccount.ac_id}">
+						<input type="hidden" name="cm_sc_nick" value="${sessionScope.loginAccount.ac_nick }">
 					</td>
 				</tr>
 				<tr>
