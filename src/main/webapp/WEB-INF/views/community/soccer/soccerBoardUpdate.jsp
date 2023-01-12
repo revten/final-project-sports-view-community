@@ -15,7 +15,6 @@
 
 <table border="1">
 	<tr>
-	
 		<td>
 			제목: <input name="cm_sc_title" value="${soccer.cm_sc_title}">
 			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
