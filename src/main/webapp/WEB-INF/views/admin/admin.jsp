@@ -122,8 +122,6 @@ html, #map {
 
 	 }
 
-
-
 	 //create autocomplete objects for all inputs
 	 var options = {
 	     types: ['(cities)']

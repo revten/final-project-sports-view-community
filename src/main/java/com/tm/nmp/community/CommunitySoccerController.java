@@ -50,4 +50,23 @@ public class CommunitySoccerController {
 		req.setAttribute("contentPage", "community/soccer/soccerBoard.jsp");
 		return "index";
 	}
+	
+	@RequestMapping(value = "soccerInsert.go", method = RequestMethod.GET)
+	public String soccerInsertgo(HttpServletRequest req, CM_SC_TITLE sc) {
+		acDAO.loginCheck(req);
+		req.setAttribute("contentPage", "community/soccer/soccerBoardInsert.jsp");
+		return "index";
+	}
+	
+	@RequestMapping(value = "soccerInsert.do", method = RequestMethod.POST)
+	public String soccerInsertDo(HttpServletRequest req, CM_SC_TITLE sc) {
+		acDAO.loginCheck(req);
+		scDAO.insertSoccerBoard(req, sc);
+		scDAO.getSoccerBoard(req, sc);
+		req.setAttribute("contentPage", "community/soccer/soccerBoard.jsp");
+		return "index";
+	}
+	
+	
+	
 }
