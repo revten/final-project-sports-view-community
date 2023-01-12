@@ -117,7 +117,7 @@ public class StadiumDAO {
 			req.setAttribute("seat", "db.png");
 			break;
 		case "kcc":
-			req.setAttribute("seat", "kcc.jpg");
+			req.setAttribute("seat", "kcc.JPG");
 			break;
 		case "kcc2":
 			req.setAttribute("seat", "kcc2.jpg");
@@ -185,7 +185,7 @@ public class StadiumDAO {
 			req.setAttribute("seat", "ibk.png");
 			break;
 		case "heungkuk":
-			req.setAttribute("seat", "heungkuk.jpg");
+			req.setAttribute("seat", "heungkuk.JPG");
 			break;
 		case "gwangju":
 			req.setAttribute("seat", "gwangju.jpg");

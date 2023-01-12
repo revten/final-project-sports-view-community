@@ -1,5 +1,9 @@
 Manifest-Version: 1.0
+<<<<<<< HEAD
 Built-By: jerot
+=======
+Built-By: thdwn
+>>>>>>> 2a870147694fad14f15854f243ded3ed572b16e5
 Build-Jdk: 14
 Created-By: Maven Integration for Eclipse
 
