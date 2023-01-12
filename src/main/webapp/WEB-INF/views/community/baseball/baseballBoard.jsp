@@ -13,7 +13,7 @@
 <h1>야구게시판</h1>${result}
 
 <table border="1">
-	<button onclick="">게시글작성</button>
+	<button onclick="location.href='baseballInsert.go'">게시글작성</button>
 	<thead>
 		<tr>
 			<th>탭</th>
@@ -29,7 +29,7 @@
 						<td>${bs.cm_bs_cat}</td>
 						<td>${bs.cm_bs_title}</td>
 						<td>${bs.cm_bs_content}</td>
-						<td>${bs.cm_bs_date}<fmt:formatDate value="" pattern="yy-MM-dd HH:mm" /></td>
+						<td><fmt:formatDate value="${bs.cm_bs_date}" pattern="yy-MM-dd HH:mm" /></td>
 						<td>${bs.cm_bs_nick}</td>
 					</tr>
 			</c:forEach>

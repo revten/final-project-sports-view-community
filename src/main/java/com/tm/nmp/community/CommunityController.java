@@ -24,6 +24,9 @@ public class CommunityController {
 	@Autowired
 	private CM_SC_DAO scDAO;
 	
+	@Autowired
+	private CM_BS_DAO bsDAO;
+	
 	@RequestMapping(value = "withGoList.go", method = RequestMethod.GET)
 	public String withGoListGo(HttpServletRequest req, CM_WG_TITLE wg) {
 		acDAO.loginCheck(req);
@@ -136,8 +139,9 @@ public class CommunityController {
 	
 	//야구게시판
 	@RequestMapping(value = "baseballBoard.go", method = RequestMethod.GET)
-	public String baseballBoardGO(HttpServletRequest req) {
+	public String baseballBoardGO(HttpServletRequest req, CM_BS_TITLE bs) {
 		acDAO.loginCheck(req);
+		bsDAO.getAllBaseball(req, bs);
 		
 		req.setAttribute("contentPage", "community/baseball/baseballBoard.jsp");
 		return "index";

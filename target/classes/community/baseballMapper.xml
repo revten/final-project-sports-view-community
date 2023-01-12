@@ -6,6 +6,23 @@
 	select * from cm_bs_board
 </select>
 
+<select id="getBaseball" resultType="com.tm.nmp.community.CM_BS_TITLE">
+	select * from cm_bs_board where cm_bs_no= #{cm_bs_no}
+</select>
 
+<delete id="deleteBaseball" parameterType="com.tm.nmp.community.CM_BS_TITLE">
+	delete cm_bs_board where cm_bs_no = #{cm_bs_no}
+</delete>
+
+<update id="updateBaseball" parameterType="com.tm.nmp.community.CM_BS_TITLE">
+	update cm_bs_board set cm_bs_title = #{cm_bs_title}, cm_bs_content = #{cm_bs_content}
+	where cm_bs_no = #{cm_bs_no}	
+</update>
+
+<insert id="insertBaseball" parameterType="com.tm.nmp.community.CM_BS_TITLE">
+	insert into cm_bs_board values(cm_bs_board_seq.nextval,
+	#{cm_bs_nick},#{cm_bs_id},#{cm_bs_title},#{cm_bs_content},sysdate,
+	#{cm_bs_img},#{cm_bs_cat})
+</insert>
 
 </mapper>
