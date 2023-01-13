@@ -5,6 +5,14 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script>
+	$(function() {
+		ClassicEditor.create( document.querySelector( '#editor' ), {
+			language: "ko"
+		});
+		
+	});
+</script>
 </head>
 <body>
 <br><br><br><br><br><br>
@@ -13,7 +21,7 @@
 	 <div>
 		<h3>야구게시판</h3>
 		<form action="baseballInsert.do" method="post" enctype="multipart/form-data">
-			<table border="1">
+			<table border="1" class="form-group">
 				<tr>
 				<tr>
 					<td>탭선택하기 :<select name="cm_bs_cat">
@@ -33,7 +41,7 @@
 						value="${sessionScope.loginAccount.ac_nick}"></td>
 				</tr>
 				<tr>
-					<td>글내용:<textarea name="cm_bs_content" rows="20" cols="20"></textarea>
+					<td>글내용:<textarea class="form-control" name="cm_bs_content" rows="20" cols="20"></textarea>
 					</td>
 				</tr>
 				<tr>
