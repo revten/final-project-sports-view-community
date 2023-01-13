@@ -7,10 +7,12 @@
 <title>Insert title here</title>
 <script>
 	$(function() {
-		ClassicEditor.create(document.querySelector('#editor'), {
-			language : "ko"
-		});
-
+		CKEDITOR
+				.replace(
+						'editor',
+						{
+							filebrowserUploadUrl : '${pageContext.request.contextPath}/adm/fileupload.do'
+						});
 	});
 </script>
 </head>
@@ -30,8 +32,9 @@
 				value="${sessionScope.loginAccount.ac_id}" type="hidden"> <input
 				name="rv_nick" value="${sessionScope.loginAccount.ac_nick}"
 				type="hidden"> <input id="board_img_input" name="rv_img"
-				value="-" type="hidden"> <input id="board_video_input"
-				name="rv_video" value="-" type="hidden">
+				value="-" type="hidden"> <input
+				id="board_video_input" name="rv_video"
+				value="-" type="hidden">
 		</div>
 
 		<div class="form-group">

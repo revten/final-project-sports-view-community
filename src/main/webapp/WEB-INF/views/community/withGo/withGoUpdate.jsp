@@ -5,13 +5,20 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<script>
+<%-- <script>
 	$(function() {
 		ClassicEditor.create(document.querySelector('#editor'), {
 			language : "ko"
 		});
 
 	});
+</script> --%>
+<script>
+$(function () {
+	CKEDITOR.replace('contents', {
+		filebrowserUploadUrl : '${pageContext.request.contextPath}/adm/fileupload.do'
+	});
+});
 </script>
 </head>
 <body>

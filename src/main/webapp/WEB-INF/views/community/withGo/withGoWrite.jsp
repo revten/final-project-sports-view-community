@@ -5,13 +5,20 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<script>
+<%-- <script>
 	$(function() {
 		ClassicEditor.create(document.querySelector('#editor'), {
 			language : "ko"
 		});
 
 	});
+</script>--%>
+<script>
+$(function () {
+	CKEDITOR.replace('editor', {
+		filebrowserUploadUrl : '${pageContext.request.contextPath}/adm/fileupload.do'
+	});
+});
 </script>
 </head>
 <body>
@@ -24,7 +31,8 @@
 	<h3>같이 보러 가기</h3>
 	<form action="withGoWrite.do" method="POST">
 		<div class="form-group">
-			<label for="title">제목</label> <input type="text" class="form-control"
+			<label for="title">제목</label> 
+			<input type="text" class="form-control"
 				id="title" name="wg_title"> <input name="wg_cat"
 				value="${param.wg_cat}" type="hidden"> <input name="wg_id"
 				value="${sessionScope.loginAccount.ac_id}" type="hidden"> <input

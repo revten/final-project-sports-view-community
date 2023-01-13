@@ -56,8 +56,8 @@
 	<br>
 	<br>
 	<div
-		style="position: relative; display: flex; border: 1px solid black; justify-content: center; align-items: center; width: 700px; height: 700px; margin: 0 auto;">
-		<div style="display: inline-block; border: 2px solid red">
+		style="position: relative; display: flex;  justify-content: center; align-items: center; width: 700px; height: 700px; margin: 0 auto;">
+		<div style="display: inline-block; ">
 			<img id="seat" usemap="#workmap"
 				style="position: relative; width: 500px; height: 500px;"
 				src="resources/files/stadium/baseball/seating_chart/${seat}"><br>

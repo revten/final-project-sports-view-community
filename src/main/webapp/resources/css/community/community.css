@@ -1,0 +1,22 @@
+#community_list {
+	display: flex;
+	flex-direction: row;
+	text-align: center;
+	justify-content: space-evenly;
+	row-gap: 2rem;
+}
+
+#community_main{
+	display: flex;
+	flex-direction: row;
+	justify-content: space-evenly;
+	margin: 5rem;
+}
+
+.ck-editor__editable {
+	height: 400px;
+}
+
+.ck-content {
+	font-size: 12px;
+}
