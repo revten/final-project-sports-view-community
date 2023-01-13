@@ -13,10 +13,8 @@ import org.springframework.stereotype.Service;
 
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
-<<<<<<< HEAD
-=======
 import com.tm.nmp.account.AccountDTO;
->>>>>>> 2a870147694fad14f15854f243ded3ed572b16e5
+
 
 
 @Service
