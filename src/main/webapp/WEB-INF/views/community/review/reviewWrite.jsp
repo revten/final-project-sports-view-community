@@ -24,14 +24,13 @@
 	<h3>직관 후기 작성</h3>
 	<form action="reviewWrite.do" method="POST">
 		<div class="form-group">
-			<label for="title">제목</label> <input type="text" class="form-control"
-				id="title" name="rv_title"> <input name="rv_cat"
-				value="${param.rv_cat}" type="hidden"> <input name="rv_id"
-				value="${sessionScope.loginAccount.ac_id}" type="hidden"> <input
-				name="rv_nick" value="${sessionScope.loginAccount.ac_nick}"
-				type="hidden"> <input id="board_img_input" name="rv_img"
-				value="-" type="hidden"> <input id="board_video_input"
-				name="rv_video" value="-" type="hidden">
+			<label for="title">제목</label>
+			<input type="text" class="form-control"id="title" name="rv_title">
+			<input name="rv_cat"value="${param.rv_cat}" type="hidden"> 
+			<input name="rv_id"value="${sessionScope.loginAccount.ac_id}" type="hidden"> 
+			<input name="rv_nick" value="${sessionScope.loginAccount.ac_nick}" type="hidden"> 
+			<input id="board_img_input" name="rv_img" value="-" type="hidden"> 
+			<input id="board_video_input" name="rv_video" value="-" type="hidden">
 		</div>
 
 		<div class="form-group">
