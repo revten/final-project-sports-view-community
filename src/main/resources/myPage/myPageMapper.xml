@@ -1,3 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.tm.nmp.account.MyPageMapper"></mapper>
+<mapper namespace="com.tm.nmp.mypage.MyPageMapper">
+
+<select id="getMyPostAll" resultType="com.tm.nmp.mypage.MyPostDTO">
+select * from mypost_board
+</select>
+
+<select id="getAskAll" resultType="com.tm.nmp.mypage.AskDTO">
+select * from ask_board
+</select>
+
+</mapper>

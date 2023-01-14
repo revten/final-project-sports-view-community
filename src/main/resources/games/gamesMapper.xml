@@ -1,3 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.tm.nmp.games.GamesMapper"></mapper>
+<mapper namespace="com.tm.nmp.games.GamesMapper">
+
+<select id="getTotoAll" resultType="com.tm.nmp.games.TotoDTO">
+select * from toto_board
+</select>
+
+</mapper>

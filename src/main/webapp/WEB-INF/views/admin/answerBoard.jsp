@@ -10,24 +10,28 @@
 </head>
 <body>
 <br><br><br><br><br>
-	<h1>내글목록 보기!</h1>
+	<h1>문의처리</h1>
 
 	<table>
 		<thead>
 			<tr>
+				<th>글번호</th>
 				<th>카테고리</th>
 				<th>제목</th>
+				<th>닉네임</th>
 				<th>시간</th>
 				<th>조회수</th>
 			</tr>
 		</thead>
 		<tbody>
-			<c:forEach var="mpt" items="${MyPosts }">
+			<c:forEach var="ans" items="${answers }">
 				<tr>
-					<td>${mpt.mypost_cat }</td>
-					<td><a style="cursor: pointer; color: blue;" href="myPage.myPost.detail.go?mypost_no=${mpt.mypost_no}">${mpt.mypost_title }</a></td>
-					<td>${mpt.mypost_date }</td>
-					<td>${mpt.mypost_count }</td>
+					<td>${ans.answer_no }</td>
+					<td>${ans.answer_cat }</td>
+					<td><a style="cursor: pointer; color: blue;" href="admin.answer.detail.go?answer_no=${ans.answer_no }">${ans.answer_title }</a></td>
+					<td>${ans.answer_nick }</td>
+					<td>${ans.answer_date }</td>
+					<td>${ans.answer_count }</td>
 				</tr>
 			</c:forEach>
 		</tbody>
