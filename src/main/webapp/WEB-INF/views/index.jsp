@@ -35,8 +35,8 @@
 <!--=============== [CSS MEMBER]===============-->
 <link rel="stylesheet" href="resources/css/index.css" />
 <link rel="stylesheet" href="resources/css/account/account.css" />
-<link rel="stylesheet" href="resources/css/review/review.css" />
-<link rel="stylesheet" href="resources/css/commnunity/commnunity.css" />
+<link rel="stylesheet" href="resources/css/community/review/review.css" />
+<link rel="stylesheet" href="resources/css/community/community.css" />
 <link rel="stylesheet" href="resources/css/news/news.css" />
 <link rel="stylesheet" href="resources/css/map/map.css" />
 <link rel="stylesheet" href="resources/css/stadium/stadium.css" />
@@ -52,8 +52,8 @@
 <script src="resources/js/myPage/myPage.js"></script>
 <script src="resources/js/news/paging.js"></script>
 <script src="//cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
-<script src="https://cdn.ckeditor.com/ckeditor5/34.0.0/classic/ckeditor.js"></script>
-<script src="https://cdn.ckeditor.com/ckeditor5/34.0.0/classic/translations/ko.js"></script>
+<script src="//cdn.ckeditor.com/4.19.0/full/ckeditor.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/ckeditor/ckeditor.js"></script>
 <!-- ---------------------------------------------------------------------------- -->
 </head>
 
@@ -74,7 +74,7 @@
 
 					<!-- <li class="nav__item"><a href="news.main.go" class="nav__link">뉴스</a></li> -->
 
-					<li><a href="community.main.go" class="nav__link">Cmnty</a></li>
+					<li><a href="community.main.go?rv_cat=review" class="nav__link">Cmnty</a></li>
 
 					<li class="nav__item"><a href="infoEvent.main.go"
 						class="nav__link">Insider</a></li>

@@ -7,6 +7,9 @@ $(function() {
 	})
 }); 
 
-$(document).ready(function() {
-	
-});
+/*$(document).ready(function() {
+	$('#seat').mouseover(function(e) {
+		console.log(event.pageX, event.pageY)
+		$('#test_e').toggle('slow');
+	});
+});*/
