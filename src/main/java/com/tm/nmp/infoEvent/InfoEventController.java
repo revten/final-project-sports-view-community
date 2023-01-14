@@ -24,8 +24,7 @@ public class InfoEventController {
 	public String teamEventMainGo(HttpServletRequest req, TeamEventDTO te) {
 		aDAO.loginCheck(req);
 		iDAO.getteamEventAll(req, te);
-		req.setAttribute("contentPage", "infoEvent/infoEventMain.jsp");
-		req.setAttribute("teamEventPage", "teamEvent/teamEvent.jsp");
+		req.setAttribute("contentPage", "infoEvent/teamEvent/teamEvent.jsp");
 		return "index";
 	}
 	
@@ -33,8 +32,7 @@ public class InfoEventController {
 	@RequestMapping(value = "/sports.info.main.go", method = RequestMethod.GET)
 	public String sportsInfoMainGo(HttpServletRequest req) {
 		aDAO.loginCheck(req);
-		req.setAttribute("contentPage", "infoEvent/infoEventMain.jsp");
-		req.setAttribute("teamEventPage", "sportsInfo/sportsInfo.jsp");
+		req.setAttribute("contentPage", "infoEvent/sportsInfo/sportsInfo.jsp");
 		return "index";
 	}
 	

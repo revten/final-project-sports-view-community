@@ -1,6 +1,5 @@
 package com.tm.nmp.account;
 
-import java.io.UnsupportedEncodingException;
 import java.util.Random;
 
 import javax.mail.internet.MimeMessage;
