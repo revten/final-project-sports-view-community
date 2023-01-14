@@ -49,7 +49,7 @@ public class CkeditorFileUploadController {
 						//파일을 바이트 타입으로 변경
 						bytes = file.getBytes();
 						//파일이 실제로 저장되는 경로 
-						String uploadPath = request.getServletContext().getRealPath("/resources/files/");
+						String uploadPath = request.getServletContext().getRealPath("/resources/ckimage/");
 						//저장되는 파일에 경로 설정
 						File uploadFile = new File(uploadPath);
 						if (!uploadFile.exists()) {
