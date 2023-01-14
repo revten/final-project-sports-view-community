@@ -17,6 +17,12 @@ public class MyPostDAO {
 		req.setAttribute("MyPosts", ss.getMapper(MyPageMapper.class).getMyPostAll());
 		
 	}
+
+	public void getAsk(HttpServletRequest req, MyPostDTO mp) {
+		
+		req.setAttribute("MyPost", ss.getMapper(MyPageMapper.class).getMyPost(mp));
+		
+	}
 	
 	
 

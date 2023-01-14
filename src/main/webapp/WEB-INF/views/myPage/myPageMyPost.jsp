@@ -26,7 +26,7 @@
 				<tr>
 					<td>${mpt.mypost_cat }</td>
 					<td><a style="cursor: pointer; color: blue;" href="myPage.myPost.detail.go?mypost_no=${mpt.mypost_no}">${mpt.mypost_title }</a></td>
-					<td>${mpt.mypost_date }</td>
+					<td><fmt:formatDate value="${mpt.mypost_date }" pattern="yyyy-MM-dd HH:mm" /></td>
 					<td>${mpt.mypost_count }</td>
 				</tr>
 			</c:forEach>

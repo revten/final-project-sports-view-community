@@ -6,6 +6,10 @@
 select * from mypost_board
 </select>
 
+<select id="getMyPost" parameterType="com.tm.nmp.mypage.MyPostDTO" resultType="com.tm.nmp.mypage.MyPostDTO">
+select * from mypost_board where mypost_no = #{mypost_no}
+</select>
+
 <select id="getAskAll" resultType="com.tm.nmp.mypage.AskDTO">
 select * from ask_board
 </select>
