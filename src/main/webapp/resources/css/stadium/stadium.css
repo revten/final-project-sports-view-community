@@ -163,3 +163,63 @@
 	justify-content: space-evenly;
 	row-gap: 2rem;
 }
+
+#test_north {
+	width: 480px;
+	height: 240px;
+	position: absolute;
+	top: 0px;
+	z-index: 1;
+}
+
+#test_east {
+	width: 480px;
+	height: 240px;
+	position: absolute;
+	top: 0px;
+	z-index: 1;
+}
+
+#test_south {
+	width: 480px;
+	height: 240px;
+	position: absolute;
+	top: 0px;
+	z-index: 1;
+}
+
+#test_west {
+	width: 480px;
+	height: 240px;
+	position: absolute;
+	top: 0px;
+	z-index: 1;
+}
+
+#north-poly{
+	fill: rgba(0, 0, 0, 0);
+    stroke: rgba(255, 255, 255, 0.75);
+    stroke-width: 0px;
+    stroke-dasharray: 0;
+    stroke-linecap: round;
+    opacity: 1;
+}
+
+#north-poly:hover{
+	fill: rgba(0, 0, 0, 0);
+	stroke: rgba(255, 255, 255, 0.75);
+	stroke-width: 0px;
+	stroke-dasharray: 0;
+	stroke-linecap: round;
+	opacity: 1;}
+}
+
+polygon {
+  stroke-width: 5;
+  stroke: red;
+  fill: none;
+}
+
+polygon:hover {
+  fill: red;
+}
