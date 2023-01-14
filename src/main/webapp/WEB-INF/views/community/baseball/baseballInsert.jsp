@@ -21,7 +21,7 @@
 	 <div>
 		<h3>야구게시판</h3>
 		<form action="baseballInsert.do" method="post" enctype="multipart/form-data">
-			<table border="1" class="form-group">
+			<div  class="form-group">
 				<tr>
 				<tr>
 					<td>탭선택하기 :<select name="cm_bs_cat">
@@ -40,6 +40,9 @@
 						type="hidden" name="cm_bs_nick"
 						value="${sessionScope.loginAccount.ac_nick}"></td>
 				</tr>
+				
+				
+				
 				<tr>
 					<td>글내용:<textarea class="form-control" name="cm_bs_content" rows="20" cols="20"></textarea>
 					</td>
@@ -50,12 +53,12 @@
 					</td>
 				</tr>
 				<tr>
-					<td>
-						<button>등록</button>
-					</td>
 				</tr>
 				<tr>
-			</table>
+			</div>
+					
+						<button>등록</button>
+					
 		</form>
 	</div>
  
