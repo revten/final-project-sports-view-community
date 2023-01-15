@@ -27,7 +27,8 @@
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
 
-	<context:component-scan base-package="com.tm.nmp" />
+	<context:component-scan
+		base-package="com.tm.nmp" />
 
 	<beans:bean id="dataSource"
 		class="org.apache.commons.dbcp2.BasicDataSource">
@@ -54,6 +55,8 @@
 				<beans:value>classpath:account/accountMapper.xml</beans:value>
 				<beans:value>classpath:myPage/myPageMapper.xml</beans:value>
 				<beans:value>classpath:Infoevent/infoEventMapper.xml</beans:value>
+				<beans:value>classpath:games/gamesMapper.xml</beans:value>
+				<beans:value>classpath:admin/adminMapper.xml</beans:value>
 				<beans:value>classpath:community/withGoMapper.xml</beans:value>
 				<beans:value>classpath:community/reviewMapper.xml</beans:value>
 				<beans:value>classpath:community/baseballMapper.xml</beans:value>
@@ -71,8 +74,8 @@
 		class="org.springframework.mail.javamail.JavaMailSenderImpl">
 		<beans:property name="host" value="smtp.naver.com" />
 		<beans:property name="port" value="465" />
-		<beans:property name="username" value="frvlv6" />
-		<beans:property name="password" value="frvlvnw61822@@" />
+		<beans:property name="username" value="" />
+		<beans:property name="password" value="" />
 
 		<!-- 보안연결 SSL과 관련된 설정 -->
 		<beans:property name="javaMailProperties">
@@ -86,5 +89,10 @@
 				</beans:prop>
 			</beans:props>
 		</beans:property>
+	</beans:bean>
+	<beans:bean id="multipartResolver"
+		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<beans:property name="maxUploadSize" value="52428800" />
+		<beans:property name="maxInMemorySize" value="10485760" />
 	</beans:bean>
 </beans:beans>

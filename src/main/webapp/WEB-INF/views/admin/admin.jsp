@@ -20,6 +20,8 @@ html, #map {
 <body>
 	<div class="admin">
 		<br> <br> <br> <br> <br> <br>
+		
+		<a href="admin.answerBoard.go">문의처리게시판</a>
 
 		<h1>Google Maps</h1>
 
