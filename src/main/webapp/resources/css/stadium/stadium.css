@@ -205,6 +205,47 @@
     opacity: 1;
 }
 
+#test_3 {
+	width: 480px;
+	height: 240px;
+	position: absolute;
+	top: 0px;
+	z-index: 1;
+}
+
+#test_6 {
+	width: 480px;
+	height: 240px;
+	position: absolute;
+	top: 0px;
+	z-index: 1;
+}
+
+#test_9 {
+	width: 480px;
+	height: 240px;
+	position: absolute;
+	top: 0px;
+	z-index: 1;
+}
+
+#test_12 {
+	width: 480px;
+	height: 240px;
+	position: absolute;
+	top: 0px;
+	z-index: 1;
+}
+
+#north-poly{
+	fill: rgba(0, 0, 0, 0);
+    stroke: rgba(255, 255, 255, 0.75);
+    stroke-width: 0px;
+    stroke-dasharray: 0;
+    stroke-linecap: round;
+    opacity: 1;
+}
+
 #north-poly:hover{
 	fill: rgba(0, 0, 0, 0);
 	stroke: rgba(255, 255, 255, 0.75);

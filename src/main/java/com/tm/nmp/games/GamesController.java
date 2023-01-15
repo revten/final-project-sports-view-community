@@ -15,6 +15,9 @@ public class GamesController {
 
 	@Autowired
 	private AccountDAO acDAO;
+	
+	@Autowired
+	private TotoDAO ttDAO;
 
 	@Autowired
 	private GamesAnalyzeDAO gaDAO;
@@ -28,6 +31,7 @@ public class GamesController {
 		req.setAttribute("contentPage", "games/analyzeBoard/analyzeBoard.jsp");
 		return "index";
 	}
+<<<<<<< HEAD
 
 	@RequestMapping(value = "/games.page.change", method = RequestMethod.GET)
 	public String gamesPageChange(HttpServletRequest req) {
@@ -95,4 +99,16 @@ public class GamesController {
 		return "index";
 	}
 
+=======
+	
+	@RequestMapping(value = "/games.totoBoard.go", method = RequestMethod.GET)
+	public String gamesTotoBoardGo(HttpServletRequest req) {
+		acDAO.loginCheck(req);
+		ttDAO.getTotoAll(req);
+		req.setAttribute("contentPage", "games/totoBoard.jsp");
+		return "index";
+	}
+	
+	
+>>>>>>> a8064393f00f242ffdaf0e7800517e42943a722d
 }

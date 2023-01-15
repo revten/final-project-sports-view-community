@@ -1,5 +1,9 @@
 Manifest-Version: 1.0
+<<<<<<< HEAD
 Built-By: kamir
+=======
+Built-By: thdwn
+>>>>>>> a8064393f00f242ffdaf0e7800517e42943a722d
 Build-Jdk: 14
 Created-By: Maven Integration for Eclipse
 

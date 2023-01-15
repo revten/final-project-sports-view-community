@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tm.nmp.admin.AdminMapper">
+
+<select id="getAnswerAll" resultType="com.tm.nmp.admin.AnswerDTO">
+select * from answer_board
+</select>
+
+<select id="getAnswer" parameterType="com.tm.nmp.admin.AnswerDTO" resultType="com.tm.nmp.admin.AnswerDTO">
+select * from answer_board where answer_no = #{answer_no}
+</select>
+
+<update id="updateAnswer" parameterType="com.tm.nmp.admin.AnswerDTO">
+update answer_board set answer_cat = #{answer_cat}, answer_title = #{answer_title}, answer_img = #{answer_img}, answer_video = #{answer_video}, answer_content = #{answer_content} where answer_no = #{answer_no}
+</update>
+
+<delete id="deleteAnswer" parameterType="com.tm.nmp.admin.AnswerDTO">
+delete from answer_board where answer_no = #{answer_no}
+</delete>
+
+<insert id="insertAnswer" parameterType="com.tm.nmp.admin.AnswerDTO">
+insert into answer_board values(answer_seq.nextval,#{answer_nick},#{answer_id},#{answer_title},#{answer_content},sysdate,#{answer_img},#{answer_video},#{answer_cat},#{answer_count})
+</insert>
+
+</mapper>
