@@ -9,6 +9,16 @@ public interface MyPageMapper {
 	List<AskDTO> getAskAll();
 
 	MyPostDTO getMyPost(MyPostDTO mp);
+
+	AskDTO getAsk(AskDTO ask);
+
+	int updateMyPost(MyPostDTO mp);
+
+	int deleteMyPost(MyPostDTO mp);
+
+	int updateAsk(AskDTO ask);
+
+	int deleteAsk(AskDTO ask);
 	
 	
 

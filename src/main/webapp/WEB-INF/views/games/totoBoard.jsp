@@ -28,7 +28,7 @@
 				<tr>
 					<td>${tt.toto_no }</td>
 					<td>${tt.toto_cat }</td>
-					<td><a style="cursor: pointer; color: blue;" href="games.toto.detail.go?mypost_no=${tt.toto_no }">${tt.toto_title }</a></td>
+					<td><a style="cursor: pointer; color: blue;" href="games.toto.detail.go?toto_no=${tt.toto_no }">${tt.toto_title }</a></td>
 					<td>${tt.toto_nick }</td>
 					<td>${tt.toto_date }</td>
 					<td>${tt.toto_count }</td>

@@ -32,4 +32,6 @@ public class GamesController {
 		req.setAttribute("contentPage", "games/totoBoard.jsp");
 		return "index";
 	}
+	
+	
 }

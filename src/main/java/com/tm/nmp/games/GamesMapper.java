@@ -6,4 +6,11 @@ public interface GamesMapper {
 
 	List<TotoDTO> getTotoAll();
 
+	TotoDTO getToto(TotoDTO tt);
+
+	int updateToto(TotoDTO tt);
+
+	int deleteToto(TotoDTO tt);
+
+
 }
