@@ -20,13 +20,13 @@
 				style="position: relative; width: 500px; height: 500px; margin: 300px 0px 10px 0px;"
 				src="resources/files/stadium/basketball/seating_chart/${seat}"><br>
 			<map name="workmap">
-				<area style="cursor: pointer;" class="imgArea" id="north"
+				<area style="cursor: pointer;" class="imgArea" id="12"
 					coords="73,0,432,114" shape="rect">
-				<area style="cursor: pointer;" class="imgArea" id="west"
+				<area style="cursor: pointer;" class="imgArea" id="9"
 					coords="1,117,138,371" shape="rect">
-				<area style="cursor: pointer;" class="imgArea" id="east"
+				<area style="cursor: pointer;" class="imgArea" id="3"
 					coords="364,117,499,371" shape="rect">
-				<area style="cursor: pointer;" class="imgArea" id="south"
+				<area style="cursor: pointer;" class="imgArea" id="6"
 					coords="84,373,419,498" shape="rect">
 			</map>
 			<button id="reserveBtn">예매하러 가기</button>
@@ -36,14 +36,14 @@
 			<button onclick="with_go_write_go()">같이 보러 가기</button>
 		</div>
 		<!-- 전경 사진 -->
-		<img style="display: none" id="test_east"
-			src="resources/final_img_file/basketball_m/seating_chart/${seatDetail }/test_e.jpg">
-		<img style="display: none" id="test_west"
-			src="resources/final_img_file/basketball_m/seating_chart/${seatDetail }/test_w.jpg">
-		<img style="display: none" id="test_south"
-			src="resources/final_img_file/basketball_m/seating_chart/${seatDetail }/test_s.jpg">
-		<img style="display: none" id="test_north"
-			src="resources/final_img_file/basketball_m/seating_chart/${seatDetail }/test_n.jpg">
+		<img style="display: none" id="test_3"
+			src="resources/final_img_file/basketball_w/seating_chart/${seatDetail }/test_3.jpg">
+		<img style="display: none" id="test_9"
+			src="resources/final_img_file/basketball_w/seating_chart/${seatDetail }/test_9.jpg">
+		<img style="display: none" id="test_6"	
+			src="resources/final_img_file/basketball_w/seating_chart/${seatDetail }/test_6.jpg">
+		<img style="display: none" id="test_12"
+			src="resources/final_img_file/basketball_w/seating_chart/${seatDetail }/test_12.jpg">
 	</div>
 	<br>
 	<br>
