@@ -82,7 +82,7 @@ $(function() {
 					<i class="ri-close-line"></i>
 				</div>
 			</div>
-	<form action="teamEvent.insert.do" enctype="multipart/form-data" method="post">
+	<form action="teamEvent.insert.do" method="post">
 		<div style="border:1px solid;width:70%;align:center;">
 			<div class="thead">종목: 
 			<select name="ie_te_sports">
