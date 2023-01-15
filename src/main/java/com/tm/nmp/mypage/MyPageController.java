@@ -17,6 +17,12 @@ public class MyPageController {
 
 	@Autowired
 	private MyPageDAO mpDAO;
+	
+	@Autowired
+	private MyPostDAO mptDAO;
+	
+	@Autowired
+	private AskDAO askDAO;
 
 	@RequestMapping(value = "myPage.info.go", method = RequestMethod.GET)
 	public String myPageInfoGo(HttpServletRequest req) {
@@ -26,9 +32,11 @@ public class MyPageController {
 	}
 
 	@RequestMapping(value = "/myPage.myPost.go", method = RequestMethod.GET)
-	public String myPageMyPostGo(HttpServletRequest req) {
+	public String myPageMyPostGo(HttpServletRequest req, MyPostDTO mpt) {
 
 		acDAO.loginCheck(req);
+		mptDAO.getMyPostAll(req, mpt);
+		
 		req.setAttribute("contentPage", "myPage/myPageMyPost.jsp");
 		return "index";
 	}
@@ -37,6 +45,8 @@ public class MyPageController {
 	public String myPageServiceGo(HttpServletRequest req) {
 
 		acDAO.loginCheck(req);
+		
+		askDAO.getAskAll(req);
 		req.setAttribute("contentPage", "myPage/myPageService.jsp");
 		return "index";
 	}

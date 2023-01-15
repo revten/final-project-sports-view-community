@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.tm.nmp.account.AccountDAO;
 
 @Controller
-public class InfoEventController {
+public class InfoEventC {
 
 	
 	@Autowired
