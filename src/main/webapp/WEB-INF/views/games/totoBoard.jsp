@@ -11,6 +11,14 @@
 <body>
 <br><br><br><br><br>
 	<h1>토토</h1>
+	<div><c:choose>
+			<c:when test="${sessionScope.loginAccount eq null}">
+				<a href="" onclick="alert('로그인하세요')">새글쓰기</a>
+			</c:when>
+			<c:otherwise>
+				<a href="toto.insert.go">새글쓰기</a>
+			</c:otherwise>
+		</c:choose></div>
 
 	<table>
 		<thead>
@@ -28,7 +36,7 @@
 				<tr>
 					<td>${tt.toto_no }</td>
 					<td>${tt.toto_cat }</td>
-					<td><a style="cursor: pointer; color: blue;" href="games.toto.detail.go?mypost_no=${tt.toto_no }">${tt.toto_title }</a></td>
+					<td><a style="cursor: pointer; color: blue;" href="games.toto.detail.go?toto_no=${tt.toto_no }">${tt.toto_title }</a></td>
 					<td>${tt.toto_nick }</td>
 					<td>${tt.toto_date }</td>
 					<td>${tt.toto_count }</td>

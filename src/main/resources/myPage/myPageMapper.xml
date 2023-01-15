@@ -10,8 +10,37 @@ select * from mypost_board
 select * from mypost_board where mypost_no = #{mypost_no}
 </select>
 
+<update id="updateMyPost" parameterType="com.tm.nmp.mypage.MyPostDTO">
+update mypost_board set mypost_cat = #{mypost_cat}, mypost_title = #{mypost_title}, mypost_img = #{mypost_img}, mypost_video = #{mypost_video}, mypost_content = #{mypost_content} where mypost_no = #{mypost_no}
+</update>
+
+<delete id="deleteMyPost" parameterType="com.tm.nmp.mypage.MyPostDTO">
+delete from mypost_board where mypost_no = #{mypost_no}
+</delete>
+
 <select id="getAskAll" resultType="com.tm.nmp.mypage.AskDTO">
 select * from ask_board
 </select>
+
+<select id="getAsk" parameterType="com.tm.nmp.mypage.AskDTO" resultType="com.tm.nmp.mypage.AskDTO">
+select * from ask_board where ask_no = #{ask_no}
+</select>
+
+<update id="updateAsk" parameterType="com.tm.nmp.mypage.AskDTO">
+update ask_board set ask_cat = #{ask_cat}, ask_title = #{ask_title}, ask_img = #{ask_img}, ask_video = #{ask_video}, ask_content = #{ask_content} where ask_no = #{ask_no}
+</update>
+
+<delete id="deleteAsk" parameterType="com.tm.nmp.mypage.AskDTO">
+delete from ask_board where ask_no = #{ask_no}
+</delete>
+
+<insert id="insertMyPost" parameterType="com.tm.nmp.mypage.MyPostDTO">
+insert into mypost_board values(mypost_seq.nextval,#{mypost_nick},#{mypost_id},#{mypost_title},#{mypost_content},sysdate,#{mypost_img},#{mypost_video},#{mypost_cat},#{mypost_count})
+</insert>
+
+<insert id="insertAsk" parameterType="com.tm.nmp.mypage.AskDTO">
+insert into ask_board values(ask_seq.nextval,#{ask_nick},#{ask_id},#{ask_title},#{ask_content},sysdate,#{ask_img},#{ask_video},#{ask_cat},#{ask_count})
+</insert>
+
 
 </mapper>

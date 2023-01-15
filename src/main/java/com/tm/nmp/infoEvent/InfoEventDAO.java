@@ -79,12 +79,12 @@ public class InfoEventDAO {
 			if(ie_te_img != null) {
 				te.setIe_te_img(ie_te_img);
 			}else {
-				te.setIe_te_img("");
+				te.setIe_te_img(" ");
 			}
 			if(ie_te_video != null) {
 				te.setIe_te_video(ie_te_video);
 			}else {
-				te.setIe_te_video("");
+				te.setIe_te_video(" ");
 			}
 			te.setIe_te_views(ie_te_views);
 			te.setIe_te_comtNo(ie_te_comtNo);
