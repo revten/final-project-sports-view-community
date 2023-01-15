@@ -2,6 +2,8 @@ package com.tm.nmp.mypage;
 
 import java.util.List;
 
+import com.tm.nmp.games.TotoDTO;
+
 public interface MyPageMapper {
 
 	List<MyPostDTO> getMyPostAll();
@@ -19,6 +21,11 @@ public interface MyPageMapper {
 	int updateAsk(AskDTO ask);
 
 	int deleteAsk(AskDTO ask);
+
+	int insertMyPost(MyPostDTO mp);
+
+	int insertAsk(AskDTO ask);
+
 	
 	
 

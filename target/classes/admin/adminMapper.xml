@@ -18,4 +18,8 @@ update answer_board set answer_cat = #{answer_cat}, answer_title = #{answer_titl
 delete from answer_board where answer_no = #{answer_no}
 </delete>
 
+<insert id="insertAnswer" parameterType="com.tm.nmp.admin.AnswerDTO">
+insert into answer_board values(answer_seq.nextval,#{answer_nick},#{answer_id},#{answer_title},#{answer_content},sysdate,#{answer_img},#{answer_video},#{answer_cat},#{answer_count})
+</insert>
+
 </mapper>

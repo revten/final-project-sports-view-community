@@ -35,12 +35,14 @@
 }
 </style>
 <script>
-	$(function() {
-		ClassicEditor.create(document.querySelector('#editor'), {
-			language : "ko"
-		});
-
-	});
+$(function() {
+	CKEDITOR
+			.replace(
+					'editor',
+					{
+						filebrowserUploadUrl : '${pageContext.request.contextPath}/adm/fileupload.do'
+					});
+});
 </script>
 <title>Insert title here</title>
 </head>

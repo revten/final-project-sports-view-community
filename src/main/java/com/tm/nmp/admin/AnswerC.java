@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.tm.nmp.account.AccountDAO;
+import com.tm.nmp.games.TotoDTO;
 
 @Controller
 public class AnswerC {
@@ -49,6 +50,25 @@ public class AnswerC {
 	public String answerDeleteDo(HttpServletRequest req, AnswerDTO as) {
 		acDAO.loginCheck(req);
 		asDAO.deleteAnswer(req, as);
+		asDAO.getAnswerAll(req);
+		req.setAttribute("contentPage", "admin/answerBoard.jsp");
+		return "index";
+	}
+	
+	@RequestMapping(value = "/answer.insert.go", method = RequestMethod.GET)
+	public String answerInsertGo(HttpServletRequest req) {
+		acDAO.loginCheck(req);
+		
+		req.setAttribute("contentPage", "admin/answerReg.jsp");
+		return "index";
+	}
+	
+	
+	@RequestMapping(value = "answer.insert.do", method = RequestMethod.POST)
+	public String myPostInserteDo(HttpServletRequest req, AnswerDTO as) {
+		
+		acDAO.loginCheck(req);
+		asDAO.insertAnswer(req, as);
 		asDAO.getAnswerAll(req);
 		req.setAttribute("contentPage", "admin/answerBoard.jsp");
 		return "index";

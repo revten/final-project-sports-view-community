@@ -11,6 +11,14 @@
 <body>
 <br><br><br><br><br>
 	<h1>토토</h1>
+	<div><c:choose>
+			<c:when test="${sessionScope.loginAccount eq null}">
+				<a href="" onclick="alert('로그인하세요')">새글쓰기</a>
+			</c:when>
+			<c:otherwise>
+				<a href="toto.insert.go">새글쓰기</a>
+			</c:otherwise>
+		</c:choose></div>
 
 	<table>
 		<thead>

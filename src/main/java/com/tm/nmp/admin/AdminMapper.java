@@ -12,4 +12,6 @@ public interface AdminMapper {
 
 	int deleteAnswer(AnswerDTO as);
 
+	int insertAnswer(AnswerDTO as);
+
 }

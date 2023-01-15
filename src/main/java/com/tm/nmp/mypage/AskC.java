@@ -53,7 +53,26 @@ public class AskC {
 	public String myPostDeleteDo(HttpServletRequest req, AskDTO ask) {
 		
 		acDAO.loginCheck(req);
-		askDAO.deleteMyPost(req, ask);
+		askDAO.deleteAsk(req, ask);
+		askDAO.getAskAll(req);
+		req.setAttribute("contentPage", "myPage/myPageService.jsp");
+		return "index";
+	}
+	
+	
+	@RequestMapping(value = "/ask.insert.go", method = RequestMethod.GET)
+	public String askInsertGo(HttpServletRequest req) {
+		acDAO.loginCheck(req);
+		
+		req.setAttribute("contentPage", "myPage/myPageServiceReg.jsp");
+		return "index";
+	}
+	
+	@RequestMapping(value = "ask.insert.do", method = RequestMethod.POST)
+	public String myPostInserteDo(HttpServletRequest req, AskDTO ask) {
+		
+		acDAO.loginCheck(req);
+		askDAO.insertAsk(req, ask);
 		askDAO.getAskAll(req);
 		req.setAttribute("contentPage", "myPage/myPageService.jsp");
 		return "index";

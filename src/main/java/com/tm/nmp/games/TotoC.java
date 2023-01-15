@@ -58,5 +58,23 @@ public class TotoC {
 		return "index";
 	}
 	
+	@RequestMapping(value = "/toto.insert.go", method = RequestMethod.GET)
+	public String totoInsertGo(HttpServletRequest req) {
+		acDAO.loginCheck(req);
+		
+		req.setAttribute("contentPage", "games/totoReg.jsp");
+		return "index";
+	}
+	
+	
+	@RequestMapping(value = "toto.insert.do", method = RequestMethod.POST)
+	public String myPostInserteDo(HttpServletRequest req, TotoDTO tt) {
+		
+		acDAO.loginCheck(req);
+		ttDAO.insertToto(req, tt);
+		ttDAO.getTotoAll(req);
+		req.setAttribute("contentPage", "games/totoBoard.jsp");
+		return "index";
+	}
 	
 }

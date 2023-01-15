@@ -57,5 +57,23 @@ public class MyPostC {
 		req.setAttribute("contentPage", "myPage/myPageMyPost.jsp");
 		return "index";
 	}
+	
+	@RequestMapping(value = "/mypost.insert.go", method = RequestMethod.GET)
+	public String mypostInsertGo(HttpServletRequest req) {
+		acDAO.loginCheck(req);
+		
+		req.setAttribute("contentPage", "myPage/myPageMyPostReg.jsp");
+		return "index";
+	}
+	
+	@RequestMapping(value = "mypost.insert.do", method = RequestMethod.POST)
+	public String myPostInserteDo(HttpServletRequest req, MyPostDTO mp) {
+		
+		acDAO.loginCheck(req);
+		mpDAO.insertMyPost(req, mp);
+		mpDAO.getMyPostAll(req, mp);
+		req.setAttribute("contentPage", "myPage/myPageMyPost.jsp");
+		return "index";
+	}
 
 }

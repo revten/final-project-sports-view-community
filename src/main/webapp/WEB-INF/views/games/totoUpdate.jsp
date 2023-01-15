@@ -7,6 +7,16 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script>
+$(function() {
+	CKEDITOR
+			.replace(
+					'editor',
+					{
+						filebrowserUploadUrl : '${pageContext.request.contextPath}/adm/fileupload.do'
+					});
+});
+</script>
 </head>
 <body>
 <br><br><br><br><br>
@@ -19,7 +29,7 @@
 			<div><fmt:formatDate value="${toto.toto_date }" pattern="yyyy-MM-dd HH:mm" /></div>
 			<div>조회수:${toto.toto_count }</div>
 		</div>
-		<div>사진:<input type="file" name="toto_img"></div>
+		<div>사진:<input id="board_img_input" type="file" name="toto_img"></div>
 		<div>동영상:<input type="file" name="toto_video"></div>
 		<div><textarea id="editor" maxlength="2084" name="toto_content" style="resize: none">${toto.toto_content }</textarea></div>
 		<div>
