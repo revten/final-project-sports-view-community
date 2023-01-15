@@ -57,7 +57,7 @@ public class InfoEvent_TeamEventC {
 	}
 	
 	@RequestMapping(value = "/teamEvent.insert.go", method = RequestMethod.GET)
-	public String teamEventInsertGo(HttpServletRequest req, TeamEventDTO te) {
+	public String teamEventInsertGo(HttpServletRequest req) {
 		aDAO.loginCheck(req);
 		
 		req.setAttribute("contentPage", "infoEvent/teamEvent/teamEventReg.jsp");

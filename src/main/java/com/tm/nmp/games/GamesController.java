@@ -14,6 +14,9 @@ public class GamesController {
 	
 	@Autowired
 	private AccountDAO acDAO;
+	
+	@Autowired
+	private TotoDAO ttDAO;
 
 	@RequestMapping(value = "/games.analystBoard.go", method = RequestMethod.GET)
 	public String home(HttpServletRequest req) {
@@ -21,4 +24,14 @@ public class GamesController {
 		req.setAttribute("contentPage", "games/gamesAnalystBoard.jsp");
 		return "index";
 	}
+	
+	@RequestMapping(value = "/games.totoBoard.go", method = RequestMethod.GET)
+	public String gamesTotoBoardGo(HttpServletRequest req) {
+		acDAO.loginCheck(req);
+		ttDAO.getTotoAll(req);
+		req.setAttribute("contentPage", "games/totoBoard.jsp");
+		return "index";
+	}
+	
+	
 }
