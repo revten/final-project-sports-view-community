@@ -23,8 +23,56 @@ public class MyPostC {
 
 		acDAO.loginCheck(req);
 		
-		mpDAO.getAsk(req, mp);
+		mpDAO.getMyPost(req, mp);
 		req.setAttribute("contentPage", "myPage/myPageMyPostDetail.jsp");
+		return "index";
+	}
+	
+	@RequestMapping(value = "/myPost.update.go", method = RequestMethod.GET)
+	public String myPostUpdateGo(HttpServletRequest req, MyPostDTO mp) {
+		
+		acDAO.loginCheck(req);
+		
+		mpDAO.getMyPost(req, mp);
+		req.setAttribute("contentPage", "myPage/myPageMyPostUpdate.jsp");
+		return "index";
+	}
+	
+	@RequestMapping(value = "mypost.update.do", method = RequestMethod.GET)
+	public String myPostUpdateDo(HttpServletRequest req, MyPostDTO mp) {
+		
+		acDAO.loginCheck(req);
+		mpDAO.updateMyPost(req, mp);
+		mpDAO.getMyPost(req, mp);
+		req.setAttribute("contentPage", "myPage/myPageMyPostDetail.jsp");
+		return "index";
+	}
+	
+	@RequestMapping(value = "mypost.delete.do", method = RequestMethod.GET)
+	public String myPostDeleteDo(HttpServletRequest req, MyPostDTO mp) {
+		
+		acDAO.loginCheck(req);
+		mpDAO.deleteMyPost(req, mp);
+		mpDAO.getMyPostAll(req, mp);
+		req.setAttribute("contentPage", "myPage/myPageMyPost.jsp");
+		return "index";
+	}
+	
+	@RequestMapping(value = "/mypost.insert.go", method = RequestMethod.GET)
+	public String mypostInsertGo(HttpServletRequest req) {
+		acDAO.loginCheck(req);
+		
+		req.setAttribute("contentPage", "myPage/myPageMyPostReg.jsp");
+		return "index";
+	}
+	
+	@RequestMapping(value = "mypost.insert.do", method = RequestMethod.POST)
+	public String myPostInserteDo(HttpServletRequest req, MyPostDTO mp) {
+		
+		acDAO.loginCheck(req);
+		mpDAO.insertMyPost(req, mp);
+		mpDAO.getMyPostAll(req, mp);
+		req.setAttribute("contentPage", "myPage/myPageMyPost.jsp");
 		return "index";
 	}
 

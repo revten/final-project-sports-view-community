@@ -6,4 +6,20 @@
 select * from toto_board
 </select>
 
+<select id="getToto" parameterType="com.tm.nmp.games.TotoDTO" resultType="com.tm.nmp.games.TotoDTO">
+select * from toto_board where toto_no = #{toto_no}
+</select>
+
+<update id="updateToto" parameterType="com.tm.nmp.games.TotoDTO">
+update toto_board set toto_cat = #{toto_cat}, toto_title = #{toto_title}, toto_img = #{toto_img}, toto_video = #{toto_video}, toto_content = #{toto_content} where toto_no = #{toto_no}
+</update>
+
+<delete id="deleteToto" parameterType="com.tm.nmp.games.TotoDTO">
+delete from toto_board where toto_no = #{toto_no}
+</delete>
+
+<insert id="insertToto" parameterType="com.tm.nmp.games.TotoDTO">
+insert into toto_board values(toto_seq.nextval,#{toto_nick},#{toto_id},#{toto_title},#{toto_content},sysdate,#{toto_img},#{toto_video},#{toto_cat},#{toto_count})
+</insert>
+
 </mapper>

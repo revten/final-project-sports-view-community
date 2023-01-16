@@ -66,7 +66,17 @@ public class StadiumController {
 	public String basketballStadiumGoDetail(HttpServletRequest req) {
 		acDAO.loginCheck(req);
 		sdDAO.viewBasketballSeat(req);
+		sdDAO.viewBasketballSeatDetail(req);
 		req.setAttribute("contentPage", "stadium/basketball/basketball_stadium_detail.jsp");
+		return "index";
+	}
+	
+	@RequestMapping(value = "/w_basketball.stadium.go.detail", method = RequestMethod.GET)
+	public String wBasketballStadiumGoDetail(HttpServletRequest req) {
+		acDAO.loginCheck(req);
+		sdDAO.viewBasketballSeat(req);
+		sdDAO.viewBasketballSeatDetail(req);
+		req.setAttribute("contentPage", "stadium/basketball/w_basketball_stadium_detail.jsp");
 		return "index";
 	}
 	
