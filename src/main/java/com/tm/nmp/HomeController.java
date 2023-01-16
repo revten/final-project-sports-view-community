@@ -13,6 +13,10 @@ import com.tm.nmp.community.CM_RV_TITLE;
 import com.tm.nmp.community.CM_SC_DAO;
 import com.tm.nmp.community.CM_SC_TITLE;
 import com.tm.nmp.games.GamesAnalyzeDAO;
+import com.tm.nmp.games.TotoDAO;
+import com.tm.nmp.infoEvent.InfoEventDAO;
+import com.tm.nmp.mypage.AskDAO;
+import com.tm.nmp.mypage.MyPostDAO;
 
 @Controller
 public class HomeController {
@@ -23,6 +27,18 @@ public class HomeController {
 
 	@Autowired
 	private GamesAnalyzeDAO gaDAO;
+	
+	@Autowired
+	private InfoEventDAO ieDAO;
+	
+	@Autowired
+	private TotoDAO ttDAO;
+	
+	@Autowired
+	private MyPostDAO mpDAO;
+	
+	@Autowired
+	private AskDAO askDAO;
 
 	@Autowired
 	private CM_SC_DAO scDAO;
@@ -41,6 +57,22 @@ public class HomeController {
 
 		if (firstReq) {
 			gaDAO.calcAllPostCount();
+			firstReq = false;
+		}
+		if (firstReq) {
+			ttDAO.calcAllPostCount();
+			firstReq = false;
+		}
+		if (firstReq) {
+			ieDAO.calcAllPostCount();
+			firstReq = false;
+		}
+		if (firstReq) {
+			mpDAO.calcAllPostCount();
+			firstReq = false;
+		}
+		if (firstReq) {
+			askDAO.calcAllPostCount();
 			firstReq = false;
 		}
 
