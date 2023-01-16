@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tm.nmp.games.GamesAnalyzeBoardMapper">
+
+	<!-- 본글 -->
+	<select id="getAllPostCount"
+		parameterType="com.tm.nmp.games.GamesSelector"
+		resultType="java.lang.Integer">
+		select count(*)
+		from analyze_board, account
+		where ANLYZ_ID =
+		ac_id
+		and ANLYZ_TITLE like '%'||#{search}||'%'
+	</select>
+
+	<select id="getAllPost"
+		parameterType="com.tm.nmp.games.GamesSelector"
+		resultType="com.tm.nmp.games.GamesAnalyzeBoard">
+		select * from (
+		select rownum as rn, anlyz_no, ac_nick,
+		anlyz_sports, anlyz_title,
+		anlyz_content, anlyz_img,
+		anlyz_video,
+		anlyz_date_created from (
+		select * from analyze_board, account where
+		anlyz_id = ac_id and anlyz_title
+		like '%'||#{search}||'%'
+		order by
+		anlyz_date_created desc
+		)
+		) where rn &gt;= #{start} and rn &lt; = #{end}
+	</select>
+
+	<insert id="writePost"
+		parameterType="com.tm.nmp.games.GamesAnalyzeBoard">
+		insert into analyze_board values
+		(analyze_board_seq.nextval, #{ANLYZ_ID},
+		#{ANLYZ_SPORTS},
+		#{ANLYZ_TITLE}, #{ANLYZ_CONTENT}, #{ANLYZ_IMG}, #{ANLYZ_VIDEO},
+		sysdate)
+	</insert>
+
+	<delete id="deletePost"
+		parameterType="com.tm.nmp.games.GamesAnalyzeBoard">
+		delete from analyze_board where ANLYZ_no =
+		#{ANLYZ_no}
+	</delete>
+
+	<update id="updatePost"
+		parameterType="com.tm.nmp.games.GamesAnalyzeBoard">
+		update analyze_board set ANLYZ_CONTENT =
+		#{ANLYZ_CONTENT}, ANLYZ_TITLE= #{ANLYZ_TITLE} where ANLYZ_NO =
+		#{ANLYZ_NO}
+	</update>
+
+	<select id="getPost"
+		parameterType="com.tm.nmp.games.GamesAnalyzeBoard"
+		resultType="com.tm.nmp.games.GamesAnalyzeBoard">
+		select * from ANALYZE_BOARD where anlyz_no =
+		#{anlyz_no}
+	</select>
+
+	<!-- 댓글 -->
+	<select id="getAllCmnt"
+		parameterType="com.tm.nmp.games.GamesAnalyzeBoard"
+		resultType="com.tm.nmp.games.GamesAnalyzeCmnt">
+		select * from ANALYZE_BOARD_CMNT where ANLYZ_CMNT_BLNGD =
+		#{anlyz_no}
+	</select>
+	
+</mapper>

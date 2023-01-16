@@ -39,6 +39,15 @@
 			</c:forEach>
 		</tbody>
 	</table>
+	<c:if test="${curPage !=1 }">
+		<a href="mypost.page.change?p=${curPage-1 }" id="snsL">&lt;</a>
+	</c:if>
+	<c:forEach var="i" begin="1" end="${pageCount }">
+		<a href="mypost.page.change?p=${i }"> [${i }] </a>
+	</c:forEach>
+	<c:if test="${curPage != pageCount }">
+		<a href="mypost.page.change?p=${curPage+1 }" id="snsR">&gt;</a>
+	</c:if>
 
 </body>
 </html>

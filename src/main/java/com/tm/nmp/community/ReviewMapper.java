@@ -2,6 +2,8 @@ package com.tm.nmp.community;
 
 import java.util.List;
 
+import com.tm.nmp.games.GamesAnalyzeBoard;
+
 public interface ReviewMapper {
 	
 	int getReviewPostCount(CM_RV_TITLE rv);
@@ -17,4 +19,6 @@ public interface ReviewMapper {
 	int deleteReviewPost(CM_RV_TITLE rv);
 
 	int updateReviewPost(CM_RV_TITLE rv);
+
+	GamesAnalyzeBoard getPost(GamesAnalyzeBoard gp);
 }

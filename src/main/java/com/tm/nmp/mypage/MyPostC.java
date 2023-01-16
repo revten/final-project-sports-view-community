@@ -53,7 +53,7 @@ public class MyPostC {
 		
 		acDAO.loginCheck(req);
 		mpDAO.deleteMyPost(req, mp);
-		mpDAO.getMyPostAll(req, mp);
+		mpDAO.getMyPostAll(req, 1);
 		req.setAttribute("contentPage", "myPage/myPageMyPost.jsp");
 		return "index";
 	}
@@ -71,7 +71,7 @@ public class MyPostC {
 		
 		acDAO.loginCheck(req);
 		mpDAO.insertMyPost(req, mp);
-		mpDAO.getMyPostAll(req, mp);
+		mpDAO.getMyPostAll(req, 1);
 		req.setAttribute("contentPage", "myPage/myPageMyPost.jsp");
 		return "index";
 	}

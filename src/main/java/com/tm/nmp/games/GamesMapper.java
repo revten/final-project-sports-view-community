@@ -2,13 +2,12 @@ package com.tm.nmp.games;
 
 import java.util.List;
 
-import com.tm.nmp.admin.AnswerDTO;
 
 public interface GamesMapper {
 
-	List<TotoDTO> getTotoAll();
+	int getAllPostCount(TotoSelector ttSel);
 
-	TotoDTO getToto(TotoDTO tt);
+	public abstract List<TotoDTO> getTotoAll(TotoSelector ttSel);
 
 	int updateToto(TotoDTO tt);
 
@@ -16,6 +15,17 @@ public interface GamesMapper {
 
 	int insertToto(TotoDTO tt);
 
+	// 댓글
+	
+	TotoDTO getToto(TotoDTO tt);
+
+	List<TotoComment> getAllcomment(TotoDTO tt);
+
+	int writeComment(TotoComment ttc);
+
+	int deleteComment(TotoComment ttc);
+
+	int updateComment(TotoComment ttc);
 
 
 }

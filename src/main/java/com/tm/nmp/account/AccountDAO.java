@@ -20,14 +20,14 @@ public class AccountDAO {
 	@Autowired
 	private JavaMailSender mailSender;
 
-	public void loginCheck(HttpServletRequest req) {
+	public boolean loginCheck(HttpServletRequest req) {
 		AccountDTO a = (AccountDTO) req.getSession().getAttribute("loginAccount");
 		if (a != null) {
 			req.setAttribute("loginPage", "account/loginSuccess.jsp");
-		} else {
-			req.setAttribute("loginPage", "account/login.jsp");
+			return true;
 		}
-
+		req.setAttribute("loginPage", "account/login.jsp");
+		return false;
 	}
 
 	public void accountRegDo(HttpServletRequest req, AccountDTO ac) {

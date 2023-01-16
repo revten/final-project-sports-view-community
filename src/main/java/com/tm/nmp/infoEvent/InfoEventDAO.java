@@ -3,7 +3,9 @@ package com.tm.nmp.infoEvent;
 import java.io.File;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
+import java.math.BigDecimal;
 import java.net.URLDecoder;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -16,21 +18,57 @@ import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 import com.tm.nmp.account.AccountDTO;
 
 
-
 @Service
 public class InfoEventDAO {
+	
+	private int allPostCount;
 
 	@Autowired
 	private SqlSession ss;
+	
+	public int getAllPostCount() {
+		return allPostCount;
+	}
 
-	public void getteamEventAll(HttpServletRequest req, TeamEventDTO te) {
+	public void setAllPostCount(int allPostCount) {
+		this.allPostCount = allPostCount;
+	}
+	
+	public void calcAllPostCount() {
+		TeamEventSelector ttSel = new TeamEventSelector("",null,null);
+		allPostCount = ss.getMapper(InfoEventMapper.class).getAllPostCount(ttSel);
+	}
+
+	public void getteamEventAll(HttpServletRequest req, int pageNo) {
 		
+		int count = 10;
+		int start = (pageNo -1) * count + 1;
+		int end = start + (count - 1);
 		
-		req.setAttribute("teamEvents", ss.getMapper(InfoEventMapper.class).showAllTeamEvent());
+		TeamEventSelector search = (TeamEventSelector) req.getSession().getAttribute("search");
+		int postCount = 0;
+		if (search == null) {
+			search = new TeamEventSelector("", new BigDecimal(start), new BigDecimal(end));
+			postCount = allPostCount;
+		} else {
+			search.setStart(new BigDecimal(start));
+			search.setEnd(new BigDecimal(end));
+			postCount = ss.getMapper(InfoEventMapper.class).getAllPostCount(search);
+		}
+		
+		List<TeamEventDTO> posts = ss.getMapper(InfoEventMapper.class).showAllTeamEvent();
+		
+		int pageCount = (int) Math.ceil(postCount / (double) count);
+		req.setAttribute("pageCount", pageCount);
+		
+		req.setAttribute("teamEvents", posts);
+		req.setAttribute("curPage", pageNo);
+		
 	}
 
 	public void getteamEvent(HttpServletRequest req, TeamEventDTO te) {
-		
+		TeamEventDTO post = ss.getMapper(InfoEventMapper.class).showTeamEvent(te);
+		post.setIe_te_comments(ss.getMapper(InfoEventMapper.class).getAllcomment(te));
 		req.setAttribute("teamEvent", ss.getMapper(InfoEventMapper.class).showTeamEvent(te));
 	}
 	
