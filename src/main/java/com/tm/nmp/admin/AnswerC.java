@@ -50,7 +50,7 @@ public class AnswerC {
 	public String answerDeleteDo(HttpServletRequest req, AnswerDTO as) {
 		acDAO.loginCheck(req);
 		asDAO.deleteAnswer(req, as);
-		asDAO.getAnswerAll(req);
+		asDAO.getAnswerAll(req,1);
 		req.setAttribute("contentPage", "admin/answerBoard.jsp");
 		return "index";
 	}
@@ -69,7 +69,7 @@ public class AnswerC {
 		
 		acDAO.loginCheck(req);
 		asDAO.insertAnswer(req, as);
-		asDAO.getAnswerAll(req);
+		asDAO.getAnswerAll(req,1);
 		req.setAttribute("contentPage", "admin/answerBoard.jsp");
 		return "index";
 	}

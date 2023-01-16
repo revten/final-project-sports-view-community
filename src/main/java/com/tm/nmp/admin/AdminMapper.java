@@ -4,7 +4,9 @@ import java.util.List;
 
 public interface AdminMapper {
 
-	List<AnswerDTO> getAnswerAll();
+	int getAllPostCount(AnswerSelector asSel);
+	
+	List<AnswerDTO> getAnswerAll(AnswerSelector asSel);
 
 	AnswerDTO getAnswer(AnswerDTO as);
 
@@ -13,5 +15,9 @@ public interface AdminMapper {
 	int deleteAnswer(AnswerDTO as);
 
 	int insertAnswer(AnswerDTO as);
+
+	List<AnswerComment> getAllComment(AnswerDTO as);
+
+
 
 }

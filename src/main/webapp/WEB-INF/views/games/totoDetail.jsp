@@ -51,6 +51,7 @@
 			</form>
 	<table>
 		<tbody>
+		<c:if test="${toto.toto_comments ne null}">
 			<c:forEach var="ttc" items="${toto.toto_comments }">
 				<tr>
 					<%-- <td>${totos.ac_nick}</td> --%>
@@ -71,6 +72,7 @@
 		</c:choose></td>
 				</tr>
 			</c:forEach>
+			</c:if>
 		</tbody>
 	</table>
 </body>

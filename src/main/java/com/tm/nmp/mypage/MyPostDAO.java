@@ -72,7 +72,7 @@ public class MyPostDAO {
 
 	public void getMyPost(HttpServletRequest req, MyPostDTO mp) {
 		MyPostDTO post = ss.getMapper(MyPageMapper.class).getMyPost(mp);
-		
+		post.setMypost_comments(ss.getMapper(MyPageMapper.class).getAllPostComment(mp));
 		
 		req.setAttribute("MyPost", ss.getMapper(MyPageMapper.class).getMyPost(mp));
 		

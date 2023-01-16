@@ -69,7 +69,7 @@ public class InfoEventDAO {
 	public void getteamEvent(HttpServletRequest req, TeamEventDTO te) {
 		TeamEventDTO post = ss.getMapper(InfoEventMapper.class).showTeamEvent(te);
 		post.setIe_te_comments(ss.getMapper(InfoEventMapper.class).getAllcomment(te));
-		req.setAttribute("teamEvent", ss.getMapper(InfoEventMapper.class).showTeamEvent(te));
+		req.setAttribute("teamEvent", post);
 	}
 	
 	public void insertTeamEvent(HttpServletRequest req, TeamEventDTO te) {
@@ -163,10 +163,7 @@ public void deleteTeamEvent(HttpServletRequest req, TeamEventDTO te) {
 		}
 	}
 
-public void getteamEventSearch(HttpServletRequest req, TeamEventDTO te) {
-	req.setAttribute("SearchTeamEvent", ss.getMapper(InfoEventMapper.class).showTeamEventBySearch(te));
-	
-}
+
 
 
 	

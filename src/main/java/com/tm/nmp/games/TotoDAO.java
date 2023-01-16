@@ -71,7 +71,7 @@ public class TotoDAO {
 	public void getToto(HttpServletRequest req, TotoDTO tt) {
 		TotoDTO post = ss.getMapper(GamesMapper.class).getToto(tt);
 		post.setToto_comments(ss.getMapper(GamesMapper.class).getAllcomment(tt));
-		req.setAttribute("toto", post);
+		req.setAttribute("toto", post); // 
 		
 	}
 
