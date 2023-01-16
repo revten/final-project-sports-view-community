@@ -14,9 +14,6 @@ import org.springframework.stereotype.Service;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 import com.tm.nmp.account.AccountDTO;
-import com.tm.nmp.games.GamesMapper;
-import com.tm.nmp.games.askDTO;
-import com.tm.nmp.games.askSelector;
 
 @Service
 public class AskDAO {
