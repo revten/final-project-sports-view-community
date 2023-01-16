@@ -31,7 +31,6 @@ public class GamesController {
 		req.setAttribute("contentPage", "games/analyzeBoard/analyzeBoard.jsp");
 		return "index";
 	}
-<<<<<<< HEAD
 
 	@RequestMapping(value = "/games.page.change", method = RequestMethod.GET)
 	public String gamesPageChange(HttpServletRequest req) {
@@ -99,16 +98,33 @@ public class GamesController {
 		return "index";
 	}
 
-=======
-	
 	@RequestMapping(value = "/games.totoBoard.go", method = RequestMethod.GET)
 	public String gamesTotoBoardGo(HttpServletRequest req) {
+		SiteOption.clearSearch(req);
 		acDAO.loginCheck(req);
-		ttDAO.getTotoAll(req);
+		ttDAO.getTotoAll(req, 1);
+		req.setAttribute("contentPage", "games/totoBoard.jsp");
+		return "index";
+	}
+	
+	@RequestMapping(value = "/toto.page.change", method = RequestMethod.GET)
+	public String totoPageChange(HttpServletRequest req) {
+		TokenMaker.make(req);
+		int p = Integer.parseInt(req.getParameter("p"));
+		ttDAO.getTotoAll(req, p);
+		acDAO.loginCheck(req);
+		req.setAttribute("contentPage", "games/totoBoard.jsp");
+		return "index";
+	}
+	
+	@RequestMapping(value = "/games.toto.search", method = RequestMethod.GET)
+	public String gamesTotoSearch(HttpServletRequest req, TotoSelector ttSel) {
+		acDAO.loginCheck(req);
+		ttDAO.searchToto(req, ttSel);
+		ttDAO.getTotoAll(req, 1);
 		req.setAttribute("contentPage", "games/totoBoard.jsp");
 		return "index";
 	}
 	
 	
->>>>>>> a8064393f00f242ffdaf0e7800517e42943a722d
 }

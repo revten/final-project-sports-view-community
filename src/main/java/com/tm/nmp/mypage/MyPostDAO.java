@@ -2,6 +2,8 @@ package com.tm.nmp.mypage;
 
 import java.io.File;
 import java.io.IOException;
+import java.math.BigDecimal;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -13,21 +15,64 @@ import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 import com.tm.nmp.account.AccountDTO;
 import com.tm.nmp.community.ReviewMapper;
+import com.tm.nmp.games.GamesMapper;
+import com.tm.nmp.games.TotoDTO;
+import com.tm.nmp.games.TotoSelector;
 import com.tm.nmp.infoEvent.InfoEventMapper;
 
 @Service
 public class MyPostDAO {
 	
+	private int allPostCount;
+	
 	@Autowired
 	private SqlSession ss;
+	
 
-	public void getMyPostAll(HttpServletRequest req, MyPostDTO mpt) {
+	public int getAllPostCount() {
+		return allPostCount;
+	}
+
+	public void setAllPostCount(int allPostCount) {
+		this.allPostCount = allPostCount;
+	}
+	
+	public void calcAllPostCount() {
+		MyPostSelector mpSel = new MyPostSelector("",null,null);
+		allPostCount = ss.getMapper(MyPageMapper.class).getAllPostCount(mpSel);
+	}
+
+	public void getMyPostAll(HttpServletRequest req, int pageNo) {
 		
-		req.setAttribute("MyPosts", ss.getMapper(MyPageMapper.class).getMyPostAll());
+		int count = 10;
+		int start = (pageNo -1) * count + 1;
+		int end = start + (count - 1);
+		
+		MyPostSelector search = (MyPostSelector) req.getSession().getAttribute("search");
+		int postCount = 0;
+		if (search == null) {
+			search = new MyPostSelector("", new BigDecimal(start), new BigDecimal(end));
+			postCount = allPostCount;
+		} else {
+			search.setStart(new BigDecimal(start));
+			search.setEnd(new BigDecimal(end));
+			postCount = ss.getMapper(MyPageMapper.class).getAllPostCount(search);
+		}
+		
+		List<MyPostDTO> posts = ss.getMapper(MyPageMapper.class).getMyPostAll(search);
+		
+		int pageCount = (int) Math.ceil(postCount / (double) count);
+		req.setAttribute("pageCount", pageCount);
+		
+		req.setAttribute("MyPosts", posts);
+		req.setAttribute("curPage", pageNo);
+		
 		
 	}
 
 	public void getMyPost(HttpServletRequest req, MyPostDTO mp) {
+		MyPostDTO post = ss.getMapper(MyPageMapper.class).getMyPost(mp);
+		
 		
 		req.setAttribute("MyPost", ss.getMapper(MyPageMapper.class).getMyPost(mp));
 		

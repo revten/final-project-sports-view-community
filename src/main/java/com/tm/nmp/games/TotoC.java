@@ -28,6 +28,20 @@ public class TotoC {
 		return "index";
 	}
 	
+	
+	@RequestMapping(value = "toto.comment.insert", method = RequestMethod.GET)
+	public String totoCommentinsert(HttpServletRequest req, TotoDTO tt, TotoComment ttc) {
+		
+		acDAO.loginCheck(req);
+		ttDAO.writeComment(req, ttc);
+		ttDAO.getToto(req, tt);
+		req.setAttribute("contentPage", "games/totoDetail.jsp");
+		return "index";
+	}
+	
+	
+	
+	
 	@RequestMapping(value = "/toto.update.go", method = RequestMethod.GET)
 	public String totoUpdateGo(HttpServletRequest req, TotoDTO tt) {
 		
@@ -72,7 +86,7 @@ public class TotoC {
 		
 		acDAO.loginCheck(req);
 		ttDAO.insertToto(req, tt);
-		ttDAO.getTotoAll(req);
+		ttDAO.getTotoAll(req,1);
 		req.setAttribute("contentPage", "games/totoBoard.jsp");
 		return "index";
 	}

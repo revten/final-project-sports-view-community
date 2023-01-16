@@ -35,7 +35,17 @@ public class MyPageController {
 	public String myPageMyPostGo(HttpServletRequest req, MyPostDTO mpt) {
 
 		acDAO.loginCheck(req);
-		mptDAO.getMyPostAll(req, mpt);
+		mptDAO.getMyPostAll(req, 1);
+		
+		req.setAttribute("contentPage", "myPage/myPageMyPost.jsp");
+		return "index";
+	}
+	
+	@RequestMapping(value = "/mypost.page.change", method = RequestMethod.GET)
+	public String myPostPageChange(HttpServletRequest req, MyPostDTO mpt) {
+		int p = Integer.parseInt(req.getParameter("p"));
+		mptDAO.getMyPostAll(req, p);
+		acDAO.loginCheck(req);
 		
 		req.setAttribute("contentPage", "myPage/myPageMyPost.jsp");
 		return "index";

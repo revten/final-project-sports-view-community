@@ -2,8 +2,18 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.tm.nmp.mypage.MyPageMapper">
 
-<select id="getMyPostAll" resultType="com.tm.nmp.mypage.MyPostDTO">
-select * from mypost_board
+<select id="getAllPostCount" parameterType="com.tm.nmp.mypage.MyPostSelector" resultType="java.lang.Integer">
+select count(*) from mypost_board, account where mypost_id = ac_id and mypost_title like '%'||#{search}||'%'
+</select>
+
+<select id="getMyPostAll" parameterType="com.tm.nmp.mypage.MyPostSelector" resultType="com.tm.nmp.mypage.MyPostDTO">
+select * from (
+			select rownum as rn, mypost_no, ac_nick, mypost_cat, mypost_title, mypost_content, mypost_img, mypost_video, mypost_date
+			from (
+				select * from mypost_board, account where mypost_id = ac_id and mypost_title like '%'||#{search}||'%' order by mypost_date desc
+			)
+		)
+	where rn &gt;= #{start} and rn &lt; = #{end}
 </select>
 
 <select id="getMyPost" parameterType="com.tm.nmp.mypage.MyPostDTO" resultType="com.tm.nmp.mypage.MyPostDTO">

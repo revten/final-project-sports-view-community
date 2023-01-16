@@ -2,6 +2,8 @@ package com.tm.nmp.games;
 
 import java.io.File;
 import java.io.IOException;
+import java.math.BigDecimal;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -17,18 +19,60 @@ import com.tm.nmp.mypage.MyPageMapper;
 @Service
 public class TotoDAO {
 	
+	private int allPostCount;
+	
 	@Autowired
 	private SqlSession ss;
+	
+	@Autowired
+	private SiteOption so;
+	
+	public int getAllPostCount() {
+		return allPostCount;
+	}
 
-	public void getTotoAll(HttpServletRequest req) {
+	public void setAllPostCount(int allPostCount) {
+		this.allPostCount = allPostCount;
+	}
+	
+	public void calcAllPostCount() {
+		TotoSelector ttSel = new TotoSelector("",null,null);
+		allPostCount = ss.getMapper(GamesMapper.class).getAllPostCount(ttSel);
+	}
+	
+
+	public void getTotoAll(HttpServletRequest req, int pageNo) {
 		
-		req.setAttribute("totos", ss.getMapper(GamesMapper.class).getTotoAll());
+		int count = so.getPostCountPerPage();
+		int start = (pageNo -1) * count + 1;
+		int end = start + (count - 1);
+		
+		TotoSelector search = (TotoSelector) req.getSession().getAttribute("search");
+		int postCount = 0;
+		if (search == null) {
+			search = new TotoSelector("", new BigDecimal(start), new BigDecimal(end));
+			postCount = allPostCount;
+		} else {
+			search.setStart(new BigDecimal(start));
+			search.setEnd(new BigDecimal(end));
+			postCount = ss.getMapper(GamesMapper.class).getAllPostCount(search);
+		}
+		
+		List<TotoDTO> posts = ss.getMapper(GamesMapper.class).getTotoAll(search);
+		
+		int pageCount = (int) Math.ceil(postCount / (double) count);
+		req.setAttribute("pageCount", pageCount);
+		
+		req.setAttribute("totos", posts);
+		req.setAttribute("curPage", pageNo);
 		
 	}
 
 	public void getToto(HttpServletRequest req, TotoDTO tt) {
+		TotoDTO post = ss.getMapper(GamesMapper.class).getToto(tt);
+		post.setToto_comments(ss.getMapper(GamesMapper.class).getAllcomment(tt));
+		req.setAttribute("toto", post);
 		
-		req.setAttribute("toto", ss.getMapper(GamesMapper.class).getToto(tt));
 	}
 
 	public void updateToto(HttpServletRequest req, TotoDTO tt) {
@@ -114,6 +158,42 @@ public class TotoDAO {
 			new File(path + "/" + fileName1).delete();
 			new File(path + "/" + fileName2).delete();
 		}
+	}
+	
+	public void searchToto(HttpServletRequest req, TotoSelector ttSel) {
+		req.getSession().setAttribute("search", ttSel);
+	}
+	
+	
+	public void writeComment(HttpServletRequest req, TotoComment ttc) {
+
+		TotoDTO tt = (TotoDTO) req.getSession().getAttribute("toto");
+		
+		ttc.setToto_comment_boardno(tt.getToto_no());
+
+		if (ss.getMapper(GamesMapper.class).writeComment(ttc) == 1) {
+			req.setAttribute("result", "댓글쓰기 성공");
+		} else {
+			req.setAttribute("result", "댓글쓰기실패");
+		}
+	}
+	
+	public void deleteCemment(HttpServletRequest req, TotoComment ttc) {
+		if (ss.getMapper(GamesMapper.class).deleteComment(ttc) == 1) {
+			req.setAttribute("result", "댓글삭제 성공");
+		} else {
+			req.setAttribute("result", "댓글삭제실패");
+		}
+		req.setAttribute("result", "댓글삭제실패");
+	}
+	
+	public void updateComment(HttpServletRequest req, TotoComment ttc) {
+		if (ss.getMapper(GamesMapper.class).updateComment(ttc) == 1) {
+			req.setAttribute("result", "댓글수정 성공");
+		} else {
+			req.setAttribute("result", "댓글수정 실패");
+		}
+		req.setAttribute("result", "댓글수정 실패");
 	}
 	
 	
