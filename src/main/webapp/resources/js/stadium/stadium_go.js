@@ -225,6 +225,10 @@ function basketballStadiumGo(team) {
 	location.href = "basketball.stadium.go.detail?team=" + team;
 }
 
+function basketballStadiumGo2(team) {
+	location.href = "w_basketball.stadium.go.detail?team=" + team;
+}
+
 function basketballSetVal() {
 	const url = new URL(location.href);
 	const urlParams = url.searchParams;

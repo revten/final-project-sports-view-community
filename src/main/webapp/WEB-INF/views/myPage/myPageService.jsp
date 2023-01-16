@@ -16,6 +16,14 @@
 <br>
 <br>
 	<h2>고객센터</h2>
+	<div><c:choose>
+			<c:when test="${sessionScope.loginAccount eq null}">
+				<a href="" onclick="alert('로그인하세요')">새글쓰기</a>
+			</c:when>
+			<c:otherwise>
+				<a href="ask.insert.go">새글쓰기</a>
+			</c:otherwise>
+		</c:choose></div>
 	
 	<table>
 		<thead>
@@ -37,6 +45,15 @@
 			</c:forEach>
 		</tbody>
 	</table>
+	<c:if test="${curPage !=1 }">
+		<a href="ask.page.change?p=${curPage-1 }" id="snsL">&lt;</a>
+	</c:if>
+	<c:forEach var="i" begin="1" end="${pageCount }">
+		<a href="ask.page.change?p=${i }"> [${i }] </a>
+	</c:forEach>
+	<c:if test="${curPage != pageCount }">
+		<a href="ask.page.change?p=${curPage+1 }" id="snsR">&gt;</a>
+	</c:if>
 	<button onclick="bye();" type="button">탈퇴문의</button>
 	<button type="button">고객문의</button>
 </body>

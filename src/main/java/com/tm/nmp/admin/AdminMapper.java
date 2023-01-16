@@ -6,4 +6,12 @@ public interface AdminMapper {
 
 	List<AnswerDTO> getAnswerAll();
 
+	AnswerDTO getAnswer(AnswerDTO as);
+
+	int updateAnswer(AnswerDTO as);
+
+	int deleteAnswer(AnswerDTO as);
+
+	int insertAnswer(AnswerDTO as);
+
 }

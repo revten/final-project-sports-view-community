@@ -9,8 +9,30 @@
 <title>Insert title here</title>
 </head>
 <body>
-<br><br><br><br><br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
 	<h1>토토</h1>
+	<form action="games.toto.search">
+		<table id="totoBoard-SearchArea">
+			<tr>
+				<td><input name="search" maxlength="10" autocomplete="off"></td>
+				<td><button>검색</button></td>
+			</tr>
+		</table>
+	</form>
+	<div>
+		<c:choose>
+			<c:when test="${sessionScope.loginAccount eq null}">
+				<a href="" onclick="alert('로그인하세요')">새글쓰기</a>
+			</c:when>
+			<c:otherwise>
+				<a href="toto.insert.go">새글쓰기</a>
+			</c:otherwise>
+		</c:choose>
+	</div>
 
 	<table>
 		<thead>
@@ -28,7 +50,8 @@
 				<tr>
 					<td>${tt.toto_no }</td>
 					<td>${tt.toto_cat }</td>
-					<td><a style="cursor: pointer; color: blue;" href="games.toto.detail.go?mypost_no=${tt.toto_no }">${tt.toto_title }</a></td>
+					<td><a style="cursor: pointer; color: blue;"
+						href="games.toto.detail.go?toto_no=${tt.toto_no }">${tt.toto_title }</a></td>
 					<td>${tt.toto_nick }</td>
 					<td>${tt.toto_date }</td>
 					<td>${tt.toto_count }</td>
@@ -36,6 +59,15 @@
 			</c:forEach>
 		</tbody>
 	</table>
+	<c:if test="${curPage !=1 }">
+		<a href="toto.page.change?p=${curPage-1 }" id="snsL">&lt;</a>
+	</c:if>
+	<c:forEach var="i" begin="1" end="${pageCount }">
+		<a href="toto.page.change?p=${i }"> [${i }] </a>
+	</c:forEach>
+	<c:if test="${curPage != pageCount }">
+		<a href="toto.page.change?p=${curPage+1 }" id="snsR">&gt;</a>
+	</c:if>
 
 </body>
 </html>

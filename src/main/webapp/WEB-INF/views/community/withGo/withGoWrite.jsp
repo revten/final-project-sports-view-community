@@ -31,7 +31,7 @@ $(function () {
 	<h3>같이 보러 가기</h3>
 	<form action="withGoWrite.do" method="POST">
 		<div class="form-group">
-			<label for="title">제목</label> 
+			<label for="title">제목</label>
 			<input type="text" class="form-control"
 				id="title" name="wg_title"> <input name="wg_cat"
 				value="${param.wg_cat}" type="hidden"> <input name="wg_id"

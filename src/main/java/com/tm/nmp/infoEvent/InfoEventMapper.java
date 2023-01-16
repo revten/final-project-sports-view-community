@@ -2,7 +2,11 @@ package com.tm.nmp.infoEvent;
 
 import java.util.List;
 
+
+
 public interface InfoEventMapper {
+	
+	int getAllPostCount(TeamEventSelector ttSel);
 
 	List<TeamEventDTO> showAllTeamEvent();
 
@@ -16,7 +20,11 @@ public interface InfoEventMapper {
 
 	List<TeamEventDTO> showTeamEventBySearch(TeamEventDTO te);
 
-	int getTeamEventPostCount(TeamEventDTO te);
+
+	List<TeamEventComment> getAllcomment(TeamEventDTO te);
+
+
+
 
 
 }

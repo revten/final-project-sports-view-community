@@ -1,6 +1,7 @@
 package com.tm.nmp.games;
 
 import java.util.Date;
+import java.util.List;
 
 public class TotoDTO {
 
@@ -14,12 +15,16 @@ public class TotoDTO {
 	private String toto_video;
 	private String toto_cat;
 	private int toto_count;
+	
+	private List<TotoComment> toto_comments;
+	private String ac_nick;
 	public TotoDTO() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 	public TotoDTO(int toto_no, String toto_nick, String toto_id, String toto_title, String toto_content,
-			Date toto_date, String toto_img, String toto_video, String toto_cat, int toto_count) {
+			Date toto_date, String toto_img, String toto_video, String toto_cat, int toto_count,
+			List<TotoComment> toto_comments, String ac_nick) {
 		super();
 		this.toto_no = toto_no;
 		this.toto_nick = toto_nick;
@@ -31,6 +36,8 @@ public class TotoDTO {
 		this.toto_video = toto_video;
 		this.toto_cat = toto_cat;
 		this.toto_count = toto_count;
+		this.toto_comments = toto_comments;
+		this.ac_nick = ac_nick;
 	}
 	public int getToto_no() {
 		return toto_no;
@@ -92,6 +99,20 @@ public class TotoDTO {
 	public void setToto_count(int toto_count) {
 		this.toto_count = toto_count;
 	}
+	public List<TotoComment> getToto_coments() {
+		return toto_comments;
+	}
+	public void setToto_comments(List<TotoComment> toto_comments) {
+		this.toto_comments = toto_comments;
+	}
+	public String getAc_nick() {
+		return ac_nick;
+	}
+	public void setAc_nick(String ac_nick) {
+		this.ac_nick = ac_nick;
+	}
+
+	
 	
 	
 }
