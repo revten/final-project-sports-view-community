@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.tm.nmp.account.AccountDAO;
 
 @Controller
-public class InfoEventC {
+public class InfoEventController {
 
 	
 	@Autowired
@@ -23,7 +23,7 @@ public class InfoEventC {
 	@RequestMapping(value = "/team.event.main.go", method = RequestMethod.GET)
 	public String teamEventMainGo(HttpServletRequest req, TeamEventDTO te) {
 		aDAO.loginCheck(req);
-		iDAO.getteamEventAll(req, te);
+		iDAO.getteamEventAll(req, 1);
 		req.setAttribute("contentPage", "infoEvent/teamEvent/teamEvent.jsp");
 		return "index";
 	}

@@ -50,7 +50,7 @@ public class InfoEvent_TeamEventC {
 	public String teamEventDeleteDo(HttpServletRequest req, TeamEventDTO te) {
 		aDAO.loginCheck(req);
 		iDAO.deleteTeamEvent(req, te);
-		iDAO.getteamEventAll(req, te);
+		iDAO.getteamEventAll(req, 1);
 		
 		req.setAttribute("contentPage", "infoEvent/teamEvent/teamEvent.jsp");
 		return "index";
@@ -68,7 +68,7 @@ public class InfoEvent_TeamEventC {
 	public String teamEventInsertDo(HttpServletRequest req, TeamEventDTO te) {
 		aDAO.loginCheck(req);
 		iDAO.insertTeamEvent(req, te);
-		iDAO.getteamEventAll(req, te);
+		iDAO.getteamEventAll(req, 1);
 		
 		req.setAttribute("contentPage", "infoEvent/teamEvent/teamEvent.jsp");
 		return "index";

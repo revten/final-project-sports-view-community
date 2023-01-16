@@ -45,6 +45,15 @@
 			</c:forEach>
 		</tbody>
 	</table>
+	<c:if test="${curPage !=1 }">
+		<a href="ask.page.change?p=${curPage-1 }" id="snsL">&lt;</a>
+	</c:if>
+	<c:forEach var="i" begin="1" end="${pageCount }">
+		<a href="ask.page.change?p=${i }"> [${i }] </a>
+	</c:forEach>
+	<c:if test="${curPage != pageCount }">
+		<a href="ask.page.change?p=${curPage+1 }" id="snsR">&gt;</a>
+	</c:if>
 	<button onclick="bye();" type="button">탈퇴문의</button>
 	<button type="button">고객문의</button>
 </body>

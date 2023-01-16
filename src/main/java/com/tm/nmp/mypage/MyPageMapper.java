@@ -2,13 +2,16 @@ package com.tm.nmp.mypage;
 
 import java.util.List;
 
-import com.tm.nmp.games.TotoDTO;
 
 public interface MyPageMapper {
+	
+	int getAllPostCount(MyPostSelector mpSel);
+	
+	int getAllAskCount(AskSelector askSel);
 
-	List<MyPostDTO> getMyPostAll();
+	List<MyPostDTO> getMyPostAll(MyPostSelector mpSel);
 
-	List<AskDTO> getAskAll();
+	List<AskDTO> getaskAll(AskSelector askSel);
 
 	MyPostDTO getMyPost(MyPostDTO mp);
 
@@ -25,6 +28,10 @@ public interface MyPageMapper {
 	int insertMyPost(MyPostDTO mp);
 
 	int insertAsk(AskDTO ask);
+
+
+	
+
 
 	
 	

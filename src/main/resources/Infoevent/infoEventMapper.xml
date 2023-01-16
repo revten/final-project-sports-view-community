@@ -2,8 +2,18 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.tm.nmp.infoEvent.InfoEventMapper">
 
-<select id="showAllTeamEvent" resultType="com.tm.nmp.infoEvent.TeamEventDTO">
-select * from ie_te_board
+<select id="getAllPostCount" parameterType="com.tm.nmp.infoEvent.TeamEventSelector" resultType="java.lang.Integer">
+select count(*) from ie_te_board, account where ie_te_id = ac_id and ie_te_title like '%'||#{search}||'%'
+</select>
+
+<select id="showAllTeamEvent" parameterType="com.tm.nmp.infoEvent.TeamEventSelector" resultType="com.tm.nmp.infoEvent.TeamEventDTO">
+select * from (
+			select rownum as rn, ie_te_no, ie_te_nick, ie_te_sports, ie_te_title, ie_te_content, ie_te_img, ie_te_video, ie_te_regdate
+			from (
+				select * from ie_te_board, account where ie_te_id = ac_id and ie_te_title like '%'||#{search}||'%' order by ie_te_regdate desc
+			)
+		)
+	where rn &gt;= #{start} and rn &lt; = #{end}
 </select>
 
 <select id="showTeamEvent" parameterType="com.tm.nmp.infoEvent.TeamEventDTO" resultType="com.tm.nmp.infoEvent.TeamEventDTO">

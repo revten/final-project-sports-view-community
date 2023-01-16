@@ -2,6 +2,8 @@ package com.tm.nmp.mypage;
 
 import java.io.File;
 import java.io.IOException;
+import java.math.BigDecimal;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -12,16 +14,56 @@ import org.springframework.stereotype.Service;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 import com.tm.nmp.account.AccountDTO;
+import com.tm.nmp.games.GamesMapper;
+import com.tm.nmp.games.askDTO;
+import com.tm.nmp.games.askSelector;
 
 @Service
 public class AskDAO {
 	
+	private int allPostCount;
+	
 	@Autowired
 	private SqlSession ss;
+	
+	public int getAllPostCount() {
+		return allPostCount;
+	}
 
-	public void getAskAll(HttpServletRequest req) {
+	public void setAllPostCount(int allPostCount) {
+		this.allPostCount = allPostCount;
+	}
+	
+	public void calcAllPostCount() {
+		AskSelector askSel = new AskSelector("",null,null);
+		allPostCount = ss.getMapper(MyPageMapper.class).getAllAskCount(askSel);
+	}
+
+	public void getAskAll(HttpServletRequest req, int pageNo) {
 		
-		req.setAttribute("Asks", ss.getMapper(MyPageMapper.class).getAskAll());
+		int count = 10;
+		int start = (pageNo -1) * count + 1;
+		int end = start + (count - 1);
+		
+		AskSelector search = (AskSelector) req.getSession().getAttribute("search");
+		int postCount = 0;
+		if (search == null) {
+			search = new AskSelector("", new BigDecimal(start), new BigDecimal(end));
+			postCount = allPostCount;
+		} else {
+			search.setStart(new BigDecimal(start));
+			search.setEnd(new BigDecimal(end));
+			postCount = ss.getMapper(MyPageMapper.class).getAllAskCount(search);
+		}
+		
+		List<AskDTO> posts = ss.getMapper(MyPageMapper.class).getaskAll(search);
+		
+		int pageCount = (int) Math.ceil(postCount / (double) count);
+		req.setAttribute("pageCount", pageCount);
+		
+		req.setAttribute("Asks", posts);
+		req.setAttribute("curPage", pageNo);
+		
 		
 	}
 
