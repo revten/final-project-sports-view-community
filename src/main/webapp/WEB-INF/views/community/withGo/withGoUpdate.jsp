@@ -15,8 +15,8 @@
 </script> --%>
 <script>
 $(function () {
-	CKEDITOR.replace('contents', {
-		filebrowserUploadUrl : '${pageContext.request.contextPath}/adm/fileupload.do'
+	CKEDITOR.replace('editor', {
+		filebrowserUploadUrl : 'fileupload.do',
 	});
 });
 </script>

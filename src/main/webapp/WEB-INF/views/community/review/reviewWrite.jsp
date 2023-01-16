@@ -6,14 +6,11 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script>
-	$(function() {
-		CKEDITOR
-				.replace(
-						'editor',
-						{
-							filebrowserUploadUrl : '${pageContext.request.contextPath}/adm/fileupload.do'
-						});
+$(function () {
+	CKEDITOR.replace('editor', {
+		filebrowserUploadUrl : 'fileupload.do',
 	});
+});
 </script>
 </head>
 <body>

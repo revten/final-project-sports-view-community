@@ -8,10 +8,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.tm.nmp.account.AccountDAO;
-import com.tm.nmp.community.CM_RV_DAO;
-import com.tm.nmp.community.CM_RV_TITLE;
 import com.tm.nmp.community.CM_SC_DAO;
 import com.tm.nmp.community.CM_SC_TITLE;
+import com.tm.nmp.community.CM_WG_DAO;
+import com.tm.nmp.community.CM_WG_TITLE;
 
 @Controller
 public class HomeController {
@@ -23,7 +23,7 @@ public class HomeController {
 	private CM_SC_DAO scDAO;
 	
 	@Autowired
-	private CM_RV_DAO rvDAO;
+	private CM_WG_DAO wgDAO;
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(HttpServletRequest req) {
@@ -60,10 +60,10 @@ public class HomeController {
 	}
 	
 	@RequestMapping(value = "/community.main.go", method = RequestMethod.GET)
-	public String communityMainGo(HttpServletRequest req, CM_SC_TITLE sc, CM_RV_TITLE rv) {
+	public String communityMainGo(HttpServletRequest req, CM_SC_TITLE sc, CM_WG_TITLE wg) {
 		acDAO.loginCheck(req);
 		scDAO.getSoccerBoard(req, sc);
-		rvDAO.showReviewList(req, rv);
+		wgDAO.showWithGoList(req, wg);
 		req.setAttribute("contentPage", "community/communityMain.jsp");
 		return "index";
 	}

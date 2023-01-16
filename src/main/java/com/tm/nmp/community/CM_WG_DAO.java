@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.tm.nmp.account.AccountDTO;
 
@@ -15,9 +16,9 @@ public class CM_WG_DAO {
 
 	@Autowired
 	private SqlSession ss;
-	
-	public void showWithGoList(HttpServletRequest req, CM_WG_TITLE wg) {
 
+	public void showWithGoList(HttpServletRequest req, CM_WG_TITLE wg) {
+		wg.setWg_cat(wg.getWg_cat());
 		if (wg.getSearch() == null) { // 검색기능
 			wg.setSearch("");
 		} else {
@@ -67,30 +68,29 @@ public class CM_WG_DAO {
 
 	public int withGoWrite(HttpServletRequest req, CM_WG_TITLE wg) {
 		int numResult = 0;
-		
+
 		if (wg.getWg_cat() == null) {
 			wg.setWg_cat((String) req.getAttribute("wg_cat"));
 		}
-		
 
 		if (ss.getMapper(WithGoMapper.class).writeWithGoPost(wg) == 1) {
 			System.out.println("등록 성공");
 			req.setAttribute("wg_cat", wg.getWg_cat());
-			
+
 			numResult = ss.getMapper(WithGoMapper.class).getWithGoPostNum(wg);
-			System.out.println("numResult  : "+numResult);
-			
+			System.out.println("numResult  : " + numResult);
+
 		} else {
 			System.out.println("등록 실패");
 		}
-		
+
 		return numResult;
 
 	}
 
 	public void deleteWithGo(HttpServletRequest req, CM_WG_TITLE wg) {
 		req.setAttribute("wg_cat", req.getParameter("wg_cat"));
-		
+
 		if (ss.getMapper(WithGoMapper.class).deleteWithGoPost(wg) == 1) {
 			System.out.println("삭제 성공");
 		} else {
@@ -98,13 +98,35 @@ public class CM_WG_DAO {
 		}
 	}
 
-	public void updateWithGo(HttpServletRequest req, AccountDTO ac, CM_WG_TITLE wg) {
+	public void updateWithGo(HttpServletRequest req, CM_WG_TITLE wg) {
 		req.setAttribute("wg_cat", req.getParameter("wg_cat"));
-		
+
 		if (ss.getMapper(WithGoMapper.class).updateWithGoPost(wg) == 1) {
 			System.out.println("수정 성공");
 		} else {
 			System.out.println("수정 실패");
 		}
+	}
+
+	public void regWithGo(HttpServletRequest req, CM_WG_TITLE wg) {
+		AccountDTO account = (AccountDTO) req.getSession().getAttribute("loginAccount");
+		wg.setWg_id(account.getAc_id());
+		String str = wg.getWg_content();
+		System.out.println("전체 경로 :" + str);
+		String[] contentSplit = str.split("/");
+		String topSplit = contentSplit[5];
+		System.out.println("첫번째 경로 :" + topSplit);
+		String[] midSplit = topSplit.split("\"");
+		System.out.println("중간 경로 :" + midSplit);
+		String bottomSplit = midSplit[0];
+		System.out.println("최종 경로 :" + bottomSplit);
+		wg.setWg_img(bottomSplit);
+
+		if (ss.getMapper(WithGoMapper.class).writeWithGoPost(wg) == 1) {
+			System.out.println("등록 성공");
+		} else {
+			System.err.println("실패");
+		}
+
 	}
 }
