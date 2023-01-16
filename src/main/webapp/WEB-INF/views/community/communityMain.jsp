@@ -33,19 +33,16 @@
 	<div id="review_board">
 		<a>경기장 직관 후기 베스트</a>
 		<div id="review_list_cat">
-		<a>작성자</a>
-		<a>날짜</a>
-		<a>제목</a>
-		<a>조회</a>
 	</div>
 	<div id="review_list">
 	<c:forEach var="b" items="${posts}">
-				<div onclick="location.href='reviewDetail.go?rv_no=${b.rv_no}'">
-					<a><img src="resources/"></a>
-					<a>${b.rv_nick}</a>
-					<a><fmt:formatDate value="${b.rv_date}"
+					<a><img style="width: 100px; height: 100px"
+						src="resources/ckeditor/fileUpload/${b.wg_img }"></a><br>
+					<div onclick="location.href='withGoDetail.go?wg_no=${b.wg_no}'">
+					  <a>${b.wg_id}</a>
+					<a><fmt:formatDate value="${b.wg_date}"
 							pattern="yy-MM-dd HH:mm" /></a>
-					<a style="width: 40%;">${b.rv_title}</a>
+					<a style="width: 40%;">${b.wg_title}</a>
 				</div>
 			</c:forEach>
 	</div>
