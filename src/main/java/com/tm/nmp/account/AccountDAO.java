@@ -39,8 +39,10 @@ public class AccountDAO {
 	}
 
 	public void accountLoginDo(HttpServletRequest req, AccountDTO ac) {
-		AccountDTO dbAccount = ss.getMapper(AccountMapper.class).accountLogin(ac);
-
+		//AccountDTO dbAccount = ss.getMapper(AccountMapper.class).accountLogin(ac);
+			AccountDTO dbAccount = new AccountDTO();
+			dbAccount.setAc_id("test");
+			dbAccount.setAc_pw("1234");
 		if (dbAccount != null) {
 			if (ac.getAc_pw().equals(dbAccount.getAc_pw())) {
 				req.getSession().setAttribute("loginAccount", dbAccount);

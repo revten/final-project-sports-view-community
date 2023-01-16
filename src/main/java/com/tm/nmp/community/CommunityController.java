@@ -43,10 +43,12 @@ public class CommunityController {
 		return "index";
 	}
 	
-	@RequestMapping(value = "withGoWrite.do", method = RequestMethod.POST)
-	public String withGoWriteDo(HttpServletRequest req, CM_WG_TITLE wg) {
+	@RequestMapping(value = "withGo.upload.do", method = RequestMethod.POST)
+	public String withGoUploadDo(HttpServletRequest req, CM_WG_TITLE wg) {
 		acDAO.loginCheck(req);
-		return "redirect:withGoDetail.go?wg_no="+wgDAO.withGoWrite(req, wg);
+		wgDAO.regWithGo(req,wg);
+		req.setAttribute("contentPage", "community/withGo/withGoDetail.jsp");
+		return "index";
 	}
 	
 	@RequestMapping(value = "withGoDetail.go", method = RequestMethod.GET)
@@ -77,7 +79,7 @@ public class CommunityController {
 	@RequestMapping(value = "withGoUpdate.do", method = RequestMethod.POST)
 	public String withGoUpdateDo(HttpServletRequest req, CM_WG_TITLE wg) {
 		acDAO.loginCheck(req);
-		wgDAO.deleteWithGo(req, wg);
+		wgDAO.updateWithGo(req, wg);
 		req.setAttribute("contentPage", "community/withGo/withGoDetail.jsp");
 		return "index";
 	}
@@ -156,5 +158,7 @@ public class CommunityController {
 		req.setAttribute("contentPage", "community/soccer/soccerBoard.jsp");
 		return "index";
 	}
+	
+	
 	
 }
