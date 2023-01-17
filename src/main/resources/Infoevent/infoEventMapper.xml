@@ -36,8 +36,16 @@ delete IE_TE_BOARD where ie_te_no = #{ie_te_no}
 select * from IE_TE_BOARD where ie_te_title like '%'||#{ie_te_title}||'%'
 </select>
 
-<select id="getTeamEventPostCount" resultType="int">
-select count(*) from ie_te_board where ie_te_team = #{ie_te_team} and ie_te_title like '%'||#{ie_te_title}||'%'
-</select>
+<insert id="writeComment" parameterType="com.tm.nmp.infoEvent.TeamEventComment">
+insert into ie_te_comment_board values(ie_te_comment_seq.nextval,#{ie_te_comment_boardno},#{ie_te_comment_content},sysdate)
+</insert>
+
+<delete id="deleteComment" parameterType="com.tm.nmp.infoEvent.TeamEventComment">
+delete from ie_te_comment_board where ie_te_comment_no = #{ie_te_comment_no}
+</delete>
+
+<update id="updateComment" parameterType="com.tm.nmp.infoEvent.TeamEventComment">
+update ie_te_comment_board set ie_te_comment_content = #{ie_te_comment_content} where ie_te_comment_no = #{ie_te_comment_no}
+</update>
 
 </mapper>

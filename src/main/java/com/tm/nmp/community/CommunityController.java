@@ -80,7 +80,7 @@ public class CommunityController {
 		acDAO.loginCheck(req);
 		wgDAO.updateWithGo(req, wg);
 		wgDAO.showWithGoDetail(req, wg);
-		req.setAttribute("contentPage", "community/withGo/withGoD.jsp");
+		req.setAttribute("contentPage", "community/withGo/withGoDetail.jsp");
 		return "index";
 	}
 	@RequestMapping(value = "reviewList.go", method = RequestMethod.GET)
@@ -102,7 +102,7 @@ public class CommunityController {
 	@RequestMapping(value = "reviewWrite.do", method = RequestMethod.POST)
 	public String reviewWriteDo(HttpServletRequest req, CM_RV_TITLE rv) {
 		acDAO.loginCheck(req);
-		rvDAO.ReviewWrite(req, rv);
+		rvDAO.regReview(req, rv);
 		return "redirect:reviewDetail.go?rv_no="+rvDAO.ReviewWrite(req, rv);
 	}
 	
@@ -119,7 +119,7 @@ public class CommunityController {
 		acDAO.loginCheck(req);
 		rvDAO.deleteReview(req, rv);
 		rvDAO.showReviewList(req, rv);
-		req.setAttribute("contentPage", "community/review/review.jsp");
+		req.setAttribute("contentPage", "community/review/reviewDetail.jsp");
 		return "index";
 	}
 	
@@ -134,7 +134,8 @@ public class CommunityController {
 	@RequestMapping(value = "reviewUpdate.do", method = RequestMethod.POST)
 	public String reviewUpdateDo(HttpServletRequest req, CM_RV_TITLE rv) {
 		acDAO.loginCheck(req);
-		rvDAO.deleteReview(req, rv);
+		rvDAO.updateReview(req, rv);
+		rvDAO.showReviewDetail(req, rv);
 		req.setAttribute("contentPage", "community/review/reviewDetail.jsp");
 		return "index";
 	}

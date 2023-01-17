@@ -36,5 +36,36 @@
 							</c:when>
 						</c:choose>
 				</div>
+				
+				<form action="mypost.comment.insert" method="post">
+				<input type="hidden" name="mypost_no" value="${MyPost.mypost_no }">
+				댓글<input name="mypost_comment_content"><button>등록</button>
+			</form>
+	<table>
+		<tbody>
+		<c:if test="${MyPost.mypost_comments ne null}">
+			<c:forEach var="mpc" items="${MyPost.mypost_comments }">
+				<tr>
+					<%-- <td>${myposts.ac_nick}</td> --%>
+					 <td>${mpc.mypost_comment_content}</td>
+					<td>${mpc.mypost_comment_date}</td> 
+					<td><c:choose>
+			<c:when test="${sessionScope.loginAccount.ac_nick eq mpc.ac_nick }">
+				<c:choose>
+					<c:when test="${sessionScope.loginAccount.ac_id eq null}">
+						<button onclick="alert('로그인하세요')">삭제</button>
+					</c:when>
+					<c:otherwise>
+						<button
+							onclick="location.href='mypost.comment.delete.do?mypost_comment_no=${mpc.mypost_comment_no}'">삭제</button>
+					</c:otherwise>
+				</c:choose>
+			</c:when>
+		</c:choose></td>
+				</tr>
+			</c:forEach>
+			</c:if>
+		</tbody>
+	</table>
 </body>
 </html>

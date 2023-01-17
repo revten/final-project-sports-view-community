@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.tm.nmp.account.AccountDAO;
-import com.tm.nmp.community.CM_RV_DAO;
+import com.tm.nmp.admin.AnswerDAO;
 import com.tm.nmp.community.CM_SC_DAO;
 import com.tm.nmp.community.CM_SC_TITLE;
 import com.tm.nmp.community.CM_WG_DAO;
@@ -43,6 +43,9 @@ public class HomeController {
 
 	@Autowired
 	private CM_SC_DAO scDAO;
+	
+	@Autowired
+	private AnswerDAO asDAO;
 
 	@Autowired
 	private CM_WG_DAO wgDAO;
@@ -58,24 +61,14 @@ public class HomeController {
 
 		if (firstReq) {
 			gaDAO.calcAllPostCount();
-			firstReq = false;
-		}
-		if (firstReq) {
 			ttDAO.calcAllPostCount();
-			firstReq = false;
-		}
-		if (firstReq) {
 			ieDAO.calcAllPostCount();
-			firstReq = false;
-		}
-		if (firstReq) {
 			mpDAO.calcAllPostCount();
-			firstReq = false;
-		}
-		if (firstReq) {
 			askDAO.calcAllPostCount();
+			asDAO.calcAllPostCount();
 			firstReq = false;
 		}
+		
 
 		acDAO.loginCheck(req);
 		req.setAttribute("contentPage", "home.jsp");

@@ -67,7 +67,7 @@ public class CM_RV_DAO {
 
 	public int ReviewWrite(HttpServletRequest req, CM_RV_TITLE rv) {
 		int numResult = 0;
-
+		
 		if (rv.getRv_cat() == null) {
 			rv.setRv_cat((String) req.getAttribute("rv_cat"));
 		}
@@ -97,7 +97,7 @@ public class CM_RV_DAO {
 		}
 	}
 
-	public void updateReview(HttpServletRequest req, AccountDTO ac, CM_RV_TITLE rv) {
+	public void updateReview(HttpServletRequest req, CM_RV_TITLE rv) {
 		req.setAttribute("wg_cat", req.getParameter("rv_cat"));
 
 		AccountDTO account = (AccountDTO) req.getSession().getAttribute("loginAccount");
@@ -126,6 +126,7 @@ public class CM_RV_DAO {
 		AccountDTO account = (AccountDTO) req.getSession().getAttribute("loginAccount");
 		// loginAccount 가져오는 내용
 		rv.setRv_id(account.getAc_id());
+		rv.setRv_nick(account.getAc_nick());
 		// wg_id(해당 게시판 작성자 아이디인데 DB설계 시 관계형으로 생성을 했기 때문에 어카운트의 ac_id를 set설정해줘야 한다)
 		String str = rv.getRv_content();
 		// wg_content(게시판 컨텐츠 sc_content)
@@ -147,6 +148,5 @@ public class CM_RV_DAO {
 		} else {
 			System.err.println("실패");
 		}
-
 	}
 }

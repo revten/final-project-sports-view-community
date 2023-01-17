@@ -74,12 +74,4 @@ public class InfoEvent_TeamEventC {
 		return "index";
 	}
 	
-	@RequestMapping(value = "/teamEvent.search.do", method = RequestMethod.GET)
-	public String teamEventSearchDo(HttpServletRequest req, TeamEventDTO te) {
-		aDAO.loginCheck(req);
-		iDAO.getteamEventSearch(req, te);
-		
-		req.setAttribute("contentPage", "infoEvent/teamEvent/teamEventSearch.jsp");
-		return "index";
-	}
 }
