@@ -5,13 +5,20 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<script>
+<%-- <script>
 	$(function() {
 		ClassicEditor.create(document.querySelector('#editor'), {
 			language : "ko"
 		});
 
 	});
+</script> --%>
+<script>
+$(function () {
+	CKEDITOR.replace('editor', {
+		filebrowserUploadUrl : 'fileupload.do',
+	});
+});
 </script>
 </head>
 <body>
@@ -27,10 +34,9 @@
 			<div class="form-group">
 				<label for="title">제목</label> <input type="text"
 					class="form-control" id="title" name="rv_title"
-					value="${p.rv_title}"> <input name="rv_cat"
-					value="${param.rv_cat}" type="hidden"> <input name="rv_no"
+					value="${p.rv_title}"> <input name="rv_no"
 					value="${param.rv_no}" type="hidden"> <input
-					id="board_img_input" name="rv_img" value="-" type="hidden">
+					id="board_img_input" name="rv_img" value="${bottomSplit }" type="hidden">
 				<input id="board_video_input" name="rv_video" value="-"
 					type="hidden">
 				<!--  <input id="board_img_input" name="rv_img" value="${p.rv_img}" type="hidden"> -->
@@ -42,7 +48,7 @@
 					name="rv_content">${p.rv_content}</textarea>
 			</div>
 			<button onclick="history.back(-1)">뒤로가기</button>
-			<button type="submit" class="btn btn-primary">수정</button>
+			<button type="submit" class="btn btn-primary" name="rv_cat" value="review">수정</button>
 		</form>
 	</div>
 </body>
