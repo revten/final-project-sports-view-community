@@ -47,30 +47,35 @@
 		</c:choose>
 	</div>
 			<form action="toto.comment.insert" method="post">
-				댓글<input name="toto_comment_comtent"><button>등록</button>
+				<input type="hidden" name="toto_no" value="${toto.toto_no }">
+				댓글<input name="toto_comment_content"><button>등록</button>
 			</form>
 	<table>
 		<tbody>
+		<c:if test="${toto.toto_comments ne null}">
 			<c:forEach var="ttc" items="${toto.toto_comments }">
 				<tr>
 					<%-- <td>${totos.ac_nick}</td> --%>
 					 <td>${ttc.toto_comment_content}</td>
 					<td>${ttc.toto_comment_date}</td> 
-					<td><c:choose>
-			<c:when test="${sessionScope.loginAccount.ac_nick eq ttc.ac_nick }">
+					<td>
+						<button
+							onclick="location.href='toto.comment.delete.do?toto_comment_no=${ttc.toto_comment_no}'">삭제</button>
+					<%-- <c:choose>
+			<c:when test="${sessionScope.loginAccount.ac_nick eq ttc.ac_nick }"> 
 				<c:choose>
 					<c:when test="${sessionScope.loginAccount.ac_id eq null}">
 						<button onclick="alert('로그인하세요')">삭제</button>
 					</c:when>
 					<c:otherwise>
-						<button
-							onclick="location.href='toto.comment.delete.do?toto_comment_no=${ttc.toto_comment_no}'">삭제</button>
 					</c:otherwise>
 				</c:choose>
-			</c:when>
-		</c:choose></td>
+			 </c:when> 
+		</c:choose> --%>
+		</td>
 				</tr>
 			</c:forEach>
+			</c:if>
 		</tbody>
 	</table>
 </body>

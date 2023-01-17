@@ -2,6 +2,8 @@ package com.tm.nmp.admin;
 
 import java.io.File;
 import java.io.IOException;
+import java.math.BigDecimal;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -12,25 +14,61 @@ import org.springframework.stereotype.Service;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 import com.tm.nmp.account.AccountDTO;
-import com.tm.nmp.games.GamesMapper;
-import com.tm.nmp.mypage.MyPageMapper;
 
 
 @Service
 public class AnswerDAO {
 	
+	private int allPostCount;
+	
 	@Autowired
 	private SqlSession ss;
+	
+	public int getAllPostCount() {
+		return allPostCount;
+	}
 
-	public void getAnswerAll(HttpServletRequest req) {
+	public void setAllPostCount(int allPostCount) {
+		this.allPostCount = allPostCount;
+	}
+	
+	public void calcAllPostCount() {
+		AnswerSelector asSel = new AnswerSelector("",null,null);
+		allPostCount = ss.getMapper(AdminMapper.class).getAllPostCount(asSel);
+	}
+
+	public void getAnswerAll(HttpServletRequest req, int pageNo) {
 		
-		req.setAttribute("answers", ss.getMapper(AdminMapper.class).getAnswerAll());
+		int count = 10;
+		int start = (pageNo -1) * count + 1;
+		int end = start + (count - 1);
+		
+		AnswerSelector search = (AnswerSelector) req.getSession().getAttribute("search");
+		int postCount = 0;
+		if (search == null) {
+			search = new AnswerSelector("", new BigDecimal(start), new BigDecimal(end));
+			postCount = allPostCount;
+		} else {
+			search.setStart(new BigDecimal(start));
+			search.setEnd(new BigDecimal(end));
+			postCount = ss.getMapper(AdminMapper.class).getAllPostCount(search);
+		}
+		
+		List<AnswerDTO> posts = ss.getMapper(AdminMapper.class).getAnswerAll(search);
+		
+		int pageCount = (int) Math.ceil(postCount / (double) count);
+		req.setAttribute("pageCount", pageCount);
+		
+		req.setAttribute("answers", posts);
+		req.setAttribute("curPage", pageNo);
+		
 		
 	}
 
 	public void getAnswer(HttpServletRequest req, AnswerDTO as) {
-		
-		req.setAttribute("answer", ss.getMapper(AdminMapper.class).getAnswer(as));
+		AnswerDTO post = ss.getMapper(AdminMapper.class).getAnswer(as);
+		post.setAnswer_comments(ss.getMapper(AdminMapper.class).getAllComment(as));
+		req.setAttribute("answer", post);
 		
 	}
 
@@ -118,6 +156,40 @@ public class AnswerDAO {
 			new File(path + "/" + fileName2).delete();
 		}
 		
+	}
+	
+	
+	public void writeComment(HttpServletRequest req, AnswerComment asc) {
+
+		String answer_no = req.getParameter("answer_no");
+		asc.setanswer_comment_boardno(Integer.parseInt(answer_no));
+		String a = asc.getanswer_comment_content();
+		System.out.println(a);
+		
+
+		if (ss.getMapper(AdminMapper.class).writeComment(asc) == 1) {
+			req.setAttribute("result", "댓글쓰기 성공");
+		} else {
+			req.setAttribute("result", "댓글쓰기실패");
+		}
+	}
+	
+	public void deleteCemment(HttpServletRequest req, AnswerComment asc) {
+		if (ss.getMapper(AdminMapper.class).deleteComment(asc) == 1) {
+			req.setAttribute("result", "댓글삭제 성공");
+		} else {
+			req.setAttribute("result", "댓글삭제실패");
+		}
+		req.setAttribute("result", "댓글삭제실패");
+	}
+	
+	public void updateComment(HttpServletRequest req, AnswerComment asc) {
+		if (ss.getMapper(AdminMapper.class).updateComment(asc) == 1) {
+			req.setAttribute("result", "댓글수정 성공");
+		} else {
+			req.setAttribute("result", "댓글수정 실패");
+		}
+		req.setAttribute("result", "댓글수정 실패");
 	}
 	
 	

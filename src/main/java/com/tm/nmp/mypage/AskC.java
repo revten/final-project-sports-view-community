@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.tm.nmp.account.AccountDAO;
+import com.tm.nmp.games.TotoComment;
+import com.tm.nmp.games.TotoDTO;
 
 @Controller
 public class AskC {
@@ -29,6 +31,26 @@ public class AskC {
 		
 	}
 	
+	@RequestMapping(value = "ask.comment.insert", method = RequestMethod.POST)
+	public String askCommentinsert(HttpServletRequest req, AskDTO ask, AskComment askC) {
+		
+		acDAO.loginCheck(req);
+		askDAO.writeComment(req, askC);
+		askDAO.getAsk(req, ask);
+		req.setAttribute("contentPage", "myPage/myPageServiceDetail.jsp");
+		return "index";
+	}
+	
+	@RequestMapping(value = "ask.comment.insert", method = RequestMethod.GET)
+	public String totoCommentinsert(HttpServletRequest req, AskDTO ask, AskComment askC) {
+		
+		acDAO.loginCheck(req);
+		askDAO.writeComment(req, askC);
+		askDAO.getAsk(req, ask);
+		req.setAttribute("contentPage", "games/totoDetail.jsp");
+		return "index";
+	}
+	
 	@RequestMapping(value = "/ask.update.go", method = RequestMethod.GET)
 	public String askUpdateGo(HttpServletRequest req,  AskDTO ask) {
 		
@@ -38,6 +60,7 @@ public class AskC {
 		req.setAttribute("contentPage", "myPage/myPageServiceUpdate.jsp");
 		return "index";
 	}
+	
 	
 	@RequestMapping(value = "ask.update.do", method = RequestMethod.GET)
 	public String askUpdateDo(HttpServletRequest req, AskDTO ask) {
@@ -54,7 +77,7 @@ public class AskC {
 		
 		acDAO.loginCheck(req);
 		askDAO.deleteAsk(req, ask);
-		askDAO.getAskAll(req);
+		askDAO.getAskAll(req, 1);
 		req.setAttribute("contentPage", "myPage/myPageService.jsp");
 		return "index";
 	}
@@ -73,7 +96,7 @@ public class AskC {
 		
 		acDAO.loginCheck(req);
 		askDAO.insertAsk(req, ask);
-		askDAO.getAskAll(req);
+		askDAO.getAskAll(req, 1);
 		req.setAttribute("contentPage", "myPage/myPageService.jsp");
 		return "index";
 	}

@@ -28,8 +28,18 @@ update mypost_board set mypost_cat = #{mypost_cat}, mypost_title = #{mypost_titl
 delete from mypost_board where mypost_no = #{mypost_no}
 </delete>
 
-<select id="getAskAll" resultType="com.tm.nmp.mypage.AskDTO">
-select * from ask_board
+<select id="getAllAskCount" parameterType="com.tm.nmp.mypage.AskSelector" resultType="java.lang.Integer">
+select count(*) from ask_board, account where ask_id = ac_id and ask_title like '%'||#{search}||'%'
+</select>
+
+<select id="getaskAll" parameterType="com.tm.nmp.mypage.AskSelector" resultType="com.tm.nmp.mypage.AskDTO">
+select * from (
+			select rownum as rn, ask_no, ask_nick, ask_cat, ask_title, ask_content, ask_img, ask_video, ask_date
+			from (
+				select * from ask_board, account where ask_id = ac_id and ask_title like '%'||#{search}||'%' order by ask_date desc
+			)
+		)
+	where rn &gt;= #{start} and rn &lt; = #{end}
 </select>
 
 <select id="getAsk" parameterType="com.tm.nmp.mypage.AskDTO" resultType="com.tm.nmp.mypage.AskDTO">
@@ -52,5 +62,36 @@ insert into mypost_board values(mypost_seq.nextval,#{mypost_nick},#{mypost_id},#
 insert into ask_board values(ask_seq.nextval,#{ask_nick},#{ask_id},#{ask_title},#{ask_content},sysdate,#{ask_img},#{ask_video},#{ask_cat},#{ask_count})
 </insert>
 
+<select id="getAllPostComment" parameterType="com.tm.nmp.mypage.MyPostDTO" resultType="com.tm.nmp.mypage.MyPostComment">
+select * from mypost_comment_board where mypost_comment_boardno = #{mypost_no}
+</select>
+
+<select id="getAllAskComment" parameterType="com.tm.nmp.mypage.AskDTO" resultType="com.tm.nmp.mypage.AskComment">
+select * from ask_comment_board where ask_comment_boardno = #{ask_no}
+</select>
+
+<insert id="writeAskComment" parameterType="com.tm.nmp.mypage.AskComment">
+insert into ask_comment_board values(ask_comment_seq.nextval,#{ask_comment_boardno},#{ask_comment_content},sysdate)
+</insert>
+
+<delete id="deleteAskComment" parameterType="com.tm.nmp.mypage.AskComment">
+delete from ask_comment_board where ask_comment_no = #{ask_comment_no}
+</delete>
+
+<update id="updateAskComment" parameterType="com.tm.nmp.mypage.AskComment">
+update ask_comment_board set ask_comment_content = #{ask_comment_content} where ask_comment_no = #{ask_comment_no}
+</update>
+
+<insert id="writeComment" parameterType="com.tm.nmp.mypage.MyPostComment">
+insert into mypost_comment_board values(mypost_comment_seq.nextval,#{mypost_comment_boardno},#{mypost_comment_content},sysdate)
+</insert>
+
+<delete id="deleteComment" parameterType="com.tm.nmp.mypage.MyPostComment">
+delete from mypost_comment_board where mypost_comment_no = #{mypost_comment_no}
+</delete>
+
+<update id="updateComment" parameterType="com.tm.nmp.mypage.MyPostComment">
+update mypost_comment_board set mypost_comment_content = #{mypost_comment_content} where mypost_comment_no = #{mypost_comment_no}
+</update>
 
 </mapper>

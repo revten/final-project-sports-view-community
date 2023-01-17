@@ -45,12 +45,13 @@
 				</div>
 			</div>
 	<div>
-	<form action="teamEvent.search.do">
-		<select name="">
-			<option value="ie_te_title">제목</option>
-			<option value="ie_te_team">구단</option>
-		</select> <input type="text" placeholder="입력" name="ie_te_title">
-		<button>검색</button>
+		<form action="team.event.search">
+		<table id="totoBoard-SearchArea">
+			<tr>
+				<td><input name="search" maxlength="10" autocomplete="off"></td>
+				<td><button>검색</button></td>
+			</tr>
+		</table>
 		</form>
 		<c:choose>
 			<c:when test="${sessionScope.loginAccount eq null}">
@@ -74,15 +75,6 @@
 			</tr>
 		</thead>
 		<tbody>
-			<tr>
-				<td>MainNo</td>
-				<td>MainTeam</td>
-				<td><a style="cursor: pointer; color: blue;"
-					onclick="location.href='team.event.detail.go'">MainTitle</a></td>
-				<td>MainWriter</td>
-				<td>MainTime</td>
-				<td>MainCount</td>
-			</tr>
 			<c:forEach var="te" items="${teamEvents }">
 				<tr>
 					<td>${te.ie_te_no }</td>
