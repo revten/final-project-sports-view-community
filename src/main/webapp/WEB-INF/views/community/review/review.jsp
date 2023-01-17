@@ -18,7 +18,7 @@
 	<div class="row">
 	<div id="community_area">
 			<ul id="community_list">
-				<li><a style="cursor: pointer" href='community.main.go'>커뮤니티 메인</a>
+				<li><a style="cursor: pointer" href='community.main.go?wg_cat=withGo'>커뮤니티 메인</a>
 				<li><a style="cursor: pointer"
 					href='reviewList.go?rv_cat=review'>직관 후기 게시판</a></li>
 				<li><a style="cursor: pointer"

@@ -17,7 +17,7 @@ $(function () {
 	CKEDITOR.replace('editor', {
 		filebrowserUploadUrl : 'fileupload.do',
 	});
-});
+}); // ck에디터 적용: 하기 내용 그대로 복붙하고 연결점(form action만 textarea의 name을 DB테이블의 컬럼에 맞춰서 수정해주면 됨
 </script>
 </head>
 <body>

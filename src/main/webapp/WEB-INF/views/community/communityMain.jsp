@@ -31,23 +31,25 @@
 	</div>
 	<div id="community_main">
 	<div id="review_board">
-		<a>경기장 직관 후기 베스트</a>
+		<a>같이 보러 가기 베스트</a>
 		<div id="review_list_cat">
 	</div>
 	<div id="review_list">
 	<c:forEach var="b" items="${posts}">
+					<div id="imgArea">
 					<a><img style="width: 100px; height: 100px"
-						src="resources/ckeditor/fileUpload/${b.wg_img }"></a><br>
+						src="resources/ckeditor/fileUpload/${b.wg_img }"></a>
+					</div>
 					<div onclick="location.href='withGoDetail.go?wg_no=${b.wg_no}'">
-					  <a>${b.wg_id}</a>
 					<a><fmt:formatDate value="${b.wg_date}"
-							pattern="yy-MM-dd HH:mm" /></a>
+							pattern="yy-MM-dd" /></a>
 					<a style="width: 40%;">${b.wg_title}</a>
+					  <a>${b.wg_id}</a>
 				</div>
 			</c:forEach>
 	</div>
 	</div>
-	<div id="best_board">
+	<div id="best_board" style="width: 1250px;">
 		<a>인기글</a>
 	<div id="best_list_cat">
 		<a>탭</a>

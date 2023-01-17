@@ -8,8 +8,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.tm.nmp.account.AccountDAO;
+import com.tm.nmp.community.CM_RV_DAO;
 import com.tm.nmp.community.CM_SC_DAO;
 import com.tm.nmp.community.CM_SC_TITLE;
+import com.tm.nmp.community.CM_WG_DAO;
+import com.tm.nmp.community.CM_WG_TITLE;
 import com.tm.nmp.games.GamesAnalyzeDAO;
 import com.tm.nmp.games.TotoDAO;
 import com.tm.nmp.infoEvent.InfoEventDAO;
@@ -44,10 +47,6 @@ public class HomeController {
 	@Autowired
 	private CM_WG_DAO wgDAO;
 	
-	@Autowired
-	private CM_RV_DAO rvDAO;
-
-	@Autowired
 	private boolean firstReq;
 
 	public HomeController() {
