@@ -43,6 +43,8 @@ public class AccountDAO {
 			AccountDTO dbAccount = new AccountDTO();
 			dbAccount.setAc_id("test");
 			dbAccount.setAc_pw("1234");
+			dbAccount.setAc_nick("테스트");
+			dbAccount.setAc_name("테스트");
 		if (dbAccount != null) {
 			if (ac.getAc_pw().equals(dbAccount.getAc_pw())) {
 				req.getSession().setAttribute("loginAccount", dbAccount);

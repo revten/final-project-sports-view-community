@@ -13,6 +13,12 @@
 	margin: 5rem;
 }
 
+#review_list{
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+}
+
 .ck-editor__editable {
 	height: 400px;
 }

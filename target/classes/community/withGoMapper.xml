@@ -72,10 +72,9 @@
 
 	<update id="updateWithGoPost"
 		parameterType="com.tm.nmp.community.CM_WG_TITLE">
-		update cm_wg_board
-		set wg_title = #{wg_title},wg_content=
-		#{wg_content},
-		wg_img = #{wg_img},
-		where wg_no = #{wg_no}
+		update cm_wg_board set wg_title =
+		#{wg_title},wg_content= #{wg_content}, wg_img = #{wg_img}
+		where wg_no =
+		#{wg_no}
 	</update>
 </mapper>
