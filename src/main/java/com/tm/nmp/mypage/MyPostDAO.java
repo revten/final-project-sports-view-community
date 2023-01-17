@@ -16,6 +16,7 @@ import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 import com.tm.nmp.account.AccountDTO;
 import com.tm.nmp.community.ReviewMapper;
 import com.tm.nmp.games.GamesMapper;
+import com.tm.nmp.games.TotoComment;
 import com.tm.nmp.games.TotoDTO;
 import com.tm.nmp.games.TotoSelector;
 import com.tm.nmp.infoEvent.InfoEventMapper;
@@ -74,7 +75,7 @@ public class MyPostDAO {
 		MyPostDTO post = ss.getMapper(MyPageMapper.class).getMyPost(mp);
 		post.setMypost_comments(ss.getMapper(MyPageMapper.class).getAllPostComment(mp));
 		
-		req.setAttribute("MyPost", ss.getMapper(MyPageMapper.class).getMyPost(mp));
+		req.setAttribute("MyPost", post);
 		
 	}
 
@@ -162,6 +163,39 @@ public class MyPostDAO {
 			new File(path + "/" + fileName2).delete();
 		}
 		
+	}
+	
+	public void writeComment(HttpServletRequest req, MyPostComment mpc) {
+
+		String mypost_no = req.getParameter("mypost_no");
+		mpc.setMypost_comment_boardno(Integer.parseInt(mypost_no));
+		String a = mpc.getMypost_comment_content();
+		System.out.println(a);
+		
+
+		if (ss.getMapper(MyPageMapper.class).writeComment(mpc) == 1) {
+			req.setAttribute("result", "댓글쓰기 성공");
+		} else {
+			req.setAttribute("result", "댓글쓰기실패");
+		}
+	}
+	
+	public void deleteComment(HttpServletRequest req, MyPostComment mpc) {
+		if (ss.getMapper(MyPageMapper.class).deleteComment(mpc) == 1) {
+			req.setAttribute("result", "댓글삭제 성공");
+		} else {
+			req.setAttribute("result", "댓글삭제실패");
+		}
+		req.setAttribute("result", "댓글삭제실패");
+	}
+	
+	public void updateComment(HttpServletRequest req, MyPostComment mpc) {
+		if (ss.getMapper(MyPageMapper.class).updateComment(mpc) == 1) {
+			req.setAttribute("result", "댓글수정 성공");
+		} else {
+			req.setAttribute("result", "댓글수정 실패");
+		}
+		req.setAttribute("result", "댓글수정 실패");
 	}
 	
 	

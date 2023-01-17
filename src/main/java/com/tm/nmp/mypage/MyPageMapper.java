@@ -39,6 +39,12 @@ public interface MyPageMapper {
 
 	int updateAskComment(AskComment askC);
 
+	int writeComment(MyPostComment mpc);
+
+	int deleteComment(MyPostComment mpc);
+
+	int updateComment(MyPostComment mpc);
+
 
 	
 

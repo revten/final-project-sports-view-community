@@ -36,4 +36,16 @@ insert into answer_board values(answer_seq.nextval,#{answer_nick},#{answer_id},#
 select * from answer_comment_board where answer_comment_boardno = #{answer_no}
 </select>
 
+<insert id="writeComment" parameterType="com.tm.nmp.admin.AnswerComment">
+insert into answer_comment_board values(answer_comment_seq.nextval,#{answer_comment_boardno},#{answer_comment_content},sysdate)
+</insert>
+
+<delete id="deleteComment" parameterType="com.tm.nmp.admin.AnswerComment">
+delete from answer_comment_board where answer_comment_no = #{answer_comment_no}
+</delete>
+
+<update id="updateComment" parameterType="com.tm.nmp.admin.AnswerComment">
+update answer_comment_board set answer_comment_content = #{answer_comment_content} where answer_comment_no = #{answer_comment_no}
+</update>
+
 </mapper>

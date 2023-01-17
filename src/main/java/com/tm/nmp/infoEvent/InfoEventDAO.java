@@ -163,6 +163,39 @@ public void deleteTeamEvent(HttpServletRequest req, TeamEventDTO te) {
 		}
 	}
 
+public void writeComment(HttpServletRequest req, TeamEventComment tec) {
+
+	String teamEvent_no = req.getParameter("ie_te_no");
+	tec.setIe_te_comment_boardno(Integer.parseInt(teamEvent_no));
+	String a = tec.getIe_te_comment_content();
+	System.out.println(a);
+	
+
+	if (ss.getMapper(InfoEventMapper.class).writeComment(tec) == 1) {
+		req.setAttribute("result", "댓글쓰기 성공");
+	} else {
+		req.setAttribute("result", "댓글쓰기실패");
+	}
+}
+
+public void deleteComment(HttpServletRequest req, TeamEventComment tec) {
+	if (ss.getMapper(InfoEventMapper.class).deleteComment(tec) == 1) {
+		req.setAttribute("result", "댓글삭제 성공");
+	} else {
+		req.setAttribute("result", "댓글삭제실패");
+	}
+	req.setAttribute("result", "댓글삭제실패");
+}
+
+public void updateComment(HttpServletRequest req, TeamEventComment tec) {
+	if (ss.getMapper(InfoEventMapper.class).updateComment(tec) == 1) {
+		req.setAttribute("result", "댓글수정 성공");
+	} else {
+		req.setAttribute("result", "댓글수정 실패");
+	}
+	req.setAttribute("result", "댓글수정 실패");
+}
+
 
 
 

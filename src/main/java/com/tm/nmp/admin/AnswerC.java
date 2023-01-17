@@ -28,6 +28,15 @@ public class AnswerC {
 		return "index";
 	}
 	
+	@RequestMapping(value = "/answer.comment.insert", method = RequestMethod.POST)
+	public String answerCommentInsert(HttpServletRequest req, AnswerDTO as, AnswerComment asc) {
+		acDAO.loginCheck(req);
+		asDAO.writeComment(req, asc);
+		asDAO.getAnswer(req, as);
+		req.setAttribute("contentPage", "admin/answerDetail.jsp");
+		return "index";
+	}
+	
 	@RequestMapping(value = "/answer.update.go", method = RequestMethod.GET)
 	public String answerUpdateGo(HttpServletRequest req, AnswerDTO as) {
 		acDAO.loginCheck(req);

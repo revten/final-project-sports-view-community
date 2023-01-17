@@ -28,6 +28,18 @@ public class MyPostC {
 		return "index";
 	}
 	
+	@RequestMapping(value = "/mypost.comment.insert", method = RequestMethod.POST)
+	public String myPostCommentInsert(HttpServletRequest req, MyPostDTO mp, MyPostComment mpc) {
+		
+		acDAO.loginCheck(req);
+		mpDAO.writeComment(req, mpc);
+		mpDAO.getMyPost(req, mp);
+		req.setAttribute("contentPage", "myPage/myPageMyPostDetail.jsp");
+		return "index";
+	}
+	
+	
+	
 	@RequestMapping(value = "/myPost.update.go", method = RequestMethod.GET)
 	public String myPostUpdateGo(HttpServletRequest req, MyPostDTO mp) {
 		

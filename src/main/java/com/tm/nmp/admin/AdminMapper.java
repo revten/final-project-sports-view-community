@@ -18,6 +18,12 @@ public interface AdminMapper {
 
 	List<AnswerComment> getAllComment(AnswerDTO as);
 
+	int writeComment(AnswerComment asc);
+
+	int deleteComment(AnswerComment asc);
+
+	int updateComment(AnswerComment asc);
+
 
 
 }

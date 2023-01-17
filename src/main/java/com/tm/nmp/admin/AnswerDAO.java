@@ -159,5 +159,39 @@ public class AnswerDAO {
 	}
 	
 	
+	public void writeComment(HttpServletRequest req, AnswerComment asc) {
+
+		String answer_no = req.getParameter("answer_no");
+		asc.setanswer_comment_boardno(Integer.parseInt(answer_no));
+		String a = asc.getanswer_comment_content();
+		System.out.println(a);
+		
+
+		if (ss.getMapper(AdminMapper.class).writeComment(asc) == 1) {
+			req.setAttribute("result", "댓글쓰기 성공");
+		} else {
+			req.setAttribute("result", "댓글쓰기실패");
+		}
+	}
+	
+	public void deleteCemment(HttpServletRequest req, AnswerComment asc) {
+		if (ss.getMapper(AdminMapper.class).deleteComment(asc) == 1) {
+			req.setAttribute("result", "댓글삭제 성공");
+		} else {
+			req.setAttribute("result", "댓글삭제실패");
+		}
+		req.setAttribute("result", "댓글삭제실패");
+	}
+	
+	public void updateComment(HttpServletRequest req, AnswerComment asc) {
+		if (ss.getMapper(AdminMapper.class).updateComment(asc) == 1) {
+			req.setAttribute("result", "댓글수정 성공");
+		} else {
+			req.setAttribute("result", "댓글수정 실패");
+		}
+		req.setAttribute("result", "댓글수정 실패");
+	}
+	
+	
 
 }

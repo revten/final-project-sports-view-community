@@ -167,9 +167,11 @@ public class TotoDAO {
 	
 	public void writeComment(HttpServletRequest req, TotoComment ttc) {
 
-		TotoDTO tt = (TotoDTO) req.getSession().getAttribute("toto");
+		String toto_no = req.getParameter("toto_no");
+		ttc.setToto_comment_boardno(Integer.parseInt(toto_no));
+		String a = ttc.getToto_comment_content();
+		System.out.println(a);
 		
-		ttc.setToto_comment_boardno(tt.getToto_no());
 
 		if (ss.getMapper(GamesMapper.class).writeComment(ttc) == 1) {
 			req.setAttribute("result", "댓글쓰기 성공");
@@ -178,7 +180,7 @@ public class TotoDAO {
 		}
 	}
 	
-	public void deleteCemment(HttpServletRequest req, TotoComment ttc) {
+	public void deleteComment(HttpServletRequest req, TotoComment ttc) {
 		if (ss.getMapper(GamesMapper.class).deleteComment(ttc) == 1) {
 			req.setAttribute("result", "댓글삭제 성공");
 		} else {

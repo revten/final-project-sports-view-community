@@ -82,4 +82,16 @@ delete from ask_comment_board where ask_comment_no = #{ask_comment_no}
 update ask_comment_board set ask_comment_content = #{ask_comment_content} where ask_comment_no = #{ask_comment_no}
 </update>
 
+<insert id="writeComment" parameterType="com.tm.nmp.mypage.MyPostComment">
+insert into mypost_comment_board values(mypost_comment_seq.nextval,#{mypost_comment_boardno},#{mypost_comment_content},sysdate)
+</insert>
+
+<delete id="deleteComment" parameterType="com.tm.nmp.mypage.MyPostComment">
+delete from mypost_comment_board where mypost_comment_no = #{mypost_comment_no}
+</delete>
+
+<update id="updateComment" parameterType="com.tm.nmp.mypage.MyPostComment">
+update mypost_comment_board set mypost_comment_content = #{mypost_comment_content} where mypost_comment_no = #{mypost_comment_no}
+</update>
+
 </mapper>
