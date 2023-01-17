@@ -15,8 +15,8 @@
 </script> --%>
 <script>
 $(function () {
-	CKEDITOR.replace('contents', {
-		filebrowserUploadUrl : '${pageContext.request.contextPath}/adm/fileupload.do'
+	CKEDITOR.replace('editor', {
+		filebrowserUploadUrl : 'fileupload.do',
 	});
 });
 </script>
@@ -34,10 +34,9 @@ $(function () {
 			<div class="form-group">
 				<label for="title">제목</label> <input type="text"
 					class="form-control" id="title" name="wg_title"
-					value="${p.wg_title}"> <input name="wg_cat"
-					value="${param.wg_cat}" type="hidden"> <input name="wg_no"
+					value="${p.wg_title}"> <input name="wg_no"
 					value="${param.wg_no}" type="hidden"> <input
-					id="board_img_input" name="wg_img" value="-" type="hidden">
+					id="board_img_input" name="wg_img" value="${bottomSplit }" type="hidden">
 				<input id="board_video_input" name="wg_video" value="-"
 					type="hidden">
 				<!--  <input id="board_img_input" name="wg_img" value="${p.wg_img}" type="hidden"> -->
@@ -49,7 +48,7 @@ $(function () {
 					name="wg_content">${p.wg_content}</textarea>
 			</div>
 			<button onclick="history.back(-1)">뒤로가기</button>
-			<button type="submit" class="btn btn-primary">수정</button>
+			<button type="submit" class="btn btn-primary" name="wg_cat" value="withGo">수정</button>
 		</form>
 	</div>
 </body>

@@ -43,9 +43,10 @@ public class CommunityController {
 		return "index";
 	}
 	
-	@RequestMapping(value = "withGoWrite.do", method = RequestMethod.POST)
-	public String withGoWriteDo(HttpServletRequest req, CM_WG_TITLE wg) {
+	@RequestMapping(value = "withGo.upload.do", method = RequestMethod.POST)
+	public String withGoUploadDo(HttpServletRequest req, CM_WG_TITLE wg) {
 		acDAO.loginCheck(req);
+		wgDAO.regWithGo(req,wg);
 		return "redirect:withGoDetail.go?wg_no="+wgDAO.withGoWrite(req, wg);
 	}
 	
@@ -77,11 +78,11 @@ public class CommunityController {
 	@RequestMapping(value = "withGoUpdate.do", method = RequestMethod.POST)
 	public String withGoUpdateDo(HttpServletRequest req, CM_WG_TITLE wg) {
 		acDAO.loginCheck(req);
-		wgDAO.deleteWithGo(req, wg);
-		req.setAttribute("contentPage", "community/withGo/withGoDetail.jsp");
+		wgDAO.updateWithGo(req, wg);
+		wgDAO.showWithGoDetail(req, wg);
+		req.setAttribute("contentPage", "community/withGo/withGoD.jsp");
 		return "index";
 	}
-	
 	@RequestMapping(value = "reviewList.go", method = RequestMethod.GET)
 	public String reviewListGo(HttpServletRequest req, CM_RV_TITLE rv) {
 		acDAO.loginCheck(req);
@@ -101,6 +102,7 @@ public class CommunityController {
 	@RequestMapping(value = "reviewWrite.do", method = RequestMethod.POST)
 	public String reviewWriteDo(HttpServletRequest req, CM_RV_TITLE rv) {
 		acDAO.loginCheck(req);
+		rvDAO.ReviewWrite(req, rv);
 		return "redirect:reviewDetail.go?rv_no="+rvDAO.ReviewWrite(req, rv);
 	}
 	
@@ -156,5 +158,7 @@ public class CommunityController {
 		req.setAttribute("contentPage", "community/soccer/soccerBoard.jsp");
 		return "index";
 	}
+	
+	
 	
 }

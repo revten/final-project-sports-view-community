@@ -74,7 +74,7 @@
 
 					<!-- <li class="nav__item"><a href="news.main.go" class="nav__link">뉴스</a></li> -->
 
-					<li><a href="community.main.go?rv_cat=review" class="nav__link">Cmnty</a></li>
+					<li><a href="community.main.go?wg_cat=withGo" class="nav__link">Cmnty</a></li>
 
 					<li class="nav__item"><a href="infoEvent.main.go"
 						class="nav__link">Insider</a></li>

@@ -9,10 +9,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.tm.nmp.account.AccountDAO;
 import com.tm.nmp.admin.AnswerDAO;
-import com.tm.nmp.community.CM_RV_DAO;
-import com.tm.nmp.community.CM_RV_TITLE;
 import com.tm.nmp.community.CM_SC_DAO;
 import com.tm.nmp.community.CM_SC_TITLE;
+import com.tm.nmp.community.CM_WG_DAO;
+import com.tm.nmp.community.CM_WG_TITLE;
 import com.tm.nmp.games.GamesAnalyzeDAO;
 import com.tm.nmp.games.TotoDAO;
 import com.tm.nmp.infoEvent.InfoEventDAO;
@@ -48,8 +48,8 @@ public class HomeController {
 	private AnswerDAO asDAO;
 
 	@Autowired
-	private CM_RV_DAO rvDAO;
-
+	private CM_WG_DAO wgDAO;
+	
 	private boolean firstReq;
 
 	public HomeController() {
@@ -103,10 +103,10 @@ public class HomeController {
 	}
 
 	@RequestMapping(value = "/community.main.go", method = RequestMethod.GET)
-	public String communityMainGo(HttpServletRequest req, CM_SC_TITLE sc, CM_RV_TITLE rv) {
+	public String communityMainGo(HttpServletRequest req, CM_SC_TITLE sc, CM_WG_TITLE wg) {
 		acDAO.loginCheck(req);
 		scDAO.getSoccerBoard(req, sc);
-		rvDAO.showReviewList(req, rv);
+		wgDAO.showWithGoList(req, wg);
 		req.setAttribute("contentPage", "community/communityMain.jsp");
 		return "index";
 	}

@@ -15,7 +15,7 @@
 		from (
 		select rownum as rn, wg_no, wg_id, wg_cat,
 		wg_title,
-		wg_content, wg_date, wg_img, wg_count, wg_like
+		wg_content, wg_date, wg_count, wg_like, wg_img
 		from(
 		select * from
 		cm_wg_board
@@ -41,10 +41,8 @@
 		parameterType="com.tm.nmp.community.CM_WG_TITLE">
 		insert into cm_wg_board
 		values(cm_wg_board_seq.nextval,
-		#{wg_nick},
 		#{wg_id}, #{wg_title},
-		#{wg_content}, sysdate, #{wg_img},
-		#{wg_video},
+		#{wg_content}, #{wg_img}, #{wg_video}, sysdate,
 		#{wg_cat}, 0, 0)
 	</insert>
 
@@ -74,12 +72,8 @@
 
 	<update id="updateWithGoPost"
 		parameterType="com.tm.nmp.community.CM_WG_TITLE">
-		update cm_wg_board
-		set wg_title = #{wg_title},
-		wg_content
-		= #{wg_content},
-		wg_img = #{wg_img},
-		wg_video = #{wg_video}
+		update cm_wg_board set wg_title =
+		#{wg_title},wg_content= #{wg_content}, wg_img = #{wg_img}
 		where wg_no =
 		#{wg_no}
 	</update>
