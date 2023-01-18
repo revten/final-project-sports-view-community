@@ -150,7 +150,7 @@ public class CommunityController {
 	@RequestMapping(value = "baseballBoard.go", method = RequestMethod.GET)
 	public String baseballBoardGO(HttpServletRequest req, CM_BS_TITLE bs) {
 		acDAO.loginCheck(req);
-		bsDAO.getAllBaseball(req, bs);
+		bsDAO.getAllBaseball(req, 1);
 		
 		req.setAttribute("contentPage", "community/baseball/baseballBoard.jsp");
 		return "index";

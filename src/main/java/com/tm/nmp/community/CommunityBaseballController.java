@@ -32,7 +32,7 @@ public class CommunityBaseballController {
 	public String baseballDeleteDo(HttpServletRequest req, CM_BS_TITLE bs) {
 		acDAO.loginCheck(req);
 		bsDAO.deleteBaseball(req, bs);
-		bsDAO.getAllBaseball(req, bs);
+		bsDAO.getAllBaseball(req, 1);
 		
 		req.setAttribute("contentPage", "community/baseball/baseballBoard.jsp");
 		
@@ -53,7 +53,7 @@ public class CommunityBaseballController {
 	public String baseballUpdateDo(HttpServletRequest req, CM_BS_TITLE bs) {
 		acDAO.loginCheck(req);
 		bsDAO.updateBaseball(req,bs);
-		bsDAO.getAllBaseball(req, bs);
+		bsDAO.getAllBaseball(req, 1);
 		
 		req.setAttribute("contentPage", "community/baseball/baseballBoard.jsp");
 		
@@ -73,7 +73,7 @@ public class CommunityBaseballController {
 	public String baseballInsertDo(HttpServletRequest req, CM_BS_TITLE bs) {
 		acDAO.loginCheck(req);
 		bsDAO.inseertBaseball(req,bs);
-		bsDAO.getAllBaseball(req, bs);
+		bsDAO.getAllBaseball(req, 1);
 		
 		req.setAttribute("contentPage", "community/baseball/baseballBoard.jsp");
 		

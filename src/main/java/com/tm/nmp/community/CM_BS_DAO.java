@@ -1,5 +1,6 @@
 package com.tm.nmp.community;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -14,14 +15,51 @@ import com.tm.nmp.account.AccountDTO;
 
 @Service
 public class CM_BS_DAO {
+	
+	private int allPostCount;
 
 	@Autowired
 	private SqlSession ss;
+	
+	public int getAllPostCount() {
+		return allPostCount;
+	}
 
-	public void getAllBaseball(HttpServletRequest req, CM_BS_TITLE bs) {
-		List<CM_BS_TITLE> baseball = ss.getMapper(BaseballMapper.class).getAllbaseball(bs);
+	public void setAllPostCount(int allPostCount) {
+		this.allPostCount = allPostCount;
+	}
+	
+	public void calcAllPostCount() {
+		BaseballSelector bsSel = new BaseballSelector("",null,null);
+		allPostCount = ss.getMapper(BaseballMapper.class).getAllBaseballPostCount(bsSel);
+	}
+
+
+	public void getAllBaseball(HttpServletRequest req, int pageNo) {
+		int count = 10;
+		int start = (pageNo -1) * count + 1;
+		int end = start + (count - 1);
 		
-		req.setAttribute("baseball", baseball);
+		BaseballSelector search = (BaseballSelector) req.getSession().getAttribute("search");
+		int postCount = 0;
+		if (search == null) {
+			search = new BaseballSelector("", new BigDecimal(start), new BigDecimal(end));
+			postCount = allPostCount;
+		} else {
+			search.setStart(new BigDecimal(start));
+			search.setEnd(new BigDecimal(end));
+			postCount = ss.getMapper(BaseballMapper.class).getAllBaseballPostCount(search);
+		}
+		
+		List<CM_BS_TITLE> posts = ss.getMapper(BaseballMapper.class).getAllbaseball(search);
+		
+		int pageCount = (int) Math.ceil(postCount / (double) count);
+		req.setAttribute("pageCount", pageCount);
+		
+		req.setAttribute("baseball", posts);
+		req.setAttribute("curPage", pageNo);
+		
+		
 		
 	}
 

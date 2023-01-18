@@ -31,7 +31,7 @@
 					<li class="nav__item"><a href="news.sports.go"
 						class="nav__link">스포츠</a></li>
 						
-					<li class="nav__item"><a href="team.event.main.go"
+					<li class="nav__item"><a href="club.event.main.go"
 						class="nav__link">구단공식이벤트</a></li>
 						
 					<li class="nav__item"><a href="sports.info.main.go"
@@ -49,9 +49,9 @@
 
 
 	<div>
-	<form action="teamEvent.search.do"></form>
+	<form action="clubEvent.search.do"></form>
 		<select>
-			<option value="ie_te_team">구단</option>
+			<option value="ie_te_club">구단</option>
 			<option value="ie_te_title">제목</option>
 		</select> <input type="text" placeholder="입력">
 		<button>검색</button>
@@ -60,7 +60,7 @@
 				<a href="" onclick="alert('로그인하세요')">새글쓰기</a>
 			</c:when>
 			<c:otherwise>
-				<a href="teamEvent.insert.go">새글쓰기</a>
+				<a href="clubEvent.insert.go">새글쓰기</a>
 			</c:otherwise>
 		</c:choose>
 	</div>
@@ -77,11 +77,11 @@
 			</tr>
 		</thead>
 		<tbody>
-			<c:forEach var="te" items="${SearchTeamEvent }">
+			<c:forEach var="te" items="${SearchclubEvent }">
 				<tr>
 					<td>${te.ie_te_no }</td>
-					<td>${te.ie_te_team }</td>
-					<td><a style="cursor: pointer; color: blue;" href="team.event.detail.go?ie_te_no=${te.ie_te_no}">${te.ie_te_title }</a></td>
+					<td>${te.ie_te_club }</td>
+					<td><a style="cursor: pointer; color: blue;" href="club.event.detail.go?ie_te_no=${te.ie_te_no}">${te.ie_te_title }</a></td>
 					<td>${te.ie_te_nick }</td>
 					<td>${te.ie_te_regdate }</td>
 					<td>${te.ie_te_views }</td>

@@ -77,6 +77,21 @@ public class TotoDAO {
 
 	public void updateToto(HttpServletRequest req, TotoDTO tt) {
 		
+		AccountDTO account = (AccountDTO) req.getSession().getAttribute("loginAccount");
+		tt.setToto_id(account.getAc_id());
+
+		String str = tt.getToto_content();
+		System.out.println("전체 경로 :" + str);
+		String[] contentSplit = str.split("/");
+		String topSplit = contentSplit[5];
+		System.out.println("첫번째 경로 :" + topSplit);
+		String[] midSplit = topSplit.split("\"");
+		System.out.println("중간 경로 :" + midSplit);
+		String bottomSplit = midSplit[0];
+		System.out.println("최종 경로 :" + bottomSplit);
+
+		tt.setToto_img(bottomSplit);
+		
 		if (ss.getMapper(GamesMapper.class).updateToto(tt) == 1) {
 			System.out.println("수정 성공");
 		} else {
@@ -96,68 +111,37 @@ public class TotoDAO {
 
 	public void insertToto(HttpServletRequest req, TotoDTO tt) {
 		
-		String path = req.getSession().getServletContext().getRealPath("resources/files/totoImg");
-		MultipartRequest mr = null;
-		System.out.println(path);
-		
-		AccountDTO loginMember = (AccountDTO) req.getSession().getAttribute("loginAccount");
-		String toto_id = loginMember.getAc_id();
-		String toto_nick = loginMember.getAc_nick();
-		
-		try {
-			mr = new MultipartRequest(req, path, 30*1024*1024, "utf-8", new DefaultFileRenamePolicy());
-			
-			
-			String toto_cat = mr.getParameter("toto_cat");
-			String toto_title = mr.getParameter("toto_title");
-			String toto_content = mr.getParameter("toto_content");
-			toto_content = toto_content.replace("\r\n", "<br>");
-			String toto_img = mr.getFilesystemName("toto_img");
-			String toto_video = mr.getFilesystemName("toto_video");
-			int toto_count = 0;
-			
-			System.out.println(toto_id);
-			System.out.println(toto_nick);
-			System.out.println(toto_cat);
-			System.out.println(toto_title);
-			System.out.println(toto_content);
-			System.out.println(toto_img);
-			System.out.println(toto_video);
-			System.out.println(toto_count);
-			
-			tt.setToto_id(toto_id);
-			tt.setToto_nick(toto_nick);
-			tt.setToto_cat(toto_cat);
-			tt.setToto_title(toto_title);
-			tt.setToto_content(toto_content);
-			if(toto_img != null) {
-				tt.setToto_img(toto_img);
-			}else {
-				tt.setToto_img(" ");
-			}
-			if(toto_video != null) {
-				tt.setToto_video(toto_video);
-			}else {
-				tt.setToto_video(" ");
-			}
-			tt.setToto_count(toto_count);
-			
-			
-			
-			if(ss.getMapper(GamesMapper.class).insertToto(tt)==1){
-				req.setAttribute("r", "등록성공");
-			}else {
-				req.setAttribute("r", "등록실패");
+		// ck에디터 그대로 복붙하면 됨
+				AccountDTO account = (AccountDTO) req.getSession().getAttribute("loginAccount");
+				// loginAccount 가져오는 내용
+				tt.setToto_id(account.getAc_id());
+				tt.setAc_nick(account.getAc_nick());
+				tt.setToto_title(req.getParameter("toto_title"));
+				tt.setToto_cat(req.getParameter("toto_cat"));
+				// wg_id(해당 게시판 작성자 아이디인데 DB설계 시 관계형으로 생성을 했기 때문에 어카운트의 ac_id를 set설정해줘야 한다)
+				String str = tt.getToto_content();
+				// wg_content(게시판 컨텐츠 sc_content)
+				System.out.println("전체 경로 :" + str);
+				// wg_img 삽입을 위해(전체 경로에서 split하는 내용임)
+				String[] contentSplit = str.split("/");
+				String topSplit = contentSplit[5];
+				System.out.println("첫번째 경로 :" + topSplit);
+				String[] midSplit = topSplit.split("\"");
+				System.out.println("중간 경로 :" + midSplit);
+				String bottomSplit = midSplit[0];
+				System.out.println("최종 경로 :" + bottomSplit);
 				
-			}
-			
-		} catch (IOException e) {
-			e.printStackTrace();
-			String fileName1 = mr.getFilesystemName("toto_img");
-			String fileName2 = mr.getFilesystemName("toto_vedio");
-			new File(path + "/" + fileName1).delete();
-			new File(path + "/" + fileName2).delete();
-		}
+				tt.setToto_img(bottomSplit);
+				//위 split 내용을 wg_img 컬럼에 set해준 것
+				int toto_count = 0;
+				tt.setToto_count(toto_count);
+				
+				if(ss.getMapper(GamesMapper.class).insertToto(tt)==1){
+					req.setAttribute("r", "등록성공");
+				}else {
+					req.setAttribute("r", "등록실패");
+					
+				}
 	}
 	
 	public void searchToto(HttpServletRequest req, TotoSelector ttSel) {

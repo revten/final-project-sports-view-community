@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface InfoEventMapper {
 	
-	int getAllTEPostCount(ClubEventSelector ttSel);
+	int getAllClubEventPostCount(ClubEventSelector ttSel);
 
 	List<ClubEventDTO> showAllClubEvent();
 

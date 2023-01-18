@@ -2,11 +2,11 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.tm.nmp.infoEvent.InfoEventMapper">
 
-<select id="getAllTEPostCount" parameterType="com.tm.nmp.infoEvent.TeamEventSelector" resultType="java.lang.Integer">
+<select id="getAllClubEventPostCount" parameterType="com.tm.nmp.infoEvent.ClubEventSelector" resultType="java.lang.Integer">
 select count(*) from ie_te_board, account where ie_te_id = ac_id and ie_te_title like '%'||#{search}||'%'
 </select>
 
-<select id="showAllTeamEvent" parameterType="com.tm.nmp.infoEvent.TeamEventSelector" resultType="com.tm.nmp.infoEvent.TeamEventDTO">
+<select id="showAllClubEvent" parameterType="com.tm.nmp.infoEvent.ClubEventSelector" resultType="com.tm.nmp.infoEvent.ClubEventDTO">
 select * from (
 			select rownum as rn, ie_te_no, ie_te_nick, ie_te_sports, ie_te_title, ie_te_content, ie_te_img, ie_te_video, ie_te_regdate
 			from (
@@ -16,35 +16,35 @@ select * from (
 	where rn &gt;= #{start} and rn &lt; = #{end}
 </select>
 
-<select id="showTeamEvent" parameterType="com.tm.nmp.infoEvent.TeamEventDTO" resultType="com.tm.nmp.infoEvent.TeamEventDTO">
+<select id="showClubEvent" parameterType="com.tm.nmp.infoEvent.ClubEventDTO" resultType="com.tm.nmp.infoEvent.ClubEventDTO">
 select * from ie_te_board where ie_te_no = #{ie_te_no}
 </select>
 
-<insert id="insertTeamEvent" parameterType="com.tm.nmp.infoEvent.TeamEventDTO">
-insert into IE_TE_BOARD values(ie_te_no_seq.nextval,#{ie_te_id},#{ie_te_nick},#{ie_te_sports},#{ie_te_team},#{ie_te_title},#{ie_te_content},sysdate,#{ie_te_img},#{ie_te_video},#{ie_te_views},#{ie_te_comtNo},#{ie_te_ip})
+<insert id="insertClubEvent" parameterType="com.tm.nmp.infoEvent.ClubEventDTO">
+insert into IE_TE_BOARD values(ie_te_no_seq.nextval,#{ie_te_id},#{ie_te_nick},#{ie_te_sports},#{ie_te_Club},#{ie_te_title},#{ie_te_content},sysdate,#{ie_te_img},#{ie_te_video},#{ie_te_views},#{ie_te_comtNo},#{ie_te_ip})
 </insert>
 
-<update id="updateTeamEvent" parameterType="com.tm.nmp.infoEvent.TeamEventDTO">
-update IE_TE_BOARD set ie_te_team = #{ie_te_team}, ie_te_title = #{ie_te_title}, ie_te_content = #{ie_te_content}, ie_te_img = #{ie_te_img} where  ie_te_no = #{ie_te_no}
+<update id="updateClubEvent" parameterType="com.tm.nmp.infoEvent.ClubEventDTO">
+update IE_TE_BOARD set ie_te_Club = #{ie_te_Club}, ie_te_title = #{ie_te_title}, ie_te_content = #{ie_te_content}, ie_te_img = #{ie_te_img} where  ie_te_no = #{ie_te_no}
 </update>
 
-<delete id="deleteTeamEvent"  parameterType="com.tm.nmp.infoEvent.TeamEventDTO">
+<delete id="deleteClubEvent"  parameterType="com.tm.nmp.infoEvent.ClubEventDTO">
 delete IE_TE_BOARD where ie_te_no = #{ie_te_no}
 </delete>
 
-<select id="showTeamEventBySearch" parameterType="com.tm.nmp.infoEvent.TeamEventDTO" resultType="com.tm.nmp.infoEvent.TeamEventDTO">
+<select id="showClubEventBySearch" parameterType="com.tm.nmp.infoEvent.ClubEventDTO" resultType="com.tm.nmp.infoEvent.ClubEventDTO">
 select * from IE_TE_BOARD where ie_te_title like '%'||#{ie_te_title}||'%'
 </select>
 
-<insert id="writeComment" parameterType="com.tm.nmp.infoEvent.TeamEventComment">
+<insert id="writeClubEventComment" parameterType="com.tm.nmp.infoEvent.ClubEventComment">
 insert into ie_te_comment_board values(ie_te_comment_seq.nextval,#{ie_te_comment_boardno},#{ie_te_comment_content},sysdate)
 </insert>
 
-<delete id="deleteComment" parameterType="com.tm.nmp.infoEvent.TeamEventComment">
+<delete id="deleteClubEventComment" parameterType="com.tm.nmp.infoEvent.ClubEventComment">
 delete from ie_te_comment_board where ie_te_comment_no = #{ie_te_comment_no}
 </delete>
 
-<update id="updateComment" parameterType="com.tm.nmp.infoEvent.TeamEventComment">
+<update id="updateClubEventComment" parameterType="com.tm.nmp.infoEvent.ClubEventComment">
 update ie_te_comment_board set ie_te_comment_content = #{ie_te_comment_content} where ie_te_comment_no = #{ie_te_comment_no}
 </update>
 

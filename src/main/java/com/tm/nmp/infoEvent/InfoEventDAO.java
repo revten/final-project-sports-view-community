@@ -34,7 +34,7 @@ public class InfoEventDAO {
 	
 	public void calcAllPostCount() {
 		ClubEventSelector ttSel = new ClubEventSelector("",null,null);
-		allPostCount = ss.getMapper(InfoEventMapper.class).getAllTEPostCount(ttSel);
+		allPostCount = ss.getMapper(InfoEventMapper.class).getAllClubEventPostCount(ttSel);
 	}
 
 	public void getClubEventAll(HttpServletRequest req, int pageNo) {
@@ -51,7 +51,7 @@ public class InfoEventDAO {
 		} else {
 			search.setStart(new BigDecimal(start));
 			search.setEnd(new BigDecimal(end));
-			postCount = ss.getMapper(InfoEventMapper.class).getAllTEPostCount(search);
+			postCount = ss.getMapper(InfoEventMapper.class).getAllClubEventPostCount(search);
 		}
 		
 		List<ClubEventDTO> posts = ss.getMapper(InfoEventMapper.class).showAllClubEvent();
