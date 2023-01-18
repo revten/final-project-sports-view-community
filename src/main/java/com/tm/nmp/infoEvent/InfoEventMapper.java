@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface InfoEventMapper {
 	
-	int getAllPostCount(TeamEventSelector ttSel);
+	int getAllTEPostCount(TeamEventSelector ttSel);
 
 	List<TeamEventDTO> showAllTeamEvent();
 

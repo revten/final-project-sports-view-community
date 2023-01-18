@@ -4,7 +4,7 @@ import java.util.List;
 
 public interface AdminMapper {
 
-	int getAllPostCount(AnswerSelector asSel);
+	int getAllANSPostCount(AnswerSelector asSel);
 	
 	List<AnswerDTO> getAnswerAll(AnswerSelector asSel);
 

@@ -50,6 +50,7 @@ public class HomeController {
 	@Autowired
 	private CM_WG_DAO wgDAO;
 	
+	
 	private boolean firstReq;
 
 	public HomeController() {
@@ -66,6 +67,7 @@ public class HomeController {
 			mpDAO.calcAllPostCount();
 			askDAO.calcAllPostCount();
 			asDAO.calcAllPostCount();
+			scDAO.calcAllPostCount();
 			firstReq = false;
 		}
 		
@@ -105,7 +107,7 @@ public class HomeController {
 	@RequestMapping(value = "/community.main.go", method = RequestMethod.GET)
 	public String communityMainGo(HttpServletRequest req, CM_SC_TITLE sc, CM_WG_TITLE wg) {
 		acDAO.loginCheck(req);
-		scDAO.getSoccerBoard(req, sc);
+		scDAO.getSoccerBoard(req, 1);
 		wgDAO.showWithGoList(req, wg);
 		req.setAttribute("contentPage", "community/communityMain.jsp");
 		return "index";

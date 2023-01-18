@@ -34,7 +34,7 @@ public class AnswerDAO {
 	
 	public void calcAllPostCount() {
 		AnswerSelector asSel = new AnswerSelector("",null,null);
-		allPostCount = ss.getMapper(AdminMapper.class).getAllPostCount(asSel);
+		allPostCount = ss.getMapper(AdminMapper.class).getAllANSPostCount(asSel);
 	}
 
 	public void getAnswerAll(HttpServletRequest req, int pageNo) {
@@ -51,7 +51,7 @@ public class AnswerDAO {
 		} else {
 			search.setStart(new BigDecimal(start));
 			search.setEnd(new BigDecimal(end));
-			postCount = ss.getMapper(AdminMapper.class).getAllPostCount(search);
+			postCount = ss.getMapper(AdminMapper.class).getAllANSPostCount(search);
 		}
 		
 		List<AnswerDTO> posts = ss.getMapper(AdminMapper.class).getAnswerAll(search);

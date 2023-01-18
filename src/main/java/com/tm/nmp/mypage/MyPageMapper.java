@@ -5,7 +5,7 @@ import java.util.List;
 
 public interface MyPageMapper {
 	
-	int getAllPostCount(MyPostSelector mpSel);
+	int getAllMPPostCount(MyPostSelector mpSel);
 	
 	int getAllAskCount(AskSelector askSel);
 

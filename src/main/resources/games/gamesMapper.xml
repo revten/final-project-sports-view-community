@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.tm.nmp.games.GamesMapper">
 
-<select id="getAllPostCount" parameterType="com.tm.nmp.games.TotoSelector" resultType="java.lang.Integer">
+<select id="getAllTTPostCount" parameterType="com.tm.nmp.games.TotoSelector" resultType="java.lang.Integer">
 select count(*) from toto_board, account where toto_id = ac_id and toto_title like '%'||#{search}||'%'
 </select>
 

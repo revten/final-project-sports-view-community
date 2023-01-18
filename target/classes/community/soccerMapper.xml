@@ -1,14 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.tm.nmp.community.SoccerMapper">
-	<select id="getSoccerBoard" resultType="com.tm.nmp.community.CM_SC_TITLE">
-		select * from cm_sc_board
+<select id="getAllSCPostCount" parameterType="com.tm.nmp.community.SoccerSelector" resultType="java.lang.Integer">
+select count(*) from cm_sc_board, account where cm_sc_id = ac_id and cm_sc_title like '%'||#{search}||'%'
+</select>
+
+	<select id="getSoccerBoard" parameterType="com.tm.nmp.community.SoccerSelector" resultType="com.tm.nmp.community.CM_SC_TITLE">
+		select * from (
+			select rownum as rn, cm_sc_no, ac_nick, cm_sc_cat, cm_sc_title, cm_sc_content, cm_sc_img, cm_sc_video, cm_sc_date
+			from (
+				select * from cm_sc_board, account where cm_sc_id = ac_id and cm_sc_title like '%'||#{search}||'%' order by cm_sc_date desc
+			)
+		)
+	where rn &gt;= #{start} and rn &lt; = #{end}
 	</select>
 	<select id="getSoccer" resultType="com.tm.nmp.community.CM_SC_TITLE">
 		select * from cm_sc_board where cm_sc_no = #{cm_sc_no}
 	</select>
 	<delete id="deleteSoccer" parameterType="com.tm.nmp.community.CM_SC_TITLE">
-		delete cm_sc_board where cm_sc_no=#{cm_sc_no}	
+		delete cm_sc_board where cm_sc_no=#{cm_sc_no}
 	</delete>
 	<update id="updateSoccer" parameterType="com.tm.nmp.community.CM_SC_TITLE">
 		update cm_sc_board set cm_sc_title=#{cm_sc_title}, cm_sc_content = #{cm_sc_content}
@@ -20,5 +30,21 @@
 		#{cm_sc_nick},#{cm_sc_id},#{cm_sc_title},#{cm_sc_content},
 		sysdate,#{cm_sc_img},#{cm_sc_video},#{cm_sc_cat})
 	</insert>
+	
+<select id="getAllcomment" parameterType="com.tm.nmp.community.CM_SC_TITLE" resultType="com.tm.nmp.community.CM_SC_CommentDTO">
+select * from cm_sc_comment_board where cm_sc_comment_boardno = #{cm_sc_no}
+</select>
+
+<insert id="writeComment" parameterType="com.tm.nmp.community.CM_SC_CommentDTO">
+insert into cm_sc_comment_board values(cm_sc_comment_seq.nextval,#{cm_sc_comment_boardno},#{cm_sc_comment_content},sysdate)
+</insert>
+
+<delete id="deleteComment" parameterType="com.tm.nmp.community.CM_SC_CommentDTO">
+delete from cm_sc_comment_board where cm_sc_comment_no = #{cm_sc_comment_no}
+</delete>
+
+<update id="updateComment" parameterType="com.tm.nmp.community.CM_SC_CommentDTO">
+update cm_sc_comment_board set cm_sc_comment_content = #{cm_sc_comment_content} where cm_sc_comment_no = #{cm_sc_comment_no}
+</update>
 
 </mapper>

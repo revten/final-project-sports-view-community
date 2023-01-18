@@ -13,9 +13,9 @@
 <h1>축구게시판</h1>${result }
 
 <table border="1" >	
-	<button onclick="location.href='soccerInsert.go'">게시글작성</button>
 		<thead>
 			<tr>
+	<td><button onclick="location.href='soccerInsert.go'">게시글작성</button></td>
 				<th>탭</th>
 				<th>제목</th>
 				<th>내용</th>
@@ -36,6 +36,15 @@
 			</tr>
 		</thead>
 </table>
+<c:if test="${curPage !=1 }">
+		<a href="soccer.page.change?p=${curPage-1 }" id="snsL">&lt;</a>
+	</c:if>
+	<c:forEach var="i" begin="1" end="${pageCount }">
+		<a href="soccer.page.change?p=${i }"> [${i }] </a>
+	</c:forEach>
+	<c:if test="${curPage != pageCount }">
+		<a href="soccer.page.change?p=${curPage+1 }" id="snsR">&gt;</a>
+	</c:if>
 
 
 

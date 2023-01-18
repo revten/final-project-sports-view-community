@@ -36,7 +36,7 @@ public class InfoEventDAO {
 	
 	public void calcAllPostCount() {
 		TeamEventSelector ttSel = new TeamEventSelector("",null,null);
-		allPostCount = ss.getMapper(InfoEventMapper.class).getAllPostCount(ttSel);
+		allPostCount = ss.getMapper(InfoEventMapper.class).getAllTEPostCount(ttSel);
 	}
 
 	public void getteamEventAll(HttpServletRequest req, int pageNo) {
@@ -53,7 +53,7 @@ public class InfoEventDAO {
 		} else {
 			search.setStart(new BigDecimal(start));
 			search.setEnd(new BigDecimal(end));
-			postCount = ss.getMapper(InfoEventMapper.class).getAllPostCount(search);
+			postCount = ss.getMapper(InfoEventMapper.class).getAllTEPostCount(search);
 		}
 		
 		List<TeamEventDTO> posts = ss.getMapper(InfoEventMapper.class).showAllTeamEvent();

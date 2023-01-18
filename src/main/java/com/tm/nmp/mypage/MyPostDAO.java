@@ -40,7 +40,7 @@ public class MyPostDAO {
 	
 	public void calcAllPostCount() {
 		MyPostSelector mpSel = new MyPostSelector("",null,null);
-		allPostCount = ss.getMapper(MyPageMapper.class).getAllPostCount(mpSel);
+		allPostCount = ss.getMapper(MyPageMapper.class).getAllMPPostCount(mpSel);
 	}
 
 	public void getMyPostAll(HttpServletRequest req, int pageNo) {
@@ -57,7 +57,7 @@ public class MyPostDAO {
 		} else {
 			search.setStart(new BigDecimal(start));
 			search.setEnd(new BigDecimal(end));
-			postCount = ss.getMapper(MyPageMapper.class).getAllPostCount(search);
+			postCount = ss.getMapper(MyPageMapper.class).getAllMPPostCount(search);
 		}
 		
 		List<MyPostDTO> posts = ss.getMapper(MyPageMapper.class).getMyPostAll(search);

@@ -1,5 +1,6 @@
 package com.tm.nmp.community;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -14,19 +15,56 @@ import com.tm.nmp.account.AccountDTO;
 
 @Service
 public class CM_SC_DAO {
+	
+	private int allPostCount;
 
 	@Autowired
 	private SqlSession ss;
+	
 
-	public void getSoccerBoard(HttpServletRequest req, CM_SC_TITLE sc) {
+	public int getAllPostCount() {
+		return allPostCount;
+	}
 
-		List<CM_SC_TITLE> soccer = ss.getMapper(SoccerMapper.class).getSoccerBoard(sc);
+	public void setAllPostCount(int allPostCount) {
+		this.allPostCount = allPostCount;
+	}
+	
+	public void calcAllPostCount() {
+		SoccerSelector scSel = new SoccerSelector("",null,null);
+		allPostCount = ss.getMapper(SoccerMapper.class).getAllSCPostCount(scSel);
+	}
 
-		req.setAttribute("soccer", soccer);
+	public void getSoccerBoard(HttpServletRequest req, int pageNo) {
+		
+		int count = 10;
+		int start = (pageNo -1) * count + 1;
+		int end = start + (count - 1);
+		
+		SoccerSelector search = (SoccerSelector) req.getSession().getAttribute("search");
+		int postCount = 0;
+		if (search == null) {
+			search = new SoccerSelector("", new BigDecimal(start), new BigDecimal(end));
+			postCount = allPostCount;
+		} else {
+			search.setStart(new BigDecimal(start));
+			search.setEnd(new BigDecimal(end));
+			postCount = ss.getMapper(SoccerMapper.class).getAllSCPostCount(search);
+		}
+		
+		List<CM_SC_TITLE> posts = ss.getMapper(SoccerMapper.class).getSoccerBoard(search);
+		
+		int pageCount = (int) Math.ceil(postCount / (double) count);
+		req.setAttribute("pageCount", pageCount);
+		
+		req.setAttribute("soccer", posts);
+		req.setAttribute("curPage", pageNo);
+
 	}
 
 	public void getSoccerDetail(HttpServletRequest req, CM_SC_TITLE sc) {
 		CM_SC_TITLE soccer = ss.getMapper(SoccerMapper.class).getSoccer(sc);
+		soccer.setCm_sc_comments(ss.getMapper(SoccerMapper.class).getAllcomment(sc));
 		req.setAttribute("soccer", soccer);
 	}
 
@@ -93,5 +131,44 @@ public class CM_SC_DAO {
 		}
 
 	}
+	
+	public void searchCM_SC(HttpServletRequest req, SoccerSelector scSel) {
+		req.getSession().setAttribute("search", scSel);
+	}
+	
+	public void writeComment(HttpServletRequest req, CM_SC_CommentDTO scc) {
+
+		String cm_sc_no = req.getParameter("cm_sc_no");
+		scc.setCm_sc_comment_boardno(Integer.parseInt(cm_sc_no));
+		String a = scc.getCm_sc_comment_content();
+		System.out.println(a);
+		
+
+		if (ss.getMapper(SoccerMapper.class).writeComment(scc) == 1) {
+			req.setAttribute("result", "댓글쓰기 성공");
+		} else {
+			req.setAttribute("result", "댓글쓰기실패");
+		}
+	}
+	
+	public void deleteComment(HttpServletRequest req, CM_SC_CommentDTO scc) {
+		if (ss.getMapper(SoccerMapper.class).deleteComment(scc) == 1) {
+			req.setAttribute("result", "댓글삭제 성공");
+		} else {
+			req.setAttribute("result", "댓글삭제실패");
+		}
+		req.setAttribute("result", "댓글삭제실패");
+	}
+	
+	public void updateComment(HttpServletRequest req, CM_SC_CommentDTO scc) {
+		if (ss.getMapper(SoccerMapper.class).updateComment(scc) == 1) {
+			req.setAttribute("result", "댓글수정 성공");
+		} else {
+			req.setAttribute("result", "댓글수정 실패");
+		}
+		req.setAttribute("result", "댓글수정 실패");
+	}
+	
+	
 
 }

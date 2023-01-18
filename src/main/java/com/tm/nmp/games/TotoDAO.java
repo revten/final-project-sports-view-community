@@ -37,7 +37,7 @@ public class TotoDAO {
 	
 	public void calcAllPostCount() {
 		TotoSelector ttSel = new TotoSelector("",null,null);
-		allPostCount = ss.getMapper(GamesMapper.class).getAllPostCount(ttSel);
+		allPostCount = ss.getMapper(GamesMapper.class).getAllTTPostCount(ttSel);
 	}
 	
 
@@ -55,7 +55,7 @@ public class TotoDAO {
 		} else {
 			search.setStart(new BigDecimal(start));
 			search.setEnd(new BigDecimal(end));
-			postCount = ss.getMapper(GamesMapper.class).getAllPostCount(search);
+			postCount = ss.getMapper(GamesMapper.class).getAllTTPostCount(search);
 		}
 		
 		List<TotoDTO> posts = ss.getMapper(GamesMapper.class).getTotoAll(search);
