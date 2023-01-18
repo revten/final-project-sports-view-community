@@ -4,7 +4,7 @@ import java.util.List;
 
 public interface SoccerMapper {
 	
-	int getAllSCPostCount(SoccerSelector scSel);
+	int getAllSoccerPostCount(SoccerSelector scSel);
 
 	public abstract List<CM_SC_TITLE> getSoccerBoard(SoccerSelector scSel);
 
@@ -18,11 +18,11 @@ public interface SoccerMapper {
 
 	List<CM_SC_CommentDTO> getAllcomment(CM_SC_TITLE sc);
 	
-	int writeComment(CM_SC_CommentDTO scc);
+	int writeSoccerComment(CM_SC_CommentDTO scc);
 
-	int deleteComment(CM_SC_CommentDTO scc);
+	int deleteSoccerComment(CM_SC_CommentDTO scc);
 
-	int updateComment(CM_SC_CommentDTO scc);
+	int updateSoccerComment(CM_SC_CommentDTO scc);
 
 
 

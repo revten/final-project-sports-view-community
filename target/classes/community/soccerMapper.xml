@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.tm.nmp.community.SoccerMapper">
-<select id="getAllSCPostCount" parameterType="com.tm.nmp.community.SoccerSelector" resultType="java.lang.Integer">
+<select id="getAllSoccerPostCount" parameterType="com.tm.nmp.community.SoccerSelector" resultType="java.lang.Integer">
 select count(*) from cm_sc_board, account where cm_sc_id = ac_id and cm_sc_title like '%'||#{search}||'%'
 </select>
 
@@ -31,19 +31,19 @@ select count(*) from cm_sc_board, account where cm_sc_id = ac_id and cm_sc_title
 		sysdate,#{cm_sc_img},#{cm_sc_video},#{cm_sc_cat})
 	</insert>
 	
-<select id="getAllcomment" parameterType="com.tm.nmp.community.CM_SC_TITLE" resultType="com.tm.nmp.community.CM_SC_CommentDTO">
+<select id="getAllSoccercomment" parameterType="com.tm.nmp.community.CM_SC_TITLE" resultType="com.tm.nmp.community.CM_SC_CommentDTO">
 select * from cm_sc_comment_board where cm_sc_comment_boardno = #{cm_sc_no}
 </select>
 
-<insert id="writeComment" parameterType="com.tm.nmp.community.CM_SC_CommentDTO">
+<insert id="writeSoccerComment" parameterType="com.tm.nmp.community.CM_SC_CommentDTO">
 insert into cm_sc_comment_board values(cm_sc_comment_seq.nextval,#{cm_sc_comment_boardno},#{cm_sc_comment_content},sysdate)
 </insert>
 
-<delete id="deleteComment" parameterType="com.tm.nmp.community.CM_SC_CommentDTO">
+<delete id="deleteSoccerComment" parameterType="com.tm.nmp.community.CM_SC_CommentDTO">
 delete from cm_sc_comment_board where cm_sc_comment_no = #{cm_sc_comment_no}
 </delete>
 
-<update id="updateComment" parameterType="com.tm.nmp.community.CM_SC_CommentDTO">
+<update id="updateSoccerComment" parameterType="com.tm.nmp.community.CM_SC_CommentDTO">
 update cm_sc_comment_board set cm_sc_comment_content = #{cm_sc_comment_content} where cm_sc_comment_no = #{cm_sc_comment_no}
 </update>
 

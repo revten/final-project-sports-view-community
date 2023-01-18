@@ -5,7 +5,7 @@ import java.util.List;
 
 public interface MyPageMapper {
 	
-	int getAllMPPostCount(MyPostSelector mpSel);
+	int getAllMyPostPostCount(MyPostSelector mpSel);
 	
 	int getAllAskCount(AskSelector askSel);
 
@@ -39,11 +39,11 @@ public interface MyPageMapper {
 
 	int updateAskComment(AskComment askC);
 
-	int writeComment(MyPostComment mpc);
+	int writeMyPostComment(MyPostComment mpc);
 
-	int deleteComment(MyPostComment mpc);
+	int deleteMyPostComment(MyPostComment mpc);
 
-	int updateComment(MyPostComment mpc);
+	int updateMyPostComment(MyPostComment mpc);
 
 
 	

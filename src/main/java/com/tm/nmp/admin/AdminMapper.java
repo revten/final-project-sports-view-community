@@ -4,7 +4,7 @@ import java.util.List;
 
 public interface AdminMapper {
 
-	int getAllANSPostCount(AnswerSelector asSel);
+	int getAllAnswerPostCount(AnswerSelector asSel);
 	
 	List<AnswerDTO> getAnswerAll(AnswerSelector asSel);
 
@@ -16,13 +16,13 @@ public interface AdminMapper {
 
 	int insertAnswer(AnswerDTO as);
 
-	List<AnswerComment> getAllComment(AnswerDTO as);
+	List<AnswerComment> getAllAnswerComment(AnswerDTO as);
 
-	int writeComment(AnswerComment asc);
+	int writeAnswerComment(AnswerComment asc);
 
-	int deleteComment(AnswerComment asc);
+	int deleteAnswerComment(AnswerComment asc);
 
-	int updateComment(AnswerComment asc);
+	int updateAnswerComment(AnswerComment asc);
 
 
 

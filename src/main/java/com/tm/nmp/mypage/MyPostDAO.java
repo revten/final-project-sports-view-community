@@ -40,7 +40,7 @@ public class MyPostDAO {
 	
 	public void calcAllPostCount() {
 		MyPostSelector mpSel = new MyPostSelector("",null,null);
-		allPostCount = ss.getMapper(MyPageMapper.class).getAllMPPostCount(mpSel);
+		allPostCount = ss.getMapper(MyPageMapper.class).getAllMyPostPostCount(mpSel);
 	}
 
 	public void getMyPostAll(HttpServletRequest req, int pageNo) {
@@ -57,7 +57,7 @@ public class MyPostDAO {
 		} else {
 			search.setStart(new BigDecimal(start));
 			search.setEnd(new BigDecimal(end));
-			postCount = ss.getMapper(MyPageMapper.class).getAllMPPostCount(search);
+			postCount = ss.getMapper(MyPageMapper.class).getAllMyPostPostCount(search);
 		}
 		
 		List<MyPostDTO> posts = ss.getMapper(MyPageMapper.class).getMyPostAll(search);
@@ -173,7 +173,7 @@ public class MyPostDAO {
 		System.out.println(a);
 		
 
-		if (ss.getMapper(MyPageMapper.class).writeComment(mpc) == 1) {
+		if (ss.getMapper(MyPageMapper.class).writeMyPostComment(mpc) == 1) {
 			req.setAttribute("result", "댓글쓰기 성공");
 		} else {
 			req.setAttribute("result", "댓글쓰기실패");
@@ -181,7 +181,7 @@ public class MyPostDAO {
 	}
 	
 	public void deleteComment(HttpServletRequest req, MyPostComment mpc) {
-		if (ss.getMapper(MyPageMapper.class).deleteComment(mpc) == 1) {
+		if (ss.getMapper(MyPageMapper.class).deleteMyPostComment(mpc) == 1) {
 			req.setAttribute("result", "댓글삭제 성공");
 		} else {
 			req.setAttribute("result", "댓글삭제실패");
@@ -190,7 +190,7 @@ public class MyPostDAO {
 	}
 	
 	public void updateComment(HttpServletRequest req, MyPostComment mpc) {
-		if (ss.getMapper(MyPageMapper.class).updateComment(mpc) == 1) {
+		if (ss.getMapper(MyPageMapper.class).updateMyPostComment(mpc) == 1) {
 			req.setAttribute("result", "댓글수정 성공");
 		} else {
 			req.setAttribute("result", "댓글수정 실패");

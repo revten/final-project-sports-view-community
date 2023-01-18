@@ -32,7 +32,7 @@ public class CM_SC_DAO {
 	
 	public void calcAllPostCount() {
 		SoccerSelector scSel = new SoccerSelector("",null,null);
-		allPostCount = ss.getMapper(SoccerMapper.class).getAllSCPostCount(scSel);
+		allPostCount = ss.getMapper(SoccerMapper.class).getAllSoccerPostCount(scSel);
 	}
 
 	public void getSoccerBoard(HttpServletRequest req, int pageNo) {
@@ -49,7 +49,7 @@ public class CM_SC_DAO {
 		} else {
 			search.setStart(new BigDecimal(start));
 			search.setEnd(new BigDecimal(end));
-			postCount = ss.getMapper(SoccerMapper.class).getAllSCPostCount(search);
+			postCount = ss.getMapper(SoccerMapper.class).getAllSoccerPostCount(search);
 		}
 		
 		List<CM_SC_TITLE> posts = ss.getMapper(SoccerMapper.class).getSoccerBoard(search);
@@ -144,7 +144,7 @@ public class CM_SC_DAO {
 		System.out.println(a);
 		
 
-		if (ss.getMapper(SoccerMapper.class).writeComment(scc) == 1) {
+		if (ss.getMapper(SoccerMapper.class).writeSoccerComment(scc) == 1) {
 			req.setAttribute("result", "댓글쓰기 성공");
 		} else {
 			req.setAttribute("result", "댓글쓰기실패");
@@ -152,7 +152,7 @@ public class CM_SC_DAO {
 	}
 	
 	public void deleteComment(HttpServletRequest req, CM_SC_CommentDTO scc) {
-		if (ss.getMapper(SoccerMapper.class).deleteComment(scc) == 1) {
+		if (ss.getMapper(SoccerMapper.class).deleteSoccerComment(scc) == 1) {
 			req.setAttribute("result", "댓글삭제 성공");
 		} else {
 			req.setAttribute("result", "댓글삭제실패");
@@ -161,7 +161,7 @@ public class CM_SC_DAO {
 	}
 	
 	public void updateComment(HttpServletRequest req, CM_SC_CommentDTO scc) {
-		if (ss.getMapper(SoccerMapper.class).updateComment(scc) == 1) {
+		if (ss.getMapper(SoccerMapper.class).updateSoccerComment(scc) == 1) {
 			req.setAttribute("result", "댓글수정 성공");
 		} else {
 			req.setAttribute("result", "댓글수정 실패");
