@@ -9,13 +9,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.tm.nmp.account.AccountDAO;
+import com.tm.nmp.account.AC_US_DAO;
 
 @Controller
 public class NewsController {
 
 	@Autowired
-	private AccountDAO acDAO;
+	private AC_US_DAO acDAO;
 
 	@Autowired
 	private NewsDAO nsDAO;

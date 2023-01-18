@@ -12,7 +12,7 @@ import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
 
 @Service
-public class AccountDAO {
+public class AC_US_DAO {
 
 	@Autowired
 	private SqlSession ss;
@@ -21,16 +21,36 @@ public class AccountDAO {
 	private JavaMailSender mailSender;
 
 	public boolean loginCheck(HttpServletRequest req) {
-		AccountDTO a = (AccountDTO) req.getSession().getAttribute("loginAccount");
+		AC_US_TITLE a = (AC_US_TITLE) req.getSession().getAttribute("loginAccount");
 		if (a != null) {
 			req.setAttribute("loginPage", "account/loginSuccess.jsp");
+			System.out.println("로그인 성공");
 			return true;
 		}
 		req.setAttribute("loginPage", "account/login.jsp");
+		System.out.println("로그인 실패");
 		return false;
 	}
 
-	public void accountRegDo(HttpServletRequest req, AccountDTO ac) {
+	public static String getClientIp(HttpServletRequest req) {
+
+		String[] header_IPs = { "HTTP_CLIENT_IP", "HTTP_X_FORWARDED_FOR", "HTTP_X_FORWARDED",
+				"HTTP_X_CLUSTER_CLIENT_IP", "HTTP_FORWARDED_FOR", "HTTP_FORWARDED", "X-Forwarded-For",
+				"Proxy-Client-IP", "WL-Proxy-Client-IP" };
+
+		for (String header : header_IPs) {
+			String ip = req.getHeader(header);
+
+			if (ip != null && !"unknown".equalsIgnoreCase(ip) && ip.length() != 0) {
+
+				return ip;
+			}
+		}
+
+		return req.getRemoteAddr();
+	}
+
+	public void accountRegDo(HttpServletRequest req, AC_US_TITLE ac) {
 		if (ss.getMapper(AccountMapper.class).regAccount(ac) == 1) {
 			System.out.println("가입 성공");
 		} else {
@@ -38,24 +58,15 @@ public class AccountDAO {
 		}
 	}
 
-	public void accountLoginDo(HttpServletRequest req, AccountDTO ac) {
-		//AccountDTO dbAccount = ss.getMapper(AccountMapper.class).accountLogin(ac);
-			AccountDTO dbAccount = new AccountDTO();
-			dbAccount.setAc_id("test");
-			dbAccount.setAc_pw("1234");
-			dbAccount.setAc_nick("테스트");
-			dbAccount.setAc_name("테스트");
+	public void accountLoginDo(HttpServletRequest req, AC_US_TITLE ac) {
+		 AC_US_TITLE dbAccount = ss.getMapper(AccountMapper.class).accountLogin(ac);
+		//AC_US_TITLE dbAccount = new AC_US_TITLE();
 		if (dbAccount != null) {
-			if (ac.getAc_pw().equals(dbAccount.getAc_pw())) {
+			if (ac.getUser_pwd().equals(dbAccount.getUser_pwd())) {
 				req.getSession().setAttribute("loginAccount", dbAccount);
 				req.getSession().setMaxInactiveInterval(60 * 60);
-			} else {
-				req.setAttribute("result", "비밀번호 오류");
 			}
-		} else {
-			req.setAttribute("result", "가입하지 않은 회원");
 		}
-
 	}
 
 	public void accountLogoutDo(HttpServletRequest req, AccountDTO ac) {
@@ -80,12 +91,38 @@ public class AccountDAO {
 		req.setAttribute("result", maskedId);
 	}
 
+	public String userEmailCheckDo(String user_email) {
+		Random random = new Random();
+		int checknum = random.nextInt(888888) + 111111;
+
+		// 이메일 보낼 양식
+		String setFrom = "frvlv@naver.com";
+		String toMail = user_email;
+		String title = "비밀번호 인증 이메일 입니다.";
+		String content = "인증번호는 " + checknum + " 입니다.";
+		try {
+			// 내용들을 담기
+			MimeMessage mes = mailSender.createMimeMessage();
+			MimeMessageHelper helper = new MimeMessageHelper(mes, true, "utf-8");
+			helper.setFrom(setFrom);
+			helper.setTo(toMail);
+			helper.setSubject(title);
+			helper.setText(content);
+			mailSender.send(mes);
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return Integer.toString(checknum);
+	}
+
 	public String emailCheckDo(String ac_email) {
 		Random random = new Random();
 		int checknum = random.nextInt(888888) + 111111;
 
 		// 이메일 보낼 양식
-		String setFrom = "frvlv6@naver.com";
+		String setFrom = "frvlv@naver.com";
 		String toMail = ac_email;
 		String title = "비밀번호 인증 이메일 입니다.";
 		String content = "인증번호는 " + checknum + " 입니다.";
@@ -130,14 +167,14 @@ public class AccountDAO {
 		}
 	}
 
-	public int socialIdCheck(AccountDTO ac) {
-		System.out.println(ac.getAc_id());
-		System.out.println(ac.getAc_linkWhere());
+	public int socialIdCheck(AC_US_TITLE ac) {
+		System.out.println(ac.getUser_id_name());
+		System.out.println(ac.getUser_auth_type());
 		return ss.getMapper(AccountMapper.class).socialIdCheck(ac);
 	}
 
-	public void socialLogin(HttpServletRequest req, AccountDTO ac) {
-		AccountDTO dbMember = ss.getMapper(AccountMapper.class).accountLogin(ac);
+	public void socialLogin(HttpServletRequest req, AC_US_TITLE ac) {
+		AC_US_TITLE dbMember = ss.getMapper(AccountMapper.class).accountLogin(ac);
 		if (dbMember != null) {
 			System.out.println("로그인 성공");
 			req.getSession().setAttribute("loginAccount", dbMember);

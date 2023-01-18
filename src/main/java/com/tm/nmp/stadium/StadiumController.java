@@ -7,13 +7,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.tm.nmp.account.AccountDAO;
+import com.tm.nmp.account.AC_US_DAO;
 
 @Controller
 public class StadiumController {
 
 	@Autowired
-	private AccountDAO acDAO;
+	private AC_US_DAO acDAO;
 	
 	@Autowired
 	private StadiumDAO sdDAO;
@@ -29,6 +29,7 @@ public class StadiumController {
 	public String baseballStadiumGoDetail(HttpServletRequest req) {
 		acDAO.loginCheck(req);
 		sdDAO.viewBaseballSeat(req);
+		sdDAO.viewBaseballSeatDetail(req);
 		req.setAttribute("contentPage", "stadium/baseball/baseball_stadium_detail.jsp");
 		return "index";
 	}
@@ -44,6 +45,7 @@ public class StadiumController {
 	public String soccerStadiumGoDetail(HttpServletRequest req) {
 		acDAO.loginCheck(req);
 		sdDAO.viewSoccerSeat(req);
+		sdDAO.viewSoccerSeatDetail(req);
 		req.setAttribute("contentPage", "stadium/soccer/soccer_stadium_detail.jsp");
 		return "index";
 	}
