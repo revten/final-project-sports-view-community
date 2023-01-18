@@ -1,6 +1,7 @@
 package com.tm.nmp.community;
 
 import java.sql.Date;
+import java.util.List;
 
 public class CM_SC_TITLE {
 	private int cm_sc_no;
@@ -13,12 +14,16 @@ public class CM_SC_TITLE {
 	private String cm_sc_video;
 	private String cm_sc_cat;
 	
+	private List<CM_SC_CommentDTO> cm_sc_comments;
+
 	public CM_SC_TITLE() {
+		super();
 		// TODO Auto-generated constructor stub
 	}
 
 	public CM_SC_TITLE(int cm_sc_no, String cm_sc_nick, String cm_sc_id, String cm_sc_title, String cm_sc_content,
-			Date cm_sc_date, String cm_sc_img, String cm_sc_video, String cm_sc_cat) {
+			Date cm_sc_date, String cm_sc_img, String cm_sc_video, String cm_sc_cat,
+			List<CM_SC_CommentDTO> cm_sc_comments) {
 		super();
 		this.cm_sc_no = cm_sc_no;
 		this.cm_sc_nick = cm_sc_nick;
@@ -29,6 +34,7 @@ public class CM_SC_TITLE {
 		this.cm_sc_img = cm_sc_img;
 		this.cm_sc_video = cm_sc_video;
 		this.cm_sc_cat = cm_sc_cat;
+		this.cm_sc_comments = cm_sc_comments;
 	}
 
 	public int getCm_sc_no() {
@@ -102,5 +108,15 @@ public class CM_SC_TITLE {
 	public void setCm_sc_cat(String cm_sc_cat) {
 		this.cm_sc_cat = cm_sc_cat;
 	}
+
+	public List<CM_SC_CommentDTO> getCm_sc_comments() {
+		return cm_sc_comments;
+	}
+
+	public void setCm_sc_comments(List<CM_SC_CommentDTO> cm_sc_comments) {
+		this.cm_sc_comments = cm_sc_comments;
+	}
+	
+	
 	
 }

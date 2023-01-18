@@ -3,13 +3,13 @@ package com.tm.nmp.infoEvent;
 import java.util.Date;
 import java.util.List;
 
-public class TeamEventDTO {
+public class ClubEventDTO {
 
 	private int ie_te_no;
 	private String ie_te_id;
 	private String ie_te_nick;
 	private String ie_te_sports;
-	private String ie_te_team;
+	private String ie_te_club;
 	private String ie_te_title;
 	private String ie_te_content;
 	private Date ie_te_regdate;
@@ -19,22 +19,22 @@ public class TeamEventDTO {
 	private int ie_te_comtNo;
 	private String ie_te_ip;
 	
-	private List<TeamEventComment> ie_te_comments;
+	private List<ClubEventComment> ie_te_comments;
 
-	public TeamEventDTO() {
+	public ClubEventDTO() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public TeamEventDTO(int ie_te_no, String ie_te_id, String ie_te_nick, String ie_te_sports, String ie_te_team,
+	public ClubEventDTO(int ie_te_no, String ie_te_id, String ie_te_nick, String ie_te_sports, String ie_te_club,
 			String ie_te_title, String ie_te_content, Date ie_te_regdate, String ie_te_img, String ie_te_video,
-			int ie_te_views, int ie_te_comtNo, String ie_te_ip, List<TeamEventComment> ie_te_comments) {
+			int ie_te_views, int ie_te_comtNo, String ie_te_ip, List<ClubEventComment> ie_te_comments) {
 		super();
 		this.ie_te_no = ie_te_no;
 		this.ie_te_id = ie_te_id;
 		this.ie_te_nick = ie_te_nick;
 		this.ie_te_sports = ie_te_sports;
-		this.ie_te_team = ie_te_team;
+		this.ie_te_club = ie_te_club;
 		this.ie_te_title = ie_te_title;
 		this.ie_te_content = ie_te_content;
 		this.ie_te_regdate = ie_te_regdate;
@@ -78,12 +78,12 @@ public class TeamEventDTO {
 		this.ie_te_sports = ie_te_sports;
 	}
 
-	public String getIe_te_team() {
-		return ie_te_team;
+	public String getIe_te_club() {
+		return ie_te_club;
 	}
 
-	public void setIe_te_team(String ie_te_team) {
-		this.ie_te_team = ie_te_team;
+	public void setIe_te_club(String ie_te_club) {
+		this.ie_te_club = ie_te_club;
 	}
 
 	public String getIe_te_title() {
@@ -150,11 +150,11 @@ public class TeamEventDTO {
 		this.ie_te_ip = ie_te_ip;
 	}
 
-	public List<TeamEventComment> getIe_te_comments() {
+	public List<ClubEventComment> getIe_te_comments() {
 		return ie_te_comments;
 	}
 
-	public void setIe_te_comments(List<TeamEventComment> ie_te_comments) {
+	public void setIe_te_comments(List<ClubEventComment> ie_te_comments) {
 		this.ie_te_comments = ie_te_comments;
 	}
 	

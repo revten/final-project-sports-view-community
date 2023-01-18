@@ -61,6 +61,8 @@
 				<beans:value>classpath:community/reviewMapper.xml</beans:value>
 				<beans:value>classpath:community/baseballMapper.xml</beans:value>
 				<beans:value>classpath:community/soccerMapper.xml</beans:value>
+				<beans:value>classpath:community/basketballMapper.xml</beans:value>
+				<beans:value>classpath:community/volleyballMapper.xml</beans:value>
 				<beans:value>classpath:games/gamesAnalyzeBoardMapper.xml</beans:value>
 			</beans:list>
 		</beans:property>

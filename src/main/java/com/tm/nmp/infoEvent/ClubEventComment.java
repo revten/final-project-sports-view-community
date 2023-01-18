@@ -3,18 +3,18 @@ package com.tm.nmp.infoEvent;
 import java.math.BigDecimal;
 import java.util.Date;
 
-public class TeamEventComment {
+public class ClubEventComment {
 	
 	public BigDecimal ie_te_comment_no;
 	public int ie_te_comment_boardno;
 	public String ie_te_comment_content;
 	public Date ie_te_comment_date;
 	public String ac_nick;
-	public TeamEventComment() {
+	public ClubEventComment() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public TeamEventComment(BigDecimal ie_te_comment_no, int ie_te_comment_boardno, String ie_te_comment_content,
+	public ClubEventComment(BigDecimal ie_te_comment_no, int ie_te_comment_boardno, String ie_te_comment_content,
 			Date ie_te_comment_date, String ac_nick) {
 		super();
 		this.ie_te_comment_no = ie_te_comment_no;

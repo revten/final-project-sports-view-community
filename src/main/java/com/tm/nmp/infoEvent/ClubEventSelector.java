@@ -2,16 +2,16 @@ package com.tm.nmp.infoEvent;
 
 import java.math.BigDecimal;
 
-public class TeamEventSelector {
+public class ClubEventSelector {
 	
 	private String search;
 	private BigDecimal start;
 	private BigDecimal end;
-	public TeamEventSelector() {
+	public ClubEventSelector() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public TeamEventSelector(String search, BigDecimal start, BigDecimal end) {
+	public ClubEventSelector(String search, BigDecimal start, BigDecimal end) {
 		super();
 		this.search = search;
 		this.start = start;
