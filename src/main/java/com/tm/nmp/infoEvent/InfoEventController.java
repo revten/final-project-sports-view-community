@@ -20,11 +20,11 @@ public class InfoEventController {
 	private InfoEventDAO iDAO;
 	
 	
-	@RequestMapping(value = "/team.event.main.go", method = RequestMethod.GET)
-	public String teamEventMainGo(HttpServletRequest req, TeamEventDTO te) {
+	@RequestMapping(value = "/club.event.main.go", method = RequestMethod.GET)
+	public String clubEventMainGo(HttpServletRequest req, ClubEventDTO te) {
 		aDAO.loginCheck(req);
-		iDAO.getteamEventAll(req, 1);
-		req.setAttribute("contentPage", "infoEvent/teamEvent/teamEvent.jsp");
+		iDAO.getClubEventAll(req, 1);
+		req.setAttribute("contentPage", "infoEvent/clubEvent/clubEvent.jsp");
 		return "index";
 	}
 	

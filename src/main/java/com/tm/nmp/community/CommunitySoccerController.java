@@ -30,7 +30,7 @@ public class CommunitySoccerController {
 	public String soccerDeleteDo(HttpServletRequest req, CM_SC_TITLE sc) {
 		acDAO.loginCheck(req);
 		scDAO.deleteSoccer(req,sc);
-		scDAO.getSoccerBoard(req, sc);
+		scDAO.getSoccerBoard(req, 1);
 		req.setAttribute("contentPage", "community/soccer/soccerBoard.jsp");
 		return "index";
 	}
@@ -46,7 +46,7 @@ public class CommunitySoccerController {
 	public String soccerUpdateDo(HttpServletRequest req, CM_SC_TITLE sc) {
 		acDAO.loginCheck(req);
 		scDAO.updateSoccer(req, sc);
-		scDAO.getSoccerBoard(req, sc);
+		scDAO.getSoccerBoard(req, 1);
 		req.setAttribute("contentPage", "community/soccer/soccerBoard.jsp");
 		return "index";
 	}
@@ -62,7 +62,7 @@ public class CommunitySoccerController {
 	public String soccerInsertDo(HttpServletRequest req, CM_SC_TITLE sc) {
 		acDAO.loginCheck(req);
 		scDAO.insertSoccerBoard(req, sc);
-		scDAO.getSoccerBoard(req, sc);
+		scDAO.getSoccerBoard(req, 1);
 		req.setAttribute("contentPage", "community/soccer/soccerBoard.jsp");
 		return "index";
 	}

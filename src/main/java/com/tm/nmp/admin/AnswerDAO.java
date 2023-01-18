@@ -34,7 +34,7 @@ public class AnswerDAO {
 	
 	public void calcAllPostCount() {
 		AnswerSelector asSel = new AnswerSelector("",null,null);
-		allPostCount = ss.getMapper(AdminMapper.class).getAllPostCount(asSel);
+		allPostCount = ss.getMapper(AdminMapper.class).getAllAnswerPostCount(asSel);
 	}
 
 	public void getAnswerAll(HttpServletRequest req, int pageNo) {
@@ -51,7 +51,7 @@ public class AnswerDAO {
 		} else {
 			search.setStart(new BigDecimal(start));
 			search.setEnd(new BigDecimal(end));
-			postCount = ss.getMapper(AdminMapper.class).getAllPostCount(search);
+			postCount = ss.getMapper(AdminMapper.class).getAllAnswerPostCount(search);
 		}
 		
 		List<AnswerDTO> posts = ss.getMapper(AdminMapper.class).getAnswerAll(search);
@@ -67,7 +67,7 @@ public class AnswerDAO {
 
 	public void getAnswer(HttpServletRequest req, AnswerDTO as) {
 		AnswerDTO post = ss.getMapper(AdminMapper.class).getAnswer(as);
-		post.setAnswer_comments(ss.getMapper(AdminMapper.class).getAllComment(as));
+		post.setAnswer_comments(ss.getMapper(AdminMapper.class).getAllAnswerComment(as));
 		req.setAttribute("answer", post);
 		
 	}
@@ -167,7 +167,7 @@ public class AnswerDAO {
 		System.out.println(a);
 		
 
-		if (ss.getMapper(AdminMapper.class).writeComment(asc) == 1) {
+		if (ss.getMapper(AdminMapper.class).writeAnswerComment(asc) == 1) {
 			req.setAttribute("result", "댓글쓰기 성공");
 		} else {
 			req.setAttribute("result", "댓글쓰기실패");
@@ -175,7 +175,7 @@ public class AnswerDAO {
 	}
 	
 	public void deleteCemment(HttpServletRequest req, AnswerComment asc) {
-		if (ss.getMapper(AdminMapper.class).deleteComment(asc) == 1) {
+		if (ss.getMapper(AdminMapper.class).deleteAnswerComment(asc) == 1) {
 			req.setAttribute("result", "댓글삭제 성공");
 		} else {
 			req.setAttribute("result", "댓글삭제실패");
@@ -184,7 +184,7 @@ public class AnswerDAO {
 	}
 	
 	public void updateComment(HttpServletRequest req, AnswerComment asc) {
-		if (ss.getMapper(AdminMapper.class).updateComment(asc) == 1) {
+		if (ss.getMapper(AdminMapper.class).updateAnswerComment(asc) == 1) {
 			req.setAttribute("result", "댓글수정 성공");
 		} else {
 			req.setAttribute("result", "댓글수정 실패");

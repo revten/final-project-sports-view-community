@@ -3,7 +3,7 @@
 <mapper namespace="com.tm.nmp.games.GamesAnalyzeBoardMapper">
 
 	<!-- 본글 -->
-	<select id="getAllPostCount"
+	<select id="getAllAnalyzePostCount"
 		parameterType="com.tm.nmp.games.GamesSelector"
 		resultType="java.lang.Integer">
 		select count(*)
@@ -13,7 +13,7 @@
 		and ANLYZ_TITLE like '%'||#{search}||'%'
 	</select>
 
-	<select id="getAllPost"
+	<select id="getAllAnalyzePost"
 		parameterType="com.tm.nmp.games.GamesSelector"
 		resultType="com.tm.nmp.games.GamesAnalyzeBoard">
 		select * from (
@@ -31,7 +31,7 @@
 		) where rn &gt;= #{start} and rn &lt; = #{end}
 	</select>
 
-	<insert id="writePost"
+	<insert id="writeAnalyzePost"
 		parameterType="com.tm.nmp.games.GamesAnalyzeBoard">
 		insert into analyze_board values
 		(analyze_board_seq.nextval, #{ANLYZ_ID},
@@ -40,20 +40,20 @@
 		sysdate)
 	</insert>
 
-	<delete id="deletePost"
+	<delete id="deleteAnalyzePost"
 		parameterType="com.tm.nmp.games.GamesAnalyzeBoard">
 		delete from analyze_board where ANLYZ_no =
 		#{ANLYZ_no}
 	</delete>
 
-	<update id="updatePost"
+	<update id="updateAnalyzePost"
 		parameterType="com.tm.nmp.games.GamesAnalyzeBoard">
 		update analyze_board set ANLYZ_CONTENT =
 		#{ANLYZ_CONTENT}, ANLYZ_TITLE= #{ANLYZ_TITLE} where ANLYZ_NO =
 		#{ANLYZ_NO}
 	</update>
 
-	<select id="getPost"
+	<select id="getAnalyzePost"
 		parameterType="com.tm.nmp.games.GamesAnalyzeBoard"
 		resultType="com.tm.nmp.games.GamesAnalyzeBoard">
 		select * from ANALYZE_BOARD where anlyz_no =
@@ -61,7 +61,7 @@
 	</select>
 
 	<!-- 댓글 -->
-	<select id="getAllCmnt"
+	<select id="getAllAnalyzeCmnt"
 		parameterType="com.tm.nmp.games.GamesAnalyzeBoard"
 		resultType="com.tm.nmp.games.GamesAnalyzeCmnt">
 		select * from ANALYZE_BOARD_CMNT where ANLYZ_CMNT_BLNGD =
