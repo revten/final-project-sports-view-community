@@ -29,6 +29,22 @@ public interface MyPageMapper {
 
 	int insertAsk(AskDTO ask);
 
+	List<AskComment> getAllAskComment(AskDTO ask);
+
+	List<MyPostComment> getAllPostComment(MyPostDTO mp);
+
+	int writeAskComment(AskComment askC);
+
+	int deleteAskComment(AskComment askC);
+
+	int updateAskComment(AskComment askC);
+
+	int writeComment(MyPostComment mpc);
+
+	int deleteComment(MyPostComment mpc);
+
+	int updateComment(MyPostComment mpc);
+
 
 	
 

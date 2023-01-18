@@ -23,6 +23,12 @@ public interface InfoEventMapper {
 
 	List<TeamEventComment> getAllcomment(TeamEventDTO te);
 
+	int writeComment(TeamEventComment tec);
+
+	int deleteComment(TeamEventComment tec);
+
+	int updateComment(TeamEventComment tec);
+
 
 
 

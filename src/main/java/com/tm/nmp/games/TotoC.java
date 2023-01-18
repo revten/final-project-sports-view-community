@@ -29,11 +29,21 @@ public class TotoC {
 	}
 	
 	
-	@RequestMapping(value = "toto.comment.insert", method = RequestMethod.GET)
+	@RequestMapping(value = "toto.comment.insert", method = RequestMethod.POST)
 	public String totoCommentinsert(HttpServletRequest req, TotoDTO tt, TotoComment ttc) {
 		
 		acDAO.loginCheck(req);
 		ttDAO.writeComment(req, ttc);
+		ttDAO.getToto(req, tt);
+		req.setAttribute("contentPage", "games/totoDetail.jsp");
+		return "index";
+	}
+	
+	@RequestMapping(value = "toto.comment.delete.do", method = RequestMethod.GET)
+	public String totoCommentdelete(HttpServletRequest req, TotoDTO tt, TotoComment ttc) {
+		
+		acDAO.loginCheck(req);
+		ttDAO.deleteComment(req, ttc);
 		ttDAO.getToto(req, tt);
 		req.setAttribute("contentPage", "games/totoDetail.jsp");
 		return "index";

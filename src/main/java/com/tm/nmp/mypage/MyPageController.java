@@ -56,7 +56,17 @@ public class MyPageController {
 
 		acDAO.loginCheck(req);
 		
-		askDAO.getAskAll(req);
+		askDAO.getAskAll(req, 1);
+		req.setAttribute("contentPage", "myPage/myPageService.jsp");
+		return "index";
+	}
+	
+	@RequestMapping(value = "/ask.page.change", method = RequestMethod.GET)
+	public String askPageChange(HttpServletRequest req, MyPostDTO mpt) {
+		int p = Integer.parseInt(req.getParameter("p"));
+		askDAO.getAskAll(req, p);
+		acDAO.loginCheck(req);
+		
 		req.setAttribute("contentPage", "myPage/myPageService.jsp");
 		return "index";
 	}

@@ -99,7 +99,7 @@ public class TotoDTO {
 	public void setToto_count(int toto_count) {
 		this.toto_count = toto_count;
 	}
-	public List<TotoComment> getToto_coments() {
+	public List<TotoComment> getToto_comments() {
 		return toto_comments;
 	}
 	public void setToto_comments(List<TotoComment> toto_comments) {

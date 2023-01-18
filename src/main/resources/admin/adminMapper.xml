@@ -2,8 +2,18 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.tm.nmp.admin.AdminMapper">
 
-<select id="getAnswerAll" resultType="com.tm.nmp.admin.AnswerDTO">
-select * from answer_board
+<select id="getAllPostCount" parameterType="com.tm.nmp.admin.AnswerSelector" resultType="java.lang.Integer">
+select count(*) from answer_board, account where answer_id = ac_id and answer_title like '%'||#{search}||'%'
+</select>
+
+<select id="getAnswerAll" parameterType="com.tm.nmp.admin.AnswerSelector" resultType="com.tm.nmp.admin.AnswerDTO">
+select * from (
+			select rownum as rn, answer_no, ac_nick, answer_cat, answer_title, answer_content, answer_img, answer_video, answer_date
+			from (
+				select * from answer_board, account where answer_id = ac_id and answer_title like '%'||#{search}||'%' order by answer_date desc
+			)
+		)
+	where rn &gt;= #{start} and rn &lt; = #{end}
 </select>
 
 <select id="getAnswer" parameterType="com.tm.nmp.admin.AnswerDTO" resultType="com.tm.nmp.admin.AnswerDTO">
@@ -21,5 +31,21 @@ delete from answer_board where answer_no = #{answer_no}
 <insert id="insertAnswer" parameterType="com.tm.nmp.admin.AnswerDTO">
 insert into answer_board values(answer_seq.nextval,#{answer_nick},#{answer_id},#{answer_title},#{answer_content},sysdate,#{answer_img},#{answer_video},#{answer_cat},#{answer_count})
 </insert>
+
+<select id="getAllComment" parameterType="com.tm.nmp.admin.AnswerDTO" resultType="com.tm.nmp.admin.AnswerComment">
+select * from answer_comment_board where answer_comment_boardno = #{answer_no}
+</select>
+
+<insert id="writeComment" parameterType="com.tm.nmp.admin.AnswerComment">
+insert into answer_comment_board values(answer_comment_seq.nextval,#{answer_comment_boardno},#{answer_comment_content},sysdate)
+</insert>
+
+<delete id="deleteComment" parameterType="com.tm.nmp.admin.AnswerComment">
+delete from answer_comment_board where answer_comment_no = #{answer_comment_no}
+</delete>
+
+<update id="updateComment" parameterType="com.tm.nmp.admin.AnswerComment">
+update answer_comment_board set answer_comment_content = #{answer_comment_content} where answer_comment_no = #{answer_comment_no}
+</update>
 
 </mapper>

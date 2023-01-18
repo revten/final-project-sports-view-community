@@ -22,7 +22,16 @@ public class AdminC {
 	public String adminAnswerBoardGo(HttpServletRequest req) {
 		acDAO.loginCheck(req);
 		
-		asDAO.getAnswerAll(req);
+		asDAO.getAnswerAll(req, 1);
+		req.setAttribute("contentPage", "admin/answerBoard.jsp");
+		return "index";
+	}
+	
+	@RequestMapping(value = "/ans.page.change", method = RequestMethod.GET)
+	public String answerPageChange(HttpServletRequest req) {
+		int p = Integer.parseInt(req.getParameter("p"));
+		asDAO.getAnswerAll(req, p);
+		acDAO.loginCheck(req);
 		req.setAttribute("contentPage", "admin/answerBoard.jsp");
 		return "index";
 	}

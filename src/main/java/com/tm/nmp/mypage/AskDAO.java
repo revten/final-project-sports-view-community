@@ -65,8 +65,9 @@ public class AskDAO {
 	}
 
 	public void getAsk(HttpServletRequest req, AskDTO ask) {
-
-		req.setAttribute("Ask", ss.getMapper(MyPageMapper.class).getAsk(ask));
+		AskDTO post = ss.getMapper(MyPageMapper.class).getAsk(ask);
+		post.setAsk_comments(ss.getMapper(MyPageMapper.class).getAllAskComment(ask));
+		req.setAttribute("ask", post);
 		
 	}
 
@@ -155,7 +156,39 @@ public class AskDAO {
 		}
 		
 	}
+
+	public void writeComment(HttpServletRequest req, AskComment askC) {
+
+		String ask_no = req.getParameter("ask_no");
+		askC.setAsk_comment_boardno(Integer.parseInt(ask_no));
+		String a = askC.getAsk_comment_content();
+		System.out.println(a);
+		
+
+		if (ss.getMapper(MyPageMapper.class).writeAskComment(askC) == 1) {
+			req.setAttribute("result", "댓글쓰기 성공");
+		} else {
+			req.setAttribute("result", "댓글쓰기실패");
+		}
+	}
 	
+	public void deleteCemment(HttpServletRequest req, AskComment askC) {
+		if (ss.getMapper(MyPageMapper.class).deleteAskComment(askC) == 1) {
+			req.setAttribute("result", "댓글삭제 성공");
+		} else {
+			req.setAttribute("result", "댓글삭제실패");
+		}
+		req.setAttribute("result", "댓글삭제실패");
+	}
+	
+	public void updateComment(HttpServletRequest req, AskComment askC) {
+		if (ss.getMapper(MyPageMapper.class).updateAskComment(askC) == 1) {
+			req.setAttribute("result", "댓글수정 성공");
+		} else {
+			req.setAttribute("result", "댓글수정 실패");
+		}
+		req.setAttribute("result", "댓글수정 실패");
+	}
 	
 
 }

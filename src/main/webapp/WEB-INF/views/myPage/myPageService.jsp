@@ -54,6 +54,7 @@
 	<c:if test="${curPage != pageCount }">
 		<a href="ask.page.change?p=${curPage+1 }" id="snsR">&gt;</a>
 	</c:if>
+	<br>
 	<button onclick="bye();" type="button">탈퇴문의</button>
 	<button type="button">고객문의</button>
 </body>
