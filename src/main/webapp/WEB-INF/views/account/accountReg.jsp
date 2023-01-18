@@ -21,13 +21,12 @@
 				<!-- user_table 아이디 인풋 창 -->
 				<input id="idInput" name="user_id_name">
 			</div>
-
 			<div class="accountReg__pwInput-1">비밀번호</div>
 			<div class="accountReg__pwInput-2">
 				<!-- user_table 비밀번호 인풋 창 -->
 				<input type="password" id="pwInput" name="user_pwd">
 			</div>
-
+				<!--  user_table ip adress 인풋 창 -->
 			<div class="accountReg__pwInput-1">비밀번호 확인</div>
 			<div class="accountReg__pwInput-2">
 				<input type="password" id="pwInput2" name="user_pwdConfirm"> <font
@@ -43,7 +42,8 @@
 			<div>
 				<input id="addrInput" name="ac_addr">
 			</div> -->
-			
+			<input type="hidden" id="ipv4" name="user_reg_ip" value="<%=request.getRemoteAddr()%>"><!-- value="${ipv4 }"-->
+			<input type="hidden" name="user_auth_type" value="0">
 			<div class="accountReg__emailInput-1">이메일</div>
 			<div class="accountReg__emailInput-2">
 				<!-- user_table 이메일 인풋 창 -->

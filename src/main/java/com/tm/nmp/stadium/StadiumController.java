@@ -29,6 +29,7 @@ public class StadiumController {
 	public String baseballStadiumGoDetail(HttpServletRequest req) {
 		acDAO.loginCheck(req);
 		sdDAO.viewBaseballSeat(req);
+		sdDAO.viewBaseballSeatDetail(req);
 		req.setAttribute("contentPage", "stadium/baseball/baseball_stadium_detail.jsp");
 		return "index";
 	}
@@ -44,6 +45,7 @@ public class StadiumController {
 	public String soccerStadiumGoDetail(HttpServletRequest req) {
 		acDAO.loginCheck(req);
 		sdDAO.viewSoccerSeat(req);
+		sdDAO.viewSoccerSeatDetail(req);
 		req.setAttribute("contentPage", "stadium/soccer/soccer_stadium_detail.jsp");
 		return "index";
 	}

@@ -4,7 +4,7 @@ public interface AccountMapper {
 
 	AccountDTO accountLogin(AccountDTO ac);
 
-	int regAccount(AccountDTO ac);
+	int regAccount(AC_US_TITLE ac);
 
 	int changePwDo(AccountDTO ac);
 
@@ -16,6 +16,10 @@ public interface AccountMapper {
 
 	int socialIdCheck(AccountDTO ac);
 
-	AC_US_TITLE searchId(AC_US_TITLE ac);
+	int socialIdCheck(AC_US_TITLE ac);
+
+	AC_US_TITLE accountLogin(AC_US_TITLE ac);
+
+	int regAccount(AccountDTO ac);
 
 }

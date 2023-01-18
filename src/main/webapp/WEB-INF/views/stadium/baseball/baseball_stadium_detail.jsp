@@ -20,13 +20,13 @@
 				style="position: relative; width: 500px; height: 500px; margin: 300px 0px 10px 0px;"
 				src="resources/files/stadium/baseball/seating_chart/${seat}"><br>
 			<map name="workmap">
-				<area style="cursor: pointer;" class="imgArea" id="north"
+				<area style="cursor: pointer;" class="imgArea" id="12"
 					coords="73,0,432,114" shape="rect">
-				<area style="cursor: pointer;" class="imgArea" id="west"
+				<area style="cursor: pointer;" class="imgArea" id="9"
 					coords="1,117,138,371" shape="rect">
-				<area style="cursor: pointer;" class="imgArea" id="east"
+				<area style="cursor: pointer;" class="imgArea" id="3"
 					coords="364,117,499,371" shape="rect">
-				<area style="cursor: pointer;" class="imgArea" id="south"
+				<area style="cursor: pointer;" class="imgArea" id="6"
 					coords="84,373,419,498" shape="rect">
 			</map>
 			<button id="reserveBtn">예매하러 가기</button>
@@ -37,13 +37,13 @@
 		</div>
 		<!-- 전경 사진 -->
 		<img style="display: none" id="test_east"
-			src="resources/files/stadium/baseball/seating_chart/test_e.jpg">
+			src="resources/final_img_file/baseball/seating_chart/${seatDetail }/test_3.jpg">
 		<img style="display: none" id="test_west"
-			src="resources/files/stadium/baseball/seating_chart/test_w.jpg">
+			src="resources/final_img_file/baseball/seating_chart/${seatDetail }/test_9.jpg">
 		<img style="display: none" id="test_south"
-			src="resources/files/stadium/baseball/seating_chart/test_s.jpg">
+			src="resources/final_img_file/baseball/seating_chart/${seatDetail }/test_6.jpg">
 		<img style="display: none" id="test_north"
-			src="resources/files/stadium/baseball/seating_chart/test_n.jpg">
+			src="resources/final_img_file/baseball/seating_chart/${seatDetail }/test_12.jpg">
 	</div>
 	<br>
 	<br>

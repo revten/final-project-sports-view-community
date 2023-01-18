@@ -23,7 +23,7 @@ function regUserId(){
 	let inputNum = $(this).val();
 	if (inputNum == $('#valid').val()) {
 		alert('인증 번호가 성공적으로 인증되었습니다.');
-		let id = $('#search_ac_id').val();
+		let id = $('#idInput').val();
 		console.log(email);
 		console.log(inputNum);
 		console.log(id);

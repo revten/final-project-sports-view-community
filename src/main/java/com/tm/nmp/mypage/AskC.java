@@ -7,13 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-<<<<<<< HEAD
 import com.tm.nmp.account.AC_US_DAO;
-=======
-import com.tm.nmp.account.AccountDAO;
-import com.tm.nmp.games.TotoComment;
-import com.tm.nmp.games.TotoDTO;
->>>>>>> 59c33bdae9205e8f0562e7150b367786ac50b9e5
 
 @Controller
 public class AskC {
