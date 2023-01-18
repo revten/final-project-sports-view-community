@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tm.nmp.community.VolleyballMapper">
+
+	<select id="getAllVolleyball" resultType="com.tm.nmp.community.CM_VL_TITLE">
+		select * from cm_vl_board
+	</select>
+	
+	<select id="getVolleyball" resultType="com.tm.nmp.community.CM_VL_TITLE">
+		select * from cm_vl_board where cm_vl_no = #{cm_vl_no}
+	</select>
+	
+	<delete id="deleteVolleyball" parameterType="com.tm.nmp.community.CM_VL_TITLE">
+		delete cm_vl_board where cm_vl_no=#{cm_vl_no}	
+	</delete>
+	
+	<update id="updateVolleyball" parameterType="com.tm.nmp.community.CM_VL_TITLE">
+		update cm_vl_board set cm_vl_title=#{cm_vl_title}, cm_vl_content = #{cm_vl_content}
+		where cm_vl_no=#{cm_vl_no}	
+	</update>
+	
+	<insert id="insertVolleyball" parameterType="com.tm.nmp.community.CM_VL_TITLE">
+		insert into cm_vl_board values(cm_vl_board_seq.nextval,
+		#{cm_vl_nick},#{cm_vl_id},#{cm_vl_title},#{cm_vl_content},
+		sysdate,#{cm_vl_img},#{cm_vl_video},#{cm_vl_cat})
+	</insert>
+	
+</mapper>

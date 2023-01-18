@@ -3,9 +3,10 @@ package com.tm.nmp.games;
 import java.util.List;
 
 
+
 public interface GamesMapper {
 
-	int getAllPostCount(TotoSelector ttSel);
+	int getAllTotoPostCount(TotoSelector ttSel);
 
 	public abstract List<TotoDTO> getTotoAll(TotoSelector ttSel);
 
@@ -19,13 +20,14 @@ public interface GamesMapper {
 	
 	TotoDTO getToto(TotoDTO tt);
 
-	List<TotoComment> getAllcomment(TotoDTO tt);
+	List<TotoComment> getAllTotocomment(TotoDTO tt);
 
-	int writeComment(TotoComment ttc);
+	int writeTotoComment(TotoComment ttc);
 
-	int deleteComment(TotoComment ttc);
+	int deleteTotoComment(TotoComment ttc);
 
-	int updateComment(TotoComment ttc);
+	int updateTotoComment(TotoComment ttc);
+
 
 
 }
