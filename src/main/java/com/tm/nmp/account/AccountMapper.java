@@ -16,4 +16,6 @@ public interface AccountMapper {
 
 	int socialIdCheck(AccountDTO ac);
 
+	AC_US_TITLE searchId(AC_US_TITLE ac);
+
 }

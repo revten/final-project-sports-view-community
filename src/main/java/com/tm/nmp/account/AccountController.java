@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 public class AccountController {
 	
 	@Autowired
-	private AccountDAO acDAO;
+	private AC_US_DAO acDAO;
 	
 	@RequestMapping(value = "/account.reg.go", method = RequestMethod.GET)
 	public String accountRegGo(HttpServletRequest req) {
@@ -37,7 +37,6 @@ public class AccountController {
 		return "index";
 	}
 
-	
 	@RequestMapping(value = "/account.logout.do", method = RequestMethod.GET)
 	public String accountLogoutDo(HttpServletRequest req, AccountDTO ac) {
 		acDAO.accountLogoutDo(req, ac);
@@ -75,7 +74,14 @@ public class AccountController {
 		req.setAttribute("contentPage", "account/pwReg.jsp");
 		return "index";
 	}
-
+	
+	@RequestMapping(value = "/user.email.check.do", method = RequestMethod.GET)
+	@ResponseBody
+	public String userEmailCheckDo(HttpServletRequest req, String user_email) {
+		acDAO.loginCheck(req);
+		return acDAO.userEmailCheckDo(user_email);
+	}
+	
 	@RequestMapping(value = "/email.check.do", method = RequestMethod.GET)
 	@ResponseBody
 	public String emailCheckDo(HttpServletRequest req, String ac_email) {

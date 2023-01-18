@@ -12,7 +12,7 @@ import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
 
 @Service
-public class AccountDAO {
+public class AC_US_DAO {
 
 	@Autowired
 	private SqlSession ss;
@@ -79,13 +79,39 @@ public class AccountDAO {
 		}
 		req.setAttribute("result", maskedId);
 	}
+	
+	public String userEmailCheckDo(String user_email) {
+		Random random = new Random();
+		int checknum = random.nextInt(888888) + 111111;
 
+		// 이메일 보낼 양식
+		String setFrom = "";
+		String toMail = user_email;
+		String title = "비밀번호 인증 이메일 입니다.";
+		String content = "인증번호는 " + checknum + " 입니다.";
+		try {
+			// 내용들을 담기
+			MimeMessage mes = mailSender.createMimeMessage();
+			MimeMessageHelper helper = new MimeMessageHelper(mes, true, "utf-8");
+			helper.setFrom(setFrom);
+			helper.setTo(toMail);
+			helper.setSubject(title);
+			helper.setText(content);
+			mailSender.send(mes);
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return Integer.toString(checknum);
+	}
+	
 	public String emailCheckDo(String ac_email) {
 		Random random = new Random();
 		int checknum = random.nextInt(888888) + 111111;
 
 		// 이메일 보낼 양식
-		String setFrom = "frvlv6@naver.com";
+		String setFrom = "";
 		String toMail = ac_email;
 		String title = "비밀번호 인증 이메일 입니다.";
 		String content = "인증번호는 " + checknum + " 입니다.";
