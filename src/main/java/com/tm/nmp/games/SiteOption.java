@@ -2,8 +2,6 @@ package com.tm.nmp.games;
 
 import javax.servlet.http.HttpServletRequest;
 
-import org.springframework.stereotype.Service;
-
 public class SiteOption {
 	
 	private int postCountPerPage; // 한페이지당 post개수

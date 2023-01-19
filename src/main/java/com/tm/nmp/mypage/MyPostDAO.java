@@ -14,12 +14,6 @@ import org.springframework.stereotype.Service;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 import com.tm.nmp.account.AccountDTO;
-import com.tm.nmp.community.ReviewMapper;
-import com.tm.nmp.games.GamesMapper;
-import com.tm.nmp.games.TotoComment;
-import com.tm.nmp.games.TotoDTO;
-import com.tm.nmp.games.TotoSelector;
-import com.tm.nmp.infoEvent.InfoEventMapper;
 
 @Service
 public class MyPostDAO {

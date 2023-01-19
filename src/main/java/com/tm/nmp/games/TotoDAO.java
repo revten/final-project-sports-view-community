@@ -14,7 +14,6 @@ import org.springframework.stereotype.Service;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 import com.tm.nmp.account.AccountDTO;
-import com.tm.nmp.mypage.MyPageMapper;
 
 @Service
 public class TotoDAO {
