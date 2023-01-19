@@ -7,10 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-
 import com.tm.nmp.account.AC_US_DAO;
-import com.tm.nmp.community.CM_RV_DAO;
-
 import com.tm.nmp.admin.AnswerDAO;
 import com.tm.nmp.community.CM_SC_DAO;
 import com.tm.nmp.community.CM_SC_TITLE;
@@ -18,7 +15,6 @@ import com.tm.nmp.community.CM_WG_DAO;
 import com.tm.nmp.community.CM_WG_TITLE;
 import com.tm.nmp.games.GamesAnalyzeDAO;
 import com.tm.nmp.games.TotoDAO;
-import com.tm.nmp.infoEvent.InfoEventDAO;
 import com.tm.nmp.mypage.AskDAO;
 import com.tm.nmp.mypage.MyPostDAO;
 
@@ -31,9 +27,6 @@ public class HomeController {
 
 	@Autowired
 	private GamesAnalyzeDAO gaDAO;
-	
-	@Autowired
-	private InfoEventDAO ieDAO;
 	
 	@Autowired
 	private TotoDAO ttDAO;
@@ -66,7 +59,6 @@ public class HomeController {
 		if (firstReq) {
 			gaDAO.calcAllPostCount();
 			ttDAO.calcAllPostCount();
-			ieDAO.calcAllPostCount();
 			mpDAO.calcAllPostCount();
 			askDAO.calcAllPostCount();
 			asDAO.calcAllPostCount();

@@ -132,6 +132,17 @@ function checkOne(element) {
 				<!-- profile 닉네임 인풋 창 -->
 				<input id="nickInput" name="profile_nick">
 			</div>
+			<div class="accountReg__pwInput-1">비밀번호</div>
+			<div class="accountReg__pwInput-2">
+				<!-- user_table 비밀번호 인풋 창 -->
+				<input type="password" id="pwInput" name="user_pwd">
+			</div>
+				<!--  user_table ip adress 인풋 창 -->
+			<div class="accountReg__pwInput-1">비밀번호 확인</div>
+			<div class="accountReg__pwInput-2">
+				<input type="password" id="pwInput2" name="user_pwdConfirm"> <font
+					id="pwConfirm" size="2"></font>
+			</div>
 			<!-- profile 리그 선택 창 -->
 			<div>
 				<label>좋아하는 리그 선택</label> <select name="league_id"
