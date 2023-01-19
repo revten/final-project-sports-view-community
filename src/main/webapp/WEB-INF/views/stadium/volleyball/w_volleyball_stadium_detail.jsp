@@ -37,13 +37,13 @@
 		</div>
 		<!-- 전경 사진 -->
 		<img style="display: none" id="test_3"
-			src="resources/final_img_file/volleyball_man/seating_chart/${seatDetail }/test_3.jpg">
+			src="resources/final_img_file/volleyball_w/seating_chart/${seatDetail }/test_3.jpg">
 		<img style="display: none" id="test_9"
-			src="resources/final_img_file/volleyball_man/seating_chart/${seatDetail }/test_9.jpg">
+			src="resources/final_img_file/volleyball_w/seating_chart/${seatDetail }/test_9.jpg">
 		<img style="display: none" id="test_6"
-			src="resources/final_img_file/volleyball_man/seating_chart/${seatDetail }/test_6.jpg">
+			src="resources/final_img_file/volleyball_w/seating_chart/${seatDetail }/test_6.jpg">
 		<img style="display: none" id="test_12"
-			src="resources/final_img_file/volleyball_man/seating_chart/${seatDetail }/test_12.jpg">
+			src="resources/final_img_file/volleyball_w/seating_chart/${seatDetail }/test_12.jpg">
 	</div>
 	<br>
 	<br>
