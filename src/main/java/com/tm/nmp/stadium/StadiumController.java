@@ -100,6 +100,7 @@ public class StadiumController {
 	public String volleyballStadiumGoDetail(HttpServletRequest req) {
 		acDAO.loginCheck(req);
 		sdDAO.viewVolleyballSeat(req);
+		sdDAO.viewVolleyballSeatDetail(req);
 		req.setAttribute("contentPage", "stadium/volleyball/volleyball_stadium_detail.jsp");
 		return "index";
 	}

@@ -14,7 +14,14 @@
 		#{user_id_name},#{user_pwd}, null,
 		sysdate,#{user_reg_ip},#{user_admin},#{user_auth_type},#{user_email},null)
 	</insert>
-
+	
+	<insert id="regProfile" parameterType="com.tm.nmp.account.AC_PF_TITLE">
+	insert into profile
+		values(profile_seq.nextval,
+		#{user_id},#{club_id}, #{league_id},
+		#{profile_nick}, #{profile_nick}, null, #{profile_sex}, #{profile_subs}, null, null, null)
+	</insert>
+	
 	<select id="searchId"
 		parameterType="com.tm.nmp.account.AccountDTO"
 		resultType="com.tm.nmp.account.AccountDTO">
@@ -46,5 +53,4 @@
 		parameterType="com.tm.nmp.account.AccountDTO">
 		delete from account where ac_id = #{ac_id}
 	</delete>
-
 </mapper>
