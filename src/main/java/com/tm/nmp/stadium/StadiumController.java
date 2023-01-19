@@ -96,7 +96,7 @@ public class StadiumController {
 		return "index";
 	}
 	
-	@RequestMapping(value = "/volleyball.stadium.go.detail", method = RequestMethod.GET)
+	@RequestMapping(value = "/volzleyball.stadium.go.detail", method = RequestMethod.GET)
 	public String volleyballStadiumGoDetail(HttpServletRequest req) {
 		acDAO.loginCheck(req);
 		sdDAO.viewVolleyballSeat(req);
