@@ -14,7 +14,6 @@ import org.springframework.stereotype.Service;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 import com.tm.nmp.account.AccountDTO;
-import com.tm.nmp.mypage.MyPageMapper;
 
 @Service
 public class TotoDAO {
@@ -37,7 +36,7 @@ public class TotoDAO {
 	
 	public void calcAllPostCount() {
 		TotoSelector ttSel = new TotoSelector("",null,null);
-		allPostCount = ss.getMapper(GamesMapper.class).getAllPostCount(ttSel);
+		allPostCount = ss.getMapper(GamesMapper.class).getAllTotoPostCount(ttSel);
 	}
 	
 
@@ -55,7 +54,7 @@ public class TotoDAO {
 		} else {
 			search.setStart(new BigDecimal(start));
 			search.setEnd(new BigDecimal(end));
-			postCount = ss.getMapper(GamesMapper.class).getAllPostCount(search);
+			postCount = ss.getMapper(GamesMapper.class).getAllTotoPostCount(search);
 		}
 		
 		List<TotoDTO> posts = ss.getMapper(GamesMapper.class).getTotoAll(search);
@@ -70,7 +69,7 @@ public class TotoDAO {
 
 	public void getToto(HttpServletRequest req, TotoDTO tt) {
 		TotoDTO post = ss.getMapper(GamesMapper.class).getToto(tt);
-		post.setToto_comments(ss.getMapper(GamesMapper.class).getAllcomment(tt));
+		post.setToto_comments(ss.getMapper(GamesMapper.class).getAllTotocomment(tt));
 		req.setAttribute("toto", post); // 
 		
 	}
@@ -173,7 +172,7 @@ public class TotoDAO {
 		System.out.println(a);
 		
 
-		if (ss.getMapper(GamesMapper.class).writeComment(ttc) == 1) {
+		if (ss.getMapper(GamesMapper.class).writeTotoComment(ttc) == 1) {
 			req.setAttribute("result", "댓글쓰기 성공");
 		} else {
 			req.setAttribute("result", "댓글쓰기실패");
@@ -181,7 +180,7 @@ public class TotoDAO {
 	}
 	
 	public void deleteComment(HttpServletRequest req, TotoComment ttc) {
-		if (ss.getMapper(GamesMapper.class).deleteComment(ttc) == 1) {
+		if (ss.getMapper(GamesMapper.class).deleteTotoComment(ttc) == 1) {
 			req.setAttribute("result", "댓글삭제 성공");
 		} else {
 			req.setAttribute("result", "댓글삭제실패");
@@ -190,7 +189,7 @@ public class TotoDAO {
 	}
 	
 	public void updateComment(HttpServletRequest req, TotoComment ttc) {
-		if (ss.getMapper(GamesMapper.class).updateComment(ttc) == 1) {
+		if (ss.getMapper(GamesMapper.class).updateTotoComment(ttc) == 1) {
 			req.setAttribute("result", "댓글수정 성공");
 		} else {
 			req.setAttribute("result", "댓글수정 실패");

@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.tm.nmp.infoEvent.InfoEventMapper">
 
-<select id="getAllPostCount" parameterType="com.tm.nmp.infoEvent.TeamEventSelector" resultType="java.lang.Integer">
+<select id="getAllTEPostCount" parameterType="com.tm.nmp.infoEvent.TeamEventSelector" resultType="java.lang.Integer">
 select count(*) from ie_te_board, account where ie_te_id = ac_id and ie_te_title like '%'||#{search}||'%'
 </select>
 

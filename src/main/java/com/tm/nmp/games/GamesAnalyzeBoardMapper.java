@@ -5,24 +5,24 @@ import java.util.List;
 public interface GamesAnalyzeBoardMapper {
 	
 	// 글
-	int getAllPostCount(GamesSelector gSel);
+	int getAllAnalyzePostCount(GamesSelector gSel);
 	
-	public abstract List<GamesAnalyzeBoard> getAllPost(GamesSelector gSel);
+	public abstract List<GamesAnalyzeBoard> getAllAnalyzePost(GamesSelector gSel);
 	
-	int writePost(GamesAnalyzeBoard gp);
+	int writeAnalyzePost(GamesAnalyzeBoard gp);
 	
-	int deletePost(GamesAnalyzeBoard gp);
+	int deleteAnalyzePost(GamesAnalyzeBoard gp);
 	
-	int updatePost(GamesAnalyzeBoard gp);
+	int updateAnalyzePost(GamesAnalyzeBoard gp);
 	
 	// 댓글
-	GamesAnalyzeBoard getPost(GamesAnalyzeBoard gp);
+	GamesAnalyzeBoard getAnalyzePost(GamesAnalyzeBoard gp);
 
-	List<GamesAnalyzeCmnt> getAllCmnt(GamesAnalyzeBoard gp);
+	List<GamesAnalyzeCmnt> getAllAnalyzeCmnt(GamesAnalyzeBoard gp);
 	
-	int deleteCmnt(GamesAnalyzeCmnt gc);
+	int deleteAnalyzeCmnt(GamesAnalyzeCmnt gc);
 	
-	int writeCmnt(GamesAnalyzeCmnt gc);
+	int writeAnalyzeCmnt(GamesAnalyzeCmnt gc);
 	
 	
 }

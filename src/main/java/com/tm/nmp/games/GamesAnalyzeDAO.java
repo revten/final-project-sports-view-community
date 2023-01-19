@@ -10,8 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.tm.nmp.account.AccountDTO;
-import com.tm.nmp.community.CM_RV_TITLE;
-import com.tm.nmp.community.ReviewMapper;
 
 @Service
 public class GamesAnalyzeDAO {
@@ -34,7 +32,7 @@ public class GamesAnalyzeDAO {
 
 	public void calcAllPostCount() {
 		GamesSelector gSel = new GamesSelector("", null, null);
-		allPostCount = ss.getMapper(GamesAnalyzeBoardMapper.class).getAllPostCount(gSel);
+		allPostCount = ss.getMapper(GamesAnalyzeBoardMapper.class).getAllAnalyzePostCount(gSel);
 	}
 
 	public void getAllPost(HttpServletRequest req, int pageNo) {
@@ -52,11 +50,11 @@ public class GamesAnalyzeDAO {
 		} else {
 			search.setStart(new BigDecimal(start));
 			search.setEnd(new BigDecimal(end));
-			postCount = ss.getMapper(GamesAnalyzeBoardMapper.class).getAllPostCount(search);
+			postCount = ss.getMapper(GamesAnalyzeBoardMapper.class).getAllAnalyzePostCount(search);
 		}
 
 		// 체크
-		List<GamesAnalyzeBoard> posts = ss.getMapper(GamesAnalyzeBoardMapper.class).getAllPost(search);
+		List<GamesAnalyzeBoard> posts = ss.getMapper(GamesAnalyzeBoardMapper.class).getAllAnalyzePost(search);
 
 //		for (GamesAnalyzeBoard post : posts) {
 //			post.anlyz_cmnts(ss.getMapper( .class).getReply(post));
@@ -71,8 +69,8 @@ public class GamesAnalyzeDAO {
 	
 
 	public void getPost(HttpServletRequest req, GamesAnalyzeBoard gp) {
-		GamesAnalyzeBoard post  = ss.getMapper(GamesAnalyzeBoardMapper.class).getPost(gp);
-		post.setAnlyz_cmnts(ss.getMapper(GamesAnalyzeBoardMapper.class).getAllCmnt(gp));
+		GamesAnalyzeBoard post  = ss.getMapper(GamesAnalyzeBoardMapper.class).getAnalyzePost(gp);
+		post.setAnlyz_cmnts(ss.getMapper(GamesAnalyzeBoardMapper.class).getAllAnalyzeCmnt(gp));
 		req.setAttribute("post", post);
 	}
 
@@ -89,7 +87,7 @@ public class GamesAnalyzeDAO {
 		String gp_txt = gp.getAnlyz_content();
 		gp.setAnlyz_content(gp_txt.replace("\r\n", "<br>"));
 
-		if (ss.getMapper(GamesAnalyzeBoardMapper.class).writePost(gp) == 1) {
+		if (ss.getMapper(GamesAnalyzeBoardMapper.class).writeAnalyzePost(gp) == 1) {
 			req.setAttribute("result", "글쓰기 성공");
 			req.getSession().setAttribute("successToken", token);
 			// 처음 쓰면 189
@@ -100,7 +98,7 @@ public class GamesAnalyzeDAO {
 	}
 
 	public void deletePost(HttpServletRequest req, GamesAnalyzeBoard gp) {
-		if (ss.getMapper(GamesAnalyzeBoardMapper.class).deletePost(gp) == 1) {
+		if (ss.getMapper(GamesAnalyzeBoardMapper.class).deleteAnalyzePost(gp) == 1) {
 			req.setAttribute("result", "글삭제 성공");
 			allPostCount--;
 		} else {
@@ -110,7 +108,7 @@ public class GamesAnalyzeDAO {
 	}
 
 	public void updatePost(HttpServletRequest req, GamesAnalyzeBoard gp) {
-		if (ss.getMapper(GamesAnalyzeBoardMapper.class).updatePost(gp) == 1) {
+		if (ss.getMapper(GamesAnalyzeBoardMapper.class).updateAnalyzePost(gp) == 1) {
 			req.setAttribute("result", "글수정 성공");
 		} else {
 			req.setAttribute("result", "글수정 실패");

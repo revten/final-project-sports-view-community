@@ -7,7 +7,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.tm.nmp.account.AccountDAO;
+
+import com.tm.nmp.account.AC_US_DAO;
+import com.tm.nmp.community.CM_RV_DAO;
+
 import com.tm.nmp.admin.AnswerDAO;
 import com.tm.nmp.community.CM_SC_DAO;
 import com.tm.nmp.community.CM_SC_TITLE;
@@ -24,7 +27,7 @@ public class HomeController {
 
 
 	@Autowired
-	private AccountDAO acDAO;
+	private AC_US_DAO acDAO;
 
 	@Autowired
 	private GamesAnalyzeDAO gaDAO;
@@ -50,6 +53,7 @@ public class HomeController {
 	@Autowired
 	private CM_WG_DAO wgDAO;
 	
+	
 	private boolean firstReq;
 
 	public HomeController() {
@@ -66,6 +70,7 @@ public class HomeController {
 			mpDAO.calcAllPostCount();
 			askDAO.calcAllPostCount();
 			asDAO.calcAllPostCount();
+			scDAO.calcAllPostCount();
 			firstReq = false;
 		}
 		
@@ -105,7 +110,7 @@ public class HomeController {
 	@RequestMapping(value = "/community.main.go", method = RequestMethod.GET)
 	public String communityMainGo(HttpServletRequest req, CM_SC_TITLE sc, CM_WG_TITLE wg) {
 		acDAO.loginCheck(req);
-		scDAO.getSoccerBoard(req, sc);
+		scDAO.getSoccerBoard(req, 1);
 		wgDAO.showWithGoList(req, wg);
 		req.setAttribute("contentPage", "community/communityMain.jsp");
 		return "index";

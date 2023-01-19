@@ -6,28 +6,28 @@ import java.util.List;
 
 public interface InfoEventMapper {
 	
-	int getAllPostCount(TeamEventSelector ttSel);
+	int getAllTEPostCount(ClubEventSelector ttSel);
 
-	List<TeamEventDTO> showAllTeamEvent();
+	List<ClubEventDTO> showAllClubEvent();
 
-	TeamEventDTO showTeamEvent(TeamEventDTO te);
+	ClubEventDTO showClubEvent(ClubEventDTO te);
 
-	int insertTeamEvent(TeamEventDTO te);
+	int insertClubEvent(ClubEventDTO te);
 
-	int updateTeamEvent(TeamEventDTO te);
+	int updateClubEvent(ClubEventDTO te);
 
-	int deleteTeamEvent(TeamEventDTO te);
+	int deleteClubEvent(ClubEventDTO te);
 
-	List<TeamEventDTO> showTeamEventBySearch(TeamEventDTO te);
+	List<ClubEventDTO> showClubEventBySearch(ClubEventDTO te);
 
 
-	List<TeamEventComment> getAllcomment(TeamEventDTO te);
+	List<ClubEventComment> getAllcomment(ClubEventDTO te);
 
-	int writeComment(TeamEventComment tec);
+	int writeClubEventComment(ClubEventComment tec);
 
-	int deleteComment(TeamEventComment tec);
+	int deleteClubEventComment(ClubEventComment tec);
 
-	int updateComment(TeamEventComment tec);
+	int updateClubEventComment(ClubEventComment tec);
 
 
 

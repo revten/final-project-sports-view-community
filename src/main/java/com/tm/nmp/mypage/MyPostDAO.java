@@ -14,12 +14,6 @@ import org.springframework.stereotype.Service;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 import com.tm.nmp.account.AccountDTO;
-import com.tm.nmp.community.ReviewMapper;
-import com.tm.nmp.games.GamesMapper;
-import com.tm.nmp.games.TotoComment;
-import com.tm.nmp.games.TotoDTO;
-import com.tm.nmp.games.TotoSelector;
-import com.tm.nmp.infoEvent.InfoEventMapper;
 
 @Service
 public class MyPostDAO {
@@ -40,7 +34,7 @@ public class MyPostDAO {
 	
 	public void calcAllPostCount() {
 		MyPostSelector mpSel = new MyPostSelector("",null,null);
-		allPostCount = ss.getMapper(MyPageMapper.class).getAllPostCount(mpSel);
+		allPostCount = ss.getMapper(MyPageMapper.class).getAllMyPostPostCount(mpSel);
 	}
 
 	public void getMyPostAll(HttpServletRequest req, int pageNo) {
@@ -57,7 +51,7 @@ public class MyPostDAO {
 		} else {
 			search.setStart(new BigDecimal(start));
 			search.setEnd(new BigDecimal(end));
-			postCount = ss.getMapper(MyPageMapper.class).getAllPostCount(search);
+			postCount = ss.getMapper(MyPageMapper.class).getAllMyPostPostCount(search);
 		}
 		
 		List<MyPostDTO> posts = ss.getMapper(MyPageMapper.class).getMyPostAll(search);
@@ -173,7 +167,7 @@ public class MyPostDAO {
 		System.out.println(a);
 		
 
-		if (ss.getMapper(MyPageMapper.class).writeComment(mpc) == 1) {
+		if (ss.getMapper(MyPageMapper.class).writeMyPostComment(mpc) == 1) {
 			req.setAttribute("result", "댓글쓰기 성공");
 		} else {
 			req.setAttribute("result", "댓글쓰기실패");
@@ -181,7 +175,7 @@ public class MyPostDAO {
 	}
 	
 	public void deleteComment(HttpServletRequest req, MyPostComment mpc) {
-		if (ss.getMapper(MyPageMapper.class).deleteComment(mpc) == 1) {
+		if (ss.getMapper(MyPageMapper.class).deleteMyPostComment(mpc) == 1) {
 			req.setAttribute("result", "댓글삭제 성공");
 		} else {
 			req.setAttribute("result", "댓글삭제실패");
@@ -190,7 +184,7 @@ public class MyPostDAO {
 	}
 	
 	public void updateComment(HttpServletRequest req, MyPostComment mpc) {
-		if (ss.getMapper(MyPageMapper.class).updateComment(mpc) == 1) {
+		if (ss.getMapper(MyPageMapper.class).updateMyPostComment(mpc) == 1) {
 			req.setAttribute("result", "댓글수정 성공");
 		} else {
 			req.setAttribute("result", "댓글수정 실패");

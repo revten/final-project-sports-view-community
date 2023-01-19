@@ -7,24 +7,24 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.tm.nmp.account.AccountDAO;
+import com.tm.nmp.account.AC_US_DAO;
 
 @Controller
 public class InfoEventController {
 
 	
 	@Autowired
-	private AccountDAO aDAO;
+	private AC_US_DAO aDAO;
 	
 	@Autowired
 	private InfoEventDAO iDAO;
 	
 	
-	@RequestMapping(value = "/team.event.main.go", method = RequestMethod.GET)
-	public String teamEventMainGo(HttpServletRequest req, TeamEventDTO te) {
+	@RequestMapping(value = "/club.event.main.go", method = RequestMethod.GET)
+	public String clubEventMainGo(HttpServletRequest req, ClubEventDTO te) {
 		aDAO.loginCheck(req);
-		iDAO.getteamEventAll(req, 1);
-		req.setAttribute("contentPage", "infoEvent/teamEvent/teamEvent.jsp");
+		iDAO.getClubEventAll(req, 1);
+		req.setAttribute("contentPage", "infoEvent/clubEvent/clubEvent.jsp");
 		return "index";
 	}
 	

@@ -61,6 +61,8 @@
 				<beans:value>classpath:community/reviewMapper.xml</beans:value>
 				<beans:value>classpath:community/baseballMapper.xml</beans:value>
 				<beans:value>classpath:community/soccerMapper.xml</beans:value>
+				<beans:value>classpath:community/basketballMapper.xml</beans:value>
+				<beans:value>classpath:community/volleyballMapper.xml</beans:value>
 				<beans:value>classpath:games/gamesAnalyzeBoardMapper.xml</beans:value>
 			</beans:list>
 		</beans:property>
@@ -76,8 +78,8 @@
 		class="org.springframework.mail.javamail.JavaMailSenderImpl">
 		<beans:property name="host" value="smtp.naver.com" />
 		<beans:property name="port" value="465" />
-		<beans:property name="username" value="" />
-		<beans:property name="password" value="" />
+		<beans:property name="username" value="frvlv" />
+		<beans:property name="password" value="frv61822@@" />
 
 		<!-- 보안연결 SSL과 관련된 설정 -->
 		<beans:property name="javaMailProperties">
