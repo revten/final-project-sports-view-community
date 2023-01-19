@@ -18,6 +18,22 @@ function searchIdForm() {
 	return true;
 }
 
+function regUserId(){
+	let email = $('#search_user_email').val();
+	let inputNum = $(this).val();
+	if (inputNum == $('#valid').val()) {
+		alert('인증 번호가 성공적으로 인증되었습니다.');
+		let id = $('#idInput').val();
+		console.log(email);
+		console.log(inputNum);
+		console.log(id);
+		return true;
+	} else {
+		alert('인증 번호가 일치하지 않습니다.');
+		return false;
+	}
+}
+
 function searchPw(){
 	let email = $('#search_ac_email').val();
 	let inputNum = $(this).val();
@@ -35,6 +51,30 @@ function searchPw(){
 }
 
 // jQuery
+
+//일반 회원 이메일 인증 절차
+$(function() {
+	$('#user_email_check').click(function() {
+		let email = $('#search_user_email').val();
+		console.log(email);
+		let checkNum = $('#email_num');
+
+		$.ajax({
+			url : "user.email.check.do",
+			type : "GET",
+			dataType : "text",
+			data : {
+				"user_email" : email
+			},
+			success : function(data) {
+				checkNum.attr('disabled', false);
+				$('#valid').val(data);
+				alert('인증번호가 전송되었습니다.')
+			}
+		});
+	});
+});
+
 $(function() {
 	$('#email_check').click(function() {
 		let email = $('#search_ac_email').val();
