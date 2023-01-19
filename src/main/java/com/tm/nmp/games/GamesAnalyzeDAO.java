@@ -10,8 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.tm.nmp.account.AccountDTO;
-import com.tm.nmp.community.CM_RV_TITLE;
-import com.tm.nmp.community.ReviewMapper;
 
 @Service
 public class GamesAnalyzeDAO {
