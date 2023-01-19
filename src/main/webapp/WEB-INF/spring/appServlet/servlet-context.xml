@@ -54,7 +54,6 @@
 			<beans:list>
 				<beans:value>classpath:account/accountMapper.xml</beans:value>
 				<beans:value>classpath:myPage/myPageMapper.xml</beans:value>
-				<beans:value>classpath:Infoevent/infoEventMapper.xml</beans:value>
 				<beans:value>classpath:games/gamesMapper.xml</beans:value>
 				<beans:value>classpath:admin/adminMapper.xml</beans:value>
 				<beans:value>classpath:community/withGoMapper.xml</beans:value>

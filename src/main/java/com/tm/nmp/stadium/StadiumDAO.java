@@ -338,4 +338,54 @@ public class StadiumDAO {
 		}
 	}
 
+	public void viewVolleyballSeatDatail(HttpServletRequest req) {
+		String team = (String)req.getParameter("team");
+		switch (team) {
+		case "kal":
+			req.setAttribute("seatDetail", "kal");
+			break;
+		case "kb":
+			req.setAttribute("seatDetail", "kb");
+			break;
+		case "kepco":
+			req.setAttribute("seatDetail", "kepco");
+			break;
+		case "won":
+			req.setAttribute("seatDetail", "won");
+			break;
+		case "ok":
+			req.setAttribute("seatDetail", "ok");
+			break;
+		case "samsung":
+			req.setAttribute("seatDetail", "samsung");
+			break;
+		case "hyundai":
+			req.setAttribute("seatDetail", "hyundai");
+			break;
+		case "hyundai2":
+			req.setAttribute("seatDetail", "hyundai2");
+			break;
+		case "hipass":
+			req.setAttribute("seatDetail", "hipass");
+			break;
+		case "gs":
+			req.setAttribute("seatDetail", "gs");
+			break;
+		case "kgc":
+			req.setAttribute("seatDetail", "kgc");
+			break;
+		case "ibk":
+			req.setAttribute("seatDetail", "ibk");
+			break;
+		case "heungkuk":
+			req.setAttribute("seatDetail", "heungkuk");
+			break;
+		case "gwangju":
+			req.setAttribute("seatDetail", "gwangju");
+			break;
+		default:
+			break;
+		}
+	}
+
 }
