@@ -36,13 +36,13 @@
 			<button onclick="with_go_write_go()">같이 보러 가기</button>
 		</div>
 		<!-- 전경 사진 -->
-		<img style="display: none" id="test_east"
+		<img style="display: none" id="test_3"
 			src="resources/final_img_file/soccer/seating_chart/${seatDetail }/test_3.jpg">
-		<img style="display: none" id="test_west"
+		<img style="display: none" id="test_9"
 			src="resources/final_img_file/soccer/seating_chart/${seatDetail }/test_9.jpg">
-		<img style="display: none" id="test_south"
+		<img style="display: none" id="test_6"
 			src="resources/final_img_file/soccer/seating_chart/${seatDetail }/test_6.jpg">
-		<img style="display: none" id="test_north"
+		<img style="display: none" id="test_12"
 			src="resources/final_img_file/soccer/seating_chart/${seatDetail }/test_12.jpg">
 	</div>
 	<br>
