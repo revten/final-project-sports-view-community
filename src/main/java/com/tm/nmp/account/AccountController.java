@@ -24,15 +24,17 @@ public class AccountController {
 	@RequestMapping(value = "/account.reg.do", method = RequestMethod.POST)
 	public String accountRegDo(HttpServletRequest req, AC_US_TITLE ac) {
 		acDAO.accountRegDo(req, ac);
+		acDAO.accountLoginDo(req, ac);
 		acDAO.loginCheck(req);
 		req.setAttribute("contentPage", "account/profileReg.jsp");
 		return "index";
 	}
 	
 	@RequestMapping(value = "/profile.reg.do", method = RequestMethod.GET)
-	public String profileRegDo(HttpServletRequest req, AC_US_TITLE ac) {
+	public String profileRegDo(HttpServletRequest req, AC_PF_TITLE ac) {
 		acDAO.loginCheck(req);
-		req.setAttribute("contentPage", "account/profileReg.jsp");
+		acDAO.regProfile(req, ac);
+		req.setAttribute("contentPage", "home.jsp");
 		return "index";
 	}
 	
@@ -149,11 +151,11 @@ public class AccountController {
 	}
 	
 	@RequestMapping(value = "/social.reg.do", method = RequestMethod.GET)
-	public String socialRegDo(HttpServletRequest req, AccountDTO ac) {
+	public String socialRegDo(HttpServletRequest req, AC_US_TITLE ac) {
 		acDAO.socialReg(req, ac);
-		//acDAO.accountLoginDo(req, ac);
+		acDAO.accountLoginDo(req, ac);
 		acDAO.loginCheck(req);
-		req.setAttribute("contentPage", "home.jsp");
+		req.setAttribute("contentPage", "account/socialProfileReg.jsp");
 
 		return "index";
 	}

@@ -96,11 +96,11 @@ public class StadiumController {
 		return "index";
 	}
 	
-	@RequestMapping(value = "/volzleyball.stadium.go.detail", method = RequestMethod.GET)
+	@RequestMapping(value = "/volleyball.stadium.go.detail", method = RequestMethod.GET)
 	public String volleyballStadiumGoDetail(HttpServletRequest req) {
 		acDAO.loginCheck(req);
 		sdDAO.viewVolleyballSeat(req);
-		sdDAO.viewVolleyballSeatDatail(req);
+		sdDAO.viewVolleyballSeatDetail(req);
 		req.setAttribute("contentPage", "stadium/volleyball/volleyball_stadium_detail.jsp");
 		return "index";
 	}

@@ -99,7 +99,6 @@
 					console.log(res);
 					var user_id_name = res.id;
 					var user_auth_type = '1';
-
 					console.log(user_id_name, user_auth_type);
 
 					checkInfoKakao(user_id_name, user_auth_type);
@@ -131,7 +130,7 @@
 								location.replace(kakaoLoginUrl);
 							} else {
 								alert('회원가입을 도와드리겠습니다.');
-								let kakaoJoinUrl = `social.reg.do?user_id_name=+${user_id_name}+&user_id_name=+${user_id_name}+&user_auth_type=+${user_auth_type}`;
+								let kakaoJoinUrl = `social.reg.do?user_id_name=+${user_id_name}+&user_auth_type=+${user_auth_type}`;
 								console.log(kakaoJoinUrl);
 								location.replace(kakaoJoinUrl);
 							}
@@ -165,12 +164,12 @@
 			const responsePayload = parseJwt(response.credential);
 
 			let user_id_name = responsePayload.sub;
-			let ac_name = responsePayload.name;
-			let ac_email = responsePayload.email;
-			let ac_linkWhere = "google";
+			//let ac_name = responsePayload.name;
+			//let ac_email = responsePayload.email;
+			let user_auth_type = '1';
 
-			console.log(user_id_name, ac_name, ac_email, ac_linkWhere);
-			checkInfoGoogle(user_id_name, ac_name, ac_email, ac_linkWhere);
+			console.log(user_id_name, user_auth_type);
+			checkInfoGoogle(user_id_name, user_auth_type);
 		}
 
 		function parseJwt(token) {
@@ -186,7 +185,7 @@
 			return JSON.parse(jsonPayload);
 		};
 
-		function checkInfoGoogle(user_id_name, ac_name, ac_email, ac_linkWhere) {
+		function checkInfoGoogle(user_id_name, user_auth_type) {
 			$
 					.ajax({
 						url : "social.id.check",
@@ -194,7 +193,7 @@
 						dataType : "text",
 						data : {
 							"user_id_name" : user_id_name,
-							"ac_linkWhere" : ac_linkWhere
+							"user_auth_type" : user_auth_type
 						},
 						success : function(getData) {
 							console.log(getData);
@@ -204,7 +203,7 @@
 								location.replace(googleLoginUrl);
 							} else {
 								alert('회원가입을 도와드리겠습니다.');
-								let googleJoinUrl = `social.reg.do?user_id_name=+${user_id_name}+&ac_name=+${ac_name}+&ac_email=+${ac_email}+&ac_linkWhere=+${ac_linkWhere}`;
+								let googleJoinUrl = `social.reg.do?user_id_name=${user_id_name}+&user_auth_type+${user_auth_type}`;
 								console.log(googleJoinUrl);
 								location.replace(googleJoinUrl);
 							}

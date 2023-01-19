@@ -338,7 +338,7 @@ public class StadiumDAO {
 		}
 	}
 
-	public void viewVolleyballSeatDatail(HttpServletRequest req) {
+	public void viewVolleyballSeatDetail(HttpServletRequest req) {
 		String team = (String)req.getParameter("team");
 		switch (team) {
 		case "kal":
