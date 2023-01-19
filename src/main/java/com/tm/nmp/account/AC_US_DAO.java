@@ -24,11 +24,9 @@ public class AC_US_DAO {
 		AC_US_TITLE a = (AC_US_TITLE) req.getSession().getAttribute("loginAccount");
 		if (a != null) {
 			req.setAttribute("loginPage", "account/loginSuccess.jsp");
-			System.out.println("로그인 성공");
 			return true;
 		}
 		req.setAttribute("loginPage", "account/login.jsp");
-		System.out.println("로그인 실패");
 		return false;
 	}
 
@@ -60,7 +58,6 @@ public class AC_US_DAO {
 
 	public void accountLoginDo(HttpServletRequest req, AC_US_TITLE ac) {
 		 AC_US_TITLE dbAccount = ss.getMapper(AccountMapper.class).accountLogin(ac);
-		//AC_US_TITLE dbAccount = new AC_US_TITLE();
 		if (dbAccount != null) {
 			if (ac.getUser_pwd().equals(dbAccount.getUser_pwd())) {
 				req.getSession().setAttribute("loginAccount", dbAccount);
@@ -184,31 +181,23 @@ public class AC_US_DAO {
 		}
 	}
 
-	public void socialReg(HttpServletRequest req, AccountDTO ac) {
+	public void socialReg(HttpServletRequest req, AC_US_TITLE ac) {
 		try {
 
 			req.setCharacterEncoding("utf-8");
 
-			String ac_id = req.getParameter("ac_id");
-			System.out.println(ac_id);
-			String ac_pw = " ";
-			String ac_nick = " ";
-			String ac_name = req.getParameter("ac_name");
-			System.out.println(ac_name);
-			String ac_addr = " ";
-			String ac_email = req.getParameter("ac_email");
-			System.out.println(ac_email);
-			String ac_linkWhere = req.getParameter("ac_linkWhere");
-			System.out.println(ac_linkWhere);
-
-			ac.setAc_id(ac_id); // 네카구
-			ac.setAc_pw(ac_pw);
-			ac.setAc_nick(ac_nick);
-			ac.setAc_name(ac_name); // 네카구
-			ac.setAc_addr(ac_addr);
-			ac.setAc_email(ac_email); // 네
-			ac.setAc_linkWhere(ac_linkWhere);// 네카구
-
+			String user_id_name = req.getParameter("user_id_name");
+			String user_pwd = " ";
+			String user_reg_ip = " ";
+			int user_auth_type = Integer.parseInt(req.getParameter("user_auth_type"));
+			String user_email = " ";
+			
+			ac.setUser_id_name(user_id_name);
+			ac.setUser_pwd(user_pwd);
+			ac.setUser_reg_ip(user_reg_ip);
+			ac.setUser_auth_type(user_auth_type);
+			ac.setUser_email(user_email);
+			
 			if (ss.getMapper(AccountMapper.class).regAccount(ac) == 1) {
 				System.out.println("회원 가입 성공");
 			} else {
@@ -218,6 +207,31 @@ public class AC_US_DAO {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+	}
+
+	public void regProfile(HttpServletRequest req, AC_PF_TITLE ac) {
+		try {
+			req.setCharacterEncoding("utf-8");
+			
+			int user_id = Integer.parseInt(req.getParameter("user_id"));
+			int club_id = Integer.parseInt(req.getParameter("club_id"));
+			String league_id = req.getParameter("league_id");
+			String profile_nick = req.getParameter("profile_nick");
+			String profile_intro = req.getParameter("profile_intro");
+			
+			ac.setUser_id(user_id);
+			ac.setClub_id(club_id);
+			ac.setLeague_id(league_id);
+			ac.setProfile_nick(profile_nick);
+			ac.setProfile_intro(profile_intro);
+			
+			ss.getMapper(AccountMapper.class).regProfile(ac);
+			
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 	}
 
 }

@@ -4,7 +4,9 @@ import java.util.Date;
 
 public class AC_PF_TITLE {
 	private int profile_id;
-	private int profile_club;
+	private int user_id;
+	private int club_id;
+	private String league_id;
 	private String profile_nick;
 	private String profile_intro;
 	private Date profile_birth;
@@ -18,12 +20,14 @@ public class AC_PF_TITLE {
 		// TODO Auto-generated constructor stub
 	}
 
-	public AC_PF_TITLE(int profile_id, int profile_club, String profile_nick, String profile_intro, Date profile_birth,
-			int profile_sex, int profile_subs, Date profile_subs_begin, Date profile_subs_end,
-			Date profile_update_date) {
+	public AC_PF_TITLE(int profile_id, int user_id, int club_id, String league_id, String profile_nick,
+			String profile_intro, Date profile_birth, int profile_sex, int profile_subs, Date profile_subs_begin,
+			Date profile_subs_end, Date profile_update_date) {
 		super();
 		this.profile_id = profile_id;
-		this.profile_club = profile_club;
+		this.user_id = user_id;
+		this.club_id = club_id;
+		this.league_id = league_id;
 		this.profile_nick = profile_nick;
 		this.profile_intro = profile_intro;
 		this.profile_birth = profile_birth;
@@ -42,12 +46,28 @@ public class AC_PF_TITLE {
 		this.profile_id = profile_id;
 	}
 
-	public int getProfile_club() {
-		return profile_club;
+	public int getUser_id() {
+		return user_id;
 	}
 
-	public void setProfile_club(int profile_club) {
-		this.profile_club = profile_club;
+	public void setUser_id(int user_id) {
+		this.user_id = user_id;
+	}
+
+	public int getClub_id() {
+		return club_id;
+	}
+
+	public void setClub_id(int club_id) {
+		this.club_id = club_id;
+	}
+
+	public String getLeague_id() {
+		return league_id;
+	}
+
+	public void setLeague_id(String league_id) {
+		this.league_id = league_id;
 	}
 
 	public String getProfile_nick() {

@@ -22,4 +22,6 @@ public interface AccountMapper {
 
 	int regAccount(AccountDTO ac);
 
+	void regProfile(AC_PF_TITLE ac);
+
 }
