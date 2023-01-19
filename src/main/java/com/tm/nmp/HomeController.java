@@ -7,10 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-
 import com.tm.nmp.account.AC_US_DAO;
-import com.tm.nmp.community.CM_RV_DAO;
-
 import com.tm.nmp.admin.AnswerDAO;
 import com.tm.nmp.community.CM_SC_DAO;
 import com.tm.nmp.community.CM_SC_TITLE;
