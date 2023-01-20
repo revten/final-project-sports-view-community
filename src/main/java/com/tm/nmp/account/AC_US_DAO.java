@@ -1,5 +1,6 @@
 package com.tm.nmp.account;
 
+import java.util.List;
 import java.util.Random;
 
 import javax.mail.internet.MimeMessage;
@@ -234,4 +235,14 @@ public class AC_US_DAO {
 		
 	}
 
+	public List<Calendar> getCalendarList(String userId) {
+		System.out.println(userId);
+		List<Calendar> dates = ss.getMapper(PointMapper.class).getCalendarList(userId);
+		for (Calendar c : dates) {
+			System.out.println(c.getCal_date());
+		}
+		
+		return dates;
+		
+	}
 }

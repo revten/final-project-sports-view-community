@@ -6,7 +6,7 @@
 <meta charset="UTF-8">
 <!-- 
 <meta name="google-signin-client_id"
-	content="567208941336-p92o44c3gigs2a282rhro3p6vni5fetb.apps.googleusercontent.com">
+	content="567208941336-p92o44c3gigs2a282rhro3p6vni5fetb.apps.googlemembercontent.com">
 -->
 <title>Insert title here</title>
 <script type="text/javascript"
@@ -31,10 +31,10 @@
 			method="post">
 
 			<h6>아이디</h6>
-			<input name="user_id_name" class="input_id" id="idInput">
+			<input name="member_id" class="input_id" id="idInput">
 
 			<h6>비밀번호</h6>
-			<input name="user_pwd" type="password" class="input_pw" id="pwInput"><br>
+			<input name="member_pwd" type="password" class="input_pw" id="pwInput"><br>
 
 			<a class="find_id" type="button" href="search.id.go">아이디</a>&nbsp; <a>·</a>&nbsp;
 			<a class="find_pw" type="button" href="search.pw.go">비밀번호 찾기</a><br>
@@ -62,7 +62,7 @@
 
 			<!-- 구글로그인 -->
 			<div id="g_id_onload"
-				data-client_id="567208941336-p92o44c3gigs2a282rhro3p6vni5fetb.apps.googleusercontent.com"
+				data-client_id="567208941336-p92o44c3gigs2a282rhro3p6vni5fetb.apps.googlemembercontent.com"
 				data-callback="handleCredentialResponse" data-auto_prompt="false"></div>
 
 			<div class="g_id_signin" data-type="icon" data-size="large"
@@ -94,14 +94,14 @@
 
 		function getInfoKakao() {
 			Kakao.API.request({
-				url : '/v2/user/me',
+				url : '/v2/member/me',
 				success : function(res) {
 					console.log(res);
-					var user_id_name = res.id;
-					var user_auth_type = '1';
-					console.log(user_id_name, user_auth_type);
+					var member_id_name = res.id;
+					var member_auth_type = '1';
+					console.log(member_id_name, member_auth_type);
 
-					checkInfoKakao(user_id_name, user_auth_type);
+					checkInfoKakao(member_id_name, member_auth_type);
 
 				},
 
@@ -112,25 +112,25 @@
 			});
 		}
 
-		function checkInfoKakao(user_id_name, user_auth_type) {
+		function checkInfoKakao(member_id_name, member_auth_type) {
 			$
 					.ajax({
 						url : "social.id.check",
 						type : "GET",
 						dataType : "text",
 						data : {
-							"user_id_name" : user_id_name,
-							"user_auth_type" : user_auth_type
+							"member_id_name" : member_id_name,
+							"member_auth_type" : member_auth_type
 						},
 						success : function(data) {
 							console.log(data)
 							if (data >= 1) {
-								let kakaoLoginUrl = `social.login.do?user_id_name=${user_id_name}`;
+								let kakaoLoginUrl = `social.login.do?member_id_name=${member_id_name}`;
 								console.log(kakaoLoginUrl);
 								location.replace(kakaoLoginUrl);
 							} else {
 								alert('회원가입을 도와드리겠습니다.');
-								let kakaoJoinUrl = `social.reg.do?user_id_name=+${user_id_name}+&user_auth_type=+${user_auth_type}`;
+								let kakaoJoinUrl = `social.reg.do?member_id_name=+${member_id_name}+&member_auth_type=+${member_auth_type}`;
 								console.log(kakaoJoinUrl);
 								location.replace(kakaoJoinUrl);
 							}
@@ -163,13 +163,13 @@
 		function handleCredentialResponse(response) {
 			const responsePayload = parseJwt(response.credential);
 
-			let user_id_name = responsePayload.sub;
+			let member_id_name = responsePayload.sub;
 			//let ac_name = responsePayload.name;
 			//let ac_email = responsePayload.email;
-			let user_auth_type = '1';
+			let member_auth_type = '1';
 
-			console.log(user_id_name, user_auth_type);
-			checkInfoGoogle(user_id_name, user_auth_type);
+			console.log(member_id_name, member_auth_type);
+			checkInfoGoogle(member_id_name, member_auth_type);
 		}
 
 		function parseJwt(token) {
@@ -185,25 +185,25 @@
 			return JSON.parse(jsonPayload);
 		};
 
-		function checkInfoGoogle(user_id_name, user_auth_type) {
+		function checkInfoGoogle(member_id_name, member_auth_type) {
 			$
 					.ajax({
 						url : "social.id.check",
 						type : "GET",
 						dataType : "text",
 						data : {
-							"user_id_name" : user_id_name,
-							"user_auth_type" : user_auth_type
+							"member_id_name" : member_id_name,
+							"member_auth_type" : member_auth_type
 						},
 						success : function(getData) {
 							console.log(getData);
 							if (getData >= 1) {
-								let googleLoginUrl = `social.login.do?user_id_name=${user_id_name}`;
+								let googleLoginUrl = `social.login.do?member_id_name=${member_id_name}`;
 								console.log(googleLoginUrl);
 								location.replace(googleLoginUrl);
 							} else {
 								alert('회원가입을 도와드리겠습니다.');
-								let googleJoinUrl = `social.reg.do?user_id_name=${user_id_name}+&user_auth_type+${user_auth_type}`;
+								let googleJoinUrl = `social.reg.do?member_id_name=${member_id_name}+&member_auth_type+${member_auth_type}`;
 								console.log(googleJoinUrl);
 								location.replace(googleJoinUrl);
 							}
