@@ -12,6 +12,9 @@ import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
 
+import com.tm.nmp.point.PointMapper;
+import com.tm.nmp.point.PointVo;
+
 @Service
 public class AC_US_DAO {
 
@@ -51,6 +54,8 @@ public class AC_US_DAO {
 
 	public void accountRegDo(HttpServletRequest req, AccountDTO ac) {
 		if (ss.getMapper(AccountMapper.class).regAccount(ac) == 1) {
+			// pv.setUserId(ac.getMember_id());
+			//ss.getMapper(PointMapper.class).pointTable(pv);
 			System.out.println("가입 성공");
 		} else {
 			System.out.println("가입 실패");

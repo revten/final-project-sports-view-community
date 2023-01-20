@@ -1,4 +1,4 @@
-package com.tm.nmp.account;
+package com.tm.nmp.point;
 
 public class PointVo {
 
@@ -68,7 +68,7 @@ public class PointVo {
 		return grade;
 	}
 
-	public void setGrade(String grade) {
+	public void setGrade(int point) {
 		if(point >= 7000)
 			grade = "다이아몬드";
 		else if(point >=6000)

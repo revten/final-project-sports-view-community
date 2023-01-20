@@ -6,4 +6,10 @@
 			select * from calendarlist where userid='test'
 		
 		</select>
+		
+<insert id="pointTable" parameterType="com.tm.nmp.point.PointVo">
+insert into POINT values(#{userId},'뉴비','0')
+</insert>
+
+
 </mapper>
