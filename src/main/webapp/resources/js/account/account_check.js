@@ -43,11 +43,11 @@ function checkId() {
 			if (cnt == 0) { // cnt가 1이 아니면(=0일 경우) -> 사용 가능한 아이디
 				$('.id_ok').css("display", "inline-block");
 				$('.id_already').css("display", "none");
+				$('#idConfirm').val('1');
 			} else { // cnt가 1일 경우 -> 이미 존재하는 아이디
 				$('.id_already').css("display", "inline-block");
 				$('.id_ok').css("display", "none");
-				alert("아이디를 다시 입력해주세요");
-				$('#idInput').val('');
+				$('#idConfirm').val('0');
 			}
 		},
 		error : function() {
@@ -59,39 +59,42 @@ function checkId() {
 $(function() {
 		let id = $("#idInput").val();
 		let pw = $("#pwInput").val();
-		let name = $("#member_nick").val();
 		let email = $("#search_member_email").val();
 		let club = $("#club_id").val();
-
+			console.log(club.value);
 		if (!chkID(id)) {
-			alert("아이디 형식을 확인해주세요!");
+			alert("아이디 형식을 확인해주세요");
 			id.focus();
 			id.value = "";
 			return false;
 		}
 
-		if (isEmpty(name)) {
-			alert("이름을 입력해주세요!");
-			name.focus();
-			name.value = "";
+		if (!chkPW(pw)) {
+			alert("비밀번호 형식을 확인해주세요");
+			pw.focus();
+			pw.value = "";
 			return false;
 		}
-
-		if (isEmpty(email)) {
-			alert("이메일을 입력해주세요!");
-			email.focus();
-			email.value = "";
-			return false;
-		}
-
-		if (!checkEmail(email.value)) {
+		
+		if (!checkEmail(email)) {
 			alert("이메일 형식이 잘못되었습니다");
 			email.focus();
 			email.value = "";
 			return false;
 		}
-
+		
+		if (isEmpty(club)) {
+			alert('좋아하는 구단을 선택해주세요');
+			id.focus();
+			return false;
+		}
+		if($("#idConfirm").val() == 1){
 		return true;
+		}else{
+			alert('아이디 중복여부를 확인해주세요');
+			id.focus();
+			return false;
+		}
 });
 
 $(function() {
@@ -104,14 +107,12 @@ $(function() {
 								|| ($('#pwInput').val() == "" && ($("#pwInput2")
 										.val() != ""))) {
 							$("#reg").attr("disabled", true);
-							$("#reg").css("background-color", "#008000");
 						}
 
 						// 두 input 값이 없을 경우 다시 사용 가능하도록
 						if ($("#pwInput").val() == ""
 								&& ($("#pwInput2").val() == "")) {
 							$("#reg").attr("disabled", false);
-							$("#reg").css("background-color", "#6A82FB");
 						}
 
 					});
@@ -189,8 +190,7 @@ function changePw() {
 }
 
 function checkEmail(str) {
-	let reg_email = /^([0-9a-zA-Z_\.-]+)@([0-9a-zA-Z_-]+)(\.[0-9a-zA-Z_-]+){1,2}$/;
-
+	let reg_email = /(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))/;
 	if (!reg_email.test(str)) {
 		return false;
 	} else {
@@ -199,7 +199,7 @@ function checkEmail(str) {
 }
 
 function chkID(str) {
-	let reg_id = /^(?=.*[a-zA-Z])(?=.*[0-9]).{5,20}$/;
+	let reg_id = /^(?=.*[a-zA-Z])(?=.*[0-9]).{5,12}$/;
 
 	if (!reg_id.test(str)) {
 		return false;
@@ -209,7 +209,7 @@ function chkID(str) {
 }
 
 function chkPW(str) {
-	let reg_pw = /^(?=.*[a-zA-Z])(?=.*[0-9]).{3,}$/;
+	let reg_pw = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$ %^&*-]).{7,12}$/;
 
 	if (!reg_pw.test(str)) {
 		return false;

@@ -139,6 +139,7 @@ function checkOne(element) {
 			<div class="accountReg__idInput-2">
 				<!-- member 아이디 인풋 창 -->
 				<input id="idInput" name="member_id" oninput="checkId()">
+				<input id="idConfirm" type="hidden" value="0">
 				<br>
 				<span class="id_ok">사용 가능한 아이디입니다.</span> 
 				<span class="id_already">누군가 이 아이디를 사용하고 있어요.</span>
