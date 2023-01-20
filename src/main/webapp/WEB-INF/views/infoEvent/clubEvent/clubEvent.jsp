@@ -31,7 +31,7 @@
 					<li class="nav__item"><a href="news.sports.go"
 						class="nav__link">스포츠</a></li>
 						
-					<li class="nav__item"><a href="team.event.main.go"
+					<li class="nav__item"><a href="club.event.main.go"
 						class="nav__link">구단공식이벤트</a></li>
 						
 					<li class="nav__item"><a href="sports.info.main.go"
@@ -45,7 +45,7 @@
 				</div>
 			</div>
 	<div>
-		<form action="team.event.search">
+		<form action="club.event.search">
 		<table id="totoBoard-SearchArea">
 			<tr>
 				<td><input name="search" maxlength="10" autocomplete="off"></td>
@@ -58,7 +58,7 @@
 				<a href="" onclick="alert('로그인하세요')">새글쓰기</a>
 			</c:when>
 			<c:otherwise>
-				<a href="teamEvent.insert.go">새글쓰기</a>
+				<a href="clubEvent.insert.go">새글쓰기</a>
 			</c:otherwise>
 		</c:choose>
 	</div>
@@ -75,11 +75,11 @@
 			</tr>
 		</thead>
 		<tbody>
-			<c:forEach var="te" items="${teamEvents }">
+			<c:forEach var="te" items="${clubEvents }">
 				<tr>
 					<td>${te.ie_te_no }</td>
-					<td>${te.ie_te_team }</td>
-					<td><a style="cursor: pointer; color: blue;" href="team.event.detail.go?ie_te_no=${te.ie_te_no}">${te.ie_te_title }</a></td>
+					<td>${te.ie_te_club }</td>
+					<td><a style="cursor: pointer; color: blue;" href="club.event.detail.go?ie_te_no=${te.ie_te_no}">${te.ie_te_title }</a></td>
 					<td>${te.ie_te_nick }</td>
 					<td>${te.ie_te_regdate }</td>
 					<td>${te.ie_te_views }</td>
@@ -88,13 +88,13 @@
 		</tbody>
 	</table>
 	<c:if test="${curPage !=1 }">
-		<a href="teamEvent.page.change?p=${curPage-1 }" id="snsL">&lt;</a>
+		<a href="clubEvent.page.change?p=${curPage-1 }" id="snsL">&lt;</a>
 	</c:if>
 	<c:forEach var="i" begin="1" end="${pageCount }">
-		<a href="teamEvent.page.change?p=${i }"> [${i }] </a>
+		<a href="clubEvent.page.change?p=${i }"> [${i }] </a>
 	</c:forEach>
 	<c:if test="${curPage != pageCount }">
-		<a href="teamEvent.page.change?p=${curPage+1 }" id="snsR">&gt;</a>
+		<a href="clubEvent.page.change?p=${curPage+1 }" id="snsR">&gt;</a>
 	</c:if>
 </body>
 </html>

@@ -10,8 +10,12 @@
 
 	<insert id="regAccount"
 		parameterType="com.tm.nmp.account.AccountDTO">
+		BEGIN
 		insert into member
-		values(#{member_id},#{member_pwd},#{member_nick},#{member_auth_type},#{member_reg_type},sysdate,#{member_reg_ip},#{member_email},#{member_intro},#{club_id},#{member_subs},null,null,null,null,#{member_admin})
+		values(#{member_id},#{member_pwd},#{member_nick},#{member_auth_type},#{member_reg_type},sysdate,#{member_reg_ip},#{member_email},#{member_intro},#{club_id},#{member_subs},null,null,null,null,#{member_admin});
+		
+		insert into POINT values(#{member_id},'뉴비','0');
+		END;
 	</insert>
 	
 	<select id="idCheck" parameterType="String" resultType="int">

@@ -1,5 +1,6 @@
 package com.tm.nmp.account;
 
+import java.util.List;
 import java.util.Random;
 
 import javax.mail.internet.MimeMessage;
@@ -10,6 +11,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
+
+import com.tm.nmp.point.PointMapper;
+import com.tm.nmp.point.PointVo;
 
 @Service
 public class AC_US_DAO {
@@ -50,6 +54,8 @@ public class AC_US_DAO {
 
 	public void accountRegDo(HttpServletRequest req, AccountDTO ac) {
 		if (ss.getMapper(AccountMapper.class).regAccount(ac) == 1) {
+			// pv.setUserId(ac.getMember_id());
+			//ss.getMapper(PointMapper.class).pointTable(pv);
 			System.out.println("가입 성공");
 		} else {
 			System.out.println("가입 실패");
@@ -225,4 +231,14 @@ public class AC_US_DAO {
 	 * }
 	 */
 
+	public List<Calendar> getCalendarList(String userId) {
+		System.out.println(userId);
+		List<Calendar> dates = ss.getMapper(PointMapper.class).getCalendarList(userId);
+		for (Calendar c : dates) {
+			System.out.println(c.getCal_date());
+		}
+		
+		return dates;
+		
+	}
 }

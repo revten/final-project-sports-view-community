@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tm.nmp.account.PointMapper">
+
+<select id="getCalendarList" parameterType="string" resultType="com.tm.nmp.account.Calendar">
+			select * from calendarlist where userid='test'
+		
+		</select>
+		
+<insert id="pointTable" parameterType="com.tm.nmp.point.PointVo">
+insert into POINT values(#{userId},'뉴비','0')
+</insert>
+
+
+</mapper>
