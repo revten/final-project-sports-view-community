@@ -359,6 +359,10 @@ function stadiumVolleyball2() {
 function volleyballStadiumGo(team) {
 	location.href = "volleyball.stadium.go.detail?team=" + team;
 }
+//만든거
+function volleyballStadiumGo2(team) {
+	location.href = "w_volleyball.stadium.go.detail?team=" + team;
+}
 
 function volleyballSetVal() {
 	const url = new URL(location.href);
