@@ -129,8 +129,10 @@
 								console.log(kakaoLoginUrl);
 								location.replace(kakaoLoginUrl);
 							} else {
+								console.log(user_id_name)
+								console.log(user_auth_type)
 								alert('회원가입을 도와드리겠습니다.');
-								let kakaoJoinUrl = `social.reg.do?user_id_name=+${user_id_name}+&user_auth_type=+${user_auth_type}`;
+								let kakaoJoinUrl = "social.reg.do?user_id_name="+user_id_name+"&user_auth_type="+user_auth_type;
 								console.log(kakaoJoinUrl);
 								location.replace(kakaoJoinUrl);
 							}

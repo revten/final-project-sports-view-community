@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
@@ -22,24 +23,23 @@ public class AccountController {
 	}
 	
 	@RequestMapping(value = "/account.reg.do", method = RequestMethod.POST)
-	public String accountRegDo(HttpServletRequest req, AC_US_TITLE ac) {
+	public String accountRegDo(HttpServletRequest req, AccountDTO ac) {
 		acDAO.accountRegDo(req, ac);
 		acDAO.accountLoginDo(req, ac);
 		acDAO.loginCheck(req);
-		req.setAttribute("contentPage", "account/profileReg.jsp");
-		return "index";
-	}
-	
-	@RequestMapping(value = "/profile.reg.do", method = RequestMethod.GET)
-	public String profileRegDo(HttpServletRequest req, AC_PF_TITLE ac) {
-		acDAO.loginCheck(req);
-		acDAO.regProfile(req, ac);
 		req.setAttribute("contentPage", "home.jsp");
 		return "index";
 	}
 	
+	@RequestMapping(value = "/account.id.check", method = RequestMethod.POST)
+	@ResponseBody
+	public int idCheck(@RequestParam("member_id") String id) {
+		int cnt = acDAO.idCheck(id);
+		return cnt;
+	}
+	
 	@RequestMapping(value = "/account.login.do", method = RequestMethod.POST)
-	public String accountLoginDo(HttpServletRequest req, AC_US_TITLE ac) {
+	public String accountLoginDo(HttpServletRequest req, AccountDTO ac) {
 		acDAO.accountLoginDo(req, ac);
 		acDAO.loginCheck(req);
 		req.setAttribute("contentPage", "home.jsp");
@@ -61,13 +61,13 @@ public class AccountController {
 		return "index";
 	}
 
-	@RequestMapping(value = "/search.id.do", method = RequestMethod.POST)
+	/*@RequestMapping(value = "/search.id.do", method = RequestMethod.POST)
 	public String searchIdDo(HttpServletRequest req, AccountDTO ac) {
 		acDAO.searchIdDo(req, ac);
 		acDAO.loginCheck(req);
 		req.setAttribute("contentPage", "account/search_result_id.jsp");
 		return "index";
-	}
+	}*/
 
 	@RequestMapping(value = "/search.pw.go", method = RequestMethod.GET)
 	public String searchPwGo(HttpServletRequest req) {
@@ -84,11 +84,11 @@ public class AccountController {
 		return "index";
 	}
 	
-	@RequestMapping(value = "/user.email.check.do", method = RequestMethod.GET)
+	@RequestMapping(value = "/member.email.check.do", method = RequestMethod.GET)
 	@ResponseBody
-	public String userEmailCheckDo(HttpServletRequest req, String user_email) {
+	public String userEmailCheckDo(HttpServletRequest req, String member_email) {
 		acDAO.loginCheck(req);
-		return acDAO.userEmailCheckDo(user_email);
+		return acDAO.memberEmailCheckDo(member_email);
 	}
 	
 	@RequestMapping(value = "/email.check.do", method = RequestMethod.GET)
@@ -130,15 +130,15 @@ public class AccountController {
 		return "index";
 	}
 	
-	@RequestMapping(value = "/social.id.check", method = RequestMethod.GET)
+	/*@RequestMapping(value = "/social.id.check", method = RequestMethod.GET)
 	@ResponseBody
-	public int socialIdCheck(HttpServletRequest req, AC_US_TITLE ac) {
+	public int socialIdCheck(HttpServletRequest req, AccountDTO ac) {
 		acDAO.loginCheck(req);
 		return acDAO.socialIdCheck(ac);
-	}
+	}*/
 	
 	@RequestMapping(value = "/social.login.do", method = RequestMethod.GET)
-	public String socialLoginDo(HttpServletRequest req, AC_US_TITLE ac) {
+	public String socialLoginDo(HttpServletRequest req, AccountDTO ac) {
 		if (req.getParameter("user_id_name") != null) {
 			acDAO.socialLogin(req, ac);
 			acDAO.loginCheck(req);
@@ -150,14 +150,14 @@ public class AccountController {
 		return "index";
 	}
 	
-	@RequestMapping(value = "/social.reg.do", method = RequestMethod.GET)
-	public String socialRegDo(HttpServletRequest req, AC_US_TITLE ac) {
+	/*@RequestMapping(value = "/social.reg.do", method = RequestMethod.GET)
+	public String socialRegDo(HttpServletRequest req, AccountDTO ac) {
 		acDAO.socialReg(req, ac);
 		acDAO.accountLoginDo(req, ac);
 		acDAO.loginCheck(req);
 		req.setAttribute("contentPage", "account/socialProfileReg.jsp");
 
 		return "index";
-	}
+	}*/
 	
 }
