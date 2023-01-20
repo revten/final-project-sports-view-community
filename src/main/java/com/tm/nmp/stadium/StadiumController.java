@@ -104,5 +104,14 @@ public class StadiumController {
 		req.setAttribute("contentPage", "stadium/volleyball/volleyball_stadium_detail.jsp");
 		return "index";
 	}
+	//만든거
+	@RequestMapping(value = "/w_volleyball.stadium.go.detail", method = RequestMethod.GET)
+	public String wvolleyballStadiumGoDetail(HttpServletRequest req) {
+		acDAO.loginCheck(req);
+		sdDAO.viewVolleyballSeat(req);
+		sdDAO.viewVolleyballSeatDetail(req);
+		req.setAttribute("contentPage", "stadium/volleyball/w_volleyball_stadium_detail.jsp");
+		return "index";
+	}
 	
 }
