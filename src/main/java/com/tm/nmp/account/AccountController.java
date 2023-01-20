@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 public class AccountController {
 	
 	@Autowired
-	private AccountDAO acDAO;
+	private AC_US_DAO acDAO;
 	
 	@RequestMapping(value = "/account.reg.go", method = RequestMethod.GET)
 	public String accountRegGo(HttpServletRequest req) {
@@ -26,22 +26,30 @@ public class AccountController {
 	}
 	
 	@RequestMapping(value = "/account.reg.do", method = RequestMethod.POST)
-	public String accountRegDo(HttpServletRequest req, AccountDTO ac) {
+	public String accountRegDo(HttpServletRequest req, AC_US_TITLE ac) {
 		acDAO.accountRegDo(req, ac);
+		acDAO.accountLoginDo(req, ac);
 		acDAO.loginCheck(req);
+		req.setAttribute("contentPage", "account/profileReg.jsp");
+		return "index";
+	}
+	
+	@RequestMapping(value = "/profile.reg.do", method = RequestMethod.GET)
+	public String profileRegDo(HttpServletRequest req, AC_PF_TITLE ac) {
+		acDAO.loginCheck(req);
+		acDAO.regProfile(req, ac);
 		req.setAttribute("contentPage", "home.jsp");
 		return "index";
 	}
 	
 	@RequestMapping(value = "/account.login.do", method = RequestMethod.POST)
-	public String accountLoginDo(HttpServletRequest req, AccountDTO ac) {
+	public String accountLoginDo(HttpServletRequest req, AC_US_TITLE ac) {
 		acDAO.accountLoginDo(req, ac);
 		acDAO.loginCheck(req);
 		req.setAttribute("contentPage", "home.jsp");
 		return "index";
 	}
 
-	
 	@RequestMapping(value = "/account.logout.do", method = RequestMethod.GET)
 	public String accountLogoutDo(HttpServletRequest req, AccountDTO ac) {
 		acDAO.accountLogoutDo(req, ac);
@@ -79,7 +87,14 @@ public class AccountController {
 		req.setAttribute("contentPage", "account/pwReg.jsp");
 		return "index";
 	}
-
+	
+	@RequestMapping(value = "/user.email.check.do", method = RequestMethod.GET)
+	@ResponseBody
+	public String userEmailCheckDo(HttpServletRequest req, String user_email) {
+		acDAO.loginCheck(req);
+		return acDAO.userEmailCheckDo(user_email);
+	}
+	
 	@RequestMapping(value = "/email.check.do", method = RequestMethod.GET)
 	@ResponseBody
 	public String emailCheckDo(HttpServletRequest req, String ac_email) {
@@ -121,14 +136,14 @@ public class AccountController {
 	
 	@RequestMapping(value = "/social.id.check", method = RequestMethod.GET)
 	@ResponseBody
-	public int socialIdCheck(HttpServletRequest req, AccountDTO ac) {
+	public int socialIdCheck(HttpServletRequest req, AC_US_TITLE ac) {
 		acDAO.loginCheck(req);
 		return acDAO.socialIdCheck(ac);
 	}
 	
 	@RequestMapping(value = "/social.login.do", method = RequestMethod.GET)
-	public String socialLoginDo(HttpServletRequest req, AccountDTO ac) {
-		if (req.getParameter("ac_id") != null) {
+	public String socialLoginDo(HttpServletRequest req, AC_US_TITLE ac) {
+		if (req.getParameter("user_id_name") != null) {
 			acDAO.socialLogin(req, ac);
 			acDAO.loginCheck(req);
 		} else {
@@ -140,11 +155,11 @@ public class AccountController {
 	}
 	
 	@RequestMapping(value = "/social.reg.do", method = RequestMethod.GET)
-	public String socialRegDo(HttpServletRequest req, AccountDTO ac) {
+	public String socialRegDo(HttpServletRequest req, AC_US_TITLE ac) {
 		acDAO.socialReg(req, ac);
 		acDAO.accountLoginDo(req, ac);
 		acDAO.loginCheck(req);
-		req.setAttribute("contentPage", "home.jsp");
+		req.setAttribute("contentPage", "account/socialProfileReg.jsp");
 
 		return "index";
 	}

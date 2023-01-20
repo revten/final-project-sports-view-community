@@ -7,15 +7,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.tm.nmp.account.AccountDAO;
-import com.tm.nmp.games.TotoComment;
-import com.tm.nmp.games.TotoDTO;
+import com.tm.nmp.account.AC_US_DAO;
 
 @Controller
 public class AskC {
 	
 	@Autowired
-	private AccountDAO acDAO;
+	private AC_US_DAO acDAO;
 	
 	@Autowired
 	private AskDAO askDAO;

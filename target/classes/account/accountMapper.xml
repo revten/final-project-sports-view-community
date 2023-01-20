@@ -3,16 +3,25 @@
 <mapper namespace="com.tm.nmp.account.AccountMapper">
 
 	<select id="accountLogin"
-		resultType="com.tm.nmp.account.AccountDTO">
-		select * from account where ac_id = #{ac_id}
+		resultType="com.tm.nmp.account.AC_US_TITLE">
+		select * from user_table where user_id_name = #{user_id_name}
 	</select>
 
 	<insert id="regAccount"
-		parameterType="com.tm.nmp.account.AccountDTO">
-		insert into account
-		values(#{ac_id},#{ac_pw},#{ac_nick},#{ac_name},#{ac_addr},#{ac_email},#{ac_linkWhere},sysdate)
+		parameterType="com.tm.nmp.account.AC_US_TITLE">
+		insert into user_table
+		values(user_table_seq.nextval,
+		#{user_id_name},#{user_pwd}, null,
+		sysdate,#{user_reg_ip},#{user_admin},#{user_auth_type},#{user_email},null)
 	</insert>
-
+	
+	<insert id="regProfile" parameterType="com.tm.nmp.account.AC_PF_TITLE">
+	insert into profile
+		values(profile_seq.nextval,
+		#{user_id},#{club_id}, #{league_id},
+		#{profile_nick}, #{profile_nick}, null, #{profile_sex}, #{profile_subs}, null, null, null)
+	</insert>
+	
 	<select id="searchId"
 		parameterType="com.tm.nmp.account.AccountDTO"
 		resultType="com.tm.nmp.account.AccountDTO">
@@ -28,17 +37,20 @@
 
 	<select id="socialIdCheck" resultType="int">
 		select count(*) from
-		account where ac_id = #{ac_id} and ac_linkWhere = #{ac_linkWhere}
+		user_table where user_id_name = #{user_id_name} and user_auth_type =
+		#{user_auth_type}
 	</select>
 
 	<update id="accountUpdate"
 		parameterType="com.tm.nmp.account.AccountDTO">
-		update account set ac_pw = #{ac_pw}, ac_name = #{ac_name},ac_nick = #{ac_nick}, ac_addr =
-		#{ac_addr}, ac_email = #{ac_email} where ac_id = #{ac_id}
+		update account set ac_pw = #{ac_pw}, ac_name =
+		#{ac_name},ac_nick = #{ac_nick}, ac_addr =
+		#{ac_addr}, ac_email =
+		#{ac_email} where ac_id = #{ac_id}
 	</update>
-	
-	 <delete id="accountDelete" parameterType="com.tm.nmp.account.AccountDTO">
-	delete from account where ac_id = #{ac_id}
-</delete> 
 
+	<delete id="accountDelete"
+		parameterType="com.tm.nmp.account.AccountDTO">
+		delete from account where ac_id = #{ac_id}
+	</delete>
 </mapper>

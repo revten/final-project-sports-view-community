@@ -31,10 +31,10 @@
 			method="post">
 
 			<h6>아이디</h6>
-			<input name="ac_id" class="input_id" id="idInput">
+			<input name="user_id_name" class="input_id" id="idInput">
 
 			<h6>비밀번호</h6>
-			<input name="ac_pw" type="password" class="input_pw" id="pwInput"><br>
+			<input name="user_pwd" type="password" class="input_pw" id="pwInput"><br>
 
 			<a class="find_id" type="button" href="search.id.go">아이디</a>&nbsp; <a>·</a>&nbsp;
 			<a class="find_pw" type="button" href="search.pw.go">비밀번호 찾기</a><br>
@@ -97,14 +97,11 @@
 				url : '/v2/user/me',
 				success : function(res) {
 					console.log(res);
-					var ac_id = res.id;
-					var ac_name = res.kakao_account.profile.nickname;
-					var ac_linkWhere = 'kakao';
-					var ac_email = 'kakaoMail';
+					var user_id_name = res.id;
+					var user_auth_type = '1';
+					console.log(user_id_name, user_auth_type);
 
-					console.log(ac_id, ac_name, ac_linkWhere, ac_email);
-
-					checkInfoKakao(ac_id, ac_name, ac_linkWhere, ac_email);
+					checkInfoKakao(user_id_name, user_auth_type);
 
 				},
 
@@ -115,25 +112,25 @@
 			});
 		}
 
-		function checkInfoKakao(ac_id, ac_name, ac_linkWhere, ac_email) {
+		function checkInfoKakao(user_id_name, user_auth_type) {
 			$
 					.ajax({
 						url : "social.id.check",
 						type : "GET",
 						dataType : "text",
 						data : {
-							"ac_id" : ac_id,
-							"ac_linkWhere" : ac_linkWhere
+							"user_id_name" : user_id_name,
+							"user_auth_type" : user_auth_type
 						},
 						success : function(data) {
 							console.log(data)
 							if (data >= 1) {
-								let kakaoLoginUrl = `social.login.do?ac_id=${ac_id}`;
+								let kakaoLoginUrl = `social.login.do?user_id_name=${user_id_name}`;
 								console.log(kakaoLoginUrl);
 								location.replace(kakaoLoginUrl);
 							} else {
 								alert('회원가입을 도와드리겠습니다.');
-								let kakaoJoinUrl = `social.reg.do?ac_id=+${ac_id}+&ac_name=+${ac_name}+&ac_linkWhere=+${ac_linkWhere}+&ac_email=+${ac_email}`;
+								let kakaoJoinUrl = `social.reg.do?user_id_name=+${user_id_name}+&user_auth_type=+${user_auth_type}`;
 								console.log(kakaoJoinUrl);
 								location.replace(kakaoJoinUrl);
 							}
@@ -166,13 +163,13 @@
 		function handleCredentialResponse(response) {
 			const responsePayload = parseJwt(response.credential);
 
-			let ac_id = responsePayload.sub;
-			let ac_name = responsePayload.name;
-			let ac_email = responsePayload.email;
-			let ac_linkWhere = "google";
+			let user_id_name = responsePayload.sub;
+			//let ac_name = responsePayload.name;
+			//let ac_email = responsePayload.email;
+			let user_auth_type = '1';
 
-			console.log(ac_id, ac_name, ac_email, ac_linkWhere);
-			checkInfoGoogle(ac_id, ac_name, ac_email, ac_linkWhere);
+			console.log(user_id_name, user_auth_type);
+			checkInfoGoogle(user_id_name, user_auth_type);
 		}
 
 		function parseJwt(token) {
@@ -188,25 +185,25 @@
 			return JSON.parse(jsonPayload);
 		};
 
-		function checkInfoGoogle(ac_id, ac_name, ac_email, ac_linkWhere) {
+		function checkInfoGoogle(user_id_name, user_auth_type) {
 			$
 					.ajax({
 						url : "social.id.check",
 						type : "GET",
 						dataType : "text",
 						data : {
-							"ac_id" : ac_id,
-							"ac_linkWhere" : ac_linkWhere
+							"user_id_name" : user_id_name,
+							"user_auth_type" : user_auth_type
 						},
 						success : function(getData) {
 							console.log(getData);
 							if (getData >= 1) {
-								let googleLoginUrl = `social.login.do?ac_id=${ac_id}`;
+								let googleLoginUrl = `social.login.do?user_id_name=${user_id_name}`;
 								console.log(googleLoginUrl);
 								location.replace(googleLoginUrl);
 							} else {
 								alert('회원가입을 도와드리겠습니다.');
-								let googleJoinUrl = `social.reg.do?ac_id=+${ac_id}+&ac_name=+${ac_name}+&ac_email=+${ac_email}+&ac_linkWhere=+${ac_linkWhere}`;
+								let googleJoinUrl = `social.reg.do?user_id_name=${user_id_name}+&user_auth_type+${user_auth_type}`;
 								console.log(googleJoinUrl);
 								location.replace(googleJoinUrl);
 							}
