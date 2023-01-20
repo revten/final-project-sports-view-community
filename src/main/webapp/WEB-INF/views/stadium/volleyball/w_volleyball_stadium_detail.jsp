@@ -18,7 +18,7 @@
 		<div style="display: inline-block; align-items: flex-start;">
 			<img id="seat" usemap="#workmap"
 				style="position: relative; width: 500px; height: 500px; margin: 300px 0px 10px 0px;"
-				src="resources/files/stadium/soccer/seating_chart/${seat}"><br>
+				src="resources/files/stadium/volleyball/seating_chart/${seat}"><br>
 			<map name="workmap">
 				<area style="cursor: pointer;" class="imgArea" id="12"
 					coords="73,0,432,114" shape="rect">
@@ -37,13 +37,13 @@
 		</div>
 		<!-- 전경 사진 -->
 		<img style="display: none" id="test_3"
-			src="resources/final_img_file/soccer/seating_chart/${seatDetail }/test_3.jpg">
+			src="resources/final_img_file/volleyball_w/seating_chart/${seatDetail }/test_3.jpg">
 		<img style="display: none" id="test_9"
-			src="resources/final_img_file/soccer/seating_chart/${seatDetail }/test_9.jpg">
+			src="resources/final_img_file/volleyball_w/seating_chart/${seatDetail }/test_9.jpg">
 		<img style="display: none" id="test_6"
-			src="resources/final_img_file/soccer/seating_chart/${seatDetail }/test_6.jpg">
+			src="resources/final_img_file/volleyball_w/seating_chart/${seatDetail }/test_6.jpg">
 		<img style="display: none" id="test_12"
-			src="resources/final_img_file/soccer/seating_chart/${seatDetail }/test_12.jpg">
+			src="resources/final_img_file/volleyball_w/seating_chart/${seatDetail }/test_12.jpg">
 	</div>
 	<br>
 	<br>
