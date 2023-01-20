@@ -69,7 +69,7 @@ $(function() {
 					<li class="nav__item"><a href="news.sports.go"
 						class="nav__link">스포츠</a></li>
 						
-					<li class="nav__item"><a href="team.event.main.go"
+					<li class="nav__item"><a href="club.event.main.go"
 						class="nav__link">구단공식이벤트</a></li>
 						
 					<li class="nav__item"><a href="sports.info.main.go"
@@ -82,7 +82,7 @@ $(function() {
 					<i class="ri-close-line"></i>
 				</div>
 			</div>
-	<form action="teamEvent.insert.do" method="post">
+	<form action="clubEvent.insert.do" method="post">
 		<div style="border:1px solid;width:70%;align:center;">
 			<div class="thead">종목: 
 			<select name="ie_te_sports">
@@ -91,7 +91,7 @@ $(function() {
 				<option value="농구">농구</option>
 				<option value="배구">배구</option>
 			</select></div>
-			<div class="thead">구단명:<input name="ie_te_team"></div>
+			<div class="thead">구단명:<input name="ie_te_club"></div>
 			<div class="theadTitle">제목 : <input name="ie_te_title"></div>
 		</div>
 		<div class="tableContent">사진<input type="file" name="ie_te_img"></div>

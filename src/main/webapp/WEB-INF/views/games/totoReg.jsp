@@ -29,7 +29,7 @@ $(function() {
 			</select></div>
 			<div>제목 : <input name="toto_title"></div>
 		</div>
-		<input id="board_img_input" type="file" name="toto_img" value="-" type="hidden">
+		<input id="board_img_input" type="file" name="toto_img" value="${bottomSplit }" type="hidden">
 		<input id="board_video_input" type="file" name="toto_video" value="-" type="hidden">
 		<div style="width: 80%"><textarea id="editor" maxlength="2084" name="toto_content" style="resize: none"></textarea></div>
 		<div>

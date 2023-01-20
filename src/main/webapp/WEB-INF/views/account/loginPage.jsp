@@ -31,10 +31,10 @@
 			method="post">
 
 			<h6>아이디</h6>
-			<input name="user_id_name" class="input_id" id="idInput">
+			<input name="member_id" class="input_id" id="idInput">
 
 			<h6>비밀번호</h6>
-			<input name="user_pwd" type="password" class="input_pw" id="pwInput"><br>
+			<input name="member_pwd" type="password" class="input_pw" id="pwInput"><br>
 
 			<a class="find_id" type="button" href="search.id.go">아이디</a>&nbsp; <a>·</a>&nbsp;
 			<a class="find_pw" type="button" href="search.pw.go">비밀번호 찾기</a><br>
@@ -129,8 +129,10 @@
 								console.log(kakaoLoginUrl);
 								location.replace(kakaoLoginUrl);
 							} else {
+								console.log(user_id_name)
+								console.log(user_auth_type)
 								alert('회원가입을 도와드리겠습니다.');
-								let kakaoJoinUrl = `social.reg.do?user_id_name=+${user_id_name}+&user_auth_type=+${user_auth_type}`;
+								let kakaoJoinUrl = "social.reg.do?user_id_name="+user_id_name+"&user_auth_type="+user_auth_type;
 								console.log(kakaoJoinUrl);
 								location.replace(kakaoJoinUrl);
 							}

@@ -3,25 +3,25 @@
 <mapper namespace="com.tm.nmp.account.AccountMapper">
 
 	<select id="accountLogin"
-		resultType="com.tm.nmp.account.AC_US_TITLE">
-		select * from user_table where user_id_name = #{user_id_name}
+		resultType="com.tm.nmp.account.AccountDTO">
+		select * from member where member_id =
+		#{member_id}
 	</select>
 
 	<insert id="regAccount"
-		parameterType="com.tm.nmp.account.AC_US_TITLE">
-		insert into user_table
-		values(user_table_seq.nextval,
-		#{user_id_name},#{user_pwd}, null,
-		sysdate,#{user_reg_ip},#{user_admin},#{user_auth_type},#{user_email},null)
+		parameterType="com.tm.nmp.account.AccountDTO">
+		BEGIN
+		insert into member
+		values(#{member_id},#{member_pwd},#{member_nick},#{member_auth_type},#{member_reg_type},sysdate,#{member_reg_ip},#{member_email},#{member_intro},#{club_id},#{member_subs},null,null,null,null,#{member_admin});
+		
+		insert into POINT values(#{member_id},'뉴비','0');
+		END;
 	</insert>
 	
-	<insert id="regProfile" parameterType="com.tm.nmp.account.AC_PF_TITLE">
-	insert into profile
-		values(profile_seq.nextval,
-		#{user_id},#{club_id}, #{league_id},
-		#{profile_nick}, #{profile_nick}, null, #{profile_sex}, #{profile_subs}, null, null, null)
-	</insert>
-	
+	<select id="idCheck" parameterType="String" resultType="int">
+		select count(*) from member where member_id = #{member_id}
+	</select>
+
 	<select id="searchId"
 		parameterType="com.tm.nmp.account.AccountDTO"
 		resultType="com.tm.nmp.account.AccountDTO">
@@ -37,8 +37,9 @@
 
 	<select id="socialIdCheck" resultType="int">
 		select count(*) from
-		user_table where user_id_name = #{user_id_name} and user_auth_type =
-		#{user_auth_type}
+		member_table where member_id_name = #{member_id_name} and
+		member_auth_type =
+		#{member_auth_type}
 	</select>
 
 	<update id="accountUpdate"
