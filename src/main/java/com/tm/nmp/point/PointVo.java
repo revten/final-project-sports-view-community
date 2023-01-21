@@ -68,23 +68,8 @@ public class PointVo {
 		return grade;
 	}
 
-	public void setGrade(int point) {
-		if(point >= 7000)
-			grade = "다이아몬드";
-		else if(point >=6000)
-			grade = "플래티넘";
-		else if(point >=5000)
-			grade = "골드";
-		else if(point >=4000)
-			grade = "실버";
-		else if(point >=3000)
-			grade = "브론즈";
-		else if(point >=2000)
-			grade = "멤버";
-		else if(point >=1000)
-			grade = "루키";
-		else
-			grade = "뉴비";
+	public void setGrade(String grade) {
+		
 		this.grade = grade;
 	}
 
