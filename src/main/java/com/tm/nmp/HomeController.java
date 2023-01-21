@@ -9,10 +9,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.tm.nmp.account.AC_US_DAO;
 import com.tm.nmp.admin.AnswerDAO;
-import com.tm.nmp.community.CM_SC_DAO;
-import com.tm.nmp.community.CM_SC_TITLE;
-import com.tm.nmp.community.CM_WG_DAO;
-import com.tm.nmp.community.CM_WG_TITLE;
 import com.tm.nmp.games.GamesAnalyzeDAO;
 import com.tm.nmp.games.TotoDAO;
 import com.tm.nmp.mypage.AskDAO;
@@ -36,16 +32,9 @@ public class HomeController {
 	
 	@Autowired
 	private AskDAO askDAO;
-
-	@Autowired
-	private CM_SC_DAO scDAO;
 	
 	@Autowired
 	private AnswerDAO asDAO;
-
-	@Autowired
-	private CM_WG_DAO wgDAO;
-	
 	
 	private boolean firstReq;
 
@@ -62,7 +51,6 @@ public class HomeController {
 			mpDAO.calcAllPostCount();
 			askDAO.calcAllPostCount();
 			asDAO.calcAllPostCount();
-			scDAO.calcAllPostCount();
 			firstReq = false;
 		}
 		
@@ -100,10 +88,10 @@ public class HomeController {
 	}
 
 	@RequestMapping(value = "/community.main.go", method = RequestMethod.GET)
-	public String communityMainGo(HttpServletRequest req, CM_SC_TITLE sc, CM_WG_TITLE wg) {
+	public String communityMainGo(HttpServletRequest req) {
 		acDAO.loginCheck(req);
-		scDAO.getSoccerBoard(req, 1);
-		wgDAO.showWithGoList(req, wg);
+/*		scDAO.getSoccerBoard(req, 1);
+		wgDAO.showWithGoList(req, wg);*/
 		req.setAttribute("contentPage", "community/communityMain.jsp");
 		return "index";
 	}

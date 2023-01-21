@@ -19,7 +19,7 @@ public class GamesAnalyzeDAO {
 	@Autowired
 	private SqlSession ss;
 
-	@Autowired
+
 	private SiteOption so; // 한페이지에 몇개씩 보여줄것인지 밖으로 빼~기
 
 	public int getAllPostCount() {
@@ -83,7 +83,7 @@ public class GamesAnalyzeDAO {
 		}
 
 		AccountDTO ac = (AccountDTO) req.getSession().getAttribute("loginAccount");
-		gp.setAnlyz_id(ac.getAc_id());
+		gp.setAnlyz_id(ac.getMember_id());
 		String gp_txt = gp.getAnlyz_content();
 		gp.setAnlyz_content(gp_txt.replace("\r\n", "<br>"));
 

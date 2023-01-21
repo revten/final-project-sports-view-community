@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.tm.nmp.account.AC_US_DAO;
+import com.tm.nmp.board.FreeDAO;
 
 @Controller
 public class CommunityController {
@@ -22,17 +23,8 @@ public class CommunityController {
 	private CM_RV_DAO rvDAO;
 	
 	@Autowired
-	private CM_SC_DAO scDAO;
-	
-	@Autowired
-	private CM_BS_DAO bsDAO;
-	
-	@Autowired
-	private CM_BK_DAO bkDAO;
-	
-	@Autowired
-	private CM_VL_DAO vlDAO;
-	
+	private FreeDAO frDAO;
+		
 	@RequestMapping(value = "withGoList.go", method = RequestMethod.GET)
 	public String withGoListGo(HttpServletRequest req, CM_WG_TITLE wg) {
 		acDAO.loginCheck(req);
@@ -145,45 +137,43 @@ public class CommunityController {
 		req.setAttribute("contentPage", "community/review/reviewDetail.jsp");
 		return "index";
 	}
+
 	
-	//야구게시판
-	@RequestMapping(value = "baseballBoard.go", method = RequestMethod.GET)
-	public String baseballBoardGO(HttpServletRequest req, CM_BS_TITLE bs) {
+	
+	@RequestMapping(value = "baseball.board.go", method = RequestMethod.GET)
+	public String baseballBoardGO(HttpServletRequest req) {
 		acDAO.loginCheck(req);
-		bsDAO.getAllBaseball(req, 1);
+		frDAO.getAllPost(req, 1, 21);
 		
 		req.setAttribute("contentPage", "community/baseball/baseballBoard.jsp");
 		return "index";
 	}
 	
-	//축구게시판
-	@RequestMapping(value = "soccerBoard.go", method = RequestMethod.GET)
-	public String soccerBoardGO(HttpServletRequest req, CM_SC_TITLE sc) {
+	@RequestMapping(value = "soccer.board.go", method = RequestMethod.GET)
+	public String soccerBoardGO(HttpServletRequest req) {
 		acDAO.loginCheck(req);
-		scDAO.getSoccerBoard(req,1);
+		frDAO.getAllPost(req, 1, 22);		
 		
 		req.setAttribute("contentPage", "community/soccer/soccerBoard.jsp");
 		return "index";
 	}
 	
-	@RequestMapping(value = "basketballBoard.go", method = RequestMethod.GET)
-	public String basketballBoardGO(HttpServletRequest req, CM_BK_TITLE bk) {
+	@RequestMapping(value = "basketball.board.go", method = RequestMethod.GET)
+	public String basketballBoardGO(HttpServletRequest req) {
 		acDAO.loginCheck(req);
-		bkDAO.getAllBasketball(req,bk);
+		frDAO.getAllPost(req, 1, 23);	
 		
 		req.setAttribute("contentPage", "community/soccer/soccerBoard.jsp");
 		return "index";
 	}
 	
-	@RequestMapping(value = "volleyballBoard.go", method = RequestMethod.GET)
-	public String volleyballBoardGO(HttpServletRequest req, CM_VL_TITLE vl) {
+	@RequestMapping(value = "volleyball.board.go", method = RequestMethod.GET)
+	public String volleyballBoardGO(HttpServletRequest req) {
 		acDAO.loginCheck(req);
-		vlDAO.getAllVolleyball(req,vl);
+		frDAO.getAllPost(req, 1, 24);	
 		
 		req.setAttribute("contentPage", "community/soccer/soccerBoard.jsp");
 		return "index";
 	}
-	
-	
-	
+
 }

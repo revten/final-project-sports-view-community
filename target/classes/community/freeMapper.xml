@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tm.nmp.board.FreeMapper">
+
+	<select id="calcAllPostCOunt"
+		parameterType="com.tm.nmp.board.BoardSelector"
+		resultType="java.lang.Integer">
+		select count(*) from post, member
+		where post.member_id =
+		member.member_id
+		and post_title like '%'||#{search}||'%'
+		and post.board
+		id = #{board_id}
+	</select>
+
+	<select id="getAllPost"
+		parameterType="com.tm.nmp.board.BoardSelector"
+		resultType="com.tm.nmp.board.PostVO">
+		select * from
+		(select rownum as rn, post.member_id as
+		mim,post_id, board_id,
+		post_title, post_category, post_content,
+		post_reg_date, post_update_date,
+		post_img, post_file,
+		post_hit_count,
+		post_like_count, post_scrap_count, post_reply_count, post_reg_ip,
+		member_nick
+		from post, member where post.member_id = member.member_id
+		and post_title
+		like '%'||#{search}||'%' and board_id = 21 order by
+		post_reg_date
+		desc)
+		where rn &gt; = #{start} and rn &lt; = #{end}
+	</select>
+
+	<!-- 글+댓글 -->
+	<select id="getPost" parameterType="com.tm.nmp.board.PostVO"
+		resultType="com.tm.nmp.board.PostVO">
+		select * from post where post_id = #{post_id}
+	</select>
+	
+	<select id="getAllReplies"
+		parameterType="com.tm.nmp.board.PostVO"
+		resultType="com.tm.nmp.board.ReplyVO">
+		select * from comment_table where post_id = #{post_id}
+	</select>
+
+	<insert id="regPost" parameterType="com.tm.nmp.board.PostVO">
+		insert into post values
+		(post_seq.nextval, #{member_id}, #{board_id}, #{post_title},
+		#{post_category}, #{post_content}, sysdate, null, #{post_img},
+		#{post_file}, #{post_hit_count}, #{post_like_count},
+		#{post_scrap_count}, #{post_comment_count}, #{post_reg_ip})
+	</insert>
+
+	<delete id="deletePost" parameterType="com.tm.nmp.board.PostVO">
+		delete from post where
+		post_id =
+		#{post_id}
+	</delete>
+
+	<update id="updatePost" parameterType="com.tm.nmp.board.PostVO">
+		update post set
+		post_title
+		= #{post_title},
+		post_category= #{post_category},
+		post_content=
+		#{post_content},
+		post_update_date = sysdate,
+		post_img= #{post_img},
+		post_file= #{post_file},
+		post_reg_ip= #{post_reg_ip}
+		where post_id =
+		#{post_id}
+	</update>
+
+	<insert id="regReply" parameterType="com.tm.nmp.board.ReplyVO">
+		insert into reply
+		values(reply_seq.nextval, #{board_id}, #{post_id}, #{member_id},
+		#{reply_content}, sysdate, #{reply_update_date},
+		#{reply_like_count},
+		#{reply_reg_ip})
+	</insert>
+
+	<delete id="deleteReply"
+		parameterType="com.tm.nmp.board.ReplyVO">
+		delete from reply
+		where reply_id = #{reply_id}
+	</delete>
+
+	<update id="updateReply"
+		parameterType="com.tm.nmp.board.ReplyVO">
+		update reply set
+		reply_content=
+		#{reply_content},
+		post_update_date = sysdate,
+		reply_reg_ip= #{post_reg_ip}
+		where reply_id = #{reply_id}
+	</update>
+	
+</mapper>

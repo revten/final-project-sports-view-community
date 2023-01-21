@@ -23,7 +23,6 @@ public class TotoDAO {
 	@Autowired
 	private SqlSession ss;
 	
-	@Autowired
 	private SiteOption so;
 	
 	public int getAllPostCount() {
