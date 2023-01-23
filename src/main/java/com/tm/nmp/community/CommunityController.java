@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.tm.nmp.account.AC_US_DAO;
-import com.tm.nmp.board.FreeDAO;
+import com.tm.nmp.board.BoardDAO;
 
 @Controller
 public class CommunityController {
@@ -23,7 +23,7 @@ public class CommunityController {
 	private CM_RV_DAO rvDAO;
 	
 	@Autowired
-	private FreeDAO frDAO;
+	private BoardDAO frDAO;
 		
 	@RequestMapping(value = "withGoList.go", method = RequestMethod.GET)
 	public String withGoListGo(HttpServletRequest req, CM_WG_TITLE wg) {

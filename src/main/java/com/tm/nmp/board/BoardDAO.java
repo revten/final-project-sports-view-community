@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 import com.tm.nmp.account.AccountDTO;
 
 @Service
-public class FreeDAO {
+public class BoardDAO {
 
 	@Autowired
 	private SqlSession ss;
@@ -31,7 +31,7 @@ public class FreeDAO {
 
 	public void calcAllPostCount(int board_id) {
 		BoardSelector bSel = new BoardSelector("", 0, 0, board_id);
-		allPostCount = ss.getMapper(FreeMapper.class).calcAllPostCount(bSel);
+		allPostCount = ss.getMapper(BoardMapper.class).calcAllPostCount(bSel);
 	}
 
 	public void getAllPost(HttpServletRequest req, int pageNbr, int board_id) {
@@ -49,11 +49,11 @@ public class FreeDAO {
 		} else {
 			search.setStart(start);
 			search.setEnd(end);
-			postCount = ss.getMapper(FreeMapper.class).calcAllPostCount(search);
+			postCount = ss.getMapper(BoardMapper.class).calcAllPostCount(search);
 
 		}
 
-		List<PostVO> posts = ss.getMapper(FreeMapper.class).getAllPost(search);
+		List<PostVO> posts = ss.getMapper(BoardMapper.class).getAllPost(search);
 		req.setAttribute("posts", posts);
 
 		int pageCount = (int) Math.ceil(postCount / (double) count);
@@ -66,8 +66,8 @@ public class FreeDAO {
 	}
 
 	public void getPost(HttpServletRequest req, PostVO p) {
-		PostVO post = ss.getMapper(FreeMapper.class).getPost(p);
-		post.setReplies(ss.getMapper(FreeMapper.class).getAllReplies(p));
+		PostVO post = ss.getMapper(BoardMapper.class).getPost(p);
+		post.setReplies(ss.getMapper(BoardMapper.class).getAllReplies(p));
 		req.setAttribute("post", post);
 	}
 
@@ -107,7 +107,7 @@ public class FreeDAO {
 
 //		p.setPost_content(p_txt.replace("\r\n", "<br>"));
 
-		if (ss.getMapper(FreeMapper.class).regPost(p) == 1) {
+		if (ss.getMapper(BoardMapper.class).regPost(p) == 1) {
 			System.out.println("글 등록 성공");
 			allPostCount++;
 		} else {
@@ -137,7 +137,7 @@ public class FreeDAO {
 			p.setPost_img("");
 		}
 
-		if (ss.getMapper(FreeMapper.class).updatePost(p) == 1) {
+		if (ss.getMapper(BoardMapper.class).updatePost(p) == 1) {
 			req.setAttribute("result", "글수정 성공");
 		} else {
 			req.setAttribute("result", "글수정 실패");
@@ -145,7 +145,7 @@ public class FreeDAO {
 	}
 	
 	public void deletePost(HttpServletRequest req, PostVO p) {
-		if (ss.getMapper(FreeMapper.class).deletePost(p) == 1) {
+		if (ss.getMapper(BoardMapper.class).deletePost(p) == 1) {
 			req.setAttribute("result", "글삭제 성공");
 			allPostCount--;
 		} else {
@@ -164,7 +164,7 @@ public class FreeDAO {
 		AccountDTO ac = (AccountDTO) req.getSession().getAttribute("loginAccount");
 		rp.setReply_member(ac.getMember_id());
 
-		if (ss.getMapper(FreeMapper.class).regReply(rp) == 1) {
+		if (ss.getMapper(BoardMapper.class).regReply(rp) == 1) {
 			req.setAttribute("result", "댓글쓰기 성공");
 			req.getSession().setAttribute("successToken", token);
 //			allReplyCount++;
@@ -174,7 +174,7 @@ public class FreeDAO {
 	}
 
 	public void deleteReply(HttpServletRequest req, ReplyVO rp) {
-		if (ss.getMapper(FreeMapper.class).deleteReply(rp) == 1) {
+		if (ss.getMapper(BoardMapper.class).deleteReply(rp) == 1) {
 			req.setAttribute("result", "댓글삭제 성공");
 			allPostCount--;
 		} else {
@@ -184,7 +184,7 @@ public class FreeDAO {
 	}
 
 	public void updateReply(HttpServletRequest req, ReplyVO rp) {
-		if (ss.getMapper(FreeMapper.class).updateReply(rp) == 1) {
+		if (ss.getMapper(BoardMapper.class).updateReply(rp) == 1) {
 			req.setAttribute("result", "댓글수정 성공");
 		} else {
 			req.setAttribute("result", "댓글수정 실패");

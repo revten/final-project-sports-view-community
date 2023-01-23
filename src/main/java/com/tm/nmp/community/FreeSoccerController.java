@@ -11,7 +11,7 @@ import com.tm.nmp.TokenMaker;
 import com.tm.nmp.account.AC_US_DAO;
 import com.tm.nmp.board.BoardOption;
 import com.tm.nmp.board.BoardSelector;
-import com.tm.nmp.board.FreeDAO;
+import com.tm.nmp.board.BoardDAO;
 import com.tm.nmp.board.PostVO;
 import com.tm.nmp.board.ReplyVO;
 
@@ -22,7 +22,7 @@ public class FreeSoccerController {
 	private AC_US_DAO acDAO;
 		
 	@Autowired
-	private FreeDAO frDAO;
+	private BoardDAO frDAO;
 	
 	@RequestMapping(value = "soccer.detail.go", method = RequestMethod.GET)
 	public String soccerDetail(HttpServletRequest req, PostVO p) {

@@ -2,7 +2,7 @@ package com.tm.nmp.board;
 
 import java.util.List;
 
-public interface FreeMapper {
+public interface BoardMapper {
 
 	int calcAllPostCount(BoardSelector bSel);
 

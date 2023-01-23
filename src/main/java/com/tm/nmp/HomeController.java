@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.tm.nmp.account.AC_US_DAO;
 import com.tm.nmp.admin.AnswerDAO;
-import com.tm.nmp.board.FreeDAO;
+import com.tm.nmp.board.BoardDAO;
 import com.tm.nmp.games.GamesAnalyzeDAO;
 import com.tm.nmp.games.TotoDAO;
 import com.tm.nmp.mypage.AskDAO;
@@ -37,7 +37,7 @@ public class HomeController {
 	private AnswerDAO asDAO;
 
 	@Autowired
-	private FreeDAO frDAO;
+	private BoardDAO frDAO;
 
 	private boolean firstReq;
 

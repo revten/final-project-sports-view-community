@@ -11,7 +11,7 @@ import com.tm.nmp.TokenMaker;
 import com.tm.nmp.account.AC_US_DAO;
 import com.tm.nmp.board.BoardOption;
 import com.tm.nmp.board.BoardSelector;
-import com.tm.nmp.board.FreeDAO;
+import com.tm.nmp.board.BoardDAO;
 import com.tm.nmp.board.PostVO;
 import com.tm.nmp.board.ReplyVO;
 
@@ -22,14 +22,14 @@ public class FreeBaseballController {
 	private AC_US_DAO acDAO;
 
 	@Autowired
-	private FreeDAO frDAO;
+	private BoardDAO brDAO;
 
 	@RequestMapping(value = "baseball.detail.go", method = RequestMethod.GET)
 	public String baseballDetail(HttpServletRequest req, PostVO p) {
 		acDAO.wathingPage(req);
 		BoardOption.clearSearch(req);
 		acDAO.loginCheck(req);
-		frDAO.getPost(req, p);
+		brDAO.getPost(req, p);
 
 		req.setAttribute("contentPage", "community/baseball/baseballDetail.jsp");
 		return "index";
@@ -49,8 +49,8 @@ public class FreeBaseballController {
 	@RequestMapping(value = "baseball.reg.do", method = RequestMethod.POST)
 	public String baseballRegDo(HttpServletRequest req, PostVO p) {
 		acDAO.loginCheck(req);
-		frDAO.regPost(req, p);
-		frDAO.getAllPost(req, 1, 21);
+		brDAO.regPost(req, p);
+		brDAO.getAllPost(req, 1, 21);
 		req.setAttribute("contentPage", "community/baseball/baseballBoard.jsp");
 		return "index";
 	}
@@ -59,7 +59,7 @@ public class FreeBaseballController {
 	public String baseballUpdateGo(HttpServletRequest req, PostVO p) {
 		acDAO.wathingPage(req);
 		acDAO.loginCheck(req);
-		frDAO.getPost(req, p);
+		brDAO.getPost(req, p);
 		req.setAttribute("contentPage", "community/baseball/baseballUpdate.jsp");
 		return "index";
 	}
@@ -67,8 +67,8 @@ public class FreeBaseballController {
 	@RequestMapping(value = "baseball.update.do", method = RequestMethod.POST)
 	public String baseballUpdateDo(HttpServletRequest req, PostVO p) {
 		acDAO.loginCheck(req);
-		frDAO.updatePost(req, p);
-		frDAO.getAllPost(req, 1, 21);
+		brDAO.updatePost(req, p);
+		brDAO.getAllPost(req, 1, 21);
 		req.setAttribute("contentPage", "community/baseball/baseballBoard.jsp");
 		return "index";
 	}
@@ -77,9 +77,9 @@ public class FreeBaseballController {
 	public String baseballDeleteDo(HttpServletRequest req, PostVO p) {
 		BoardOption.clearSearch(req);
 		if (acDAO.loginCheck(req)) {
-			frDAO.deletePost(req, p);
+			brDAO.deletePost(req, p);
 		}
-		frDAO.getAllPost(req, 1, 21);
+		brDAO.getAllPost(req, 1, 21);
 
 		req.setAttribute("contentPage", "community/baseball/baseballBoard.jsp");
 		return "index";
@@ -90,7 +90,7 @@ public class FreeBaseballController {
 		acDAO.wathingPage(req);
 		TokenMaker.make(req);
 		int pg = Integer.parseInt(req.getParameter("pg"));
-		frDAO.getAllPost(req, pg, 21);
+		brDAO.getAllPost(req, pg, 21);
 		acDAO.loginCheck(req);
 		req.setAttribute("contentPage", "community/baseball/baseballBoard.jsp");
 		return "index";
@@ -99,8 +99,8 @@ public class FreeBaseballController {
 	@RequestMapping(value = "/baseball.search.do", method = RequestMethod.GET)
 	public String baseballSearchDo(HttpServletRequest req, BoardSelector bSel) {
 		acDAO.loginCheck(req);
-		frDAO.searchPost(req, bSel);
-		frDAO.getAllPost(req, 1, 21);
+		brDAO.searchPost(req, bSel);
+		brDAO.getAllPost(req, 1, 21);
 
 		req.setAttribute("contentPage", "community/baseball/baseballBoard.jsp");
 		return "index";
@@ -109,9 +109,9 @@ public class FreeBaseballController {
 	@RequestMapping(value = "baseballReply.reg.do", method = RequestMethod.GET)
 	public String baseballReplyRegDo(HttpServletRequest req, ReplyVO rp, PostVO p) {
 		if (acDAO.loginCheck(req)) {
-			frDAO.regReply(req, rp);
+			brDAO.regReply(req, rp);
 		}
-		frDAO.getPost(req, p);
+		brDAO.getPost(req, p);
 		req.setAttribute("contentPage", "community/baseball/baseballDeatail.jsp");
 		return "index";
 	}
@@ -119,9 +119,9 @@ public class FreeBaseballController {
 	@RequestMapping(value = "baseballReply.dalete.do", method = RequestMethod.GET)
 	public String baseballReplyDelete(HttpServletRequest req, ReplyVO rp, PostVO p) {
 		if (acDAO.loginCheck(req)) {
-			frDAO.deleteReply(req, rp);
+			brDAO.deleteReply(req, rp);
 		}
-		frDAO.getPost(req, p);
+		brDAO.getPost(req, p);
 		req.setAttribute("contentPage", "community/baseball/baseballDeatail.jsp");
 		return "index";
 	}
@@ -129,9 +129,9 @@ public class FreeBaseballController {
 	@RequestMapping(value = "baseballReply.update.do", method = RequestMethod.GET)
 	public String baseballReplyUpdate(HttpServletRequest req, ReplyVO rp, PostVO p) {
 		if (acDAO.loginCheck(req)) {
-			frDAO.updateReply(req, rp);
+			brDAO.updateReply(req, rp);
 		}
-		frDAO.getPost(req, p);
+		brDAO.getPost(req, p);
 		req.setAttribute("contentPage", "community/baseball/baseballDeatail.jsp");
 		return "index";
 	}
