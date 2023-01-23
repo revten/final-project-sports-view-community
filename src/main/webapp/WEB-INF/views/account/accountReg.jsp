@@ -133,15 +133,14 @@ function checkOne(element) {
 	<br>
 	<h1>회원 가입</h1>
 	<div id="accountReg__contrainer">
-		<form action="account.reg.do" method="post"
-			onsubmit="return regMemberId()">
+		<form action="account.reg.do" method="post" onsubmit="return checkReg()">
 			<div class="accountReg__idInput-1">아이디</div>
 			<div class="accountReg__idInput-2">
 				<!-- member 아이디 인풋 창 -->
 				<input id="idInput" name="member_id" oninput="checkId()">
 				<input id="idConfirm" type="hidden" value="0">
 				<br>
-				<span class="id_ok">사용 가능한 아이디입니다.</span> 
+				<span class="id_ok">중복되지 않은 아이디입니다.</span> 
 				<span class="id_already">누군가 이 아이디를 사용하고 있어요.</span>
 			</div>
 			<div class="accountReg__pwInput-1">비밀번호</div>
@@ -192,7 +191,7 @@ function checkOne(element) {
 			</div>
 			<div>
 				<label>좋아하는 구단 선택</label> <select name="club_id" id="club_id">
-					<option>구단을 선택해주세요</option>
+					<option value="0">구단을 선택해주세요</option>
 				</select>
 			</div>
 			<!-- profile subs 동의 인풋 창 -->
@@ -207,8 +206,8 @@ function checkOne(element) {
 					이메일 수신 거부</label>
 			</div>
 			<input type="hidden" name="member_admin" value="0">
-			<button id="reg">가입</button>
 			<br>
+			<button id="reg">가입</button>
 		</form>
 	</div>
 </body>
