@@ -51,6 +51,7 @@
 		set
 		post_title = #{post_title},
 		post_category= #{post_category},
+		post_content = #{post_content},
 		post_update_date = sysdate,
 		post_img= #{post_img},
 		post_file= #{post_file},

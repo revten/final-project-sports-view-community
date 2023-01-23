@@ -86,12 +86,9 @@ public class FreeDAO {
 		p.setPost_reg_ip(regIp);
 
 		String str = p.getPost_content();
-		System.out.println("전체 경로 :" + str);
+		System.out.println("전체(글내용) 경로 :" + str);
 		String tit = p.getPost_title();
-		String con = p.getPost_content();
-		
 		System.out.println("제목 :" + tit);
-		System.out.println("내용 :" + con);
 
 		if (str.contains("img")) {
 			String[] contentSplit = str.split("/");
@@ -145,7 +142,6 @@ public class FreeDAO {
 		} else {
 			req.setAttribute("result", "글수정 실패");
 		}
-		req.setAttribute("result", "글수정 실패");
 	}
 	
 	public void deletePost(HttpServletRequest req, PostVO p) {
@@ -155,7 +151,6 @@ public class FreeDAO {
 		} else {
 			req.setAttribute("result", "글삭제실패");
 		}
-		req.setAttribute("result", "글삭제실패");
 	}
 
 	public void regReply(HttpServletRequest req, ReplyVO rp) {
