@@ -1,12 +1,9 @@
 function regMemberId() {
 	let email = $('#search_member_email').val();
-	let inputNum = $(this).val();
+	let inputNum = $('#email_num').val();
 	if (inputNum == $('#valid').val()) {
 		alert('인증 번호가 성공적으로 인증되었습니다.');
 		let id = $('#idInput').val();
-		console.log(email);
-		console.log(inputNum);
-		console.log(id);
 		return true;
 	} else {
 		alert('인증 번호가 일치하지 않습니다.');
@@ -14,7 +11,7 @@ function regMemberId() {
 	}
 }
 
-function searchPw() {
+/*function searchPw() {
 	let email = $('#search_ac_email').val();
 	let inputNum = $(this).val();
 	if (inputNum == $('#valid').val()) {
@@ -29,7 +26,7 @@ function searchPw() {
 		return false;
 	}
 
-}
+}*/
 
 function checkId() {
 	var id = $('#idInput').val(); // id값이 "idInput"인 입력란의 값을 저장
@@ -57,44 +54,46 @@ function checkId() {
 };
 
 $(function() {
-		let id = $("#idInput").val();
-		let pw = $("#pwInput").val();
-		let email = $("#search_member_email").val();
-		let club = $("#club_id").val();
-			console.log(club.value);
-		if (!chkID(id)) {
-			alert("아이디 형식을 확인해주세요");
-			id.focus();
-			id.value = "";
-			return false;
-		}
+	$("select[name=club_id]").change(function() {
+		console.log($(this).val()); // value값 가져오기
+		console.log($("select[name=club_id] option:selected").text()); // text값
+																		// 가져오기
+	});
 
-		if (!chkPW(pw)) {
-			alert("비밀번호 형식을 확인해주세요");
-			pw.focus();
-			pw.value = "";
-			return false;
-		}
-		
-		if (!checkEmail(email)) {
-			alert("이메일 형식이 잘못되었습니다");
-			email.focus();
-			email.value = "";
-			return false;
-		}
-		
-		if (isEmpty(club)) {
-			alert('좋아하는 구단을 선택해주세요');
-			id.focus();
-			return false;
-		}
-		if($("#idConfirm").val() == 1){
+	let id = $("#idInput").val();
+	let pw = $("#pwInput").val();
+	let email = $("#search_member_email").val();
+	let club = $("select[name=club_id] option:selected").text(); // text값
+																	// 가져오기
+	console.log(club);
+
+	if (!chkID(id)) {
+		alert("아이디 형식을 확인해주세요");
+		id.value = "";
+		return false;
+	}
+
+	if (!chkPW(pw)) {
+		alert("비밀번호 형식을 확인해주세요");
+		pw.focus();
+		pw.value = "";
+		return false;
+	}
+
+	if (!checkEmail(email)) {
+		alert("이메일 형식이 잘못되었습니다");
+		email.focus();
+		email.value = "";
+		return false;
+	}
+	
+	if ($("#idConfirm").val() == 1) {
 		return true;
-		}else{
-			alert('아이디 중복여부를 확인해주세요');
-			id.focus();
-			return false;
-		}
+	} else {
+		alert("아이디 중복여부를 확인해주세요");
+		id.focus();
+		return false;
+	}
 });
 
 $(function() {
@@ -119,17 +118,13 @@ $(function() {
 
 	$("#pwInput2").keyup(function() {
 		if ($("#pwInput").val() != $("#pwInput2").val()) {
-			$("#reg").attr("disabled", true);
-			$("#reg").css("background-color", "#6A82FB");
-
 			$("#pwConfirm").html("비밀번호 일치하지 않음<br><br>");
-			$("#pwConfirm").attr("color", "#6A82FB");
+			$("#pwConfirm").css("color", "#6A82FB")
+			$("#reg").attr("disabled", true);
 		} else {
 			$("#pwConfirm").html("비밀번호 일치함<br><br>");
-			$("#pwConfirm").attr("color", "#008000");
-
+			$("#pwConfirm").css("color", "#008000");
 			$("#reg").attr("disabled", false);
-			$("#reg").css("background-color", "#00541A");
 		}
 	});
 });
@@ -156,27 +151,15 @@ $(function() {
 	});
 });
 
-$(function() {
-	$('#email_check').click(function() {
-		let email = $('#search_ac_email').val();
-		console.log(email);
-		let checkNum = $('#email_num');
-
-		$.ajax({
-			url : "email.check.do",
-			type : "GET",
-			dataType : "text",
-			data : {
-				"ac_email" : email
-			},
-			success : function(data) {
-				checkNum.attr('disabled', false);
-				$('#valid').val(data);
-				alert('인증번호가 전송되었습니다.')
-			}
-		});
-	});
-});
+/*
+ * $(function() { $('#email_check').click(function() { let email =
+ * $('#search_ac_email').val(); console.log(email); let checkNum =
+ * $('#email_num');
+ * 
+ * $.ajax({ url : "email.check.do", type : "GET", dataType : "text", data : {
+ * "ac_email" : email }, success : function(data) { checkNum.attr('disabled',
+ * false); $('#valid').val(data); alert('인증번호가 전송되었습니다.') } }); }); });
+ */
 
 function changePw() {
 	let pw = $('#change-pw-pw').val();
