@@ -160,4 +160,25 @@ public class AccountController {
 		return "index";
 	}*/
 	
+
+	@ResponseBody
+	@RequestMapping(value = "/users/attendances", method = RequestMethod.GET, produces="application/json")
+	  public EventVo getCalendarList(HttpServletRequest request) {
+			AccountDTO a = (AccountDTO) request.getSession().getAttribute("loginAccount");
+			acDAO.getCalendarList("test");
+			EventVo eventVo = new EventVo();
+			return eventVo;
+		}
+/*		
+	@RequestMapping(value = "/users/attendances")
+	@ResponseBody
+		public String clickCalendar(@RequestParam(value="userId" , required = false) String userId) {
+
+			.... // Point 객체 생성해서 필드에 값 넣기 
+
+			pointService.insertCalendar(userId, point); 		// Date에 저장 & point 적립
+			return new SimpleDateFormat("yyyy-MM-dd")
+	               .format(Timestamp.valueOf(LocalDate.now().atStartOfDay()));
+		}
+		*/
 }

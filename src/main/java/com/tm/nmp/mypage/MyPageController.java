@@ -17,12 +17,14 @@ public class MyPageController {
 
 	@Autowired
 	private MyPageDAO mpDAO;
-	
+
 	@Autowired
 	private MyPostDAO mptDAO;
-	
+
 	@Autowired
 	private AskDAO askDAO;
+
+	
 
 	@RequestMapping(value = "myPage.info.go", method = RequestMethod.GET)
 	public String myPageInfoGo(HttpServletRequest req) {
@@ -36,17 +38,17 @@ public class MyPageController {
 
 		acDAO.loginCheck(req);
 		mptDAO.getMyPostAll(req, 1);
-		
+
 		req.setAttribute("contentPage", "myPage/myPageMyPost.jsp");
 		return "index";
 	}
-	
+
 	@RequestMapping(value = "/mypost.page.change", method = RequestMethod.GET)
 	public String myPostPageChange(HttpServletRequest req, MyPostDTO mpt) {
 		int p = Integer.parseInt(req.getParameter("p"));
 		mptDAO.getMyPostAll(req, p);
 		acDAO.loginCheck(req);
-		
+
 		req.setAttribute("contentPage", "myPage/myPageMyPost.jsp");
 		return "index";
 	}
@@ -55,18 +57,18 @@ public class MyPageController {
 	public String myPageServiceGo(HttpServletRequest req) {
 
 		acDAO.loginCheck(req);
-		
+
 		askDAO.getAskAll(req, 1);
 		req.setAttribute("contentPage", "myPage/myPageService.jsp");
 		return "index";
 	}
-	
+
 	@RequestMapping(value = "/ask.page.change", method = RequestMethod.GET)
 	public String askPageChange(HttpServletRequest req, MyPostDTO mpt) {
 		int p = Integer.parseInt(req.getParameter("p"));
 		askDAO.getAskAll(req, p);
 		acDAO.loginCheck(req);
-		
+
 		req.setAttribute("contentPage", "myPage/myPageService.jsp");
 		return "index";
 	}

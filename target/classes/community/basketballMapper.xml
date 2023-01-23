@@ -2,12 +2,18 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.tm.nmp.community.BasketballMapper">
 
-<select id="getAllBasketball" resultType="com.tm.nmp.community.CM_BK_TITLE">
-		select * from cm_bk_board
+<select id="getAllBasketball" parameterType="com.tm.nmp.community.BaseballSelector" resultType="java.lang.Integer">
+		select count(*) from cm_bs_board, account where cm_bs_id = ac_id and cm_bs_title like '%'||#{search}||'%'
 	</select>
 	
-	<select id="getBasketball" resultType="com.tm.nmp.community.CM_BK_TITLE">
-		select * from cm_bk_board where cm_bk_no = #{cm_bk_no}
+	<select id="getBasketball" parameterType="com.tm.nmp.community.BaseballSelector" resultType="com.tm.nmp.community.CM_BK_TITLE">
+		select * from (
+			select rownum as rn, cm_bs_no, ac_nick, cm_bs_cat, cm_bs_title, cm_bs_content, cm_bs_img, cm_bs_video, cm_bs_date
+			from (
+				select * from cm_bs_board, account where cm_bs_id = ac_id and cm_bs_title like '%'||#{search}||'%' order by cm_bs_date desc
+			)
+		)
+	where rn &gt;= #{start} and rn &lt; = #{end}
 	</select>
 	
 	<delete id="deleteBasketball" parameterType="com.tm.nmp.community.CM_BK_TITLE">
@@ -24,5 +30,22 @@
 		#{cm_bk_nick},#{cm_bk_id},#{cm_bk_title},#{cm_bk_content},
 		sysdate,#{cm_bk_img},#{cm_bk_video},#{cm_bk_cat})
 	</insert>
+	
+	
+	<select id="getAllBaseballcomment" parameterType="com.tm.nmp.community.CM_BS_TITLE" resultType="com.tm.nmp.community.CM_BS_CommentDTO">
+select * from cm_bs_comment_board where cm_bs_comment_boardno = #{cm_bs_no}
+</select>
+
+<insert id="writeBaseballComment" parameterType="com.tm.nmp.community.CM_BS_CommentDTO">
+insert into cm_bs_comment_board values(cm_bs_comment_seq.nextval,#{cm_bs_comment_boardno},#{cm_bs_comment_content},sysdate)
+</insert>
+
+<delete id="deleteBaseballComment" parameterType="com.tm.nmp.community.CM_BS_CommentDTO">
+delete from cm_bs_comment_board where cm_bs_comment_no = #{cm_bs_comment_no}
+</delete>
+
+<update id="updateBaseballComment" parameterType="com.tm.nmp.community.CM_BS_CommentDTO">
+update cm_bs_comment_board set cm_bs_comment_content = #{cm_bs_comment_content} where cm_bs_comment_no = #{cm_bs_comment_no}
+</update>
 
 </mapper>
