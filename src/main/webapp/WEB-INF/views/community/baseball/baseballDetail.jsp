@@ -38,12 +38,13 @@ function checkReplyReg(f) {
 function deleteReply(n) {
 	var ok = confirm("?");
 	if (ok) {
-		location.href = "basketballReply.delete.do?reply_no=" + n;
+		location.href = "baseballReply.delete.do?reply_no=" + n;
 		}
 }
 
 </script>
 </head>
+
 <body>
 	<main class="boardDetail__main">
 	

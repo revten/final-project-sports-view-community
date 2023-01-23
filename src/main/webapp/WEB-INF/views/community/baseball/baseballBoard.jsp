@@ -31,7 +31,7 @@
 	<h1>야구게시판</h1>
 
 	<!--==================== 게시판 ====================-->
-	<section class="board section">
+
 		<div class="board__container">
 			<div class="board__top">
 				<c:choose>
@@ -63,7 +63,7 @@
 							<td>${p.post_id}</td>
 							<td>${p.post_category}</td>
 							<td><a
-								href="post.detail.go?post_id=${p.post_id }&post_member=${p.post_member}">${p.post_title }
+								href="baseball.detail.go?post_id=${p.post_id }&post_member=${p.post_member}">${p.post_title }
 									[${p.post_like_count}]</a></td>
 							<td><c:choose>
 									<c:when test="${p.post_update_date eq null }">
@@ -116,7 +116,6 @@
 			</div>
 
 		</div>
-	</section>
 	</main>
 </body>
 </html>

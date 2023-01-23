@@ -160,7 +160,11 @@ public class BoardDAO {
 		if (successToken != null && token.equals(successToken)) {
 			return;
 		}
-
+		
+		String regIp = getClientIp(req);
+		System.out.println(regIp);
+		rp.setReply_reg_ip(regIp);
+		
 		AccountDTO ac = (AccountDTO) req.getSession().getAttribute("loginAccount");
 		rp.setReply_member(ac.getMember_id());
 

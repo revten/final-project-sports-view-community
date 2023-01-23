@@ -67,7 +67,7 @@
 	<insert id="regReply" parameterType="com.tm.nmp.board.ReplyVO">
 		insert into reply
 		values(reply_seq.nextval, #{reply_board}, #{reply_post}, #{reply_member}, #{reply_content},
-		sysdate, #{reply_update_date}, #{reply_like_count}, #{reply_reg_ip})
+		sysdate, null, #{reply_like_count}, #{reply_reg_ip})
 	</insert>
 
 	<delete id="deleteReply"
