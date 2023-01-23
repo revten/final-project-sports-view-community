@@ -55,7 +55,7 @@ public class AC_US_DAO {
 	public void accountRegDo(HttpServletRequest req, AccountDTO ac) {
 		if (ss.getMapper(AccountMapper.class).regAccount(ac) == 1) {
 			// pv.setUserId(ac.getMember_id());
-			//ss.getMapper(PointMapper.class).pointTable(pv);
+			// ss.getMapper(PointMapper.class).pointTable(pv);
 			System.out.println("가입 성공");
 		} else {
 			System.out.println("가입 실패");
@@ -70,6 +70,16 @@ public class AC_US_DAO {
 				req.getSession().setMaxInactiveInterval(60 * 60);
 			}
 		}
+	}
+	
+	// .go가 매핑되는 순간, 이 메서드가 동작하면서 페이지 URL을 저장한다
+	public void wathingPage(HttpServletRequest req) {
+		String watchingPage = req.getRequestURL().toString();
+		String param = req.getQueryString();
+		if (req.getQueryString() != null) {
+			watchingPage = watchingPage + "?" + param; // 수정할 글의 번호도 있으니까
+		}
+		req.getSession().setAttribute("watchingPage", watchingPage);
 	}
 
 	public void accountLogoutDo(HttpServletRequest req, AccountDTO ac) {
@@ -237,8 +247,10 @@ public class AC_US_DAO {
 		for (Calendar c : dates) {
 			System.out.println(c.getCal_date());
 		}
-		
+
 		return dates;
-		
+
 	}
+
+
 }

@@ -20,12 +20,13 @@ public class FreeBaseballController {
 
 	@Autowired
 	private AC_US_DAO acDAO;
-		
+
 	@Autowired
 	private FreeDAO frDAO;
-	
+
 	@RequestMapping(value = "baseball.detail.go", method = RequestMethod.GET)
 	public String baseballDetail(HttpServletRequest req, PostVO p) {
+		acDAO.wathingPage(req);
 		BoardOption.clearSearch(req);
 		acDAO.loginCheck(req);
 		frDAO.getPost(req, p);
@@ -33,11 +34,15 @@ public class FreeBaseballController {
 		req.setAttribute("contentPage", "community/baseball/baseballDetail.jsp");
 		return "index";
 	}
-	
+
 	@RequestMapping(value = "baseball.reg.go", method = RequestMethod.GET)
 	public String baseballRegGo(HttpServletRequest req, PostVO p) {
-		acDAO.loginCheck(req);
-		req.setAttribute("contentPage", "community/baseball/baseballReg.jsp");
+		acDAO.wathingPage(req);
+		if (acDAO.loginCheck(req)) {
+			req.setAttribute("contentPage", "community/baseball/baseballReg.jsp");
+		} else {
+			req.setAttribute("contentPage", "account/loginPage.jsp");
+		}
 		return "index";
 	}
 
@@ -45,33 +50,29 @@ public class FreeBaseballController {
 	public String baseballRegDo(HttpServletRequest req, PostVO p) {
 		acDAO.loginCheck(req);
 		frDAO.regPost(req, p);
-		
 		frDAO.getAllPost(req, 1, 21);
-
 		req.setAttribute("contentPage", "community/baseball/baseballBoard.jsp");
 		return "index";
 	}
 
 	@RequestMapping(value = "baseball.update.go", method = RequestMethod.GET)
 	public String baseballUpdateGo(HttpServletRequest req, PostVO p) {
+		acDAO.wathingPage(req);
 		acDAO.loginCheck(req);
 		frDAO.getPost(req, p);
-
 		req.setAttribute("contentPage", "community/baseball/baseballUpdate.jsp");
 		return "index";
 	}
 
 	@RequestMapping(value = "baseball.update.do", method = RequestMethod.POST)
 	public String baseballUpdateDo(HttpServletRequest req, PostVO p) {
-		if (acDAO.loginCheck(req)) {
-			frDAO.updatePost(req, p);
-		}
+		acDAO.loginCheck(req);
+		frDAO.updatePost(req, p);
 		frDAO.getAllPost(req, 1, 21);
-
 		req.setAttribute("contentPage", "community/baseball/baseballBoard.jsp");
 		return "index";
 	}
-	
+
 	@RequestMapping(value = "baseball.delete.do", method = RequestMethod.GET)
 	public String baseballDeleteDo(HttpServletRequest req, PostVO p) {
 		BoardOption.clearSearch(req);
@@ -86,11 +87,11 @@ public class FreeBaseballController {
 
 	@RequestMapping(value = "/baseball.page.change", method = RequestMethod.GET)
 	public String baseballPageChange(HttpServletRequest req) {
+		acDAO.wathingPage(req);
 		TokenMaker.make(req);
 		int pg = Integer.parseInt(req.getParameter("pg"));
 		frDAO.getAllPost(req, pg, 21);
 		acDAO.loginCheck(req);
-
 		req.setAttribute("contentPage", "community/baseball/baseballBoard.jsp");
 		return "index";
 	}
@@ -104,7 +105,7 @@ public class FreeBaseballController {
 		req.setAttribute("contentPage", "community/baseball/baseballBoard.jsp");
 		return "index";
 	}
-	
+
 	@RequestMapping(value = "baseballReply.reg.do", method = RequestMethod.GET)
 	public String baseballReplyRegDo(HttpServletRequest req, ReplyVO rp, PostVO p) {
 		if (acDAO.loginCheck(req)) {
@@ -114,7 +115,7 @@ public class FreeBaseballController {
 		req.setAttribute("contentPage", "community/baseball/baseballDeatail.jsp");
 		return "index";
 	}
-	
+
 	@RequestMapping(value = "baseballReply.dalete.do", method = RequestMethod.GET)
 	public String baseballReplyDelete(HttpServletRequest req, ReplyVO rp, PostVO p) {
 		if (acDAO.loginCheck(req)) {
@@ -124,7 +125,7 @@ public class FreeBaseballController {
 		req.setAttribute("contentPage", "community/baseball/baseballDeatail.jsp");
 		return "index";
 	}
-	
+
 	@RequestMapping(value = "baseballReply.update.do", method = RequestMethod.GET)
 	public String baseballReplyUpdate(HttpServletRequest req, ReplyVO rp, PostVO p) {
 		if (acDAO.loginCheck(req)) {
@@ -134,5 +135,5 @@ public class FreeBaseballController {
 		req.setAttribute("contentPage", "community/baseball/baseballDeatail.jsp");
 		return "index";
 	}
-	
+
 }

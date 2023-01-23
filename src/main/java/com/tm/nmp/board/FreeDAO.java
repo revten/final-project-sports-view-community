@@ -9,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.tm.nmp.account.AccountDTO;
-import com.tm.nmp.games.GamesAnalyzeCmnt;
 
 @Service
 public class FreeDAO {
@@ -32,7 +31,7 @@ public class FreeDAO {
 
 	public void calcAllPostCount(int board_id) {
 		BoardSelector bSel = new BoardSelector("", 0, 0, board_id);
-		allPostCount = ss.getMapper(FreeMapper.class).calcAllPostCOunt(bSel);
+		allPostCount = ss.getMapper(FreeMapper.class).calcAllPostCount(bSel);
 	}
 
 	public void getAllPost(HttpServletRequest req, int pageNbr, int board_id) {
@@ -50,7 +49,7 @@ public class FreeDAO {
 		} else {
 			search.setStart(start);
 			search.setEnd(end);
-			postCount = ss.getMapper(FreeMapper.class).calcAllPostCOunt(search);
+			postCount = ss.getMapper(FreeMapper.class).calcAllPostCount(search);
 
 		}
 
@@ -73,39 +72,82 @@ public class FreeDAO {
 	}
 
 	public void regPost(HttpServletRequest req, PostVO p) {
-		String token = req.getParameter("token");
-		String successToken = (String) req.getSession().getAttribute("successToken");
-		// 맨처음 글등록 - 189
-		if (token.equals(successToken)) {
-			return;
-		}
+		/*
+		 * String token = req.getParameter("token"); String successToken = (String)
+		 * req.getSession().getAttribute("successToken"); if
+		 * (token.equals(successToken)) { return; }
+		 */
 
 		AccountDTO ac = (AccountDTO) req.getSession().getAttribute("loginAccount");
-		p.setMember_id(ac.getMember_id());
-		String p_txt = p.getPost_content();
-		System.out.println("전체 경로 :" + p_txt);
-		String[] contentSplit = p_txt.split("/");
-		String topSplit = contentSplit[5];
-		System.out.println("첫번째 경로 :" + topSplit);
-		String[] midSplit = topSplit.split("\"");
-		System.out.println("중간 경로 :" + midSplit);
-		String bottomSplit = midSplit[0];
-		System.out.println("최종 경로 :" + bottomSplit);
+		p.setPost_member(ac.getMember_id());
 
-		p.setPost_img(bottomSplit);
+		String regIp = getClientIp(req);
+		System.out.println(regIp);
+		p.setPost_reg_ip(regIp);
+
+		String str = p.getPost_content();
+		System.out.println("전체 경로 :" + str);
+		String tit = p.getPost_title();
+		String con = p.getPost_content();
+		
+		System.out.println("제목 :" + tit);
+		System.out.println("내용 :" + con);
+
+		if (str.contains("img")) {
+			String[] contentSplit = str.split("/");
+			String topSplit = contentSplit[5];
+			System.out.println("첫번째 경로 :" + topSplit);
+			String[] midSplit = topSplit.split("\"");
+			System.out.println("중간 경로 :" + midSplit);
+			String bottomSplit = midSplit[0];
+			System.out.println("최종 경로 :" + bottomSplit);
+			p.setPost_img(bottomSplit);
+		} else {
+			p.setPost_img("");
+		}
+
 		// 위 split 내용을 wg_img 컬럼에 set해준 것
 
 //		p.setPost_content(p_txt.replace("\r\n", "<br>"));
 
 		if (ss.getMapper(FreeMapper.class).regPost(p) == 1) {
 			System.out.println("글 등록 성공");
-			req.getSession().setAttribute("successToken", token);
 			allPostCount++;
 		} else {
 			System.err.println("글 등록 실패");
 		}
 	}
 
+	public void updatePost(HttpServletRequest req, PostVO p) {
+
+		String regIp = getClientIp(req);
+		System.out.println(regIp);
+		p.setPost_reg_ip(regIp);
+
+		String str = p.getPost_content();
+		System.out.println("전체 경로 :" + str);
+
+		if (str.contains("img")) {
+			String[] contentSplit = str.split("/");
+			String topSplit = contentSplit[5];
+			System.out.println("첫번째 경로 :" + topSplit);
+			String[] midSplit = topSplit.split("\"");
+			System.out.println("중간 경로 :" + midSplit);
+			String bottomSplit = midSplit[0];
+			System.out.println("최종 경로 :" + bottomSplit);
+			p.setPost_img(bottomSplit);
+		} else {
+			p.setPost_img("");
+		}
+
+		if (ss.getMapper(FreeMapper.class).updatePost(p) == 1) {
+			req.setAttribute("result", "글수정 성공");
+		} else {
+			req.setAttribute("result", "글수정 실패");
+		}
+		req.setAttribute("result", "글수정 실패");
+	}
+	
 	public void deletePost(HttpServletRequest req, PostVO p) {
 		if (ss.getMapper(FreeMapper.class).deletePost(p) == 1) {
 			req.setAttribute("result", "글삭제 성공");
@@ -116,30 +158,6 @@ public class FreeDAO {
 		req.setAttribute("result", "글삭제실패");
 	}
 
-	public void updatePost(HttpServletRequest req, PostVO p) {
-
-		String str = p.getPost_content();
-		System.out.println("전체 경로 :" + str);
-		String[] contentSplit = str.split("/");
-		String topSplit = contentSplit[5];
-		System.out.println("첫번째 경로 :" + topSplit);
-		String[] midSplit = topSplit.split("\"");
-		System.out.println("중간 경로 :" + midSplit);
-		String bottomSplit = midSplit[0];
-		System.out.println("최종 경로 :" + bottomSplit);
-
-		p.setPost_img(bottomSplit);
-
-		if (ss.getMapper(FreeMapper.class).updatePost(p) == 1) {
-			req.setAttribute("result", "글수정 성공");
-		} else {
-			req.setAttribute("result", "글수정 실패");
-		}
-		req.setAttribute("result", "글수정 실패");
-	}
-	
-	
-	
 	public void regReply(HttpServletRequest req, ReplyVO rp) {
 		String token = req.getParameter("token");
 		String successToken = (String) req.getSession().getAttribute("successToken");
@@ -149,7 +167,7 @@ public class FreeDAO {
 		}
 
 		AccountDTO ac = (AccountDTO) req.getSession().getAttribute("loginAccount");
-		rp.setMember_id(ac.getMember_id());
+		rp.setReply_member(ac.getMember_id());
 
 		if (ss.getMapper(FreeMapper.class).regReply(rp) == 1) {
 			req.setAttribute("result", "댓글쓰기 성공");
@@ -177,5 +195,22 @@ public class FreeDAO {
 			req.setAttribute("result", "댓글수정 실패");
 		}
 		req.setAttribute("result", "댓글수정 실패");
+	}
+
+	public static String getClientIp(HttpServletRequest req) {
+
+		String[] header_IPs = { "HTTP_CLIENT_IP", "HTTP_X_FORWARDED_FOR", "HTTP_X_FORWARDED",
+				"HTTP_X_CLUSTER_CLIENT_IP", "HTTP_FORWARDED_FOR", "HTTP_FORWARDED", "X-Forwarded-For",
+				"Proxy-Client-IP", "WL-Proxy-Client-IP" };
+
+		for (String header : header_IPs) {
+			String ip = req.getHeader(header);
+
+			if (ip != null && !"unknown".equalsIgnoreCase(ip) && ip.length() != 0) {
+				return ip;
+			}
+		}
+
+		return req.getRemoteAddr();
 	}
 }

@@ -27,6 +27,7 @@ public class CommunityController {
 		
 	@RequestMapping(value = "withGoList.go", method = RequestMethod.GET)
 	public String withGoListGo(HttpServletRequest req, CM_WG_TITLE wg) {
+		acDAO.wathingPage(req);
 		acDAO.loginCheck(req);
 		wgDAO.showWithGoList(req, wg);
 		req.setAttribute("contentPage", "community/withGo/withGo.jsp");

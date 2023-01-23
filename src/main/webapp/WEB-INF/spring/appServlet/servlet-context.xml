@@ -59,7 +59,7 @@
 				<beans:value>classpath:community/withGoMapper.xml</beans:value>
 				<beans:value>classpath:community/reviewMapper.xml</beans:value>
 				<beans:value>classpath:games/gamesAnalyzeBoardMapper.xml </beans:value>
-				<beans:value>classpath:community/freeMapper.xml</beans:value>
+				<beans:value>classpath:board/freeMapper.xml</beans:value>
 			</beans:list>
 		</beans:property>
 	</beans:bean>

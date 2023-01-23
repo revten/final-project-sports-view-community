@@ -1,17 +1,15 @@
 @charset "UTF-8";
 
-/*=============== GOOGLE FONTS ===============*/
 @import url("https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Lora:wght@500;600&family=Poppins:wght@400;500&display=swap");
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400&display=swap');
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Raleway:wght@500;600;700&display=swap");
 
 
-/*=============== VARIABLES CSS ===============*/
+/*변수*/
 :root {
   --header-height: 3.5rem;
 
   /*========== 전체컬러 ==========*/
-  /*Color mode HSL(hue, saturation, lightness)*/
   --first-color: hsl(210, 28%, 33%);
   --first-color-alt: hsl(210, 28%, 18%);
   --title-color: hsl(19, 16%, 15%);
@@ -20,7 +18,7 @@
   --body-color: hsl(1, 1%, 93%);
   --container-color: hsl(25, 100%, 97%);
 
-  /*========== 폰트와 타이포그래피 ==========*/
+  /* 폰트와 타이포그래피 */
   /*.5rem = 8px | 1rem = 16px ...*/
   --body-font: "Noto Sans KR", sans-serif;
   --title-font: "Lora", serif;
@@ -33,11 +31,11 @@
   --small-font-size: .813rem;
   --smaller-font-size: .75rem;
 
-  /*========== 폰트 웨이트 ==========*/
+  /* 폰트 웨이트 */
   --font-medium: 500;
   --font-semi-bold: 600;
 
-  /*========== z 인덱스 ==========*/
+  /* z 인덱스 */
   --z-tooltip: 10;
   --z-fixed: 100;
 }
@@ -54,7 +52,7 @@
   }
 }
 
-/*=============== BASE ===============*/
+/* 기본 */
 * {
   box-sizing: border-box;
   padding: 0;
@@ -97,7 +95,7 @@ img {
   height: auto;
 }
 
-/*=============== THEME 라이트모드/다크모드 ===============*/
+/* 라이트모드/다크모드 */
 .nav__buttons {
   display: flex;
   align-items: center;
@@ -111,7 +109,7 @@ img {
   transition: .3s;
 }
 
-/*========== Variables Dark theme 라이트모드/다크모드==========*/
+/* 라이트모드/다크모드 */
 body.dark-theme {
   --first-color: hsl(210, 28%, 28%);
   --first-color-alt: hsl(210, 28%, 22%);
@@ -122,13 +120,8 @@ body.dark-theme {
   --container-color: hsl(19, 10 %, 10%);
 }
 
-/*========== 
-    Color changes in some parts of 
-    the website, in light theme
-==========*/
 
-
-/*=============== REUSABLE CSS CLASSES 다시 쓸수 있는 css 클래스 ===============*/
+/* 다시 쓸수 있는 css 클래스 */
 .container {
   max-width: 1024px;
   margin-inline: 1.5rem;
@@ -139,7 +132,8 @@ body.dark-theme {
   gap: 1.5rem;
 }
 
-/* 요소의 쓰기 모드, 방향성, 텍스트 방향에 따라 물리적 패딩 속성에 매핑하는 요소의 논리 블록의 시작과 끝 패딩을 정의한다. padding-block, padding-inline 은 요소의 쓰기모드 및 방향성, 텍스트 방향에 따라 여백을 쉽게 정의하도록 도와준다 */
+/* 요소의 쓰기 모드, 방향성, 텍스트 방향에 따라 물리적 패딩 속성에 매핑하는 요소의 논리 블록의 시작과 끝 패딩을 정의한다. 
+padding-block, padding-inline 은 요소의 쓰기모드 및 방향성, 텍스트 방향에 따라 여백을 쉽게 정의하도록 도와준다 */
 .section {
   padding-block: 5rem 1rem;
 }
@@ -168,7 +162,7 @@ body.dark-theme {
   /* For animation ScrollReveal  */
 }
 
-/*=============== HEADER & NAV ===============*/
+/* HEADER & NAV */
 .header {
   position: fixed;
   width: 100%;
@@ -273,12 +267,12 @@ body.dark-theme {
   transform: rotate(-30deg);
 }
 
-/* Show menu (모바일 네비바 열기)*/
+/* 모바일 네비바 열기)*/
 .show-menu {
   top: 0;
 }
 
-/* Change background header 밑으로 스크롤할때 위 상단메뉴밑에 쉐도우 생기도록 */
+/* 밑으로 스크롤할때 위 상단메뉴밑에 쉐도우 생기도록 */
 .bg-header {
   box-shadow: 0 2px 8px hsla(19, 64%, 24%, .1);
 }
@@ -289,7 +283,7 @@ body.dark-theme {
 
 }
 
-/*=============== HOME ===============*/
+/* HOME */
 .home {
   position: relative;
 }
@@ -350,7 +344,7 @@ body.dark-theme {
   transform: rotate(-15deg);
 }
 
-/*=============== BUTTON ===============*/
+/* BUTTON */
 .button {
   display: inline-flex;
   align-items: center;
@@ -382,7 +376,7 @@ body.dark-theme {
 
 
 
-/*=============== ABOUT ===============*/
+/* ABOUT */
 .about {
   position: relative;
 }
@@ -421,7 +415,7 @@ body.dark-theme {
   transform: roatate(-15deg)
 }
 
-/*=============== POPULAR ===============*/
+/* POPULAR */
 .popular__container {
   padding-top: 4rem;
   grid-template-columns: 250px;
@@ -496,7 +490,7 @@ body.dark-theme {
 
 }
 
-/*=============== RECENTLY ===============*/
+/* RECENTLY */
 .recently {
   position: relative;
 }
@@ -544,7 +538,7 @@ body.dark-theme {
 
 
 
-/*=============== NEWSLETTER ===============*/
+/* NEWSLETTER */
 .newsletter__container {
   position: relative;
 }
@@ -605,7 +599,7 @@ body.dark-theme {
 }
 
 
-/*=============== FOOTER ===============*/
+/* FOOTER */
 .footer {
   position: relative;
   padding-block: 3rem 2rem;
@@ -740,7 +734,7 @@ body.dark-theme {
   color: var(--text-color-light);
 }
 
-/*=============== SCROLL BAR ===============*/
+/* 스크롤바 */
 ::-webkit-scrollbar {
   width: .6r;
   border-radius: .5rem;
@@ -756,7 +750,7 @@ body.dark-theme {
   background-color: hsl(19, 8%, 55%);
 }
 
-/*=============== SCROLL UP ===============*/
+/* 스크롤업 */
 .scrollup {
   position: fixed;
   right: 1rem;
@@ -781,8 +775,8 @@ body.dark-theme {
   bottom: 3rem;
 }
 
-/*=============== BREAKPOINTS (반응형)===============*/
-/* For small devices 갤럭시 폴드 등 */
+/* 반응형 구분 */
+/* 소형, 갤럭시 폴드 등 */
 @media screen and (max-width: 340px) {
   .container {
     margin-inline: 1rem;
@@ -837,7 +831,7 @@ body.dark-theme {
   }
 }
 
-/* For medium devices */
+/* 중형 */
 @media screen and (min-width: 576px) {
 
   .home__container,
@@ -889,7 +883,7 @@ body.dark-theme {
   }
 }
 
-/* For large devices */
+/* 큰 기기 */
 @media screen and (min-width: 1024px) {
   .section {
     padding-block: 7rem 1.5rem;

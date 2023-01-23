@@ -4,7 +4,7 @@ import java.util.List;
 
 public interface FreeMapper {
 
-	int calcAllPostCOunt(BoardSelector bSel);
+	int calcAllPostCount(BoardSelector bSel);
 
 	List<PostVO> getAllPost(BoardSelector search);
 
@@ -13,9 +13,9 @@ public interface FreeMapper {
 
 	int regPost(PostVO p);
 
-	int deletePost(PostVO p);
-
 	int updatePost(PostVO p);
+
+	int deletePost(PostVO p);
 
 	int regReply(ReplyVO rp);
 

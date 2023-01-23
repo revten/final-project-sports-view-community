@@ -17,13 +17,13 @@ import com.tm.nmp.board.ReplyVO;
 
 @Controller
 public class FreeBasketballController {
-	
+
 	@Autowired
 	private AC_US_DAO acDAO;
-		
+
 	@Autowired
 	private FreeDAO frDAO;
-	
+
 	@RequestMapping(value = "basketball.detail.go", method = RequestMethod.GET)
 	public String basketballDetail(HttpServletRequest req, PostVO p) {
 		BoardOption.clearSearch(req);
@@ -33,7 +33,7 @@ public class FreeBasketballController {
 		req.setAttribute("contentPage", "community/basketball/basketballDetail.jsp");
 		return "index";
 	}
-	
+
 	@RequestMapping(value = "basketball.reg.go", method = RequestMethod.GET)
 	public String basketballRegGo(HttpServletRequest req, PostVO p) {
 		acDAO.loginCheck(req);
@@ -45,7 +45,7 @@ public class FreeBasketballController {
 	public String basketballRegDo(HttpServletRequest req, PostVO p) {
 		acDAO.loginCheck(req);
 		frDAO.regPost(req, p);
-		
+
 		frDAO.getAllPost(req, 1, 23);
 
 		req.setAttribute("contentPage", "community/basketball/basketballBoard.jsp");
@@ -71,7 +71,7 @@ public class FreeBasketballController {
 		req.setAttribute("contentPage", "community/basketball/basketballBoard.jsp");
 		return "index";
 	}
-	
+
 	@RequestMapping(value = "basketball.delete.do", method = RequestMethod.GET)
 	public String basketballDeleteDo(HttpServletRequest req, PostVO p) {
 		BoardOption.clearSearch(req);
@@ -104,7 +104,7 @@ public class FreeBasketballController {
 		req.setAttribute("contentPage", "community/basketball/basketballBoard.jsp");
 		return "index";
 	}
-	
+
 	@RequestMapping(value = "basketballReply.reg.do", method = RequestMethod.GET)
 	public String basketballReplyRegDo(HttpServletRequest req, ReplyVO rp, PostVO p) {
 		if (acDAO.loginCheck(req)) {
@@ -114,7 +114,7 @@ public class FreeBasketballController {
 		req.setAttribute("contentPage", "community/basketball/basketballDeatail.jsp");
 		return "index";
 	}
-	
+
 	@RequestMapping(value = "basketballReply.dalete.do", method = RequestMethod.GET)
 	public String basketballReplyDelete(HttpServletRequest req, ReplyVO rp, PostVO p) {
 		if (acDAO.loginCheck(req)) {
@@ -124,7 +124,7 @@ public class FreeBasketballController {
 		req.setAttribute("contentPage", "community/basketball/basketballDeatail.jsp");
 		return "index";
 	}
-	
+
 	@RequestMapping(value = "basketballReply.update.do", method = RequestMethod.GET)
 	public String basketballReplyUpdate(HttpServletRequest req, ReplyVO rp, PostVO p) {
 		if (acDAO.loginCheck(req)) {
@@ -134,7 +134,5 @@ public class FreeBasketballController {
 		req.setAttribute("contentPage", "community/basketball/basketballDeatail.jsp");
 		return "index";
 	}
-	
-	
 
 }

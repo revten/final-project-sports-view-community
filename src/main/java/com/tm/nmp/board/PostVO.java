@@ -4,10 +4,13 @@ import java.util.Date;
 import java.util.List;
 
 public class PostVO {
-	int post_id; // 게시글PK primary key
-	int board_id; // 게시판FK not null - 어느 게시판인가
-	String member_id; // 회원 FK not null
-	String post_title; // 글 제목 not null
+	int post_id; // PK
+	int post_board; // 게시판FK
+	String post_member; // 회원 FK
+	int post_sports; // null 가능
+	int post_league; // null 가능
+	int post_club; // null 가능
+	String post_title; // 글 제목
 	int post_category; // 글 종류 1:잡담, 2:질문, 3:정보
 	String post_content; // 글 내용 not null
 	Date post_reg_date; // 글 작성시간 not null
@@ -20,7 +23,7 @@ public class PostVO {
 	int post_comment_count; // 글 댓글수 not null
 	String post_reg_ip; // 글 작성 ip not null
 
-	String member_nick; // profile DB에서 닉네임을 가져와 게시판에 보여줄 항목이라 미리 만들어둠
+	String member_nick; // 다른 테이블에서 관계형으로 닉네임을 가져와 게시판에 보여줄 항목이라 미리 만들어둠
 	// 등급 아이콘
 	// 팬인 구단 로고
 	String sports_name; // 함께가기/리뷰/분석 게시판을 위한 요소
@@ -33,14 +36,18 @@ public class PostVO {
 		// TODO Auto-generated constructor stub
 	}
 
-	public PostVO(int post_id, int board_id, String member_id, String post_title, int post_category,
-			String post_content, Date post_reg_date, Date post_update_date, String post_img, String post_file,
-			int post_hit_count, int post_like_count, int post_scrap_count, int post_comment_count, String post_reg_ip,
-			String member_nick, String sports_name, String club_name, String league_name, List<ReplyVO> replies) {
+	public PostVO(int post_id, int post_board, String post_member, int post_sports, int post_league, int post_club,
+			String post_title, int post_category, String post_content, Date post_reg_date, Date post_update_date,
+			String post_img, String post_file, int post_hit_count, int post_like_count, int post_scrap_count,
+			int post_comment_count, String post_reg_ip, String member_nick, String sports_name, String club_name,
+			String league_name, List<ReplyVO> replies) {
 		super();
 		this.post_id = post_id;
-		this.board_id = board_id;
-		this.member_id = member_id;
+		this.post_board = post_board;
+		this.post_member = post_member;
+		this.post_sports = post_sports;
+		this.post_league = post_league;
+		this.post_club = post_club;
 		this.post_title = post_title;
 		this.post_category = post_category;
 		this.post_content = post_content;
@@ -68,20 +75,44 @@ public class PostVO {
 		this.post_id = post_id;
 	}
 
-	public int getBoard_id() {
-		return board_id;
+	public int getPost_board() {
+		return post_board;
 	}
 
-	public void setBoard_id(int board_id) {
-		this.board_id = board_id;
+	public void setPost_board(int post_board) {
+		this.post_board = post_board;
 	}
 
-	public String getMember_id() {
-		return member_id;
+	public String getPost_member() {
+		return post_member;
 	}
 
-	public void setMember_id(String member_id) {
-		this.member_id = member_id;
+	public void setPost_member(String post_member) {
+		this.post_member = post_member;
+	}
+
+	public int getPost_sports() {
+		return post_sports;
+	}
+
+	public void setPost_sports(int post_sports) {
+		this.post_sports = post_sports;
+	}
+
+	public int getPost_league() {
+		return post_league;
+	}
+
+	public void setPost_league(int post_league) {
+		this.post_league = post_league;
+	}
+
+	public int getPost_club() {
+		return post_club;
+	}
+
+	public void setPost_club(int post_club) {
+		this.post_club = post_club;
 	}
 
 	public String getPost_title() {

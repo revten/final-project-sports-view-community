@@ -45,9 +45,7 @@ public class FreeVolleyballController {
 	public String volleyballRegDo(HttpServletRequest req, PostVO p) {
 		acDAO.loginCheck(req);
 		frDAO.regPost(req, p);
-		
 		frDAO.getAllPost(req, 1, 24);
-
 		req.setAttribute("contentPage", "community/volleyball/volleyballBoard.jsp");
 		return "index";
 	}

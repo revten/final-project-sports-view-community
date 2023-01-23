@@ -5,10 +5,10 @@ import java.util.Date;
 public class ReplyVO {
 
 	int reply_id; // 댓글PK primary key
-	int board_id; // 게시판PK not null
-	int post_id; // 게시글PK not null
+	int reply_board; // 게시판PK not null
+	int reply_post; // 게시글PK not null
 
-	String member_id; // 회원 PK not null
+	String reply_member; // 회원 PK not null
 	String reply_content; // 댓글 내용 not null
 	Date reply_reg_date; // 댓글 등록일시 not null
 	Date reply_update_date; // 댓글 수정일시 null
@@ -20,14 +20,13 @@ public class ReplyVO {
 		// TODO Auto-generated constructor stub
 	}
 
-	public ReplyVO(int reply_id, int board_id, int post_id, String member_id, String reply_content, Date reply_reg_date,
-			Date reply_update_date, int reply_like_count, String reply_reg_ip) {
-
+	public ReplyVO(int reply_id, int reply_board, int reply_post, String reply_member, String reply_content,
+			Date reply_reg_date, Date reply_update_date, int reply_like_count, String reply_reg_ip) {
 		super();
 		this.reply_id = reply_id;
-		this.board_id = board_id;
-		this.post_id = post_id;
-		this.member_id = member_id;
+		this.reply_board = reply_board;
+		this.reply_post = reply_post;
+		this.reply_member = reply_member;
 		this.reply_content = reply_content;
 		this.reply_reg_date = reply_reg_date;
 		this.reply_update_date = reply_update_date;
@@ -43,28 +42,28 @@ public class ReplyVO {
 		this.reply_id = reply_id;
 	}
 
-	public int getBoard_id() {
-		return board_id;
+	public int getReply_board() {
+		return reply_board;
 	}
 
-	public void setBoard_id(int board_id) {
-		this.board_id = board_id;
+	public void setReply_board(int reply_board) {
+		this.reply_board = reply_board;
 	}
 
-	public int getPost_id() {
-		return post_id;
+	public int getReply_post() {
+		return reply_post;
 	}
 
-	public void setPost_id(int post_id) {
-		this.post_id = post_id;
+	public void setReply_post(int reply_post) {
+		this.reply_post = reply_post;
 	}
 
-	public String getMember_id() {
-		return member_id;
+	public String getReply_member() {
+		return reply_member;
 	}
 
-	public void setMember_id(String member_id) {
-		this.member_id = member_id;
+	public void setReply_member(String reply_member) {
+		this.reply_member = reply_member;
 	}
 
 	public String getReply_content() {

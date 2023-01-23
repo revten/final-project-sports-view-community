@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.tm.nmp.account.AC_US_DAO;
 import com.tm.nmp.admin.AnswerDAO;
+import com.tm.nmp.board.FreeDAO;
 import com.tm.nmp.games.GamesAnalyzeDAO;
 import com.tm.nmp.games.TotoDAO;
 import com.tm.nmp.mypage.AskDAO;
@@ -17,25 +18,27 @@ import com.tm.nmp.mypage.MyPostDAO;
 @Controller
 public class HomeController {
 
-
 	@Autowired
 	private AC_US_DAO acDAO;
 
 	@Autowired
 	private GamesAnalyzeDAO gaDAO;
-	
+
 	@Autowired
 	private TotoDAO ttDAO;
-	
+
 	@Autowired
 	private MyPostDAO mpDAO;
-	
+
 	@Autowired
 	private AskDAO askDAO;
-	
+
 	@Autowired
 	private AnswerDAO asDAO;
-	
+
+	@Autowired
+	private FreeDAO frDAO;
+
 	private boolean firstReq;
 
 	public HomeController() {
@@ -51,10 +54,10 @@ public class HomeController {
 			mpDAO.calcAllPostCount();
 			askDAO.calcAllPostCount();
 			asDAO.calcAllPostCount();
+			frDAO.calcAllPostCount(21);
 			firstReq = false;
 		}
-		
-
+		acDAO.wathingPage(req);
 		acDAO.loginCheck(req);
 		req.setAttribute("contentPage", "home.jsp");
 		return "index";
@@ -74,6 +77,7 @@ public class HomeController {
 
 	@RequestMapping(value = "/stadium.main.go", method = RequestMethod.GET)
 	public String stadiumMainGo(HttpServletRequest req) {
+		acDAO.wathingPage(req);
 		acDAO.loginCheck(req);
 		req.setAttribute("contentPage", "stadium/stadiumMain.jsp");
 		return "index";
@@ -81,6 +85,7 @@ public class HomeController {
 
 	@RequestMapping(value = "/news.main.go", method = RequestMethod.GET)
 	public String newsMainGo(HttpServletRequest req) {
+		acDAO.wathingPage(req);
 		acDAO.loginCheck(req);
 		req.setAttribute("contentPage", "infoEvent/news/newsMain.jsp");
 		req.setAttribute("newsPage", "everyNews.jsp");
@@ -89,15 +94,18 @@ public class HomeController {
 
 	@RequestMapping(value = "/community.main.go", method = RequestMethod.GET)
 	public String communityMainGo(HttpServletRequest req) {
+		acDAO.wathingPage(req);
 		acDAO.loginCheck(req);
-/*		scDAO.getSoccerBoard(req, 1);
-		wgDAO.showWithGoList(req, wg);*/
+		/*
+		 * scDAO.getSoccerBoard(req, 1); wgDAO.showWithGoList(req, wg);
+		 */
 		req.setAttribute("contentPage", "community/communityMain.jsp");
 		return "index";
 	}
 
 	@RequestMapping(value = "/infoEvent.main.go", method = RequestMethod.GET)
 	public String infoEventMainGo(HttpServletRequest req) {
+		acDAO.wathingPage(req);
 		acDAO.loginCheck(req);
 		req.setAttribute("contentPage", "infoEvent/infoEventMain.jsp");
 		req.setAttribute("newsPage", "news/everyNews.jsp");
@@ -106,6 +114,7 @@ public class HomeController {
 
 	@RequestMapping(value = "/games.main.go", method = RequestMethod.GET)
 	public String gamesMainGo(HttpServletRequest req) {
+		acDAO.wathingPage(req);
 		acDAO.loginCheck(req);
 		req.setAttribute("contentPage", "games/gamesMain.jsp");
 		return "index";
@@ -113,6 +122,7 @@ public class HomeController {
 
 	@RequestMapping(value = "/myPage.main.go", method = RequestMethod.GET)
 	public String myPageMainGo(HttpServletRequest req) {
+		acDAO.wathingPage(req);
 		acDAO.loginCheck(req);
 		req.setAttribute("contentPage", "myPage/myPageMain.jsp");
 		return "index";
@@ -120,6 +130,7 @@ public class HomeController {
 
 	@RequestMapping(value = "/admin.main.go", method = RequestMethod.GET)
 	public String adminMainGo(HttpServletRequest req) {
+		acDAO.wathingPage(req);
 		acDAO.loginCheck(req);
 		req.setAttribute("contentPage", "admin/admin.jsp");
 		return "index";
