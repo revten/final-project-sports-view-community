@@ -24,5 +24,9 @@
 	<div>
 		<button onclick="location.href='myPage.service.go'">고객센터</button>
 	</div>
+	<div>
+		<button onclick="location.href='message.go'">쪽지</button>
+	</div>
+	
 </body>
 </html>
