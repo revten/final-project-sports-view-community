@@ -44,6 +44,7 @@
 	href="//cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
 <!--=============== [JS MEMBER]===============-->
 <script src="resources/js/account/account_go.js"></script>
+<script src="resources/js/account/account_condition.js"></script>
 <script src="resources/js/stadium/stadium_go.js"></script>
 <script src="resources/js/stadium/seat_detail.js"></script>
 <script src="resources/js/community/community_go.js"></script>

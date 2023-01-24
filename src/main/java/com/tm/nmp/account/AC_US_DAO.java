@@ -1,5 +1,6 @@
 package com.tm.nmp.account;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Random;
 
@@ -175,12 +176,11 @@ public class AC_US_DAO {
 		}
 	}
 
-	/*
-	 * public int socialIdCheck(AccountDTO ac) {
-	 * System.out.println(ac.getMember_id());
-	 * System.out.println(ac.getMember_reg_type()); return
-	 * ss.getMapper(AccountMapper.class).socialIdCheck(ac); }
-	 */
+	public int socialIdCheck(AccountDTO ac) {
+		System.out.println(ac.getMember_id());
+		System.out.println(ac.getMember_reg_type());
+		return ss.getMapper(AccountMapper.class).socialIdCheck(ac);
+	}
 
 	public void socialLogin(HttpServletRequest req, AccountDTO ac) {
 		AccountDTO dbMember = ss.getMapper(AccountMapper.class).accountLogin(ac);
@@ -199,46 +199,78 @@ public class AC_US_DAO {
 		return cnt;
 	}
 
-	/*
-	 * public void socialReg(HttpServletRequest req, AccountDTO ac) { try {
-	 * 
-	 * req.setCharacterEncoding("utf-8");
-	 * 
-	 * String user_id_name = req.getParameter("user_id_name"); String user_pwd =
-	 * " "; String user_reg_ip = " "; int user_auth_type =
-	 * Integer.parseInt(req.getParameter("user_auth_type")); String user_email =
-	 * " ";
-	 * 
-	 * ac.setUser_id_name(user_id_name); ac.setUser_pwd(user_pwd);
-	 * ac.setUser_reg_ip(user_reg_ip); ac.setUser_auth_type(user_auth_type);
-	 * ac.setUser_email(user_email);
-	 * 
-	 * if (ss.getMapper(AccountMapper.class).regAccount(ac) == 1) {
-	 * System.out.println("회원 가입 성공"); } else { System.out.println("회원 가입 실패"); }
-	 * 
-	 * } catch (Exception e) { e.printStackTrace(); } }
-	 */
+	public void socialReg(HttpServletRequest req, AccountDTO ac) {
+		try {
+			req.setCharacterEncoding("utf-8");
 
-	/*
-	 * public void regProfile(HttpServletRequest req, AC_PF_TITLE ac) { try {
-	 * req.setCharacterEncoding("utf-8");
-	 * 
-	 * int user_id = Integer.parseInt(req.getParameter("user_id")); int club_id =
-	 * Integer.parseInt(req.getParameter("club_id")); String league_id =
-	 * req.getParameter("league_id"); String profile_nick =
-	 * req.getParameter("profile_nick"); String profile_intro =
-	 * req.getParameter("profile_intro");
-	 * 
-	 * ac.setUser_id(user_id); ac.setClub_id(club_id); ac.setLeague_id(league_id);
-	 * ac.setProfile_nick(profile_nick); ac.setProfile_intro(profile_intro);
-	 * 
-	 * ss.getMapper(AccountMapper.class).regProfile(ac);
-	 * 
-	 * } catch (Exception e) { // TODO Auto-generated catch block
-	 * e.printStackTrace(); }
-	 * 
-	 * }
-	 */
+			String member_id = req.getParameter("member_id");
+			String member_pwd = " ";
+			String member_nick = " ";
+			int member_auth_type = 1;
+			String member_reg_type = req.getParameter("member_reg_type");
+			String member_reg_ip = " ";
+
+			String member_email;
+			if (member_reg_type == "1") {
+				member_email = member_id + "@kakao.com";
+			} else if (member_reg_type == "2") {
+				member_email = member_id + "@naver.com";
+			} else {
+				member_email = member_id + "@google.com";
+			}
+
+			String member_intro = " ";
+			int member_subs = 0;
+			int club_id = 0;
+			int member_admin = 0;
+
+			ac.setMember_id(member_id);
+			ac.setMember_pwd(member_pwd);
+			ac.setMember_nick(member_nick);
+			ac.setMember_auth_type(member_auth_type);
+			ac.setMember_reg_ip(member_reg_ip);
+			ac.setMember_email(member_email);
+			ac.setMember_intro(member_intro);
+			ac.setMember_subs(member_subs);
+			ac.setClub_id(club_id);
+			ac.setMember_admin(member_admin);
+
+			if (ss.getMapper(AccountMapper.class).regAccount(ac) == 1) {
+				System.out.println("회원 가입 성공");
+			} else {
+				System.out.println("회원 가입 실패");
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	public void regProfile(HttpServletRequest req, AccountDTO ac) {
+		try {
+			req.setCharacterEncoding("utf-8");
+			
+			String member_pwd = req.getParameter("member_pwd");
+			String member_nick = req.getParameter("member_nick");
+			String member_reg_ip = req.getParameter("member_reg_ip");
+			String member_intro = req.getParameter("member_intro");
+			int member_subs = Integer.parseInt(req.getParameter("member_subs"));
+			int club_id = Integer.parseInt(req.getParameter("member_subs"));;
+			
+			ac.setMember_pwd(member_pwd);
+			ac.setMember_nick(member_nick);
+			ac.setMember_reg_ip(member_reg_ip);
+			ac.setMember_intro(member_intro);
+			ac.setMember_subs(member_subs);
+			ac.setClub_id(club_id);
+			
+			ss.getMapper(AccountMapper.class).regProfile(ac);
+
+		} catch (Exception e) { // TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+	}
 
 	public List<Calendar> getCalendarList(String userId) {
 		System.out.println(userId);

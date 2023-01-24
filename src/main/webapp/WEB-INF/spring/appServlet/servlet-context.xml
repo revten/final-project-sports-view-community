@@ -70,7 +70,7 @@
 		<beans:property name="host" value="smtp.naver.com" />
 		<beans:property name="port" value="465" />
 		<beans:property name="username" value="frvlv" />
-		<beans:property name="password" value="frv61822@@" />
+		<beans:property name="password" value="Dlagudrb1!!" />
 
 		<!-- 보안연결 SSL과 관련된 설정 -->
 		<beans:property name="javaMailProperties">
