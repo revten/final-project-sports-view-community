@@ -52,17 +52,10 @@
 			value="com.tm.nmp" />
 		<beans:property name="mapperLocations">
 			<beans:list>
-				<beans:value>classpath:account/accountMapper.xml</beans:value>
-				<beans:value>classpath:myPage/myPageMapper.xml</beans:value>
-				<beans:value>classpath:games/gamesMapper.xml</beans:value>
-				<beans:value>classpath:admin/adminMapper.xml</beans:value>
-				<beans:value>classpath:community/withGoMapper.xml</beans:value>
-				<beans:value>classpath:community/reviewMapper.xml</beans:value>
-				<beans:value>classpath:community/baseballMapper.xml</beans:value>
-				<beans:value>classpath:community/soccerMapper.xml</beans:value>
-				<beans:value>classpath:community/basketballMapper.xml</beans:value>
-				<beans:value>classpath:community/volleyballMapper.xml</beans:value>
-				<beans:value>classpath:games/gamesAnalyzeBoardMapper.xml</beans:value>
+				<beans:value>classpath:accountMapper.xml</beans:value>
+				<beans:value>classpath:boardMapper.xml</beans:value>
+				<beans:value>classpath:pointMapper.xml</beans:value>
+				<beans:value>classpath:messageMapper.xml</beans:value>
 			</beans:list>
 		</beans:property>
 	</beans:bean>
@@ -72,13 +65,13 @@
 		<beans:constructor-arg name="sqlSessionFactory"
 			ref="sqlSessionFactory" />
 	</beans:bean>
-	
+
 	<beans:bean id="mailSender"
 		class="org.springframework.mail.javamail.JavaMailSenderImpl">
 		<beans:property name="host" value="smtp.naver.com" />
 		<beans:property name="port" value="465" />
 		<beans:property name="username" value="frvlv" />
-		<beans:property name="password" value="frv61822@@" />
+		<beans:property name="password" value="Dlagudrb1!!" />
 
 		<!-- 보안연결 SSL과 관련된 설정 -->
 		<beans:property name="javaMailProperties">
@@ -93,14 +86,14 @@
 			</beans:props>
 		</beans:property>
 	</beans:bean>
-	
+
 	<beans:bean id="multipartResolver"
 		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
 		<beans:property name="maxUploadSize" value="52428800" />
 		<beans:property name="maxInMemorySize" value="10485760" />
 	</beans:bean>
-	
-	<beans:bean id="so" class="com.tm.nmp.games.SiteOption">
-			<beans:constructor-arg value="3"></beans:constructor-arg>
+	<beans:bean id="bo" class="com.tm.nmp.board.BoardOption">
+		<beans:constructor-arg value="3"></beans:constructor-arg>
 	</beans:bean>
+
 </beans:beans>

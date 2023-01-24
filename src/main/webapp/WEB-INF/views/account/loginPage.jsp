@@ -97,11 +97,11 @@
 				url : '/v2/user/me',
 				success : function(res) {
 					console.log(res);
-					var user_id_name = res.id;
-					var user_auth_type = '1';
-					console.log(user_id_name, user_auth_type);
+					var member_id = res.id;
+					var member_reg_type = '1';
+					console.log(member_id, member_reg_type);
 
-					checkInfoKakao(user_id_name, user_auth_type);
+					checkInfoKakao(member_id, member_reg_type);
 
 				},
 
@@ -112,27 +112,27 @@
 			});
 		}
 
-		function checkInfoKakao(user_id_name, user_auth_type) {
+		function checkInfoKakao(member_id, member_reg_type) {
 			$
 					.ajax({
 						url : "social.id.check",
 						type : "GET",
 						dataType : "text",
 						data : {
-							"user_id_name" : user_id_name,
-							"user_auth_type" : user_auth_type
+							"member_id" : member_id,
+							"member_reg_type" : member_reg_type
 						},
 						success : function(data) {
 							console.log(data)
 							if (data >= 1) {
-								let kakaoLoginUrl = `social.login.do?user_id_name=${user_id_name}`;
+								let kakaoLoginUrl = "social.reg.do?member_id="+member_id;
 								console.log(kakaoLoginUrl);
 								location.replace(kakaoLoginUrl);
 							} else {
-								console.log(user_id_name)
-								console.log(user_auth_type)
+								console.log(member_id)
+								console.log(member_reg_type)
 								alert('회원가입을 도와드리겠습니다.');
-								let kakaoJoinUrl = "social.reg.do?user_id_name="+user_id_name+"&user_auth_type="+user_auth_type;
+								let kakaoJoinUrl = 'social.reg.do?member_id='+member_id+'&member_reg_type='+member_reg_type;
 								console.log(kakaoJoinUrl);
 								location.replace(kakaoJoinUrl);
 							}

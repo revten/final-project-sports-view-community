@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tm.nmp.point.PointMapper">
+
+<select id="getCalendarList" parameterType="string" resultType="com.tm.nmp.account.Calendar">
+			select * from calendarlist where point_member='test'
+		
+		</select>
+		
+<insert id="pointTable" parameterType="com.tm.nmp.point.PointVO">
+	insert into POINT values(#{point_member},'브론즈','0')
+</insert>
+
+<update id="updatePoint" parameterType="com.tm.nmp.point.PointVO">
+	update POINT set point_grade = #{point_grade}, point = #{point} where point_member = #{point_member}
+</update>
+
+<insert id="insertPlusPoint" parameterType="com.tm.nmp.point.PlusPointVO">
+	insert into PLUSPOUNT values(#{plusPoint_member}, #{plusPoint}, sysdate)
+</insert>
+
+<select id="getPoint" parameterType="com.tm.nmp.point.PointVO" resultType="com.tm.nmp.point.PointVO">
+	select * from POINT where point_member = #{point_member}
+</select>
+
+<select id="getPlusPoint" parameterType="com.tm.nmp.point.PlusPointVO" resultType="com.tm.nmp.point.PlusPointVO">
+	select * from PLUSPOUNT where plusPoint_member = #{plusPoint_member}
+</select>
+
+
+</mapper>

@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>SightSite</title>
 </head>
 <body>
 	<main class="main"> <!--==================== HOME ====================-->
@@ -13,16 +13,12 @@
 			<img src="resources/files/home/home-main.png" alt="home image"
 				class="home__img">
 			<div class="home__data">
-			프로젝트 남은 시간 보고 정신 잡자
 				<h1 class="home__title">
-						<span id="days"></span>일 <span id="hours"></span>시간
-						<span id="minutes"></span>분 <span id="seconds"></span>초
 					<div>
 						<img src="resources/files/home/home-title.png" alt="home image">
-						잠따윈 개나 줘라
 					</div>
 				</h1>
-				<p class="home__description">팀장 욕은 프로젝트 끝나고 하자</p>
+				<p class="home__description"></p>
 
 				<a href="#" class="button"> <!-- rec5.main.go --> 경기좌석 보러가기 <i
 					class="ri-arrow-right-line"></i>
@@ -160,48 +156,5 @@
 		</div>
 	</section>
 	</main>
-	<script>
-		(function() {
-			const second = 1000, minute = second * 60, hour = minute * 60, day = hour * 24;
-
-			//I'm adding this section so I don't have to keep updating this pen every year :-)
-			//remove this if you don't need it
-			let today = new Date(), dd = String(today.getDate()).padStart(2,
-					"0"), mm = String(today.getMonth() + 1).padStart(2, "0"), yyyy = today
-					.getFullYear(), nextYear = yyyy + 1, dayMonth = "01/31/", birthday = dayMonth
-					+ yyyy;
-
-			today = mm + "/" + dd + "/" + yyyy;
-			if (today > birthday) {
-				birthday = dayMonth + nextYear;
-			}
-			//end
-
-			const countDown = new Date(birthday).getTime(), x = setInterval(
-					function() {
-
-						const now = new Date().getTime(), distance = countDown
-								- now;
-
-								document.getElementById("days").innerText = Math
-										.floor(distance / (day)),
-								document.getElementById("hours").innerText = Math
-										.floor((distance % (day)) / (hour)),
-								document.getElementById("minutes").innerText = Math
-										.floor((distance % (hour)) / (minute)),
-								document.getElementById("seconds").innerText = Math
-										.floor((distance % (minute)) / second);
-
-						//do something later when date is reached
-						if (distance < 0) {
-							document.getElementById("headline").innerText = "It's my birthday!";
-							document.getElementById("countdown").style.display = "none";
-							document.getElementById("content").style.display = "block";
-							clearInterval(x);
-						}
-						//seconds
-					}, 0)
-		}());
-	</script>
 </body>
 </html>

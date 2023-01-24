@@ -21,6 +21,8 @@ public class AccountDTO {
 	private Date member_date_withdrawn;
 	private int member_admin;
 	
+	 
+	
 	public AccountDTO() {
 		// TODO Auto-generated constructor stub
 	}
