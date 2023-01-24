@@ -12,5 +12,7 @@ public class TokenMaker {
 			SimpleDateFormat sdf = new SimpleDateFormat("hh:mm:ss:SS");
 			String token = sdf.format(d);
 			req.setAttribute("token", token);
+			
+			System.out.println(token);
 		}
 }
