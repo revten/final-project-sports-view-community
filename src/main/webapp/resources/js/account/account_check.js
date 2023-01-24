@@ -216,7 +216,7 @@ function chkID(str) {
 }
 
 function chkPW(str) {
-	let reg_pw = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$ %^&*-]).{7,12}$/;
+	let reg_pw = /^(?=.*?[a-zA-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$ %^&*-]).{7,12}$/;
 
 	if (!reg_pw.test(str)) {
 		return false;

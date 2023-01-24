@@ -143,6 +143,13 @@ public class AccountController {
 		return acDAO.socialIdCheck(ac);
 	}
 	
+	@RequestMapping(value = "/socialLogin.go", method = RequestMethod.GET)
+	public String socialRegGo(AccountDTO a, HttpServletRequest req) {
+		acDAO.loginCheck(req);
+		req.setAttribute("contentPage", "account/socialLogin.jsp");
+		return "index";
+	}
+	
 	@RequestMapping(value = "/social.login.do", method = RequestMethod.GET)
 	public String socialLoginDo(HttpServletRequest req, AccountDTO ac) {
 		if (req.getParameter("member_id") != null) {
@@ -163,7 +170,7 @@ public class AccountController {
 		acDAO.loginCheck(req);
 		req.setAttribute("contentPage", "account/socialProfileReg.jsp");
 
-		return "index";
+		return "profile_index";
 	}
 	
 	@RequestMapping(value = "/profile.reg.do", method = RequestMethod.POST)

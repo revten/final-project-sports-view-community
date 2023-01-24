@@ -63,27 +63,26 @@
 	<!--==================== HEADER ====================-->
 	<header class="header" id="header">
 		<nav class="nav container">
-			<a href="index.go" class="nav__logo"> <img
+			<a href="" class="nav__logo"> <img
 				src="resources/files/home/logo.png" alt="logo image" /> Enjoy
 				Sports
 			</a>
 
 			<div class="nav__menu" id="nav-menu">
 				<ul class="nav__list">
-					<li class="nav__item"><a href="stadium.main.go"
+					<li class="nav__item"><a href=""
 						class="nav__link">경기장뷰</a></li>
 
-					<li><a href="watch.main.go?wg_cat=withGo"
+					<li><a href=""
 						class="nav__link">직ㅡ관</a></li>
 
-					<li class="nav__item"><a href="fan.main.go"
+					<li class="nav__item"><a href=""
 						class="nav__link">팬커뮤</a></li>
 
-					<li class="nav__item"><a href="newsEvent.main.go"
+					<li class="nav__item"><a href=""
 						class="nav__link">소식</a></li>
 
-					<li class="nav__item"><a class="nav__link"><jsp:include
-								page="${loginPage }"></jsp:include></a></li>
+					<li class="nav__item"><a class="nav__link">로그인</a></li>
 				</ul>
 
 				<!-- close button -->
@@ -155,14 +154,14 @@
 				<div>
 					<h3 class="footer__title">Social Media</h3>
 					<ul class="footer__social">
-						<a href="https://www.facebook.com" target="_blank"
+						<a href="" target="_blank"
 							class="footer__social-link"> <i
 							class="ri-facebook-circle-fill"></i>
 						</a>
-						<a href="https://www.instagram.com" target="_blank"
+						<a href="" target="_blank"
 							class="footer__social-link"> <i class="ri-instagram-fill"></i>
 						</a>
-						<a href="https://www.twitter.com" target="_blank"
+						<a href="" target="_blank"
 							class="footer__social-link"> <i class="ri-twitter-fill"></i>
 						</a>
 					</ul>
