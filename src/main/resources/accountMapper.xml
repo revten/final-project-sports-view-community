@@ -20,8 +20,7 @@
 
 	<update id="regProfile"
 		parameterType="com.tm.nmp.account.AccountDTO">
-		update member set member_pwd = #{member_pwd} member_nick = #{member_nick} member_reg_ip = #{member_reg_ip} member_intro = ${member_intro}
-		member_subs = #{member_subs} club_id = #{club_id}
+		update member set member_pwd = #{member_pwd}, member_nick = #{member_nick}, member_reg_ip = #{member_reg_ip}, member_intro = #{member_intro}, member_subs = #{member_subs}, club_id = #{club_id} where member_id = #{member_id}
 	</update>
 
 	<select id="idCheck" parameterType="String" resultType="int">
