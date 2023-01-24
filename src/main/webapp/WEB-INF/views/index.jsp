@@ -40,15 +40,19 @@
 <link rel="stylesheet" href="resources/css/news/news.css" />
 <link rel="stylesheet" href="resources/css/map/map.css" />
 <link rel="stylesheet" href="resources/css/stadium/stadium.css" />
-<link rel="stylesheet" href="//cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
-
+<link rel="stylesheet"
+	href="//cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
 <!--=============== [JS MEMBER]===============-->
 <script src="resources/js/account/account_go.js"></script>
+<script src="resources/js/account/account_condition.js"></script>
 <script src="resources/js/stadium/stadium_go.js"></script>
 <script src="resources/js/stadium/seat_detail.js"></script>
 <script src="resources/js/community/community_go.js"></script>
 <script src="resources/js/myPage/myPage.js"></script>
 <script src="resources/js/news/paging.js"></script>
+<script src="resources/js/news/paging.js"></script>
+<script src="resources/js/board/boardCheck.js"></script>
+
 <script src="//cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
 <script src="//cdn.ckeditor.com/4.19.0/full/ckeditor.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/ckeditor/ckeditor.js"></script>
@@ -67,23 +71,16 @@
 			<div class="nav__menu" id="nav-menu">
 				<ul class="nav__list">
 					<li class="nav__item"><a href="stadium.main.go"
-						class="nav__link">Stdm</a>
-					</li>
+						class="nav__link">경기장뷰</a></li>
 
-					<!-- <li class="nav__item"><a href="news.main.go" class="nav__link">뉴스</a></li> -->
+					<li><a href="watch.main.go?wg_cat=withGo"
+						class="nav__link">직ㅡ관</a></li>
 
-					<li><a href="community.main.go?wg_cat=withGo" class="nav__link">Cmnty</a></li>
+					<li class="nav__item"><a href="fan.main.go"
+						class="nav__link">팬커뮤</a></li>
 
-					<li class="nav__item"><a href="infoEvent.main.go"
-						class="nav__link">Insider</a></li>
-						
-									<li class="nav__item"><a href="games.main.go"
-						class="nav__link">Games</a></li>		
-
-					<%-- 					<c:if test="${sessionScope.loginAccount.ac_id eq 'qwe'}"> --%>
-					<li class="nav__item"><a href="admin.main.go"
-						class="nav__link">Admin</a></li>
-					<%-- </c:if> --%>
+					<li class="nav__item"><a href="newsEvent.main.go"
+						class="nav__link">소식</a></li>
 
 					<li class="nav__item"><a class="nav__link"><jsp:include
 								page="${loginPage }"></jsp:include></a></li>

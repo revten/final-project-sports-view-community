@@ -1,6 +1,10 @@
 package com.tm.nmp.account;
 
+import java.io.IOException;
+
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -39,11 +43,13 @@ public class AccountController {
 	}
 	
 	@RequestMapping(value = "/account.login.do", method = RequestMethod.POST)
-	public String accountLoginDo(HttpServletRequest req, AccountDTO ac) {
+	public void accountLoginDo(HttpServletRequest req, AccountDTO ac, HttpServletResponse response) throws IOException, ServletException {
 		acDAO.accountLoginDo(req, ac);
-		acDAO.loginCheck(req);
-		req.setAttribute("contentPage", "home.jsp");
-		return "index";
+		if(acDAO.loginCheck(req)) {
+			String watchingPage = (String) req.getSession().getAttribute("watchingPage");
+			System.out.println(watchingPage);
+			response.sendRedirect(watchingPage);	
+		} 
 	}
 
 	@RequestMapping(value = "/account.logout.do", method = RequestMethod.GET)
@@ -130,16 +136,16 @@ public class AccountController {
 		return "index";
 	}
 	
-	/*@RequestMapping(value = "/social.id.check", method = RequestMethod.GET)
+	@RequestMapping(value = "/social.id.check", method = RequestMethod.GET)
 	@ResponseBody
 	public int socialIdCheck(HttpServletRequest req, AccountDTO ac) {
 		acDAO.loginCheck(req);
 		return acDAO.socialIdCheck(ac);
-	}*/
+	}
 	
 	@RequestMapping(value = "/social.login.do", method = RequestMethod.GET)
 	public String socialLoginDo(HttpServletRequest req, AccountDTO ac) {
-		if (req.getParameter("user_id_name") != null) {
+		if (req.getParameter("member_id") != null) {
 			acDAO.socialLogin(req, ac);
 			acDAO.loginCheck(req);
 		} else {
@@ -150,7 +156,7 @@ public class AccountController {
 		return "index";
 	}
 	
-	/*@RequestMapping(value = "/social.reg.do", method = RequestMethod.GET)
+	@RequestMapping(value = "/social.reg.do", method = RequestMethod.GET)
 	public String socialRegDo(HttpServletRequest req, AccountDTO ac) {
 		acDAO.socialReg(req, ac);
 		acDAO.accountLoginDo(req, ac);
@@ -158,8 +164,17 @@ public class AccountController {
 		req.setAttribute("contentPage", "account/socialProfileReg.jsp");
 
 		return "index";
-	}*/
+	}
 	
+	@RequestMapping(value = "/profile.reg.do", method = RequestMethod.POST)
+	public String profileRegDo(HttpServletRequest req, AccountDTO ac) {
+		acDAO.regProfile(req, ac);
+		acDAO.accountLoginDo(req, ac);
+		acDAO.loginCheck(req);
+		req.setAttribute("contentPage", "home.jsp");
+
+		return "index";
+	}
 
 	@ResponseBody
 	@RequestMapping(value = "/users/attendances", method = RequestMethod.GET, produces="application/json")
