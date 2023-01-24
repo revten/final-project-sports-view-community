@@ -71,6 +71,16 @@ public class AC_US_DAO {
 			}
 		}
 	}
+	
+	// .go가 매핑되는 순간, 이 메서드가 동작하면서 페이지 URL을 저장한다
+	public void wathingPage(HttpServletRequest req) {
+		String watchingPage = req.getRequestURL().toString();
+		String param = req.getQueryString();
+		if (req.getQueryString() != null) {
+			watchingPage = watchingPage + "?" + param; // 수정할 글의 번호도 있으니까
+		}
+		req.getSession().setAttribute("watchingPage", watchingPage);
+	}
 
 	public void accountLogoutDo(HttpServletRequest req, AccountDTO ac) {
 		req.getSession().setAttribute("loginAccount", null);
@@ -272,4 +282,6 @@ public class AC_US_DAO {
 		return dates;
 
 	}
+
+
 }
