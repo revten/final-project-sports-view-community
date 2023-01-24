@@ -1,4 +1,4 @@
-package com.tm.nmp.infoEvent;
+package com.tm.nmp.newsEvent;
 
 import java.util.Date;
 import java.util.List;
