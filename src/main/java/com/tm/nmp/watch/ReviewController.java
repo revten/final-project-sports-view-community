@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.tm.nmp.account.AC_US_DAO;
-import com.tm.nmp.board.BoardDAO;
 
 @Controller
 public class ReviewController {
