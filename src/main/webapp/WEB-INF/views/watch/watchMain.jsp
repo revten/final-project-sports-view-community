@@ -21,11 +21,6 @@
 				href='reviewList.go?rv_cat=review'>직관 후기 게시판</a></li>
 			<li><a style="cursor: pointer"
 				href='withGoList.go?wg_cat=withGo'>같이 직관/경기 게시판</a></li>
-			<li><a style="cursor: pointer" href="baseball.board.go">야구
-					게시판</a></li>
-			<li><a style="cursor: pointer" href="soccer.board.go?">축구 게시판</a></li>
-			<li><a style="cursor: pointer" href="basketball.board.go">농구 게시판</a></li>
-			<li><a style="cursor: pointer" href="volleyball.board.go">배구 게시판</a></li>
 		</ul>
 	</div>
 	<div id="community_main">

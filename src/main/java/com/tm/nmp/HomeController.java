@@ -8,12 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.tm.nmp.account.AC_US_DAO;
-import com.tm.nmp.admin.AnswerDAO;
 import com.tm.nmp.board.BoardDAO;
-import com.tm.nmp.games.GamesAnalyzeDAO;
-import com.tm.nmp.games.TotoDAO;
-import com.tm.nmp.mypage.AskDAO;
-import com.tm.nmp.mypage.MyPostDAO;
 
 @Controller
 public class HomeController {
@@ -22,22 +17,7 @@ public class HomeController {
 	private AC_US_DAO acDAO;
 
 	@Autowired
-	private GamesAnalyzeDAO gaDAO;
-
-	@Autowired
-	private TotoDAO ttDAO;
-
-	@Autowired
-	private MyPostDAO mpDAO;
-
-	@Autowired
-	private AskDAO askDAO;
-
-	@Autowired
-	private AnswerDAO asDAO;
-
-	@Autowired
-	private BoardDAO frDAO;
+	private BoardDAO brDAO;
 
 	private boolean firstReq;
 
@@ -49,12 +29,14 @@ public class HomeController {
 	public String home(HttpServletRequest req) {
 
 		if (firstReq) {
-			gaDAO.calcAllPostCount();
-			ttDAO.calcAllPostCount();
-			mpDAO.calcAllPostCount();
-			askDAO.calcAllPostCount();
-			asDAO.calcAllPostCount();
-			frDAO.calcAllPostCount(21);
+			brDAO.calcAllPostCount(11); // 직관함께 게시판 withGo
+			brDAO.calcAllPostCount(12);	// 직관후기 게시판 review
+			brDAO.calcAllPostCount(21); // 야구 게시판 baseball
+			brDAO.calcAllPostCount(22);	// 축구 게시판 soccer
+			brDAO.calcAllPostCount(23); // 농구 게시판 basketball
+			brDAO.calcAllPostCount(24); // 배구 게시판 volleyball
+			brDAO.calcAllPostCount(31); // 구단이벤트 게시판 clubEvent
+			brDAO.calcAllPostCount(41); // 분석 게시판 analyze
 			firstReq = false;
 		}
 		acDAO.wathingPage(req);
@@ -65,6 +47,7 @@ public class HomeController {
 
 	@RequestMapping(value = "/index.go", method = RequestMethod.GET)
 	public String indexGo(HttpServletRequest req) {
+		acDAO.wathingPage(req);
 		return home(req);
 	}
 
@@ -82,41 +65,33 @@ public class HomeController {
 		req.setAttribute("contentPage", "stadium/stadiumMain.jsp");
 		return "index";
 	}
-
-	@RequestMapping(value = "/news.main.go", method = RequestMethod.GET)
-	public String newsMainGo(HttpServletRequest req) {
-		acDAO.wathingPage(req);
-		acDAO.loginCheck(req);
-		req.setAttribute("contentPage", "infoEvent/news/newsMain.jsp");
-		req.setAttribute("newsPage", "everyNews.jsp");
-		return "index";
-	}
-
-	@RequestMapping(value = "/community.main.go", method = RequestMethod.GET)
-	public String communityMainGo(HttpServletRequest req) {
+	
+	@RequestMapping(value = "/watch.main.go", method = RequestMethod.GET)
+	public String watchMainGo(HttpServletRequest req) {
 		acDAO.wathingPage(req);
 		acDAO.loginCheck(req);
 		/*
 		 * scDAO.getSoccerBoard(req, 1); wgDAO.showWithGoList(req, wg);
 		 */
-		req.setAttribute("contentPage", "community/communityMain.jsp");
+		req.setAttribute("contentPage", "watch/watchMain.jsp");
+		return "index";
+	}
+	
+	@RequestMapping(value = "/fan.main.go", method = RequestMethod.GET)
+	public String fanMainGo(HttpServletRequest req) {
+		acDAO.wathingPage(req);
+		acDAO.loginCheck(req);
+
+		req.setAttribute("contentPage", "fan/fanMain.jsp");
 		return "index";
 	}
 
-	@RequestMapping(value = "/infoEvent.main.go", method = RequestMethod.GET)
-	public String infoEventMainGo(HttpServletRequest req) {
+	@RequestMapping(value = "/newsEvent.main.go", method = RequestMethod.GET)
+	public String newsEventMainGo(HttpServletRequest req) {
 		acDAO.wathingPage(req);
 		acDAO.loginCheck(req);
-		req.setAttribute("contentPage", "infoEvent/infoEventMain.jsp");
-		req.setAttribute("newsPage", "news/everyNews.jsp");
-		return "index";
-	}
-
-	@RequestMapping(value = "/games.main.go", method = RequestMethod.GET)
-	public String gamesMainGo(HttpServletRequest req) {
-		acDAO.wathingPage(req);
-		acDAO.loginCheck(req);
-		req.setAttribute("contentPage", "games/gamesMain.jsp");
+		req.setAttribute("contentPage", "newsEvent/newsEventMain.jsp");
+		req.setAttribute("newsPage", "everyNews.jsp");
 		return "index";
 	}
 
@@ -127,13 +102,4 @@ public class HomeController {
 		req.setAttribute("contentPage", "myPage/myPageMain.jsp");
 		return "index";
 	}
-
-	@RequestMapping(value = "/admin.main.go", method = RequestMethod.GET)
-	public String adminMainGo(HttpServletRequest req) {
-		acDAO.wathingPage(req);
-		acDAO.loginCheck(req);
-		req.setAttribute("contentPage", "admin/admin.jsp");
-		return "index";
-	}
-
 }

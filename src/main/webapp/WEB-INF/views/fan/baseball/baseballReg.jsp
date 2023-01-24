@@ -12,18 +12,7 @@
 		});
 	});
 </script>
-<script>
-	function checkForm() {
-		let titleInput = document.regForm.post_title;
-		let contentInput = document.regForm.post_content;
 
-		if (isEmpty(titleInput) || isEmpty(contentInput)) {
-			alert("내용을 입력해주세요");
-			return false;
-		}
-		return true;
-	}
-</script>
 </head>
 
 <body>
@@ -34,6 +23,10 @@
 	<br>
 	<br>
 	<h3>야구게시판</h3>
+
+
+	<!--==================== 등록 ====================-->
+	<main class="boardReg__Main">
 	<form action="baseball.reg.do" method="POST"
 		enctype="multipart/form-data" onsubmit="return checkForm();"
 		name="regForm">
@@ -54,5 +47,21 @@
 		<button type="submit" id="createPostBtn" class="btn btn-primary">
 			등록</button>
 	</form>
+	</main>
+
+
+	<!--==================== JS ====================-->
+	<script>
+		function checkForm() {
+			let titleInput = document.regForm.post_title;
+			let contentInput = document.regForm.post_content;
+
+			if (isEmpty(titleInput) || isEmpty(contentInput)) {
+				alert("내용을 입력해주세요");
+				return false;
+			}
+			return true;
+		}
+	</script>
 </body>
 </html>

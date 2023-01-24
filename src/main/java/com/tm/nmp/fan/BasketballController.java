@@ -1,4 +1,4 @@
-package com.tm.nmp.community;
+package com.tm.nmp.fan;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -9,129 +9,147 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.tm.nmp.TokenMaker;
 import com.tm.nmp.account.AC_US_DAO;
+import com.tm.nmp.board.BoardDAO;
 import com.tm.nmp.board.BoardOption;
 import com.tm.nmp.board.BoardSelector;
-import com.tm.nmp.board.BoardDAO;
 import com.tm.nmp.board.PostVO;
 import com.tm.nmp.board.ReplyVO;
 
 @Controller
-public class FreeBasketballController {
+public class BasketballController {
 
 	@Autowired
 	private AC_US_DAO acDAO;
 
 	@Autowired
-	private BoardDAO frDAO;
+	private BoardDAO brDAO;
+
+	@RequestMapping(value = "basketball.board.go", method = RequestMethod.GET)
+	public String basketballBoardGO(HttpServletRequest req) {
+		TokenMaker.make(req);
+		acDAO.loginCheck(req);
+		brDAO.getAllPost(req, 1, 23);
+
+		req.setAttribute("contentPage", "fan/basketball/basketballBoard.jsp");
+		return "index";
+	}
 
 	@RequestMapping(value = "basketball.detail.go", method = RequestMethod.GET)
 	public String basketballDetail(HttpServletRequest req, PostVO p) {
+		TokenMaker.make(req);
 		BoardOption.clearSearch(req);
+		acDAO.wathingPage(req);
 		acDAO.loginCheck(req);
-		frDAO.getPost(req, p);
-
-		req.setAttribute("contentPage", "community/basketball/basketballDetail.jsp");
+		brDAO.getPost(req, p);
+		req.setAttribute("contentPage", "fan/basketball/basketballDetail.jsp");
 		return "index";
 	}
 
 	@RequestMapping(value = "basketball.reg.go", method = RequestMethod.GET)
 	public String basketballRegGo(HttpServletRequest req, PostVO p) {
-		acDAO.loginCheck(req);
-		req.setAttribute("contentPage", "community/basketball/basketballReg.jsp");
+		TokenMaker.make(req);
+		acDAO.wathingPage(req);
+		if (acDAO.loginCheck(req)) {
+			req.setAttribute("contentPage", "fan/basketball/basketballReg.jsp");
+		} else {
+			req.setAttribute("contentPage", "account/loginPage.jsp");
+		}
 		return "index";
 	}
 
 	@RequestMapping(value = "basketball.reg.do", method = RequestMethod.POST)
 	public String basketballRegDo(HttpServletRequest req, PostVO p) {
+		TokenMaker.make(req);
 		acDAO.loginCheck(req);
-		frDAO.regPost(req, p);
-
-		frDAO.getAllPost(req, 1, 23);
-
-		req.setAttribute("contentPage", "community/basketball/basketballBoard.jsp");
+		brDAO.regPost(req, p);
+		brDAO.getAllPost(req, 1, 23);
+		req.setAttribute("contentPage", "fan/basketball/basketballBoard.jsp");
 		return "index";
 	}
 
 	@RequestMapping(value = "basketball.update.go", method = RequestMethod.GET)
 	public String basketballUpdateGo(HttpServletRequest req, PostVO p) {
+		TokenMaker.make(req);
+		acDAO.wathingPage(req);
 		acDAO.loginCheck(req);
-		frDAO.getPost(req, p);
-
-		req.setAttribute("contentPage", "community/basketball/basketballUpdate.jsp");
+		brDAO.getPost(req, p);
+		req.setAttribute("contentPage", "fan/basketball/basketballUpdate.jsp");
 		return "index";
 	}
 
 	@RequestMapping(value = "basketball.update.do", method = RequestMethod.POST)
 	public String basketballUpdateDo(HttpServletRequest req, PostVO p) {
+		TokenMaker.make(req);
 		if (acDAO.loginCheck(req)) {
-			frDAO.updatePost(req, p);
+			brDAO.updatePost(req, p);
 		}
-		frDAO.getAllPost(req, 1, 23);
-
-		req.setAttribute("contentPage", "community/basketball/basketballBoard.jsp");
+		brDAO.getAllPost(req, 1, 23);
+		req.setAttribute("contentPage", "fan/basketball/basketballBoard.jsp");
 		return "index";
 	}
 
 	@RequestMapping(value = "basketball.delete.do", method = RequestMethod.GET)
 	public String basketballDeleteDo(HttpServletRequest req, PostVO p) {
+		TokenMaker.make(req);
 		BoardOption.clearSearch(req);
 		if (acDAO.loginCheck(req)) {
-			frDAO.deletePost(req, p);
+			brDAO.deletePost(req, p);
 		}
-		frDAO.getAllPost(req, 1, 23);
-
-		req.setAttribute("contentPage", "community/basketball/basketballBoard.jsp");
+		brDAO.getAllPost(req, 1, 23);
+		req.setAttribute("contentPage", "fan/basketball/basketballBoard.jsp");
 		return "index";
 	}
 
 	@RequestMapping(value = "/basketball.page.change", method = RequestMethod.GET)
 	public String basketballPageChange(HttpServletRequest req) {
 		TokenMaker.make(req);
-		int pg = Integer.parseInt(req.getParameter("pg"));
-		frDAO.getAllPost(req, pg, 23);
+		acDAO.wathingPage(req);
 		acDAO.loginCheck(req);
-
-		req.setAttribute("contentPage", "community/basketball/basketballBoard.jsp");
+		int pg = Integer.parseInt(req.getParameter("pg"));
+		brDAO.getAllPost(req, pg, 23);
+		req.setAttribute("contentPage", "fan/basketball/basketballBoard.jsp");
 		return "index";
 	}
 
 	@RequestMapping(value = "/basketball.search.do", method = RequestMethod.GET)
 	public String basketballSearchDo(HttpServletRequest req, BoardSelector bSel) {
 		acDAO.loginCheck(req);
-		frDAO.searchPost(req, bSel);
-		frDAO.getAllPost(req, 1, 23);
-
-		req.setAttribute("contentPage", "community/basketball/basketballBoard.jsp");
+		brDAO.searchPost(req, bSel);
+		brDAO.getAllPost(req, 1, 23);
+		req.setAttribute("contentPage", "fan/basketball/basketballBoard.jsp");
 		return "index";
 	}
 
 	@RequestMapping(value = "basketballReply.reg.do", method = RequestMethod.GET)
 	public String basketballReplyRegDo(HttpServletRequest req, ReplyVO rp, PostVO p) {
+		TokenMaker.make(req);
 		if (acDAO.loginCheck(req)) {
-			frDAO.regReply(req, rp);
+			brDAO.regReply(req, rp);
 		}
-		frDAO.getPost(req, p);
-		req.setAttribute("contentPage", "community/basketball/basketballDeatail.jsp");
+		brDAO.getPost(req, p);
+		req.setAttribute("contentPage", "fan/basketball/basketballDetail.jsp");
 		return "index";
 	}
 
-	@RequestMapping(value = "basketballReply.dalete.do", method = RequestMethod.GET)
+	@RequestMapping(value = "basketballReply.delete.do", method = RequestMethod.GET)
 	public String basketballReplyDelete(HttpServletRequest req, ReplyVO rp, PostVO p) {
+		TokenMaker.make(req);
 		if (acDAO.loginCheck(req)) {
-			frDAO.deleteReply(req, rp);
+			brDAO.deleteReply(req, rp);
 		}
-		frDAO.getPost(req, p);
-		req.setAttribute("contentPage", "community/basketball/basketballDeatail.jsp");
+		brDAO.getPost(req, p);
+		req.setAttribute("contentPage", "fan/basketball/basketballDetail.jsp");
 		return "index";
 	}
 
 	@RequestMapping(value = "basketballReply.update.do", method = RequestMethod.GET)
 	public String basketballReplyUpdate(HttpServletRequest req, ReplyVO rp, PostVO p) {
+		TokenMaker.make(req);
 		if (acDAO.loginCheck(req)) {
-			frDAO.updateReply(req, rp);
+			brDAO.updateReply(req, rp);
 		}
-		frDAO.getPost(req, p);
-		req.setAttribute("contentPage", "community/basketball/basketballDeatail.jsp");
+		brDAO.getPost(req, p);
+		req.setAttribute("contentPage", "fan/basketball/basketballDetail.jsp");
 		return "index";
 	}
 

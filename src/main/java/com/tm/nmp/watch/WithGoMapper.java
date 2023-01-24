@@ -1,4 +1,4 @@
-package com.tm.nmp.community;
+package com.tm.nmp.watch;
 
 import java.util.List;
 

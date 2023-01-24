@@ -5,7 +5,16 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script>
+	$(function() {
+		CKEDITOR.replace('editor', {
+			filebrowserUploadUrl : 'fileupload.do',
+		});
+	});
+</script>
+
 </head>
+
 <body>
 	<br>
 	<br>
@@ -13,52 +22,46 @@
 	<br>
 	<br>
 	<br>
-	<h1>등록페이지</h1>
-
-	<div>
-		<h3>축구게시판</h3>
-		<form action="soccerInsert.do" method="post"
-			enctype="multipart/form-data">
-			<table border="1">
-				<tr>
-				<tr>
-					<td>탭선택하기 :<select name="cm_sc_cat">
-							<option value="cat">잡담</option>
-							<option value="q">질문</option>
-							<option value="img">사진/영상</option>
-							<option value="story">소식정보</option>
-					</select> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 제목입력: <input
-						name="cm_sc_title">
-					</td>
-				</tr>
-				<tr>
-					<td><input type="hidden" name="cm_sc_id"
-						value="${sessionScope.loginAccount.ac_id}"> <input
-						type="hidden" name="cm_sc_nick"
-						value="${sessionScope.loginAccount.ac_nick}"></td>
-				</tr>
-				<tr>
-					<td>글내용:<textarea name="cm_sc_content" rows="20" cols="20"></textarea>
-					</td>
-				</tr>
-				<tr>
-					<td>사진<input name="cm_sc_img" type="file"> 동영상<input
-						name="cm_sc_video" type="file">
-						<button type="button" onclick="location.href='soccerBoard.go'">목록으로</button>
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<button>등록</button>
-					</td>
-				</tr>
-				<tr>
-			</table>
-		</form>
-	</div>
+	<h3>축구게시판</h3>
 
 
+	<!--==================== 등록 ====================-->
+	<main class="boardReg__Main">
+	<form action="soccer.reg.do" method="POST"
+		enctype="multipart/form-data" onsubmit="return checkForm();"
+		name="regForm">
 
+		<input name="post_board" value="22" type="hidden">
+
+		<div class="form-group">
+			<label for="title">제목</label> <input type="text" class="form-control"
+				id="title" name="post_title">
+		</div>
+		<div class="form-group">
+			<label for="content"></label>
+			<textarea class="form-control" rows="5" id="editor"
+				name="post_content"></textarea>
+			<input type="hidden" name="post_image" value="${bottomSplit }">
+			<input type="hidden" name="post_file" value="-">
+		</div>
+		<button type="submit" id="createPostBtn" class="btn btn-primary">
+			등록</button>
+	</form>
+	</main>
+
+
+	<!--==================== JS ====================-->
+	<script>
+		function checkForm() {
+			let titleInput = document.regForm.post_title;
+			let contentInput = document.regForm.post_content;
+
+			if (isEmpty(titleInput) || isEmpty(contentInput)) {
+				alert("내용을 입력해주세요");
+				return false;
+			}
+			return true;
+		}
+	</script>
 </body>
 </html>

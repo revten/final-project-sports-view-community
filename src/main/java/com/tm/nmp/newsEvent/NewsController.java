@@ -1,4 +1,4 @@
-package com.tm.nmp.infoEvent;
+package com.tm.nmp.newsEvent;
 
 import javax.servlet.http.HttpServletRequest;
 

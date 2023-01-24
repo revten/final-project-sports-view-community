@@ -9,73 +9,113 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<a href="games.main.go">games 메인</a>
-	<div>유저분석</div>
+	<main class="board__main"> <br>
 
-	<table border="1">
-		<thead>
-			<tr>
-				<td>번호</td>
-				<td>종목</td>
-				<td>리그</td>
-				<td>제목</td>
-				<td>등록일</td>
-				<td>작성자</td>
-				<td>추천</td>
-				<td>조회</td>
-			<tr>
-		</thead>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<h1>분석게시판</h1>
 
-		<c:forEach var="p" items="${posts }">
-			<tbody>
+	<!--==================== 게시판 ====================-->
+
+	<div class="board__container">
+		<div class="board__top">
+			<c:choose>
+				<c:when test="${sessionScope.loginAccount ne null}">
+					<a href=analyze.reg.go> 새글쓰기</a>
+				</c:when>
+				<c:otherwise>
+					<a href="analyze.reg.go" onclick="alert('로그인하세요')">새글쓰기</a>
+				</c:otherwise>
+			</c:choose>
+		</div>
+
+
+		<table class="board__table" border="1">
+			<thead>
 				<tr>
-					<td>${p.anlyz_no}</td>
-					<td>${p.anlyz_sports}</td>
-					<td>리그</td>
-					<td><a
-						href="games.analyzeBoard.getDetail?anlyz_no=${p.anlyz_no}">${p.anlyz_title}</a></td>
-					<td>${p.anlyz_date_created}</td>
-					<td>${p.ac_nick}</td>
-					<td>22</td>
-					<td>25</td>
+					<th>게시판넘버</th>
+					<th>글번호</th>
+					<th>탭</th>
+					<th>제목</th>
+					<th>등록일</th>
+					<th>닉네임</th>
+					<th>조회수</th>
+					<th>추천수</th>
 				</tr>
-			</tbody>
-		</c:forEach>
-	</table>
-	<form action="games.analyzeBoard.search" name="analyzeBoardSearchForm"
-		onsubmit="return AnalyzeBoardSearchCheck();">
-		<table id="analyzeBoard-SearchArea">
-			<tr>
-				<td id="analyzeBoard-SearchArea-1"><input name="search"
-					maxlength="10" autocomplete="off"></td>
-				<td id="analyzeBoard-SearchArea-2"><button>검색</button></td>
-				<!-- <td> <img id="analyzeBoard-SearchFormSummoner" src="resources/files/games/search.png"><button>검색</button></td> -->
-			</tr>
+				<c:forEach var="p" items="${posts }">
+					<tr>
+						<td>${p.post_board}</td>
+						<td>${p.post_id}</td>
+						<td>${p.post_category}</td>
+						<td><a
+							href="analyze.detail.go?post_id=${p.post_id }&post_member=${p.post_member}">${p.post_title }
+								[${p.post_like_count}]</a></td>
+						<td><c:choose>
+								<c:when test="${p.post_update_date eq null }">
+									<fmt:formatDate value="${p.post_reg_date}"
+										pattern="yy-MM-dd HH:mm" />
+								</c:when>
+								<c:otherwise>
+									<fmt:formatDate value="${p.post_update_date}"
+										pattern="yy-MM-dd HH:mm" />
+								</c:otherwise>
+							</c:choose></td>
+						<td>${p.member_nick}</td>
+						<td>${p.post_hit_count}</td>
+						<td>${p.post_like_count}</td>
+					</tr>
+				</c:forEach>
+			</thead>
 		</table>
-	</form>
 
-	<c:if test="${curPage !=1 }">
-		<a href="games.page.change?p=${curPage-1 }" id="snsL">&lt;</a>
-	</c:if>
-	<c:if test="${curPage != pageCount }">
-		<a href="games.page.change?p=${curPage+1 }" id="snsR">&gt;</a>
-	</c:if>
 
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
+		<div class="board__bot">
+			<div class="board__bot-search">
+				<form action="analyze.search.do" name="boardSearchForm"
+					onsubmit="return boardSearchCheck();">
+					<table id="snsSearchArea">
+						<tr>
+							<td id="ssaTd1"><input name="search" maxlength="10"
+								autocomplete="off"></td>
+							<td id="ssaTd2"><button>검색</button></td>
+						</tr>
+					</table>
+				</form>
+			</div>
+
+			<div class="board__bot-paging">
+				<c:if test="${curPage != 1}">
+					<span><a href="analyze.page.change?pg=1">[맨처음]</a></span>
+					<span><a href="analyze.page.change?pg=${curPage - 1}">
+							◀이전 </a></span>
+				</c:if>
+				<c:forEach var="i" begin="1" end="${pageCount}">
+					<a href="analyze.page.change?pg=${i}"> [${i}] </a>
+				</c:forEach>
+				<c:if test="${curPage != pageCount}">
+					<span> <a href="analyze.page.change?pg=${curPage + 1}">
+							다음▶ </a></span>
+					<span><a href="analyze.page.change?pg=${pageCount}">[맨끝]</a></span>
+				</c:if>
+			</div>
+		</div>
+
+	</div>
+	</main>
+	<script>
+		function boardSearchCheck() {
+			let searchInput = document.boardSearchForm.search;
+
+			if (isEmpty(searchInput)) {
+				alert("?");
+				searchInput.focus();
+				return false;
+			}
+			return true;
+		}
+	</script>
 </body>
 </html>

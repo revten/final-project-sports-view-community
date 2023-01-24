@@ -35,14 +35,11 @@
 }
 </style>
 <script>
-$(function() {
-	CKEDITOR
-			.replace(
-					'editor',
-					{
-						filebrowserUploadUrl : '${pageContext.request.contextPath}/adm/fileupload.do'
-					});
-});
+	$(function() {
+		CKEDITOR.replace('editor', {
+			filebrowserUploadUrl : 'fileupload.do',
+		});
+	});
 </script>
 <title>Insert title here</title>
 </head>
@@ -52,55 +49,88 @@ $(function() {
 	<br>
 	<br>
 	<br>
-	
-	<div class="nav__menu" id="nav-menu" style="width:70%;align:center;">
-				<ul class="nav__list">
-					<li class="nav__item"><a href="news.soccer.go"
-						class="nav__link">축구</a>
-					</li>
+	<br>
+	<br>
 
-					<li class="nav__item"><a href="news.baseball.go" class="nav__link">야구</a></li>
 
-					<li><a href="news.basketball.go" class="nav__link">농구</a></li>
+	<!--==================== Nav바 ====================-->
+	<div class="nav__menu" id="nav-menu" style="width: 70%; align: center;">
+		<ul class="nav__list">
+			<li class="nav__item"><a href="news.soccer.go" class="nav__link">축구</a></li>
+			<li class="nav__item"><a href="news.baseball.go"
+				class="nav__link">야구</a></li>
+			<li><a href="news.basketball.go" class="nav__link">농구</a></li>
+			<li class="nav__item"><a href="news.volleyball.go"
+				class="nav__link">배구</a></li>
+			<li class="nav__item"><a href="news.sports.go" class="nav__link">스포츠</a></li>
+			<li class="nav__item"><a href="club.event.main.go"
+				class="nav__link">구단공식이벤트</a></li>
+			<li class="nav__item"><a href="sports.info.main.go"
+				class="nav__link">생활체육정보</a></li>
+		</ul>
 
-					<li class="nav__item"><a href="news.volleyball.go"
-						class="nav__link">배구</a></li>
-						
-					<li class="nav__item"><a href="news.sports.go"
-						class="nav__link">스포츠</a></li>
-						
-					<li class="nav__item"><a href="team.event.main.go"
-						class="nav__link">구단공식이벤트</a></li>
-						
-					<li class="nav__item"><a href="sports.info.main.go"
-						class="nav__link">생활체육정보</a></li>
+		<!-- close button -->
+		<div class="nav__close" id="nav-close">
+			<i class="ri-close-line"></i>
+		</div>
+	</div>
+			
+			
+	<!--==================== 상세-수정 ====================-->
+	<main class="boardUpdate__main"> <br>
+	<section class="post section">
+		<form action="clubEvent.update.do" method="POST"
+			enctype="multipart/form-data" onsubmit="return checkForm();"
+			name="regForm">
+			<div class="post__container">
+				<div class="post__1st-line">
+					<div class="post__option">
+						탭: <input name="post_category" value="${post.post_category}">
+						게시글번호: <input name="post_id" value="${post.post_id}">
+					</div>
 
-				</ul>
+					<div class="post__title">
+						제목: <input type="text" name="post_title"
+							value="${post.post_title}">
+					</div>
+				</div>
 
-				<!-- close button -->
-				<div class="nav__close" id="nav-close">
-					<i class="ri-close-line"></i>
+
+				<div class="post__2nd-line">
+					<div class="post__element">닉네임:${post.member_nick}</div>
+					<div class="post__element">NO.:${post.post_id }&nbsp;조회수:${post.post_hit_count }&nbsp;
+						추천수:${post.post_like_count}&nbsp;스크랩수:${post.post_scrap_count}</div>
+				</div>
+
+				<div class="post__content">
+					<textarea rows="5" id="editor" name="post_content">${post.post_content}</textarea>
+					<input id="board_image_input" name="post_img"
+						value="${bottomSplit }" type="hidden"> <input
+						id="board_file_input" name="post_file" value="-" type="hidden">
+				</div>
+
+				<div class="post__bot">
+					<button class="post__bot-btn" onclick="history.back()">이전으로</button>
+					<button type="submit" id="createPostBtn" class="btn btn-primary">수정</button>
 				</div>
 			</div>
-			
-			
-		<div style="border:1px solid;width:70%;align:center;">
-			<div class="thead">${teamEvent.ie_te_no }</div>
-			<div class="thead">팀명 : <input name="ie_te_team" value="${teamEvent.ie_te_team }"></div>
-			<div class="theadTitle">제목 : <input name="ie_te_title" value="${teamEvent.ie_te_title }"></div>
-			<div class="thead">닉네임: ${teamEvent.ie_te_nick }</div>
-			<div class="theadDate"><fmt:formatDate value="${teamEvent.ie_te_regdate }" pattern="yyyy-MM-dd HH:mm" /></div>
-			<div class="thead">조회수:${teamEvent.ie_te_views }</div>
-		</div>
-		<div class="tableContent">사진:<input type="file" name="ie_te_img"></div>
-		<div class="tableContent">동영상:<input type="file" name="ie_te_video"></div>
-		<div class="tableContent"><textarea id="editor" maxlength="2084" name="ie_te_content" style="resize: none">${teamEvent.ie_te_content }</textarea></div>
-		<div class="tableUD">
-					<button onclick="history.back()">이전으로</button>
-										<button onclick="location.href='teamEvent.update.do?ie_te_no=${teamEvent.ie_te_no}'">수정</button>
-										<button onclick="location.href='teamEvent.delete.do?ie_te_no=${teamEvent.ie_te_no}'">삭제</button>
-				</div>
-				
-				
+		</form>
+	</section>
+	</main>
+	
+	
+	<!--==================== JS ====================-->
+	<script>
+	function checkForm() {
+		let titleInput = document.regForm.post_title;
+		let contentInput = document.regForm.post_content;
+
+		if (isEmpty(titleInput) || isEmpty(contentInput)) {
+			alert("내용을 입력해주세요");
+			return false;
+		}
+		return true;
+	}
+</script>
 </body>
 </html>

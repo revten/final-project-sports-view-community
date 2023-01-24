@@ -1,4 +1,4 @@
-package com.tm.nmp.community;
+package com.tm.nmp.fan;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -9,131 +9,148 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.tm.nmp.TokenMaker;
 import com.tm.nmp.account.AC_US_DAO;
+import com.tm.nmp.board.BoardDAO;
 import com.tm.nmp.board.BoardOption;
 import com.tm.nmp.board.BoardSelector;
-import com.tm.nmp.board.BoardDAO;
 import com.tm.nmp.board.PostVO;
 import com.tm.nmp.board.ReplyVO;
 
 @Controller
-public class FreeSoccerController {
+public class SoccerController {
 
 	@Autowired
 	private AC_US_DAO acDAO;
-		
-	@Autowired
-	private BoardDAO frDAO;
-	
-	@RequestMapping(value = "soccer.detail.go", method = RequestMethod.GET)
-	public String soccerDetail(HttpServletRequest req, PostVO p) {
-		BoardOption.clearSearch(req);
-		acDAO.loginCheck(req);
-		frDAO.getPost(req, p);
 
-		req.setAttribute("contentPage", "community/soccer/soccerDetail.jsp");
+	@Autowired
+	private BoardDAO brDAO;
+	
+	@RequestMapping(value = "soccer.board.go", method = RequestMethod.GET)
+	public String soccerBoardGO(HttpServletRequest req) {
+		TokenMaker.make(req);
+		acDAO.loginCheck(req);
+		brDAO.getAllPost(req, 1, 22);
+		
+		req.setAttribute("contentPage", "fan/soccer/soccerBoard.jsp");
 		return "index";
 	}
 	
+	@RequestMapping(value = "soccer.detail.go", method = RequestMethod.GET)
+	public String soccerDetail(HttpServletRequest req, PostVO p) {
+		TokenMaker.make(req);
+		BoardOption.clearSearch(req);
+		acDAO.wathingPage(req);
+		acDAO.loginCheck(req);
+		brDAO.getPost(req, p);
+		req.setAttribute("contentPage", "fan/soccer/soccerDetail.jsp");
+		return "index";
+	}
+
 	@RequestMapping(value = "soccer.reg.go", method = RequestMethod.GET)
 	public String soccerRegGo(HttpServletRequest req, PostVO p) {
-		acDAO.loginCheck(req);
-		req.setAttribute("contentPage", "community/soccer/soccerReg.jsp");
+		TokenMaker.make(req);
+		acDAO.wathingPage(req);
+		if (acDAO.loginCheck(req)) {
+			req.setAttribute("contentPage", "fan/soccer/soccerReg.jsp");
+		} else {
+			req.setAttribute("contentPage", "account/loginPage.jsp");
+		}
 		return "index";
 	}
 
 	@RequestMapping(value = "soccer.reg.do", method = RequestMethod.POST)
 	public String soccerRegDo(HttpServletRequest req, PostVO p) {
+		TokenMaker.make(req);
 		acDAO.loginCheck(req);
-		frDAO.regPost(req, p);
-		
-		frDAO.getAllPost(req, 1, 22);
-
-		req.setAttribute("contentPage", "community/soccer/soccerBoard.jsp");
+		brDAO.regPost(req, p);
+		brDAO.getAllPost(req, 1, 22);
+		req.setAttribute("contentPage", "fan/soccer/soccerBoard.jsp");
 		return "index";
 	}
 
 	@RequestMapping(value = "soccer.update.go", method = RequestMethod.GET)
 	public String soccerUpdateGo(HttpServletRequest req, PostVO p) {
+		TokenMaker.make(req);
+		acDAO.wathingPage(req);
 		acDAO.loginCheck(req);
-		frDAO.getPost(req, p);
-
-		req.setAttribute("contentPage", "community/soccer/soccerUpdate.jsp");
+		brDAO.getPost(req, p);
+		req.setAttribute("contentPage", "fan/soccer/soccerUpdate.jsp");
 		return "index";
 	}
 
 	@RequestMapping(value = "soccer.update.do", method = RequestMethod.POST)
 	public String soccerUpdateDo(HttpServletRequest req, PostVO p) {
+		TokenMaker.make(req);
 		if (acDAO.loginCheck(req)) {
-			frDAO.updatePost(req, p);
+			brDAO.updatePost(req, p);
 		}
-		frDAO.getAllPost(req, 1, 22);
-
-		req.setAttribute("contentPage", "community/soccer/soccerBoard.jsp");
+		brDAO.getAllPost(req, 1, 22);
+		req.setAttribute("contentPage", "fan/soccer/soccerBoard.jsp");
 		return "index";
 	}
-	
+
 	@RequestMapping(value = "soccer.delete.do", method = RequestMethod.GET)
 	public String soccerDeleteDo(HttpServletRequest req, PostVO p) {
+		TokenMaker.make(req);
 		BoardOption.clearSearch(req);
 		if (acDAO.loginCheck(req)) {
-			frDAO.deletePost(req, p);
+			brDAO.deletePost(req, p);
 		}
-		frDAO.getAllPost(req, 1, 22);
-
-		req.setAttribute("contentPage", "community/soccer/soccerBoard.jsp");
+		brDAO.getAllPost(req, 1, 22);
+		req.setAttribute("contentPage", "fan/soccer/soccerBoard.jsp");
 		return "index";
 	}
 
 	@RequestMapping(value = "/soccer.page.change", method = RequestMethod.GET)
 	public String soccerPageChange(HttpServletRequest req) {
 		TokenMaker.make(req);
-		int pg = Integer.parseInt(req.getParameter("pg"));
-		frDAO.getAllPost(req, pg, 22);
+		acDAO.wathingPage(req);
 		acDAO.loginCheck(req);
-
-		req.setAttribute("contentPage", "community/soccer/soccerBoard.jsp");
+		int pg = Integer.parseInt(req.getParameter("pg"));
+		brDAO.getAllPost(req, pg, 22);
+		req.setAttribute("contentPage", "fan/soccer/soccerBoard.jsp");
 		return "index";
 	}
 
 	@RequestMapping(value = "/soccer.search.do", method = RequestMethod.GET)
 	public String soccerSearchDo(HttpServletRequest req, BoardSelector bSel) {
 		acDAO.loginCheck(req);
-		frDAO.searchPost(req, bSel);
-		frDAO.getAllPost(req, 1, 22);
-
-		req.setAttribute("contentPage", "community/soccer/soccerBoard.jsp");
+		brDAO.searchPost(req, bSel);
+		brDAO.getAllPost(req, 1, 22);
+		req.setAttribute("contentPage", "fan/soccer/soccerBoard.jsp");
 		return "index";
 	}
-	
+
 	@RequestMapping(value = "soccerReply.reg.do", method = RequestMethod.GET)
 	public String soccerReplyRegDo(HttpServletRequest req, ReplyVO rp, PostVO p) {
+		TokenMaker.make(req);
 		if (acDAO.loginCheck(req)) {
-			frDAO.regReply(req, rp);
+			brDAO.regReply(req, rp);
 		}
-		frDAO.getPost(req, p);
-		req.setAttribute("contentPage", "community/soccer/soccerDeatail.jsp");
+		brDAO.getPost(req, p);
+		req.setAttribute("contentPage", "fan/soccer/soccerDetail.jsp");
 		return "index";
 	}
-	
-	@RequestMapping(value = "soccerReply.dalete.do", method = RequestMethod.GET)
+
+	@RequestMapping(value = "soccerReply.delete.do", method = RequestMethod.GET)
 	public String soccerReplyDelete(HttpServletRequest req, ReplyVO rp, PostVO p) {
+		TokenMaker.make(req);
 		if (acDAO.loginCheck(req)) {
-			frDAO.deleteReply(req, rp);
+			brDAO.deleteReply(req, rp);
 		}
-		frDAO.getPost(req, p);
-		req.setAttribute("contentPage", "community/soccer/soccerDeatail.jsp");
+		brDAO.getPost(req, p);
+		req.setAttribute("contentPage", "fan/soccer/soccerDetail.jsp");
 		return "index";
 	}
-	
+
 	@RequestMapping(value = "soccerReply.update.do", method = RequestMethod.GET)
 	public String soccerReplyUpdate(HttpServletRequest req, ReplyVO rp, PostVO p) {
+		TokenMaker.make(req);
 		if (acDAO.loginCheck(req)) {
-			frDAO.updateReply(req, rp);
+			brDAO.updateReply(req, rp);
 		}
-		frDAO.getPost(req, p);
-		req.setAttribute("contentPage", "community/soccer/soccerDeatail.jsp");
+		brDAO.getPost(req, p);
+		req.setAttribute("contentPage", "fan/soccer/soccerDetail.jsp");
 		return "index";
 	}
-	
 
 }

@@ -1,8 +1,6 @@
-package com.tm.nmp.community;
+package com.tm.nmp.watch;
 
 import java.util.List;
-
-import com.tm.nmp.games.GamesAnalyzeBoard;
 
 public interface ReviewMapper {
 	
@@ -20,5 +18,5 @@ public interface ReviewMapper {
 
 	int updateReviewPost(CM_RV_TITLE rv);
 
-	GamesAnalyzeBoard getPost(GamesAnalyzeBoard gp);
+//	GamesAnalyzeBoard getPost(GamesAnalyzeBoard gp);
 }

@@ -52,14 +52,9 @@
 			value="com.tm.nmp" />
 		<beans:property name="mapperLocations">
 			<beans:list>
-				<beans:value>classpath:account/accountMapper.xml</beans:value>
-				<beans:value>classpath:myPage/myPageMapper.xml</beans:value>
-				<beans:value>classpath:games/gamesMapper.xml</beans:value>
-				<beans:value>classpath:admin/adminMapper.xml</beans:value>
-				<beans:value>classpath:community/withGoMapper.xml</beans:value>
-				<beans:value>classpath:community/reviewMapper.xml</beans:value>
-				<beans:value>classpath:games/gamesAnalyzeBoardMapper.xml </beans:value>
-				<beans:value>classpath:board/boardMapper.xml</beans:value>
+				<beans:value>classpath:accountMapper.xml</beans:value>
+				<beans:value>classpath:boardMapper.xml</beans:value>
+				<beans:value>classpath:pointMapper.xml</beans:value>
 			</beans:list>
 		</beans:property>
 	</beans:bean>

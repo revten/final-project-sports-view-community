@@ -14,48 +14,18 @@
 		});
 	});
 </script>
-<script>
 
-// 본문
-function deletePost(n) {
-	var ok = confirm("복구는 불가능합니다. 정말 삭제하시겠습니까?");
-		if (ok) {
-			location.href = "post.delete.do?post_id=" + n;
-	}
-}
-
-// 댓글
-function checkReplyReg(f) {
-	var txtInput = f.reply_content;
-
-	if (isEmpty(txtInput)) {
-		alert("댓글을 입력하세요");
-		txtInput.focus();
-		return false;
-	return true;
-}
-	
-function deleteReply(n) {
-	var ok = confirm("?");
-	if (ok) {
-		location.href = "baseballReply.delete.do?reply_no=" + n;
-		}
-}
-
-</script>
 </head>
 
 <body>
-	<main class="boardDetail__main">
-	
-	<br>
+	<main class="boardDetail__main"> <br>
 	<br>
 	<br>
 	<br>
 	<br>
 	<br>
 	<h1>야구게시판</h1>
-	
+
 	<!--==================== 상세 ====================-->
 	<section class="post section">
 		<div class="post__container">
@@ -123,8 +93,8 @@ function deleteReply(n) {
 
 						<c:if
 							test="${pr.reply_member == sessionScope.loginAccount.member_id }">
-							<button onclick="updateReply(${pr.reply_id});">수정-ajax처리하기</button>
-							<button onclick="deleteReply(${pr.reply_id});">삭제-ajax처리하기</button>
+							<button onclick="updateReply(${pr.reply_id},${post.post_id},'${post.post_member}');">수정-ajax처리하기</button>
+							<button onclick="deleteReply(${pr.reply_id},${post.post_id},'${post.post_member}');">삭제-ajax처리하기</button>
 						</c:if>
 						<br>
 					</c:forEach> <c:if test="${sessionScope.loginAccount != null }">
@@ -133,9 +103,12 @@ function deleteReply(n) {
 							<span> ${sessionScope.loginAccount.member_nick } </span> <input
 								type="hidden" name="token" value="${token }"> <input
 								type="hidden" name="reply_post" value="${post.post_id}">
-							<input type="hidden" name="reply_board" value="21"> <input
+							<input type="hidden" name="reply_board" value="${post.post_board}"> 
+							<input type="hidden" name="post_member" value="${post.post_member}"> 
+							<input type="hidden" name="post_id" value="${post.post_id}"> 
+							<input
 								type="hidden" name="pg" value="${curPage }"> <input
-								name="reply_content" maxlength="80" autocomplete="off">
+								name="reply_content" maxlength="80" autocomplete="off" required>
 							<button>쓰기-ajax처리</button>
 						</form>
 					</c:if></td>
@@ -143,5 +116,25 @@ function deleteReply(n) {
 		</table>
 	</section>
 	</main>
+
+	<script>
+
+// 본문
+function deletePost(n) {
+	let ok = confirm("복구는 불가능합니다. 정말 삭제하시겠습니까?");
+		if (ok) {
+			location.href = "post.delete.do?post_id=" + n;
+	}
+}
+
+	
+function deleteReply(n, pid, pm) {
+	let ok = confirm("정말삭제합니까??");
+	if (ok) {
+		location.href = "baseballReply.delete.do?reply_id=" + n + "&post_id=" + pid + "&post_member=" + pm;
+	}
+}
+
+</script>
 </body>
 </html>
