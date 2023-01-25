@@ -8,7 +8,8 @@
 <title>Enjoy Sports</title>
 
 <!--=============== [CSS CDN]===============-->
-
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/flickity/1.0.0/flickity.css" />
 <!-- --------------- FAVICON --------------- -->
 <link rel="shortcut icon" href="resources/files/home/favicon.png"
 	type="image/x-icon" />
@@ -19,6 +20,8 @@
 	rel="stylesheet" />
 
 <!--=============== [JS CDN] ===============-->
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/flickity/1.0.0/flickity.pkgd.js"></script><!-- watch페이지 -->
 
 <!-- --------------- Jquerry --------------- -->
 <script src="https://code.jquery.com/jquery-3.6.3.min.js"
@@ -51,13 +54,13 @@
 <script src="resources/js/community/community_go.js"></script>
 <script src="resources/js/myPage/myPage.js"></script>
 <script src="resources/js/news/paging.js"></script>
-<script src="resources/js/news/paging.js"></script>
 <script src="resources/js/board/boardCheck.js"></script>
 <script src="resources/js/message/message_go.js"></script>
 
 <script src="//cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
 <script src="//cdn.ckeditor.com/4.19.0/full/ckeditor.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/resources/ckeditor/ckeditor.js"></script>
+<script type="text/javascript"
+	src="${pageContext.request.contextPath}/resources/ckeditor/ckeditor.js"></script>
 <!-- ---------------------------------------------------------------------------- -->
 </head>
 
@@ -66,8 +69,7 @@
 	<header class="header" id="header">
 		<nav class="nav container">
 			<a href="index.go" class="nav__logo"> <img
-				src="resources/files/home/logo.png" alt="logo image" /> Enjoy
-				Sports
+				src="resources/files/home/logo.png" alt="logo image" /> TRIPPLE
 			</a>
 
 			<div class="nav__menu" id="nav-menu">
@@ -75,11 +77,9 @@
 					<li class="nav__item"><a href="stadium.main.go"
 						class="nav__link">경기장뷰</a></li>
 
-					<li><a href="watch.main.go?wg_cat=withGo"
-						class="nav__link">직ㅡ관</a></li>
+					<li><a href="watch.main.go?wg_cat=withGo" class="nav__link">직ㅡ관</a></li>
 
-					<li class="nav__item"><a href="fan.main.go"
-						class="nav__link">팬커뮤</a></li>
+					<li class="nav__item"><a href="fan.main.go" class="nav__link">팬커뮤</a></li>
 
 					<li class="nav__item"><a href="newsEvent.main.go"
 						class="nav__link">소식</a></li>
@@ -87,6 +87,7 @@
 					<li class="nav__item"><a class="nav__link"><jsp:include
 								page="${loginPage }"></jsp:include></a></li>
 				</ul>
+
 
 				<!-- close button -->
 				<div class="nav__close" id="nav-close">
@@ -112,6 +113,15 @@
 	</header>
 
 	<div align="center"><jsp:include page="${contentPage }"></jsp:include></div>
+
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
 
 	<!--==================== FOOTER ====================-->
 	<footer class="footer">
