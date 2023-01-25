@@ -4,19 +4,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>회원가입 - Enjoy Sports</title>
-<style>
-.id_ok {
-	color: #008000;
-	display: none;
-}
-
-.id_already {
-	color: #6A82FB;
-	display: none;
-}
-</style>
-<script src="resources/js/account/account_check.js"></script>
+<title>추가 정보 입력 - Enjoy Sports</title>
+<script src="resources/js/account/profile_check.js"></script>
 <script>
 function pick(e){
 	
@@ -131,10 +120,13 @@ function checkOne(element) {
 	<br>
 	<br>
 	<br>
-	<h1>회원 가입</h1>
+	<h1>추가 정보 입력</h1>
 	<div id="accountReg__contrainer">
 		<form action="profile.reg.do" method="post"
-			onsubmit="return checkReg()">
+			onsubmit="return checkProfile()">
+			<!-- member 아이디 히든 창 -->
+			<input type="hidden" name="member_id"
+				value="${sessionScope.loginAccount.member_id }">
 			<div class="accountReg__pwInput-1">비밀번호</div>
 			<div class="accountReg__pwInput-2">
 				<!-- member 비밀번호 인풋 창 -->

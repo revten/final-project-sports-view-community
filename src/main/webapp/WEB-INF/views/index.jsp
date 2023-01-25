@@ -45,6 +45,7 @@
 <link rel="stylesheet" href="resources/css/stadium/stadium.css" />
 <link rel="stylesheet"
 	href="//cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
+<link rel="stylesheet" href="resources/css/message/message.css" />
 <!--=============== [JS MEMBER]===============-->
 <script src="resources/js/account/account_go.js"></script>
 <script src="resources/js/account/account_condition.js"></script>
@@ -54,6 +55,7 @@
 <script src="resources/js/myPage/myPage.js"></script>
 <script src="resources/js/news/paging.js"></script>
 <script src="resources/js/board/boardCheck.js"></script>
+<script src="resources/js/message/message_go.js"></script>
 
 <script src="//cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
 <script src="//cdn.ckeditor.com/4.19.0/full/ckeditor.js"></script>
@@ -195,7 +197,7 @@
 				<img src="resources/files/home/footer-card-4.png" alt="footer image" />
 			</div>
 
-			<span class="footer__copy"> &#169; Cpoyright TeamMiracle. All
+			<span class="footer__copy"> &#169; Copyright TeamMiracle. All
 				rights reserved </span>
 		</div>
 	</footer>

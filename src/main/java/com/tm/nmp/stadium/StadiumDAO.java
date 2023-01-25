@@ -20,13 +20,13 @@ public class StadiumDAO {
 			req.setAttribute("seat", "lg.png");
 			break;
 		case "kt":
-			req.setAttribute("seat", "kt.jpg");
+			req.setAttribute("seat", "kt.png");
 			break;
 		case "kia":
 			req.setAttribute("seat", "kia.png");
 			break;
 		case "nc":
-			req.setAttribute("seat", "nc.jpg");
+			req.setAttribute("seat", "nc.png");
 			break;
 		case "samsung":
 			req.setAttribute("seat", "samsung.png");
@@ -93,25 +93,25 @@ public class StadiumDAO {
 			req.setAttribute("seat", "gwangju.png");
 			break;
 		case "daegu":
-			req.setAttribute("seat", "daegu.jpg");
+			req.setAttribute("seat", "daegu.png");
 			break;
 		case "djhc":
-			req.setAttribute("seat", "djhc.jpg");
+			req.setAttribute("seat", "djhc.png");
 			break;
 		case "seoul":
-			req.setAttribute("seat", "seoul.jpg");
+			req.setAttribute("seat", "seoul.png");
 			break;
 		case "suwon":
 			req.setAttribute("seat", "suwon.png");
 			break;
 		case "suwon2":
-			req.setAttribute("seat", "suwon2.jpg");
+			req.setAttribute("seat", "suwon2.png");
 			break;
 		case "uh":
-			req.setAttribute("seat", "uh.jpg");
+			req.setAttribute("seat", "uh.png");
 			break;
 		case "incheon":
-			req.setAttribute("seat", "incheon.jpg");
+			req.setAttribute("seat", "incheon.png");
 			break;
 		case "hyundai":
 			req.setAttribute("seat", "hyundai.png");
@@ -120,7 +120,7 @@ public class StadiumDAO {
 			req.setAttribute("seat", "jeju.png");
 			break;
 		case "steelers":
-			req.setAttribute("seat", "steelers.jpg");
+			req.setAttribute("seat", "steelers.png");
 			break;
 		default:
 			break;
@@ -175,55 +175,55 @@ public class StadiumDAO {
 		String team = (String)req.getParameter("team");
 		switch (team) {
 		case "kbl":
-			req.setAttribute("seat", "kbl.jpg");
+			req.setAttribute("seat", "kbl.png");
 			break;
 		case "kogas":
-			req.setAttribute("seat", "kogas.jpg");
+			req.setAttribute("seat", "kogas.png");
 			break;
 		case "kt":
-			req.setAttribute("seat", "kt.jpg");
+			req.setAttribute("seat", "kt.png");
 			break;
 		case "samsung":
-			req.setAttribute("seat", "samsung.jpg");
+			req.setAttribute("seat", "samsung.png");
 			break;
 		case "sk":
-			req.setAttribute("seat", "sk.jpg");
+			req.setAttribute("seat", "sk.png");
 			break;
 		case "kgc":
-			req.setAttribute("seat", "kgc.jpg");
+			req.setAttribute("seat", "kgc.png");
 			break;
 		case "hyundai":
 			req.setAttribute("seat", "hyundai.png");
 			break;
 		case "db":
-			req.setAttribute("seat", "db.jpg");
+			req.setAttribute("seat", "db.png");
 			break;
 		case "kcc":
-			req.setAttribute("seat", "kcc.JPG");
+			req.setAttribute("seat", "kcc.png");
 			break;
 		case "kcc2":
-			req.setAttribute("seat", "kcc2.jpg");
+			req.setAttribute("seat", "kcc2.png");
 			break;
 		case "lg":
-			req.setAttribute("seat", "lg.jpg");
+			req.setAttribute("seat", "lg.png");
 			break;
 		case "bnk":
-			req.setAttribute("seat", "bnk.jpg");
+			req.setAttribute("seat", "bnk.png");
 			break;
 		case "hana":
-			req.setAttribute("seat", "hana.jpg");
+			req.setAttribute("seat", "hana.png");
 			break;
 		case "won":
-			req.setAttribute("seat", "won.JPG");
+			req.setAttribute("seat", "won.png");
 			break;
 		case "samsung2":
-			req.setAttribute("seat", "samsung2.jpg");
+			req.setAttribute("seat", "samsung2.png");
 			break;
 		case "shinhan":
-			req.setAttribute("seat", "shinhan.jpg");
+			req.setAttribute("seat", "shinhan.png");
 			break;
 		case "kb":
-			req.setAttribute("seat", "kb.jpg");
+			req.setAttribute("seat", "kb.png");
 			break;
 		default:
 			break;
@@ -295,10 +295,10 @@ public class StadiumDAO {
 			req.setAttribute("seat", "kal.png");
 			break;
 		case "kb":
-			req.setAttribute("seat", "kb.jpg");
+			req.setAttribute("seat", "kb.png");
 			break;
 		case "kepco":
-			req.setAttribute("seat", "kepco.jpg");
+			req.setAttribute("seat", "kepco.png");
 			break;
 		case "won":
 			req.setAttribute("seat", "won.png");
@@ -310,7 +310,7 @@ public class StadiumDAO {
 			req.setAttribute("seat", "samsung.png");
 			break;
 		case "hyundai":
-			req.setAttribute("seat", "hyundai.jpg");
+			req.setAttribute("seat", "hyundai.png");
 			break;
 		case "hyundai2":
 			req.setAttribute("seat", "hyundai2.png");
@@ -328,10 +328,10 @@ public class StadiumDAO {
 			req.setAttribute("seat", "ibk.png");
 			break;
 		case "heungkuk":
-			req.setAttribute("seat", "heungkuk.JPG");
+			req.setAttribute("seat", "heungkuk.png");
 			break;
 		case "gwangju":
-			req.setAttribute("seat", "gwangju.jpg");
+			req.setAttribute("seat", "gwangju.png");
 			break;
 		default:
 			break;

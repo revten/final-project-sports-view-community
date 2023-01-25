@@ -18,6 +18,6 @@ public interface AccountMapper {
 
 	int idCheck(String id);
 	
-	AccountDTO regProfile(AccountDTO ac);
+	void regProfile(AccountDTO ac);
 
 }

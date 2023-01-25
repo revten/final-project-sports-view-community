@@ -24,7 +24,7 @@
 	<br>
 	<br>
 	<br>
-	<h1>야구게시판</h1>
+	<h1>축구게시판</h1>
 
 	<!--==================== 상세 ====================-->
 	<section class="post section">
@@ -54,7 +54,6 @@
 			<div class="post__content">${post.post_content}</div>
 		</div>
 
-
 		<div class="post__bot">
 			<button class="post__bot-btn" onclick="history.back()">이전으로</button>
 			<c:choose>
@@ -62,10 +61,15 @@
 					test="${sessionScope.loginAccount.member_id eq post.post_member}">
 					<c:choose>
 						<c:when test="${sessionScope.loginAccount eq null}">
+							<button onclick="alert('로그인하세요')">추천</button>
 							<button onclick="alert('로그인하세요')">수정</button>
 							<button onclick="alert('로그인하세요')">삭제</button>
 						</c:when>
 						<c:otherwise>
+						<button class="w3-button w3-black w3-round" id="rec_update">
+						<i class="fa fa-heart" style="font-size:16px;color:red">추천</i>
+						&nbsp;<span class="rec_count"></span>
+							</button> 
 							<button class="post__bot-btn"
 								onclick="location.href='soccer.update.go?post_id=${post.post_id}&post_member=${post.post_member}'">수정</button>
 							<button class="post__bot-btn"
@@ -75,7 +79,9 @@
 				</c:when>
 			</c:choose>
 		</div>
+		
 	</section>
+	
 
 
 	<!--==================== 댓글 ====================-->
@@ -118,6 +124,36 @@
 	</main>
 
 	<script>
+	$(function(){
+		// 추천버튼 클릭시(추천 추가 또는 추천 제거)
+		$("#rec_update").click(function(){
+			$.ajax({
+				url: "/expro/RecUpdate.do",
+                type: "POST",
+                data: {
+                    no: ${post.post_id},
+                    id: '${sessionScope.loginAccount.member_id}'
+                },
+                success: function () {
+			        recCount();
+                },
+			})
+		})
+		
+		// 게시글 추천수
+	    function recCount() {
+			$.ajax({
+				url: "/expro/RecCount.do",
+                type: "POST",
+                data: {
+                    no: ${post.post_id}
+                },
+                success: function (count) {
+                	$(".rec_count").html(count);
+                },
+			})
+	    };
+	    recCount(); // 처음 시작했을 때 실행되도록 해당 함수 호출
 
 // 본문
 function deletePost(n) {

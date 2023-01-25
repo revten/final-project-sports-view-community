@@ -106,6 +106,7 @@
 	</div>
 	</main>
 	<script>
+	
 		function boardSearchCheck() {
 			let searchInput = document.boardSearchForm.search;
 
