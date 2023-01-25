@@ -299,7 +299,7 @@ function basketballSetVal() {
 		 lon = 126.749087028188;
 		 iwContent = '<div style="padding:10px;">군산월명체육관 <br><a href="https://map.kakao.com/link/map/군산월명체육관,'+lat+','+lon+'"style="color:blue" target="_blank">큰지도보기</a> <a href="https://map.kakao.com/link/to/군산월명체육관,'+lat+','+lon+'" style="color:blue" target="_blank">길찾기</a></div>';
 		break;
-	case "lg":
+	case "lg2":
 		reserveUrl = 'https://sakers.kbl.or.kr/';
 		 lat = 35.2327367366309;
 		 lon = 128.666283189427;
