@@ -101,7 +101,7 @@ public class CM_WG_DAO {
 		req.setAttribute("wg_cat", req.getParameter("wg_cat"));
 		
 		AccountDTO account = (AccountDTO) req.getSession().getAttribute("loginAccount");
-		wg.setWg_id(account.getAc_id());
+		wg.setWg_id(account.getMember_id());
 		
 		String str = wg.getWg_content();
 		System.out.println("전체 경로 :" + str);
@@ -125,7 +125,7 @@ public class CM_WG_DAO {
 		// ck에디터 그대로 복붙하면 됨
 		AccountDTO account = (AccountDTO) req.getSession().getAttribute("loginAccount");
 		// loginAccount 가져오는 내용
-		wg.setWg_id(account.getAc_id());
+		wg.setWg_id(account.getMember_id());
 		// wg_id(해당 게시판 작성자 아이디인데 DB설계 시 관계형으로 생성을 했기 때문에 어카운트의 ac_id를 set설정해줘야 한다)
 		String str = wg.getWg_content();
 		// wg_content(게시판 컨텐츠 sc_content)
