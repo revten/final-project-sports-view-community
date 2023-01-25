@@ -6,7 +6,7 @@ import com.tm.nmp.account.Calendar;
 
 public interface PointMapper {
 
-	 List<Calendar> getCalendarList(String userId);
+	List<Calendar> getCalendarList(String userId);
 
 	int pointTable(PointVO pv);
 
