@@ -15,7 +15,7 @@
 			<div class="home__data">
 				<h1 class="home__title">
 					<div>
-						<!-- <img src="resources/files/home/main_synthesis.png" alt="home image"> -->
+						<img src="resources/files/home/about-title.png" alt="home image">
 					</div>
 				</h1>
 				<p class="home__description"></p>
