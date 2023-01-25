@@ -1,0 +1,91 @@
+@charset "UTF-8";
+
+
+#messageMemberArea {
+	position: fixed;
+	width: 100%;
+	bottom: 0px;
+	left: 0px;
+	transition: all 0.4s ease-out;
+}
+
+#messageMemberArea2 {
+	width: 1000px;
+	height: 500px;
+	background-color: #FEF5D4;
+	box-shadow: 0px 0px 30px #FFD6AA;
+	overflow: auto;
+}
+
+#messageArea {
+	width: 100;
+}
+
+.aMember {
+	float: left;
+	width: 200px; margin : 20px;
+	height: 100px;
+	color: #000000;
+	font-family: "a";
+	border-spacing: 0px;
+	font-weight: 900;
+	font-size: 14pt;
+	background-color: #FBC02DCC;
+	box-shadow: 0px 0px 20px #FBC02D;
+	cursor: pointer;
+	margin: 20px;
+}
+
+/* .aMemberImgTd {
+	width: 55px;
+	padding: 5px;
+} */
+
+/* .aMemberImgTd img {
+	max-width: 50px;
+	border-radius: 5px;
+} */
+
+
+
+.aMemberID {
+	padding: 7px;
+	height: 50%;
+}
+
+.aMemberNick {
+	background-color: #000000BF;
+	color: #fef4da;
+}
+
+.aCMsg {
+	float: left;
+	font-family: "a";
+	background-color: #FFF59D;
+	width: 200px;
+	margin: 10px;
+	color: black;
+	font-weight: 900;
+}
+
+.aCMsg td {
+	padding: 5px;
+}
+
+.aCMsgFrom {
+	font-size: 13pt;
+	cursor: pointer;
+}
+
+.aCMsgDate {
+	font-size: 10pt;
+}
+
+.aCMsgTxt {
+	font-size: 12pt;
+	word-break: break-all;
+}
+
+#messageMemberSummoner {
+	cursor: pointer;
+}

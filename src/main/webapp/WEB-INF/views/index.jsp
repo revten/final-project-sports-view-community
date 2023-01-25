@@ -42,6 +42,7 @@
 <link rel="stylesheet" href="resources/css/stadium/stadium.css" />
 <link rel="stylesheet"
 	href="//cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
+<link rel="stylesheet" href="resources/css/message/message.css" />	
 <!--=============== [JS MEMBER]===============-->
 <script src="resources/js/account/account_go.js"></script>
 <script src="resources/js/account/account_condition.js"></script>
