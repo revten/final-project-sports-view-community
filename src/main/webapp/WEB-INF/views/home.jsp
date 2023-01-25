@@ -10,12 +10,12 @@
 	<main class="main"> <!--==================== HOME ====================-->
 	<section class="home section" id="home">
 		<div class="home__container container grid">
-			<img src="resources/files/home/home-main.png" alt="home image"
+			<img src="resources/home_img/main_synthesis.png" alt="home image"
 				class="home__img">
 			<div class="home__data">
 				<h1 class="home__title">
 					<div>
-						<img src="resources/files/home/home-title.png" alt="home image">
+						<!-- <img src="resources/files/home/main_synthesis.png" alt="home image"> -->
 					</div>
 				</h1>
 				<p class="home__description"></p>
@@ -66,9 +66,9 @@
 		<div class="popular__container container grid">
 
 			<article class="popular__card">
-				<img src="resources/files/home/popular-review1.png"
+				<img src="resources/home_img/main_baseball3.jpg"
 					alt="popular image" class="popular__img">
-				<h3 class="popular__name">Tokyo 대첩!</h3>
+				<h3 class="popular__name">한일전 승자는?</h3>
 				<span class="popular__description">임형규님의 후기</span> <span
 					class="popular__price">10.09만 뷰</span>
 				<button class="popular__button">
@@ -77,7 +77,7 @@
 			</article>
 
 			<article class="popular__card">
-				<img src="resources/files/home/popular-review2.png"
+				<img src="resources/home_img/main_soccer_busan.jpg"
 					alt="popular image" class="popular__img">
 				<h3 class="popular__name">부산축구 이대로인가..</h3>
 				<span class="popular__description">송준우님의 후기</span> <span
@@ -88,9 +88,9 @@
 			</article>
 
 			<article class="popular__card">
-				<img src="resources/files/home/popular-review3.png"
+				<img src="resources/home_img/main_volleyball_kim.jpg"
 					alt="popular image" class="popular__img">
-				<h3 class="popular__name">스포츠 몰라요</h3>
+				<h3 class="popular__name">김연경 선수 멋지내요!</h3>
 				<span class="popular__description">정권님의 후기</span> <span
 					class="popular__price">12.31만 뷰</span>
 				<button class="popular__button">
@@ -118,7 +118,7 @@
 					alt="recently image" class="recently__data-img">
 			</div>
 
-			<img src="resources/files/home/recently-new_pic.png"
+			<img src="resources/home_img/volleyball.jpg"
 				alt="recently image" class="recently__img">
 		</div>
 
