@@ -71,7 +71,8 @@ public class HomeController {
 		acDAO.wathingPage(req);
 		acDAO.loginCheck(req);
 		/*
-		 * scDAO.getSoccerBoard(req, 1); wgDAO.showWithGoList(req, wg);
+		 * scDAO.getSoccerBoard(req, 1);
+		 * wgDAO.showWithGoList(req, wg);
 		 */
 		req.setAttribute("contentPage", "watch/watchMain.jsp");
 		return "index";

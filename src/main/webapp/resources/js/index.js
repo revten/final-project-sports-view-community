@@ -104,7 +104,7 @@ const sr = ScrollReveal({
   distance: '60px',
   duration: 2500,
   delay: 400
-  //reset: ture, // Animations repeat
+  //reset: true, // Animations repeat
 })
 
 sr.reveal(`.home__img, .newsletter__container, .footer__logo, .footer__description, .footer__content, .footer__info`);
