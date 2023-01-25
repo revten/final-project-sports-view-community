@@ -11,9 +11,9 @@
 <body>
 <br><br><br><br><br><br>
 
-<h1>쪽지 보관함 </h1>
+<h1>메세지 페이지 </h1>
 <c:if test="${sessionScope.loginAccount != null}">
-	<table id="messageMemberArea" style="bottom: -500px;, right: 200px;">
+	<table id="messageMemberArea" style="bottom: -500px;">
 		<tr>
 			<td align="center">
 				<span id="messageMemberSummoner">
@@ -46,7 +46,7 @@
 		<table class="aCMsg">
 			<tr>
 				<td align="right"><span style="font-size: 8pt; cursor: pointer;"
-					onclick="deleteMessage(${m.message_id});">X</span></td>
+					onclick="deleteMessage(${m.message_id});"></span></td>
 			</tr>
 			<tr>
 				<td class="aCMsgFrom" onclick="sendMessage('${m.message_from}');">&nbsp;${m.message_from }</td>
