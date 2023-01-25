@@ -5,10 +5,13 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.ibatis.session.SqlSession;
+import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.tm.nmp.account.AccountDTO;
+
+import jdk.internal.org.jline.reader.Parser;
 
 @Service
 public class BoardDAO {
@@ -20,8 +23,6 @@ public class BoardDAO {
 	private BoardOption bo;
 
 	private int allPostCount;
-	
-	
 
 	public int getallPostCount() {
 		return allPostCount;
@@ -30,8 +31,6 @@ public class BoardDAO {
 	public void setallPostCount(int allPostCount) {
 		this.allPostCount = allPostCount;
 	}
-	
-	
 
 	public void calcAllPostCount(int board_id) {
 		BoardSelector bSel = new BoardSelector("", 0, 0, board_id);
@@ -217,16 +216,29 @@ public class BoardDAO {
 		return req.getRemoteAddr();
 	}
 
-	public void postCountUpdate(HttpServletRequest req, PostVO p) {
+	public JSONObject recommand(HttpServletRequest req, Reccomand rec, int boardNo, String memberId) {
 		
-		
-		if(ss.getMapper(BoardMapper.class).postCountUpdate(p) == 1) {
-			req.setAttribute("result", "조회성공");
+		try {
+			rec.setPost_id(boardNo);
+			rec.setMember_id(memberId);
+			if(ss.getMapper(BoardMapper.class).AddRecommand(rec)==1) {
+				System.out.println("추천성공");
+			}else {
+				System.out.println("실패...");
+			}
+			int rCount = ss.getMapper(BoardMapper.class).getReccomed();
+			String rCountString = Integer.toString(rCount);
+			// JSONObject count = (JSONObject) rCountStirng;
 			
-		}else {
-			req.setAttribute("result", "조회실패");
+			// return count;
+			
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
+		
+		
+		return null;
+		
+		
 	}
-
-	
 }

@@ -22,6 +22,19 @@
 		member_nick from (select * from post, member where post_member = member_id
 		and post_title like '%'||#{search}||'%' and post_board = #{board_id} order by post_reg_date desc))
 		where rn &gt; = #{start} and rn &lt; = #{end}
+		
+		<!-- 		<choose>
+			<when test="sort == 1">
+				order by rv_count desc
+			</when>
+			<when test="sort == 2">
+				order by rv_like desc
+			</when>
+			<otherwise>
+				order by rv_date desc
+			</otherwise>
+		</choose> -->
+		
 	</select>
 
 	<!-- 글+댓글 -->
@@ -86,7 +99,12 @@
 		= #{reply_id}
 	</update>
 	
-	<update id="postCountUpdate" parameterType="com.tm.nmp.board.PostVO">
+	<insert id="AddRecommand" parameterType="com.tm.nmp.board.Reccomand">
+		insert into RECOMMAND values(#{post_id},#{member_id})
+	</insert>
 	
-	</update>
+	<select id="getReccomed" resultType="java.lang.Integer">
+		select count(*) from RECOMMAND
+	</select>
+	
 </mapper>

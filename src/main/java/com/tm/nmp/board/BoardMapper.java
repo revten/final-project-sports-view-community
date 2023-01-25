@@ -23,7 +23,9 @@ public interface BoardMapper {
 
 	int updateReply(ReplyVO rp);
 
-	int postCountUpdate(PostVO p);
+	int AddRecommand(Reccomand rec);
+
+	int getReccomed();
 	
 	
 	
