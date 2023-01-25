@@ -5,10 +5,13 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.ibatis.session.SqlSession;
+import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.tm.nmp.account.AccountDTO;
+
+import jdk.internal.org.jline.reader.Parser;
 
 @Service
 public class BoardDAO {
@@ -211,5 +214,31 @@ public class BoardDAO {
 		}
 
 		return req.getRemoteAddr();
+	}
+
+	public JSONObject recommand(HttpServletRequest req, Reccomand rec, int boardNo, String memberId) {
+		
+		try {
+			rec.setPost_id(boardNo);
+			rec.setMember_id(memberId);
+			if(ss.getMapper(BoardMapper.class).AddRecommand(rec)==1) {
+				System.out.println("추천성공");
+			}else {
+				System.out.println("실패...");
+			}
+			int rCount = ss.getMapper(BoardMapper.class).getReccomed();
+			String rCountString = Integer.toString(rCount);
+			// JSONObject count = (JSONObject) rCountStirng;
+			
+			// return count;
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		
+		return null;
+		
+		
 	}
 }
