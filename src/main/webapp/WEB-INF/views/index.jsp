@@ -52,6 +52,7 @@
 <script src="resources/js/news/paging.js"></script>
 <script src="resources/js/news/paging.js"></script>
 <script src="resources/js/board/boardCheck.js"></script>
+<script src="resources/js/message/message_go.js"></script>
 
 <script src="//cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
 <script src="//cdn.ckeditor.com/4.19.0/full/ckeditor.js"></script>

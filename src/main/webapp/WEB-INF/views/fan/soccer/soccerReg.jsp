@@ -32,7 +32,7 @@
 		name="regForm">
 
 		<input name="post_board" value="22" type="hidden">
-
+		<input name="plusPoint" value="30" type="hidden"> <!-- 글쓰기 포인트 -->
 		<div class="form-group">
 			<label for="title">제목</label> <input type="text" class="form-control"
 				id="title" name="post_title">

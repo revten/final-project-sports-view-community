@@ -8,7 +8,17 @@ public interface PointMapper {
 
 	 List<Calendar> getCalendarList(String userId);
 
-	int pointTable(PointVo pv);	
+	int pointTable(PointVO pv);
+
+	int updatePoint(PointVO pv);
+
+	int insertPlusPoint(PlusPointVO ppv);
+
+	PointVO getPoint(PointVO pv);
+
+	List<PlusPointVO> getPlusPoint(PlusPointVO ppv);
+	
+	
 		
 	
 

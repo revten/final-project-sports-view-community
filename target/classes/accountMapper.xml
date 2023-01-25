@@ -14,7 +14,7 @@
 		insert into member
 		values(#{member_id},#{member_pwd},#{member_nick},#{member_auth_type},#{member_reg_type},sysdate,#{member_reg_ip},#{member_email},#{member_intro},#{club_id},#{member_subs},null,null,null,null,#{member_admin});
 
-		insert into POINT values(#{member_id},'뉴비','0');
+		insert into POINT values(#{member_id},'브론즈','0');
 		END;
 	</insert>
 
