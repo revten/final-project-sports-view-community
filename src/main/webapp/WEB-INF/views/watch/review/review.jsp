@@ -30,6 +30,8 @@
 				<li><a style="cursor: pointer" onclick="">기타 게시판</a></li>
 				</ul>
 				</div>
+				
+				
 		<form action="reviewList.go">
 			<div style="text-align: center;">
 				<div>

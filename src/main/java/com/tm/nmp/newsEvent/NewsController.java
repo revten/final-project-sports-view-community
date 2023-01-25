@@ -19,35 +19,39 @@ public class NewsController {
 
 	@Autowired
 	private NewsDAO nsDAO;
-	
+
 	@RequestMapping(value = "/news.soccer.go", method = RequestMethod.GET)
 	public String goSoccerNews(HttpServletRequest req) {
 		acDAO.loginCheck(req);
-		req.setAttribute("contentPage", "infoEvent/news/soccerNews.jsp");
+		req.setAttribute("contentPage", "newsEvent/news/soccerNews.jsp");
 		return "index";
 	}
+
 	@RequestMapping(value = "/news.baseball.go", method = RequestMethod.GET)
 	public String goBaseballNews(HttpServletRequest req) {
 		acDAO.loginCheck(req);
-		req.setAttribute("contentPage", "infoEvent/news/baseballNews.jsp");
+		req.setAttribute("contentPage", "newsEvent/news/baseballNews.jsp");
 		return "index";
 	}
+
 	@RequestMapping(value = "/news.basketball.go", method = RequestMethod.GET)
 	public String goBasketballNews(HttpServletRequest req) {
 		acDAO.loginCheck(req);
-		req.setAttribute("contentPage", "infoEvent/news/basketballNews.jsp");
+		req.setAttribute("contentPage", "newsEvent/news/basketballNews.jsp");
 		return "index";
 	}
+
 	@RequestMapping(value = "/news.volleyball.go", method = RequestMethod.GET)
 	public String goVolleyballNews(HttpServletRequest req) {
 		acDAO.loginCheck(req);
-		req.setAttribute("contentPage", "infoEvent/news/VolleyballNews.jsp");
+		req.setAttribute("contentPage", "newsEvent/news/VolleyballNews.jsp");
 		return "index";
 	}
+
 	@RequestMapping(value = "/news.sports.go", method = RequestMethod.GET)
 	public String goSportsNews(HttpServletRequest req) {
 		acDAO.loginCheck(req);
-		req.setAttribute("contentPage", "infoEvent/news/sportsNews.jsp");
+		req.setAttribute("contentPage", "newsEvent/news/sportsNews.jsp");
 		return "index";
 	}
 
@@ -56,41 +60,49 @@ public class NewsController {
 		acDAO.loginCheck(req);
 		return nsDAO.getSoccerNewsOne(req);
 	}
+
 	@RequestMapping(value = "/get.soccer.news.all", method = RequestMethod.GET, produces = "application/json; charset=utf-8")
 	public @ResponseBody JSONObject getSoccerNewsAll(HttpServletRequest req) {
 		acDAO.loginCheck(req);
 		return nsDAO.getSoccerNewsAll(req);
 	}
+
 	@RequestMapping(value = "/get.baseball.news.one", method = RequestMethod.GET, produces = "application/json; charset=utf-8")
 	public @ResponseBody JSONObject getBaseballNewsOne(HttpServletRequest req) {
 		acDAO.loginCheck(req);
 		return nsDAO.getBaseballNewsOne(req);
 	}
+
 	@RequestMapping(value = "/get.baseball.news.all", method = RequestMethod.GET, produces = "application/json; charset=utf-8")
 	public @ResponseBody JSONObject getBaseballNewsAll(HttpServletRequest req) {
 		acDAO.loginCheck(req);
 		return nsDAO.getBaseballNewsAll(req);
 	}
+
 	@RequestMapping(value = "/get.basketball.news.one", method = RequestMethod.GET, produces = "application/json; charset=utf-8")
 	public @ResponseBody JSONObject getBasketballNewsOne(HttpServletRequest req) {
 		acDAO.loginCheck(req);
 		return nsDAO.getBasketballNewsOne(req);
 	}
+
 	@RequestMapping(value = "/get.basketball.news.all", method = RequestMethod.GET, produces = "application/json; charset=utf-8")
 	public @ResponseBody JSONObject getBasketballNewsAll(HttpServletRequest req) {
 		acDAO.loginCheck(req);
 		return nsDAO.getBasketballNewsAll(req);
 	}
+
 	@RequestMapping(value = "/get.volleyball.news.one", method = RequestMethod.GET, produces = "application/json; charset=utf-8")
 	public @ResponseBody JSONObject getVolleyballNewsOne(HttpServletRequest req) {
 		acDAO.loginCheck(req);
 		return nsDAO.getVolleyballNewsOne(req);
 	}
+
 	@RequestMapping(value = "/get.volleyball.news.all", method = RequestMethod.GET, produces = "application/json; charset=utf-8")
 	public @ResponseBody JSONObject getVolleyballNewsAll(HttpServletRequest req) {
 		acDAO.loginCheck(req);
 		return nsDAO.getVolleyballNewsAll(req);
 	}
+
 	@RequestMapping(value = "/get.sports.news.all", method = RequestMethod.GET, produces = "application/json; charset=utf-8")
 	public @ResponseBody JSONObject getSportsNewsAll(HttpServletRequest req) {
 		acDAO.loginCheck(req);

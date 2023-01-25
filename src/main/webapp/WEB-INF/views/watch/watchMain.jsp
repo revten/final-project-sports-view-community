@@ -7,6 +7,16 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" href="resources/css/watch/watchMain.css" />
+<style type="text/css">
+.member__icon {
+	width: 28px;
+	height: 28px;
+	border-radius: 50%;
+	margin-right: 15px;
+}
+</style>
+
 </head>
 <body>
 	<br>
@@ -15,56 +25,308 @@
 	<br>
 	<br>
 	<br>
-	<div id="community_area">
-		<ul id="community_list">
-			<li><a style="cursor: pointer"
-				href='reviewList.go?rv_cat=review'>직관 후기 게시판</a></li>
-			<li><a style="cursor: pointer"
-				href='withGoList.go?wg_cat=withGo'>같이 직관/경기 게시판</a></li>
-		</ul>
-	</div>
-	<div id="community_main">
-	<div id="review_board">
-		<a>같이 보러 가기 베스트</a>
-		<div id="review_list_cat">
-	</div>
-	<div id="review_list">
-	<c:forEach var="b" items="${posts}">
-					<div id="imgArea">
-					<a><img style="width: 100px; height: 100px"
-						src="resources/ckeditor/fileUpload/${b.wg_img }"></a>
-					</div>
-					<div onclick="location.href='withGoDetail.go?wg_no=${b.wg_no}'">
-					<a><fmt:formatDate value="${b.wg_date}"
-							pattern="yy-MM-dd" /></a>
-					<a style="width: 40%;">${b.wg_title}</a>
-					  <a>${b.wg_id}</a>
-				</div>
-			</c:forEach>
-	</div>
-	</div>
-	<div id="best_board" style="width: 1250px;">
-		<a>인기글</a>
-	<div id="best_list_cat">
-		<a>탭</a>
-		<a>제목</a>
-		<a>내용</a>
-		<a>등록일</a>
-		<a>닉네임</a>
-	</div>
-	<div id="best_list">
-		<c:forEach var="sc" items="${soccer }">
-			<div onclick="location.href='soccerBoardDetail.go?cm_sc_no=${sc.cm_sc_no}'">
-				<a>${sc.cm_sc_cat}</a>
-				<a>${sc.cm_sc_title}</a>
-				<a>${sc.cm_sc_content}</a>
-				<a><fmt:formatDate value="${sc.cm_sc_date}"
-						pattern="yy-MM-dd HH:mm" /></a>
-				<a>${sc.cm_sc_nick}</a>
+	<div class="watch__container">
+
+		<!-- watch 페이지 헤더 -->
+		<div class="watch__header">
+			<div class="watch__search-bar">
+				<input type="text" placeholder="검색" />
 			</div>
-		</c:forEach>
+			<div class="watch__header-title">
+				스포츠 열기는<span> 모두와 함께</span>
+			</div>
+			<div>TRIPPLE</div>
+		</div>
+
+
+		<!-- 리뷰 : top 슬라이더 -->
+		<div class="review__slide">
+			<div class="review js-flickity"
+				data-flickity-options='{ "wrapAround": true }'>
+
+				<!-- 야구 -->
+				<div class="review__cell">
+					<div class="review__img">
+						<img
+							src="https://images-na.ssl-images-amazon.com/images/I/81WcnNQ-TBL.jpg"
+							alt="" class="review__photo">
+					</div>
+					<div class="review__content">
+						<div class="review__title">야구 리뷰 제목</div>
+						<div class="review__member">by 김태형</div>
+						<div class="rate">
+							<fieldset class="rating">
+								<input type="checkbox" id="star5" name="rating" value="5" /> <label
+									class="full" for="star5"></label> <input type="checkbox"
+									id="star4" name="rating" value="4" /> <label class="full"
+									for="star4"></label> <input type="checkbox" id="star3"
+									name="rating" value="3" /> <label class="full" for="star3"></label>
+								<input type="checkbox" id="star2" name="rating" value="2" /> <label
+									class="full" for="star2"></label> <input type="checkbox"
+									id="star1" name="rating" value="1" /> <label class="full"
+									for="star1"></label>
+							</fieldset>
+							<span class="review__voters">1.987 voters</span>
+						</div>
+						<div class="review__sum">Readers of all ages and walks of
+							life have drawn inspiration and empowerment from Elizabeth
+							Gilbert’s books for years.</div>
+						<div class="review__see">리뷰보기</div>
+					</div>
+				</div>
+
+				<!-- 축구 -->
+				<div class="review__cell">
+					<div class="review__img">
+						<img
+							src="https://i.pinimg.com/originals/a8/b9/ff/a8b9ff74ed0f3efd97e09a7a0447f892.jpg"
+							alt="" class="review__photo">
+					</div>
+					<div class="review__content">
+						<div class="review__title">축구 리뷰 제목</div>
+						<div class="review__member">by 임형규</div>
+						<div class="rate">
+							<fieldset class="rating blue">
+								<input type="checkbox" id="star6" name="rating" value="5" /> <label
+									class="full1" for="star6"></label> <input type="checkbox"
+									id="star7" name="rating" value="4" /> <label class="full1"
+									for="star7"></label> <input type="checkbox" id="star8"
+									name="rating" value="3" /> <label class="full1" for="star8"></label>
+								<input type="checkbox" id="star9" name="rating" value="2" /> <label
+									class="full1" for="star9"></label> <input type="checkbox"
+									id="star10" name="rating" value="1" /> <label class="full1"
+									for="star10"></label>
+							</fieldset>
+							<span class="review__voters">1.987 voters</span>
+						</div>
+						<div class="review__sum">The hunt for each splinter of
+							Paul's soul sends Marguerite racing through a war-torn San
+							Francisco.</div>
+						<div class="review__see review-blue">리뷰보기</div>
+					</div>
+				</div>
+
+				<!-- 농구 -->
+				<div class="review__cell">
+					<div class="review__img">
+						<img
+							src="https://images-na.ssl-images-amazon.com/images/I/81af+MCATTL.jpg"
+							alt="" class="review__photo">
+					</div>
+					<div class="review__content">
+						<div class="review__title">농구 리뷰 제목</div>
+						<div class="review__member">by 정 권</div>
+						<div class="rate">
+							<fieldset class="rating yellow">
+								<input type="checkbox" id="star16" name="rating" value="5" /> <label
+									class="full" for="star16"></label> <input type="checkbox"
+									id="star17" name="rating" value="4" /> <label class="full"
+									for="star17"></label> <input type="checkbox" id="star18"
+									name="rating" value="3" /> <label class="full" for="star18"></label>
+								<input type="checkbox" id="star19" name="rating" value="2" /> <label
+									class="full" for="star19"></label> <input type="checkbox"
+									id="star20" name="rating" value="1" /> <label class="full"
+									for="star20"></label>
+							</fieldset>
+							<span class="review__voters">1.987 voters</span>
+						</div>
+						<div class="review__sum">The Great Gatsby, F. Scott
+							Fitzgerald’s third book, stands as the supreme achievement of his
+							career.</div>
+						<div class="review__see review-purple">리뷰보기</div>
+					</div>
+				</div>
+
+				<!-- 배구 -->
+				<div class="review__cell">
+					<div class="review__img">
+						<img
+							src="https://images-na.ssl-images-amazon.com/images/I/81UWB7oUZ0L.jpg"
+							alt="" class="review__photo">
+					</div>
+					<div class="review__content">
+						<div class="review__title">배구 리뷰 제목</div>
+						<div class="review__member">by 송준우</div>
+						<div class="rate">
+							<fieldset class="rating dark-purp">
+								<input type="checkbox" id="star21" name="rating" value="5" /> <label
+									class="full" for="star21"></label> <input type="checkbox"
+									id="star22" name="rating" value="4" /> <label class="full"
+									for="star22"></label> <input type="checkbox" id="star23"
+									name="rating" value="3" /> <label class="full" for="star23"></label>
+								<input type="checkbox" id="star24" name="rating" value="2" /> <label
+									class="full" for="star24"></label> <input type="checkbox"
+									id="star25" name="rating" value="1" /> <label class="full"
+									for="star25"></label>
+							</fieldset>
+							<span class="review__voters">1.987 voters</span>
+						</div>
+						<div class="review__sum">Louisa Clark is no longer just an
+							ordinary girl living an ordinary life. After the transformative
+							six months spent.</div>
+						<div class="review__see review-yellow">리뷰보기</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+		<!-- 리뷰 : bot -->
+		<div class="watch__wrapper">
+
+			<!-- 리뷰 : bot left -->
+			<div class="reviews-of">
+
+				<!-- 리뷰 : bot left top -->
+				<div class="review__fan">
+					<div class="review__fan__title">Fan of the week</div>
+					<div class="review__fan__member">
+						<img
+							src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1400&q=80"
+							alt="" class="author-img">
+						<div class="author-name">이명재</div>
+					</div>
+					<div class="review__fan__member">
+						<img
+							src="https://images.unsplash.com/photo-1586297098710-0382a496c814?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80"
+							alt="" class="author-img">
+						<div class="author-name">정 권</div>
+					</div>
+					<div class="review__fan__member">
+						<img
+							src="https://images.unsplash.com/photo-1573140247632-f8fd74997d5c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
+							alt="" class="author-img">
+						<div class="author-name">임형규</div>
+					</div>
+					<div class="review__fan__member">
+						<img
+							src="https://pbs.twimg.com/profile_images/737221709267374081/sdwta9Oh.jpg"
+							alt="" class="author-img">
+						<div class="author-name">송준우</div>
+					</div>
+					<div class="review__fan__member">
+						<img
+							src="https://pbs.twimg.com/profile_images/2452384114/noplz47r59v1uxvyg8ku.png"
+							alt="" class="author-img">
+						<div class="author-name">김태형</div>
+					</div>
+				</div>
+
+				<!-- 리뷰 : bot left bot -->
+				<div class="review__fan year">
+					<div class="review__best__title">Review of the week</div>
+					<div class="year-book">
+						<img
+							src="https://images-na.ssl-images-amazon.com/images/I/A1kNdYXw0GL.jpg"
+							alt="" class="year-book-img">
+						<div class="year-book-content">
+							<div class="year-review__post__title">Disappearing Earth</div>
+							<div class="year-book-author">by 임형규</div>
+						</div>
+					</div>
+					<div class="year-book">
+						<img
+							src="https://images-na.ssl-images-amazon.com/images/I/81eI0ExR+VL.jpg"
+							alt="" class="year-book-img">
+						<div class="year-book-content">
+							<div class="year-review__post__title">Lost Children Archive</div>
+							<div class="year-book-author">by 송준우</div>
+						</div>
+					</div>
+					<div class="year-book">
+						<img
+							src="https://images-na.ssl-images-amazon.com/images/I/81OF9eJDA4L.jpg"
+							alt="" class="year-book-img">
+						<div class="year-book-content">
+							<div class="year-review__post__title">Phantoms: A Thriller</div>
+							<div class="year-book-author">by 정 권</div>
+						</div>
+					</div>
+					<div class="year-book">
+						<img src="https://m.media-amazon.com/images/I/515FWPyZ-5L.jpg"
+							alt="" class="year-book-img">
+						<div class="year-book-content">
+							<div class="year-review__post__title">Midnight in Chernobyl</div>
+							<div class="year-book-author">by 김태형</div>
+						</div>
+					</div>
+				</div>
+				<div class="overlay"></div>
+			</div>
+
+			<!-- 리뷰 : bot right -->
+			<div class="popular-books">
+
+				<!-- 리뷰 : bot right top -->
+				<div class="main-menu">
+					<div class="genre">Stadium Reviews</div>
+					<div class="book-types">
+						<a href="#" class="book-type active"> All Sports</a> <a href="#"
+							class="book-type"> Baseball</a> <a href="#" class="book-type">
+							Soccer</a> <a href="#" class="book-type"> Basketbll</a> <a href="#"
+							class="book-type"> Volleyball</a>
+					</div>
+				</div>
+
+				<!-- 리뷰 : bot right bot -->
+				<div class="review__posts">
+
+					<div class="review__post">
+						<div class="content-wrapper">
+							<img
+								src="https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F6%2F2019%2F07%2Fchances-are-1-2000.jpg&q=85"
+								alt="" class=review__post__img>
+							<div class="review__post__content">
+								<div class="review__post__title">Changes Are</div>
+								<div class="review__post__by">by Richard Russo</div>
+								<div class="rate">
+									<fieldset class="rating book-rate">
+										<input type="checkbox" id="star-c1" name="rating" value="5">
+										<label class="full" for="star-c1"></label> <input
+											type="checkbox" id="star-c2" name="rating" value="4">
+										<label class="full" for="star-c2"></label> <input
+											type="checkbox" id="star-c3" name="rating" value="3">
+										<label class="full" for="star-c3"></label> <input
+											type="checkbox" id="star-c4" name="rating" value="2">
+										<label class="full" for="star-c4"></label> <input
+											type="checkbox" id="star-c5" name="rating" value="1">
+										<label class="full" for="star-c5"></label>
+									</fieldset>
+									<span class="review__voters card-vote">1.987 voters</span>
+								</div>
+								<div class="book-sum card-sum">Readers of all ages and
+									walks of life have drawn inspiration and empowerment from
+									Elizabeth Gilbert’s books for years.</div>
+							</div>
+						</div>
+					</div>
+
+				</div>
+				
+			</div>
+		</div>
 	</div>
-	</div>
-	</div>
+
+	<script>
+		/*=============== 스크롤 나타나는 효과 ===============*/
+		const srWatch = ScrollReveal({ /* srSTM으로 한것은, sr이 메인에서 쓰여서. STM은 stadiumMain */
+			origin : 'top',
+			distance : '60px',
+			duration : 2500,
+			delay : 400
+		//reset: true, // 애니메이션은 반복
+		})
+
+		srWatch.reveal(`.watch__header`, {
+			origin : 'top'
+		});
+		srWatch.reveal(`.review__slide`, {
+			origin : 'left'
+		});
+		srWatch.reveal(`.watch__wrapper`, {
+			origin : 'right'
+		});
+	</script>
+
 </body>
 </html>
