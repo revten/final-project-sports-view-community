@@ -59,7 +59,11 @@ public class PointDAO {
 		pv.setPoint_member(ac.getMember_id());
 		ppv.setPlusPoint_member(ac.getMember_id());
 		ppv.setPlusPoint(plusPoint);
-		int point = pv.getPoint() + plusPoint;
+		// 현재 포인트 조회
+		int nPoint = ss.getMapper(PointMapper.class).getNpoint(pv);
+		// 현재포인트 + 추가될포인트
+		int point = nPoint + plusPoint;
+		System.out.println(nPoint);
 		System.out.println(point);
 		pv.setPoint(point);
 		if(point >= 7000)

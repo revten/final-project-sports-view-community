@@ -22,6 +22,10 @@ public interface BoardMapper {
 	int deleteReply(ReplyVO rp);
 
 	int updateReply(ReplyVO rp);
+
+	int AddRecommand(Reccomand rec);
+
+	int getReccomed();
 	
 	
 	
