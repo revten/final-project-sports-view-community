@@ -206,13 +206,13 @@ public class AC_US_DAO {
 			String member_pwd = " ";
 			String member_nick = " ";
 			int member_auth_type = 1;
-			String member_reg_type = req.getParameter("member_reg_type");
+			int member_reg_type = Integer.parseInt(req.getParameter("member_reg_type"));
 			String member_reg_ip = " ";
 
 			String member_email;
-			if (member_reg_type == "1") {
+			if (member_reg_type == 1) {
 				member_email = member_id + "@kakao.com";
-			} else if (member_reg_type == "2") {
+			} else if (member_reg_type == 2) {
 				member_email = member_id + "@naver.com";
 			} else {
 				member_email = member_id + "@google.com";
@@ -254,7 +254,7 @@ public class AC_US_DAO {
 			String member_reg_ip = req.getParameter("member_reg_ip");
 			String member_intro = req.getParameter("member_intro");
 			int member_subs = Integer.parseInt(req.getParameter("member_subs"));
-			int club_id = Integer.parseInt(req.getParameter("member_subs"));;
+			int club_id = Integer.parseInt(req.getParameter("club_id"));
 			
 			ac.setMember_pwd(member_pwd);
 			ac.setMember_nick(member_nick);

@@ -34,10 +34,10 @@
 			<input name="member_id" class="input_id" id="idInput">
 
 			<h6>비밀번호</h6>
-			<input name="member_pwd" type="password" class="input_pw" id="pwInput"><br>
-
-			<a class="find_id" type="button" href="search.id.go">아이디</a>&nbsp; <a>·</a>&nbsp;
-			<a class="find_pw" type="button" href="search.pw.go">비밀번호 찾기</a><br>
+			<input name="member_pwd" type="password" class="input_pw"
+				id="pwInput"><br> <a class="find_id" type="button"
+				href="search.id.go">아이디</a>&nbsp; <a>·</a>&nbsp; <a class="find_pw"
+				type="button" href="search.pw.go">비밀번호 찾기</a><br>
 
 			<button id="loginBtn">로그인</button>
 			<div class="reg-area">
@@ -113,48 +113,49 @@
 		}
 
 		function checkInfoKakao(member_id, member_reg_type) {
-			$
-					.ajax({
-						url : "social.id.check",
-						type : "GET",
-						dataType : "text",
-						data : {
-							"member_id" : member_id,
-							"member_reg_type" : member_reg_type
-						},
-						success : function(data) {
-							console.log(data)
-							if (data >= 1) {
-								let kakaoLoginUrl = "social.reg.do?member_id="+member_id;
-								console.log(kakaoLoginUrl);
-								location.replace(kakaoLoginUrl);
-							} else {
-								console.log(member_id)
-								console.log(member_reg_type)
-								alert('회원가입을 도와드리겠습니다.');
-								let kakaoJoinUrl = 'social.reg.do?member_id='+member_id+'&member_reg_type='+member_reg_type;
-								console.log(kakaoJoinUrl);
-								location.replace(kakaoJoinUrl);
-							}
-						},
-						error : function(request, status, error) {
-							console.log("code:" + request.status + "\n"
-									+ "message:" + request.responseText + "\n"
-									+ "error:" + error);
+			$.ajax({
+				url : "social.id.check",
+				type : "GET",
+				dataType : "text",
+				data : {
+					"member_id" : member_id,
+					"member_reg_type" : member_reg_type
+				},
+				success : function(data) {
+					console.log(data)
+					if (data >= 1) {
+						let kakaoLoginUrl = "social.login.do?member_id="
+								+ member_id;
+						console.log(kakaoLoginUrl);
+						location.replace(kakaoLoginUrl);
+					} else {
+						console.log(member_id)
+						console.log(member_reg_type)
+						alert('회원가입을 도와드리겠습니다.');
+						let kakaoJoinUrl = 'social.reg.do?member_id='
+								+ member_id + '&member_reg_type='
+								+ member_reg_type;
+						console.log(kakaoJoinUrl);
+						location.replace(kakaoJoinUrl);
+					}
+				},
+				error : function(request, status, error) {
+					console.log("code:" + request.status + "\n" + "message:"
+							+ request.responseText + "\n" + "error:" + error);
 
-						}
-					});
+				}
+			});
 		}
 	</script>
 
 	<script>
 		/* 네이버로그인 */
 		var naver_id_login = new naver_id_login("Q141vzvaIl6ZvPN2b4UJ",
-				"http://localhost/nmp/social.login.go?ac_linkWhere=${ac_linkWhere}");
+				"http://localhost/nmp/socialLogin.go");
 		var state = naver_id_login.getUniqState();
-		let ac_linkWhere = "naver"
+		let member_reg_type = "2"
 		naver_id_login.setButton("green", 1, 40);
-		naver_id_login.setDomain("http://localhost/nmp/social.login.go");
+		naver_id_login.setDomain("http://localhost/nmp/socialLogin.go");
 		naver_id_login.setState(state);
 		naver_id_login.setPopup();
 		naver_id_login.init_naver_id_login();
@@ -165,13 +166,13 @@
 		function handleCredentialResponse(response) {
 			const responsePayload = parseJwt(response.credential);
 
-			let user_id_name = responsePayload.sub;
+			let member_id = responsePayload.sub;
 			//let ac_name = responsePayload.name;
 			//let ac_email = responsePayload.email;
-			let user_auth_type = '1';
+			let member_reg_type = '3';
 
-			console.log(user_id_name, user_auth_type);
-			checkInfoGoogle(user_id_name, user_auth_type);
+			console.log(member_id, member_reg_type);
+			checkInfoGoogle(member_id, member_reg_type);
 		}
 
 		function parseJwt(token) {
@@ -187,25 +188,28 @@
 			return JSON.parse(jsonPayload);
 		};
 
-		function checkInfoGoogle(user_id_name, user_auth_type) {
+		function checkInfoGoogle(member_id, member_reg_type) {
 			$
 					.ajax({
 						url : "social.id.check",
 						type : "GET",
 						dataType : "text",
 						data : {
-							"user_id_name" : user_id_name,
-							"user_auth_type" : user_auth_type
+							"member_id" : member_id,
+							"member_reg_type" : member_reg_type
 						},
 						success : function(getData) {
 							console.log(getData);
 							if (getData >= 1) {
-								let googleLoginUrl = `social.login.do?user_id_name=${user_id_name}`;
+								let googleLoginUrl = "social.login.do?member_id="
+									+ member_id;
 								console.log(googleLoginUrl);
 								location.replace(googleLoginUrl);
 							} else {
 								alert('회원가입을 도와드리겠습니다.');
-								let googleJoinUrl = `social.reg.do?user_id_name=${user_id_name}+&user_auth_type+${user_auth_type}`;
+								let googleJoinUrl = 'social.reg.do?member_id='
+									+ member_id + '&member_reg_type='
+									+ member_reg_type;
 								console.log(googleJoinUrl);
 								location.replace(googleJoinUrl);
 							}
