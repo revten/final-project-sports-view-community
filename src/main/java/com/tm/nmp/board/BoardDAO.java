@@ -20,6 +20,8 @@ public class BoardDAO {
 	private BoardOption bo;
 
 	private int allPostCount;
+	
+	
 
 	public int getallPostCount() {
 		return allPostCount;
@@ -28,6 +30,8 @@ public class BoardDAO {
 	public void setallPostCount(int allPostCount) {
 		this.allPostCount = allPostCount;
 	}
+	
+	
 
 	public void calcAllPostCount(int board_id) {
 		BoardSelector bSel = new BoardSelector("", 0, 0, board_id);
@@ -212,4 +216,17 @@ public class BoardDAO {
 
 		return req.getRemoteAddr();
 	}
+
+	public void postCountUpdate(HttpServletRequest req, PostVO p) {
+		
+		
+		if(ss.getMapper(BoardMapper.class).postCountUpdate(p) == 1) {
+			req.setAttribute("result", "조회성공");
+			
+		}else {
+			req.setAttribute("result", "조회실패");
+		}
+	}
+
+	
 }

@@ -85,4 +85,8 @@
 		where reply_id
 		= #{reply_id}
 	</update>
+	
+	<update id="postCountUpdate" parameterType="com.tm.nmp.board.PostVO">
+	
+	</update>
 </mapper>

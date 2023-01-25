@@ -152,5 +152,16 @@ public class BasketballController {
 		req.setAttribute("contentPage", "fan/basketball/basketballDetail.jsp");
 		return "index";
 	}
+	
+	@RequestMapping(value = "basketballPostHit.update.do", method = RequestMethod.GET)
+	public String basketballPostHitUpdate(HttpServletRequest req, PostVO p) {
+		TokenMaker.make(req);
+		if (acDAO.loginCheck(req)) {
+			brDAO.postCountUpdate(req,p);
+		}
+		brDAO.getPost(req, p);
+		req.setAttribute("contentPage", "fan/basketball/basketballDetail.jsp");
+		return "index";
+	}
 
 }

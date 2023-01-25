@@ -22,6 +22,8 @@ public interface BoardMapper {
 	int deleteReply(ReplyVO rp);
 
 	int updateReply(ReplyVO rp);
+
+	int postCountUpdate(PostVO p);
 	
 	
 	
