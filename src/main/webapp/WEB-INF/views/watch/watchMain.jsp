@@ -9,6 +9,43 @@
 <title>Insert title here</title>
 <link rel="stylesheet" href="resources/css/watch/watchMain.css" />
 <style type="text/css">
+
+* {
+  outline: none;
+  box-sizing: border-box;
+}
+
+img {
+  max-width: 100%;
+}
+
+html {
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  background-color: #fff;
+  background-attachment: fixed;
+  font-family: var(--body-font);
+  color: #3d4954;
+  font-weight: 400;
+  margin: 0;
+}
+
+fieldset,
+label {
+  margin: 0;
+  padding: 0;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+h1 {
+  font-size: 0.5em;
+  margin: 10px;
+}
+
 .member__icon {
 	width: 28px;
 	height: 28px;
@@ -178,93 +215,49 @@
 			<div class="reviews-of">
 
 				<!-- 리뷰 : bot left top -->
-				<div class="review__fan">
+				<div class="week1">
+				
 					<div class="review__fan__title">Fan of the week</div>
-					<div class="review__fan__member">
-						<img
-							src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1400&q=80"
-							alt="" class="author-img">
-						<div class="author-name">이명재</div>
-					</div>
-					<div class="review__fan__member">
+					
+					<div class="review__fan">
 						<img
 							src="https://images.unsplash.com/photo-1586297098710-0382a496c814?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80"
-							alt="" class="author-img">
-						<div class="author-name">정 권</div>
-					</div>
-					<div class="review__fan__member">
-						<img
-							src="https://images.unsplash.com/photo-1573140247632-f8fd74997d5c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
-							alt="" class="author-img">
-						<div class="author-name">임형규</div>
-					</div>
-					<div class="review__fan__member">
-						<img
-							src="https://pbs.twimg.com/profile_images/737221709267374081/sdwta9Oh.jpg"
-							alt="" class="author-img">
-						<div class="author-name">송준우</div>
-					</div>
-					<div class="review__fan__member">
-						<img
-							src="https://pbs.twimg.com/profile_images/2452384114/noplz47r59v1uxvyg8ku.png"
-							alt="" class="author-img">
-						<div class="author-name">김태형</div>
+							alt="" class="review__fan__img">
+						<div class="review__fan__member">정 권</div>
 					</div>
 				</div>
 
 				<!-- 리뷰 : bot left bot -->
-				<div class="review__fan year">
-					<div class="review__best__title">Review of the week</div>
-					<div class="year-book">
+				<div class="week1 week2">
+				
+					<div class="review__fan__title">Review of the week</div>
+					<div class="review__best">
 						<img
 							src="https://images-na.ssl-images-amazon.com/images/I/A1kNdYXw0GL.jpg"
-							alt="" class="year-book-img">
-						<div class="year-book-content">
-							<div class="year-review__post__title">Disappearing Earth</div>
-							<div class="year-book-author">by 임형규</div>
+							alt="" class="review__best__img">
+						<div class="review__best__content">
+							<div class="review__best__title">Disappearing Earth</div>
+							<div class="review__best__member">by 임형규</div>
 						</div>
 					</div>
-					<div class="year-book">
-						<img
-							src="https://images-na.ssl-images-amazon.com/images/I/81eI0ExR+VL.jpg"
-							alt="" class="year-book-img">
-						<div class="year-book-content">
-							<div class="year-review__post__title">Lost Children Archive</div>
-							<div class="year-book-author">by 송준우</div>
-						</div>
-					</div>
-					<div class="year-book">
-						<img
-							src="https://images-na.ssl-images-amazon.com/images/I/81OF9eJDA4L.jpg"
-							alt="" class="year-book-img">
-						<div class="year-book-content">
-							<div class="year-review__post__title">Phantoms: A Thriller</div>
-							<div class="year-book-author">by 정 권</div>
-						</div>
-					</div>
-					<div class="year-book">
-						<img src="https://m.media-amazon.com/images/I/515FWPyZ-5L.jpg"
-							alt="" class="year-book-img">
-						<div class="year-book-content">
-							<div class="year-review__post__title">Midnight in Chernobyl</div>
-							<div class="year-book-author">by 김태형</div>
-						</div>
-					</div>
+
 				</div>
 				<div class="overlay"></div>
 			</div>
 
+
 			<!-- 리뷰 : bot right -->
-			<div class="popular-books">
+			<div class="review__posts__wrapper">
 
 				<!-- 리뷰 : bot right top -->
-				<div class="main-menu">
-					<div class="genre">Stadium Reviews</div>
-					<div class="book-types">
-						<a href="#" class="book-type active"> All Sports</a> <a href="#"
-							class="book-type"> Baseball</a> <a href="#" class="book-type">
-							Soccer</a> <a href="#" class="book-type"> Basketbll</a> <a href="#"
-							class="book-type"> Volleyball</a>
+				<div class="review__posts__menu">
+					<div class="review__posts__genre">Stadium Reviews</div>
+					<div class="review__sports__types">
+						<a href="#" class="review__sports__type active"> All Sports</a> <a
+							href="#" class="review__sports__type"> Baseball</a> <a href="#"
+							class="review__sports__type"> Soccer</a> <a href="#"
+							class="review__sports__type"> Basketbll</a> <a href="#"
+							class="review__sports__type"> Volleyball</a>
 					</div>
 				</div>
 
@@ -272,7 +265,7 @@
 				<div class="review__posts">
 
 					<div class="review__post">
-						<div class="content-wrapper">
+						<div class="review__post__content-wrapper">
 							<img
 								src="https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F6%2F2019%2F07%2Fchances-are-1-2000.jpg&q=85"
 								alt="" class=review__post__img>
@@ -294,7 +287,7 @@
 									</fieldset>
 									<span class="review__voters card-vote">1.987 voters</span>
 								</div>
-								<div class="book-sum card-sum">Readers of all ages and
+								<div class="review__sum card-sum">Readers of all ages and
 									walks of life have drawn inspiration and empowerment from
 									Elizabeth Gilbert’s books for years.</div>
 							</div>
@@ -302,7 +295,7 @@
 					</div>
 
 				</div>
-				
+
 			</div>
 		</div>
 	</div>

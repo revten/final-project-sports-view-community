@@ -9,43 +9,8 @@
   --placeholder: #ccd0d2;
 }
 
-* {
-  outline: none;
-  box-sizing: border-box;
-}
-
-img {
-  max-width: 100%;
-}
-
-html {
-  box-sizing: border-box;
-  -webkit-font-smoothing: antialiased;
-}
-
-body {
-  background-color: #fff;
-  background-attachment: fixed;
-  font-family: var(--body-font);
-  color: #3d4954;
-  font-weight: 400;
-  margin: 0;
-}
-
-fieldset,
-label {
-  margin: 0;
-  padding: 0;
-  display: inline-block;
-  vertical-align: middle;
-}
-
-h1 {
-  font-size: 0.5em;
-  margin: 10px;
-}
-
-.likes, .year-book, .review__fan__member, .main-menu, .watch__header {
+/* 전체관련, -> index.css와 겹치는 부분은 우선적용되도록 watchMain.jsp로 빼둠 */
+.review__best, .review__fan, .review__posts__menu, .watch__header {
   display: flex;
   align-items: center;
 }
@@ -375,27 +340,27 @@ h1 {
 
 
 /* 리뷰 bot left */
-.review__fan {
+.week1 {
   padding: 0 30px;
 }
 
-.review__fan__member + .review__fan__member {
+.review__fan + .review__fan {
   margin-top: 20px;
 }
-.review__fan__name {
+.review__fan__member {
   font-size: 14px;
 }
-.review__fan__member:last-child {
+.review__fan:last-child {
   margin-bottom: 40px;
 }
 
-.review__fan__title, .review__best__title {
+.review__fan__title {
   padding: 0 0 20px;
   font-weight: 500;
   font-size: 15px;
 }
 
-.author-img {
+.review__fan__img {
   border-radius: 50%;
   width: 30px;
   height: 30px;
@@ -404,22 +369,22 @@ h1 {
   object-position: center;
 }
 
-.year-book-img {
+.review__best__img {
   width: 45px;
   margin-right: 16px;
 }
-.year-book-name {
+.review__best__title {
   margin-bottom: 15px;
   font-weight: 500;
 }
-.year-book-author {
+.review__best__member {
   font-size: 13px;
 }
-.year-book + .year-book {
+.review__best + .review__best {
   margin-top: 20px;
 }
 
-.year-book-content {
+.review__best__content {
   display: flex;
   flex-direction: column;
   font-size: 14px;
@@ -438,18 +403,18 @@ h1 {
 
 
 /* 리뷰 bot right */
-.popular-books {
+.review__posts__wrapper {
   flex-grow: 1;
   padding: 0 30px 50px;
   overflow-y: auto;
 }
 
-.genre {
+.review__posts__genre {
   font-weight: 500;
   font-size: 15px;
 }
 
-.main-menu {
+.review__posts__menu {
   white-space: nowrap;
   padding-bottom: 15px;
   border-bottom: 1px solid #dcddde;
@@ -460,27 +425,27 @@ h1 {
   z-index: 2;
 }
 
-.book-types {
+.review__sports__types {
   margin-left: auto;
 }
-.book-types a {
+.review__sports__types a {
   text-decoration: none;
   color: #3d4954;
   font-size: 14px;
 }
 
-.book-type + .book-type {
+.review__sports__type + .review__sports__type {
   margin-left: 20px;
 }
 
-.book-type {
+.review__sports__type {
   position: relative;
   transition: 0.2s;
 }
-.book-type.active, .book-type:hover {
+.review__sports__type.active, .review__sports__type:hover {
   -webkit-text-stroke: 0.3px;
 }
-.book-type.active:before, .book-type:hover:before {
+.review__sports__type.active:before, .review__sports__type:hover:before {
   content: "";
   position: absolute;
   width: 28px;
@@ -490,16 +455,16 @@ h1 {
   background-color: #67d4ea;
   box-shadow: 0px -1px 5px 0px #67d4ea;
 }
-.book-type:nth-child(2):before {
+.review__sports__type:nth-child(2):before {
   right: 12px;
 }
-.book-type:nth-child(3):before {
+.review__sports__type:nth-child(3):before {
   right: 8px;
 }
-.book-type:nth-child(4):before {
+.review__sports__type:nth-child(4):before {
   right: 6px;
 }
-.book-type:nth-child(5):before {
+.review__sports__type:nth-child(5):before {
   right: 20px;
 }
 
@@ -596,12 +561,12 @@ h1 {
   margin-top: 15px;
 }
 
-.content-wrapper {
+.review__post__content-wrapper {
   display: flex;
   border-bottom: 1px solid #ebedef;
   position: relative;
 }
-.content-wrapper:before {
+.review__post__content-wrapper:before {
   content: "";
   position: absolute;
   background-color: #8f98a9;
@@ -706,7 +671,7 @@ h1 {
     grid-template-columns: 1fr;
   }
 
-  .book-types {
+  .review__sports__types {
     display: none;
   }
 }
