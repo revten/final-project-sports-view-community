@@ -107,4 +107,8 @@
 		select count(*) from RECOMMAND where post_id = #{post_id}
 	</select>
 	
+	<update id="postCountUpdate" parameterType="com.tm.nmp.board.PostVO">
+		update post set	post_hit_count = post_hit_count + 1 where post_id = #{post_id} 
+	</update>
+	
 </mapper>
