@@ -109,7 +109,7 @@
 		<table class="aCMsg">
 			<tr>
 				<td align="right"><span style="font-size: 8pt; cursor: pointer;"
-					onclick="deleteMessage(${m.message_id});"></span></td>
+					onclick="deleteMessage(${m.message_id});">X</span></td>
 			</tr>
 			<tr>
 				<td class="aCMsgFrom" onclick="sendMessage('${m.message_from}');">&nbsp;${m.message_from }</td>

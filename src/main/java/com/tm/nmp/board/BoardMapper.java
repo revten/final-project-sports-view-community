@@ -25,7 +25,7 @@ public interface BoardMapper {
 
 	int AddRecommand(Reccomand rec);
 
-	int getReccomed();
+	int getReccomed(Reccomand rec);
 	
 	
 	

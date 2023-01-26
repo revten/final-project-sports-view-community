@@ -14,13 +14,14 @@
 }
 
 .newsContent {
+	margin-left: 11px;
 	display: inline-block;
-    width: 400px;
-    white-space: nowrap;
+    width: 900px;
     overflow: hidden;
     text-overflow: ellipsis;
-    margin-left: 11px;
-	
+    word-break: break-word;
+    
+    display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical;
 }
 
 .title {
@@ -53,5 +54,13 @@
 	padding-bottom: 5px;
 	text-align:left;
 	margin-left:30px;
+}
+
+.div_news_go{
+	margin-bottom: 30px;
+}
+
+.news_go{
+	font-size: 20px;
 }
 

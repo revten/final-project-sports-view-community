@@ -29,7 +29,7 @@
 </select>
 
 <select id="getPlusPoint" parameterType="com.tm.nmp.point.PlusPointVO" resultType="com.tm.nmp.point.PlusPointVO">
-	select * from PLUSPOINT where plusPoint_member = #{plusPoint_member}
+	select * from PLUSPOINT where plusPoint_member = #{plusPoint_member} <!-- order by PLUSPOINT_DATE desc --> 
 </select>
 
 
