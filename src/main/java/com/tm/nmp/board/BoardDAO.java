@@ -236,9 +236,15 @@ public class BoardDAO {
 			e.printStackTrace();
 		}
 		
-		
 		return null;
 		
-		
+	}
+
+	public void postCountUpdate(HttpServletRequest req, PostVO p) {
+		if(ss.getMapper(BoardMapper.class).postCountUpdate(p) == 1) {
+			req.setAttribute("result", "조회수 성공");
+		}else {
+			req.setAttribute("result", "조회수 실패");
+		}
 	}
 }
