@@ -219,18 +219,18 @@ public class BoardDAO {
 		return req.getRemoteAddr();
 	}
 
-	public JSONObject recommand(HttpServletRequest req, Reccomand rec, int boardNo, String memberId) {
+	public JSONObject recommand(HttpServletRequest req, Reccomand rec, int post_id, String member_id) {
 		
 		try {
-			rec.setPost_id(boardNo);
-			rec.setMember_id(memberId);
+			rec.setPost_id(post_id);
+			rec.setMember_id(member_id);
 			if(ss.getMapper(BoardMapper.class).AddRecommand(rec)==1) {
 				System.out.println("추천성공");
 			}else {
 				System.out.println("실패...");
 			}
-			int rCount = ss.getMapper(BoardMapper.class).getReccomed();
-			String rCountString = Integer.toString(rCount);
+			// int rCount = ss.getMapper(BoardMapper.class).getReccomed(rec);
+			// String rCountString = Integer.toString(rCount);
 			// JSONObject count = (JSONObject) rCountStirng;
 			
 			// return count;

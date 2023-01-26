@@ -24,37 +24,34 @@
 	<br>
 	<br>
 	<br>
-	<div class="login_area">
-		<h1>로그인</h1>
+	<div id="login_area" class="login_area">
+		<h1 class="login_title">로그인</h1>
 
 		<form class="login_form" name="loginForm" action="account.login.do"
 			method="post">
 
-			<h6>아이디</h6>
-			<input name="member_id" class="input_id" id="idInput">
+			<input name="member_id" class="input_id" id="idInput" placeholder="아이디">
 
-			<h6>비밀번호</h6>
 			<input name="member_pwd" type="password" class="input_pw"
-				id="pwInput"><br> <a class="find_id" type="button"
+				id="pwInput" placeholder="비밀번호"><br> <a class="find_id" type="button"
 				href="search.id.go">아이디</a>&nbsp; <a>·</a>&nbsp; <a class="find_pw"
 				type="button" href="search.pw.go">비밀번호 찾기</a><br>
 
-			<button id="loginBtn">로그인</button>
+			<button class="loginBtn">로그인</button>
 			<div class="reg-area">
 
-				<span>회원이 아니세요?</span>&nbsp;&nbsp;&nbsp;<a href="account.reg.go">회원가입</a>
 			</div>
 
+			<br>
 			<br>
 
 			<!-- -------------------Social Login------------------- -->
 
-			<h5>간편 로그인</h5>
 			<br>
 		</form>
 		<div id="SNS-login-area">
 			<!-- 카카오로그인 -->
-			<a onclick="kakaoLogin()"> <img
+			<a style="cursor: pointer;" onclick="kakaoLogin()"> <img
 				src="https://www.myro.co.kr/myro_image/kakaolink_btn.png" width="40" /></a>
 
 			<!-- 네이버로그인 -->
@@ -70,6 +67,7 @@
 				data-shape="rectangular" data-logo_alignment="left"></div>
 
 		</div>
+				<a class='regBtn' href="account.reg.go">회원가입</a>
 	</div>
 
 	<script>
