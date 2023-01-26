@@ -54,16 +54,16 @@
 		</form>
 		<div id="SNS-login-area">
 			<!-- 카카오로그인 -->
-			<a onclick="kakaoLogin()"> <img
+			<a onclick="kakaoLogin()" style="cursor: pointer"> <img
 				src="https://www.myro.co.kr/myro_image/kakaolink_btn.png" width="40" /></a>
 
 			<!-- 네이버로그인 -->
-			<div id="naver_id_login"></div>
+			<div id="naver_id_login" style="cursor: pointer"></div>
 
 			<!-- 구글로그인 -->
 			<div id="g_id_onload"
 				data-client_id="567208941336-p92o44c3gigs2a282rhro3p6vni5fetb.apps.googleusercontent.com"
-				data-callback="handleCredentialResponse" data-auto_prompt="false"></div>
+				data-callback="handleCredentialResponse" data-auto_prompt="false" style="cursor: pointer"></div>
 
 			<div class="g_id_signin" data-type="icon" data-size="large"
 				data-theme="outline" data-text="sign_in_with"

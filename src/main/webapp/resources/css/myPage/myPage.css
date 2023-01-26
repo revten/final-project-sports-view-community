@@ -2,7 +2,7 @@
 	url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap")
 	;
 
-* {
+/** {
 	outline: none;
 	box-sizing: border-box;
 }
@@ -14,6 +14,14 @@ html {
 
 img {
 	max-width: 100%;
+}*/
+
+.myPage-header {
+	margin-top: 10vh;
+	display: flex;
+	align-items: center;
+	flex-shrink: 0;
+	padding: 30px;
 }
 
 :root { -
@@ -60,21 +68,22 @@ body:before {
 	content: "";
 }*/
 
-.container {
+.myPage_container {
+	margin-top: 15vh;
 	background-color: hsl(1, 1%, 93%);
 	max-width: 1240px;
 	max-height: 900px;
 	display: flex;
 	overflow: hidden;
 	width: 100%;
-	/*border-radius: 20px;*/
+	border-radius: 20px;
 	font-size: 15px;
 	font-weight: 500;
 	box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
 	position: relative;
 }
 
-/*#infomation {
+#infomation {
 	background-color: #6c5ecf;
 	border: 0;
 	color: #fff;
@@ -88,7 +97,14 @@ body:before {
 	border-radius: 10px;
 	cursor: pointer;
 	transition: 0.3s;
-}*/
+}
+
+.point-container{
+	border: none;
+	background-color: #fff;
+	border-radius: 8px;
+	box-shadow: 0 0 0 2px rgba(134, 140, 160, 0.02);
+}
 
 .sidebar {
 	width: 220px;
@@ -116,7 +132,7 @@ body:before {
 
 .sidebar .logo-expand {
 	text-decoration: none;
-	color: #fff;
+	color: hsl(19, 16%, 35%);
 	font-size: 19px;
 	font-weight: 600;
 	line-height: 34px;
@@ -269,7 +285,7 @@ none
 	flex-grow: 1;
 }
 
-.header {
+.myPage-header {
 	display: flex;
 	align-items: center;
 	flex-shrink: 0;
@@ -1231,9 +1247,10 @@ button.vjs-play-control.vjs-control.vjs-button {
 	body {
 		padding: 0;
 	}
-	.container {
+	
+	.myPage_container {
 		height: 100vh;
-		border-radius: 0;
+		border-radius: 20;
 		max-height: 100%;
 	}
 }

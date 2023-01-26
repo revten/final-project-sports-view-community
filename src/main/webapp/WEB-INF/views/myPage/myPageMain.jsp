@@ -4,21 +4,20 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
 <link rel="stylesheet" href="resources/css/myPage/myPage.css" />
+<title>Insert title here</title>
 </head>
 <body>
-	<div class="container">
+	<div class="myPage_container">
 		<div class="sidebar">
-			<span class="logo">S</span> <a class="logo-expand" href="#">skateboard</a>
+		 <a class="logo-expand" href="myPage.main.go">마이페이지</a>
 			<div class="side-wrapper">
-				<div class="side-title">MENU</div>
 				<div class="side-menu">
-					<a class="sidebar-link discover is-active" href="#"> <svg
+					<a class="sidebar-link discover is-active" href="myPage.main.go"> <svg
 							viewBox="0 0 24 24" fill="currentColor">
       <path
 								d="M9.135 20.773v-3.057c0-.78.637-1.414 1.423-1.414h2.875c.377 0 .74.15 1.006.414.267.265.417.625.417 1v3.057c-.002.325.126.637.356.867.23.23.544.36.87.36h1.962a3.46 3.46 0 002.443-1 3.41 3.41 0 001.013-2.422V9.867c0-.735-.328-1.431-.895-1.902l-6.671-5.29a3.097 3.097 0 00-3.949.072L3.467 7.965A2.474 2.474 0 002.5 9.867v8.702C2.5 20.464 4.047 22 5.956 22h1.916c.68 0 1.231-.544 1.236-1.218l.027-.009z" />
-     </svg> ${sessionScope.loginAccount.member_nick } <br>마이페이지
+     </svg> ${sessionScope.loginAccount.member_nick }
 					</a> <a class="sidebar-link trending" href="myPage.info.go"> <svg
 							viewBox="0 0 24 24" fill="currentColor">
       <path fill-rule="evenodd" clip-rule="evenodd"
@@ -57,7 +56,7 @@
 					<img class="user-img"
 						src="https://w.namu.la/s/38cf17d29ddeab5a69f6de682176bbd6b8f71285f5adc1d5465c910f8d7651e8f82db2bdba9e25f1d29affdedb9ddc04edeadc4e7f539ce975eaad093a2b8c68722d00fcec74cd40a24b6f0f66ab5e1d7f534e357c012bfcbc8c0f09286b2623"
 						alt="">
-					<div class="user-name">${sessionScope.loginAccount.member_id }</div>
+					<div class="user-name">${sessionScope.loginAccount.member_nick }</div>
 					<svg viewBox="0 0 492 492" fill="currentColor">
      <path
 							d="M484.13 124.99l-16.11-16.23a26.72 26.72 0 00-19.04-7.86c-7.2 0-13.96 2.79-19.03 7.86L246.1 292.6 62.06 108.55c-5.07-5.06-11.82-7.85-19.03-7.85s-13.97 2.79-19.04 7.85L7.87 124.68a26.94 26.94 0 000 38.06l219.14 219.93c5.06 5.06 11.81 8.63 19.08 8.63h.09c7.2 0 13.96-3.57 19.02-8.63l218.93-219.33A27.18 27.18 0 00492 144.1c0-7.2-2.8-14.06-7.87-19.12z"></path>
@@ -72,12 +71,6 @@
 				</div>
 			</div>
 			<div class="main-container">
-				<br>
-				<br>
-				<br>
-				<br>
-				<br>
-				<br>
 				<div></div>
 				<div class="main-blogs">
 					<div class="main-blog anim" style="-delay: .1s">
@@ -205,217 +198,6 @@
 							ramp</div>
 						<div class="video-view">
 							50K views<span class="seperate video-seperate"></span>1 week ago
-						</div>
-					</div>
-				</div>
-				<div class="stream-area">
-					<div class="video-stream">
-						<video id="my_video_1" class="video-js vjs-default-skin anim"
-							width="640px" height="267px" controls preload="none"
-							poster='https://images.unsplash.com/photo-1476801071117-fbc157ae3f01?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1yZWxhdGVkfDh8fHxlbnwwfHx8&w=1000&q=80'
-							data-setup='{ "aspectRatio":"940:620", "playbackRates": [1, 1.5, 2] }'>
-							<source
-								src="https://player.vimeo.com/external/390402719.sd.mp4?s=20cfdb066c4253047562b65bd4e411b86a004bc5&profile_id=139&oauth2_token_id=57447761"
-								type='video/mp4' />
-							<source
-								src="https://player.vimeo.com/external/390402719.sd.mp4?s=20cfdb066c4253047562b65bd4e411b86a004bc5&profile_id=139&oauth2_token_id=57447761"
-								type='video/webm' />
-						</video>
-						<div class="video-detail">
-							<div class="video-content">
-								<div class="video-p-wrapper anim" style="-delay: .1s">
-									<div class="author-img__wrapper video-author video-p">
-										<svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
-											stroke-width="3" stroke-linecap="round"
-											stroke-linejoin="round" class="feather feather-check">
-          <path d="M20 6L9 17l-5-5" />
-         </svg>
-										<img class="author-img"
-											src="https://images.pexels.com/photos/1680172/pexels-photo-1680172.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500" />
-									</div>
-									<div class="video-p-detail">
-										<div class="video-p-name">Andy William</div>
-										<div class="video-p-sub">1,980,893 subscribers</div>
-									</div>
-									<div class="button-wrapper">
-										<button class="like">
-											<svg viewBox="0 0 24 24" fill="currentColor"
-												xmlns="http://www.w3.org/2000/svg">
-           <path
-													d="M21.435 2.582a1.933 1.933 0 00-1.93-.503L3.408 6.759a1.92 1.92 0 00-1.384 1.522c-.142.75.355 1.704 1.003 2.102l5.033 3.094a1.304 1.304 0 001.61-.194l5.763-5.799a.734.734 0 011.06 0c.29.292.29.765 0 1.067l-5.773 5.8c-.428.43-.508 1.1-.193 1.62l3.075 5.083c.36.604.98.946 1.66.946.08 0 .17 0 .251-.01.78-.1 1.4-.634 1.63-1.39l4.773-16.075c.21-.685.02-1.43-.48-1.943z" />
-          </svg>
-											Share
-										</button>
-										<button class="like red">
-											<svg viewBox="0 0 24 24" fill="currentColor"
-												xmlns="http://www.w3.org/2000/svg">
-           <path fill-rule="evenodd" clip-rule="evenodd"
-													d="M15.85 2.5c.63 0 1.26.09 1.86.29 3.69 1.2 5.02 5.25 3.91 8.79a12.728 12.728 0 01-3.01 4.81 38.456 38.456 0 01-6.33 4.96l-.25.15-.26-.16a38.093 38.093 0 01-6.37-4.96 12.933 12.933 0 01-3.01-4.8c-1.13-3.54.2-7.59 3.93-8.81.29-.1.59-.17.89-.21h.12c.28-.04.56-.06.84-.06h.11c.63.02 1.24.13 1.83.33h.06c.04.02.07.04.09.06.22.07.43.15.63.26l.38.17c.092.05.195.125.284.19.056.04.107.077.146.1l.05.03c.085.05.175.102.25.16a6.263 6.263 0 013.85-1.3zm2.66 7.2c.41-.01.76-.34.79-.76v-.12a3.3 3.3 0 00-2.11-3.16.8.8 0 00-1.01.5c-.14.42.08.88.5 1.03.64.24 1.07.87 1.07 1.57v.03a.86.86 0 00.19.62c.14.17.35.27.57.29z" />
-          </svg>
-											Liked
-										</button>
-									</div>
-								</div>
-								<div class="video-p-title anim" style="-delay: .2s">Basic
-									how to ride your Skateboard</div>
-								<div class="video-p-subtitle anim" style="-delay: .3s">Lorem
-									ipsum dolor sit amet consectetur adipisicing elit. Repellendus
-									illum tempora consequuntur. Lorem ipsum dolor sit amet
-									consectetur adipisicing elit. Debitis earum velit accusantium
-									maiores qui sit quas, laborum voluptatibus vero quidem tempore
-									facilis voluptate tempora deserunt!</div>
-								<div class="video-p-subtitle anim" style="-delay: .4s">Lorem
-									ipsum dolor sit amet consectetur adipisicing elit. Temporibus
-									laborum qui dolorum fugiat eius accusantium repellendus illum
-									tempora consequuntur. Lorem ipsum dolor, sit amet consectetur
-									adipisicing elit.</div>
-							</div>
-						</div>
-					</div>
-					<div class="chat-stream">
-						<div class="chat">
-							<div class="chat-header anim">
-								Live Chat<span><svg viewBox="0 0 24 24"
-										fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-         <path fill-rule="evenodd" clip-rule="evenodd"
-											d="M14.212 7.762c0 2.644-2.163 4.763-4.863 4.763-2.698 0-4.863-2.119-4.863-4.763C4.486 5.12 6.651 3 9.35 3c2.7 0 4.863 2.119 4.863 4.762zM2 17.917c0-2.447 3.386-3.06 7.35-3.06 3.985 0 7.349.634 7.349 3.083 0 2.448-3.386 3.06-7.35 3.06C5.364 21 2 20.367 2 17.917zM16.173 7.85a6.368 6.368 0 01-1.137 3.646c-.075.107-.008.252.123.275.182.03.369.048.56.052 1.898.048 3.601-1.148 4.072-2.95.697-2.675-1.35-5.077-3.957-5.077a4.16 4.16 0 00-.818.082c-.036.008-.075.025-.095.055-.025.04-.007.09.019.124a6.414 6.414 0 011.233 3.793zm3.144 5.853c1.276.245 2.115.742 2.462 1.467a2.107 2.107 0 010 1.878c-.531 1.123-2.245 1.485-2.912 1.578a.207.207 0 01-.234-.232c.34-3.113-2.367-4.588-3.067-4.927-.03-.017-.036-.04-.034-.055.002-.01.015-.025.038-.028 1.515-.028 3.145.176 3.747.32z" />
-        </svg> 15,988 people </span>
-							</div>
-							<div class="message-container">
-								<div class="message anim" style="-delay: .1s">
-									<div class="author-img__wrapper video-author video-p">
-										<svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
-											stroke-width="3" stroke-linecap="round"
-											stroke-linejoin="round" class="feather feather-check">
-          <path d="M20 6L9 17l-5-5" />
-         </svg>
-										<img class="author-img"
-											src="https://images.unsplash.com/photo-1560941001-d4b52ad00ecc?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1650&q=80" />
-									</div>
-									<div class="msg-wrapper">
-										<div class="msg__name video-p-name">Wijaya Adabi</div>
-										<div class="msg__content video-p-sub">Lorem ipsum clor
-											sit, ame conse quae debitis</div>
-									</div>
-								</div>
-								<div class="message anim" style="-delay: .2s">
-									<div class="author-img__wrapper video-author video-p">
-										<svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
-											stroke-width="3" stroke-linecap="round"
-											stroke-linejoin="round" class="feather feather-check">
-          <path d="M20 6L9 17l-5-5" />
-         </svg>
-										<img class="author-img"
-											src="https://images.pexels.com/photos/2889942/pexels-photo-2889942.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500" />
-									</div>
-									<div class="msg-wrapper">
-										<div class="msg__name video-p-name offline">Johny Wise</div>
-										<div class="msg__content video-p-sub">Suscipit eos atque
-											voluptates labore</div>
-									</div>
-								</div>
-								<div class="message anim" style="-delay: .3s">
-									<div class="author-img__wrapper video-author video-p">
-										<svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
-											stroke-width="3" stroke-linecap="round"
-											stroke-linejoin="round" class="feather feather-check">
-          <path d="M20 6L9 17l-5-5" />
-         </svg>
-										<img class="author-img"
-											src="https://images.unsplash.com/photo-1496345875659-11f7dd282d1d?ixid=MXwxMjA3fDB8MHxzZWFyY2h8Mzl8fG1lbnxlbnwwfHwwfA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" />
-									</div>
-									<div class="msg-wrapper">
-										<div class="msg__name video-p-name offline">Budi Hakim</div>
-										<div class="msg__content video-p-sub">Dicta quidem sunt
-											adipisci</div>
-									</div>
-								</div>
-								<div class="message anim" style="-delay: .4s">
-									<div class="author-img__wrapper video-author video-p">
-										<svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
-											stroke-width="3" stroke-linecap="round"
-											stroke-linejoin="round" class="feather feather-check">
-          <path d="M20 6L9 17l-5-5" />
-         </svg>
-										<img class="author-img"
-											src="https://images.pexels.com/photos/1870163/pexels-photo-1870163.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500" />
-									</div>
-									<div class="msg-wrapper">
-										<div class="msg__name video-p-name">Thomas Hope</div>
-										<div class="msg__content video-p-sub">recusandae
-											doloremque aperiam alias molestias</div>
-									</div>
-								</div>
-								<div class="message anim" style="-delay: .5s">
-									<div class="author-img__wrapper video-author video-p">
-										<svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
-											stroke-width="3" stroke-linecap="round"
-											stroke-linejoin="round" class="feather feather-check">
-          <path d="M20 6L9 17l-5-5" />
-         </svg>
-										<img class="author-img"
-											src="https://images.pexels.com/photos/1680172/pexels-photo-1680172.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500" />
-									</div>
-									<div class="msg-wrapper">
-										<div class="msg__name video-p-name">Gerard Will</div>
-										<div class="msg__content video-p-sub">Dicta quidem sunt
-											adipisci</div>
-									</div>
-								</div>
-								<div class="message anim" style="-delay: .6s">
-									<div class="author-img__wrapper video-author video-p">
-										<svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
-											stroke-width="3" stroke-linecap="round"
-											stroke-linejoin="round" class="feather feather-check">
-          <path d="M20 6L9 17l-5-5" />
-         </svg>
-										<img class="author-img"
-											src="https://images.pexels.com/photos/2889942/pexels-photo-2889942.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500" />
-									</div>
-									<div class="msg-wrapper">
-										<div class="msg__name video-p-name offline">Johny Wise</div>
-										<div class="msg__content video-p-sub">recusandae
-											doloremque aperiam alias molestias</div>
-									</div>
-								</div>
-							</div>
-							<div class="chat-footer anim" style="-delay: .1s">
-								<input type="text" placeholder="Write your message">
-							</div>
-						</div>
-						<div class="chat-vid__container">
-							<div class="chat-vid__title anim" style="-delay: .3s">Related
-								Videos</div>
-							<div class="chat-vid anim" style="-delay: .4s">
-								<div class="chat-vid__wrapper">
-									<img class="chat-vid__img"
-										src="https://cdn.nohat.cc/thumb/f/720/3b55eddcfffa4e87897d.jpg" />
-									<div class="chat-vid__content">
-										<div class="chat-vid__name">Prepare for your first
-											skateboard jump</div>
-										<div class="chat-vid__by">Jordan Wise</div>
-										<div class="chat-vid__info">
-											125.908 views <span class="seperate"></span>2 days ago
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="chat-vid anim" style="-delay: .5s">
-								<div class="chat-vid__wrapper">
-									<img class="chat-vid__img"
-										src="https://iamaround.it/wp-content/uploads/2015/02/pexels-photo-4663818.jpeg" />
-									<div class="chat-vid__content">
-										<div class="chat-vid__name">Prepare for your first
-											skateboard jump</div>
-										<div class="chat-vid__by">Jordan Wise</div>
-										<div class="chat-vid__info">
-											125.908 views <span class="seperate"></span>2 days ago
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="chat-vid__button anim" style="-delay: .6s">See
-								All related videos (32)</div>
 						</div>
 					</div>
 				</div>

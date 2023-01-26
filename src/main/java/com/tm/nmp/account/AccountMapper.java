@@ -1,5 +1,7 @@
 package com.tm.nmp.account;
 
+import java.util.List;
+
 public interface AccountMapper {
 
 	AccountDTO accountLogin(AccountDTO ac);
@@ -19,5 +21,7 @@ public interface AccountMapper {
 	int idCheck(String id);
 	
 	void regProfile(AccountDTO ac);
+
+	List<AccountDTO> showAccount(AccountDTO ac);
 
 }
