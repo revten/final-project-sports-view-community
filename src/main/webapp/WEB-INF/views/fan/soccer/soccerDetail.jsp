@@ -125,16 +125,21 @@
 
 	<script>
 	$(function(){
+		
+		let post_id =   ${post.post_id};
+		let member_id = '${sessionScope.loginAccount.member_id}';
 		// 추천버튼 클릭시(추천 추가 또는 추천 제거)
 		$("#rec_update").click(function(){
 			$.ajax({
-				url: "/expro/RecUpdate.do",
+				url: "Recommand.do",
                 type: "POST",
                 data: {
-                    no: ${post.post_id},
-                    id: '${sessionScope.loginAccount.member_id}'
+                    post_id: post_id,
+                    member_id: member_id
                 },
                 success: function () {
+                	console.log('성공')
+                }
 			        recCount();
                 },
 			})
@@ -146,7 +151,7 @@
 				url: "/expro/RecCount.do",
                 type: "POST",
                 data: {
-                    no: ${post.post_id}
+                    post_id: ${post.post_id}
                 },
                 success: function (count) {
                 	$(".rec_count").html(count);

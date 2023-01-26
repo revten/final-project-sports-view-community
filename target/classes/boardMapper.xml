@@ -103,8 +103,8 @@
 		insert into RECOMMAND values(#{post_id},#{member_id})
 	</insert>
 	
-	<select id="getReccomed" resultType="java.lang.Integer">
-		select count(*) from RECOMMAND
+	<select id="getReccomed" parameterType="com.tm.nmp.board.Reccomand" resultType="java.lang.Integer">
+		select count(*) from RECOMMAND where post_id = #{post_id}
 	</select>
 	
 </mapper>
