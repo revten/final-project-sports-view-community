@@ -2,13 +2,16 @@ package com.tm.nmp.board;
 
 import java.util.List;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.apache.ibatis.session.SqlSession;
 import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.sun.mail.iap.Response;
 import com.tm.nmp.account.AccountDTO;
 
 import jdk.internal.org.jline.reader.Parser;
@@ -240,11 +243,42 @@ public class BoardDAO {
 		
 	}
 
+	
 	public void postCountUpdate(HttpServletRequest req, PostVO p) {
+	
+		/*Cookie[] cookies = req.getCookies();
+		int visitor = 0;
+		
+		for (Cookie cookie : cookies) {
+			System.out.println(cookie.getName());
+			if(cookie.getName().equals("visit")) {
+				visitor = 1;
+				
+				System.out.println("visit 통과");
+			
+			if (cookie.getValue().contains(req.getParameter("id"))) {
+				System.out.println("visitif 통과");
+			} else {
+				cookie.setValue(cookie.getValue()+ "-" + req.getParameter("id"));
+				res.addCookie(cookie);
+				
+				ss.getMapper(BoardMapper.class).postCountUpdate(p);
+			}
+		}
+	}
+		
+		if(visitor == 0) {
+			Cookie cookie1 = new Cookie("visit", req.getParameter("id"));
+			res.addCookie(cookie1);
+			
+			ss.getMapper(BoardMapper.class).postCountUpdate(p);
+		}
+		 */
 		if(ss.getMapper(BoardMapper.class).postCountUpdate(p) == 1) {
 			req.setAttribute("result", "조회수 성공");
 		}else {
 			req.setAttribute("result", "조회수 실패");
 		}
-	}
+		}
+	
 }

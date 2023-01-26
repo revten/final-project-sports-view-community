@@ -1,14 +1,17 @@
 package com.tm.nmp.fan;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.sun.mail.iap.Response;
 import com.tm.nmp.TokenMaker;
 import com.tm.nmp.account.AC_US_DAO;
+import com.tm.nmp.account.AccountDTO;
 import com.tm.nmp.board.BoardDAO;
 import com.tm.nmp.board.BoardOption;
 import com.tm.nmp.board.BoardSelector;
@@ -40,7 +43,10 @@ public class BasketballController {
 		BoardOption.clearSearch(req);
 		acDAO.wathingPage(req);
 		acDAO.loginCheck(req);
-		brDAO.postCountUpdate(req,p);
+		AccountDTO a = (AccountDTO) req.getSession().getAttribute("loginAccount");
+		if (!(req.getParameter("post_member").equals(a.getMember_id()))) {
+			brDAO.postCountUpdate(req, p);
+		}
 		brDAO.getPost(req, p);
 		req.setAttribute("contentPage", "fan/basketball/basketballDetail.jsp");
 		return "index";
@@ -153,7 +159,5 @@ public class BasketballController {
 		req.setAttribute("contentPage", "fan/basketball/basketballDetail.jsp");
 		return "index";
 	}
-	
-	
 
 }

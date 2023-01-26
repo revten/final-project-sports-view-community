@@ -12,19 +12,3 @@ function deleteMessage(n) {
 	}
 }
 
-function connectCommunityMemberSummonEvent() {
-	var communityMemberVisible = false;
-
-	$("#messageMemberSummoner").click(function() {
-		if (communityMemberVisible) {
-			$("#messageMemberArea").css("bottom", "-500px");
-		} else {
-			$("#messageMemberArea").css("bottom", "10px");
-		}
-		communityMemberVisible = !communityMemberVisible;
-	});
-}
-
-$(function() {
-	connectCommunityMemberSummonEvent();
-});
