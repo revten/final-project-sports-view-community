@@ -279,6 +279,6 @@ public class BoardDAO {
 		}else {
 			req.setAttribute("result", "조회수 실패");
 		}
-		}
+	}
 	
 }
