@@ -27,8 +27,9 @@ public class BaseballController {
 	@RequestMapping(value = "baseball.board.go", method = RequestMethod.GET)
 	public String baseballBoardGO(HttpServletRequest req) {
 		TokenMaker.make(req);
+		int post_board = Integer.parseInt(req.getParameter("post_board"));
 		acDAO.loginCheck(req);
-		brDAO.getAllPost(req, 1, 21);
+		brDAO.getAllPost(req, 1, post_board);
 		
 		req.setAttribute("contentPage", "fan/baseball/baseballBoard.jsp");
 		return "index";

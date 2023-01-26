@@ -7,13 +7,6 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<script>
-	$(function() {
-		CKEDITOR.replace('editor', {
-			filebrowserUploadUrl : 'fileupload.do',
-		});
-	});
-</script>
 
 </head>
 
@@ -55,21 +48,17 @@
 		</div>
 
 		<div class="post__bot">
+
 			<button class="post__bot-btn" onclick="history.back()">이전으로</button>
 			<c:choose>
 				<c:when
 					test="${sessionScope.loginAccount.member_id eq post.post_member}">
 					<c:choose>
 						<c:when test="${sessionScope.loginAccount eq null}">
-							<button onclick="alert('로그인하세요')">추천</button>
 							<button onclick="alert('로그인하세요')">수정</button>
 							<button onclick="alert('로그인하세요')">삭제</button>
 						</c:when>
 						<c:otherwise>
-						<button class="w3-button w3-black w3-round" id="rec_update">
-						<i class="fa fa-heart" style="font-size:16px;color:red">추천</i>
-						&nbsp;<span class="rec_count"></span>
-							</button> 
 							<button class="post__bot-btn"
 								onclick="location.href='soccer.update.go?post_id=${post.post_id}&post_member=${post.post_member}'">수정</button>
 							<button class="post__bot-btn"
@@ -77,11 +66,23 @@
 						</c:otherwise>
 					</c:choose>
 				</c:when>
+				<c:otherwise>
+					<c:choose>
+						<c:when test="${sessionScope.loginAccount eq null}">
+							<button id="LikeBtn" onclick="alert('로그인하세요')">추천</button>
+						</c:when>
+
+						<c:otherwise>
+							<button id="LikeBtn"
+								onclick="likeCheck(${likeCheck}, ${post.post_id}, ${sessionScope.loginAccount.member_id})">추천</button>
+						</c:otherwise>
+					</c:choose>
+				</c:otherwise>
 			</c:choose>
 		</div>
-		
+
 	</section>
-	
+
 
 
 	<!--==================== 댓글 ====================-->
@@ -99,8 +100,10 @@
 
 						<c:if
 							test="${pr.reply_member == sessionScope.loginAccount.member_id }">
-							<button onclick="updateReply(${pr.reply_id},${post.post_id},'${post.post_member}');">수정-ajax처리하기</button>
-							<button onclick="deleteReply(${pr.reply_id},${post.post_id},'${post.post_member}');">삭제-ajax처리하기</button>
+							<button
+								onclick="updateReply(${pr.reply_id},${post.post_id},'${post.post_member}');">수정-ajax처리하기</button>
+							<button
+								onclick="deleteReply(${pr.reply_id},${post.post_id},'${post.post_member}');">삭제-ajax처리하기</button>
 						</c:if>
 						<br>
 					</c:forEach> <c:if test="${sessionScope.loginAccount != null }">
@@ -109,10 +112,10 @@
 							<span> ${sessionScope.loginAccount.member_nick } </span> <input
 								type="hidden" name="token" value="${token }"> <input
 								type="hidden" name="reply_post" value="${post.post_id}">
-							<input type="hidden" name="reply_board" value="${post.post_board}"> 
-							<input type="hidden" name="post_member" value="${post.post_member}"> 
-							<input type="hidden" name="post_id" value="${post.post_id}"> 
-							<input
+							<input type="hidden" name="reply_board"
+								value="${post.post_board}"> <input type="hidden"
+								name="post_member" value="${post.post_member}"> <input
+								type="hidden" name="post_id" value="${post.post_id}"> <input
 								type="hidden" name="pg" value="${curPage }"> <input
 								name="reply_content" maxlength="80" autocomplete="off" required>
 							<button>쓰기-ajax처리</button>
@@ -122,60 +125,5 @@
 		</table>
 	</section>
 	</main>
-
-	<script>
-	$(function(){
-		
-		let post_id =   ${post.post_id};
-		let member_id = '${sessionScope.loginAccount.member_id}';
-		// 추천버튼 클릭시(추천 추가 또는 추천 제거)
-		$("#rec_update").click(function(){
-			$.ajax({
-				url: "Recommand.do",
-                type: "POST",
-                data: {
-                    post_id: post_id,
-                    member_id: member_id
-                },
-                success: function () {
-                	console.log('성공')
-                }
-			        recCount();
-                },
-			})
-		})
-		
-		// 게시글 추천수
-	    function recCount() {
-			$.ajax({
-				url: "/expro/RecCount.do",
-                type: "POST",
-                data: {
-                    post_id: ${post.post_id}
-                },
-                success: function (count) {
-                	$(".rec_count").html(count);
-                },
-			})
-	    };
-	    recCount(); // 처음 시작했을 때 실행되도록 해당 함수 호출
-
-// 본문
-function deletePost(n) {
-	let ok = confirm("복구는 불가능합니다. 정말 삭제하시겠습니까?");
-		if (ok) {
-			location.href = "post.delete.do?post_id=" + n;
-	}
-}
-
-	
-function deleteReply(n, pid, pm) {
-	let ok = confirm("정말삭제합니까??");
-	if (ok) {
-		location.href = "soccerReply.delete.do?reply_id=" + n + "&post_id=" + pid + "&post_member=" + pm;
-	}
-}
-
-</script>
 </body>
 </html>

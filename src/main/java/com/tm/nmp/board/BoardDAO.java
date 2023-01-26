@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.tm.nmp.account.AccountDTO;
+import com.tm.nmp.account.AccountMapper;
 
 import jdk.internal.org.jline.reader.Parser;
 
@@ -37,7 +38,7 @@ public class BoardDAO {
 		allPostCount = ss.getMapper(BoardMapper.class).calcAllPostCount(bSel);
 	}
 
-	public void getAllPost(HttpServletRequest req, int pageNbr, int board_id) {
+	public void getAllPost(HttpServletRequest req, int pageNbr, int post_board) {
 
 		int count = bo.getCountPerPage();
 		int start = (pageNbr - 1) * count + 1;
@@ -47,7 +48,7 @@ public class BoardDAO {
 		int postCount = 0;
 
 		if (search == null) {
-			search = new BoardSelector("", start, end, board_id);
+			search = new BoardSelector("", start, end, post_board);
 			postCount = allPostCount;
 		} else {
 			search.setStart(start);
@@ -146,7 +147,7 @@ public class BoardDAO {
 			req.setAttribute("result", "글수정 실패");
 		}
 	}
-	
+
 	public void deletePost(HttpServletRequest req, PostVO p) {
 		if (ss.getMapper(BoardMapper.class).deletePost(p) == 1) {
 			req.setAttribute("result", "글삭제 성공");
@@ -163,11 +164,11 @@ public class BoardDAO {
 		if (successToken != null && token.equals(successToken)) {
 			return;
 		}
-		
+
 		String regIp = getClientIp(req);
 		System.out.println(regIp);
 		rp.setReply_reg_ip(regIp);
-		
+
 		AccountDTO ac = (AccountDTO) req.getSession().getAttribute("loginAccount");
 		rp.setReply_member(ac.getMember_id());
 
@@ -216,29 +217,32 @@ public class BoardDAO {
 		return req.getRemoteAddr();
 	}
 
-	public JSONObject recommand(HttpServletRequest req, Reccomand rec, int post_id, String member_id) {
-		
-		try {
-			rec.setPost_id(post_id);
-			rec.setMember_id(member_id);
-			if(ss.getMapper(BoardMapper.class).AddRecommand(rec)==1) {
-				System.out.println("추천성공");
-			}else {
-				System.out.println("실패...");
-			}
-			// int rCount = ss.getMapper(BoardMapper.class).getReccomed(rec);
-			// String rCountString = Integer.toString(rCount);
-			// JSONObject count = (JSONObject) rCountStirng;
-			
-			// return count;
-			
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		
-		
-		return null;
-		
-		
+	// 좋아요를 누른 회원인지 아닌지 체크하기
+	public void likeCheck(HttpServletRequest req, PostVO p) {
+		AccountDTO ac = (AccountDTO) req.getSession().getAttribute("loginAccount");
+		LikeVO lk = new LikeVO();
+		lk.setLike_member(ac.getMember_id());
+		lk.setLike_post(p.getPost_id());
+		int likeCheck = ss.getMapper(BoardMapper.class).likeCheck(lk);
+		System.out.println("likeCheck: " + likeCheck);
+		req.setAttribute("likeCheck", likeCheck);
+
 	}
+
+	public void likeUp(HttpServletRequest req, LikeVO lk) {
+		if (ss.getMapper(BoardMapper.class).likeUp(lk) == 1) {
+			req.setAttribute("result", "댓글수정 성공");
+		} else {
+			req.setAttribute("result", "댓글수정 실패");
+		}
+	}
+
+	public void likeDown(HttpServletRequest req, LikeVO lk) {
+		if (ss.getMapper(BoardMapper.class).likeDown(lk) == 1) {
+			req.setAttribute("result", "댓글수정 성공");
+		} else {
+			req.setAttribute("result", "댓글수정 실패");
+		}
+	}
+
 }

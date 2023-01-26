@@ -120,12 +120,6 @@
 	<script>
 
 // 본문
-function deletePost(n) {
-	let ok = confirm("복구는 불가능합니다. 정말 삭제하시겠습니까?");
-		if (ok) {
-			location.href = "post.delete.do?post_id=" + n;
-	}
-}
 
 	
 function deleteReply(n, pid, pm) {

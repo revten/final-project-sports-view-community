@@ -2,12 +2,10 @@ package com.tm.nmp.fan;
 
 import javax.servlet.http.HttpServletRequest;
 
-import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.tm.nmp.TokenMaker;
 import com.tm.nmp.account.AC_US_DAO;
@@ -15,7 +13,6 @@ import com.tm.nmp.board.BoardDAO;
 import com.tm.nmp.board.BoardOption;
 import com.tm.nmp.board.BoardSelector;
 import com.tm.nmp.board.PostVO;
-import com.tm.nmp.board.Reccomand;
 import com.tm.nmp.board.ReplyVO;
 import com.tm.nmp.point.PlusPointVO;
 import com.tm.nmp.point.PointDAO;
@@ -48,7 +45,9 @@ public class SoccerController {
 		TokenMaker.make(req);
 		BoardOption.clearSearch(req);
 		acDAO.wathingPage(req);
-		acDAO.loginCheck(req);
+		if(acDAO.loginCheck(req)) {
+			brDAO.likeCheck(req, p); // 이미 추천한 게시물인지 체크하기
+		}
 		brDAO.getPost(req, p);
 		req.setAttribute("contentPage", "fan/soccer/soccerDetail.jsp");
 		return "index";
@@ -164,22 +163,6 @@ public class SoccerController {
 		return "index";
 	}
 	
-	@RequestMapping(value = "Recommand.do", method = RequestMethod.POST, produces = "application/json; charset=utf-8")
-	public @ResponseBody JSONObject RecUpdate(HttpServletRequest req, Reccomand rec) {
-		int post_id = Integer.parseInt(req.getParameter("post_id"));
-		String member_id = req.getParameter("member_id");
-		
-		return brDAO.recommand(req, rec, post_id, member_id);
-	}
-	
-	
-	@RequestMapping(value = "/expro/RecCount.do", method = RequestMethod.POST)
-	public String RecCount(HttpServletRequest req, ReplyVO rp, PostVO p) {
-		
-		req.setAttribute("contentPage", "fan/soccer/soccerDetail.jsp");
-		return "index";
-	}
-	
-	
+
 
 }

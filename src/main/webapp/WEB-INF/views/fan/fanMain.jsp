@@ -17,7 +17,7 @@
 	<br>
 	<div id="community_area">
 		<ul id="community_list">
-			<li><a style="cursor: pointer" href="baseball.board.go">야구
+			<li><a style="cursor: pointer" href="post.board.go?post_board=21">야구
 					게시판</a></li>
 			<li><a style="cursor: pointer" href="soccer.board.go">축구
 					게시판</a></li>

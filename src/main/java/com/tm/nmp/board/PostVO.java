@@ -6,7 +6,7 @@ import java.util.List;
 public class PostVO {
 	int post_id; // PK
 	int post_board; // 게시판FK
-	String post_member; // 회원 FK
+	String post_member; // 글을 작성한 회원 FK
 	int post_sports; // null 가능
 	int post_league; // null 가능
 	int post_club; // null 가능
