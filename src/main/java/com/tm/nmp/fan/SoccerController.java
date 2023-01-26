@@ -164,12 +164,12 @@ public class SoccerController {
 		return "index";
 	}
 	
-	@RequestMapping(value = "/expro/RecUpdate.do", method = RequestMethod.POST, produces = "application/json; charset=utf-8")
+	@RequestMapping(value = "Recommand.do", method = RequestMethod.POST, produces = "application/json; charset=utf-8")
 	public @ResponseBody JSONObject RecUpdate(HttpServletRequest req, Reccomand rec) {
-		int boardNo = Integer.parseInt(req.getParameter("no"));
-		String memberId = req.getParameter("id");
+		int post_id = Integer.parseInt(req.getParameter("post_id"));
+		String member_id = req.getParameter("member_id");
 		
-		return brDAO.recommand(req, rec, boardNo, memberId);
+		return brDAO.recommand(req, rec, post_id, member_id);
 	}
 	
 	
