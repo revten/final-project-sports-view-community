@@ -2,19 +2,14 @@ package com.tm.nmp.board;
 
 import java.util.List;
 
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
 import org.apache.ibatis.session.SqlSession;
 import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.sun.mail.iap.Response;
 import com.tm.nmp.account.AccountDTO;
-
-import jdk.internal.org.jline.reader.Parser;
 
 @Service
 public class BoardDAO {
@@ -272,8 +267,8 @@ public class BoardDAO {
 			res.addCookie(cookie1);
 			
 			ss.getMapper(BoardMapper.class).postCountUpdate(p);
-		}
-		 */
+		}*/
+		 
 		if(ss.getMapper(BoardMapper.class).postCountUpdate(p) == 1) {
 			req.setAttribute("result", "조회수 성공");
 		}else {
