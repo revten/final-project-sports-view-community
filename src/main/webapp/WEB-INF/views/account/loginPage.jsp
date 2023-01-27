@@ -57,6 +57,14 @@
 			<!-- 네이버로그인 -->
 			<div id="naver_id_login" style="cursor: pointer"></div>
 
+<<<<<<< HEAD
+        <br />
+      </form>
+      <div id="SNS-login-area">
+        <!-- 카카오로그인 -->
+        <a onclick="kakaoLogin()"> <img style="cursor:pointer"
+				src="https://www.myro.co.kr/myro_image/kakaolink_btn.png" width="40" /></a>
+=======
 			<!-- 구글로그인 -->
 			<div id="g_id_onload"
 				data-client_id="567208941336-p92o44c3gigs2a282rhro3p6vni5fetb.apps.googleusercontent.com"
@@ -69,6 +77,7 @@
 		</div>
 		<a class="regBtn" href="account.reg.go">회원가입</a>
 	</div>
+>>>>>>> 4295b384caa963e9d83998079efd3edcb2de1c12
 
 	<script>
       /* 카카오로그인 */

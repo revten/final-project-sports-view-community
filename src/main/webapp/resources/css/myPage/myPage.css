@@ -69,10 +69,10 @@ body:before {
 }*/
 
 .myPage_container {
-	margin-top: 15vh;
+	margin-top: 20vh;
 	background-color: hsl(1, 1%, 93%);
-	max-width: 1240px;
-	max-height: 900px;
+	max-width: 1024px;
+	max-height: 800px;
 	display: flex;
 	overflow: hidden;
 	width: 100%;
@@ -84,7 +84,7 @@ body:before {
 }
 
 #infomation {
-	background-color: #6c5ecf;
+	background-color: #06113C;
 	border: 0;
 	color: #fff;
 	font-size: 13px;
@@ -99,11 +99,50 @@ body:before {
 	transition: 0.3s;
 }
 
+#information{
+	margin-top: 7vh;
+	background-color: #06113C;
+	border: 0;
+	color: #fff;
+	font-size: 13px;
+	display: flex;
+	padding: 0 10px;
+	align-items: center;
+	justify-content: center;
+	height: 40px;
+	border-radius: 10px;
+	cursor: pointer;
+	transition: 0.3s;
+}
+
 .point-container{
-	border: none;
-	background-color: #fff;
+	border: 0;
+	background-color: hsl(1, 1%, 95%);
 	border-radius: 8px;
 	box-shadow: 0 0 0 2px rgba(134, 140, 160, 0.02);
+    width: 30vw;
+    height: 35vh;
+    border: 2px solid black;
+    border-radius: 15px;
+}
+
+.modify-container{
+	border: 0;
+	background-color: hsl(1, 1%, 95%);
+	border-radius: 8px;
+	box-shadow: 0 0 0 2px rgba(134, 140, 160, 0.02);
+    width: 30vw;
+    height: 75vh;
+    border: 2px solid black;
+    border-radius: 15px;
+}
+
+#my-text{
+	margin-top: 3vw;
+}
+
+#my-point{
+	margin-top: 5vw;	
 }
 
 .sidebar {
@@ -134,7 +173,8 @@ body:before {
 	text-decoration: none;
 	color: hsl(19, 16%, 35%);
 	font-size: 19px;
-	font-weight: 600;
+	font-weight: var(--font-medium);
+	font-size: var(--h4-font-size);
 	line-height: 34px;
 	position: sticky;
 	top: 0;
@@ -153,7 +193,8 @@ body:before {
 
 .sidebar-link:hover, .sidebar-link.is-active {
 	color: hsl(19, 16%, 35%);
-	font-weight: 600;
+	font-weight: var(--font-medium);
+	font-size: var(--h4-font-size);
 }
 
 .sidebar-link:hover:nth-child(2n+1) svg, .sidebar-link.is-active:nth-child(2n+1) svg
@@ -386,6 +427,8 @@ none
 }
 
 .main-container {
+	margin-top: 12vh;
+	margin-left: 10vw;
 	display: flex;
 	flex-direction: column;
 	padding: 0 30px 30px;
