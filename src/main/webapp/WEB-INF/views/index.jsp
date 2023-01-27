@@ -7,9 +7,6 @@
 <meta charset="UTF-8" />
 <title>Enjoy Sports</title>
 
-<!--=============== [CSS CDN]===============-->
-<link rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/flickity/1.0.0/flickity.css" />
 <!-- --------------- FAVICON --------------- -->
 <link rel="shortcut icon" href="resources/files/home/favicon.png"
 	type="image/x-icon" />
@@ -19,9 +16,20 @@
 	href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css"
 	rel="stylesheet" />
 
+<!--=============== [CSS CDN]===============-->
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/flickity/1.0.0/flickity.css" />
+<link rel="stylesheet"
+	href="//cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
+
 <!--=============== [JS CDN] ===============-->
+<!-- watch페이지 -->
 <script
-	src="https://cdnjs.cloudflare.com/ajax/libs/flickity/1.0.0/flickity.pkgd.js"></script><!-- watch페이지 -->
+	src="https://cdnjs.cloudflare.com/ajax/libs/flickity/1.0.0/flickity.pkgd.js"></script>
+<script src="//cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
+<script src="//cdn.ckeditor.com/4.19.0/full/ckeditor.js"></script>
+<script type="text/javascript"
+	src="${pageContext.request.contextPath}/resources/ckeditor/ckeditor.js"></script>
 
 <!-- --------------- Jquerry --------------- -->
 <script src="https://code.jquery.com/jquery-3.6.3.min.js"
@@ -35,6 +43,7 @@
 <!-- --------------- SCROLLREVEAL --------------- -->
 <script src="https://unpkg.com/scrollreveal"></script>
 
+
 <!--=============== [CSS MEMBER]===============-->
 <link rel="stylesheet" href="resources/css/index.css" />
 <link rel="stylesheet" href="resources/css/account/account.css" />
@@ -43,24 +52,9 @@
 <link rel="stylesheet" href="resources/css/news/news.css" />
 <link rel="stylesheet" href="resources/css/map/map.css" />
 <link rel="stylesheet" href="resources/css/stadium/stadium.css" />
-<link rel="stylesheet"
-	href="//cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
 <link rel="stylesheet" href="resources/css/message/message.css" />
-<!--=============== [JS MEMBER]===============-->
-<script src="resources/js/account/account_go.js"></script>
-<script src="resources/js/account/account_condition.js"></script>
-<script src="resources/js/stadium/stadium_go.js"></script>
-<script src="resources/js/stadium/seat_detail.js"></script>
-<script src="resources/js/community/community_go.js"></script>
-<script src="resources/js/myPage/myPage.js"></script>
-<script src="resources/js/news/paging.js"></script>
-<script src="resources/js/board/boardCheck.js"></script>
-<script src="resources/js/message/message_go.js"></script>
+<link rel="stylesheet" href="resources/css/watch/watchMain.css" />
 
-<script src="//cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
-<script src="//cdn.ckeditor.com/4.19.0/full/ckeditor.js"></script>
-<script type="text/javascript"
-	src="${pageContext.request.contextPath}/resources/ckeditor/ckeditor.js"></script>
 <!-- ---------------------------------------------------------------------------- -->
 </head>
 
@@ -209,5 +203,16 @@
 
 	<!--=============== MAIN JS ===============-->
 	<script src="resources/js/index.js"></script>
+
+	<!--=============== [JS MEMBER]===============-->
+	<script src="resources/js/account/account_go.js"></script>
+	<script src="resources/js/account/account_condition.js"></script>
+	<script src="resources/js/stadium/stadium_go.js"></script>
+	<script src="resources/js/stadium/seat_detail.js"></script>
+	<script src="resources/js/community/community_go.js"></script>
+	<script src="resources/js/myPage/myPage.js"></script>
+	<script src="resources/js/news/paging.js"></script>
+	<script src="resources/js/board/fanBoard.js"></script>
+	<script src="resources/js/message/message_go.js"></script>
 </body>
 </html>

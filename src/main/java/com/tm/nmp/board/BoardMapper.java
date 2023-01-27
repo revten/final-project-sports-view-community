@@ -23,11 +23,10 @@ public interface BoardMapper {
 
 	int updateReply(ReplyVO rp);
 
-	int AddRecommand(Reccomand rec);
+	int likeCheck(LikeVO lk);
 
-	int getReccomed(Reccomand rec);
-	
-	
-	
-	
+	int likeUp(LikeVO lk);
+
+	int likeDown(LikeVO lk);
+
 }
