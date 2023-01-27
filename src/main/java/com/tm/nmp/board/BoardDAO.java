@@ -2,7 +2,9 @@ package com.tm.nmp.board;
 
 import java.util.List;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -330,7 +332,7 @@ public class BoardDAO {
 
 	}
 
-<<<<<<< HEAD
+
 	
 	public void postCountUpdate(HttpServletRequest req, HttpServletResponse res, PostVO p) {
 	
@@ -366,7 +368,7 @@ public class BoardDAO {
 
 	
 	
-=======
+
 	public void likeUp(HttpServletRequest req, LikeVO lk) {
 		if (ss.getMapper(BoardMapper.class).likeUp(lk) == 1) {
 			req.setAttribute("result", "댓글수정 성공");
@@ -383,5 +385,5 @@ public class BoardDAO {
 		}
 	}
 
->>>>>>> 63aca0099f801d778d34eb210ecc8d13e6acb0bc
+
 }
