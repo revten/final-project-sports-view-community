@@ -6,7 +6,7 @@ import java.util.List;
 public class PostVO {
 	int post_id; // PK
 	int post_board; // 게시판FK
-	String post_member; // 회원 FK
+	String post_member; // 글을 작성한 회원 FK
 	int post_sports; // null 가능
 	int post_league; // null 가능
 	int post_club; // null 가능
@@ -20,7 +20,7 @@ public class PostVO {
 	int post_hit_count; // 글 조회수 not null
 	int post_like_count; // 글 추천수 not null
 	int post_scrap_count; // 글 스크랩수 not null
-	int post_comment_count; // 글 댓글수 not null
+	int post_reply_count; // 글 댓글수 not null
 	String post_reg_ip; // 글 작성 ip not null
 
 	String member_nick; // 다른 테이블에서 관계형으로 닉네임을 가져와 게시판에 보여줄 항목이라 미리 만들어둠
@@ -39,7 +39,7 @@ public class PostVO {
 	public PostVO(int post_id, int post_board, String post_member, int post_sports, int post_league, int post_club,
 			String post_title, int post_category, String post_content, Date post_reg_date, Date post_update_date,
 			String post_img, String post_file, int post_hit_count, int post_like_count, int post_scrap_count,
-			int post_comment_count, String post_reg_ip, String member_nick, String sports_name, String club_name,
+			int post_reply_count, String post_reg_ip, String member_nick, String sports_name, String club_name,
 			String league_name, List<ReplyVO> replies) {
 		super();
 		this.post_id = post_id;
@@ -58,7 +58,7 @@ public class PostVO {
 		this.post_hit_count = post_hit_count;
 		this.post_like_count = post_like_count;
 		this.post_scrap_count = post_scrap_count;
-		this.post_comment_count = post_comment_count;
+		this.post_reply_count = post_reply_count;
 		this.post_reg_ip = post_reg_ip;
 		this.member_nick = member_nick;
 		this.sports_name = sports_name;
@@ -195,12 +195,12 @@ public class PostVO {
 		this.post_scrap_count = post_scrap_count;
 	}
 
-	public int getPost_comment_count() {
-		return post_comment_count;
+	public int getPost_reply_count() {
+		return post_reply_count;
 	}
 
-	public void setPost_comment_count(int post_comment_count) {
-		this.post_comment_count = post_comment_count;
+	public void setPost_reply_count(int post_reply_count) {
+		this.post_reply_count = post_reply_count;
 	}
 
 	public String getPost_reg_ip() {
