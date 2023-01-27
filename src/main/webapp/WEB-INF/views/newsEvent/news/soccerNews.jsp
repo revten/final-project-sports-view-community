@@ -15,7 +15,7 @@
 	<br>
 	<br>
 	<br>
-	
+	<br>
 	<div class="nav__menu" id="nav-menu" style="width:55%;align:center;">
 				<ul class="nav__list">
 					<li class="nav__item"><a href="newsEvent.main.go"
@@ -31,17 +31,17 @@
 
 				</ul>
 		</div>
-
-		<div>
+		<br><br>
+		<div class="div_news">
 		<div style="float:left; width: 200px;">
 		<div class="div_news_go"><a href="news.soccer.go" class="news_go">축구</a></div>
 		<div class="div_news_go"><a href="news.baseball.go" class="news_go">야구</a></div>
 		<div class="div_news_go"><a href="news.basketball.go" class="news_go">농구</a></div>
 		<div class="div_news_go"><a href="news.volleyball.go" class="news_go">배구</a></div>
 		</div>
-		<div style="margin-left: 200px;">
+		<div class="div_news_content">
 		<div id="data-container"></div>
-		<div id="pagination" style="margin-left: 30%;"></div>
+		<div id="pagination" style="margin-left: 29%;"></div>
 		</div>
 		</div>
 	<script type="text/javascript">
@@ -76,7 +76,7 @@
 												+ "</span><div class='title'>"
 												+ "<a href='"+ i.link + "'><span class='newsTitle'>"
 												+ i.title
-												+ "</span></a><div class='hiddenMsg'><span>⬅ </span></div>"
+												+ "</span></a><div class='hiddenMsg'><span> </span></div>"
 												+ "</div><span class='newsContent'>"
 												+ i.description
 												+ "</span></div>";

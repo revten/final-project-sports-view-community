@@ -17,17 +17,17 @@
 		style="position: relative; display: flex; flex-direction: column; justify-content: center; align-items: center; width: 1000px; height: 1000px;">
 		<div style="display: inline-block; align-items: flex-start;">
 			<img id="seat" usemap="#workmap"
-				style="position: relative; width: 500px; height: 500px; margin: 300px 0px 10px 0px;"
+				style="position: relative; width: 1024px; height: 800px; margin: 300px 0px 10px 0px;"
 				src="resources/files/stadium/soccer/seating_chart/${seat}"><br>
 			<map name="workmap">
 				<area style="cursor: pointer;" class="imgArea" id="12"
-					coords="73,0,432,114" shape="rect">
+					coords="-1,273,1023,0" shape="rect">
 				<area style="cursor: pointer;" class="imgArea" id="9"
-					coords="1,117,138,371" shape="rect">
+					coords="0,274,410,560" shape="rect">
 				<area style="cursor: pointer;" class="imgArea" id="3"
-					coords="364,117,499,371" shape="rect">
+					coords="609,273,1023,561" shape="rect">
 				<area style="cursor: pointer;" class="imgArea" id="6"
-					coords="84,373,419,498" shape="rect">
+					coords="-1,561,1023,795" shape="rect">
 			</map>
 			<button id="reserveBtn">예매하러 가기</button>
 			<!-- map div -->
@@ -51,14 +51,14 @@
 	<br>
 	<br>
 	<br>
-	<!-- 스크롤 이동  -->
+	<!-- 스크롤 이동  
 	<script>
 		$(document).ready(function() {
 			$('html, body').animate({
 				scrollTop : $('#start').offset().top
 			});
 		});
-	</script>
+	</script>-->
 	<!-- 가이드 라인
 	<script>
 	$(".imgArea").mouseover(function() {
@@ -77,12 +77,11 @@
 	</script>
 	<!-- 전경 -->
 	<script type="text/javascript">
-		$('.imgArea').click(function() {
+		$('.imgArea').mouseover(function() {
 			let areaId = $(this).attr("id");
 			let imgName = "#test_" + areaId;
 			$(imgName).toggle('slow');
 		});
-
 		/*$(".imgArea").mouseover(function() {
 		 let areaId = $(this).attr("id");
 		 let imgName = "#test_"+areaId;
@@ -96,6 +95,13 @@
 		 console.log(imgName);
 		 $(imgName).css("display", "none");
 		 });*/
+	</script>
+	<script>
+		$('.imgArea').mouseleave(function() {
+			let areaId = $(this).attr("id");
+			let imgName = "#test_" + areaId;
+			$(imgName).toggle('slow');
+		});
 	</script>
 	<!-- ------------------map---------------------  -->
 	<script type="text/javascript"
