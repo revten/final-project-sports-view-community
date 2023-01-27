@@ -2,12 +2,9 @@ package com.tm.nmp.board;
 
 import java.util.List;
 
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
 import org.apache.ibatis.session.SqlSession;
-import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -31,13 +28,63 @@ public class BoardDAO {
 	public void setallPostCount(int allPostCount) {
 		this.allPostCount = allPostCount;
 	}
+	
+	private int withGo;
+	private int review;
+	private int baseball;
+	private int soccer;
+	private int basketball;
+	private int volleyball;
+	private int analyze;
+	private int clubEvent;
 
-	public void calcAllPostCount(int board_id) {
-		BoardSelector bSel = new BoardSelector("", 0, 0, board_id);
-		allPostCount = ss.getMapper(BoardMapper.class).calcAllPostCount(bSel);
+	public void calcAllPostCount() {
+		BoardSelector bSelWithGo = new BoardSelector("", 0, 0, 11);
+		withGo = ss.getMapper(BoardMapper.class).calcAllPostCount(bSelWithGo);
+		BoardSelector bSelReview = new BoardSelector("", 0, 0, 12);
+		review = ss.getMapper(BoardMapper.class).calcAllPostCount(bSelReview);
+		BoardSelector bSelBaseBall = new BoardSelector("", 0, 0, 21);
+		baseball = ss.getMapper(BoardMapper.class).calcAllPostCount(bSelBaseBall);
+		BoardSelector bSelSoccer = new BoardSelector("", 0, 0, 22);
+		soccer = ss.getMapper(BoardMapper.class).calcAllPostCount(bSelSoccer);
+		BoardSelector bSelBasketball = new BoardSelector("", 0, 0, 23);
+		basketball = ss.getMapper(BoardMapper.class).calcAllPostCount(bSelBasketball);
+		BoardSelector bSelVolley = new BoardSelector("", 0, 0, 24);
+		volleyball = ss.getMapper(BoardMapper.class).calcAllPostCount(bSelVolley);
+		BoardSelector bSelAnalyze = new BoardSelector("", 0, 0, 41);
+		analyze = ss.getMapper(BoardMapper.class).calcAllPostCount(bSelAnalyze);
+		BoardSelector bSelClubEvent = new BoardSelector("", 0, 0, 31);
+		clubEvent = ss.getMapper(BoardMapper.class).calcAllPostCount(bSelClubEvent);
 	}
-
-	public void getAllPost(HttpServletRequest req, int pageNbr, int board_id) {
+	
+	public void getAllPost(HttpServletRequest req, int pageNbr, int post_board) {
+		
+		switch (post_board) {
+		case 11:
+			allPostCount = withGo;
+			break;
+		case 12:
+			allPostCount = review;
+			break;
+		case 21:
+			allPostCount = baseball;
+			break;
+		case 22:
+			allPostCount = soccer;
+			break;
+		case 23:
+			allPostCount = basketball;
+			break;
+		case 24:
+			allPostCount = volleyball;
+			break;
+		case 41:
+			allPostCount = analyze;
+			break;
+		case 31:
+			allPostCount = clubEvent;
+			break;
+		}
 
 		int count = bo.getCountPerPage();
 		int start = (pageNbr - 1) * count + 1;
@@ -47,7 +94,7 @@ public class BoardDAO {
 		int postCount = 0;
 
 		if (search == null) {
-			search = new BoardSelector("", start, end, board_id);
+			search = new BoardSelector("", start, end, post_board);
 			postCount = allPostCount;
 		} else {
 			search.setStart(start);
@@ -107,12 +154,38 @@ public class BoardDAO {
 		}
 
 		// 위 split 내용을 wg_img 컬럼에 set해준 것
-
 //		p.setPost_content(p_txt.replace("\r\n", "<br>"));
-
+		
+		int post_board = p.getPost_board();
+		System.out.println(post_board);
 		if (ss.getMapper(BoardMapper.class).regPost(p) == 1) {
 			System.out.println("글 등록 성공");
-			allPostCount++;
+			switch (post_board) {
+			case 11:
+				withGo++;
+				break;
+			case 12:
+				review++;
+				break;
+			case 21:
+				baseball++;
+				break;
+			case 22:
+				soccer++;
+				break;
+			case 23:
+				basketball++;
+				break;
+			case 24:
+				volleyball++;
+				break;
+			case 41:
+				analyze++;
+				break;
+			case 31:
+				clubEvent++;
+				break;
+			}
 		} else {
 			System.err.println("글 등록 실패");
 		}
@@ -126,7 +199,7 @@ public class BoardDAO {
 
 		String str = p.getPost_content();
 		System.out.println("전체 경로 :" + str);
-
+		
 		if (str.contains("img")) {
 			String[] contentSplit = str.split("/");
 			String topSplit = contentSplit[5];
@@ -139,18 +212,45 @@ public class BoardDAO {
 		} else {
 			p.setPost_img("");
 		}
-
+		
 		if (ss.getMapper(BoardMapper.class).updatePost(p) == 1) {
 			req.setAttribute("result", "글수정 성공");
 		} else {
 			req.setAttribute("result", "글수정 실패");
 		}
 	}
-	
+
 	public void deletePost(HttpServletRequest req, PostVO p) {
+		int post_board = p.getPost_board();
+		System.out.println(post_board);
 		if (ss.getMapper(BoardMapper.class).deletePost(p) == 1) {
 			req.setAttribute("result", "글삭제 성공");
-			allPostCount--;
+			switch (post_board) {
+			case 11:
+				withGo--;
+				break;
+			case 12:
+				review--;
+				break;
+			case 21:
+				baseball--;
+				break;
+			case 22:
+				soccer--;
+				break;
+			case 23:
+				basketball--;
+				break;
+			case 24:
+				volleyball--;
+				break;
+			case 41:
+				analyze--;
+				break;
+			case 31:
+				clubEvent--;
+				break;
+			}
 		} else {
 			req.setAttribute("result", "글삭제실패");
 		}
@@ -163,11 +263,11 @@ public class BoardDAO {
 		if (successToken != null && token.equals(successToken)) {
 			return;
 		}
-		
+
 		String regIp = getClientIp(req);
 		System.out.println(regIp);
 		rp.setReply_reg_ip(regIp);
-		
+
 		AccountDTO ac = (AccountDTO) req.getSession().getAttribute("loginAccount");
 		rp.setReply_member(ac.getMember_id());
 
@@ -216,30 +316,21 @@ public class BoardDAO {
 		return req.getRemoteAddr();
 	}
 
-	public JSONObject recommand(HttpServletRequest req, Reccomand rec, int post_id, String member_id) {
-		
-		try {
-			rec.setPost_id(post_id);
-			rec.setMember_id(member_id);
-			if(ss.getMapper(BoardMapper.class).AddRecommand(rec)==1) {
-				System.out.println("추천성공");
-			}else {
-				System.out.println("실패...");
-			}
-			// int rCount = ss.getMapper(BoardMapper.class).getReccomed(rec);
-			// String rCountString = Integer.toString(rCount);
-			// JSONObject count = (JSONObject) rCountStirng;
-			
-			// return count;
-			
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		
-		return null;
-		
+	
+	
+	// 좋아요를 누른 회원인지 아닌지 체크하기
+	public void likeCheck(HttpServletRequest req, PostVO p) {
+		AccountDTO ac = (AccountDTO) req.getSession().getAttribute("loginAccount");
+		LikeVO lk = new LikeVO();
+		lk.setLike_member(ac.getMember_id());
+		lk.setLike_post(p.getPost_id());
+		int likeCheck = ss.getMapper(BoardMapper.class).likeCheck(lk);
+		System.out.println("likeCheck: " + likeCheck);
+		req.setAttribute("likeCheck", likeCheck);
+
 	}
 
+<<<<<<< HEAD
 	
 	public void postCountUpdate(HttpServletRequest req, HttpServletResponse res, PostVO p) {
 	
@@ -275,4 +366,22 @@ public class BoardDAO {
 
 	
 	
+=======
+	public void likeUp(HttpServletRequest req, LikeVO lk) {
+		if (ss.getMapper(BoardMapper.class).likeUp(lk) == 1) {
+			req.setAttribute("result", "댓글수정 성공");
+		} else {
+			req.setAttribute("result", "댓글수정 실패");
+		}
+	}
+
+	public void likeDown(HttpServletRequest req, LikeVO lk) {
+		if (ss.getMapper(BoardMapper.class).likeDown(lk) == 1) {
+			req.setAttribute("result", "댓글수정 성공");
+		} else {
+			req.setAttribute("result", "댓글수정 실패");
+		}
+	}
+
+>>>>>>> 63aca0099f801d778d34eb210ecc8d13e6acb0bc
 }

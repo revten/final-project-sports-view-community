@@ -23,8 +23,13 @@ public interface BoardMapper {
 
 	int updateReply(ReplyVO rp);
 
-	int AddRecommand(Reccomand rec);
+	int likeCheck(LikeVO lk);
 
+	int likeUp(LikeVO lk);
+
+	int likeDown(LikeVO lk);
+
+<<<<<<< HEAD
 	int getReccomed(Reccomand rec);
 
 	int postCountUpdate(PostVO p);
@@ -34,4 +39,6 @@ public interface BoardMapper {
 	
 	
 	
+=======
+>>>>>>> 63aca0099f801d778d34eb210ecc8d13e6acb0bc
 }

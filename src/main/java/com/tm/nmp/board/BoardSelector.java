@@ -6,19 +6,19 @@ public class BoardSelector {
 	private int start;
 	private int end;
 
-	private int Board_id;
+	private int post_board;
 
 	public BoardSelector() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public BoardSelector(String search, int start, int end, int board_id) {
+	public BoardSelector(String search, int start, int end, int post_board) {
 		super();
 		this.search = search;
 		this.start = start;
 		this.end = end;
-		Board_id = board_id;
+		this.post_board = post_board;
 	}
 
 	public String getSearch() {
@@ -45,12 +45,12 @@ public class BoardSelector {
 		this.end = end;
 	}
 
-	public int getBoard_id() {
-		return Board_id;
+	public int getPost_board() {
+		return post_board;
 	}
 
-	public void setBoard_id(int board_id) {
-		Board_id = board_id;
+	public void setPost_board(int post_board) {
+		this.post_board = post_board;
 	}
 
 }

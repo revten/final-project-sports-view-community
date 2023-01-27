@@ -17,15 +17,15 @@
 	<br>
 	<div id="community_area">
 		<ul id="community_list">
-			<li><a style="cursor: pointer" href="baseball.board.go">야구
+			<li><a style="cursor: pointer" href="fan.board.go?post_board=21">야구
 					게시판</a></li>
-			<li><a style="cursor: pointer" href="soccer.board.go">축구
+			<li><a style="cursor: pointer" href="fan.board.go?post_board=22">축구
 					게시판</a></li>
-			<li><a style="cursor: pointer" href="basketball.board.go">농구
+			<li><a style="cursor: pointer" href="fan.board.go?post_board=23">농구
 					게시판</a></li>
-			<li><a style="cursor: pointer" href="volleyball.board.go">배구
+			<li><a style="cursor: pointer" href="fan.board.go?post_board=24">배구
 					게시판</a></li>
-			<li><a style="cursor: pointer" href="analyze.board.go">분석
+			<li><a style="cursor: pointer" href="fan.board.go?post_board=41">분석
 					게시판</a></li>
 		</ul>
 	</div>
