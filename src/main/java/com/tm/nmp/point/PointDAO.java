@@ -55,41 +55,37 @@ public class PointDAO {
 	
 	// 게시판, 댓글로 받을 포인트
 	public void calcAddPostAndAddCommentPoint(HttpServletRequest req,PointVO pv, PlusPointVO ppv, int plusPoint) {
+		
 		AccountDTO ac = (AccountDTO) req.getSession().getAttribute("loginAccount");
 		pv.setPoint_member(ac.getMember_id());
 		ppv.setPlusPoint_member(ac.getMember_id());
 		ppv.setPlusPoint(plusPoint);
+		
 		// 현재 포인트 조회
 		int nPoint = ss.getMapper(PointMapper.class).getNpoint(pv);
+		
 		// 현재포인트 + 추가될포인트
 		int point = nPoint + plusPoint;
 		System.out.println(nPoint);
 		System.out.println(point);
+		
 		pv.setPoint(point);
-		if(point >= 7000) {
+		if(point >= 7000)
 			pv.setPoint_grade("챌린저");
-		}
-		else if(point >=6000) {
+		else if(point >=6000)
 			pv.setPoint_grade("그랜드마스터");
-		}
-		else if(point >=5000) {
+		else if(point >=5000)
 			pv.setPoint_grade("마스터");
-		}
-		else if(point >=4000) {
+		else if(point >=4000)
 			pv.setPoint_grade("다이아몬드");
-		}
-		else if(point >=3000) {
+		else if(point >=3000)
 			pv.setPoint_grade("플래티넘");
-		}
-		else if(point >=2000) {
+		else if(point >=2000)
 			pv.setPoint_grade("골드");
-		}
-		else if(point >=1000) {
+		else if(point >=1000)
 			pv.setPoint_grade("실버");
-		}
-		else {
+		else
 			pv.setPoint_grade("브론즈");
-		}
 		
 		if(ss.getMapper(PointMapper.class).updatePoint(pv)==1) {
 			ss.getMapper(PointMapper.class).insertPlusPoint(ppv);
@@ -99,8 +95,6 @@ public class PointDAO {
 		};
 	}
 	
-	
-
 	
 
 	public void showPoint(HttpServletRequest req, PointVO pv) {
