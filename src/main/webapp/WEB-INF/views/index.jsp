@@ -54,16 +54,7 @@
 <link rel="stylesheet" href="resources/css/stadium/stadium.css" />
 <link rel="stylesheet" href="resources/css/message/message.css" />
 <link rel="stylesheet" href="resources/css/watch/watchMain.css" />
-<!--=============== [JS MEMBER]===============-->
-<script src="resources/js/account/account_go.js"></script>
-<script src="resources/js/account/account_condition.js"></script>
-<script src="resources/js/stadium/stadium_go.js"></script>
-<script src="resources/js/stadium/seat_detail.js"></script>
-<script src="resources/js/community/community_go.js"></script>
-<script src="resources/js/myPage/myPage.js"></script>
-<script src="resources/js/news/paging.js"></script>
-<script src="resources/js/board/board.js"></script>
-<script src="resources/js/message/message_go.js"></script>
+
 <!-- ---------------------------------------------------------------------------- -->
 </head>
 
@@ -212,5 +203,16 @@
 
 	<!--=============== MAIN JS ===============-->
 	<script src="resources/js/index.js"></script>
+
+	<!--=============== [JS MEMBER]===============-->
+	<script src="resources/js/account/account_go.js"></script>
+	<script src="resources/js/account/account_condition.js"></script>
+	<script src="resources/js/stadium/stadium_go.js"></script>
+	<script src="resources/js/stadium/seat_detail.js"></script>
+	<script src="resources/js/community/community_go.js"></script>
+	<script src="resources/js/myPage/myPage.js"></script>
+	<script src="resources/js/news/paging.js"></script>
+	<script src="resources/js/board/fanBoard.js"></script>
+	<script src="resources/js/message/message_go.js"></script>
 </body>
 </html>

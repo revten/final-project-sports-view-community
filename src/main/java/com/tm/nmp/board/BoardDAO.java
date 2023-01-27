@@ -5,14 +5,10 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.ibatis.session.SqlSession;
-import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.tm.nmp.account.AccountDTO;
-import com.tm.nmp.account.AccountMapper;
-
-import jdk.internal.org.jline.reader.Parser;
 
 @Service
 public class BoardDAO {
@@ -32,13 +28,42 @@ public class BoardDAO {
 	public void setallPostCount(int allPostCount) {
 		this.allPostCount = allPostCount;
 	}
+	
+	private int baseball;
+	private int soccer;
+	private int basketball;
+	private int volleyball;
 
-	public void calcAllPostCount(int board_id) {
-		BoardSelector bSel = new BoardSelector("", 0, 0, board_id);
-		allPostCount = ss.getMapper(BoardMapper.class).calcAllPostCount(bSel);
+	public void calcAllPostCount() {
+		
+		BoardSelector bSelBaseBall = new BoardSelector("", 0, 0, 21);
+		baseball = ss.getMapper(BoardMapper.class).calcAllPostCount(bSelBaseBall);
+		BoardSelector bSelSoccer = new BoardSelector("", 0, 0, 22);
+		soccer = ss.getMapper(BoardMapper.class).calcAllPostCount(bSelSoccer);
+		BoardSelector bSelBasketball = new BoardSelector("", 0, 0, 23);
+		basketball = ss.getMapper(BoardMapper.class).calcAllPostCount(bSelBasketball);
+		BoardSelector bSelVolley = new BoardSelector("", 0, 0, 24);
+		volleyball = ss.getMapper(BoardMapper.class).calcAllPostCount(bSelVolley);
+
 	}
+	
 
 	public void getAllPost(HttpServletRequest req, int pageNbr, int post_board) {
+		
+		switch (post_board) {
+		case 21:
+			allPostCount = baseball;
+			break;
+		case 22:
+			allPostCount = soccer;
+			break;
+		case 23:
+			allPostCount = basketball;
+			break;
+		case 24:
+			allPostCount = volleyball;
+			break;
+		}
 
 		int count = bo.getCountPerPage();
 		int start = (pageNbr - 1) * count + 1;
@@ -108,12 +133,26 @@ public class BoardDAO {
 		}
 
 		// 위 split 내용을 wg_img 컬럼에 set해준 것
-
 //		p.setPost_content(p_txt.replace("\r\n", "<br>"));
-
+		
+		int post_board = p.getPost_board();
+		System.out.println(post_board);
 		if (ss.getMapper(BoardMapper.class).regPost(p) == 1) {
 			System.out.println("글 등록 성공");
-			allPostCount++;
+			switch (post_board) {
+			case 21:
+				baseball++;
+				break;
+			case 22:
+				soccer++;
+				break;
+			case 23:
+				basketball++;
+				break;
+			case 24:
+				volleyball++;
+				break;
+			}
 		} else {
 			System.err.println("글 등록 실패");
 		}
@@ -127,7 +166,7 @@ public class BoardDAO {
 
 		String str = p.getPost_content();
 		System.out.println("전체 경로 :" + str);
-
+		
 		if (str.contains("img")) {
 			String[] contentSplit = str.split("/");
 			String topSplit = contentSplit[5];
@@ -140,7 +179,7 @@ public class BoardDAO {
 		} else {
 			p.setPost_img("");
 		}
-
+		
 		if (ss.getMapper(BoardMapper.class).updatePost(p) == 1) {
 			req.setAttribute("result", "글수정 성공");
 		} else {
@@ -149,9 +188,24 @@ public class BoardDAO {
 	}
 
 	public void deletePost(HttpServletRequest req, PostVO p) {
+		int post_board = p.getPost_board();
+		System.out.println(post_board);
 		if (ss.getMapper(BoardMapper.class).deletePost(p) == 1) {
 			req.setAttribute("result", "글삭제 성공");
-			allPostCount--;
+			switch (post_board) {
+			case 21:
+				baseball--;
+				break;
+			case 22:
+				soccer--;
+				break;
+			case 23:
+				basketball--;
+				break;
+			case 24:
+				volleyball--;
+				break;
+			}
 		} else {
 			req.setAttribute("result", "글삭제실패");
 		}
@@ -217,6 +271,8 @@ public class BoardDAO {
 		return req.getRemoteAddr();
 	}
 
+	
+	
 	// 좋아요를 누른 회원인지 아닌지 체크하기
 	public void likeCheck(HttpServletRequest req, PostVO p) {
 		AccountDTO ac = (AccountDTO) req.getSession().getAttribute("loginAccount");

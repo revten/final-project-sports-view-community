@@ -12,7 +12,6 @@
 		});
 	});
 </script>
-
 </head>
 
 <body>
@@ -21,47 +20,45 @@
 	<br>
 	<br>
 	<br>
-	<br>
-	<h3>야구게시판</h3>
+	<nav>
+		<div id="community_area">
+			<ul id="community_list">
+				<li><a style="cursor: pointer"
+					href="fan.board.go?post_board=21">야구 게시판</a></li>
+				<li><a style="cursor: pointer"
+					href="fan.board.go?post_board=22">축구 게시판</a></li>
+				<li><a style="cursor: pointer"
+					href="fan.board.go?post_board=23">농구 게시판</a></li>
+				<li><a style="cursor: pointer"
+					href="fan.board.go?post_board=24">배구 게시판</a></li>
+				<li><a style="cursor: pointer"
+					href="fan.board.go?post_board=41">분석 게시판</a></li>
+			</ul>
+		</div>
+	</nav>
 
+<%-- 	<h1>${param.post_board }게시판"${post_board}</h1> --%>
+	<h1>${param.post_board }게시판</h1>
 
 	<!--==================== 등록 ====================-->
 	<main class="boardReg__Main">
-	<form action="baseball.reg.do" method="POST"
-		enctype="multipart/form-data" onsubmit="return checkForm();"
-		name="regForm">
-
-		<input name="post_board" value="21" type="hidden">
-
+	<form action="fan.reg.do" method="POST" onsubmit="return checkForm();" name="postRegForm" enctype="multipart/form-data" >
+			<input name="plusPoint" value="30" type="hidden"> <!-- 글쓰기 포인트 -->
+			<input name="post_board" value="${param.post_board}" type="hidden" >
 		<div class="form-group">
-			<label for="title">제목</label> <input type="text" class="form-control"
-				id="title" name="post_title">
+			제목 : <input type="text" class="form-control" name="post_title">
+
 		</div>
+		
 		<div class="form-group">
-			<label for="content"></label>
 			<textarea class="form-control" rows="5" id="editor"
 				name="post_content"></textarea>
-			<input type="hidden" name="post_image" value="${bottomSplit }">
+			<input type="hidden" name="post_image" value="${bottomSplit}">
 			<input type="hidden" name="post_file" value="-">
 		</div>
-		<button type="submit" id="createPostBtn" class="btn btn-primary">
-			등록</button>
+		
+		<button type="submit" id="createPostBtn" class="btn btn-primary">등록</button>
 	</form>
 	</main>
-
-
-	<!--==================== JS ====================-->
-	<script>
-		function checkForm() {
-			let titleInput = document.regForm.post_title;
-			let contentInput = document.regForm.post_content;
-
-			if (isEmpty(titleInput) || isEmpty(contentInput)) {
-				alert("내용을 입력해주세요");
-				return false;
-			}
-			return true;
-		}
-	</script>
 </body>
 </html>

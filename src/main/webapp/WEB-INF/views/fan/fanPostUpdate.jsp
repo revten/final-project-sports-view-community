@@ -21,16 +21,30 @@
 	<br>
 	<br>
 	<br>
-	<br>
-	<h1>야구게시판 수정페이지</h1>
+	<nav>
+		<div id="community_area">
+			<ul id="community_list">
+				<li><a style="cursor: pointer"
+					href="fan.board.go?post_board=21">야구 게시판</a></li>
+				<li><a style="cursor: pointer"
+					href="fan.board.go?post_board=22">축구 게시판</a></li>
+				<li><a style="cursor: pointer"
+					href="fan.board.go?post_board=23">농구 게시판</a></li>
+				<li><a style="cursor: pointer"
+					href="fan.board.go?post_board=24">배구 게시판</a></li>
+				<li><a style="cursor: pointer"
+					href="fan.board.go?post_board=41">분석 게시판</a></li>
+			</ul>
+		</div>
+	</nav>
 	
+	<h1>${post.post_board }게시판</h1>
 
 	<!--==================== 상세-수정 ====================-->
 	<main class="boardUpdate__main"> <br>
 	<section class="post section">
-		<form action="baseball.update.do" method="POST"
-			enctype="multipart/form-data" onsubmit="return checkForm();"
-			name="regForm">
+		<form action="fan.update.do" method="POST" enctype="multipart/form-data" 
+			onsubmit="return checkForm();" name="postRegForm">
 			<div class="post__container">
 				<div class="post__1st-line">
 					<div class="post__option">
@@ -39,8 +53,7 @@
 					</div>
 
 					<div class="post__title">
-						제목: <input type="text" name="post_title"
-							value="${post.post_title}">
+						제목: <input type="text" name="post_title" value="${post.post_title}">
 					</div>
 				</div>
 
@@ -66,20 +79,5 @@
 		</form>
 	</section>
 	</main>
-	
-	
-	<!--==================== JS ====================-->
-	<script>
-	function checkForm() {
-		let titleInput = document.regForm.post_title;
-		let contentInput = document.regForm.post_content;
-
-		if (isEmpty(titleInput) || isEmpty(contentInput)) {
-			alert("내용을 입력해주세요");
-			return false;
-		}
-		return true;
-	}
-</script>
 </body>
 </html>

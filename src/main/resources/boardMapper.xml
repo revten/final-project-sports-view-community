@@ -10,7 +10,7 @@
 		member_id
 		and post_title like '%'||#{search}||'%'
 		and post_board =
-		#{board_id}
+		#{post_board}
 	</select>
 
 	<select id="getAllPost"
@@ -27,7 +27,7 @@
 		member_nick from
 		(select * from post, member where post_member = member_id
 		and
-		post_title like '%'||#{search}||'%' and post_board = #{board_id} order
+		post_title like '%'||#{search}||'%' and post_board = #{post_board} order
 		by post_reg_date desc))
 		where rn &gt; = #{start} and rn &lt; = #{end}
 
@@ -49,17 +49,16 @@
 		resultType="com.tm.nmp.board.ReplyVO">
 		select * from reply where reply_post = #{post_id}
 	</select>
-
 	<insert id="regPost" parameterType="com.tm.nmp.board.PostVO">
 		insert into post values
-		(post_seq.nextval, #{post_board}, #{post_member}, null,
-		null, null,
-		#{post_title}, #{post_category},
+		(post_seq.nextval, #{post_board}, #{post_member},
+		null, null, null, <!-- 옵션value로 넣어줘야 (직관게시판 등록, 수정에서) -->
+		#{post_title}, null, <!--  옵션value로 넣어줘야 (자유게시판 등록, 수정에서) -->
 		sysdate, null, #{post_img},
 		#{post_file},
 		#{post_hit_count}, #{post_like_count},
 		#{post_scrap_count},
-		#{post_comment_count},
+		#{post_reply_count},
 		#{post_reg_ip},#{post_content})
 	</insert>
 

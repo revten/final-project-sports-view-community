@@ -9,25 +9,41 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<main class="board__main"> <br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<nav>
+		<div id="community_area">
+			<ul id="community_list">
+				<li><a style="cursor: pointer"
+					href="fan.board.go?post_board=21">야구 게시판</a></li>
+				<li><a style="cursor: pointer"
+					href="fan.board.go?post_board=22">축구 게시판</a></li>
+				<li><a style="cursor: pointer"
+					href="fan.board.go?post_board=23">농구 게시판</a></li>
+				<li><a style="cursor: pointer"
+					href="fan.board.go?post_board=24">배구 게시판</a></li>
+				<li><a style="cursor: pointer"
+					href="fan.board.go?post_board=41">분석 게시판</a></li>
+			</ul>
+		</div>
+	</nav>
 
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<h1>야구게시판</h1>
+	<h1>${param.post_board }게시판</h1>
 
 	<!--==================== 게시판 ====================-->
-
+	<main class="board__main"> <br>
 	<div class="board__container">
 		<div class="board__top">
 			<c:choose>
 				<c:when test="${sessionScope.loginAccount ne null}">
-					<a href=baseball.reg.go> 새글쓰기</a>
+					<a href="fan.reg.go?post_board=${param.post_board}"> 새글쓰기</a>
 				</c:when>
 				<c:otherwise>
-					<a href="baseball.reg.go" onclick="alert('로그인하세요')">새글쓰기</a>
+					<a href="fan.reg.go?post_board=${param.post_board}"
+						onclick="alert('로그인하세요')">새글쓰기</a>
 				</c:otherwise>
 			</c:choose>
 		</div>
@@ -42,7 +58,7 @@
 					<th>제목</th>
 					<th>등록일</th>
 					<th>닉네임</th>
-					<th>조회수</th>
+ 					<th>조회수</th>
 					<th>추천수</th>
 				</tr>
 				<c:forEach var="p" items="${posts }">
@@ -51,8 +67,7 @@
 						<td>${p.post_id}</td>
 						<td>${p.post_category}</td>
 						<td><a
-							href="baseball.detail.go?post_id=${p.post_id }&post_member=${p.post_member}">${p.post_title }
-								[${p.post_like_count}]</a></td>
+							href="fan.detail.go?post_id=${p.post_id }&post_member=${p.post_member}">${p.post_title } [${p.post_reply_count}]</a></td>
 						<td><c:choose>
 								<c:when test="${p.post_update_date eq null }">
 									<fmt:formatDate value="${p.post_reg_date}"
@@ -74,8 +89,9 @@
 
 		<div class="board__bot">
 			<div class="board__bot-search">
-				<form action="baseball.search.do" name="boardSearchForm"
+				<form action="fan.search.do" name="boardSearchForm"
 					onsubmit="return boardSearchCheck();">
+					<input type="hidden" name="post_board" value="${param.post_board}"> 
 					<table id="snsSearchArea">
 						<tr>
 							<td id="ssaTd1"><input name="search" maxlength="10"
@@ -85,37 +101,25 @@
 					</table>
 				</form>
 			</div>
-
+			${pageCount}
 			<div class="board__bot-paging">
 				<c:if test="${curPage != 1}">
-					<span><a href="baseball.page.change?pg=1">[맨처음]</a></span>
-					<span><a href="baseball.page.change?pg=${curPage - 1}">
+					<span><a href="fan.page.change?pg=1&post_board=${param.post_board }">[맨처음]</a></span>
+					<span><a href="fan.page.change?pg=${curPage - 1}&post_board=${param.post_board }">
 							◀이전 </a></span>
 				</c:if>
 				<c:forEach var="i" begin="1" end="${pageCount}">
-					<a href="baseball.page.change?pg=${i}"> [${i}] </a>
+					<a href="fan.page.change?pg=${i}&post_board=${param.post_board }"> [${i}] </a>
 				</c:forEach>
 				<c:if test="${curPage != pageCount}">
-					<span> <a href="baseball.page.change?pg=${curPage + 1}">
+					<span> <a href="fan.page.change?pg=${curPage + 1}&post_board=${param.post_board }">
 							다음▶ </a></span>
-					<span><a href="baseball.page.change?pg=${pageCount}">[맨끝]</a></span>
+					<span><a href="fan.page.change?pg=${pageCount}&post_board=${param.post_board }">[맨끝]</a></span>
 				</c:if>
 			</div>
 		</div>
 
 	</div>
 	</main>
-	<script>
-		function boardSearchCheck() {
-			let searchInput = document.boardSearchForm.search;
-
-			if (isEmpty(searchInput)) {
-				alert("?");
-				searchInput.focus();
-				return false;
-			}
-			return true;
-		}
-	</script>
 </body>
 </html>
