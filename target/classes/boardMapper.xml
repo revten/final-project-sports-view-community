@@ -111,4 +111,5 @@
 		update post set	post_hit_count = post_hit_count + 1 where post_id = #{post_id} 
 	</update>
 	
+	
 </mapper>
