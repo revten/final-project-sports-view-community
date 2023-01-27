@@ -64,4 +64,14 @@
 		parameterType="com.tm.nmp.account.AccountDTO">
 		delete from account where ac_id = #{ac_id}
 	</delete>
+	
+	<select id="getMyPosts" resultType="com.tm.nmp.board.PostVO">
+	select * from post where post_member = #{post_member}
+	</select>
+	
+	
+	
+	
+	
+	
 </mapper>
