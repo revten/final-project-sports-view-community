@@ -7,7 +7,11 @@
 		select * from member where member_id =
 		#{member_id}
 	</select>
-
+	
+	<select id="showAccount" resultType="com.tm.nmp.account.AccountDTO">
+	select * from member where member_id = #{member_id}
+	</select>
+	
 	<insert id="regAccount"
 		parameterType="com.tm.nmp.account.AccountDTO">
 		BEGIN

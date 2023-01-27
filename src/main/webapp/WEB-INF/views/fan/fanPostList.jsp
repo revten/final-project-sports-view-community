@@ -6,6 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<link rel="stylesheet" href="resources/css/fan/fan.css">
 <title>Insert title here</title>
 </head>
 <body>
@@ -49,7 +50,7 @@
 		</div>
 
 
-		<table class="board__table" border="1">
+		<table class="board__table">
 			<thead>
 				<tr>
 					<th>게시판넘버</th>
@@ -94,9 +95,9 @@
 					<input type="hidden" name="post_board" value="${param.post_board}"> 
 					<table id="snsSearchArea">
 						<tr>
-							<td id="ssaTd1"><input name="search" maxlength="10"
+							<td id="ssaTd1"><input name="search" type="search" maxlength="10"
 								autocomplete="off"></td>
-							<td id="ssaTd2"><button>검색</button></td>
+							<td id="ssaTd2"><button class="search btn-dark">검색</button></td>
 						</tr>
 					</table>
 				</form>

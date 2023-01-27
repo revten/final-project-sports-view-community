@@ -20,9 +20,7 @@ public class MessageController {
 	
 	@RequestMapping(value = "message.go", method = RequestMethod.GET)
 	public String goMessage(HttpServletRequest req) {
-		
 		msDAO.getMember(req);
-		
 		if(acDAO.loginCheck(req)) {
 			msDAO.getMsg(req);
 		}
@@ -55,6 +53,8 @@ public class MessageController {
 		req.setAttribute("contentPage", "message/message.jsp");
 		return "index";
 	}
+	
+	
 	
 	
 	

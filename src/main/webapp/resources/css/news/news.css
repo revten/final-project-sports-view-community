@@ -9,18 +9,20 @@
 	text-decoration: none;
 	color: #0080ff;
 	font-weight: 500;
-	font-size: 15pt;
+	font-size: 11pt;
 	padding-left: 10px;
 }
 
 .newsContent {
+	margin-left: 11px;
 	display: inline-block;
-    width: 400px;
-    white-space: nowrap;
+    width: 900px;
+    font-size: 10pt;
     overflow: hidden;
     text-overflow: ellipsis;
-    margin-left: 11px;
-	
+    word-break: break-word;
+    
+    display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical;
 }
 
 .title {
@@ -53,5 +55,13 @@
 	padding-bottom: 5px;
 	text-align:left;
 	margin-left:30px;
+}
+
+.div_news_go{
+	margin-bottom: 30px;
+}
+
+.news_go{
+	font-size: 20px;
 }
 
