@@ -13,6 +13,8 @@
 	<br>
 	<br>
 	<br>
+	<br>
+	<br>
 	<div class="login_area">
 	<h1 class="login_title">아이디 찾기</h1>
 	<form name="searchIdForm" action="search.id.do" method="post">

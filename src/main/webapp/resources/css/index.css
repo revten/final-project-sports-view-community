@@ -47,6 +47,10 @@
   border-radius: 50%;
   margin-right: 15px;
 }
+ .info-area{
+	width: 300px;
+}
+
 
 @media screen and (min-width: 1024px) {
   :root {
