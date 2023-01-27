@@ -114,15 +114,11 @@
 		select count(*) from likes where like_post = #{like_post}
 		and like_member= #{like_member}
 	</select>
-<<<<<<< HEAD
 	
 	<update id="postCountUpdate" parameterType="com.tm.nmp.board.PostVO">
 		update post set	post_hit_count = post_hit_count + 1 where post_id = #{post_id} 
 	</update>
-	
-<<<<<<< HEAD
-	
-=======
+
 
 	<insert id="likeUp" parameterType="com.tm.nmp.board.LikeVO">
 		insert into likes
@@ -132,7 +128,5 @@
 	<delete id="likeDown" parameterType="com.tm.nmp.board.LikeVO">
 		delete  from likes where like_post = #{like_post} and like_member=#{like_member}
 	</delete>
->>>>>>> 63aca0099f801d778d34eb210ecc8d13e6acb0bc
-=======
->>>>>>> parent of e594654 (작업중)
+
 </mapper>

@@ -30,7 +30,7 @@ public interface BoardMapper {
 	int likeDown(LikeVO lk);
 
 
-	int getReccomed(Reccomand rec);
+//	int getReccomed(Reccomand rec);
 
 	int postCountUpdate(PostVO p);
 	
