@@ -68,7 +68,6 @@ pageEncoding="UTF-8"%>
         <!-- 카카오로그인 -->
 
         <a onclick="kakaoLogin()" style="cursor: pointer">
-          <img <a style="cursor: pointer" onclick="kakaoLogin()" />
           <img
             src="https://www.myro.co.kr/myro_image/kakaolink_btn.png"
             width="40"
