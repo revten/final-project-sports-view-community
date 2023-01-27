@@ -1,7 +1,6 @@
 package com.tm.nmp.fan;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -36,15 +35,17 @@ public class BasketballController {
 	}
 
 	@RequestMapping(value = "basketball.detail.go", method = RequestMethod.GET)
-	public String basketballDetail(HttpServletRequest req, HttpServletResponse res ,PostVO p) {
+	public String basketballDetail(HttpServletRequest req, PostVO p) {
 		TokenMaker.make(req);
 		BoardOption.clearSearch(req);
 		acDAO.wathingPage(req);
 		acDAO.loginCheck(req);
-		brDAO.postCountUpdate(req, res, p);
+		AccountDTO a = (AccountDTO) req.getSession().getAttribute("loginAccount");
+		if (!(req.getParameter("post_member").equals(a.getMember_id()))) {
+			brDAO.postCountUpdate(req, p);
+		}
 		brDAO.getPost(req, p);
 		req.setAttribute("contentPage", "fan/basketball/basketballDetail.jsp");
-			
 		return "index";
 	}
 

@@ -2,9 +2,7 @@ package com.tm.nmp.board;
 
 import java.util.List;
 
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -334,9 +332,9 @@ public class BoardDAO {
 
 
 	
-	public void postCountUpdate(HttpServletRequest req, HttpServletResponse res, PostVO p) {
+	public void postCountUpdate(HttpServletRequest req, PostVO p) {
 	
-		Cookie[] cookies = req.getCookies();
+		/*Cookie[] cookies = req.getCookies();
 		int visitor = 0;
 		
 		for (Cookie cookie : cookies) {
@@ -346,10 +344,10 @@ public class BoardDAO {
 				
 				System.out.println("visit 통과");
 			
-			if (cookie.getValue().contains(req.getParameter("post_id"))) {
+			if (cookie.getValue().contains(req.getParameter("id"))) {
 				System.out.println("visitif 통과");
 			} else {
-				cookie.setValue(cookie.getValue()+ "-" + req.getParameter("post_id"));
+				cookie.setValue(cookie.getValue()+ "-" + req.getParameter("id"));
 				res.addCookie(cookie);
 				
 				ss.getMapper(BoardMapper.class).postCountUpdate(p);
@@ -358,15 +356,18 @@ public class BoardDAO {
 	}
 		
 		if(visitor == 0) {
-			Cookie cookie1 = new Cookie("visit", req.getParameter("post_id"));
+			Cookie cookie1 = new Cookie("visit", req.getParameter("id"));
 			res.addCookie(cookie1);
 			
 			ss.getMapper(BoardMapper.class).postCountUpdate(p);
-		}
+		}*/
 		 
+		if(ss.getMapper(BoardMapper.class).postCountUpdate(p) == 1) {
+			req.setAttribute("result", "조회수 성공");
+		}else {
+			req.setAttribute("result", "조회수 실패");
+		}
 	}
-
-	
 	
 
 	public void likeUp(HttpServletRequest req, LikeVO lk) {
