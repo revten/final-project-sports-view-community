@@ -24,7 +24,7 @@
 </select>
 
 
-<select id="getPoint" parameterType="com.tm.nmp.point.PointVO" resultType="com.tm.nmp.point.PointVO">
+<select id="getPoint" resultType="com.tm.nmp.point.PointVO">
 	select * from POINT where point_member = #{point_member}
 </select>
 

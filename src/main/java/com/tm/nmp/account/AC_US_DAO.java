@@ -282,5 +282,12 @@ public class AC_US_DAO {
 
 	}
 
+	public void showAccount(AccountDTO ac, HttpServletRequest req) {
+		AccountDTO a = (AccountDTO) req.getSession().getAttribute("loginAccount");
+		a.setMember_id(a.getMember_id());
+		List<AccountDTO> Account = ss.getMapper(AccountMapper.class).showAccount(ac);
+		req.setAttribute("account", Account);
+	}
+
 
 }
