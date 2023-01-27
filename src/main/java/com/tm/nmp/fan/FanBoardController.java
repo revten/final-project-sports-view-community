@@ -1,12 +1,15 @@
 package com.tm.nmp.fan;
 
-import javax.servlet.http.HttpServletRequest;
+import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import com.tm.nmp.TokenMaker;
 import com.tm.nmp.account.AC_US_DAO;
@@ -30,6 +33,31 @@ public class FanBoardController {
 
 	@Autowired
 	private PointDAO ptDAO;
+	
+	@Autowired
+	private SqlSession ss;
+	
+	@RequestMapping(value = "fan.main.go", method = RequestMethod.GET)
+	public String fanMainGo(HttpServletRequest req) {
+		acDAO.wathingPage(req);
+		acDAO.loginCheck(req);
+
+		List<PostVO> baseballBest = ss.getMapper(FanBestMapper.class).baseballBest();
+		req.setAttribute("baseballBest", baseballBest);
+		
+		List<PostVO> soccerBest = ss.getMapper(FanBestMapper.class).soccerBest();
+		req.setAttribute("soccerBest", soccerBest);
+		
+		List<PostVO> basketballBest = ss.getMapper(FanBestMapper.class).basketballBest();
+		req.setAttribute("basketballBest", basketballBest);
+		
+		List<PostVO> volleyballBest = ss.getMapper(FanBestMapper.class).volleyballBest();
+		req.setAttribute("volleyballBest", volleyballBest);
+
+		req.setAttribute("contentPage", "fan/fanMain.jsp");
+		return "index";
+	}
+
 
 	@RequestMapping(value = "fan.board.go", method = RequestMethod.GET)
 	public String fanBoardGo(HttpServletRequest req) {
@@ -42,7 +70,7 @@ public class FanBoardController {
 		int post_board = Integer.parseInt(req.getParameter("post_board"));
 		brDAO.getAllPost(req, 1, post_board); // 1은 첫페이지를 보여달라
 
-		req.setAttribute("contentPage", "fan/fanPostList.jsp");
+		req.setAttribute("contentPage", "fan/fanBoard.jsp");
 		return "index";
 	}
 
@@ -79,7 +107,7 @@ public class FanBoardController {
 			BoardOption.clearSearch(req);
 			int post_board = Integer.parseInt(req.getParameter("post_board"));
 			brDAO.getAllPost(req, 1, post_board);
-			req.setAttribute("contentPage", "fan/fanPostList.jsp");
+			req.setAttribute("contentPage", "fan/fanBoard.jsp");
 		} else {
 			req.setAttribute("contentPage", "account/loginPage.jsp");
 		}
@@ -87,7 +115,7 @@ public class FanBoardController {
 	}
 
 	@RequestMapping(value = "fan.detail.go", method = RequestMethod.GET)
-	public String fanDetailGo(HttpServletRequest req, PostVO p) {
+	public String fanDetailGo(HttpServletRequest req, HttpServletResponse res, PostVO p) {
 		TokenMaker.make(req);
 		acDAO.wathingPage(req);
 
@@ -97,6 +125,7 @@ public class FanBoardController {
 		}
 
 		brDAO.getPost(req, p); // 게시글 넘버로 불러오는 것이라 굳이 게시판 넘버가 필요없다
+//		brDAO.postCountUpdate(req, res, p);
 		req.setAttribute("contentPage", "fan/fanPostDetail.jsp");
 		return "index";
 	}
@@ -140,7 +169,7 @@ public class FanBoardController {
 			BoardOption.clearSearch(req);
 			int post_board = Integer.parseInt(req.getParameter("post_board"));
 			brDAO.getAllPost(req, 1, post_board);
-			req.setAttribute("contentPage", "fan/fanPostList.jsp");
+			req.setAttribute("contentPage", "fan/fanBoard.jsp");
 		} else {
 			req.setAttribute("contentPage", "account/loginPage.jsp");
 		}
@@ -157,7 +186,7 @@ public class FanBoardController {
 		int pg = Integer.parseInt(req.getParameter("pg"));
 		int post_board = Integer.parseInt(req.getParameter("post_board"));
 		brDAO.getAllPost(req, pg, post_board);
-		req.setAttribute("contentPage", "fan/fanPostList.jsp");
+		req.setAttribute("contentPage", "fan/fanBoard.jsp");
 		return "index";
 	}
 
@@ -170,12 +199,12 @@ public class FanBoardController {
 		// 위와 달리 검색후 보여주는 페이지에선 post_board필요하다
 		int post_board = Integer.parseInt(req.getParameter("post_board"));
 		brDAO.getAllPost(req, 1, post_board);
-		req.setAttribute("contentPage", "fan/fanPostList.jsp");
+		req.setAttribute("contentPage", "fan/fanBoard.jsp");
 		return "index";
 	}
 
 	// 리플
-	@RequestMapping(value = "fanReply.reg.do", method = RequestMethod.GET)
+/*	@RequestMapping(value = "fanReply.reg.do", method = RequestMethod.GET)
 	public String fanReplyRegDo(HttpServletRequest req, ReplyVO rp, PostVO p) {
 		TokenMaker.make(req);
 		if (acDAO.loginCheck(req)) {
@@ -186,20 +215,9 @@ public class FanBoardController {
 		brDAO.getPost(req, p);
 		req.setAttribute("contentPage", "fan/fanPostDetail.jsp");
 		return "index";
-	}
+	}*/
 
-	@RequestMapping(value = "fanReply.delete.do", method = RequestMethod.GET)
-	public String fanReplyDelete(HttpServletRequest req, ReplyVO rp, PostVO p) {
-		TokenMaker.make(req);
-		if (acDAO.loginCheck(req)) {
-			brDAO.deleteReply(req, rp);
-		} else {
-			req.setAttribute("contentPage", "account/loginPage.jsp");
-		}
-		brDAO.getPost(req, p);
-		req.setAttribute("contentPage", "fan/fanPostDetail.jsp");
-		return "index";
-	}
+
 
 	@RequestMapping(value = "fanReply.update.do", method = RequestMethod.GET)
 	public String fanReplyUpdate(HttpServletRequest req, ReplyVO rp, PostVO p) {

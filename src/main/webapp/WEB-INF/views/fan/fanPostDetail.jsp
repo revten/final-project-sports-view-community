@@ -26,8 +26,6 @@
 					href="fan.board.go?post_board=23">농구 게시판</a></li>
 				<li><a style="cursor: pointer"
 					href="fan.board.go?post_board=24">배구 게시판</a></li>
-				<li><a style="cursor: pointer"
-					href="fan.board.go?post_board=41">분석 게시판</a></li>
 			</ul>
 		</div>
 	</nav>
@@ -68,7 +66,7 @@
 
 		<div class="post__bot">
 			<button class="post__bot-btn" onclick="history.back()">이전으로</button>
-			
+
 			<!-- 로그인하고 자신이 쓴글이면 수정/삭제버튼 나오도록 / 도중 세션만료시 로그인 / 로그인해야 추천할수 있음 -->
 			<c:choose>
 				<c:when
@@ -79,7 +77,8 @@
 							<button onclick="alert('로그인하세요')">삭제</button>
 						</c:when>
 						<c:otherwise>
-							<button class="post__bot-btn" onclick="location.href='fan.update.go?post_id=${post.post_id}&post_member=${post.post_member}'">수정</button>
+							<button class="post__bot-btn"
+								onclick="location.href='fan.update.go?post_id=${post.post_id}&post_member=${post.post_member}'">수정</button>
 							<button class="post__bot-btn"
 								onclick="deletePost(${post.post_id}, ${post.post_board});">삭제</button>
 						</c:otherwise>
@@ -91,7 +90,8 @@
 							<button id="LikeBtn" onclick="alert('로그인하세요')">추천</button>
 						</c:when>
 						<c:otherwise>
-							<button id="LikeBtn" onclick="likeCheck(${likeCheck}, ${post.post_id}, ${sessionScope.loginAccount.member_id})">추천</button>
+							<button id="LikeBtn"
+								onclick="likeCheck(${likeCheck}, ${post.post_id}, ${sessionScope.loginAccount.member_id})">추천</button>
 						</c:otherwise>
 					</c:choose>
 				</c:otherwise>
@@ -102,43 +102,108 @@
 
 	<!--==================== 댓글 ====================-->
 	<section class="reply section">
-		<table class="reply__table">
-			<tr>
-				<td>
-					<c:forEach var="rp" items="${post.replies }">
-						<span>${post.member_nick }</span>-&nbsp;${rp.reply_content }&nbsp;
-	
-							<c:if test="${rp.reply_update_date eq null }">
-							<span>(<fmt:formatDate value="${rp.reply_reg_date }"
-									type="both" dateStyle="short" timeStyle="short" />)
-							</span>
-						</c:if>
-
-						<c:if test="${rp.reply_member == sessionScope.loginAccount.member_id }">
-							<button onclick="updateReply(${rp.reply_id},${post.post_id},'${post.post_member}');">수정-ajax처리하기</button>
-							<button onclick="deleteReply(${rp.reply_id},${post.post_id},'${post.post_member}');">삭제-ajax처리하기</button>
-						</c:if>
-						<br>
-					</c:forEach>
-					
-					<c:if test="${sessionScope.loginAccount != null }">
-						<form action="fanReply.reg.do" onsubmit="return checkReplyReg(this);">
-							<span> ${sessionScope.loginAccount.member_nick } </span>
-							<input type="hidden" name="token" value="${token }">
-							<input type="hidden" name="reply_post" value="${post.post_id}">
-							<input type="hidden" name="reply_board" value="${post.post_board}">
-							<input type="hidden" name="post_member" value="${post.post_member}">
-							<input type="hidden" name="post_id" value="${post.post_id}">
-							<input type="hidden" name="pg" value="${curPage }">
-							
-							<input name="reply_content" maxlength="80" autocomplete="off" required>
-							<button>쓰기-ajax처리</button>
-						</form>
-					</c:if>
-				</td>
-			</tr>
-		</table>
+		<div>
+			<c:if test="${sessionScope.loginAccount != null }">
+				<input class="reply__token" type="hidden" name="token"
+					value="${token }">
+				<input class="reply__content-reg" name="reply__content"
+					maxlength="80" autocomplete="off" required>
+				<button class="reply__reg-btn">쓰기</button>
+			</c:if>
+		</div>
+		<div class="reply__list">
+			<c:forEach var="rp" items="${post.replies}">
+				<div class="reply__div">
+					<span class="reply__member">${post.member_nick }</span> <span
+						class="reply__date"> <fmt:formatDate
+							value="${rp.reply_reg_date }" type="both" dateStyle="short"
+							timeStyle="short" />
+					</span> <span class="reply__content">${rp.reply_content}</span> <input
+						class="reply__id" type="hidden" name="reply_id"
+						value="${rp.reply_id}"> <span> <c:if
+							test="${rp.reply_member == sessionScope.loginAccount.member_id }">
+							<button class="reply__update-btn">수정</button>
+							<button class="reply__delete-btn">삭제</button>
+						</c:if> <br>
+					</span>
+				</div>
+			</c:forEach>
+		</div>
 	</section>
 	</main>
+
+	<script>
+	$('.reply__reg-btn').click(function() {
+		
+		let token = $('.reply__token').val();
+		let reply_board = ${post.post_board};
+		let reply_post = ${post.post_id};
+		let reply_content = $('.reply__content-reg').val();
+		
+		console.log(token);		
+		console.log(reply_post);		
+		console.log(reply_board);		
+		console.log(reply_content);		
+		
+		$.ajax({
+			url : "fanReply.reg.do",
+			type : 'post',
+			dataType : 'json',
+			data : {
+				"token" : token,
+				"reply_board" : reply_board,
+				"reply_post" : reply_post,
+				"reply_content" : reply_content
+			},
+
+			success : function(data) {
+				console.log('통신 성공');
+				console.log(data);
+				$('.reply__tr').val(data.token); // 새로 받아온 토큰으로 교체해준다
+				let result = (data.result)*1; // 결과값을 변환시킨다0
+				if(result > 0) {
+					$(".reply__div").append("<div>" + reply_content + "</div>");
+				} else {
+					console.log('댓글 등록 실패');
+				}
+			},
+			error : function(){
+			alert('통신 실패');
+			}
+		});
+	});
+</script>
+
+	<script>
+$('.reply__delete-btn').click(function() {
+	
+	let reply_id = $('.reply__id').val(); 
+	
+	console.log(reply_id);	
+	
+	$.ajax({
+		url : "fanReply.delete.do",
+		type : 'get',
+		dataType : 'json',
+		data : {
+			"reply_id" : reply_id
+		},
+
+		success : function(data) {
+			console.log('통신 성공');
+			console.log(data);
+			if(data > 0) {
+				$(".reply__div").detach();
+			} else {
+				console.log('댓글 등록 실패');
+			}
+		},
+		error : function(){
+		alert('통신 실패');
+		}
+	});
+});
+</script>
+
 </body>
 </html>

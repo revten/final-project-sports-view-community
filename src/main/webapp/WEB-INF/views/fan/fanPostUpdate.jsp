@@ -32,8 +32,6 @@
 					href="fan.board.go?post_board=23">농구 게시판</a></li>
 				<li><a style="cursor: pointer"
 					href="fan.board.go?post_board=24">배구 게시판</a></li>
-				<li><a style="cursor: pointer"
-					href="fan.board.go?post_board=41">분석 게시판</a></li>
 			</ul>
 		</div>
 	</nav>

@@ -19,14 +19,11 @@
 <!--=============== [CSS CDN]===============-->
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/flickity/1.0.0/flickity.css" />
-<link rel="stylesheet"
-	href="//cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
 
 <!--=============== [JS CDN] ===============-->
 <!-- watch페이지 -->
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/flickity/1.0.0/flickity.pkgd.js"></script>
-<script src="//cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
 <script src="//cdn.ckeditor.com/4.19.0/full/ckeditor.js"></script>
 <script type="text/javascript"
 	src="${pageContext.request.contextPath}/resources/ckeditor/ckeditor.js"></script>
@@ -69,14 +66,15 @@
 			<div class="nav__menu" id="nav-menu">
 				<ul class="nav__list">
 					<li class="nav__item"><a href="stadium.main.go"
-						class="nav__link">경기장뷰</a></li>
+						class="nav__link">스태디엄</a></li>
 
-					<li><a href="watch.main.go?wg_cat=withGo" class="nav__link">직ㅡ관</a></li>
+					<li class="nav__item"><a href="review.board.go?post_board=12"
+						class="nav__link">직!관!</a></li>
 
-					<li class="nav__item"><a href="fan.main.go" class="nav__link">팬커뮤</a></li>
+					<li class="nav__item"><a href="fan.main.go" class="nav__link">더 팬</a></li>
 
 					<li class="nav__item"><a href="newsEvent.main.go"
-						class="nav__link">소식</a></li>
+						class="nav__link">뉴스/이벤트</a></li>
 
 					<li class="nav__item"><a class="nav__link"><jsp:include
 								page="${loginPage }"></jsp:include></a></li>

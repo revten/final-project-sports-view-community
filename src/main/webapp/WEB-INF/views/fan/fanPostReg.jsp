@@ -31,8 +31,6 @@
 					href="fan.board.go?post_board=23">농구 게시판</a></li>
 				<li><a style="cursor: pointer"
 					href="fan.board.go?post_board=24">배구 게시판</a></li>
-				<li><a style="cursor: pointer"
-					href="fan.board.go?post_board=41">분석 게시판</a></li>
 			</ul>
 		</div>
 	</nav>
@@ -43,6 +41,7 @@
 	<!--==================== 등록 ====================-->
 	<main class="boardReg__Main">
 	<form action="fan.reg.do" method="POST" onsubmit="return checkForm();" name="postRegForm" enctype="multipart/form-data" >
+			<input name="token" type="hidden" value="${token }">
 			<input name="plusPoint" value="30" type="hidden"> <!-- 글쓰기 포인트 -->
 			<input name="post_board" value="${param.post_board}" type="hidden" >
 		<div class="form-group">

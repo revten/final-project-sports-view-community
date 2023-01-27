@@ -78,9 +78,6 @@ public class BoardDAO {
 		case 24:
 			allPostCount = volleyball;
 			break;
-		case 41:
-			allPostCount = analyze;
-			break;
 		case 31:
 			allPostCount = clubEvent;
 			break;
@@ -179,9 +176,6 @@ public class BoardDAO {
 			case 24:
 				volleyball++;
 				break;
-			case 41:
-				analyze++;
-				break;
 			case 31:
 				clubEvent++;
 				break;
@@ -244,9 +238,6 @@ public class BoardDAO {
 			case 24:
 				volleyball--;
 				break;
-			case 41:
-				analyze--;
-				break;
 			case 31:
 				clubEvent--;
 				break;
@@ -255,13 +246,20 @@ public class BoardDAO {
 			req.setAttribute("result", "글삭제실패");
 		}
 	}
-
-	public void regReply(HttpServletRequest req, ReplyVO rp) {
+	
+	public ResultVO regReply(HttpServletRequest req, ReplyVO rp) {
 		String token = req.getParameter("token");
 		String successToken = (String) req.getSession().getAttribute("successToken");
-
+		System.out.println("token : " + token);
+		
+		
+		ResultVO resultVO = new ResultVO();
+	
 		if (successToken != null && token.equals(successToken)) {
-			return;
+			resultVO.setResult(0);
+			resultVO.setToken(token);
+			System.out.println(resultVO.toString());
+			return resultVO;
 		}
 
 		String regIp = getClientIp(req);
@@ -274,20 +272,24 @@ public class BoardDAO {
 		if (ss.getMapper(BoardMapper.class).regReply(rp) == 1) {
 			req.setAttribute("result", "댓글쓰기 성공");
 			req.getSession().setAttribute("successToken", token);
+			resultVO.setResult(1);
+			resultVO.setToken((String)req.getAttribute("token"));
+			System.out.println(resultVO.toString());
+			return resultVO;
 //			allReplyCount++;
-		} else {
-			req.setAttribute("result", "댓글쓰기실패");
 		}
+		return resultVO; 
+		
 	}
 
-	public void deleteReply(HttpServletRequest req, ReplyVO rp) {
+	public int deleteReply(HttpServletRequest req, ReplyVO rp) {
 		if (ss.getMapper(BoardMapper.class).deleteReply(rp) == 1) {
 			req.setAttribute("result", "댓글삭제 성공");
-			allPostCount--;
+			return 1;
 		} else {
 			req.setAttribute("result", "댓글삭제실패");
+			return 0;
 		}
-		req.setAttribute("result", "댓글삭제실패");
 	}
 
 	public void updateReply(HttpServletRequest req, ReplyVO rp) {
@@ -345,5 +347,36 @@ public class BoardDAO {
 			req.setAttribute("result", "댓글수정 실패");
 		}
 	}
-
 }
+
+/*	public void postCountUpdate(HttpServletRequest req, HttpServletResponse res, PostVO p) {
+		
+		Cookie[] cookies = req.getCookies();
+		int visitor = 0;
+		
+		for (Cookie cookie : cookies) {
+			System.out.println(cookie.getName());
+			if(cookie.getName().equals("visit")) {
+				visitor = 1;
+				
+				System.out.println("visit 통과");
+			
+			if (cookie.getValue().contains(req.getParameter("post_id"))) {
+				System.out.println("visitif 통과");
+			} else {
+				cookie.setValue(cookie.getValue()+ "-" + req.getParameter("post_id"));
+				res.addCookie(cookie);
+				
+				ss.getMapper(BoardMapper.class).postCountUpdate(p);
+			}
+		}
+	}
+		
+		if(visitor == 0) {
+			Cookie cookie1 = new Cookie("visit", req.getParameter("post_id"));
+			res.addCookie(cookie1);
+			
+			ss.getMapper(BoardMapper.class).postCountUpdate(p);
+		}
+
+}*/
