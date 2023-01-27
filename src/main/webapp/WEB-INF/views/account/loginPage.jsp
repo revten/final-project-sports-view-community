@@ -66,13 +66,8 @@ pageEncoding="UTF-8"%>
       </form>
       <div id="SNS-login-area">
         <!-- 카카오로그인 -->
-
-        <a onclick="kakaoLogin()" style="cursor: pointer">
-          <img <a style="cursor: pointer" onclick="kakaoLogin()" />
-          <img
-            src="https://www.myro.co.kr/myro_image/kakaolink_btn.png"
-            width="40"
-        /></a>
+        <a onclick="kakaoLogin()"> <img style="cursor:pointer"
+				src="https://www.myro.co.kr/myro_image/kakaolink_btn.png" width="40" /></a>
 
         <!-- 네이버로그인 -->
         <div id="naver_id_login" style="cursor: pointer"></div>
