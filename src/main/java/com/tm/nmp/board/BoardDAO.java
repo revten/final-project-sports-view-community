@@ -29,13 +29,20 @@ public class BoardDAO {
 		this.allPostCount = allPostCount;
 	}
 	
+	private int withGo;
+	private int review;
 	private int baseball;
 	private int soccer;
 	private int basketball;
 	private int volleyball;
+	private int analyze;
+	private int clubEvent;
 
 	public void calcAllPostCount() {
-		
+		BoardSelector bSelWithGo = new BoardSelector("", 0, 0, 11);
+		withGo = ss.getMapper(BoardMapper.class).calcAllPostCount(bSelWithGo);
+		BoardSelector bSelReview = new BoardSelector("", 0, 0, 12);
+		review = ss.getMapper(BoardMapper.class).calcAllPostCount(bSelReview);
 		BoardSelector bSelBaseBall = new BoardSelector("", 0, 0, 21);
 		baseball = ss.getMapper(BoardMapper.class).calcAllPostCount(bSelBaseBall);
 		BoardSelector bSelSoccer = new BoardSelector("", 0, 0, 22);
@@ -44,13 +51,21 @@ public class BoardDAO {
 		basketball = ss.getMapper(BoardMapper.class).calcAllPostCount(bSelBasketball);
 		BoardSelector bSelVolley = new BoardSelector("", 0, 0, 24);
 		volleyball = ss.getMapper(BoardMapper.class).calcAllPostCount(bSelVolley);
-
+		BoardSelector bSelAnalyze = new BoardSelector("", 0, 0, 41);
+		analyze = ss.getMapper(BoardMapper.class).calcAllPostCount(bSelAnalyze);
+		BoardSelector bSelClubEvent = new BoardSelector("", 0, 0, 31);
+		clubEvent = ss.getMapper(BoardMapper.class).calcAllPostCount(bSelClubEvent);
 	}
 	
-
 	public void getAllPost(HttpServletRequest req, int pageNbr, int post_board) {
 		
 		switch (post_board) {
+		case 11:
+			allPostCount = withGo;
+			break;
+		case 12:
+			allPostCount = review;
+			break;
 		case 21:
 			allPostCount = baseball;
 			break;
@@ -62,6 +77,12 @@ public class BoardDAO {
 			break;
 		case 24:
 			allPostCount = volleyball;
+			break;
+		case 41:
+			allPostCount = analyze;
+			break;
+		case 31:
+			allPostCount = clubEvent;
 			break;
 		}
 
@@ -140,6 +161,12 @@ public class BoardDAO {
 		if (ss.getMapper(BoardMapper.class).regPost(p) == 1) {
 			System.out.println("글 등록 성공");
 			switch (post_board) {
+			case 11:
+				withGo++;
+				break;
+			case 12:
+				review++;
+				break;
 			case 21:
 				baseball++;
 				break;
@@ -151,6 +178,12 @@ public class BoardDAO {
 				break;
 			case 24:
 				volleyball++;
+				break;
+			case 41:
+				analyze++;
+				break;
+			case 31:
+				clubEvent++;
 				break;
 			}
 		} else {
@@ -193,6 +226,12 @@ public class BoardDAO {
 		if (ss.getMapper(BoardMapper.class).deletePost(p) == 1) {
 			req.setAttribute("result", "글삭제 성공");
 			switch (post_board) {
+			case 11:
+				withGo--;
+				break;
+			case 12:
+				review--;
+				break;
 			case 21:
 				baseball--;
 				break;
@@ -204,6 +243,12 @@ public class BoardDAO {
 				break;
 			case 24:
 				volleyball--;
+				break;
+			case 41:
+				analyze--;
+				break;
+			case 31:
+				clubEvent--;
 				break;
 			}
 		} else {
