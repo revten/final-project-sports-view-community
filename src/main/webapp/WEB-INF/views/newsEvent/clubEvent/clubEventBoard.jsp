@@ -21,7 +21,7 @@
 	<div class="nav__menu" id="nav-menu" style="width: 55%; align: center;">
 		<ul class="nav__list">
 			<li class="nav__item"><a href="newsEvent.main.go" class="nav__link">뉴스</a></li>
-			<li class="nav__item"><a href="club.event.main.go"
+			<li class="nav__item"><a href="clubEvent.board.go"
 				class="nav__link">구단공식이벤트</a></li>
 			
 		</ul>
@@ -30,6 +30,17 @@
 		<div class="nav__close" id="nav-close">
 			<i class="ri-close-line"></i>
 		</div>
+	</div>
+	<br><br>
+	
+	<div id="content_area">
+		<ul class="bxslider">
+			<!-- <li><img src="resources/files/slider/aa.jpg" /></li> -->
+			<li><img
+				src="http://ticketimage.interpark.com/TCMS3.0/SPORT/BIGBN/2301/230104022322_20230104022322.gif" /></li>
+			<li><img
+				src="http://ticketimage.interpark.com/TCMS3.0/SPORT/BIGBN/2212/221228102015_20221228102015.gif" /></li>
+		</ul>
 	</div>
 	
 	
@@ -48,17 +59,17 @@
 		</div>
 
 
-		<table class="board__table" border="1">
+		<table class="board__table">
 			<thead>
 				<tr>
-					<th>게시판넘버</th>
-					<th>글번호</th>
-					<th>탭</th>
-					<th>제목</th>
-					<th>등록일</th>
-					<th>닉네임</th>
-					<th>조회수</th>
-					<th>추천수</th>
+					<th style="width: 80px;">게시판넘버</th>
+					<th style="width: 70px;">글번호</th>
+					<th style="width: 50px;">탭</th>
+					<th style="width: 510px;">제목</th>
+					<th style="width: 150px;">등록일</th>
+					<th style="width: 100px;">닉네임</th>
+					<th style="width: 70px;">조회수</th>
+					<th style="width: 70px;">추천수</th>
 				</tr>
 				<c:forEach var="p" items="${posts }">
 					<tr>
@@ -93,9 +104,9 @@
 					onsubmit="return boardSearchCheck();">
 					<table id="snsSearchArea">
 						<tr>
-							<td id="ssaTd1"><input name="search" maxlength="10"
-								autocomplete="off"></td>
-							<td id="ssaTd2"><button>검색</button></td>
+							<td id="ssaTd1"><input id="search" name="search" maxlength="10"
+								autocomplete="off" placeholder="검색어를 입력해주세요."></td>
+							<td id="ssaTd2"><button class="btn btn-dark">검색</button></td>
 						</tr>
 					</table>
 				</form>

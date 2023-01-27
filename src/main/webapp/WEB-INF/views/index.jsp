@@ -54,6 +54,7 @@
 <link rel="stylesheet" href="resources/css/stadium/stadium.css" />
 <link rel="stylesheet" href="resources/css/message/message.css" />
 <link rel="stylesheet" href="resources/css/watch/watchMain.css" />
+<link rel="stylesheet" href="resources/css/event/event.css" />
 
 <!-- ---------------------------------------------------------------------------- -->
 </head>

@@ -131,6 +131,8 @@ function checkOne(element) {
 	<br>
 	<br>
 	<br>
+	<br>
+	<br>
 	<div id="accountReg__contrainer">
 	<h1 class="login_title">회원 가입</h1>
 		<form action="account.reg.do" method="post"
@@ -172,7 +174,6 @@ function checkOne(element) {
 			<div class="accountReg__emailInput-2">
 				<!-- member 이메일 인풋 창 -->
 				<input class="input_id" placeholder="이메일" type="email" id="search_member_email" name="member_email">
-				<br>
 				<button class="emailBtn2" type="button" id="member_email_check">이메일 인증</button>
 				 <input class="input_id" placeholder="인증번호를 입력해주세요" id="email_num"
 					disabled="disabled"> <input type="hidden" id="valid">

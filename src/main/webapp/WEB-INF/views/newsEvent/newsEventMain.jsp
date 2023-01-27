@@ -15,7 +15,7 @@
 	<br>
 	<br>
 	<br>
-	
+	<br>
 	<div class="nav__menu" id="nav-menu" style="width:55%;align:center;">
 				<ul class="nav__list">
 					<li class="nav__item"><a href="newsEvent.main.go"
@@ -31,15 +31,16 @@
 
 				</ul>
 		</div>
+		<br><br>
 		
-		<div>
+		<div class="div_news">
 		<div style="float:left; width: 200px;">
 		<div class="div_news_go"><a href="news.soccer.go" class="news_go">축구</a></div>
 		<div class="div_news_go"><a href="news.baseball.go" class="news_go">야구</a></div>
 		<div class="div_news_go"><a href="news.basketball.go" class="news_go">농구</a></div>
 		<div class="div_news_go"><a href="news.volleyball.go" class="news_go">배구</a></div>
 		</div>
-		<div style="margin-left: 200px;">
+		<div class="div_news_content">
 		<div id="SoccerNews"></div>
 		<div id="BaseballNews"></div>
 		<div id="BasketballNews"></div>
@@ -92,7 +93,7 @@
 				+ "</span><div class='title'>"
 				+ "<a href='"+ data.items[0].link + "'><span class='newsTitle'>"
 				+ data.items[0].title
-				+ "</span></a><div class='hiddenMsg'><span>⬅ </span></div>"
+				+ "</span></a><div class='hiddenMsg'><span> </span></div>"
 				+ "</div><span class='newsContent'>"
 				+ data.items[0].description
 				+ "</span></div>";
@@ -108,7 +109,7 @@
 				+ "</span><div class='title'>"
 				+ "<a href='"+ data.items[0].link + "'><span class='newsTitle'>"
 				+ data.items[0].title
-				+ "</span></a><div class='hiddenMsg'><span>⬅ </span></div>"
+				+ "</span></a><div class='hiddenMsg'><span> </span></div>"
 				+ "</div><span class='newsContent'>"
 				+ data.items[0].description
 				+ "</span></div>";
@@ -124,7 +125,7 @@
 				+ "</span><div class='title'>"
 				+ "<a href='"+ data.items[0].link + "'><span class='newsTitle'>"
 				+ data.items[0].title
-				+ "</span></a><div class='hiddenMsg'><span>⬅ </span></div>"
+				+ "</span></a><div class='hiddenMsg'><span> </span></div>"
 				+ "</div><span class='newsContent'>"
 				+ data.items[0].description
 				+ "</span></div>";
@@ -140,7 +141,7 @@
 				+ "</span><div class='title'>"
 				+ "<a href='"+ data.items[0].link + "'><span class='newsTitle'>"
 				+ data.items[0].title
-				+ "</span></a><div class='hiddenMsg'><span>⬅ </span></div>"
+				+ "</span></a><div class='hiddenMsg'><span> </span></div>"
 				+ "</div><span class='newsContent'>"
 				+ data.items[0].description
 				+ "</span></div>";
