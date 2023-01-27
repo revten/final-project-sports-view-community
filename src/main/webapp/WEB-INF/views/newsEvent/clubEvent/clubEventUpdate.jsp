@@ -54,19 +54,12 @@
 
 
 	<!--==================== Nav바 ====================-->
-	<div class="nav__menu" id="nav-menu" style="width: 70%; align: center;">
+	<div class="nav__menu" id="nav-menu" style="width: 55%; align: center;">
 		<ul class="nav__list">
-			<li class="nav__item"><a href="news.soccer.go" class="nav__link">축구</a></li>
-			<li class="nav__item"><a href="news.baseball.go"
-				class="nav__link">야구</a></li>
-			<li><a href="news.basketball.go" class="nav__link">농구</a></li>
-			<li class="nav__item"><a href="news.volleyball.go"
-				class="nav__link">배구</a></li>
-			<li class="nav__item"><a href="news.sports.go" class="nav__link">스포츠</a></li>
-			<li class="nav__item"><a href="club.event.main.go"
+			<li class="nav__item"><a href="newsEvent.main.go" class="nav__link">뉴스</a></li>
+			<li class="nav__item"><a href="clubEvent.board.go"
 				class="nav__link">구단공식이벤트</a></li>
-			<li class="nav__item"><a href="sports.info.main.go"
-				class="nav__link">생활체육정보</a></li>
+			
 		</ul>
 
 		<!-- close button -->
@@ -74,6 +67,7 @@
 			<i class="ri-close-line"></i>
 		</div>
 	</div>
+	<br><br>
 			
 			
 	<!--==================== 상세-수정 ====================-->
