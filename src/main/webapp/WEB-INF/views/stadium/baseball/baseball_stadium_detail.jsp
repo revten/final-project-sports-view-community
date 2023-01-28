@@ -98,11 +98,11 @@
 		 });*/
 	</script>
 	<script>
-	$('.imgArea').mouseleave(function() {
-		let areaId = $(this).attr("id");
-		let imgName = "#test_" + areaId;
-		$(imgName).toggle('slow');
-	});
+		$('.imgArea').mouseleave(function() {
+			let areaId = $(this).attr("id");
+			let imgName = "#test_" + areaId;
+			$(imgName).toggle('slow');
+		});
 	</script>
 	<!-- ------------------map---------------------  -->
 	<script type="text/javascript"

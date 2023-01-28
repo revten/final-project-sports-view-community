@@ -34,25 +34,20 @@ public class FanBoardController {
 
 	@Autowired
 	private PointDAO ptDAO;
-	
-	
+
 	@RequestMapping(value = "fan.main.go", method = RequestMethod.GET)
-	public String fanMainGo(HttpServletRequest req) {
+	public String fanMainGo(HttpServletRequest req, PostVO p) {
 		acDAO.wathingPage(req);
 		acDAO.loginCheck(req);
-
-
 		req.setAttribute("contentPage", "fan/fanBoard.jsp");
 		return "index";
 	}
-
 
 	@RequestMapping(value = "fan.board.go", method = RequestMethod.GET)
 	public String fanBoardGo(HttpServletRequest req) {
 		TokenMaker.make(req);
 		acDAO.wathingPage(req);
 		acDAO.loginCheck(req);
-		
 		// 홈에서 더 팬을 눌렀을때 우선 야구 게시판이 뜨게 설정해둠
 		BoardOption.clearSearch(req);
 		int post_board = Integer.parseInt(req.getParameter("post_board"));
@@ -200,24 +195,20 @@ public class FanBoardController {
 		TokenMaker.make(req);
 		return brDAO.regReply(req, rp);
 	}
-	/*	@RequestMapping(value = "fanReply.reg.do", method = RequestMethod.GET)
-	public String fanReplyRegDo(HttpServletRequest req, ReplyVO rp, PostVO p) {
-		TokenMaker.make(req);
-		if (acDAO.loginCheck(req)) {
-			brDAO.regReply(req, rp);
-		} else {
-			req.setAttribute("contentPage", "account/loginPage.jsp");
-		}
-		brDAO.getPost(req, p);
-		req.setAttribute("contentPage", "fan/fanPostDetail.jsp");
-		return "index";
-	}*/
-	
+	/*
+	 * @RequestMapping(value = "fanReply.reg.do", method = RequestMethod.GET) public
+	 * String fanReplyRegDo(HttpServletRequest req, ReplyVO rp, PostVO p) {
+	 * TokenMaker.make(req); if (acDAO.loginCheck(req)) { brDAO.regReply(req, rp); }
+	 * else { req.setAttribute("contentPage", "account/loginPage.jsp"); }
+	 * brDAO.getPost(req, p); req.setAttribute("contentPage",
+	 * "fan/fanPostDetail.jsp"); return "index"; }
+	 */
+
 	@RequestMapping(value = "fanReply.delete.do", method = RequestMethod.GET)
 	public @ResponseBody int fanReplyDelete(HttpServletRequest req, ReplyVO rp) {
 		return brDAO.deleteReply(req, rp);
 	}
-	
+
 	@RequestMapping(value = "fanReply.update.do", method = RequestMethod.GET)
 	public String fanReplyUpdate(HttpServletRequest req, ReplyVO rp, PostVO p) {
 		TokenMaker.make(req);
@@ -230,7 +221,7 @@ public class FanBoardController {
 		req.setAttribute("contentPage", "fan/fanPostDetail.jsp");
 		return "index";
 	}
-	
+
 	// 좋아요 (진행중)
 	@ResponseBody
 	@RequestMapping(value = "like.up.do", method = RequestMethod.POST)

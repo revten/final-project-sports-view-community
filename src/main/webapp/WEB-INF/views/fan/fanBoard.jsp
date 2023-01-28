@@ -8,8 +8,8 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" href="resources/css/fan/fan.css">
-<link rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css">
+<%-- <link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css">--%>
 <link rel="stylesheet"
 	href="https://cdn.jsdelivr.net/jquery.selectric/1.10.1/selectric.css">
 <link rel="stylesheet"
@@ -22,23 +22,6 @@
 <script
 	src="https://cdn.jsdelivr.net/jquery.selectric/1.10.1/jquery.selectric.min.js"></script>
 <script src="resources/js/fan/fanBoard.js"></script>
-<style>
-body {
-	background-color: #1b2431;
-	color: #202020;
-	font-family: "Montserrat", "Helvetica", "Open Sans", "Arial";
-	font-size: 13px;
-}
-
-a:hover {
-	text-decoration: none;
-}
-
-p, figure {
-	margin: 0;
-	padding: 0;
-}
-</style>
 </head>
 
 <body>
@@ -50,244 +33,160 @@ p, figure {
 
 
 	<main role="main" class="col-md-9 ml-sm-auto col-lg-10 my-3"> <!-- 부트스트랩 클래스명이라 main은 남겨야 할듯 -->
-	<div class="container-fluid">
+	<div class="container-field">
 
-		<div class="row">
+		<div class="board-main">
 			<!--==================== fan__best 부분 - 종목별 베스트 (각 게시판별로 CRUD별로 존재해야)  ====================-->
 			<div class="card-list">
-
-				<div class="row">
-					<!-- 맨위에 fan__best 부분 - 상위글 보여주는 부분 -->
-
-					<div class="col-12 col-md-6 col-lg-4 col-xl-3 mb-4">
-						<div class="card blue">
-							<div class="title">
-								<a href="fan.board.go?post_board=21">야구 게시판</a>
-							</div>
-							<i class="zmdi zmdi-upload"></i>
-							<div class="value">89</div>
-							<div class="stat">
-								<b>13</b>% increase
-							</div>
-						</div>
+				<!-- 맨위에 fan__best 부분 - 상위글 보여주는 부분 -->
+				<div class="card blue">
+					<div class="title">
+						<a href="fan.board.go?post_board=21">야구 게시판</a>
 					</div>
-
-					<div class="col-12 col-md-6 col-lg-4 col-xl-3 mb-4">
-						<div class="card green">
-							<div class="title">
-								<a href="fan.board.go?post_board=22">축구 게시판</a>
-							</div>
-							<i class="zmdi zmdi-upload"></i>
-							<div class="value">5,990</div>
-							<div class="stat">
-								<b>4</b>% increase
-							</div>
-						</div>
+					<i class="zmdi zmdi-upload"></i>
+					<div class="value">89</div>
+					<div class="stat">
+						<b>13</b>% increase
 					</div>
+				</div>
 
-					<div class="col-12 col-md-6 col-lg-4 col-xl-3 mb-4">
-						<div class="card orange">
-							<div class="title">
-								<a href="fan.board.go?post_board=23">농구 게시판</a>
-							</div>
-							<i class="zmdi zmdi-download"></i>
-							<div class="value">$80,990</div>
-							<div class="stat">
-								<b>13</b>% decrease
-							</div>
-						</div>
+				<div class="card green">
+					<div class="title">
+						<a href="fan.board.go?post_board=22">축구 게시판</a>
 					</div>
-
-					<div class="col-12 col-md-6 col-lg-4 col-xl-3 mb-4">
-						<div class="card red">
-							<div class="title">
-								<a href="fan.board.go?post_board=24">배구 게시판</a>
-							</div>
-							<i class="zmdi zmdi-download"></i>
-							<div class="value">3</div>
-							<div class="stat">
-								<b>13</b>% decrease
-							</div>
-						</div>
+					<i class="zmdi zmdi-upload"></i>
+					<div class="value">5,990</div>
+					<div class="stat">
+						<b>4</b>% increase
 					</div>
+				</div>
 
+				<div class="card orange">
+					<div class="title">
+						<a href="fan.board.go?post_board=23">농구 게시판</a>
+					</div>
+					<i class="zmdi zmdi-download"></i>
+					<div class="value">$80,990</div>
+					<div class="stat">
+						<b>13</b>% decrease
+					</div>
+				</div>
+
+				<div class="card red">
+					<div class="title">
+						<a href="fan.board.go?post_board=24">배구 게시판</a>
+					</div>
+					<i class="zmdi zmdi-download"></i>
+					<div class="value">3</div>
+					<div class="stat">
+						<b>13</b>% decrease
+					</div>
 				</div>
 			</div>
+		</div>
+		<!--==================== 게시판 ====================-->
+		<div class="app-container">
 
-			<!--==================== 게시판 ====================-->
-			<div class="projects mb-4">
-				<div class="projects-inner">
+			<!-- 맨위의 게시판 제목 -->
+			<div class="app-content">
 
-					<!-- 게시판 제목 -->
-					<header class="projects-header">
-						<div class="title">
-							<h3>${param.post_board }게시판</h3>
-						</div>
-						<div class="count">| 32 Projects</div>
-						<i class="zmdi zmdi-download"></i>
-					</header>
+				<!-- 1번줄 헤더 -->
+				<div class="app-content-header">
+					<!-- 왼쪽게시판 제목 -->
+					<h1 class="app-content-headerText">Board</h1>
+				</div>
 
-					<!-- 게시글 목록 테이블 -->
-					<table class="projects-table">
-						<thead>
-							<tr>
-								<th>게시판넘버</th>
-								<!-- 확인차 해둔거고 나중에 지울 칼럼 -->
-								<th>글번호</th>
-								<th>탭</th>
-								<th>제목</th>
-								<th>등록일</th>
-								<th>닉네임</th>
-								<th>조회수</th>
-								<th>추천수</th>
-								<th class="text-right">Actions</th>
-							</tr>
-						</thead>
+				<!-- 2번줄 헤더 -->
+				<div class="app-content-actions">
 
-						<tr>
-							<td>
-								<p>New Dashboard</p>
-								<p>Google</p>
-							</td>
-							<td>
-								<p>17th Oct, 15</p>
-								<p class="text-danger">Overdue</p>
-							</td>
-							<td class="member">
-								<figure>
-									<img
-										src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/584938/people_8.png" />
-								</figure>
-								<div class="member-info">
-									<p>Myrtle Erickson</p>
-									<p>UK Design Team</p>
+					<!-- 왼쪽 검색바 -->
+					<input class="search-bar" placeholder="Search..." type="text">
+
+					<!-- 검색바 오른쪽 메뉴들 -->
+					<div class="app-content-actions-wrapper">
+
+						<!-- 필터버튼 -->
+						<div class="filter-button-wrapper">
+							<button class="action-button filter jsFilter">
+								<span>Filter</span>
+								<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+									viewBox="0 0 24 24" fill="none" stroke="currentColor"
+									stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+									class="feather feather-filter">
+								<polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3" /></svg>
+							</button>
+							<div class="filter-menu">
+								<label>Category</label> <select>
+									<option>All Categories</option>
+									<option>Furniture</option>
+									<option>Decoration</option>
+									<option>Kitchen</option>
+									<option>Bathroom</option>
+								</select> <label>Status</label> <select>
+									<option>All Status</option>
+									<option>Active</option>
+									<option>Disabled</option>
+								</select>
+								<div class="filter-menu-buttons">
+									<button class="filter-button reset">Reset</button>
+									<button class="filter-button apply">Apply</button>
 								</div>
-							</td>
-							<td>
-								<p>$4,670</p>
-								<p>Paid</p>
-							</td>
-							<td class="status"><span class="status-text status-orange">In
-									progress</span></td>
-							<td>
-								<form class="form" action="#" method="POST">
-									<select class="action-box">
-										<option>Actions</option>
-										<option>Start project</option>
-										<option>Send for QA</option>
-										<option>Send invoice</option>
-									</select>
-								</form>
-							</td>
-						</tr>
-					</table>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- 게시글 테이블 시작 -->
+				<div class="board__wrapper tableView">
+
+					<!-- 게시판 칼럼 (제목, 닉네임, 조회수 등등)-->
+					<div class="board__header">
+						<div class="board__cell num">글 번호</div>
+						<div class="board__cell category">탭</div>
+						<div class="board__cell post_title">제목</div>
+						<div class="board__cell reg_date">등록일</div>
+						<div class="board__cell nick">닉네임</div>
+						<div class="board__cell view_count">조회수</div>
+					</div>
+
+					<!-- forEach문으로 돌릴 구간, 샘플을 위해서 일단 게시글 4개정도 남김, function 할땐 하나만 하면됨 -->
+					<div class="board__row">
+						<c:forEach var="p" items="${posts }">
+							<div class="board__cell num">
+								<span>${p.post_id}</span>
+							</div>
+							<div class="board__cell category">
+								<span class="cell-label">${p.post_category}</span>
+							</div>
+							<div class="board__cell post_title">
+								<span class="cell-label"><a
+									href="fan.detail.go?post_id=${p.post_id }&post_member=${p.post_member}">${p.post_title }
+										[${p.post_reply_count}]</a></span>
+							</div>
+							<div class="board__cell reg_date">
+								<span class="cell-label"><c:choose>
+										<c:when test="${p.post_update_date eq null }">
+											<fmt:formatDate value="${p.post_reg_date}"
+												pattern="yy-MM-dd HH:mm" />
+										</c:when>
+										<c:otherwise>
+											<fmt:formatDate value="${p.post_update_date}"
+												pattern="yy-MM-dd HH:mm" />
+										</c:otherwise>
+									</c:choose></span>
+							</div>
+							<div class="board__cell nick">
+								<span class="cell-label">${p.member_nick}</span>
+							</div>
+							<div class="board__cell view_count">
+								<span class="cell-label">${p.post_hit_count}</span>
+							</div>
+						</c:forEach>
+					</div>
 				</div>
 			</div>
-
-
 		</div>
 	</div>
 	</main>
-
-
-
-
-
-
-	<!--==================== 기존 게시판 -> 아래를 위에 적용시키고 클래스명도 우리걸로 바꿔서 css도 바꾸기(부트스트랩 클래스명은 주의) ====================-->
-	<main class="fanBoard__main"> <br>
-	<div class="fanBoard__container">
-		<div class="fanBoard__top">
-			<c:choose>
-				<c:when test="${sessionScope.loginAccount ne null}">
-					<a href="fan.reg.go?post_board=${param.post_board}"> 새글쓰기</a>
-				</c:when>
-				<c:otherwise>
-					<a href="fan.reg.go?post_board=${param.post_board}"
-						onclick="alert('로그인하세요')">새글쓰기</a>
-				</c:otherwise>
-			</c:choose>
-		</div>
-
-
-		<table class="fanBoard__table">
-			<thead>
-				<tr>
-					<th>게시판넘버</th>
-					<th>글번호</th>
-					<th>탭</th>
-					<th>제목</th>
-					<th>등록일</th>
-					<th>닉네임</th>
-					<th>조회수</th>
-					<th>추천수</th>
-				</tr>
-			</thead>
-			<c:forEach var="p" items="${posts }">
-				<tr>
-					<td>${p.post_board}</td>
-					<td>${p.post_id}</td>
-					<td>${p.post_category}</td>
-					<td><a
-						href="fan.detail.go?post_id=${p.post_id }&post_member=${p.post_member}">${p.post_title }
-							[${p.post_reply_count}]</a></td>
-					<td><c:choose>
-							<c:when test="${p.post_update_date eq null }">
-								<fmt:formatDate value="${p.post_reg_date}"
-									pattern="yy-MM-dd HH:mm" />
-							</c:when>
-							<c:otherwise>
-								<fmt:formatDate value="${p.post_update_date}"
-									pattern="yy-MM-dd HH:mm" />
-							</c:otherwise>
-						</c:choose></td>
-					<td>${p.member_nick}</td>
-					<td>${p.post_hit_count}</td>
-					<td>${p.post_like_count}</td>
-				</tr>
-			</c:forEach>
-
-		</table>
-
-
-		<div class="fanBoard__bot">
-			<div class="fanBoard__bot-search">
-				<form action="fan.search.do" name="boardSearchForm"
-					onsubmit="return boardSearchCheck();">
-					<input type="hidden" name="post_board" value="${param.post_board}">
-					<table id="snsSearchArea">
-						<tr>
-							<td id="ssaTd1"><input name="search" type="search"
-								maxlength="10" autocomplete="off"></td>
-							<td id="ssaTd2"><button class="search btn-dark">검색</button></td>
-						</tr>
-					</table>
-				</form>
-			</div>
-			${pageCount}
-			<div class="fanBoard__bot-paging">
-				<c:if test="${curPage != 1}">
-					<span><a
-						href="fan.page.change?pg=1&post_board=${param.post_board }">[맨처음]</a></span>
-					<span><a
-						href="fan.page.change?pg=${curPage - 1}&post_board=${param.post_board }">
-							◀이전 </a></span>
-				</c:if>
-				<c:forEach var="i" begin="1" end="${pageCount}">
-					<a href="fan.page.change?pg=${i}&post_board=${param.post_board }">
-						[${i}] </a>
-				</c:forEach>
-				<c:if test="${curPage != pageCount}">
-					<span> <a
-						href="fan.page.change?pg=${curPage + 1}&post_board=${param.post_board }">
-							다음▶ </a></span>
-					<span><a
-						href="fan.page.change?pg=${pageCount}&post_board=${param.post_board }">[맨끝]</a></span>
-				</c:if>
-			</div>
-		</div>
-	</div>
 	</main>
 </body>
-
 </html>
