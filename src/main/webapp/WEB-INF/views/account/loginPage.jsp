@@ -34,10 +34,10 @@
 			<input name="member_id" class="input_id" id="idInput"
 				placeholder="아이디" /> 
 			<input name="member_pwd" type="password" class="input_pw"
-				id="pwInput" placeholder="비밀번호" /><br /> <a
-				class="find_id" type="button" href="search.id.go">아이디</a>&nbsp; <a>·</a>&nbsp;
+				id="pwInput" placeholder="비밀번호" />
+				 <a class="find_id" type="button" href="search.id.go">아이디</a>&nbsp; <a>·</a>&nbsp;
 			<a class="find_pw" type="button" href="search.pw.go">비밀번호 찾기</a><br />
-				<br><br>
+				<br>
 			<button class="loginBtn">로그인</button>
 			<br>
 			<div class="reg-area"></div>
