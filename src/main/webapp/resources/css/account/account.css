@@ -31,7 +31,7 @@
   border-radius: 9px;
   border-top: 10px solid #79a6fe;
   border-bottom: 10px solid #8BD17C;
-  width: 400px;
+  width: 310px;
   height: 100%;
   box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
 }
@@ -45,7 +45,7 @@
   border-radius: 9px;
   border-top: 10px solid #79a6fe;
   border-bottom: 10px solid #8BD17C;
-  width: 400px;
+  width: 310px;
   height: 100%;
   box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
 }
@@ -55,16 +55,19 @@
   font-family: 'Source Sans Pro', sans-serif;
   color: #5c6bc0; 
   font-size: 16px;
-  margin-top:94px;;
+  margin-top:14px;;
 }
 .input_id,.input_pw{
+	height:30px;
+}
+.input_id,.input_pw,.input_content{
   display: block;
   margin: 20px auto;
   background: #d2daff;
   border: 0;
   border-radius: 5px;
   padding: 14px 10px;
-  width: 320px;
+  width: 220px;
   outline: none;
   color: #8080ff;
       -webkit-transition: all .2s ease-out;
@@ -77,6 +80,8 @@
 ::-webkit-input-placeholder {
   color: #565f79;
 }
+
+
 
 .loginBtn{
   border:0;
@@ -129,7 +134,7 @@
 }
 
 .find_id,.find_pw{
-	color: #3b476b;
+	color: #5c6bc0;
   font-size: 12px;
   cursor: pointer;
 }

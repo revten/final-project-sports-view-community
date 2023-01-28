@@ -28,6 +28,7 @@
 			<button class="loginBtn">아이디 찾기</button>
 		</div>
 	</form>
+	<br>
 	<div>
 		이미 회원이신가요?&nbsp;&nbsp;&nbsp; <a href="account.login.go">로그인</a>
 	</div>
