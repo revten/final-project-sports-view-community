@@ -9,6 +9,7 @@
 	content="567208941336-p92o44c3gigs2a282rhro3p6vni5fetb.apps.googleusercontent.com">
 -->
 <title>Insert title here</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css" />
 <script type="text/javascript"
 	src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.3.js"
 	charset="utf-8"></script>
@@ -26,7 +27,9 @@
 	<br />
 	<br>
 	<br>
+	<div class="animated bounceInDown">
 	<div id="login_area" class="login_area">
+		<div align="center">${r }</div>
 		<h1 class="login_title">로그인</h1>
 		<span class="error animated tada" id="msg"></span>
 		<form class="login_form" name="loginForm" action="account.login.do"
@@ -34,7 +37,7 @@
 			<input name="member_id" class="input_id" id="idInput"
 				placeholder="아이디" /> 
 			<input name="member_pwd" type="password" class="input_pw"
-				id="pwInput" placeholder="비밀번호" />
+				id="pwInput" placeholder="비밀번호" /><br>
 				 <a class="find_id" type="button" href="search.id.go">아이디</a>&nbsp; <a>·</a>&nbsp;
 			<a class="find_pw" type="button" href="search.pw.go">비밀번호 찾기</a><br />
 				<br>
@@ -68,6 +71,7 @@
 				data-shape="rectangular" data-logo_alignment="left"></div>
 		</div>
 		<a class="regBtn" href="account.reg.go">회원가입</a>
+	</div>
 	</div>
 
 	<script>
