@@ -28,4 +28,6 @@ public interface AccountMapper {
 	
 	List<PostVO> getMyPosts(PostVO pVO);
 
+	PostVO getMyDeatailPosts(PostVO pvo);
+
 }

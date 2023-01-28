@@ -52,6 +52,17 @@ public class MyPageController {
 		return "index";
 	}
 	
+	@RequestMapping(value = "myPage.myPost.detail.go", method = RequestMethod.GET)
+	public String myPageMyPostDetailGo(HttpServletRequest req, AccountDTO ac, PointVO pv, PlusPointVO ppv, PostVO pvo) {
+		TokenMaker.make(req);
+		acDAO.loginCheck(req);
+		acDAO.getMyDeatailPosts(req, pvo);
+		req.setAttribute("contentPage", "myPage/myPageMyPostDetail.jsp");
+		return "index";
+	}
+	
+	
+	
 	@RequestMapping(value = "myPage.service.go", method = RequestMethod.GET)
 	public String myPageMyServiceGo(HttpServletRequest req, AccountDTO ac, PointVO pv, PlusPointVO ppv) {
 		TokenMaker.make(req);
