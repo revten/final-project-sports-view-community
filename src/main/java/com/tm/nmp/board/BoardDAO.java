@@ -333,11 +333,8 @@ public class BoardDAO {
 
 
 	
-	public void postCountUpdate(HttpServletRequest req, PostVO p) {
+	public void postCountUpdate(HttpServletRequest req, HttpServletResponse res, PostVO p) {
 	
-		/*
-			public void postCountUpdate(HttpServletRequest req, HttpServletResponse res, PostVO p) {
-
 		Cookie[] cookies = req.getCookies();
 		int visitor = 0;
 
@@ -365,16 +362,16 @@ public class BoardDAO {
 
 			ss.getMapper(BoardMapper.class).postCountUpdate(p);
 		}
-
-	}
-		*/
-		 
-		if(ss.getMapper(BoardMapper.class).postCountUpdate(p) == 1) {
+		
+		/*if(ss.getMapper(BoardMapper.class).postCountUpdate(p) == 1) {
 			req.setAttribute("result", "조회수 성공");
 		}else {
 			req.setAttribute("result", "조회수 실패");
-		}
+		}*/
+
 	}
+		
+		 
 	
 
 	public void likeUp(HttpServletRequest req, LikeVO lk) {

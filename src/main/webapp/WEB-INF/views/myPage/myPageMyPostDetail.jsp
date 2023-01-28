@@ -12,7 +12,7 @@
 <br><br><br><br><br>
 
 <div style="border:1px solid;width:70%;align:center;">
-			<div>${MyPosts.post_id }</div>
+			<div>${MyPost.post_id }</div>
 			<div>${MyPost.post_title }</div>
 			<div><fmt:formatDate value="${MyPost.post_reg_date }" pattern="yyyy-MM-dd HH:mm" /></div>
 			<div>조회수:${MyPost.post_content }</div>
