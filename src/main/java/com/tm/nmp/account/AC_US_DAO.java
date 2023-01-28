@@ -12,6 +12,7 @@ import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
 
+import com.tm.nmp.board.PostVO;
 import com.tm.nmp.point.PointMapper;
 
 @Service
@@ -287,6 +288,18 @@ public class AC_US_DAO {
 		a.setMember_id(a.getMember_id());
 		List<AccountDTO> Account = ss.getMapper(AccountMapper.class).showAccount(ac);
 		req.setAttribute("account", Account);
+	}
+
+	public void getMyPosts(HttpServletRequest req, PostVO postVO) {
+		postVO.setPost_member(req.getParameter("post_member"));
+		List<PostVO> myPosts = ss.getMapper(AccountMapper.class).getMyPosts(postVO);
+		req.setAttribute("MyPosts", myPosts);
+		
+	}
+
+	public void getMyDeatailPosts(HttpServletRequest req, PostVO pvo) {
+		PostVO myPosts = ss.getMapper(AccountMapper.class).getMyDeatailPosts(pvo);
+		req.setAttribute("MyPosts", myPosts);
 	}
 
 
