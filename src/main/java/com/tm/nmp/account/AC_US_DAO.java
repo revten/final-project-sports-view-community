@@ -297,10 +297,7 @@ public class AC_US_DAO {
 		
 	}
 
-	public void getMyDeatailPosts(HttpServletRequest req, PostVO pvo) {
-		PostVO myPosts = ss.getMapper(AccountMapper.class).getMyDeatailPosts(pvo);
-		req.setAttribute("MyPosts", myPosts);
-	}
+	
 
 
 }

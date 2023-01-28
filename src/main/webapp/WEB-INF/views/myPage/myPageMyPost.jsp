@@ -67,7 +67,7 @@
 								<tr>
 									<td>${mpt.post_category }</td>
 									<td><a style="cursor: pointer; color: blue;"
-										href="myPage.myPost.detail.go?mypost_no=${mpt.post_id}">${mpt.post_title }</a></td>
+										href="myPage.myPost.detail.go?post_id=${mpt.post_id}">${mpt.post_title }</a></td>
 									<td><fmt:formatDate value="${mpt.post_reg_date }"
 											pattern="yyyy-MM-dd HH:mm" /></td>
 									<td>${mpt.post_hit_count }</td>
