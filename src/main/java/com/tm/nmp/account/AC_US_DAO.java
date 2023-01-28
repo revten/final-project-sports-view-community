@@ -67,7 +67,11 @@ public class AC_US_DAO {
 			if (ac.getMember_pwd().equals(dbAccount.getMember_pwd())) {
 				req.getSession().setAttribute("loginAccount", dbAccount);
 				req.getSession().setMaxInactiveInterval(60 * 60);
+			}else {
+				req.setAttribute("r", "비밀번호 오류!");
 			}
+		}else {
+			req.setAttribute("r", "존재하지 않는 회원");
 		}
 	}
 	

@@ -42,7 +42,7 @@
 		</div>
 		<div class="div_news_content">
 		<div id="data-container"></div>
-		<div id="pagination" style="margin-left: 29%;"></div>
+		<div id="pagination" style="margin-left: 23%;"></div>
 		</div>
 		</div>
 	<script type="text/javascript">
@@ -71,16 +71,16 @@
 					$.each(
 									data,
 									function(index, i) {
-										content += "<div class='news'><span class='time'>"
-												+ (i.pubDate).substring(0,
-														16)
-												+ "</span><div class='title'>"
-												+ "<a href='"+ i.link + "'><span class='newsTitle'>"
-												+ i.title
-												+ "</span></a><div class='hiddenMsg'><span> </span></div>"
-												+ "</div><span class='newsContent'>"
-												+ i.description
-												+ "</span></div>";
+										content += "<div class='news'><div class='title'>"
+											+ "<a href='"+ i.link + "'><span class='newsTitle'>"
+											+ i.title
+											+ "</span></a><div class='hiddenMsg'><span> </span></div>"
+											+ "</div><div><span class='time'>"
+											+ (i.pubDate).substring(0,
+													16)
+											+ "</span></div><br><span class='newsContent'>"
+											+ i.description
+											+ "</span></div><br><hr style=\"border: 0;height: 1px;background: #ccc;\">";
 									});
 
 					$("#data-container").html(content);

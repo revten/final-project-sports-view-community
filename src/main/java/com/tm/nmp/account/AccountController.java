@@ -50,7 +50,9 @@ public class AccountController {
 			String watchingPage = (String) req.getSession().getAttribute("watchingPage");
 			System.out.println(watchingPage);
 			response.sendRedirect(watchingPage);	
-		} 
+		}else {
+			req.setAttribute("contentPage", "account/loginPage.jsp");
+		}
 	}
 
 	@RequestMapping(value = "/account.logout.do", method = RequestMethod.GET)

@@ -87,64 +87,64 @@
 
 		function callbackSoccer(data) {
 			const element = document.getElementById('SoccerNews');
-			element.innerHTML += "<div class='news'><span class='time'>"
-				+ (data.items[0].pubDate).substring(0,
-						16)
-				+ "</span><div class='title'>"
+			element.innerHTML += "<div class='news'><div class='title'>"
 				+ "<a href='"+ data.items[0].link + "'><span class='newsTitle'>"
 				+ data.items[0].title
 				+ "</span></a><div class='hiddenMsg'><span> </span></div>"
-				+ "</div><span class='newsContent'>"
+				+ "</div><div><span class='time'>"
+				+ (data.items[0].pubDate).substring(0,
+						16)
+				+ "</span></div><br><span class='newsContent'>"
 				+ data.items[0].description
-				+ "</span></div>";
+				+ "</span></div><br><hr style=\"border: 0;height: 1px;background: #ccc;\">";
 			element.className = "SoccerNews";
 								
 
 				}
 		function callbackBaseball(data) {
 			const element = document.getElementById('BaseballNews');
-			element.innerHTML += "<div class='news'><span class='time'>"
-				+ (data.items[0].pubDate).substring(0,
-						16)
-				+ "</span><div class='title'>"
+			element.innerHTML += "<div class='news'><div class='title'>"
 				+ "<a href='"+ data.items[0].link + "'><span class='newsTitle'>"
 				+ data.items[0].title
 				+ "</span></a><div class='hiddenMsg'><span> </span></div>"
-				+ "</div><span class='newsContent'>"
+				+ "</div><div><span class='time'>"
+				+ (data.items[0].pubDate).substring(0,
+						16)
+				+ "</span></div><br><span class='newsContent'>"
 				+ data.items[0].description
-				+ "</span></div>";
+				+ "</span></div><br><hr style=\"border: 0;height: 1px;background: #ccc;\">";
 			element.className = "BaseballNews";
 								
 
 				}
 		function callbackBasketball(data) {
 			const element = document.getElementById('BasketballNews');
-			element.innerHTML += "<div class='news'><span class='time'>"
-				+ (data.items[0].pubDate).substring(0,
-						16)
-				+ "</span><div class='title'>"
+			element.innerHTML += "<div class='news'><div class='title'>"
 				+ "<a href='"+ data.items[0].link + "'><span class='newsTitle'>"
 				+ data.items[0].title
 				+ "</span></a><div class='hiddenMsg'><span> </span></div>"
-				+ "</div><span class='newsContent'>"
+				+ "</div><div><span class='time'>"
+				+ (data.items[0].pubDate).substring(0,
+						16)
+				+ "</span></div><br><span class='newsContent'>"
 				+ data.items[0].description
-				+ "</span></div>";
+				+ "</span></div><br><hr style=\"border: 0;height: 1px;background: #ccc;\">";
 			element.className = "BasketballNews";
 								
 
 				}
 		function callbackVolleyball(data) {
 			const element = document.getElementById('VolleyballNews');
-			element.innerHTML += "<div class='news'><span class='time'>"
-				+ (data.items[0].pubDate).substring(0,
-						16)
-				+ "</span><div class='title'>"
+			element.innerHTML += "<div class='news'><div class='title'>"
 				+ "<a href='"+ data.items[0].link + "'><span class='newsTitle'>"
 				+ data.items[0].title
 				+ "</span></a><div class='hiddenMsg'><span> </span></div>"
-				+ "</div><span class='newsContent'>"
+				+ "</div><div><span class='time'>"
+				+ (data.items[0].pubDate).substring(0,
+						16)
+				+ "</span></div><br><span class='newsContent'>"
 				+ data.items[0].description
-				+ "</span></div>";
+				+ "</span></div><br><hr style=\"border: 0;height: 1px;background: #ccc;\">";
 			element.className = "VolleyballNews";
 								
 
