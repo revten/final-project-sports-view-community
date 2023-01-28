@@ -48,8 +48,7 @@
 <link rel="stylesheet" href="resources/css/stadium/stadium.css" />
 <link rel="stylesheet" href="resources/css/map/map.css" />
 <link rel="stylesheet" href="resources/css/watch/watchMain.css" />
-<link rel="stylesheet" href="resources/css/event/event.css" />
-
+<link rel="stylesheet" href="resources/css/newsEvent/clubEvent.css" />
 
 <!-- ---------------------------------------------------------------------------- -->
 </head>

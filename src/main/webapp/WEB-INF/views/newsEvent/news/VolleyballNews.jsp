@@ -18,15 +18,15 @@
 	<br>
 	<div class="nav__menu" id="nav-menu" style="width:55%;align:center;">
 				<ul class="nav__list">
+					<li class="nav__item"><a href="clubEvent.board.go"
+						class="nav__link">구단공식이벤트</a></li>
+						
+					<!-- <li class="nav__item"><a href="news.sports.go"
+						class="nav__link">스포츠</a></li> -->
 					<li class="nav__item"><a href="newsEvent.main.go"
 						class="nav__link">뉴스</a>
 					</li>
 						
-					<!-- <li class="nav__item"><a href="news.sports.go"
-						class="nav__link">스포츠</a></li> -->
-						
-					<li class="nav__item"><a href="clubEvent.board.go"
-						class="nav__link">구단공식이벤트</a></li>
 						
 
 				</ul>
@@ -81,7 +81,7 @@
 													16)
 											+ "</span></div><br><span class='newsContent'>"
 											+ i.description
-											+ "</span></div><br><hr style=\"border: 0;height: 1px;background: #ccc;\">";
+											+ "</span><br><hr style=\"border: 0;height: 1px;background: #ccc;\"></div>";
 									});
 
 					$("#data-container").html(content);
