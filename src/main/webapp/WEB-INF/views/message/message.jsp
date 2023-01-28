@@ -44,7 +44,7 @@
 			</div>
 		</div>
 			<div class="main-container">
-				<div class="point-container">
+				<div class="modify-container">
 <c:if test="${sessionScope.loginAccount != null}">
 	<table id="messageMemberArea" style="bottom: -500px;">
 		<tr>

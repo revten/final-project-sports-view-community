@@ -44,7 +44,7 @@
 			</div>
 		</div>
 			<div class="main-container">
-				<div class="point-container">
+				<div class="modify-container">
 				<button id="information" onclick="bye();" type="button">탈퇴문의</button>
 				<button id="information" type="button">고객문의</button>
 			</div>

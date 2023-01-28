@@ -44,7 +44,7 @@
 			</div>
 		</div>
 			<div class="main-container">
-				<div class="point-container">
+				<div class="modify-container">
 					<c:choose>
 						<c:when test="${sessionScope.loginAccount eq null}">
 							<a href="" onclick="alert('로그인하세요')">새글쓰기</a>

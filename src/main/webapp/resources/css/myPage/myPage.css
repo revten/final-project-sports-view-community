@@ -100,7 +100,7 @@ body:before {
 }
 
 #information{
-	margin-top: 7vh;
+	margin-top: 22vh;
 	background-color: #06113C;
 	border: 0;
 	color: #fff;
@@ -139,6 +139,10 @@ body:before {
 
 #my-text{
 	margin-top: 3vw;
+}
+
+#myInfo-text{
+	margin-top: 13vw;
 }
 
 #my-point{

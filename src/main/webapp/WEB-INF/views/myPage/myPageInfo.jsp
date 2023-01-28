@@ -83,8 +83,8 @@ textColor: 'white'
 			</div>
 		</div>
 		<div class="main-container">
-			<div class="point-container">
-				<div id="my-text">
+			<div class="modify-container">
+				<div id="myInfo-text">
 				<div>아이디 &nbsp;
 				${sessionScope.loginAccount.member_id }</div>
 				<div>닉네임 &nbsp;

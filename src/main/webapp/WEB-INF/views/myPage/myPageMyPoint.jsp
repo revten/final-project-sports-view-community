@@ -44,7 +44,7 @@
 			</div>
 		</div>
 			<div class="main-container">
-				<div class="point-container">
+				<div class="modify-container">
 				<div id="my-point">
 				<div>현재 포인트 &nbsp; ${point.point }</div>
 				<div>등급 &nbsp; ${point.point_grade }</div>
