@@ -20,29 +20,15 @@
 	<br>
 	<br>
 	<br>
-	<nav>
-		<div id="community_area">
-			<ul id="community_list">
-				<li><a style="cursor: pointer"
-					href="fan.board.go?post_board=21">야구 게시판</a></li>
-				<li><a style="cursor: pointer"
-					href="fan.board.go?post_board=22">축구 게시판</a></li>
-				<li><a style="cursor: pointer"
-					href="fan.board.go?post_board=23">농구 게시판</a></li>
-				<li><a style="cursor: pointer"
-					href="fan.board.go?post_board=24">배구 게시판</a></li>
-				<li><a style="cursor: pointer"
-					href="fan.board.go?post_board=41">분석 게시판</a></li>
-			</ul>
-		</div>
-	</nav>
-
+	
+	
 <%-- 	<h1>${param.post_board }게시판"${post_board}</h1> --%>
 	<h1>${param.post_board }게시판</h1>
 
 	<!--==================== 등록 ====================-->
-	<main class="boardReg__Main">
+	<div class="fanBoardReg__Main">
 	<form action="fan.reg.do" method="POST" onsubmit="return checkForm();" name="postRegForm" enctype="multipart/form-data" >
+			<input name="token" type="hidden" value="${token }">
 			<input name="plusPoint" value="30" type="hidden"> <!-- 글쓰기 포인트 -->
 			<input name="post_board" value="${param.post_board}" type="hidden" >
 		<div class="form-group">
@@ -59,6 +45,6 @@
 		
 		<button type="submit" id="createPostBtn" class="btn btn-primary">등록</button>
 	</form>
-	</main>
+	</div>
 </body>
 </html>
