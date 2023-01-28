@@ -7,53 +7,9 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<style type="text/css">
-
-* {
-  outline: none;
-  box-sizing: border-box;
-}
-
-img {
-  max-width: 100%;
-}
-
-html {
-  box-sizing: border-box;
-  -webkit-font-smoothing: antialiased;
-}
-
-body {
-  background-color: #fff;
-  background-attachment: fixed;
-  font-family: var(--body-font);
-  color: #3d4954;
-  font-weight: 400;
-  margin: 0;
-}
-
-fieldset,
-label {
-  margin: 0;
-  padding: 0;
-  display: inline-block;
-  vertical-align: middle;
-}
-
-h1 {
-  font-size: 0.5em;
-  margin: 10px;
-}
-
-.member__icon {
-	width: 28px;
-	height: 28px;
-	border-radius: 50%;
-	margin-right: 15px;
-}
-</style>
 
 </head>
+
 <body>
 	<br>
 	<br>
@@ -61,17 +17,27 @@ h1 {
 	<br>
 	<br>
 	<br>
-	<div class="watch__container">
 
+
+	<div class="watch__container">
+		
 		<!-- watch 페이지 헤더 -->
 		<div class="watch__header">
-			<div class="watch__search-bar">
-				<input type="text" placeholder="검색" />
-			</div>
+			<input class="search-bar" placeholder="Search..." type="text">
 			<div class="watch__header-title">
 				스포츠 열기는<span> 모두와 함께</span>
 			</div>
-			<div><a href="withGo.board.go?post_board=11"></a></div>
+			<div class="move__button-wrapper">
+				<button class="action-button" onclick="location.href='withGo.board.go?post_board=11';">
+					<span>함께봐요</span>
+					<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+						viewBox="0 0 24 24" fill="none" stroke="currentColor"
+						stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+						class="feather feather-filter">
+								<polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3" /></svg>
+				</button>
+			</div>
+
 		</div>
 
 
@@ -215,9 +181,9 @@ h1 {
 
 				<!-- 리뷰 : bot left top -->
 				<div class="week1">
-				
+
 					<div class="review__fan__title">Fan of the week</div>
-					
+
 					<div class="review__fan">
 						<img
 							src="https://images.unsplash.com/photo-1586297098710-0382a496c814?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80"
@@ -228,7 +194,7 @@ h1 {
 
 				<!-- 리뷰 : bot left bot -->
 				<div class="week1 week2">
-				
+
 					<div class="review__fan__title">Review of the week</div>
 					<div class="review__best">
 						<img
@@ -262,7 +228,7 @@ h1 {
 
 				<!-- 리뷰 : bot right bot -->
 				<div class="review__posts">
-					
+
 					<div class="review__post">
 						<div class="review__post__content-wrapper">
 							<img
@@ -292,9 +258,7 @@ h1 {
 							</div>
 						</div>
 					</div>
-
 				</div>
-
 			</div>
 		</div>
 	</div>
@@ -319,6 +283,5 @@ h1 {
 			origin : 'right'
 		});
 	</script>
-
 </body>
 </html>
