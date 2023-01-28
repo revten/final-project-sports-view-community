@@ -15,7 +15,7 @@
 			<div>${MyPost.post_id }</div>
 			<div>${MyPost.post_title }</div>
 			<div><fmt:formatDate value="${MyPost.post_reg_date }" pattern="yyyy-MM-dd HH:mm" /></div>
-			<div>조회수:${MyPost.post_content }</div>
+			<div>조회수:${MyPost.post_hit_count }</div>
 		</div>
 		<div><img src="resources/files/myPostImg/${MyPost.post_img }"></div>
 		<div>${MyPost.post_content }</div>

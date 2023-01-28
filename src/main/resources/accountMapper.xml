@@ -66,12 +66,14 @@
 	</delete>
 	
 	<select id="getMyPosts" resultType="com.tm.nmp.board.PostVO">
-	select * from post where post_member = #{post_member}
+		select * from post where post_member = #{post_member}
 	</select>
 	
 	<select id="getMyDeatailPosts" resultType="com.tm.nmp.board.PostVO">
 		select * from post where post_member = #{post_member}
 	</select>
+	
+	
 	
 	
 	

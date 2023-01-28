@@ -32,7 +32,7 @@ public interface BoardMapper {
 	int postCountUpdate(PostVO p);
 
 
-//	int getReccomed(Reccomand rec);
+
 
 	
 	

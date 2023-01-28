@@ -110,7 +110,7 @@
 	
 	<!-- 조회수 -->
 	<update id="postCountUpdate" parameterType="com.tm.nmp.board.PostVO">
-        update post set    post_hit_count = post_hit_count + 1 where post_id = #{post_id} 
+        update post set post_hit_count = post_hit_count + 1 where post_id = #{post_id} 
     </update>
 
 	<!-- 글의 번호와 로그인한 멤버의 정보를 파라미터로 가져온다 -->
@@ -120,9 +120,7 @@
 		and like_member= #{like_member}
 	</select>
 	
-	<update id="postCountUpdate" parameterType="com.tm.nmp.board.PostVO">
-		update post set	post_hit_count = post_hit_count + 1 where post_id = #{post_id} 
-	</update>
+	
 
 
 	<insert id="likeUp" parameterType="com.tm.nmp.board.LikeVO">
