@@ -4,15 +4,6 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<script>
-$(function() {
-$(window).resize(function (){  
-	  if (window.outerWidth <= 800) {
-	    alert('현재 브라우저 크기가 <= 800px');
-	  }
-	})
-});	
-</script>
 <title>Insert title here</title>
 </head>
 <body>
@@ -107,11 +98,11 @@ $(window).resize(function (){
 		 });*/
 	</script>
 	<script>
-	$('.imgArea').mouseleave(function() {
-		let areaId = $(this).attr("id");
-		let imgName = "#test_" + areaId;
-		$(imgName).toggle('slow');
-	});
+		$('.imgArea').mouseleave(function() {
+			let areaId = $(this).attr("id");
+			let imgName = "#test_" + areaId;
+			$(imgName).toggle('slow');
+		});
 	</script>
 	<!-- ------------------map---------------------  -->
 	<script type="text/javascript"
