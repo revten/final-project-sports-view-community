@@ -44,7 +44,7 @@
 <!--=============== [CSS MEMBER]===============-->
 <link rel="stylesheet" href="resources/css/index.css" />
 <link rel="stylesheet" href="resources/css/account/account.css" />
-<link rel="stylesheet" href="resources/css/news/news.css" />
+<link rel="stylesheet" href="resources/css/newsEvent/news.css" />
 <link rel="stylesheet" href="resources/css/stadium/stadium.css" />
 <link rel="stylesheet" href="resources/css/map/map.css" />
 <link rel="stylesheet" href="resources/css/watch/watchMain.css" />
@@ -207,7 +207,5 @@
 	<script src="resources/js/stadium/seat_detail.js"></script>
 	<script src="resources/js/myPage/myPage.js"></script>
 	<script src="resources/js/news/paging.js"></script>
-	<script src="resources/js/fan/fanBoard.js"></script>
-	<script src="resources/js/message/message_go.js"></script>
 </body>
 </html>
