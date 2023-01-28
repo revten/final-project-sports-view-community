@@ -20,9 +20,9 @@
 	<!--==================== Nav바 ====================-->
 	<div class="nav__menu" id="nav-menu" style="width: 55%; align: center;">
 		<ul class="nav__list">
-			<li class="nav__item"><a href="newsEvent.main.go" class="nav__link">뉴스</a></li>
 			<li class="nav__item"><a href="clubEvent.board.go"
 				class="nav__link">구단공식이벤트</a></li>
+			<li class="nav__item"><a href="newsEvent.main.go" class="nav__link">뉴스</a></li>
 			
 		</ul>
 
