@@ -2,10 +2,26 @@ package com.tm.nmp.stadium;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+
+import com.tm.nmp.account.AC_US_DAO;
 
 @Service
 public class StadiumDAO {
+	
+	@Autowired
+	private AC_US_DAO acDAO;
+
+	@RequestMapping(value = "/stadium.main.go", method = RequestMethod.GET)
+	public String stadiumMainGo(HttpServletRequest req) {
+		acDAO.wathingPage(req);
+		acDAO.loginCheck(req);
+		req.setAttribute("contentPage", "stadium/stadiumMain.jsp");
+		return "index";
+	}
 
 	public void viewBaseballSeat(HttpServletRequest req) {
 		String team = (String)req.getParameter("team");

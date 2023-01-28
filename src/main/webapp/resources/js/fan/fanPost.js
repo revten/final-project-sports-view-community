@@ -75,12 +75,3 @@ function deletePost(n, b) {
 		location.href = "fan.delete.do?post_id=" + n + "&post_board=" + b;
 	}
 }
-
-// ==================== 댓글삭제 확인 ====================
-function deleteReply(n, pid, pm) {
-	let ok = confirm("정말삭제합니까??");
-	if (ok) {
-		location.href = "baseballReply.delete.do?reply_id=" + n + "&post_id="
-				+ pid + "&post_member=" + pm;
-	}
-}

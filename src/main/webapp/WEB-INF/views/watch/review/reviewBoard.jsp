@@ -71,7 +71,7 @@ h1 {
 			<div class="watch__header-title">
 				스포츠 열기는<span> 모두와 함께</span>
 			</div>
-			<div>TRIPPLE</div>
+			<div><a href="withGo.board.go?post_board=11"></a></div>
 		</div>
 
 
@@ -262,7 +262,7 @@ h1 {
 
 				<!-- 리뷰 : bot right bot -->
 				<div class="review__posts">
-
+					
 					<div class="review__post">
 						<div class="review__post__content-wrapper">
 							<img
