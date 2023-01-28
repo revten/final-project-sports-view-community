@@ -1,10 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-<head>
-<meta charset="UTF-8" />
-<!-- 
+  <head>
+    <meta charset="UTF-8" />
+    <!-- 
 <meta name="google-signin-client_id"
 	content="567208941336-p92o44c3gigs2a282rhro3p6vni5fetb.apps.googleusercontent.com">
 -->
@@ -17,7 +17,6 @@
 <script src="https://accounts.google.com/gsi/client" async defer></script>
 <!-- <script src="https://apis.google.com/js/platform.js" async defer></script> -->
 </head>
-
 <body>
 	<br />
 	<br />
@@ -44,16 +43,7 @@
 			<button class="loginBtn">로그인</button>
 			<br>
 			<div class="reg-area"></div>
-
-			
-
-			<!-- -------------------Social Login------------------- -->
-
-			<br />
-		</form>
-		<div id="SNS-login-area">
-			<!-- 카카오로그인 -->
-
+      <!-- 카카오 로그인 -->
 			<a onclick="kakaoLogin()" style="cursor: pointer"> <img
 				src="https://www.myro.co.kr/myro_image/kakaolink_btn.png" width="40" /></a>
 
@@ -73,7 +63,6 @@
 		<a class="regBtn" href="account.reg.go">회원가입</a>
 	</div>
 	</div>
-
 	<script>
       /* 카카오로그인 */
       function kakaoLogin() {
@@ -159,7 +148,7 @@
       }
     </script>
 
-	<script>
+    <script>
       /* 네이버로그인 */
       var naver_id_login = new naver_id_login(
         "Q141vzvaIl6ZvPN2b4UJ",
@@ -174,7 +163,7 @@
       naver_id_login.init_naver_id_login();
     </script>
 
-	<script>
+    <script>
       /* 구글로그인 */
       function handleCredentialResponse(response) {
         const responsePayload = parseJwt(response.credential);
@@ -244,33 +233,31 @@
         });
       }
     </script>
-	<script type="text/javascript">
-    
+    <script type="text/javascript">
+      // Form Validation
 
-    // Form Validation
+      function checkStuff() {
+        var email = document.getElementById("idInput");
+        var password = document.getElementById("pwInput");
+        var msg = document.getElementById("msg");
 
-    function checkStuff() {
-      var email = document.getElementById('idInput');
-      var password = document.getElementById('pwInput');
-      var msg = document.getElementById('msg');
-      
-      if (email.value == "") {
-        msg.style.display = 'block';
-        msg.innerHTML = "아이디를 입력해주세요";
-        email.focus();
-        return false;
-      } else {
-        msg.innerHTML = "";
-      }
-      
-       if (password.value == "") {
-        msg.innerHTML = "패스워드를 입력해주세요";
-        password.focus();
-        return false;
-      } else {
-        msg.innerHTML = "";
-      }
-      /*  var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        if (email.value == "") {
+          msg.style.display = "block";
+          msg.innerHTML = "아이디를 입력해주세요";
+          email.focus();
+          return false;
+        } else {
+          msg.innerHTML = "";
+        }
+
+        if (password.value == "") {
+          msg.innerHTML = "패스워드를 입력해주세요";
+          password.focus();
+          return false;
+        } else {
+          msg.innerHTML = "";
+        }
+        /*  var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
       if (!re.test(email.value)) {
         msg.innerHTML = "아이디를 확인해주세요";
         email.focus();
@@ -278,121 +265,121 @@
       } else {
         msg.innerHTML = "";
       } */
-    }
+      }
 
-    // ParticlesJS
-    
-  //ParticlesJS Config.
-    particlesJS("login_area", {
-      "particles": {
-        "number": {
-          "value": 60,
-          "density": {
-            "enable": true,
-            "value_area": 800
-          }
+      // ParticlesJS
+
+      //ParticlesJS Config.
+      particlesJS("login_area", {
+        particles: {
+          number: {
+            value: 60,
+            density: {
+              enable: true,
+              value_area: 800,
+            },
+          },
+          color: {
+            value: "#ffffff",
+          },
+          shape: {
+            type: "circle",
+            stroke: {
+              width: 0,
+              color: "#000000",
+            },
+            polygon: {
+              nb_sides: 5,
+            },
+            image: {
+              src: "img/github.svg",
+              width: 100,
+              height: 100,
+            },
+          },
+          opacity: {
+            value: 0.1,
+            random: false,
+            anim: {
+              enable: false,
+              speed: 1,
+              opacity_min: 0.1,
+              sync: false,
+            },
+          },
+          size: {
+            value: 6,
+            random: false,
+            anim: {
+              enable: false,
+              speed: 40,
+              size_min: 0.1,
+              sync: false,
+            },
+          },
+          line_linked: {
+            enable: true,
+            distance: 150,
+            color: "#ffffff",
+            opacity: 0.1,
+            width: 2,
+          },
+          move: {
+            enable: true,
+            speed: 1.5,
+            direction: "top",
+            random: false,
+            straight: false,
+            out_mode: "out",
+            bounce: false,
+            attract: {
+              enable: false,
+              rotateX: 600,
+              rotateY: 1200,
+            },
+          },
         },
-        "color": {
-          "value": "#ffffff"
+        interactivity: {
+          detect_on: "canvas",
+          events: {
+            onhover: {
+              enable: false,
+              mode: "repulse",
+            },
+            onclick: {
+              enable: false,
+              mode: "push",
+            },
+            resize: true,
+          },
+          modes: {
+            grab: {
+              distance: 400,
+              line_linked: {
+                opacity: 1,
+              },
+            },
+            bubble: {
+              distance: 400,
+              size: 40,
+              duration: 2,
+              opacity: 8,
+              speed: 3,
+            },
+            repulse: {
+              distance: 200,
+              duration: 0.4,
+            },
+            push: {
+              particles_nb: 4,
+            },
+            remove: {
+              particles_nb: 2,
+            },
+          },
         },
-        "shape": {
-          "type": "circle",
-          "stroke": {
-            "width": 0,
-            "color": "#000000"
-          },
-          "polygon": {
-            "nb_sides": 5
-          },
-          "image": {
-            "src": "img/github.svg",
-            "width": 100,
-            "height": 100
-          }
-        },
-        "opacity": {
-          "value": 0.1,
-          "random": false,
-          "anim": {
-            "enable": false,
-            "speed": 1,
-            "opacity_min": 0.1,
-            "sync": false
-          }
-        },
-        "size": {
-          "value": 6,
-          "random": false,
-          "anim": {
-            "enable": false,
-            "speed": 40,
-            "size_min": 0.1,
-            "sync": false
-          }
-        },
-        "line_linked": {
-          "enable": true,
-          "distance": 150,
-          "color": "#ffffff",
-          "opacity": 0.1,
-          "width": 2
-        },
-        "move": {
-          "enable": true,
-          "speed": 1.5,
-          "direction": "top",
-          "random": false,
-          "straight": false,
-          "out_mode": "out",
-          "bounce": false,
-          "attract": {
-            "enable": false,
-            "rotateX": 600,
-            "rotateY": 1200
-          }
-        }
-      },
-      "interactivity": {
-        "detect_on": "canvas",
-        "events": {
-          "onhover": {
-            "enable": false,
-            "mode": "repulse"
-          },
-          "onclick": {
-            "enable": false,
-            "mode": "push"
-          },
-          "resize": true
-        },
-        "modes": {
-          "grab": {
-            "distance": 400,
-            "line_linked": {
-              "opacity": 1
-            }
-          },
-          "bubble": {
-            "distance": 400,
-            "size": 40,
-            "duration": 2,
-            "opacity": 8,
-            "speed": 3
-          },
-          "repulse": {
-            "distance": 200,
-            "duration": 0.4
-          },
-          "push": {
-            "particles_nb": 4
-          },
-          "remove": {
-            "particles_nb": 2
-          }
-        }
-      },
-      "retina_detect": true
-    });
+        retina_detect: true,
+      });
     </script>
-</body>
+  </body>
 </html>
