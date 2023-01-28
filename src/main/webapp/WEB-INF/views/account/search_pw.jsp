@@ -5,6 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css" />
 </head>
 <body>
 	<br>
@@ -15,6 +16,7 @@
 	<br>
 	<br>
 	<br>
+	<div class="animated bounceInDown">
 	<div class="login_area">
 	<h1 class="login_title">비밀번호 찾기</h1>
 	<form class="content" action="search.pw.do" method="post"
@@ -36,6 +38,7 @@
 	</div>
 	<div>
 		아직 회원이 아니신가요?&nbsp;&nbsp;&nbsp;<a href="account.reg.go">회원가입</a>
+	</div>
 	</div>
 	</div>
 </body>

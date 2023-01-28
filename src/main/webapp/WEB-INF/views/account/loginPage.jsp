@@ -8,94 +8,62 @@ pageEncoding="UTF-8"%>
 <meta name="google-signin-client_id"
 	content="567208941336-p92o44c3gigs2a282rhro3p6vni5fetb.apps.googleusercontent.com">
 -->
-    <title>Insert title here</title>
-    <script
-      type="text/javascript"
-      src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.3.js"
-      charset="utf-8"
-    ></script>
-    <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
-    <script src="https://accounts.google.com/gsi/client" async defer></script>
-    <!-- <script src="https://apis.google.com/js/platform.js" async defer></script> -->
-  </head>
-  <body>
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <div id="login_area" class="login_area">
-      <h1 class="login_title">로그인</h1>
-      <span class="error animated tada" id="msg"></span>
-      <form
-        class="login_form"
-        name="loginForm"
-        action="account.login.do"
-        method="post"
-        onsubmit="return checkStuff()"
-      >
-        <input
-          name="member_id"
-          class="input_id"
-          id="idInput"
-          placeholder="아이디"
-        />
-        <input
-          name="member_pwd"
-          type="password"
-          class="input_pw"
-          id="pwInput"
-          placeholder="비밀번호"
-        />
-        <a class="find_id" type="button" href="search.id.go">아이디</a>&nbsp;
-        <a>·</a>&nbsp;
-        <a class="find_pw" type="button" href="search.pw.go">비밀번호 찾기</a
-        ><br />
-        <br />
-        <button class="loginBtn">로그인</button>
-        <br />
-        <div class="reg-area"></div>
-        <!-- -------------------Social Login------------------- -->
+<title>Insert title here</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css" />
+<script type="text/javascript"
+	src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.3.js"
+	charset="utf-8"></script>
+<script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
+<script src="https://accounts.google.com/gsi/client" async defer></script>
+<!-- <script src="https://apis.google.com/js/platform.js" async defer></script> -->
+</head>
+<body>
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	<br>
+	<br>
+	<div class="animated bounceInDown">
+	<div id="login_area" class="login_area">
+		<div align="center">${r }</div>
+		<h1 class="login_title">로그인</h1>
+		<span class="error animated tada" id="msg"></span>
+		<form class="login_form" name="loginForm" action="account.login.do"
+			method="post" onsubmit="return checkStuff()">
+			<input name="member_id" class="input_id" id="idInput"
+				placeholder="아이디" /> 
+			<input name="member_pwd" type="password" class="input_pw"
+				id="pwInput" placeholder="비밀번호" /><br>
+				 <a class="find_id" type="button" href="search.id.go">아이디</a>&nbsp; <a>·</a>&nbsp;
+			<a class="find_pw" type="button" href="search.pw.go">비밀번호 찾기</a><br />
+				<br>
+			<button class="loginBtn">로그인</button>
+			<br>
+			<div class="reg-area"></div>
+      <!-- 카카오 로그인 -->
+			<a onclick="kakaoLogin()" style="cursor: pointer"> <img
+				src="https://www.myro.co.kr/myro_image/kakaolink_btn.png" width="40" /></a>
 
-        <br />
-      </form>
-      <div id="SNS-login-area">
-        <!-- 카카오로그인 -->
+			<!-- 네이버로그인 -->
+			<div id="naver_id_login" style="cursor: pointer"></div>
 
-        <a onclick="kakaoLogin()" style="cursor: pointer">
-          <img
-            src="https://www.myro.co.kr/myro_image/kakaolink_btn.png"
-            width="40"
-        /></a>
+			<!-- 구글로그인 -->
+			<div id="g_id_onload"
+				data-client_id="567208941336-p92o44c3gigs2a282rhro3p6vni5fetb.apps.googleusercontent.com"
+				data-callback="handleCredentialResponse" data-auto_prompt="false"
+				style="cursor: pointer"></div>
 
-        <!-- 네이버로그인 -->
-        <div id="naver_id_login" style="cursor: pointer"></div>
-
-        <!-- 구글로그인 -->
-        <div
-          id="g_id_onload"
-          data-client_id="567208941336-p92o44c3gigs2a282rhro3p6vni5fetb.apps.googleusercontent.com"
-          data-callback="handleCredentialResponse"
-          data-auto_prompt="false"
-          style="cursor: pointer"
-        ></div>
-
-        <div
-          class="g_id_signin"
-          data-type="icon"
-          data-size="large"
-          data-theme="outline"
-          data-text="sign_in_with"
-          data-shape="rectangular"
-          data-logo_alignment="left"
-        ></div>
-      </div>
-      <a class="regBtn" href="account.reg.go">회원가입</a>
-    </div>
-    <script>
+			<div class="g_id_signin" data-type="icon" data-size="large"
+				data-theme="outline" data-text="sign_in_with"
+				data-shape="rectangular" data-logo_alignment="left"></div>
+		</div>
+		<a class="regBtn" href="account.reg.go">회원가입</a>
+	</div>
+	</div>
+	<script>
       /* 카카오로그인 */
       function kakaoLogin() {
         Kakao.init("558a779b58860e521372474a218e5c56");
