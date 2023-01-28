@@ -7,7 +7,11 @@
 		select * from member where member_id =
 		#{member_id}
 	</select>
-
+	
+	<select id="showAccount" resultType="com.tm.nmp.account.AccountDTO">
+	select * from member where member_id = #{member_id}
+	</select>
+	
 	<insert id="regAccount"
 		parameterType="com.tm.nmp.account.AccountDTO">
 		BEGIN
@@ -60,4 +64,18 @@
 		parameterType="com.tm.nmp.account.AccountDTO">
 		delete from account where ac_id = #{ac_id}
 	</delete>
+	
+	<select id="getMyPosts" resultType="com.tm.nmp.board.PostVO">
+		select * from post where post_member = #{post_member}
+	</select>
+	
+	<select id="getMyDeatailPosts" resultType="com.tm.nmp.board.PostVO">
+		select * from post where post_member = #{post_member}
+	</select>
+	
+	
+	
+	
+	
+	
 </mapper>

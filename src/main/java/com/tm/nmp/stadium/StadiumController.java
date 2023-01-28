@@ -18,6 +18,14 @@ public class StadiumController {
 	@Autowired
 	private StadiumDAO sdDAO;
 	
+	@RequestMapping(value = "/stadium.main.go", method = RequestMethod.GET)
+	public String stadiumMainGo(HttpServletRequest req) {
+		acDAO.wathingPage(req);
+		acDAO.loginCheck(req);
+		req.setAttribute("contentPage", "stadium/stadiumMain.jsp");
+		return "index";
+	}
+	
 	@RequestMapping(value = "/baseball.go", method = RequestMethod.GET)
 	public String baseballGo(HttpServletRequest req) {
 		acDAO.loginCheck(req);

@@ -19,3 +19,160 @@
 	width: 10px;
 	height: 10px;
 }
+
+
+
+.login_area{
+  margin: 0;
+  margin-left: 30%;
+  text-align: center;
+  transform: translateX(-50%);
+  background-color: rgba( 238, 241, 255, 0.3);
+  border-radius: 9px;
+  border-top: 10px solid #79a6fe;
+  border-bottom: 10px solid #8BD17C;
+  width: 310px;
+  height: 100%;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+}
+
+#accountReg__contrainer{
+  margin: 0;
+  margin-left: 30%;
+  text-align: center;
+  transform: translateX(-50%);
+  background-color: rgba( 238, 241, 255, 0.3);
+  border-radius: 9px;
+  border-top: 10px solid #79a6fe;
+  border-bottom: 10px solid #8BD17C;
+  width: 310px;
+  height: 100%;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+}
+
+
+.login_title {
+  font-family: 'Source Sans Pro', sans-serif;
+  color: #5c6bc0; 
+  font-size: 16px;
+  margin-top:14px;;
+}
+.input_id,.input_pw{
+	height:30px;
+}
+.input_id,.input_pw,.input_content{
+  display: block;
+  margin: 20px auto;
+  background: #d2daff;
+  border: 0;
+  border-radius: 5px;
+  padding: 14px 10px;
+  width: 220px;
+  outline: none;
+  color: #8080ff;
+      -webkit-transition: all .2s ease-out;
+    -moz-transition: all .2s ease-out;
+    -ms-transition: all .2s ease-out;
+    -o-transition: all .2s ease-out;
+    transition: all .2s ease-out;
+  
+}
+::-webkit-input-placeholder {
+  color: #565f79;
+}
+
+
+
+.loginBtn{
+  border:0;
+  background: #7f5feb;
+  color: #dfdeee;
+  border-radius: 100px;
+  width: 140px;
+  height: 30px;
+  font-size: 13px;
+  transition: 0.3s;
+  cursor: pointer;
+}
+.loginBtn2{
+  border:0;
+  background: #7f5feb;
+  color: #dfdeee;
+  border-radius: 100px;
+  width: 140px;
+  height: 30px;
+  font-size: 13px;
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+.emailBtn{
+  border:0;
+  background: #7f5feb;
+  color: #dfdeee;
+  border-radius: 100px;
+  width: 140px;
+  height: 30px;
+  font-size: 13px;
+  transition: 0.3s;
+  cursor: pointer;
+}
+.emailBtn2{
+  border:0;
+  background: #7f5feb;
+  color: #dfdeee;
+  border-radius: 100px;
+  width: 140px;
+  height: 30px;
+  font-size: 13px;
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+.loginBtn:hover,.loginBtn2:hover,.emailBtn:hover,.emailBtn2:hover {
+  background: #5d33e6;
+}
+
+.find_id,.find_pw{
+	color: #5c6bc0;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.regBtn{
+	color: #8080ff;
+	cursor: pointer;
+}
+
+.find_id:hover,.find_pw:hover,.regBtn:hover {
+  color: #5d33e6;
+}
+
+.typcn {
+  position: absolute;
+  left: 339px;
+  top: 282px;
+  color: #3b476b;
+  font-size: 22px;
+  cursor: pointer;
+}      
+
+.typcn.active {
+  color: #7f60eb;
+}
+
+.error {
+  background: #ff3333;
+  text-align: center;
+  width: 337px;
+  height: 26px;
+  padding: 2px;
+  border: 0;
+  border-radius: 5px;
+  margin: 10px auto 10px;
+  position: absolute;
+  top: 51%;
+  left: 7.2%;
+  color: white;
+  display: none;
+}

@@ -6,9 +6,11 @@
 		parameterType="com.tm.nmp.board.BoardSelector"
 		resultType="java.lang.Integer">
 		select count(*) from post, member
-		where post_member = member_id
+		where post_member =
+		member_id
 		and post_title like '%'||#{search}||'%'
-		and post_board = #{board_id}
+		and post_board =
+		#{post_board}
 	</select>
 
 	<select id="getAllPost"
@@ -16,25 +18,23 @@
 		resultType="com.tm.nmp.board.PostVO">
 		select * from
 		(select rownum as rn, post_id, post_member,
-		post_board, post_title, post_category, post_content,
-		post_reg_date, post_update_date, post_img, post_file,
-		post_hit_count, post_like_count, post_scrap_count, post_reply_count, post_reg_ip,
-		member_nick from (select * from post, member where post_member = member_id
-		and post_title like '%'||#{search}||'%' and post_board = #{board_id} order by post_reg_date desc))
+		post_board,
+		post_title, post_category, post_content,
+		post_reg_date,
+		post_update_date, post_img, post_file,
+		post_hit_count, post_like_count,
+		post_scrap_count, post_reply_count, post_reg_ip,
+		member_nick from
+		(select * from post, member where post_member = member_id
+		and
+		post_title like '%'||#{search}||'%' and post_board = #{post_board} order
+		by post_reg_date desc))
 		where rn &gt; = #{start} and rn &lt; = #{end}
-		
-		<!-- 		<choose>
-			<when test="sort == 1">
-				order by rv_count desc
-			</when>
-			<when test="sort == 2">
-				order by rv_like desc
-			</when>
-			<otherwise>
-				order by rv_date desc
-			</otherwise>
-		</choose> -->
-		
+
+		<!-- <choose> <when test="sort == 1"> order by rv_count desc </when> <when 
+			test="sort == 2"> order by rv_like desc </when> <otherwise> order by rv_date 
+			desc </otherwise> </choose> -->
+
 	</select>
 
 	<!-- 글+댓글 -->
@@ -49,38 +49,46 @@
 		resultType="com.tm.nmp.board.ReplyVO">
 		select * from reply where reply_post = #{post_id}
 	</select>
-
 	<insert id="regPost" parameterType="com.tm.nmp.board.PostVO">
 		insert into post values
-		(post_seq.nextval, #{post_board}, #{post_member}, null,
-		null, null, #{post_title}, #{post_category},
-		sysdate, null, #{post_img}, #{post_file},
-		#{post_hit_count}, #{post_like_count}, #{post_scrap_count},
-		#{post_comment_count}, #{post_reg_ip},#{post_content})
+		(post_seq.nextval, #{post_board}, #{post_member},
+		null, null, null, <!-- 옵션value로 넣어줘야 (직관게시판 등록, 수정에서) -->
+		#{post_title}, null, <!--  옵션value로 넣어줘야 (자유게시판 등록, 수정에서) -->
+		sysdate, null, #{post_img},
+		#{post_file},
+		#{post_hit_count}, #{post_like_count},
+		#{post_scrap_count},
+		#{post_reply_count},
+		#{post_reg_ip},#{post_content})
 	</insert>
 
 	<update id="updatePost" parameterType="com.tm.nmp.board.PostVO">
 		update post
 		set
-		post_title = #{post_title},
+		post_title =
+		#{post_title},
 		post_category= #{post_category},
-		post_content = #{post_content},
+		post_content =
+		#{post_content},
 		post_update_date = sysdate,
 		post_img= #{post_img},
 		post_file= #{post_file},
 		post_reg_ip= #{post_reg_ip}
-		where post_id = #{post_id}
+		where post_id =
+		#{post_id}
 	</update>
 
 	<delete id="deletePost" parameterType="com.tm.nmp.board.PostVO">
 		delete from post where
 		post_id = #{post_id}
 	</delete>
-	
+
 	<insert id="regReply" parameterType="com.tm.nmp.board.ReplyVO">
 		insert into reply
-		values(reply_seq.nextval, #{reply_board}, #{reply_post}, #{reply_member}, #{reply_content},
-		sysdate, null, #{reply_like_count}, #{reply_reg_ip})
+		values(reply_seq.nextval, #{reply_board}, #{reply_post},
+		#{reply_member}, #{reply_content},
+		sysdate, sysdate, #{reply_like_count},
+		#{reply_reg_ip})
 	</insert>
 
 	<delete id="deleteReply"
@@ -95,16 +103,33 @@
 		#{reply_content},
 		reply_update_date = sysdate,
 		reply_reg_ip= #{reply_reg_ip}
-		where reply_id
+		where
+		reply_id
 		= #{reply_id}
 	</update>
 	
-	<insert id="AddRecommand" parameterType="com.tm.nmp.board.Reccomand">
-		insert into RECOMMAND values(#{post_id},#{member_id})
-	</insert>
-	
-	<select id="getReccomed" resultType="java.lang.Integer">
-		select count(*) from RECOMMAND
+	<!-- 조회수 -->
+	<update id="postCountUpdate" parameterType="com.tm.nmp.board.PostVO">
+        update post set post_hit_count = post_hit_count + 1 where post_id = #{post_id} 
+    </update>
+
+	<!-- 글의 번호와 로그인한 멤버의 정보를 파라미터로 가져온다 -->
+	<select id="likeCheck" parameterType="com.tm.nmp.board.LikeVO"
+		resultType="java.lang.Integer">
+		select count(*) from likes where like_post = #{like_post}
+		and like_member= #{like_member}
 	</select>
 	
+	
+
+
+	<insert id="likeUp" parameterType="com.tm.nmp.board.LikeVO">
+		insert into likes
+		values(likes_seq.nextval, #{like_post}, #{like_member}, 1)
+	</insert>
+
+	<delete id="likeDown" parameterType="com.tm.nmp.board.LikeVO">
+		delete  from likes where like_post = #{like_post} and like_member=#{like_member}
+	</delete>
+
 </mapper>
