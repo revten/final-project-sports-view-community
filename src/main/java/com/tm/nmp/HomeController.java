@@ -51,44 +51,7 @@ public class HomeController {
 		req.setAttribute("contentPage", "account/loginPage.jsp");
 		return "index";
 	}
-
-	@RequestMapping(value = "/stadium.main.go", method = RequestMethod.GET)
-	public String stadiumMainGo(HttpServletRequest req) {
-		acDAO.wathingPage(req);
-		acDAO.loginCheck(req);
-		req.setAttribute("contentPage", "stadium/stadiumMain.jsp");
-		return "index";
-	}
-
-	@RequestMapping(value = "/watch.main.go", method = RequestMethod.GET)
-	public String watchMainGo(HttpServletRequest req) {
-		acDAO.wathingPage(req);
-		acDAO.loginCheck(req);
-		/*
-		 * scDAO.getSoccerBoard(req, 1); wgDAO.showWithGoList(req, wg);
-		 */
-		req.setAttribute("contentPage", "watch/watchMain.jsp");
-		return "index";
-	}
-
-	@RequestMapping(value = "/fan.main.go", method = RequestMethod.GET)
-	public String fanMainGo(HttpServletRequest req) {
-		acDAO.wathingPage(req);
-		acDAO.loginCheck(req);
-
-		req.setAttribute("contentPage", "fan/fanMain.jsp");
-		return "index";
-	}
-
-	@RequestMapping(value = "/newsEvent.main.go", method = RequestMethod.GET)
-	public String newsEventMainGo(HttpServletRequest req) {
-		acDAO.wathingPage(req);
-		acDAO.loginCheck(req);
-		req.setAttribute("contentPage", "newsEvent/newsEventMain.jsp");
-		req.setAttribute("newsPage", "everyNews.jsp");
-		return "index";
-	}
-
+	
 	@RequestMapping(value = "/myPage.main.go", method = RequestMethod.GET)
 	public String myPageMainGo(HttpServletRequest req) {
 		acDAO.wathingPage(req);

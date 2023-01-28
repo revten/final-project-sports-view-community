@@ -27,6 +27,7 @@ public class ClubEventController {
 	public String clubEventBoardGO(HttpServletRequest req) {
 		TokenMaker.make(req);
 		acDAO.loginCheck(req);
+		
 		brDAO.getAllPost(req, 1, 31);
 
 		req.setAttribute("contentPage", "newsEvent/clubEvent/clubEventBoard.jsp");

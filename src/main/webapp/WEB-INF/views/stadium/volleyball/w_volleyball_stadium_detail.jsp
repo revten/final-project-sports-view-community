@@ -18,7 +18,7 @@
 		style="position: relative; display: flex; flex-direction: column; justify-content: center; align-items: center; width: 1000px; height: 1000px;">
 		<div style="display: inline-block; align-items: flex-start;">
 			<img id="seat" usemap="#workmap"
-				style="position: relative; width: 500px; height: 500px; margin: 300px 0px 10px 0px;"
+				style="position: relative; width: 1024px; height: 800px; margin: 300px 0px 10px 0px;"
 				src="resources/files/stadium/volleyball/seating_chart/${seat}"><br>
 			<map name="workmap">
 				<area style="cursor: pointer;" class="imgArea" id="12"
@@ -52,14 +52,14 @@
 	<br>
 	<br>
 	<br>
-	<!-- 스크롤 이동  -->
+	<!-- 스크롤 이동  
 	<script>
 		$(document).ready(function() {
 			$('html, body').animate({
 				scrollTop : $('#start').offset().top
 			});
 		});
-	</script>
+	</script>-->
 	<!-- 가이드 라인
 	<script>
 	$(".imgArea").mouseover(function() {
@@ -78,7 +78,7 @@
 	</script>
 	<!-- 전경 -->
 	<script type="text/javascript">
-		$('.imgArea').click(function() {
+		$('.imgArea').mouseover(function() {
 			let areaId = $(this).attr("id");
 			let imgName = "#test_" + areaId;
 			$(imgName).toggle('slow');
@@ -97,6 +97,13 @@
 		 console.log(imgName);
 		 $(imgName).css("display", "none");
 		 });*/
+	</script>
+	<script>
+		$('.imgArea').mouseleave(function() {
+			let areaId = $(this).attr("id");
+			let imgName = "#test_" + areaId;
+			$(imgName).toggle('slow');
+		});
 	</script>
 	<!-- ------------------map---------------------  -->
 	<script type="text/javascript"

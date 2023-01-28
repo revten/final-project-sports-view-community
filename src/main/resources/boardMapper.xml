@@ -87,7 +87,7 @@
 		insert into reply
 		values(reply_seq.nextval, #{reply_board}, #{reply_post},
 		#{reply_member}, #{reply_content},
-		sysdate, null, #{reply_like_count},
+		sysdate, sysdate, #{reply_like_count},
 		#{reply_reg_ip})
 	</insert>
 
@@ -107,6 +107,11 @@
 		reply_id
 		= #{reply_id}
 	</update>
+	
+	<!-- 조회수 -->
+	<update id="postCountUpdate" parameterType="com.tm.nmp.board.PostVO">
+        update post set    post_hit_count = post_hit_count + 1 where post_id = #{post_id} 
+    </update>
 
 	<!-- 글의 번호와 로그인한 멤버의 정보를 파라미터로 가져온다 -->
 	<select id="likeCheck" parameterType="com.tm.nmp.board.LikeVO"
