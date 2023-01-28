@@ -51,16 +51,7 @@ public class HomeController {
 		req.setAttribute("contentPage", "account/loginPage.jsp");
 		return "index";
 	}
-
-	@RequestMapping(value = "/newsEvent.main.go", method = RequestMethod.GET)
-	public String newsEventMainGo(HttpServletRequest req) {
-		acDAO.wathingPage(req);
-		acDAO.loginCheck(req);
-		req.setAttribute("contentPage", "newsEvent/newsEventMain.jsp");
-		req.setAttribute("newsPage", "everyNews.jsp");
-		return "index";
-	}
-
+	
 	@RequestMapping(value = "/myPage.main.go", method = RequestMethod.GET)
 	public String myPageMainGo(HttpServletRequest req) {
 		acDAO.wathingPage(req);

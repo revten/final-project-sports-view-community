@@ -28,5 +28,7 @@ public interface BoardMapper {
 	int likeUp(LikeVO lk);
 
 	int likeDown(LikeVO lk);
+	
+	int postCountUpdate(PostVO p);
 
 }

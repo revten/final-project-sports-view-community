@@ -21,25 +21,11 @@
 	<br>
 	<br>
 	<br>
-	<nav>
-		<div id="community_area">
-			<ul id="community_list">
-				<li><a style="cursor: pointer"
-					href="fan.board.go?post_board=21">야구 게시판</a></li>
-				<li><a style="cursor: pointer"
-					href="fan.board.go?post_board=22">축구 게시판</a></li>
-				<li><a style="cursor: pointer"
-					href="fan.board.go?post_board=23">농구 게시판</a></li>
-				<li><a style="cursor: pointer"
-					href="fan.board.go?post_board=24">배구 게시판</a></li>
-			</ul>
-		</div>
-	</nav>
 	
 	<h1>${post.post_board }게시판</h1>
 
 	<!--==================== 상세-수정 ====================-->
-	<main class="boardUpdate__main"> <br>
+	<div class="fanBoardUpdate__main"> <br>
 	<section class="post section">
 		<form action="fan.update.do" method="POST" enctype="multipart/form-data" 
 			onsubmit="return checkForm();" name="postRegForm">
@@ -76,6 +62,6 @@
 			</div>
 		</form>
 	</section>
-	</main>
+	</div>
 </body>
 </html>

@@ -15,26 +15,12 @@
 	<br>
 	<br>
 	<br>
-	<nav>
-		<div id="community_area">
-			<ul id="community_list">
-				<li><a style="cursor: pointer"
-					href="fan.board.go?post_board=21">야구 게시판</a></li>
-				<li><a style="cursor: pointer"
-					href="fan.board.go?post_board=22">축구 게시판</a></li>
-				<li><a style="cursor: pointer"
-					href="fan.board.go?post_board=23">농구 게시판</a></li>
-				<li><a style="cursor: pointer"
-					href="fan.board.go?post_board=24">배구 게시판</a></li>
-			</ul>
-		</div>
-	</nav>
 
 	<h1>${post.post_board }게시판</h1>
 
 
 	<!--==================== 상세 ====================-->
-	<main class="boardDetail__main"> <br>
+	<div class="fanBoardDetail__main"> <br>
 	<section class="post section">
 		<div class="post__container">
 			<div class="post__1st-line">
@@ -130,7 +116,7 @@
 			</c:forEach>
 		</div>
 	</section>
-	</main>
+	</div>
 
 	<script>
 	$('.reply__reg-btn').click(function() {

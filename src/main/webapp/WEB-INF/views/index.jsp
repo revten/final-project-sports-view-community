@@ -44,12 +44,9 @@
 <!--=============== [CSS MEMBER]===============-->
 <link rel="stylesheet" href="resources/css/index.css" />
 <link rel="stylesheet" href="resources/css/account/account.css" />
-<link rel="stylesheet" href="resources/css/community/review/review.css" />
-<link rel="stylesheet" href="resources/css/community/community.css" />
 <link rel="stylesheet" href="resources/css/news/news.css" />
-<link rel="stylesheet" href="resources/css/map/map.css" />
 <link rel="stylesheet" href="resources/css/stadium/stadium.css" />
-<link rel="stylesheet" href="resources/css/message/message.css" />
+<link rel="stylesheet" href="resources/css/map/map.css" />
 <link rel="stylesheet" href="resources/css/watch/watchMain.css" />
 <link rel="stylesheet" href="resources/css/event/event.css" />
 
@@ -74,7 +71,7 @@
 
 					<li class="nav__item"><a href="fan.main.go" class="nav__link">더 팬</a></li>
 
-					<li class="nav__item"><a href="newsEvent.main.go"
+					<li class="nav__item"><a href="clubEvent.board.go"
 						class="nav__link">뉴스/이벤트</a></li>
 
 					<li class="nav__item"><a class="nav__link"><jsp:include
@@ -208,10 +205,9 @@
 	<script src="resources/js/account/account_condition.js"></script>
 	<script src="resources/js/stadium/stadium_go.js"></script>
 	<script src="resources/js/stadium/seat_detail.js"></script>
-	<script src="resources/js/community/community_go.js"></script>
 	<script src="resources/js/myPage/myPage.js"></script>
 	<script src="resources/js/news/paging.js"></script>
-	<script src="resources/js/board/fanBoard.js"></script>
+	<script src="resources/js/fan/fanBoard.js"></script>
 	<script src="resources/js/message/message_go.js"></script>
 </body>
 </html>

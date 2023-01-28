@@ -2,7 +2,9 @@ package com.tm.nmp.board;
 
 import java.util.List;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,7 +30,7 @@ public class BoardDAO {
 	public void setallPostCount(int allPostCount) {
 		this.allPostCount = allPostCount;
 	}
-	
+
 	private int withGo;
 	private int review;
 	private int baseball;
@@ -56,9 +58,9 @@ public class BoardDAO {
 		BoardSelector bSelClubEvent = new BoardSelector("", 0, 0, 31);
 		clubEvent = ss.getMapper(BoardMapper.class).calcAllPostCount(bSelClubEvent);
 	}
-	
+
 	public void getAllPost(HttpServletRequest req, int pageNbr, int post_board) {
-		
+
 		switch (post_board) {
 		case 11:
 			allPostCount = withGo;
@@ -152,7 +154,7 @@ public class BoardDAO {
 
 		// 위 split 내용을 wg_img 컬럼에 set해준 것
 //		p.setPost_content(p_txt.replace("\r\n", "<br>"));
-		
+
 		int post_board = p.getPost_board();
 		System.out.println(post_board);
 		if (ss.getMapper(BoardMapper.class).regPost(p) == 1) {
@@ -193,7 +195,7 @@ public class BoardDAO {
 
 		String str = p.getPost_content();
 		System.out.println("전체 경로 :" + str);
-		
+
 		if (str.contains("img")) {
 			String[] contentSplit = str.split("/");
 			String topSplit = contentSplit[5];
@@ -206,7 +208,7 @@ public class BoardDAO {
 		} else {
 			p.setPost_img("");
 		}
-		
+
 		if (ss.getMapper(BoardMapper.class).updatePost(p) == 1) {
 			req.setAttribute("result", "글수정 성공");
 		} else {
@@ -246,15 +248,14 @@ public class BoardDAO {
 			req.setAttribute("result", "글삭제실패");
 		}
 	}
-	
+
 	public ResultVO regReply(HttpServletRequest req, ReplyVO rp) {
 		String token = req.getParameter("token");
 		String successToken = (String) req.getSession().getAttribute("successToken");
 		System.out.println("token : " + token);
-		
-		
+
 		ResultVO resultVO = new ResultVO();
-	
+
 		if (successToken != null && token.equals(successToken)) {
 			resultVO.setResult(0);
 			resultVO.setToken(token);
@@ -273,13 +274,13 @@ public class BoardDAO {
 			req.setAttribute("result", "댓글쓰기 성공");
 			req.getSession().setAttribute("successToken", token);
 			resultVO.setResult(1);
-			resultVO.setToken((String)req.getAttribute("token"));
+			resultVO.setToken((String) req.getAttribute("token"));
 			System.out.println(resultVO.toString());
 			return resultVO;
 //			allReplyCount++;
 		}
-		return resultVO; 
-		
+		return resultVO;
+
 	}
 
 	public int deleteReply(HttpServletRequest req, ReplyVO rp) {
@@ -318,8 +319,6 @@ public class BoardDAO {
 		return req.getRemoteAddr();
 	}
 
-	
-	
 	// 좋아요를 누른 회원인지 아닌지 체크하기
 	public void likeCheck(HttpServletRequest req, PostVO p) {
 		AccountDTO ac = (AccountDTO) req.getSession().getAttribute("loginAccount");
@@ -347,36 +346,38 @@ public class BoardDAO {
 			req.setAttribute("result", "댓글수정 실패");
 		}
 	}
-}
 
-/*	public void postCountUpdate(HttpServletRequest req, HttpServletResponse res, PostVO p) {
-		
+	
+	//	조회수
+	public void postCountUpdate(HttpServletRequest req, HttpServletResponse res, PostVO p) {
+
 		Cookie[] cookies = req.getCookies();
 		int visitor = 0;
-		
+
 		for (Cookie cookie : cookies) {
 			System.out.println(cookie.getName());
-			if(cookie.getName().equals("visit")) {
+			if (cookie.getName().equals("visit")) {
 				visitor = 1;
-				
+
 				System.out.println("visit 통과");
-			
-			if (cookie.getValue().contains(req.getParameter("post_id"))) {
-				System.out.println("visitif 통과");
-			} else {
-				cookie.setValue(cookie.getValue()+ "-" + req.getParameter("post_id"));
-				res.addCookie(cookie);
-				
-				ss.getMapper(BoardMapper.class).postCountUpdate(p);
+
+				if (cookie.getValue().contains(req.getParameter("post_id"))) {
+					System.out.println("visitif 통과");
+				} else {
+					cookie.setValue(cookie.getValue() + "-" + req.getParameter("post_id"));
+					res.addCookie(cookie);
+
+					ss.getMapper(BoardMapper.class).postCountUpdate(p);
+				}
 			}
 		}
-	}
-		
-		if(visitor == 0) {
+
+		if (visitor == 0) {
 			Cookie cookie1 = new Cookie("visit", req.getParameter("post_id"));
 			res.addCookie(cookie1);
-			
+
 			ss.getMapper(BoardMapper.class).postCountUpdate(p);
 		}
 
-}*/
+	}
+}

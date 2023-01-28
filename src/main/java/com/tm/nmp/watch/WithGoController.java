@@ -31,10 +31,8 @@ public class WithGoController {
 		acDAO.wathingPage(req);
 		acDAO.loginCheck(req);
 
-		// fan메인에서 어떤 게시판으로 갈지 파라미터를 받아서 설정
 		BoardOption.clearSearch(req);
-		int post_board = Integer.parseInt(req.getParameter("post_board"));
-		brDAO.getAllPost(req, 1, post_board); // 1은 첫페이지를 보여달라
+		brDAO.getAllPost(req, 1, 11); // 1은 첫페이지를 보여달라
 
 		req.setAttribute("contentPage", "watch/withGo/withGoBoard.jsp");
 		return "index";
