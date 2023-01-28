@@ -18,7 +18,6 @@ pageEncoding="UTF-8"%>
     <script src="https://accounts.google.com/gsi/client" async defer></script>
     <!-- <script src="https://apis.google.com/js/platform.js" async defer></script> -->
   </head>
-
   <body>
     <br />
     <br />
@@ -50,16 +49,15 @@ pageEncoding="UTF-8"%>
           class="input_pw"
           id="pwInput"
           placeholder="비밀번호"
-        /><br />
+        />
         <a class="find_id" type="button" href="search.id.go">아이디</a>&nbsp;
         <a>·</a>&nbsp;
         <a class="find_pw" type="button" href="search.pw.go">비밀번호 찾기</a
         ><br />
-        <br /><br />
+        <br />
         <button class="loginBtn">로그인</button>
         <br />
         <div class="reg-area"></div>
-
         <!-- -------------------Social Login------------------- -->
 
         <br />
@@ -97,7 +95,6 @@ pageEncoding="UTF-8"%>
       </div>
       <a class="regBtn" href="account.reg.go">회원가입</a>
     </div>
-
     <script>
       /* 카카오로그인 */
       function kakaoLogin() {
