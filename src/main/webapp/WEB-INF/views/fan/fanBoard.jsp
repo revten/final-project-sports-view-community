@@ -149,39 +149,33 @@
 					</div>
 
 					<!-- forEach문으로 돌릴 구간, 샘플을 위해서 일단 게시글 4개정도 남김, function 할땐 하나만 하면됨 -->
-					<div class="board__row">
-						<c:forEach var="p" items="${posts }">
-							<div class="board__cell num">
-								<span>${p.post_id}</span>
-							</div>
+					<c:forEach var="p" items="${posts }">
+						<div class="board__row">
+							<div class="board__cell num">${p.post_id}</div>
 							<div class="board__cell category">
-								<span class="cell-label">${p.post_category}</span>
+								${p.post_category}
 							</div>
 							<div class="board__cell post_title">
-								<span class="cell-label"><a
+								<a
 									href="fan.detail.go?post_id=${p.post_id }&post_member=${p.post_member}">${p.post_title }
-										[${p.post_reply_count}]</a></span>
+									[${p.post_reply_count}]</a>
 							</div>
 							<div class="board__cell reg_date">
-								<span class="cell-label"><c:choose>
-										<c:when test="${p.post_update_date eq null }">
-											<fmt:formatDate value="${p.post_reg_date}"
-												pattern="yy-MM-dd HH:mm" />
-										</c:when>
-										<c:otherwise>
-											<fmt:formatDate value="${p.post_update_date}"
-												pattern="yy-MM-dd HH:mm" />
-										</c:otherwise>
-									</c:choose></span>
+								<c:choose>
+									<c:when test="${p.post_update_date eq null }">
+										<fmt:formatDate value="${p.post_reg_date}"
+											pattern="yy-MM-dd HH:mm" />
+									</c:when>
+									<c:otherwise>
+										<fmt:formatDate value="${p.post_update_date}"
+											pattern="yy-MM-dd HH:mm" />
+									</c:otherwise>
+								</c:choose>
 							</div>
-							<div class="board__cell nick">
-								<span class="cell-label">${p.member_nick}</span>
-							</div>
-							<div class="board__cell view_count">
-								<span class="cell-label">${p.post_hit_count}</span>
-							</div>
-						</c:forEach>
-					</div>
+							<div class="board__cell nick">${p.member_nick}</div>
+							<div class="board__cell view_count">${p.post_hit_count}</div>
+						</div>
+					</c:forEach>
 				</div>
 			</div>
 		</div>

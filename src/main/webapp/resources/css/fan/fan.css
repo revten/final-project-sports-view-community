@@ -431,6 +431,3 @@ p, figure {
 .tableView .sort-button svg {
   width: 12px;
 }
-.tableView .cell-label {
-  display: none;
-}
