@@ -20,7 +20,7 @@
 
 
 	<div class="watch__container">
-		
+
 		<!-- watch 페이지 헤더 -->
 		<div class="watch__header">
 			<input class="search-bar" placeholder="Search..." type="text">
@@ -28,7 +28,8 @@
 				스포츠 열기는<span> 모두와 함께</span>
 			</div>
 			<div class="move__button-wrapper">
-				<button class="action-button" onclick="location.href='withGo.board.go?post_board=11';">
+				<button class="action-button"
+					onclick="location.href='withGo.board.go?post_board=11';">
 					<span>함께봐요</span>
 					<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
 						viewBox="0 0 24 24" fill="none" stroke="currentColor"
@@ -57,17 +58,6 @@
 						<div class="review__title">야구 리뷰 제목</div>
 						<div class="review__member">by 김태형</div>
 						<div class="rate">
-							<fieldset class="rating">
-								<input type="checkbox" id="star5" name="rating" value="5" /> <label
-									class="full" for="star5"></label> <input type="checkbox"
-									id="star4" name="rating" value="4" /> <label class="full"
-									for="star4"></label> <input type="checkbox" id="star3"
-									name="rating" value="3" /> <label class="full" for="star3"></label>
-								<input type="checkbox" id="star2" name="rating" value="2" /> <label
-									class="full" for="star2"></label> <input type="checkbox"
-									id="star1" name="rating" value="1" /> <label class="full"
-									for="star1"></label>
-							</fieldset>
 							<span class="review__voters">1.987 voters</span>
 						</div>
 						<div class="review__sum">Readers of all ages and walks of
@@ -88,17 +78,6 @@
 						<div class="review__title">축구 리뷰 제목</div>
 						<div class="review__member">by 임형규</div>
 						<div class="rate">
-							<fieldset class="rating blue">
-								<input type="checkbox" id="star6" name="rating" value="5" /> <label
-									class="full1" for="star6"></label> <input type="checkbox"
-									id="star7" name="rating" value="4" /> <label class="full1"
-									for="star7"></label> <input type="checkbox" id="star8"
-									name="rating" value="3" /> <label class="full1" for="star8"></label>
-								<input type="checkbox" id="star9" name="rating" value="2" /> <label
-									class="full1" for="star9"></label> <input type="checkbox"
-									id="star10" name="rating" value="1" /> <label class="full1"
-									for="star10"></label>
-							</fieldset>
 							<span class="review__voters">1.987 voters</span>
 						</div>
 						<div class="review__sum">The hunt for each splinter of
@@ -119,17 +98,6 @@
 						<div class="review__title">농구 리뷰 제목</div>
 						<div class="review__member">by 정 권</div>
 						<div class="rate">
-							<fieldset class="rating yellow">
-								<input type="checkbox" id="star16" name="rating" value="5" /> <label
-									class="full" for="star16"></label> <input type="checkbox"
-									id="star17" name="rating" value="4" /> <label class="full"
-									for="star17"></label> <input type="checkbox" id="star18"
-									name="rating" value="3" /> <label class="full" for="star18"></label>
-								<input type="checkbox" id="star19" name="rating" value="2" /> <label
-									class="full" for="star19"></label> <input type="checkbox"
-									id="star20" name="rating" value="1" /> <label class="full"
-									for="star20"></label>
-							</fieldset>
 							<span class="review__voters">1.987 voters</span>
 						</div>
 						<div class="review__sum">The Great Gatsby, F. Scott
@@ -150,17 +118,6 @@
 						<div class="review__title">배구 리뷰 제목</div>
 						<div class="review__member">by 송준우</div>
 						<div class="rate">
-							<fieldset class="rating dark-purp">
-								<input type="checkbox" id="star21" name="rating" value="5" /> <label
-									class="full" for="star21"></label> <input type="checkbox"
-									id="star22" name="rating" value="4" /> <label class="full"
-									for="star22"></label> <input type="checkbox" id="star23"
-									name="rating" value="3" /> <label class="full" for="star23"></label>
-								<input type="checkbox" id="star24" name="rating" value="2" /> <label
-									class="full" for="star24"></label> <input type="checkbox"
-									id="star25" name="rating" value="1" /> <label class="full"
-									for="star25"></label>
-							</fieldset>
 							<span class="review__voters">1.987 voters</span>
 						</div>
 						<div class="review__sum">Louisa Clark is no longer just an
@@ -216,7 +173,7 @@
 
 				<!-- 리뷰 : bot right top -->
 				<div class="review__posts__menu">
-					<div class="review__posts__genre">Stadium Reviews</div>
+					<div class="review__posts__genre">Game Reviews ${posts }</div>
 					<div class="review__sports__types">
 						<a href="#" class="review__sports__type active"> All Sports</a> <a
 							href="#" class="review__sports__type"> Baseball</a> <a href="#"
@@ -228,7 +185,23 @@
 
 				<!-- 리뷰 : bot right bot -->
 				<div class="review__posts">
-
+					<c:forEach var="p" items="${posts }">
+						<div class="review__post">
+							<div class="review__post__content-wrapper">
+								<img
+									src="https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F6%2F2019%2F07%2Fchances-are-1-2000.jpg&q=85"
+									alt="" class=review__post__img>
+								<div class="review__post__content">
+									<div class="review__post__title">${p.post_title }</div>
+									<div class="review__post__by">by ${p.member_nick}</div>
+									<div class="rate">
+										<span class="review__voters card-vote">1.987 voters</span>
+									</div>
+									<div class="review__sum card-sum">${post.post_content}</div>
+								</div>
+							</div>
+						</div>
+					</c:forEach>
 					<div class="review__post">
 						<div class="review__post__content-wrapper">
 							<img
@@ -238,18 +211,23 @@
 								<div class="review__post__title">Changes Are</div>
 								<div class="review__post__by">by Richard Russo</div>
 								<div class="rate">
-									<fieldset class="rating book-rate">
-										<input type="checkbox" id="star-c1" name="rating" value="5">
-										<label class="full" for="star-c1"></label> <input
-											type="checkbox" id="star-c2" name="rating" value="4">
-										<label class="full" for="star-c2"></label> <input
-											type="checkbox" id="star-c3" name="rating" value="3">
-										<label class="full" for="star-c3"></label> <input
-											type="checkbox" id="star-c4" name="rating" value="2">
-										<label class="full" for="star-c4"></label> <input
-											type="checkbox" id="star-c5" name="rating" value="1">
-										<label class="full" for="star-c5"></label>
-									</fieldset>
+									<span class="review__voters card-vote">1.987 voters</span>
+								</div>
+								<div class="review__sum card-sum">Readers of all ages and
+									walks of life have drawn inspiration and empowerment from
+									Elizabeth Gilbert’s books for years.</div>
+							</div>
+						</div>
+					</div>
+					<div class="review__post">
+						<div class="review__post__content-wrapper">
+							<img
+								src="https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F6%2F2019%2F07%2Fchances-are-1-2000.jpg&q=85"
+								alt="" class=review__post__img>
+							<div class="review__post__content">
+								<div class="review__post__title">Changes Are</div>
+								<div class="review__post__by">by Richard Russo</div>
+								<div class="rate">
 									<span class="review__voters card-vote">1.987 voters</span>
 								</div>
 								<div class="review__sum card-sum">Readers of all ages and
