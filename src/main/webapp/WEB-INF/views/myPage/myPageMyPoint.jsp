@@ -59,8 +59,8 @@
 					<div>
 						<c:forEach var="ppt" items="${plusPoint }">
 							<div>
-								<div>포인트 : ${ppt.plusPoint }
-								시간 : <fmt:formatDate value="${ppt.plusPoint_date }"
+								<div>포인트${ppt.plusPoint }
+								 <fmt:formatDate value="${ppt.plusPoint_date }"
 										pattern="yyyy-MM-dd HH:mm" /></div>
 							</div>
 						</c:forEach>
