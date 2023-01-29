@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.tm.nmp.account.AccountDTO;
+import com.tm.nmp.board.PostVO;
 
 @Service
 public class BoardDAO {
@@ -59,7 +60,7 @@ public class BoardDAO {
 		clubEvent = ss.getMapper(BoardMapper.class).calcAllPostCount(bSelClubEvent);
 	}
 
-	public void getAllPost(HttpServletRequest req, int pageNbr, int post_board) {
+	public void getAllPost(HttpServletRequest req, int pageNbr, int post_board, PostVO p) {
 
 		switch (post_board) {
 		case 11:
@@ -102,13 +103,53 @@ public class BoardDAO {
 
 		}
 
+		int catNum = p.getPost_category();
+
+		String category = Integer.toString(catNum);
+
+		switch (category) {
+		case "0":
+			category = "잡담";
+			break;
+		case "1":
+			category = "질문";
+			break;
+		case "2":
+			category = "정보";
+			break;
+		case "3":
+			category = "분석";
+			break;
+		}
+
+		req.setAttribute("post_category", category);
+
+		int board_num = p.getPost_board();
+
+		String board_name = "";
+		switch (board_num) {
+		case 21:
+			board_name = "야구";
+			break;
+		case 22:
+			board_name = "축구";
+			break;
+		case 23:
+			board_name = "농구";
+			break;
+		case 24:
+			board_name = "배구";
+			break;
+		}
+
+		req.setAttribute("board_name", board_name);
+
 		List<PostVO> posts = ss.getMapper(BoardMapper.class).getAllPost(search);
 		req.setAttribute("posts", posts);
 
 		int pageCount = (int) Math.ceil(postCount / (double) count);
 		req.setAttribute("pageCount", pageCount);
 		req.setAttribute("curPage", pageNbr);
-		
 	}
 
 	public void searchPost(HttpServletRequest req, BoardSelector bSel) {
@@ -332,10 +373,8 @@ public class BoardDAO {
 
 	}
 
-
-	
 	public void postCountUpdate(HttpServletRequest req, HttpServletResponse res, PostVO p) {
-	
+
 		Cookie[] cookies = req.getCookies();
 		int visitor = 0;
 
@@ -363,17 +402,14 @@ public class BoardDAO {
 
 			ss.getMapper(BoardMapper.class).postCountUpdate(p);
 		}
-		
-		/*if(ss.getMapper(BoardMapper.class).postCountUpdate(p) == 1) {
-			req.setAttribute("result", "조회수 성공");
-		}else {
-			req.setAttribute("result", "조회수 실패");
-		}*/
+
+		/*
+		 * if(ss.getMapper(BoardMapper.class).postCountUpdate(p) == 1) {
+		 * req.setAttribute("result", "조회수 성공"); }else { req.setAttribute("result",
+		 * "조회수 실패"); }
+		 */
 
 	}
-		
-		 
-	
 
 	public void likeUp(HttpServletRequest req, LikeVO lk) {
 		if (ss.getMapper(BoardMapper.class).likeUp(lk) == 1) {
@@ -391,5 +427,27 @@ public class BoardDAO {
 		}
 	}
 
+	public void viewBoardName(HttpServletRequest req) {
+		
+		String board_num = req.getParameter("post_board");
+		System.out.println(board_num);
+		String board_name = "";
+		switch (board_num) {
+		case "21":
+			board_name = "야구";
+			break;
+		case "22":
+			board_name = "축구";
+			break;
+		case "23":
+			board_name = "농구";
+			break;
+		case "24":
+			board_name = "배구";
+			break;
+		}
+
+		req.setAttribute("board_name", board_name);
+	}
 
 }

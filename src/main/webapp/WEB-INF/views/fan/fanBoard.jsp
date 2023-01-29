@@ -80,7 +80,7 @@
 				<!-- 1번줄 헤더 -->
 				<div class="app-content-header">
 					<!-- 왼쪽게시판 제목 -->
-					<h1 class="app-content-headerText">Board</h1>
+					<h1 class="app-content-headerText">${board_name } 게시판</h1>
 				</div>
 				<!-- 2번줄 헤더 -->
 				<div class="app-content-actions">
@@ -89,7 +89,7 @@
 						<input type="hidden" name="post_board" value="${param.post_board}">
 						<div id="snsSearchArea">
 							<input class="search-bar" name="search" type="search"
-								maxlength="10" autocomplete="off">
+								maxlength="10" autocomplete="off" placeholder="검색">
 						</div>
 					</form>
 					<!-- 검색바 오른쪽 메뉴들 -->
@@ -98,7 +98,7 @@
 						<div class="filter-button-wrapper">
 							<c:choose>
 								<c:when test="${sessionScope.loginAccount ne null}">
-									<a href="fan.reg.go?post_board=${param.post_board}"> 새글쓰기</a>
+									<button class="action-button" onclick="location.href='fan.reg.go?post_board=${param.post_board}'"> 새글쓰기</button>
 								</c:when>
 								<c:otherwise>
 									<a href="fan.reg.go?post_board=${param.post_board}"
@@ -123,7 +123,7 @@
 					<c:forEach var="p" items="${posts }">
 						<div class="board__row">
 							<div class="board__cell num">${p.post_id}</div>
-							<div class="board__cell category">${p.post_category}</div>
+							<div class="board__cell category">${post_category}</div>
 							<div class="board__cell post_title">
 								<a
 									href="fan.detail.go?post_id=${p.post_id }&post_member=${p.post_member}">${p.post_title }

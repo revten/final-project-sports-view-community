@@ -24,11 +24,11 @@ public class ClubEventController {
 	private BoardDAO brDAO;
 
 	@RequestMapping(value = "clubEvent.board.go", method = RequestMethod.GET)
-	public String clubEventBoardGO(HttpServletRequest req) {
+	public String clubEventBoardGO(HttpServletRequest req, PostVO p) {
 		TokenMaker.make(req);
 		acDAO.loginCheck(req);
 		
-		brDAO.getAllPost(req, 1, 31);
+		brDAO.getAllPost(req, 1, 31, p);
 
 		req.setAttribute("contentPage", "newsEvent/clubEvent/clubEventBoard.jsp");
 		return "index";
@@ -62,7 +62,7 @@ public class ClubEventController {
 		TokenMaker.make(req);
 		acDAO.loginCheck(req);
 		brDAO.regPost(req, p);
-		brDAO.getAllPost(req, 1, 31);
+		brDAO.getAllPost(req, 1, 31, p);
 		req.setAttribute("contentPage", "newsEvent/clubEvent/clubEventBoard.jsp");
 		return "index";
 	}
@@ -83,7 +83,7 @@ public class ClubEventController {
 		if (acDAO.loginCheck(req)) {
 			brDAO.updatePost(req, p);
 		}
-		brDAO.getAllPost(req, 1, 31);
+		brDAO.getAllPost(req, 1, 31, p);
 		req.setAttribute("contentPage", "newsEvent/clubEvent/clubEventBoard.jsp");
 		return "index";
 	}
@@ -95,27 +95,27 @@ public class ClubEventController {
 		if (acDAO.loginCheck(req)) {
 			brDAO.deletePost(req, p);
 		}
-		brDAO.getAllPost(req, 1, 31);
+		brDAO.getAllPost(req, 1, 31, p);
 		req.setAttribute("contentPage", "newsEvent/clubEvent/clubEventBoard.jsp");
 		return "index";
 	}
 
 	@RequestMapping(value = "/clubEvent.page.change", method = RequestMethod.GET)
-	public String clubEventPageChange(HttpServletRequest req) {
+	public String clubEventPageChange(HttpServletRequest req, PostVO p) {
 		TokenMaker.make(req);
 		acDAO.wathingPage(req);
 		acDAO.loginCheck(req);
 		int pg = Integer.parseInt(req.getParameter("pg"));
-		brDAO.getAllPost(req, pg, 31);
+		brDAO.getAllPost(req, pg, 31, p);
 		req.setAttribute("contentPage", "newsEvent/clubEvent/clubEventBoard.jsp");
 		return "index";
 	}
 
 	@RequestMapping(value = "/clubEvent.search.do", method = RequestMethod.GET)
-	public String clubEventSearchDo(HttpServletRequest req, BoardSelector bSel) {
+	public String clubEventSearchDo(HttpServletRequest req, BoardSelector bSel, PostVO p) {
 		acDAO.loginCheck(req);
 		brDAO.searchPost(req, bSel);
-		brDAO.getAllPost(req, 1, 31);
+		brDAO.getAllPost(req, 1, 31, p);
 		req.setAttribute("contentPage", "newsEvent/clubEvent/clubEventBoard.jsp");
 		return "index";
 	}

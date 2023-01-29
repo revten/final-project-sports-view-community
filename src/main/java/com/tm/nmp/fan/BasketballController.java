@@ -27,10 +27,10 @@ public class BasketballController {
 	private BoardDAO brDAO;
 
 	@RequestMapping(value = "basketball.board.go", method = RequestMethod.GET)
-	public String basketballBoardGO(HttpServletRequest req) {
+	public String basketballBoardGO(HttpServletRequest req, PostVO p) {
 		TokenMaker.make(req);
 		acDAO.loginCheck(req);
-		brDAO.getAllPost(req, 1, 23);
+		brDAO.getAllPost(req, 1, 23, p);
 
 		req.setAttribute("contentPage", "fan/basketball/basketballBoard.jsp");
 		return "index";
@@ -68,7 +68,7 @@ public class BasketballController {
 		TokenMaker.make(req);
 		acDAO.loginCheck(req);
 		brDAO.regPost(req, p);
-		brDAO.getAllPost(req, 1, 23);
+		brDAO.getAllPost(req, 1, 23, p);
 		req.setAttribute("contentPage", "fan/basketball/basketballBoard.jsp");
 		return "index";
 	}
@@ -89,7 +89,7 @@ public class BasketballController {
 		if (acDAO.loginCheck(req)) {
 			brDAO.updatePost(req, p);
 		}
-		brDAO.getAllPost(req, 1, 23);
+		brDAO.getAllPost(req, 1, 23, p);
 		req.setAttribute("contentPage", "fan/basketball/basketballBoard.jsp");
 		return "index";
 	}
@@ -101,27 +101,27 @@ public class BasketballController {
 		if (acDAO.loginCheck(req)) {
 			brDAO.deletePost(req, p);
 		}
-		brDAO.getAllPost(req, 1, 23);
+		brDAO.getAllPost(req, 1, 23, p);
 		req.setAttribute("contentPage", "fan/basketball/basketballBoard.jsp");
 		return "index";
 	}
 
 	@RequestMapping(value = "/basketball.page.change", method = RequestMethod.GET)
-	public String basketballPageChange(HttpServletRequest req) {
+	public String basketballPageChange(HttpServletRequest req, PostVO p) {
 		TokenMaker.make(req);
 		acDAO.wathingPage(req);
 		acDAO.loginCheck(req);
 		int pg = Integer.parseInt(req.getParameter("pg"));
-		brDAO.getAllPost(req, pg, 23);
+		brDAO.getAllPost(req, pg, 23, p);
 		req.setAttribute("contentPage", "fan/basketball/basketballBoard.jsp");
 		return "index";
 	}
 
 	@RequestMapping(value = "/basketball.search.do", method = RequestMethod.GET)
-	public String basketballSearchDo(HttpServletRequest req, BoardSelector bSel) {
+	public String basketballSearchDo(HttpServletRequest req, BoardSelector bSel, PostVO p) {
 		acDAO.loginCheck(req);
 		brDAO.searchPost(req, bSel);
-		brDAO.getAllPost(req, 1, 23);
+		brDAO.getAllPost(req, 1, 23, p);
 		req.setAttribute("contentPage", "fan/basketball/basketballBoard.jsp");
 		return "index";
 	}
