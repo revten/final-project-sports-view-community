@@ -79,7 +79,7 @@
 									data,
 									function(index, i) {
 										content += "<div class='news'><div class='title'>"
-											+ "<a href='"+ i.link + "'><span class='newsTitle'>"
+											+ "<a href='"+ i.link + "' target='_blank'><span class='newsTitle'>"
 											+ i.title
 											+ "</span></a><div class='hiddenMsg'><span> </span></div>"
 											+ "</div><div><span class='time'>"
