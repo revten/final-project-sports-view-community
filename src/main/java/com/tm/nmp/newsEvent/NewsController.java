@@ -20,7 +20,7 @@ public class NewsController {
 	@Autowired
 	private NewsDAO nsDAO;
 	
-	@RequestMapping(value = "/newsEvent.main.go", method = RequestMethod.GET)
+	@RequestMapping(value = "/news.main.go", method = RequestMethod.GET)
     public String newsEventMainGo(HttpServletRequest req) {
         acDAO.wathingPage(req);
         acDAO.loginCheck(req);

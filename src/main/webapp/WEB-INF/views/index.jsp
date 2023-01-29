@@ -57,25 +57,47 @@
 	<!--==================== HEADER ====================-->
 	<header class="header" id="header">
 		<nav class="nav container">
-			<a href="index.go" class="nav__logo"> <img
-				src="resources/files/home/logo.png" alt="logo image" /> TRIPPLE
-			</a>
+
+			<div class="nav__buttons">
+				<!-- Theme change button 라이트모드/다크모드-->
+				<i class="ri-moon-line change-theme" id="theme-button"></i>
+
+				<!-- Toggle button 폰으로 볼때 위에 내비처럼 생기는거-->
+				<div class="nav__toggle" id="nav-toggle">
+					<i class="ri-apps-line"></i>
+				</div>
+				<div>
+					<a class="nav__link"><jsp:include page="${loginPage }"></jsp:include></a>
+				</div>
+			</div>
+
+
 
 			<div class="nav__menu" id="nav-menu">
 				<ul class="nav__list">
 					<li class="nav__item"><a href="stadium.main.go"
-						class="nav__link">스태디엄</a></li>
+						class="nav__link">SIGHT</a></li>
+
+					<li class="nav__item"><a href="withGo.board.go?post_board=11"
+						class="nav__link">WITH</a></li>
 
 					<li class="nav__item"><a href="review.board.go?post_board=12"
-						class="nav__link">직!관!</a></li>
+						class="nav__link">REVIEW</a></li></ul>
 
-					<li class="nav__item"><a href="fan.board.go?post_board=21" class="nav__link">더 팬</a></li>
+				<ul class="nav__list">
+					<li class="nav__item"><a href="index.go" class="nav__logo">
+							<img src="resources/files/home/logo.png" alt="logo image" />
+							TRIPPLE
+					</a></li></ul>
+
+				<ul class="nav__list">
+					<li class="nav__item"><a href="fan.board.go?post_board=21"
+						class="nav__link">THE FAN</a></li>
 
 					<li class="nav__item"><a href="clubEvent.board.go"
-						class="nav__link">뉴스/이벤트</a></li>
+						class="nav__link">EVENT</a></li>
 
-					<li class="nav__item"><a class="nav__link"><jsp:include
-								page="${loginPage }"></jsp:include></a></li>
+					<li class="nav__item"><a href="news.main.go" class="nav__link">NEWS</a></li>
 				</ul>
 
 
@@ -90,15 +112,7 @@
 					class="nav__img-2" />
 			</div>
 
-			<div class="nav__buttons">
-				<!-- Theme change button 라이트모드/다크모드-->
-				<i class="ri-moon-line change-theme" id="theme-button"></i>
 
-				<!-- Toggle button 폰으로 볼때 위에 내비처럼 생기는거-->
-				<div class="nav__toggle" id="nav-toggle">
-					<i class="ri-apps-line"></i>
-				</div>
-			</div>
 		</nav>
 	</header>
 
@@ -207,7 +221,7 @@
 	<script src="resources/js/stadium/seat_detail.js"></script>
 	<script src="resources/js/myPage/myPage.js"></script>
 	<script src="resources/js/news/paging.js"></script>
+	<script src="resources/js/fan/fan_reply.js"></script>
 	<script src="resources/js/fan/fanPost.js"></script>
-	
 </body>
 </html>

@@ -34,7 +34,7 @@ navLink.forEach(n => n.addEventListener('click', linkAction))
 const scrollHeader = () => {
   const header = document.getElementById('header')
   // When the scroll is greater than 50 viewport height, add the scroll-header class to the header tag
-  this.scrollY >= 50 ? header.classList.add('bg-header') : header.classList.remove('bg-header')
+  this.scrollY >= 15 ? header.classList.add('bg-header') : header.classList.remove('bg-header')
   // bg-header css로도 연결
 }
 window.addEventListener('scroll', scrollHeader)

@@ -82,7 +82,7 @@
 												+ (i.pubDate).substring(0,
 														16)
 												+ "</span><div class='title'>"
-												+ "<a href='"+ i.link + "'><span class='newsTitle'>"
+												+ "<a href='"+ i.link + "'target='_blank'><span class='newsTitle'>"
 												+ i.title
 												+ "</span></a><div class='hiddenMsg'><span>⬅ </span></div>"
 												+ "</div><span class='newsContent'>"
