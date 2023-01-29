@@ -47,7 +47,7 @@
 <link rel="stylesheet" href="resources/css/newsEvent/news.css" />
 <link rel="stylesheet" href="resources/css/stadium/stadium.css" />
 <link rel="stylesheet" href="resources/css/map/map.css" />
-<link rel="stylesheet" href="resources/css/watch/watchMain.css" />
+<link rel="stylesheet" href="resources/css/watch/review.css" />
 <link rel="stylesheet" href="resources/css/newsEvent/clubEvent.css" />
 
 <!-- ---------------------------------------------------------------------------- -->
@@ -69,7 +69,7 @@
 					<li class="nav__item"><a href="review.board.go?post_board=12"
 						class="nav__link">직!관!</a></li>
 
-					<li class="nav__item"><a href="fan.main.go" class="nav__link">더 팬</a></li>
+					<li class="nav__item"><a href="fan.board.go?post_board=21" class="nav__link">더 팬</a></li>
 
 					<li class="nav__item"><a href="clubEvent.board.go"
 						class="nav__link">뉴스/이벤트</a></li>
