@@ -33,12 +33,6 @@
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.0.2/TweenMax.min.js"></script>
 
-<style>
-section {
-	width: 100%;
-	height: 100vh;
-}
-</style>
 </head>
 <body>
 	<br>
@@ -62,7 +56,8 @@ section {
 				</ul>
 		</div>
 		<br><br>
-	<section>
+		
+	<section class="swiper_section">
 
 		<div class="swiper-container slideshow">
 
