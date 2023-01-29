@@ -28,14 +28,14 @@ public class WithGoController {
 	
 	@RequestMapping(value = "withGo.board.go", method = RequestMethod.GET)
 	public String fanBoardGo(HttpServletRequest req, PostVO p) {
-		TokenMaker.make(req);
+
 		acDAO.wathingPage(req);
 		acDAO.loginCheck(req);
 
 		BoardOption.clearSearch(req);
 		brDAO.getAllPost(req, 1, 11, p); // 1은 첫페이지를 보여달라
 
-		req.setAttribute("contentPage", "watch/withGo/withGoBoard.jsp");
+		req.setAttribute("contentPage", "withGo/withGoBoard.jsp");
 		return "index";
 	}
 }

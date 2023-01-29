@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<a href="account.login.go">로그인</a>
+	<a class="nav__link" href="account.login.go">LOGIN</a>
 </body>
 </html>

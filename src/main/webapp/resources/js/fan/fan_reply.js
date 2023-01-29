@@ -48,7 +48,7 @@ $('.reply__reg-btn').click(function() {
 				// 받아온 resultVO=data의 replyVO를 담아준다
 				let reply = data.replyVO;
 				console.log(JSON.stringify(reply)); 
-				
+//				<fmt:formatDate value="${reply.reply_reg_date }" type="both" dateStyle="short" timeStyle="short" />
 				if(result > 0) {
 					let replyContent = `<div class="reply__div">
 						<input class="reply__id" type="hidden" name="reply_id" value="${reply.reply_id}" >
@@ -61,9 +61,11 @@ $('.reply__reg-btn').click(function() {
 					</div>`;
 					
 				$('.reply__list').prepend(replyContent);
+
 				} else {
 					console.log('댓글 등록 실패');
 				}
+				$('.reply__content').val('');
 			},
 			error : function(){
 			alert('통신 실패');
