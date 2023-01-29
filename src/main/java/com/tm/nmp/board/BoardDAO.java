@@ -142,6 +142,7 @@ public class BoardDAO {
 		req.setAttribute("board_name", board_name);
 
 		List<PostVO> posts = ss.getMapper(BoardMapper.class).getAllPost(search);
+		System.out.println("asd" + posts);
 		req.setAttribute("posts", posts);
 
 		int pageCount = (int) Math.ceil(postCount / (double) count);
