@@ -64,7 +64,6 @@ public class FanBoardController {
 	public String fanRegGo(HttpServletRequest req, PostVO p) {
 		TokenMaker.make(req);
 		acDAO.wathingPage(req);
-
 		// 글을 쓰려면 로그인을 하라는 것
 		if (acDAO.loginCheck(req)) {
 			req.setAttribute("contentPage", "fan/fanPostReg.jsp");

@@ -32,7 +32,7 @@
 			<input name="plusPoint" value="30" type="hidden"> <!-- 글쓰기 포인트 -->
 			<input name="post_board" value="${param.post_board}" type="hidden" >
 		<div class="form-group">
-			제목 : <input type="text" class="form-control" name="post_title">
+			<input type="text" class="form-control" name="post_title" placeholder="제목을 입력해주세요">
 
 		</div>
 		
