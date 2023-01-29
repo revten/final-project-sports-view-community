@@ -16,13 +16,13 @@
 	<br>
 	<br>
 	<br>
-	<div class="nav__menu" id="nav-menu" style="width:55%;align:center;">
+	<!-- <div class="nav__menu" id="nav-menu" style="width:55%;align:center;">
 				<ul class="nav__list">
 					<li class="nav__item"><a href="clubEvent.board.go"
 						class="nav__link">구단공식이벤트</a></li>
 						
-					<!-- <li class="nav__item"><a href="news.sports.go"
-						class="nav__link">스포츠</a></li> -->
+					<li class="nav__item"><a href="news.sports.go"
+						class="nav__link">스포츠</a></li>
 					<li class="nav__item"><a href="newsEvent.main.go"
 						class="nav__link">뉴스</a>
 					</li>
@@ -30,7 +30,7 @@
 						
 
 				</ul>
-		</div>
+		</div> -->
 		<br><br>
 		
 		<div class="div_news">
@@ -94,7 +94,7 @@
 		function callbackSoccer(data) {
 			const element = document.getElementById('SoccerNews');
 			element.innerHTML += "<div class='news'><div class='title'>"
-				+ "<a href='"+ data.items[0].link + "'><span class='newsTitle'>"
+				+ "<a href='"+ data.items[0].link + "' target='_blank'><span class='newsTitle'>"
 				+ data.items[0].title
 				+ "</span></a><div class='hiddenMsg'><span> </span></div>"
 				+ "</div><div><span class='time'>"
@@ -110,7 +110,7 @@
 		function callbackBaseball(data) {
 			const element = document.getElementById('BaseballNews');
 			element.innerHTML += "<div class='news'><div class='title'>"
-				+ "<a href='"+ data.items[0].link + "'><span class='newsTitle'>"
+				+ "<a href='"+ data.items[0].link + "' target='_blank'><span class='newsTitle'>"
 				+ data.items[0].title
 				+ "</span></a><div class='hiddenMsg'><span> </span></div>"
 				+ "</div><div><span class='time'>"
@@ -126,7 +126,7 @@
 		function callbackBasketball(data) {
 			const element = document.getElementById('BasketballNews');
 			element.innerHTML += "<div class='news'><div class='title'>"
-				+ "<a href='"+ data.items[0].link + "'><span class='newsTitle'>"
+				+ "<a href='"+ data.items[0].link + "' target='_blank'><span class='newsTitle'>"
 				+ data.items[0].title
 				+ "</span></a><div class='hiddenMsg'><span> </span></div>"
 				+ "</div><div><span class='time'>"
@@ -142,7 +142,7 @@
 		function callbackVolleyball(data) {
 			const element = document.getElementById('VolleyballNews');
 			element.innerHTML += "<div class='news'><div class='title'>"
-				+ "<a href='"+ data.items[0].link + "'><span class='newsTitle'>"
+				+ "<a href='"+ data.items[0].link + "' target='_blank'><span class='newsTitle'>"
 				+ data.items[0].title
 				+ "</span></a><div class='hiddenMsg'><span> </span></div>"
 				+ "</div><div><span class='time'>"

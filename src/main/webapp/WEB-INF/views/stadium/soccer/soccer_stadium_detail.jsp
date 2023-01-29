@@ -29,11 +29,11 @@
 				<area style="cursor: pointer;" class="imgArea" id="6"
 					coords="-1,561,1023,795" shape="rect">
 			</map>
-			<button id="reserveBtn">예매하러 가기</button>
+			<button id="reserveBtn">예매하러 가기</button><button onclick="with_go_write_go()">같이 보러 가기</button>
+			<br><br><br>
 			<!-- map div -->
 			<div id="map"
-				style="margin: 20px 0px 15px 0px; width: 500px; height: 300px;"></div>
-			<button onclick="with_go_write_go()">같이 보러 가기</button>
+				style="margin: 20px 0px 15px 0px; width: 800px; height: 500px;"></div>
 		</div>
 		<!-- 전경 사진 -->
 		<img style="display: none" id="test_3"
