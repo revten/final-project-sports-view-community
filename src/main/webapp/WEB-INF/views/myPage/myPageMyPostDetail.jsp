@@ -9,16 +9,15 @@
 <title>Insert title here</title>
 </head>
 <body>
-<br><br><br><br><br>
 
+<br><br><br><br><br>
 <div style="border:1px solid;width:70%;align:center;">
 			<div>${post.post_id }</div>
 			<div>${post.post_title }</div>
 			<div><fmt:formatDate value="${post.post_reg_date }" pattern="yyyy-MM-dd HH:mm" /></div>
 			<div>조회수:${post.post_hit_count }</div>
-		</div>
-		<div><img src="resources/files/myPostImg/${post.post_img }"></div>
 		<div>${post.post_content }</div>
+	</div>
 		<div>
 					<button onclick="history.back()">이전으로</button>
 					<c:choose>
@@ -30,7 +29,7 @@
 									</c:when>
 									<c:otherwise>
 										<button onclick="location.href='fan.update.go?post_id=${post.post_id}&post_member=${post.post_member}'">수정</button>
-										<button onclick="deletePost(${post.post_id}, ${post.post_board});'">삭제</button>
+										<button onclick="deletePost(${post.post_id}, ${post.post_board});">삭제</button>
 									</c:otherwise>
 								</c:choose>
 							</c:when>
