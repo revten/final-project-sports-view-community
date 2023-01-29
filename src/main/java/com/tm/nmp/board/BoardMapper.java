@@ -31,6 +31,8 @@ public interface BoardMapper {
 	
 	int postCountUpdate(PostVO p);
 
+	ReplyVO getReply();
+
 
 
 

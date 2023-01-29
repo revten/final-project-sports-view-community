@@ -38,7 +38,6 @@ public class BoardDAO {
 	private int soccer;
 	private int basketball;
 	private int volleyball;
-	private int analyze;
 	private int clubEvent;
 
 	public void calcAllPostCount() {
@@ -54,8 +53,6 @@ public class BoardDAO {
 		basketball = ss.getMapper(BoardMapper.class).calcAllPostCount(bSelBasketball);
 		BoardSelector bSelVolley = new BoardSelector("", 0, 0, 24);
 		volleyball = ss.getMapper(BoardMapper.class).calcAllPostCount(bSelVolley);
-		BoardSelector bSelAnalyze = new BoardSelector("", 0, 0, 41);
-		analyze = ss.getMapper(BoardMapper.class).calcAllPostCount(bSelAnalyze);
 		BoardSelector bSelClubEvent = new BoardSelector("", 0, 0, 31);
 		clubEvent = ss.getMapper(BoardMapper.class).calcAllPostCount(bSelClubEvent);
 	}
@@ -293,30 +290,41 @@ public class BoardDAO {
 
 	public ResultVO regReply(HttpServletRequest req, ReplyVO rp) {
 		String token = req.getParameter("token");
+		// 리플등록시에 세션에 세팅해둔 토큰을 불러온다.
 		String successToken = (String) req.getSession().getAttribute("successToken");
 		System.out.println("token : " + token);
-
+		
+		// 리플등록 비동기 요청에 대한 대답으로 새토큰과 등록성공여부, 등록한 리플 정보를 조회해서 받은 ReplyVO를 담아줄 ResultVO 객체를 만든다.
 		ResultVO resultVO = new ResultVO();
 
+		// TokenMaker로 만든 토큰과 리플등록시에 만든 토큰을 비교한다.
 		if (successToken != null && token.equals(successToken)) {
 			resultVO.setResult(0);
 			resultVO.setToken(token);
 			System.out.println(resultVO.toString());
 			return resultVO;
 		}
-
+		
+		// 리플 등록시에 regIp가 not null이므로 세팅해주자
 		String regIp = getClientIp(req);
 		System.out.println(regIp);
 		rp.setReply_reg_ip(regIp);
-
+		
+		// 리플을 등록한 사람도 세팅해주자
 		AccountDTO ac = (AccountDTO) req.getSession().getAttribute("loginAccount");
 		rp.setReply_member(ac.getMember_id());
 
 		if (ss.getMapper(BoardMapper.class).regReply(rp) == 1) {
 			req.setAttribute("result", "댓글쓰기 성공");
+			// 생성토큰을 저장해두기
 			req.getSession().setAttribute("successToken", token);
+			
+			// 성공한 값으로 1을 넘김
 			resultVO.setResult(1);
 			resultVO.setToken((String) req.getAttribute("token"));
+			ReplyVO replyVO = ss.getMapper(BoardMapper.class).getReply();
+			System.out.println(replyVO.toString());
+			resultVO.setReplyVO(replyVO);
 			System.out.println(resultVO.toString());
 			return resultVO;
 //			allReplyCount++;
