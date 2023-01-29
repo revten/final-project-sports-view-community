@@ -44,15 +44,14 @@ public class FanBoardController {
 	}
 
 	@RequestMapping(value = "fan.board.go", method = RequestMethod.GET)
-	public String fanBoardGo(HttpServletRequest req) {
+	public String fanBoardGo(HttpServletRequest req, PostVO p) {
 		TokenMaker.make(req);
 		acDAO.wathingPage(req);
 		acDAO.loginCheck(req);
 		// 홈에서 더 팬을 눌렀을때 우선 야구 게시판이 뜨게 설정해둠
 		BoardOption.clearSearch(req);
 		int post_board = Integer.parseInt(req.getParameter("post_board"));
-		brDAO.getAllPost(req, 1, post_board); // 1은 첫페이지를 보여달라
-
+		brDAO.getAllPost(req, 1, post_board, p); // 1은 첫페이지를 보여달라
 		req.setAttribute("contentPage", "fan/fanBoard.jsp");
 		return "index";
 	}
@@ -67,6 +66,7 @@ public class FanBoardController {
 		// 글을 쓰려면 로그인을 하라는 것
 		if (acDAO.loginCheck(req)) {
 			req.setAttribute("contentPage", "fan/fanPostReg.jsp");
+			brDAO.viewBoardName(req);
 		} else {
 			req.setAttribute("contentPage", "account/loginPage.jsp");
 		}
@@ -88,7 +88,7 @@ public class FanBoardController {
 			// 등록후에는 그 게시판 전체글을 보여줄것이라서
 			BoardOption.clearSearch(req);
 			int post_board = Integer.parseInt(req.getParameter("post_board"));
-			brDAO.getAllPost(req, 1, post_board);
+			brDAO.getAllPost(req, 1, post_board, p);
 			req.setAttribute("contentPage", "fan/fanBoard.jsp");
 		} else {
 			req.setAttribute("contentPage", "account/loginPage.jsp");
@@ -150,7 +150,7 @@ public class FanBoardController {
 			// 삭제후 전체글 조회
 			BoardOption.clearSearch(req);
 			int post_board = Integer.parseInt(req.getParameter("post_board"));
-			brDAO.getAllPost(req, 1, post_board);
+			brDAO.getAllPost(req, 1, post_board, p);
 			req.setAttribute("contentPage", "fan/fanBoard.jsp");
 		} else {
 			req.setAttribute("contentPage", "account/loginPage.jsp");
@@ -159,7 +159,7 @@ public class FanBoardController {
 	}
 
 	@RequestMapping(value = "/fan.page.change", method = RequestMethod.GET)
-	public String fanPageChange(HttpServletRequest req) {
+	public String fanPageChange(HttpServletRequest req, PostVO p) {
 		TokenMaker.make(req);
 		acDAO.wathingPage(req);
 		acDAO.loginCheck(req);
@@ -167,20 +167,20 @@ public class FanBoardController {
 		// 그 게시판에 해당하는 결과를 도출하기 위해 post_board가 필요
 		int pg = Integer.parseInt(req.getParameter("pg"));
 		int post_board = Integer.parseInt(req.getParameter("post_board"));
-		brDAO.getAllPost(req, pg, post_board);
+		brDAO.getAllPost(req, pg, post_board, p);
 		req.setAttribute("contentPage", "fan/fanBoard.jsp");
 		return "index";
 	}
 
 	@RequestMapping(value = "/fan.search.do", method = RequestMethod.GET)
-	public String fanSearchDo(HttpServletRequest req, BoardSelector bSel) {
+	public String fanSearchDo(HttpServletRequest req, BoardSelector bSel, PostVO p) {
 		acDAO.loginCheck(req);
 		// BoardSelector안에 post_board가 들어있으니 따로 넘겨줄 필요는 없다
 		brDAO.searchPost(req, bSel);
 
 		// 위와 달리 검색후 보여주는 페이지에선 post_board필요하다
 		int post_board = Integer.parseInt(req.getParameter("post_board"));
-		brDAO.getAllPost(req, 1, post_board);
+		brDAO.getAllPost(req, 1, post_board, p);
 		req.setAttribute("contentPage", "fan/fanBoard.jsp");
 		return "index";
 	}

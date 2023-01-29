@@ -53,7 +53,7 @@
 		insert into post values
 		(post_seq.nextval, #{post_board}, #{post_member},
 		null, null, null, <!-- 옵션value로 넣어줘야 (직관게시판 등록, 수정에서) -->
-		#{post_title}, null, <!--  옵션value로 넣어줘야 (자유게시판 등록, 수정에서) -->
+		#{post_title}, #{post_category}, <!--  옵션value로 넣어줘야 (자유게시판 등록, 수정에서) -->
 		sysdate, null, #{post_img},
 		#{post_file},
 		#{post_hit_count}, #{post_like_count},

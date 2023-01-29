@@ -12,13 +12,27 @@ function boardSearchCheck() {
 
 // ==================== 글 등록 / 업데이트시 내용이 비어있지 않도록 ====================
 function checkForm() {
-	let titleInput = document.postRegForm.post_title;
-	let contentInput = document.postRegForm.post_content;
+	let titleInput = $('#post_title').val();
+	let contentInput = $('#post_content').val();
+	let category = $('#post_category').val();
 
-	if (isEmpty(titleInput) || isEmpty(contentInput)) {
+	if (titleInput == '' || titleInput == undefined || titleInput == null
+			|| titleInput == 'null') {
+		alert("제목을 입력해주세요");
+		return false;
+	}
+
+	if (contentInput == '' || titleInput == undefined || titleInput == null
+			|| titleInput == 'null') {
 		alert("내용을 입력해주세요");
 		return false;
 	}
+
+	if (category == 4) {
+		alert("카테고리를 설정해주세요");
+		return false;
+	}
+
 	return true;
 }
 

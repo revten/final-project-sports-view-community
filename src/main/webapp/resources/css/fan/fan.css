@@ -148,13 +148,14 @@ p, figure {
 .app-content-header {
 	display: flex;
 	align-items: center;
-	justify-content: space-between;
+	justify-content: center;
+	margin-top: 5vh;
 	padding: 0 4px;
 }
 
 .app-content-headerText {
 	color: var(--app-content-main-color);
-	font-size: 24px;
+	font-size: 40px;
 	line-height: 32px;
 	margin: 0;
 }
@@ -479,4 +480,39 @@ p, figure {
 
 .tableView .sort-button svg {
 	width: 12px;
+}
+
+.board_container {
+	display:flex;
+	flex-direction: column;
+	margin-top: 20vh;
+	background-color: hsl(1, 1%, 93%);
+	max-width: 1024px;
+	max-height: 800px;
+	display: flex;
+	overflow: hidden;
+	width: 100%;
+	border-radius: 20px;
+	font-size: 15px;
+	font-weight: 500;
+	filter: drop-shadow(0px 20px 10px rgba(0, 0, 0, 0.3));
+	position: relative;
+}
+
+.board__name{
+	margin-top: 3vh;
+}
+
+#goBoardBtn{
+	margin-top: 3vh;
+	margin-bottom: 3vh;
+	width: 5vw;
+	height: 5vh;
+}
+
+#createPostBtn{
+	margin-top: 3vh;
+	margin-bottom: 3vh;
+	width: 5vw;
+	height: 5vh;
 }
