@@ -34,15 +34,21 @@
 		<br><br>
 
 		<div class="div_news">
-		<div style="float:left; width: 200px;">
-		<div class="div_news_go"><a href="news.soccer.go" class="news_go">축구</a></div>
-		<div class="div_news_go"><a href="news.baseball.go" class="news_go">야구</a></div>
-		<div class="div_news_go"><a href="news.basketball.go" class="news_go">농구</a></div>
-		<div class="div_news_go"><a href="news.volleyball.go" class="news_go">배구</a></div>
+		<div class="div_news_nav">
+		<div id="sidebar">
+		<nav class="navbar">
+		 <ul class="navbar__menu">
+            <li onclick="location.href='news.soccer.go'">축구</li>
+            <li onclick="location.href='news.baseball.go'">야구</li>
+            <li onclick="location.href='news.basketball.go'">농구</li>
+            <li onclick="location.href='news.volleyball.go'">배구 </li>
+          </ul>
+          </nav>
+           </div>
 		</div>
 		<div class="div_news_content">
 		<div id="data-container"></div>
-		<div id="pagination" style="margin-left: 23%;"></div>
+		<div id="pagination" style="margin-left: 29%;"></div>
 		</div>
 		</div>
 	<script type="text/javascript">
