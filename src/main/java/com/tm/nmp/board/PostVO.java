@@ -23,7 +23,8 @@ public class PostVO {
 	int post_reply_count; // 글 댓글수 not null
 	String post_reg_ip; // 글 작성 ip not null
 
-	String member_nick; // 다른 테이블에서 관계형으로 닉네임을 가져와 게시판에 보여줄 항목이라 미리 만들어둠
+	String member_nick; // 다른 이블에서 관계형으로 닉네임을 가져와 게시판에 보여줄 항목이라 미리 만들어둠
+
 	// 등급 아이콘
 	// 팬인 구단 로고
 	String sports_name; // 함께가기/리뷰/분석 게시판을 위한 요소
