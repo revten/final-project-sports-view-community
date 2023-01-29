@@ -38,10 +38,6 @@
 	font-size: 13px;
 }
 
-a:hover {
-	text-decoration: none;
-}
-
 p, figure {
 	margin: 0;
 	padding: 0;
@@ -72,7 +68,7 @@ p, figure {
 
 .card .title {
 	display: inline-block;
-	font-size: 8px;
+	font-size: 14px;
 	padding: 10px 10px 0;
 	text-decoration: none;
 }
@@ -155,7 +151,7 @@ p, figure {
 
 .app-content-headerText {
 	color: var(--app-content-main-color);
-	font-size: 40px;
+	font-size: 20px;
 	line-height: 32px;
 	margin: 0;
 }
@@ -179,7 +175,7 @@ p, figure {
 
 .app-content-actions {
 	display: flex;
-	justify-content: space-between;
+	justify-content: center;
 	align-items: center;
 	padding: 16px 4px;
 }
@@ -388,11 +384,13 @@ p, figure {
 	max-height: 100%;
 	overflow: auto;
 	padding: 0 4px;
+	justify-content: center;
 }
 
 .tableView .board__header {
 	display: flex;
 	align-items: center;
+	justify-content: center;
 	border-radius: 4px;
 	background-color: var(--app-content-secondary-color);
 	position: sticky;
@@ -402,6 +400,7 @@ p, figure {
 .tableView .board__row {
 	display: flex;
 	align-items: center;
+	justify-content: center;
 	border-radius: 4px;
 }
 
@@ -421,6 +420,7 @@ p, figure {
 	font-size: 14px;
 	display: flex;
 	align-items: center;
+	justify-content: center;
 }
 
 .tableView .board__cell img {
@@ -452,6 +452,7 @@ p, figure {
 	.tableView .board__cell.nick, .tableView .board__cell.view_count {
 		flex: 0.2;
 	}
+	
 }
 
 @media screen and (max-width: 480px) {
@@ -499,6 +500,10 @@ p, figure {
 	position: relative;
 }
 
+.board__bot-paging{
+	margin-top: 3vh;
+}
+
 .board__name{
 	margin-top: 3vh;
 }
@@ -515,4 +520,16 @@ p, figure {
 	margin-bottom: 3vh;
 	width: 5vw;
 	height: 5vh;
+}
+
+.form-group{
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+}
+
+.post__title{
+	display: flex;
+	justify-content: space-between;
+	font-size: 20px;
 }
