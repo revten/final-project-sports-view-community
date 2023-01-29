@@ -5,6 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>회원가입 - Enjoy Sports</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css" />
 <style>
 .id_ok {
 	color: #008000;
@@ -133,6 +134,7 @@ function checkOne(element) {
 	<br>
 	<br>
 	<br>
+	<div class="animated bounceInDown">
 	<div id="accountReg__contrainer">
 	<h1 class="login_title">회원 가입</h1>
 		<form action="account.reg.do" method="post"
@@ -214,6 +216,7 @@ function checkOne(element) {
 			<input type="hidden" name="member_admin" value="0"> <br>
 			<button id="reg" class="emailBtn2" style="margin-bottom: 15px;">가입</button>
 		</form>
+	</div>
 	</div>
 </body>
 </html>

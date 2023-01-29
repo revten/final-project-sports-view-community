@@ -18,15 +18,15 @@
 	<br>
 	<div class="nav__menu" id="nav-menu" style="width:55%;align:center;">
 				<ul class="nav__list">
+					<li class="nav__item"><a href="clubEvent.board.go"
+						class="nav__link">구단공식이벤트</a></li>
+						
+					<!-- <li class="nav__item"><a href="news.sports.go"
+						class="nav__link">스포츠</a></li> -->
 					<li class="nav__item"><a href="newsEvent.main.go"
 						class="nav__link">뉴스</a>
 					</li>
 						
-					<!-- <li class="nav__item"><a href="news.sports.go"
-						class="nav__link">스포츠</a></li> -->
-						
-					<li class="nav__item"><a href="clubEvent.board.go"
-						class="nav__link">구단공식이벤트</a></li>
 						
 
 				</ul>
@@ -42,7 +42,7 @@
 		</div>
 		<div class="div_news_content">
 		<div id="data-container"></div>
-		<div id="pagination" style="margin-left: 29%;"></div>
+		<div id="pagination" style="margin-left: 23%;"></div>
 		</div>
 		</div>
 	<script type="text/javascript">
@@ -71,16 +71,16 @@
 					$.each(
 									data,
 									function(index, i) {
-										content += "<div class='news'><span class='time'>"
-												+ (i.pubDate).substring(0,
-														16)
-												+ "</span><div class='title'>"
+										content += "<div class='news'><div class='title'>"
 												+ "<a href='"+ i.link + "'><span class='newsTitle'>"
 												+ i.title
 												+ "</span></a><div class='hiddenMsg'><span> </span></div>"
-												+ "</div><span class='newsContent'>"
+												+ "</div><div><span class='time'>"
+												+ (i.pubDate).substring(0,
+														16)
+												+ "</span></div><br><span class='newsContent'>"
 												+ i.description
-												+ "</span></div>";
+												+ "</span><br><hr style=\"border: 0;height: 1px;background: #ccc;\"></div>";
 									});
 
 					$("#data-container").html(content);
