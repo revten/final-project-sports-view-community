@@ -8,14 +8,10 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 
-<link
-	href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
-	rel="stylesheet" id="bootstrap-css">
 <script
 	src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 <script
 	src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<!------ Include the above in your HEAD tag ---------->
 
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.4.1/css/swiper.min.css">
@@ -32,14 +28,7 @@
 	src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.4.1/js/swiper.min.js"></script>
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.0.2/TweenMax.min.js"></script>
-
-<link rel="stylesheet" href="resources/css/newsEvent/clubEvent.css" />
-<style>
-section {
-	width: 100%;
-	height: 100vh;
-}
-</style>
+ 
 </head>
 <body>
 	<br>
@@ -48,20 +37,24 @@ section {
 	<br>
 	<br>
 	<br>
+	<div class="nav__menu" id="nav-menu" style="width:55%;align:center;">
+				<ul class="nav__list">
+					<li class="nav__item"><a href="clubEvent.board.go"
+						class="nav__link">구단공식이벤트</a></li>
+						
+					<!-- <li class="nav__item"><a href="news.sports.go"
+						class="nav__link">스포츠</a></li> -->
+					<li class="nav__item"><a href="newsEvent.main.go"
+						class="nav__link">뉴스</a>
+					</li>
+						
+						
 
-
-	<!--==================== Nav바 ====================-->
-	<div class="nav__menu" id="nav-menu" style="width: 55%; align: center;">
-		<ul class="nav__list">
-			<li class="nav__item"><a href="clubEvent.board.go"
-				class="nav__link">구단공식이벤트</a></li>
-			<li class="nav__item"><a href="newsEvent.main.go"
-				class="nav__link">뉴스</a></li>
-
-		</ul>
-	</div>
-
-	<section>
+				</ul>
+		</div>
+		<br><br>
+		
+	<section class="swiper_section">
 
 		<div class="swiper-container slideshow">
 
@@ -69,23 +62,23 @@ section {
 
 				<div class="swiper-slide slide">
 					<div class="slide-image"
-						style="background-image: url(https://images.unsplash.com/photo-1538083024336-555cf8943ddc?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=66b476a51b19889e13182c0e4827af18&auto=format&fit=crop&w=1950&q=80)">
+						style="background-image: url(https://img.danawa.com/contents/event/101129_pangpang/con01.jpg">
 					</div>
-					<span class="slide-title">Exotic places</span>
+					<span class="slide-title">Event</span>
 				</div>
 
 				<div class="swiper-slide slide">
 					<div class="slide-image"
-						style="background-image: url(https :// images.unsplash.com/ photo-1500375592092-40eb2168fd21 ? ixlib = rb-0.3.5 &amp; ixid = eyJhcHBfaWQiOjEyMDd9 &amp; s = e07d2457879a4e15577ec75a31023e47 &amp; auto = format &amp; fit = crop &amp; w = 2134 &amp; q = 80">
+						style="background-image: url(https://wimg.mk.co.kr/news/cms/202212/15/news-p.v1.20221215.e4489ff792cd4e8a9fbb8d2dc75e00d8.jpg">
 					</div>
-					<span class="slide-title">Meet ocean</span>
+					<span class="slide-title">Together</span>
 				</div>
 
 				<div class="swiper-slide slide">
 					<div class="slide-image"
-						style="background-image: url(https :// images.unsplash.com/ photo-1482059470115-0aadd6bf6834 ? ixlib = rb-0.3.5 &amp; ixid = eyJhcHBfaWQiOjEyMDd9 &amp; s = 267bba9a4e280ec64388fe8fb01e9d1b &amp; auto = format &amp; fit = crop &amp; w = 1950 &amp; q = 80">
+						style="background-image: url(https://cfile1.onoffmix.com/attach/jJZA0D8PBE4Xw1x3GLTMhtFvU2WYnQda">
 					</div>
-					<span class="slide-title">Around the world</span>
+					<span class="slide-title">Chicken</span>
 				</div>
 
 				<!--         <div class="swiper-slide slide">
@@ -123,11 +116,10 @@ section {
 		</div>
 
 	</section>
-
+<hr>
 
 
 	<!--==================== 게시판 ====================-->
-
 	<div class="board__container">
 		<div class="board__top">
 			<c:choose>
@@ -141,45 +133,35 @@ section {
 		</div>
 
 
-		<table class="board__table">
-			<thead>
-				<tr>
-					<th style="width: 80px;">게시판넘버</th>
-					<th style="width: 70px;">글번호</th>
-					<th style="width: 50px;">탭</th>
-					<th style="width: 510px;">제목</th>
-					<th style="width: 150px;">등록일</th>
-					<th style="width: 100px;">닉네임</th>
-					<th style="width: 70px;">조회수</th>
-					<th style="width: 70px;">추천수</th>
-				</tr>
 				<c:forEach var="p" items="${posts }">
-					<tr>
-						<td>${p.post_board}</td>
-						<td>${p.post_id}</td>
-						<td>${p.post_category}</td>
-						<td><a
-							href="clubEvent.detail.go?post_id=${p.post_id }&post_member=${p.post_member}">${p.post_title }
-								[${p.post_like_count}]</a></td>
-						<td><c:choose>
-								<c:when test="${p.post_update_date eq null }">
-									<fmt:formatDate value="${p.post_reg_date}"
-										pattern="yy-MM-dd HH:mm" />
-								</c:when>
-								<c:otherwise>
-									<fmt:formatDate value="${p.post_update_date}"
-										pattern="yy-MM-dd HH:mm" />
-								</c:otherwise>
-							</c:choose></td>
-						<td>${p.member_nick}</td>
-						<td>${p.post_hit_count}</td>
-						<td>${p.post_like_count}</td>
-					</tr>
+					<div class='clubEvent'>
+						<div class='title'>
+							<span><a class='clubEventTitle'
+								href="clubEvent.detail.go?post_id=${p.post_id }&post_member=${p.post_member}">${p.post_title }
+									[${p.post_like_count}]</a></span>
+						</div>
+						<div>
+							<span class='time'><%--  글번호 ${p.post_id} | 탭 ${p.post_category} | --%> ${p.member_nick} | <c:choose>
+									<c:when test="${p.post_update_date eq null }">
+										<fmt:formatDate value="${p.post_reg_date}"
+											pattern="yy-MM-dd HH:mm" />
+									</c:when>
+									<c:otherwise>
+										<fmt:formatDate value="${p.post_update_date}"
+											pattern="yy-MM-dd HH:mm" />
+									</c:otherwise>
+								</c:choose>
+								| 조회수 ${p.post_hit_count}
+							</span>
+						</div>
+						<br>
+						<span class='clubEventContent'>${p.post_content } </span>
+					<br>
+					<hr style="border: 0; height: 1px; background: #ccc;">
+					</div>
 				</c:forEach>
-			</thead>
-		</table>
 
-
+		<br>
 		<div class="board__bot">
 			<div class="board__bot-search">
 				<form action="clubEvent.search.do" name="boardSearchForm"
@@ -188,7 +170,7 @@ section {
 						<tr>
 							<td id="ssaTd1"><input id="search" name="search"
 								maxlength="10" autocomplete="off" placeholder="검색어를 입력해주세요."></td>
-							<td id="ssaTd2"><button class="btn btn-dark">검색</button></td>
+							<td id="ssaTd2"><button class="search_btn search_btn-dark">검색</button></td>
 						</tr>
 					</table>
 				</form>
@@ -212,7 +194,8 @@ section {
 		</div>
 
 	</div>
-	</main>
+	<br>
+	<hr>
 	<script>
 		function boardSearchCheck() {
 			let searchInput = document.boardSearchForm.search;
@@ -227,177 +210,179 @@ section {
 	</script>
 	<script>
 
-    // The Slideshow class.
-    class Slideshow {
-      constructor(el) {
 
-        this.DOM = { el: el };
+	// The Slideshow class.
+	class Slideshow {
+	    constructor(el) {
 
-        this.config = {
-          slideshow: {
-            delay: 3000,
-            pagination: {
-              duration: 3,
-            }
-          }
-        };
+	        this.DOM = {el: el};
 
-        // Set the slideshow
-        this.init();
+	        this.config = {
+	          slideshow: {
+	            delay: 3000,
+	            pagination: {
+	              duration: 3,
+	            }
+	          }
+	        };
 
-      }
-      init() {
+	        // Set the slideshow
+	        this.init();
 
-        var self = this;
+	    }
+	    init() {
 
-        // Charmed title
-        this.DOM.slideTitle = this.DOM.el.querySelectorAll('.slide-title');
-        this.DOM.slideTitle.forEach((slideTitle) => {
-          charming(slideTitle);
-        });
+	      var self = this;
 
-        // Set the slider
-        this.slideshow = new Swiper(this.DOM.el, {
+	      // Charmed title
+	      this.DOM.slideTitle = this.DOM.el.querySelectorAll('.slide-title');
+	      this.DOM.slideTitle.forEach((slideTitle) => {
+	        charming(slideTitle);
+	      });
 
-          loop: true,
-          autoplay: {
-            delay: this.config.slideshow.delay,
-            disableOnInteraction: false,
-          },
-          speed: 500,
-          preloadImages: true,
-          updateOnImagesReady: true,
+	      // Set the slider
+	      this.slideshow = new Swiper (this.DOM.el, {
 
-          // lazy: true,
-          // preloadImages: false,
+	          loop: true,
+	          autoplay: {
+	            delay: this.config.slideshow.delay,
+	            disableOnInteraction: false,
+	          },
+	          speed: 500,
+	          preloadImages: true,
+	          updateOnImagesReady: true,
 
-          pagination: {
-            el: '.slideshow-pagination',
-            clickable: true,
-            bulletClass: 'slideshow-pagination-item',
-            bulletActiveClass: 'active',
-            clickableClass: 'slideshow-pagination-clickable',
-            modifierClass: 'slideshow-pagination-',
-            renderBullet: function (index, className) {
+	          // lazy: true,
+	          // preloadImages: false,
 
-              var slideIndex = index,
-                number = (index <= 8) ? '0' + (slideIndex + 1) : (slideIndex + 1);
+	          pagination: {
+	            el: '.slideshow-pagination',
+	            clickable: true,
+	            bulletClass: 'slideshow-pagination-item',
+	            bulletActiveClass: 'active',
+	            clickableClass: 'slideshow-pagination-clickable',
+	            modifierClass: 'slideshow-pagination-',
+	            renderBullet: function (index, className) {
 
-              var paginationItem = '<span class="slideshow-pagination-item">';
-              paginationItem += '<span class="pagination-number">' + number + '</span>';
-              paginationItem = (index <= 8) ? paginationItem + '<span class="pagination-separator"><span class="pagination-separator-loader"></span></span>' : paginationItem;
-              paginationItem += '</span>';
+	              var slideIndex = index,
+	                  number = (index <= 8) ? '0' + (slideIndex + 1) : (slideIndex + 1);
 
-              return paginationItem;
+	              var paginationItem = '<span class="slideshow-pagination-item">';
+	              paginationItem += '<span class="pagination-number">' + number + '</span>';
+	              paginationItem = (index <= 8) ? paginationItem + '<span class="pagination-separator"><span class="pagination-separator-loader"></span></span>' : paginationItem;
+	              paginationItem += '</span>';
 
-            },
-          },
+	              return paginationItem;
 
-          // Navigation arrows
-          navigation: {
-            nextEl: '.slideshow-navigation-button.next',
-            prevEl: '.slideshow-navigation-button.prev',
-          },
+	            },
+	          },
 
-          // And if we need scrollbar
-          scrollbar: {
-            el: '.swiper-scrollbar',
-          },
+	          // Navigation arrows
+	          navigation: {
+	            nextEl: '.slideshow-navigation-button.next',
+	            prevEl: '.slideshow-navigation-button.prev',
+	          },
 
-          on: {
-            init: function () {
-              self.animate('next');
-            },
-          }
+	          // And if we need scrollbar
+	          scrollbar: {
+	            el: '.swiper-scrollbar',
+	          },
 
-        });
+	          on: {
+	            init: function() {
+	              self.animate('next');
+	            },
+	          }
 
-        // Init/Bind events.
-        this.initEvents();
+	        });
 
-      }
-      initEvents() {
+	        // Init/Bind events.
+	        this.initEvents();
 
-        this.slideshow.on('paginationUpdate', (swiper, paginationEl) => this.animatePagination(swiper, paginationEl));
-        //this.slideshow.on('paginationRender', (swiper, paginationEl) => this.animatePagination());
+	    }
+	    initEvents() {
 
-        this.slideshow.on('slideNextTransitionStart', () => this.animate('next'));
+	        this.slideshow.on('paginationUpdate', (swiper, paginationEl) => this.animatePagination(swiper, paginationEl));
+	        //this.slideshow.on('paginationRender', (swiper, paginationEl) => this.animatePagination());
 
-        this.slideshow.on('slidePrevTransitionStart', () => this.animate('prev'));
+	        this.slideshow.on('slideNextTransitionStart', () => this.animate('next'));
 
-      }
-      animate(direction = 'next') {
+	        this.slideshow.on('slidePrevTransitionStart', () => this.animate('prev'));
 
-        // Get the active slide
-        this.DOM.activeSlide = this.DOM.el.querySelector('.swiper-slide-active'),
-          this.DOM.activeSlideImg = this.DOM.activeSlide.querySelector('.slide-image'),
-          this.DOM.activeSlideTitle = this.DOM.activeSlide.querySelector('.slide-title'),
-          this.DOM.activeSlideTitleLetters = this.DOM.activeSlideTitle.querySelectorAll('span');
+	    }
+	    animate(direction = 'next') {
 
-        // Reverse if prev
-        this.DOM.activeSlideTitleLetters = direction === "next" ? this.DOM.activeSlideTitleLetters : [].slice.call(this.DOM.activeSlideTitleLetters).reverse();
+	        // Get the active slide
+	        this.DOM.activeSlide = this.DOM.el.querySelector('.swiper-slide-active'),
+	        this.DOM.activeSlideImg = this.DOM.activeSlide.querySelector('.slide-image'),
+	        this.DOM.activeSlideTitle = this.DOM.activeSlide.querySelector('.slide-title'),
+	        this.DOM.activeSlideTitleLetters = this.DOM.activeSlideTitle.querySelectorAll('span');
 
-        // Get old slide
-        this.DOM.oldSlide = direction === "next" ? this.DOM.el.querySelector('.swiper-slide-prev') : this.DOM.el.querySelector('.swiper-slide-next');
-        if (this.DOM.oldSlide) {
-          // Get parts
-          this.DOM.oldSlideTitle = this.DOM.oldSlide.querySelector('.slide-title'),
-            this.DOM.oldSlideTitleLetters = this.DOM.oldSlideTitle.querySelectorAll('span');
-          // Animate
-          this.DOM.oldSlideTitleLetters.forEach((letter, pos) => {
-            TweenMax.to(letter, .3, {
-              ease: Quart.easeIn,
-              delay: (this.DOM.oldSlideTitleLetters.length - pos - 1) * .04,
-              y: '50%',
-              opacity: 0
-            });
-          });
-        }
+	        // Reverse if prev
+	        this.DOM.activeSlideTitleLetters = direction === "next" ? this.DOM.activeSlideTitleLetters : [].slice.call(this.DOM.activeSlideTitleLetters).reverse();
 
-        // Animate title
-        this.DOM.activeSlideTitleLetters.forEach((letter, pos) => {
-          TweenMax.to(letter, .6, {
-            ease: Back.easeOut,
-            delay: pos * .05,
-            startAt: { y: '50%', opacity: 0 },
-            y: '0%',
-            opacity: 1
-          });
-        });
+	        // Get old slide
+	        this.DOM.oldSlide = direction === "next" ? this.DOM.el.querySelector('.swiper-slide-prev') : this.DOM.el.querySelector('.swiper-slide-next');
+	        if (this.DOM.oldSlide) {
+	          // Get parts
+	          this.DOM.oldSlideTitle = this.DOM.oldSlide.querySelector('.slide-title'),
+	          this.DOM.oldSlideTitleLetters = this.DOM.oldSlideTitle.querySelectorAll('span');
+	          // Animate
+	          this.DOM.oldSlideTitleLetters.forEach((letter,pos) => {
+	            TweenMax.to(letter, .3, {
+	              ease: Quart.easeIn,
+	              delay: (this.DOM.oldSlideTitleLetters.length-pos-1)*.04,
+	              y: '50%',
+	              opacity: 0
+	            });
+	          });
+	        }
 
-        // Animate background
-        TweenMax.to(this.DOM.activeSlideImg, 1.5, {
-          ease: Expo.easeOut,
-          startAt: { x: direction === 'next' ? 200 : -200 },
-          x: 0,
-        });
+	        // Animate title
+	        this.DOM.activeSlideTitleLetters.forEach((letter,pos) => {
+						TweenMax.to(letter, .6, {
+							ease: Back.easeOut,
+							delay: pos*.05,
+							startAt: {y: '50%', opacity: 0},
+							y: '0%',
+							opacity: 1
+						});
+					});
 
-        //this.animatePagination()
+	        // Animate background
+	        TweenMax.to(this.DOM.activeSlideImg, 1.5, {
+	            ease: Expo.easeOut,
+	            startAt: {x: direction === 'next' ? 200 : -200},
+	            x: 0,
+	        });
 
-      }
-      animatePagination(swiper, paginationEl) {
+	        //this.animatePagination()
 
-        // Animate pagination
-        this.DOM.paginationItemsLoader = paginationEl.querySelectorAll('.pagination-separator-loader');
-        this.DOM.activePaginationItem = paginationEl.querySelector('.slideshow-pagination-item.active');
-        this.DOM.activePaginationItemLoader = this.DOM.activePaginationItem.querySelector('.pagination-separator-loader');
+	    }
+	    animatePagination(swiper, paginationEl) {
 
-        console.log(swiper.pagination);
-        // console.log(swiper.activeIndex);
+	      // Animate pagination
+	      this.DOM.paginationItemsLoader = paginationEl.querySelectorAll('.pagination-separator-loader');
+	      this.DOM.activePaginationItem = paginationEl.querySelector('.slideshow-pagination-item.active');
+	      this.DOM.activePaginationItemLoader = this.DOM.activePaginationItem.querySelector('.pagination-separator-loader');
 
-        // Reset and animate
-        TweenMax.set(this.DOM.paginationItemsLoader, { scaleX: 0 });
-        TweenMax.to(this.DOM.activePaginationItemLoader, this.config.slideshow.pagination.duration, {
-          startAt: { scaleX: 0 },
-          scaleX: 1,
-        });
+	      console.log(swiper.pagination);
+	      // console.log(swiper.activeIndex);
+
+	      // Reset and animate
+	        TweenMax.set(this.DOM.paginationItemsLoader, {scaleX: 0});
+	        TweenMax.to(this.DOM.activePaginationItemLoader, this.config.slideshow.pagination.duration, {
+	          startAt: {scaleX: 0},
+	          scaleX: 1,
+	        });
 
 
-      }
+	    }
 
-    }
+	}
 
-    const slideshow = new Slideshow(document.querySelector('.slideshow'));
+	const slideshow = new Slideshow(document.querySelector('.slideshow'));
+
 
   </script>
 

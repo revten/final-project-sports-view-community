@@ -4,10 +4,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400&display=swap');
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Raleway:wght@500;600;700&display=swap");
 
-
 /*변수*/
 :root {
-  --header-height: 3.5rem;
+  --header-height: 4.5rem;
 
   /*========== 전체컬러 ==========*/
   --first-color: hsl(210, 28%, 33%);
@@ -48,7 +47,7 @@
   margin-right: 15px;
 }
  .info-area{
-	width: 300px;
+	width : 100%;
 }
 
 
@@ -83,6 +82,7 @@ body {
   background-color: var(--body-color);
   color: var(--text-color);
   transition: background 0.4s;
+  
   /* 다크모드 애니메이션 */
 }
 
@@ -110,7 +110,10 @@ img {
 
 /* 라이트모드/다크모드 */
 .nav__buttons {
+  top: 0;
+  height: 35px;
   display: flex;
+  flex-direction: row-reverse;
   align-items: center;
   column-gap: 1rem;
 }
@@ -136,7 +139,7 @@ body.dark-theme {
 
 /* 다시 쓸수 있는 css 클래스 */
 .container {
-  max-width: 1024px;
+  max-width: 1100px;
   margin-inline: 1.5rem;
 }
 
@@ -179,7 +182,7 @@ padding-block, padding-inline 은 요소의 쓰기모드 및 방향성, 텍스�
 .header {
   position: fixed;
   width: 100%;
-  background-color: var(--body-color);
+  background-color: transparent;
   top: 0;
   left: 0;
   z-index: var(--z-fixed);
@@ -189,8 +192,6 @@ padding-block, padding-inline 은 요소의 쓰기모드 및 방향성, 텍스�
 .nav {
   position: relative;
   height: var(--header-height);
-  display: flex;
-  justify-content: space-between;
   align-items: center;
 }
 
@@ -205,12 +206,13 @@ padding-block, padding-inline 은 요소의 쓰기모드 및 방향성, 텍스�
   align-items: center;
   column-gap: .5rem;
   font-family: var(--body-font);
-  font-size: var(--h3-font-size);
+  font-size: var(--h2-font-size);
   font-weight: var(--font-semi-bold);
   transition: color .3s;
 }
 
 .nav__logo img {
+	height: 50px;
   width: 25px;
 }
 
@@ -221,6 +223,10 @@ padding-block, padding-inline 은 요소의 쓰기모드 및 방향성, 텍스�
 .nav__toggle {
   font-size: 1.25rem;
   cursor: pointer;
+}
+.nav__menu{
+  display: flex;
+  justify-content: space-between;
 }
 
 @media screen and (max-width: 767px) {
@@ -238,9 +244,10 @@ padding-block, padding-inline 은 요소의 쓰기모드 및 방향성, 텍스�
 
 .nav__list {
   display: flex;
-  flex-direction: column;
+  justify-content: space-between;
   text-align: center;
   row-gap: 2rem;
+  align-items: center;
 }
 
 .nav__link {
@@ -287,6 +294,7 @@ padding-block, padding-inline 은 요소의 쓰기모드 및 방향성, 텍스�
 
 /* 밑으로 스크롤할때 위 상단메뉴밑에 쉐도우 생기도록 */
 .bg-header {
+  background-color: var(--body-color);
   box-shadow: 0 2px 8px hsla(19, 64%, 24%, .1);
 }
 
@@ -938,7 +946,7 @@ padding-block, padding-inline 은 요소의 쓰기모드 및 방향성, 텍스�
     width: 600px;
     position: absolute;
     top: 5rem;
-    right: -2rem;
+    right: 0rem;
   }
 
   .about__container {

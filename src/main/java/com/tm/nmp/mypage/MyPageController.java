@@ -48,17 +48,16 @@ public class MyPageController {
 	}
 	
 	@RequestMapping(value = "myPage.myPost.go", method = RequestMethod.GET)
-	public String myPageMyPostGo(HttpServletRequest req, PostVO pvo) {
+	public String myPageMyPostGo(HttpServletRequest req, AccountDTO ac, PostVO pvo) {
 		TokenMaker.make(req);
 		acDAO.loginCheck(req);
 		acDAO.getMyPosts(req, pvo);
-		
 		req.setAttribute("contentPage", "myPage/myPageMyPost.jsp");
 		return "index";
 	}
 	
 	@RequestMapping(value = "myPage.myPost.detail.go", method = RequestMethod.GET)
-	public String myPageMyPostDetailGo(HttpServletRequest req, PostVO pvo) {
+	public String myPageMyPostDetailGo(HttpServletRequest req, AccountDTO ac, PostVO pvo) {
 		TokenMaker.make(req);
 		acDAO.loginCheck(req);
 		brDAO.getPost(req, pvo);

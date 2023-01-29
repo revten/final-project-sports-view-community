@@ -47,13 +47,14 @@
 	<select id="getAllReplies"
 		parameterType="com.tm.nmp.board.PostVO"
 		resultType="com.tm.nmp.board.ReplyVO">
-		select * from reply where reply_post = #{post_id}
+		select a.*, b.member_nick from reply a, member b where a.reply_post = #{post_id} and a.reply_member = b.member_id order by reply_reg_date
 	</select>
+	
 	<insert id="regPost" parameterType="com.tm.nmp.board.PostVO">
 		insert into post values
 		(post_seq.nextval, #{post_board}, #{post_member},
 		null, null, null, <!-- 옵션value로 넣어줘야 (직관게시판 등록, 수정에서) -->
-		#{post_title}, null, <!--  옵션value로 넣어줘야 (자유게시판 등록, 수정에서) -->
+		#{post_title}, #{post_category}, <!--  옵션value로 넣어줘야 (자유게시판 등록, 수정에서) -->
 		sysdate, null, #{post_img},
 		#{post_file},
 		#{post_hit_count}, #{post_like_count},
@@ -82,6 +83,13 @@
 		delete from post where
 		post_id = #{post_id}
 	</delete>
+	
+	<!-- 댓글 등록후 비동기로 댓글 하나만 받아올 필요가 있기 때문에 만들어줌 -->
+	<select id="getReply" resultType="com.tm.nmp.board.ReplyVO">
+		select a.*, b.member_nick from reply a,member b where reply_id = (
+			select max(reply_id) from reply
+		) and a.reply_member = b.member_id
+	</select>
 
 	<insert id="regReply" parameterType="com.tm.nmp.board.ReplyVO">
 		insert into reply
@@ -131,5 +139,8 @@
 	<delete id="likeDown" parameterType="com.tm.nmp.board.LikeVO">
 		delete  from likes where like_post = #{like_post} and like_member=#{like_member}
 	</delete>
+	
+
+
 
 </mapper>

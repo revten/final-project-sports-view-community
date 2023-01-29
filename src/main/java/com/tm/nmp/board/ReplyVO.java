@@ -15,13 +15,16 @@ public class ReplyVO {
 	int reply_like_count; // 댓글 추천수 not null
 	String reply_reg_ip;
 
+	String member_nick; // 글을 조회했을때 댓글을 가져오는데, 댓글작성자의 닉네임을 member 테이블에서 가져와야 하니까 미리 만들어둠
+
 	public ReplyVO() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
 	public ReplyVO(int reply_id, int reply_board, int reply_post, String reply_member, String reply_content,
-			Date reply_reg_date, Date reply_update_date, int reply_like_count, String reply_reg_ip) {
+			Date reply_reg_date, Date reply_update_date, int reply_like_count, String reply_reg_ip,
+			String member_nick) {
 		super();
 		this.reply_id = reply_id;
 		this.reply_board = reply_board;
@@ -32,6 +35,7 @@ public class ReplyVO {
 		this.reply_update_date = reply_update_date;
 		this.reply_like_count = reply_like_count;
 		this.reply_reg_ip = reply_reg_ip;
+		this.member_nick = member_nick;
 	}
 
 	public int getReply_id() {
@@ -104,6 +108,14 @@ public class ReplyVO {
 
 	public void setReply_reg_ip(String reply_reg_ip) {
 		this.reply_reg_ip = reply_reg_ip;
+	}
+
+	public String getMember_nick() {
+		return member_nick;
+	}
+
+	public void setMember_nick(String member_nick) {
+		this.member_nick = member_nick;
 	}
 
 }

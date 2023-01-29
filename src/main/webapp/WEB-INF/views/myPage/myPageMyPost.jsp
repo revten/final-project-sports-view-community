@@ -44,7 +44,7 @@
 			</div>
 		</div>
 			<div class="main-container">
-				<div class="point-container">
+				<div class="modify-container">
 					<c:choose>
 						<c:when test="${sessionScope.loginAccount eq null}">
 							<a href="" onclick="alert('로그인하세요')">새글쓰기</a>
@@ -56,7 +56,7 @@
 					<table>
 						<thead>
 							<tr>
-								<th>카테고리</th>
+								<th>카테고리&nbsp;&nbsp;</th>
 								<th>제목</th>
 								<th>시간</th>
 								<th>조회수</th>
@@ -65,17 +65,17 @@
 						<tbody>
 							<c:forEach var="mpt" items="${MyPosts }">
 								<tr>
-									<td>${mpt.post_category }</td>
+									<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${mpt.post_category }</td>
 									<td><a style="cursor: pointer; color: blue;"
-										href="myPage.myPost.detail.go?mypost_id=${mpt.post_id}">${mpt.post_title }</a></td>
+										href="myPage.myPost.detail.go?post_id=${mpt.post_id}&post_member=${mpt.post_member}">${mpt.post_title }</a></td>
 									<td><fmt:formatDate value="${mpt.post_reg_date }"
 											pattern="yyyy-MM-dd HH:mm" /></td>
-									<td>${mpt.post_hit_count }</td>
+									<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${mpt.post_hit_count }</td>
 								</tr>
 							</c:forEach>
 						</tbody>
 					</table>
-					<c:if test="${curPage !=1 }">
+					<c:if test="${curPage !=1 and not empty curPage }">
 						<a href="mypost.page.change?p=${curPage-1 }" id="snsL">&lt;</a>
 					</c:if>
 					<c:forEach var="i" begin="1" end="${pageCount }">

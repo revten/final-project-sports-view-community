@@ -57,7 +57,7 @@
 
 				<div class="post__bot">
 					<button class="post__bot-btn" onclick="history.back()">이전으로</button>
-					<button type="submit" id="createPostBtn" class="btn btn-primary">수정</button>
+					<button type="submit" id="createPostBtn" class="btn btn-primary" name="post_member" value="${post.post_member }">수정</button>
 				</div>
 			</div>
 		</form>

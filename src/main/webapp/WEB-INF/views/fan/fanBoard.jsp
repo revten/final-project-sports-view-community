@@ -8,8 +8,8 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" href="resources/css/fan/fan.css">
-<link rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css">
+<%-- <link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css">--%>
 <link rel="stylesheet"
 	href="https://cdn.jsdelivr.net/jquery.selectric/1.10.1/selectric.css">
 <link rel="stylesheet"
@@ -22,272 +22,154 @@
 <script
 	src="https://cdn.jsdelivr.net/jquery.selectric/1.10.1/jquery.selectric.min.js"></script>
 <script src="resources/js/fan/fanBoard.js"></script>
-<style>
-body {
-	background-color: #1b2431;
-	color: #202020;
-	font-family: "Montserrat", "Helvetica", "Open Sans", "Arial";
-	font-size: 13px;
-}
-
-a:hover {
-	text-decoration: none;
-}
-
-p, figure {
-	margin: 0;
-	padding: 0;
-}
-</style>
 </head>
-
 <body>
 	<br>
 	<br>
 	<br>
 	<br>
 	<br>
-
-
 	<main role="main" class="col-md-9 ml-sm-auto col-lg-10 my-3"> <!-- 부트스트랩 클래스명이라 main은 남겨야 할듯 -->
-	<div class="container-fluid">
-
-		<div class="row">
+	<div class="container-field">
+		<div class="board-main">
 			<!--==================== fan__best 부분 - 종목별 베스트 (각 게시판별로 CRUD별로 존재해야)  ====================-->
 			<div class="card-list">
-
-				<div class="row">
-					<!-- 맨위에 fan__best 부분 - 상위글 보여주는 부분 -->
-
-					<div class="col-12 col-md-6 col-lg-4 col-xl-3 mb-4">
-						<div class="card blue">
-							<div class="title">
-								<a href="fan.board.go?post_board=21">야구 게시판</a>
-							</div>
-							<i class="zmdi zmdi-upload"></i>
-							<div class="value">89</div>
-							<div class="stat">
-								<b>13</b>% increase
-							</div>
-						</div>
+				<!-- 맨위에 fan__best 부분 - 상위글 보여주는 부분 -->
+				<div class="card blue" style="cursor: pointer"
+					onclick="location.href='fan.board.go?post_board=21'">
+					<div class="title">
+						<span>야구 게시판</span>
 					</div>
-
-					<div class="col-12 col-md-6 col-lg-4 col-xl-3 mb-4">
-						<div class="card green">
-							<div class="title">
-								<a href="fan.board.go?post_board=22">축구 게시판</a>
-							</div>
-							<i class="zmdi zmdi-upload"></i>
-							<div class="value">5,990</div>
-							<div class="stat">
-								<b>4</b>% increase
-							</div>
-						</div>
+					<i class="zmdi zmdi-upload"></i>
+					<div class="value">KBO</div>
+					<div class="stat">It ain't over till it's over.</div>
+				</div>
+				<div class="card green" style="cursor: pointer"
+					onclick="location.href='fan.board.go?post_board=22'">
+					<div class="title">
+						<span>축구 게시판</span>
 					</div>
-
-					<div class="col-12 col-md-6 col-lg-4 col-xl-3 mb-4">
-						<div class="card orange">
-							<div class="title">
-								<a href="fan.board.go?post_board=23">농구 게시판</a>
-							</div>
-							<i class="zmdi zmdi-download"></i>
-							<div class="value">$80,990</div>
-							<div class="stat">
-								<b>13</b>% decrease
-							</div>
-						</div>
+					<i class="zmdi zmdi-upload"></i>
+					<div class="value">KFA</div>
+					<div class="stat">No sweat, no sweet!</div>
+				</div>
+				<div class="card orange" style="cursor: pointer"
+					onclick="location.href='fan.board.go?post_board=23'">
+					<div class="title">
+						<span>농구 게시판</span>
 					</div>
-
-					<div class="col-12 col-md-6 col-lg-4 col-xl-3 mb-4">
-						<div class="card red">
-							<div class="title">
-								<a href="fan.board.go?post_board=24">배구 게시판</a>
-							</div>
-							<i class="zmdi zmdi-download"></i>
-							<div class="value">3</div>
-							<div class="stat">
-								<b>13</b>% decrease
-							</div>
-						</div>
+					<i class="zmdi zmdi-download"></i>
+					<div class="value">KBL</div>
+					<div class="stat">make each day</div>
+				</div>
+				<div class="card red" style="cursor: pointer"
+					onclick="location.href='fan.board.go?post_board=24'">
+					<div class="title">
+						<span>배구 게시판</span>
 					</div>
-
+					<i class="zmdi zmdi-download"></i>
+					<div class="value">KOVO</div>
+					<div class="stat">Nothing Better</div>
 				</div>
 			</div>
-
-			<!--==================== 게시판 ====================-->
-			<div class="projects mb-4">
-				<div class="projects-inner">
-
-					<!-- 게시판 제목 -->
-					<header class="projects-header">
-						<div class="title">
-							<h3>${param.post_board }게시판</h3>
+		</div>
+		<!--==================== 게시판 ====================-->
+		<div class="app-container">
+			<!-- 맨위의 게시판 제목 -->
+			<div class="app-content">
+				<!-- 1번줄 헤더 -->
+				<div class="app-content-header">
+					<!-- 왼쪽게시판 제목 -->
+					<h1 class="app-content-headerText">${board_name } 게시판</h1>
+				</div>
+				<!-- 2번줄 헤더 -->
+				<div class="app-content-actions">
+					<form action="fan.search.do" name="boardSearchForm"
+						onsubmit="return boardSearchCheck();">
+						<input type="hidden" name="post_board" value="${param.post_board}">
+						<div id="snsSearchArea">
+							<input class="search-bar" name="search" type="search"
+								maxlength="10" autocomplete="off" placeholder="검색">
 						</div>
-						<div class="count">| 32 Projects</div>
-						<i class="zmdi zmdi-download"></i>
-					</header>
-
-					<!-- 게시글 목록 테이블 -->
-					<table class="projects-table">
-						<thead>
-							<tr>
-								<th>게시판넘버</th>
-								<!-- 확인차 해둔거고 나중에 지울 칼럼 -->
-								<th>글번호</th>
-								<th>탭</th>
-								<th>제목</th>
-								<th>등록일</th>
-								<th>닉네임</th>
-								<th>조회수</th>
-								<th>추천수</th>
-								<th class="text-right">Actions</th>
-							</tr>
-						</thead>
-
-						<tr>
-							<td>
-								<p>New Dashboard</p>
-								<p>Google</p>
-							</td>
-							<td>
-								<p>17th Oct, 15</p>
-								<p class="text-danger">Overdue</p>
-							</td>
-							<td class="member">
-								<figure>
-									<img
-										src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/584938/people_8.png" />
-								</figure>
-								<div class="member-info">
-									<p>Myrtle Erickson</p>
-									<p>UK Design Team</p>
-								</div>
-							</td>
-							<td>
-								<p>$4,670</p>
-								<p>Paid</p>
-							</td>
-							<td class="status"><span class="status-text status-orange">In
-									progress</span></td>
-							<td>
-								<form class="form" action="#" method="POST">
-									<select class="action-box">
-										<option>Actions</option>
-										<option>Start project</option>
-										<option>Send for QA</option>
-										<option>Send invoice</option>
-									</select>
-								</form>
-							</td>
-						</tr>
-					</table>
+					</form>
+					<!-- 검색바 오른쪽 메뉴들 -->
+					<div class="app-content-actions-wrapper">
+						<!-- 필터버튼 -->
+						<div class="filter-button-wrapper">
+							<c:choose>
+								<c:when test="${sessionScope.loginAccount ne null}">
+									<button class="action-button" onclick="location.href='fan.reg.go?post_board=${param.post_board}'"> 새글쓰기</button>
+								</c:when>
+								<c:otherwise>
+									<a href="fan.reg.go?post_board=${param.post_board}"
+										onclick="alert('로그인하세요')">새글쓰기</a>
+								</c:otherwise>
+							</c:choose>
+						</div>
+					</div>
+				</div>
+				<!-- 게시글 테이블 시작 -->
+				<div class="board__wrapper tableView">
+					<!-- 게시판 칼럼 (제목, 닉네임, 조회수 등등)-->
+					<div class="board__header">
+						<div class="board__cell num">글 번호</div>
+						<div class="board__cell category">카테고리</div>
+						<div class="board__cell post_title">제목</div>
+						<div class="board__cell reg_date">등록일</div>
+						<div class="board__cell nick">닉네임</div>
+						<div class="board__cell view_count">조회수</div>
+					</div>
+					<!-- forEach문으로 돌릴 구간, 샘플을 위해서 일단 게시글 4개정도 남김, function 할땐 하나만 하면됨 -->
+					<c:forEach var="p" items="${posts }">
+						<div class="board__row">
+							<div class="board__cell num">${p.post_id}</div>
+							<div class="board__cell category">${post_category}</div>
+							<div class="board__cell post_title">
+								<a
+									href="fan.detail.go?post_id=${p.post_id }&post_member=${p.post_member}">${p.post_title }
+									[${p.post_reply_count}]</a>
+							</div>
+							<div class="board__cell reg_date">
+								<c:choose>
+									<c:when test="${p.post_update_date eq null }">
+										<fmt:formatDate value="${p.post_reg_date}"
+											pattern="yy-MM-dd HH:mm" />
+									</c:when>
+									<c:otherwise>
+										<fmt:formatDate value="${p.post_update_date}"
+											pattern="yy-MM-dd HH:mm" />
+									</c:otherwise>
+								</c:choose>
+							</div>
+							<div class="board__cell nick">${p.member_nick}</div>
+							<div class="board__cell view_count">${p.post_hit_count}</div>
+						</div>
+					</c:forEach>
+				</div>
+				<div class="board__bot-paging">
+					<c:if test="${curPage != 1}">
+						<span><a
+							href="fan.page.change?pg=1&post_board=${param.post_board }">[맨처음]</a></span>
+						<span><a
+							href="fan.page.change?pg=${curPage - 1}&post_board=${param.post_board }">
+								◀이전 </a></span>
+					</c:if>
+					<c:forEach var="i" begin="1" end="${pageCount}">
+						<a href="fan.page.change?pg=${i}&post_board=${param.post_board }">
+							[${i}] </a>
+					</c:forEach>
+					<c:if test="${curPage != pageCount}">
+						<span> <a
+							href="fan.page.change?pg=${curPage + 1}&post_board=${param.post_board }">
+								다음▶ </a></span>
+						<span><a
+							href="fan.page.change?pg=${pageCount}&post_board=${param.post_board }">[맨끝]</a></span>
+					</c:if>
 				</div>
 			</div>
-
-
 		</div>
 	</div>
 	</main>
-
-
-
-
-
-
-	<!--==================== 기존 게시판 -> 아래를 위에 적용시키고 클래스명도 우리걸로 바꿔서 css도 바꾸기(부트스트랩 클래스명은 주의) ====================-->
-	<main class="fanBoard__main"> <br>
-	<div class="fanBoard__container">
-		<div class="fanBoard__top">
-			<c:choose>
-				<c:when test="${sessionScope.loginAccount ne null}">
-					<a href="fan.reg.go?post_board=${param.post_board}"> 새글쓰기</a>
-				</c:when>
-				<c:otherwise>
-					<a href="fan.reg.go?post_board=${param.post_board}"
-						onclick="alert('로그인하세요')">새글쓰기</a>
-				</c:otherwise>
-			</c:choose>
-		</div>
-
-
-		<table class="fanBoard__table">
-			<thead>
-				<tr>
-					<th>게시판넘버</th>
-					<th>글번호</th>
-					<th>탭</th>
-					<th>제목</th>
-					<th>등록일</th>
-					<th>닉네임</th>
-					<th>조회수</th>
-					<th>추천수</th>
-				</tr>
-			</thead>
-			<c:forEach var="p" items="${posts }">
-				<tr>
-					<td>${p.post_board}</td>
-					<td>${p.post_id}</td>
-					<td>${p.post_category}</td>
-					<td><a
-						href="fan.detail.go?post_id=${p.post_id }&post_member=${p.post_member}">${p.post_title }
-							[${p.post_reply_count}]</a></td>
-					<td><c:choose>
-							<c:when test="${p.post_update_date eq null }">
-								<fmt:formatDate value="${p.post_reg_date}"
-									pattern="yy-MM-dd HH:mm" />
-							</c:when>
-							<c:otherwise>
-								<fmt:formatDate value="${p.post_update_date}"
-									pattern="yy-MM-dd HH:mm" />
-							</c:otherwise>
-						</c:choose></td>
-					<td>${p.member_nick}</td>
-					<td>${p.post_hit_count}</td>
-					<td>${p.post_like_count}</td>
-				</tr>
-			</c:forEach>
-
-		</table>
-
-
-		<div class="fanBoard__bot">
-			<div class="fanBoard__bot-search">
-				<form action="fan.search.do" name="boardSearchForm"
-					onsubmit="return boardSearchCheck();">
-					<input type="hidden" name="post_board" value="${param.post_board}">
-					<table id="snsSearchArea">
-						<tr>
-							<td id="ssaTd1"><input name="search" type="search"
-								maxlength="10" autocomplete="off"></td>
-							<td id="ssaTd2"><button class="search btn-dark">검색</button></td>
-						</tr>
-					</table>
-				</form>
-			</div>
-			${pageCount}
-			<div class="fanBoard__bot-paging">
-				<c:if test="${curPage != 1}">
-					<span><a
-						href="fan.page.change?pg=1&post_board=${param.post_board }">[맨처음]</a></span>
-					<span><a
-						href="fan.page.change?pg=${curPage - 1}&post_board=${param.post_board }">
-							◀이전 </a></span>
-				</c:if>
-				<c:forEach var="i" begin="1" end="${pageCount}">
-					<a href="fan.page.change?pg=${i}&post_board=${param.post_board }">
-						[${i}] </a>
-				</c:forEach>
-				<c:if test="${curPage != pageCount}">
-					<span> <a
-						href="fan.page.change?pg=${curPage + 1}&post_board=${param.post_board }">
-							다음▶ </a></span>
-					<span><a
-						href="fan.page.change?pg=${pageCount}&post_board=${param.post_board }">[맨끝]</a></span>
-				</c:if>
-			</div>
-		</div>
-	</div>
 	</main>
 </body>
-
 </html>
