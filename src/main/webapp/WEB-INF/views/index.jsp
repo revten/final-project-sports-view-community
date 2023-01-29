@@ -208,5 +208,6 @@
 	<script src="resources/js/myPage/myPage.js"></script>
 	<script src="resources/js/news/paging.js"></script>
 	<script src="resources/js/fan/fan_reply.js"></script>
+	<script src="resources/js/fan/fanPost.js"></script>
 </body>
 </html>

@@ -8,14 +8,10 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 
-<link
-	href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
-	rel="stylesheet" id="bootstrap-css">
 <script
 	src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 <script
 	src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<!------ Include the above in your HEAD tag ---------->
 
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.4.1/css/swiper.min.css">
@@ -32,15 +28,10 @@
 	src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.4.1/js/swiper.min.js"></script>
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.0.2/TweenMax.min.js"></script>
-
-<style>
-section {
-	width: 100%;
-	height: 100vh;
-}
-</style>
+ 
 </head>
 <body>
+	<br>
 	<br>
 	<br>
 	<br>
@@ -62,7 +53,8 @@ section {
 				</ul>
 		</div>
 		<br><br>
-	<section>
+		
+	<section class="swiper_section">
 
 		<div class="swiper-container slideshow">
 
@@ -178,7 +170,7 @@ section {
 						<tr>
 							<td id="ssaTd1"><input id="search" name="search"
 								maxlength="10" autocomplete="off" placeholder="검색어를 입력해주세요."></td>
-							<td id="ssaTd2"><button class="btn btn-dark">검색</button></td>
+							<td id="ssaTd2"><button class="search_btn search_btn-dark">검색</button></td>
 						</tr>
 					</table>
 				</form>
@@ -202,6 +194,7 @@ section {
 		</div>
 
 	</div>
+	<br>
 	<hr>
 	<script>
 		function boardSearchCheck() {

@@ -116,7 +116,7 @@ $(document).on('click', '.reply__update-btn', function() {
 	alert(reply_content);
 	
 	$(reply_content).html(`<input class="reply__content-reg" name="reply__content" maxlength="80" autocomplete="off" required>`);
-	// tㅅ
+	// 
 	
 });
 
