@@ -63,7 +63,8 @@
 }
 
 .div_news_go{
-	margin-bottom: 30px;
+	width: 100px;
+	height: 40px;
 }
 
 .news_go{
@@ -78,4 +79,51 @@
 } 
 .div_news{
 	margin-left: 14%; margin-right: 25%;
+}
+
+
+/* news.nav */
+
+.div_news_nav{
+	float:left; width: 200px; position:sticky; top:150px;
+}
+
+#sidebar {
+	width:100%;
+}
+
+#sidebar ul {
+    font-size: 16px; line-height: 3em;
+}
+
+.navbar {
+	background-color: rgba(0,255,0,0.4);
+	font-family: 'STIX Two Math';
+}
+
+.navbar__logo i {
+	color: white;
+}
+
+.navbar__menu {
+	list-style: none;
+	color: black;
+}
+
+
+
+.navbar__icons {
+	list-style: none;
+	color: rgb(152, 187, 201);
+}
+
+
+.navbar__menu li:hover {
+	background-color: white;
+	border-radius: 3px;
+}
+
+.navbar__icons li:hover {
+	background-color: white;
+	border-radius: 3px;
 }
