@@ -43,6 +43,9 @@ pageEncoding="UTF-8"%>
 			<button class="loginBtn">로그인</button>
 			<br>
 			<div class="reg-area"></div>
+			<br>
+			</form>
+			<div id="SNS-login-area">
       <!-- 카카오 로그인 -->
 			<a onclick="kakaoLogin()" style="cursor: pointer"> <img
 				src="https://www.myro.co.kr/myro_image/kakaolink_btn.png" width="40" /></a>
