@@ -108,6 +108,7 @@ public class BoardDAO {
 		int pageCount = (int) Math.ceil(postCount / (double) count);
 		req.setAttribute("pageCount", pageCount);
 		req.setAttribute("curPage", pageNbr);
+		
 	}
 
 	public void searchPost(HttpServletRequest req, BoardSelector bSel) {
