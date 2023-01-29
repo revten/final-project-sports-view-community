@@ -29,7 +29,7 @@
 										<button onclick="alert('로그인하세요')">삭제</button>
 									</c:when>
 									<c:otherwise>
-										<button onclick="location.href='fan.update.go?post_id=${post.post_id}&post_member=${post.post_member}'">수정</button>
+										<button onclick="myPage.myPost.detail.go?post_id=${post.post_id}&post_member=${post.post_member}'">수정</button>
 										<button onclick="deletePost(${post.post_id}, ${post.post_board});'">삭제</button>
 									</c:otherwise>
 								</c:choose>
