@@ -139,7 +139,7 @@
 
 
 					<!--==================== 댓글 ====================-->
-					<section class="reply section">
+					<div class="reply__section">
 						<!-- 댓글 리스트 -->
 						<hr
 							style="background: #a0a0a0; width: 86%; height: 0.5px; border: 0;">
@@ -157,8 +157,6 @@
 									<div class="reply__date">
 										<fmt:formatDate value="${reply.reply_reg_date }" type="both"
 											dateStyle="short" timeStyle="short" />
-									</div>
-									<div class="reply__btn">
 										<c:if
 											test="${reply.reply_member == sessionScope.loginAccount.member_id }">
 											<button class="reply__update-btn">수정</button>
@@ -195,7 +193,7 @@
 								<button class="reply__reg-btn">등록</button>
 							</c:if>
 						</div>
-					</section>
+					</div>
 				</div>
 			</div>
 		</div>

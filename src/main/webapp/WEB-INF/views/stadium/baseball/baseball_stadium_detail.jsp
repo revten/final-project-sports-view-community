@@ -17,7 +17,7 @@
 		style="position: relative; display: flex; flex-direction: column; justify-content: center; align-items: center; width: 1000px; height: 1000px;">
 		<div style="display: inline-block; align-items: flex-start;">
 			<img id="seat" usemap="#workmap"
-				style="position: relative; width: 1024px; height: 800px; margin: 300px 0px 10px 0px;"
+				style="position: relative; width: 1024px; height: 800px; margin: 450px 0px 10px 0px;"
 				src="resources/files/stadium/baseball/seating_chart/${seat}"><br>
 			<map name="workmap">
 				<area style="cursor: pointer;" class="imgArea" id="12"
