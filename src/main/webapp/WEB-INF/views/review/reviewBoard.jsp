@@ -17,7 +17,8 @@
 	<br>
 	<br>
 	<br>
-
+	<div style="float: left;position: absolute;left: -9%;"><img src="resources/files/backgroundImg/eventImg1.png"></div>
+	<div style="float: right;position: absolute;top:400px; left : 66%;"><img src="resources/files/backgroundImg/eventImg2.png"></div>
 
 	<div class="watch__container">
 

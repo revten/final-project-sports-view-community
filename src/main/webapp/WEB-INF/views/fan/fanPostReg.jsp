@@ -21,6 +21,9 @@
 	<br>
 	<br>
 	<br>
+	<div style="float: left;position: absolute;left: -9%;"><img src="resources/files/backgroundImg/eventImg1.png"></div>
+	<div style="float: right;position: absolute;top:400px; left : 66%;"><img src="resources/files/backgroundImg/eventImg2.png"></div>
+	<div style="float: left;position: absolute;top: 900px;left: -9%;"><img src="resources/files/backgroundImg/fan1.png"></div>
 	<div class="container-field">
 		<div class="board-main">
 			<!--==================== fan__best 부분 - 종목별 베스트 (각 게시판별로 CRUD별로 존재해야)  ====================-->
