@@ -16,6 +16,7 @@
 	<br>
 	<br>
 	<br>
+	<br>
 	<div class="nav__menu" id="nav-menu" style="width:59%;align:center;">
 				<ul class="nav__list">
 					<li class="nav__item"><a class="nav__link" href='news.soccer.go'>축구</a></li>

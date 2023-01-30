@@ -1,5 +1,10 @@
 @charset "UTF-8";
 
+
+#baseball_club_area{
+	 color: hsl(19, 16%, 15%);
+}
+
 #sports_list {
 	display: flex;
 	flex-direction: row;

@@ -7,33 +7,27 @@
 <head>
 <meta charset="UTF-8">
 <title>TRIPPLE: WithGo</title>
-<link rel="stylesheet" href="resources/css/watch/withGo.css" />
 
 </head>
 <body>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<div style="float: left;position: absolute;top: 800px;left: -9%;"><img src="resources/files/backgroundImg/with1.png"></div>
-	<div style="float: right;position: absolute;top:-10px; left : 77%;"><img src="resources/files/backgroundImg/with2.png"></div>
-	<div style="float: right;position: absolute;top:300px; left : 7%;"><img src="resources/files/backgroundImg/with3.png"></div>
-	<div style="float: right;position: absolute;top:400px; left : 67%;"><img src="resources/files/backgroundImg/with4.png"></div>
-	<div style="float: right;position: absolute;top:750px; left : 40%;"><img src="resources/files/backgroundImg/with5.png"></div>
 	<div class="withGo__container">
 
-		<div class="app-content">
+		<div class="withGo__content">
 
 			<!-- 2번줄 헤더 -->
-			<div class="withGo__header">
+			<div class="withGo__header" style="margin-bottom: 10px;">
 				<!-- 왼쪽 검색바 -->
+				<form action="withGo.search.do" name="boardSearchForm"
+					onsubmit="return boardSearchCheck();">
+					<input type="hidden" name="post_board" value="${param.post_board}">
+					<div id="snsSearchArea">
+						<input class="withGo__search-bar" name="search" type="search"
+							maxlength="10" autocomplete="off" placeholder="검색">
+					</div>
+				</form>
 				<div>
-					<input class="search-bar" placeholder="Search..." type="text">
-				</div>
-				<div>
-					<h3>With Go</h3>
+					<a href="withGo.board.go?post_board=11"
+						class="nav__link ">WITH GO</a>
 				</div>
 
 				<!-- 이동버튼 -->
@@ -42,7 +36,7 @@
 						<c:when test="${sessionScope.loginAccount ne null}">
 							<button class="action-button"
 								onclick="location.href='withGo.reg.go?post_board=${param.post_board}'">
-								<span>리뷰쓰기</span>
+								<span>새글쓰기</span>
 								<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
 									viewBox="0 0 24 24" fill="none" stroke="currentColor"
 									stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
@@ -66,105 +60,7 @@
 
 			<!-- 게시글 테이블 시작 -->
 			<div class="products-area-wrapper gridView">
-
-				<!-- 게시판 칼럼 (제목, 닉네임, 조회수 등등)-->
-				<div class="products-header">
-
-					<div class="product-cell image">
-						Items
-						<button class="sort-button">
-							<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-								viewBox="0 0 512 512">
-								<path fill="currentColor"
-									d="M496.1 138.3L375.7 17.9c-7.9-7.9-20.6-7.9-28.5 0L226.9 138.3c-7.9 7.9-7.9 20.6 0 28.5 7.9 7.9 20.6 7.9 28.5 0l85.7-85.7v352.8c0 11.3 9.1 20.4 20.4 20.4 11.3 0 20.4-9.1 20.4-20.4V81.1l85.7 85.7c7.9 7.9 20.6 7.9 28.5 0 7.9-7.8 7.9-20.6 0-28.5zM287.1 347.2c-7.9-7.9-20.6-7.9-28.5 0l-85.7 85.7V80.1c0-11.3-9.1-20.4-20.4-20.4-11.3 0-20.4 9.1-20.4 20.4v352.8l-85.7-85.7c-7.9-7.9-20.6-7.9-28.5 0-7.9 7.9-7.9 20.6 0 28.5l120.4 120.4c7.9 7.9 20.6 7.9 28.5 0l120.4-120.4c7.8-7.9 7.8-20.7-.1-28.5z" /></svg>
-						</button>
-					</div>
-
-					<div class="product-cell category">
-						Category
-						<button class="sort-button">
-							<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-								viewBox="0 0 512 512">
-								<path fill="currentColor"
-									d="M496.1 138.3L375.7 17.9c-7.9-7.9-20.6-7.9-28.5 0L226.9 138.3c-7.9 7.9-7.9 20.6 0 28.5 7.9 7.9 20.6 7.9 28.5 0l85.7-85.7v352.8c0 11.3 9.1 20.4 20.4 20.4 11.3 0 20.4-9.1 20.4-20.4V81.1l85.7 85.7c7.9 7.9 20.6 7.9 28.5 0 7.9-7.8 7.9-20.6 0-28.5zM287.1 347.2c-7.9-7.9-20.6-7.9-28.5 0l-85.7 85.7V80.1c0-11.3-9.1-20.4-20.4-20.4-11.3 0-20.4 9.1-20.4 20.4v352.8l-85.7-85.7c-7.9-7.9-20.6-7.9-28.5 0-7.9 7.9-7.9 20.6 0 28.5l120.4 120.4c7.9 7.9 20.6 7.9 28.5 0l120.4-120.4c7.8-7.9 7.8-20.7-.1-28.5z" /></svg>
-						</button>
-					</div>
-
-					<div class="product-cell status-cell">
-						Status
-						<button class="sort-button">
-							<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-								viewBox="0 0 512 512">
-								<path fill="currentColor"
-									d="M496.1 138.3L375.7 17.9c-7.9-7.9-20.6-7.9-28.5 0L226.9 138.3c-7.9 7.9-7.9 20.6 0 28.5 7.9 7.9 20.6 7.9 28.5 0l85.7-85.7v352.8c0 11.3 9.1 20.4 20.4 20.4 11.3 0 20.4-9.1 20.4-20.4V81.1l85.7 85.7c7.9 7.9 20.6 7.9 28.5 0 7.9-7.8 7.9-20.6 0-28.5zM287.1 347.2c-7.9-7.9-20.6-7.9-28.5 0l-85.7 85.7V80.1c0-11.3-9.1-20.4-20.4-20.4-11.3 0-20.4 9.1-20.4 20.4v352.8l-85.7-85.7c-7.9-7.9-20.6-7.9-28.5 0-7.9 7.9-7.9 20.6 0 28.5l120.4 120.4c7.9 7.9 20.6 7.9 28.5 0l120.4-120.4c7.8-7.9 7.8-20.7-.1-28.5z" /></svg>
-						</button>
-					</div>
-
-					<div class="product-cell sales">
-						Sales
-						<button class="sort-button">
-							<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-								viewBox="0 0 512 512">
-								<path fill="currentColor"
-									d="M496.1 138.3L375.7 17.9c-7.9-7.9-20.6-7.9-28.5 0L226.9 138.3c-7.9 7.9-7.9 20.6 0 28.5 7.9 7.9 20.6 7.9 28.5 0l85.7-85.7v352.8c0 11.3 9.1 20.4 20.4 20.4 11.3 0 20.4-9.1 20.4-20.4V81.1l85.7 85.7c7.9 7.9 20.6 7.9 28.5 0 7.9-7.8 7.9-20.6 0-28.5zM287.1 347.2c-7.9-7.9-20.6-7.9-28.5 0l-85.7 85.7V80.1c0-11.3-9.1-20.4-20.4-20.4-11.3 0-20.4 9.1-20.4 20.4v352.8l-85.7-85.7c-7.9-7.9-20.6-7.9-28.5 0-7.9 7.9-7.9 20.6 0 28.5l120.4 120.4c7.9 7.9 20.6 7.9 28.5 0l120.4-120.4c7.8-7.9 7.8-20.7-.1-28.5z" /></svg>
-						</button>
-					</div>
-
-					<div class="product-cell stock">
-						Stock
-						<button class="sort-button">
-							<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-								viewBox="0 0 512 512">
-								<path fill="currentColor"
-									d="M496.1 138.3L375.7 17.9c-7.9-7.9-20.6-7.9-28.5 0L226.9 138.3c-7.9 7.9-7.9 20.6 0 28.5 7.9 7.9 20.6 7.9 28.5 0l85.7-85.7v352.8c0 11.3 9.1 20.4 20.4 20.4 11.3 0 20.4-9.1 20.4-20.4V81.1l85.7 85.7c7.9 7.9 20.6 7.9 28.5 0 7.9-7.8 7.9-20.6 0-28.5zM287.1 347.2c-7.9-7.9-20.6-7.9-28.5 0l-85.7 85.7V80.1c0-11.3-9.1-20.4-20.4-20.4-11.3 0-20.4 9.1-20.4 20.4v352.8l-85.7-85.7c-7.9-7.9-20.6-7.9-28.5 0-7.9 7.9-7.9 20.6 0 28.5l120.4 120.4c7.9 7.9 20.6 7.9 28.5 0l120.4-120.4c7.8-7.9 7.8-20.7-.1-28.5z" /></svg>
-						</button>
-					</div>
-
-					<div class="product-cell price">
-						Price
-						<button class="sort-button">
-							<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-								viewBox="0 0 512 512">
-								<path fill="currentColor"
-									d="M496.1 138.3L375.7 17.9c-7.9-7.9-20.6-7.9-28.5 0L226.9 138.3c-7.9 7.9-7.9 20.6 0 28.5 7.9 7.9 20.6 7.9 28.5 0l85.7-85.7v352.8c0 11.3 9.1 20.4 20.4 20.4 11.3 0 20.4-9.1 20.4-20.4V81.1l85.7 85.7c7.9 7.9 20.6 7.9 28.5 0 7.9-7.8 7.9-20.6 0-28.5zM287.1 347.2c-7.9-7.9-20.6-7.9-28.5 0l-85.7 85.7V80.1c0-11.3-9.1-20.4-20.4-20.4-11.3 0-20.4 9.1-20.4 20.4v352.8l-85.7-85.7c-7.9-7.9-20.6-7.9-28.5 0-7.9 7.9-7.9 20.6 0 28.5l120.4 120.4c7.9 7.9 20.6 7.9 28.5 0l120.4-120.4c7.8-7.9 7.8-20.7-.1-28.5z" /></svg>
-						</button>
-					</div>
-				</div>
-
 				<!-- forEach문으로 돌릴 구간, 샘플을 위해서 일단 게시글 4개정도 남김, function 할땐 하나만 하면됨 -->
-				<div class="products-row">
-					<button class="cell-more-button">
-						<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18"
-							viewBox="0 0 24 24" fill="none" stroke="currentColor"
-							stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-							class="feather feather-more-vertical">
-							<circle cx="12" cy="12" r="1" />
-							<circle cx="12" cy="5" r="1" />
-							<circle cx="12" cy="19" r="1" /></svg>
-					</button>
-					<div class="product-cell image">
-						<img
-							src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80"
-							alt="product"> <span>Ocean</span>
-					</div>
-					<div class="product-cell category">
-						<span class="cell-label">Category:</span>Furniture
-					</div>
-					<div class="product-cell status-cell">
-						<span class="cell-label">Status:</span> <span
-							class="status active">Active</span>
-					</div>
-					<div class="product-cell sales">
-						<span class="cell-label">Sales:</span>11
-					</div>
-					<div class="product-cell stock">
-						<span class="cell-label">Stock:</span>36
-					</div>
-					<div class="product-cell price">
-						<span class="cell-label">Price:</span>$560
-					</div>
-				</div>
-
 				<!-- resources/ckeditor/fileUpload/ -->
 				<c:forEach var="p" items="${posts }">
 					<div class="products-row">
@@ -183,36 +79,55 @@
 								href="withGo.detail.go?post_id=${p.post_id }&post_member=${p.post_member}">${p.post_title }
 									[${p.post_reply_count}]</a></span>
 						</div>
-						<div class="product-cell category">
-							<span class="cell-label">스포츠:</span>${board_name}
-						</div>
-						<div class="product-cell status-cell">
-							<span class="cell-label">홈 팀:</span> <span
-								class="status disabled">Disabled</span>
-						</div>
+
+						<!-- 나중에 팀 선택, 스포츠 선택을 추가해야함 -->
 						<div class="product-cell sales">
-							<span class="cell-label">닉네임:</span>6
-						</div>
-						<div class="product-cell stock">
-							<span class="cell-label">경기날짜</span>46
+							<span class="cell-label">닉네임:</span>${p.member_nick}
 						</div>
 						<div class="product-cell price">
-							<span class="cell-label">등록일:</span>$710
+							<span class="cell-label">등록일:</span>
+							<c:choose>
+								<c:when test="${p.post_update_date eq null }">
+									<fmt:formatDate value="${p.post_reg_date}"
+										pattern="yy-MM-dd HH:mm" />
+								</c:when>
+								<c:otherwise>
+						수정 <fmt:formatDate value="${p.post_update_date}"
+										pattern="yy-MM-dd HH:mm" />
+								</c:otherwise>
+							</c:choose>
+						</div>
+						<div class="product-cell price">
+							<span class="cell-label">조회수:</span>${p.post_hit_count}
 						</div>
 					</div>
 				</c:forEach>
-
+			</div>
+			
+			
+			<div class="board__bot-paging">
+				<c:if test="${curPage != 1}">
+					<span><span style="cursor: pointer"
+						onclick="location.href='withGo.page.change?pg=1&post_board=${param.post_board }'">[맨처음]</span></span>
+					<span><span style="cursor: pointer"
+						onclick="location.href='withGo.page.change?pg=${curPage - 1}&post_board=${param.post_board }'">
+							◀이전 </span></span>
+				</c:if>
+				<c:forEach var="i" begin="1" end="${pageCount}">
+					<span style="cursor: pointer"
+						onclick="location.href='withGo.page.change?pg=${i}&post_board=${param.post_board }'">
+						[${i}] </span>
+				</c:forEach>
+				<c:if test="${curPage != pageCount}">
+					<span> <span style="cursor: pointer"
+						onclick="location.href='withGo.page.change?pg=${curPage + 1}&post_board=${param.post_board }'">
+							다음▶ </span></span>
+					<span><span style="cursor: pointer"
+						onclick="location.href='withGo.page.change?pg=${pageCount}&post_board=${param.post_board }'">[맨끝]</span></span>
+				</c:if>
 			</div>
 
 		</div>
 	</div>
-	<script>
-		document.querySelector(".jsFilter").addEventListener(
-				"click",
-				function() {
-					document.querySelector(".filter-menu").classList
-							.toggle("active");
-				});
-	</script>
 </body>
 </html>
