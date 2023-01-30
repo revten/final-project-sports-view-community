@@ -247,7 +247,12 @@
 			delay : 400
 		//reset: true, // 애니메이션은 반복
 		})
-
+		
+		
+		srWatch.reveal(`.watch__container`, {
+			origin : 'top'
+		});
+		
 		srWatch.reveal(`.watch__header`, {
 			origin : 'top'
 		});
