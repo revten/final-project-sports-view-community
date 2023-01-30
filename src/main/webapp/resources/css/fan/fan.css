@@ -552,12 +552,12 @@ p, figure {
 }
 
 .post__nick {
-	margin-left: 33vw;
+	margin-left: 7vw;
 }
 
 .post__element {
 	margin-top: 1vh;
-	margin-right: 5vw;
+	margin-right: 6vw;
 }
 
 .post__content {
@@ -645,7 +645,7 @@ p, figure {
 .sortInfo{
 	display: flex;
 	flex-direction: row;
-	justify-content: space-evenly;
+	justify-content: space-between;
 	margin-top: 1vh;
 	margin-bottom: 1vh;
 }
@@ -696,4 +696,18 @@ p, figure {
     font-size: 11px;
     cursor: pointer;
     white-space: nowrap;
+}
+
+.reply_writterNick{
+	margin-left: 15vh;
+}
+
+.reply__date{
+	margin-right: 15vh;
+}
+
+.reply__content{
+	display: flex;
+	justify-content: flex-start;
+	margin-left: 15vh;
 }

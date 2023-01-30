@@ -36,6 +36,18 @@ function checkForm() {
 	return true;
 }
 
+function checkForm2() {
+	let contentInput = $('#post_content').val();
+	let category = $('#post_category').val();
+
+	if (category == 4) {
+		alert("카테고리를 설정해주세요");
+		return false;
+	}
+
+	return true;
+}
+
 // ==================== 좋아요 기능 ====================
 function likeCheck(a, b, c) {
 	let likeCheck = a;
