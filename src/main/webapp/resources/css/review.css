@@ -93,7 +93,6 @@
 /*  watch 페이지 헤더 */
 .watch__header {
   height: 70px;
-  width: 100%;
   background-color: var(--page-bg-color);
   font-size: 14px;
   font-weight: 500;
@@ -547,7 +546,7 @@
   box-shadow: -1px 3px 8px -1px rgba(0, 0, 0, 0.1);
   border-radius: 4px;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   cursor: pointer;
   padding: 0 0 20px 20px;
   color: #8b939c;
