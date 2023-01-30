@@ -168,7 +168,6 @@
 				</div>
 
 								
-											${p.post_content}
 				<!-- 리뷰 : bot right bot -->
 				<div class="review__posts">
 					<c:forEach var="p" items="${posts }">
@@ -183,10 +182,10 @@
 								<div class="rate">
 									<span class="review__voters card-vote">${p.post_like_count} 추천</span>
 								</div>
-								<!-- 4줄나오고 끊어지도록 설정 -->
-								<div class="review__sum card-sum">${p.post_content} Readers of all ages and
+								<div class="review__sum card-sum"> Readers of all ages and
 									walks of life have drawn inspiration and empowerment from
 									Elizabeth Gilbert’s books for years.</div>
+									<!-- ck에디터 안에 이미지주소도 들어있어서 이미지가 또 나온다 -->
 							</div>
 						</div>
 					</div>
