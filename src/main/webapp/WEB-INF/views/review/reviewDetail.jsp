@@ -97,9 +97,9 @@
 									</c:when>
 									<c:otherwise>
 										<button class="post__bot-btn"
-											onclick="location.href='withGo.update.go?post_id=${post.post_id}&post_member=${post.post_member}'">수정</button>
+											onclick="location.href='review.update.go?post_id=${post.post_id}&post_member=${post.post_member}'">수정</button>
 										<button class="post__bot-btn"
-											onclick="location.href='withGo.delete.do?post_id=${post.post_id}&post_board=${post.post_board}'">
+											onclick="location.href='review.delete.do?post_id=${post.post_id}&post_board=${post.post_board}'">
 											삭제</button>
 									</c:otherwise>
 								</c:choose>

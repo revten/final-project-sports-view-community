@@ -74,8 +74,7 @@
 							<circle cx="12" cy="19" r="1" /></svg>
 						</button>
 						<div class="product-cell image">
-							<img src="resources/ckeditor/fileUpload/${p.post_img}"
-								style="max-width: 300px"> <span><a
+							<img src="resources/ckeditor/fileUpload/${p.post_img}"> <span><a
 								href="withGo.detail.go?post_id=${p.post_id }&post_member=${p.post_member}">${p.post_title }
 									[${p.post_reply_count}]</a></span>
 						</div>

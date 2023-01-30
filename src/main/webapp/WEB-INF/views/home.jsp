@@ -14,7 +14,7 @@
 	src="https://cdnjs.cloudflare.com/ajax/libs/imgLiquid/0.9.944/js/imgLiquid-min.js"></script>
 <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
 
-<link rel="stylesheet" href="resources/home.css" />
+<link rel="stylesheet" href="resources/css/home.css" />
 
 </head>
 <body>
@@ -61,9 +61,7 @@
 			<article class="slider__item" role="item" data-num="2">
 				<!--IMAGE-->
 				<div class="slider__item__image is-background">
-					<img
-						src="resources/files/home/home_main-2.jpg"
-						alt="website">
+					<img src="resources/files/home/home_main-2.jpg" alt="website">
 				</div>
 				<!--IMAGE-->
 
@@ -83,9 +81,7 @@
 			<article class="slider__item" role="item" data-num="3">
 				<!--IMAGE-->
 				<div class="slider__item__image is-background">
-					<img
-						src="resources/files/home/home_main-3.jpg"
-						alt="website">
+					<img src="resources/files/home/home_main-3.jpg" alt="website">
 				</div>
 				<!--IMAGE-->
 
@@ -105,16 +101,14 @@
 			<article class="slider__item" role="item" data-num="4">
 				<!--IMAGE-->
 				<div class="slider__item__image is-background">
-					<img
-						src="resources/files/home/home_main-4.jpg"
-						alt="website">
+					<img src="resources/files/home/home_main-4.jpg" alt="website">
 				</div>
 				<!--IMAGE-->
 
 				<!--TEXT-->
 				<div class="slider__item__text">
 					<span>Team Miracle Project</span>
-					<h1>Well thought out</h1>
+					<h1>We Never Give Up</h1>
 
 					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
 						do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
@@ -127,16 +121,14 @@
 			<article class="slider__item" role="item" data-num="5">
 				<!--IMAGE-->
 				<div class="slider__item__image is-background">
-					<img
-						src="resources/files/home/home_main-5.jpg"
-						alt="website">
+					<img src="resources/files/home/home_main-5.jpg" alt="website">
 				</div>
 				<!--IMAGE-->
 
 				<!--TEXT-->
 				<div class="slider__item__text">
 					<span>Team Miracle Project</span>
-					<h1>Well thought out</h1>
+					<h1>Don't Stop Now</h1>
 
 					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
 						do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
@@ -157,10 +149,7 @@
 		
 		
 
-		<img src="resources/files/home/leaf-branch-2.png" alt="home image"
-			class="home__leaf-1"> <img
-			src="resources/files/home/leaf-branch-4.png" alt="home image"
-			class="home__leaf-2">
+
 	</section> --> <!--==================== ABOUT US (사이트 간단설명 섹션)====================-->
 	<section class="about section" id="about">
 		<div class="about__container container grid">
@@ -178,7 +167,9 @@
 			</div>
 
 			<img src="resources/files/home/about-main.png" alt="about image"
-				class="about__img">
+				class="about__img"> <img
+				src="resources/files/home/leaf-branch-2.png" alt="home image"
+				class="home__leaf-1">
 		</div>
 		<img src="resources/files/home/leaf-branch-1.png" alt="about image"
 			class="about__leaf">
@@ -187,6 +178,7 @@
 
 	<!--==================== POPULAR (유명섹션 - 인기리뷰)====================-->
 	<section class="popular section" id="popular">
+		<div></div>
 		<span class="section__subtitle">The Best Review</span>
 		<h2 class="section__title">멋진 후기를 추천해주세요</h2>
 
@@ -202,7 +194,7 @@
 					<i class="ri-star-line"></i>
 				</button>
 			</article>
-
+			
 			<article class="popular__card">
 				<img src="resources/home_img/main_soccer_busan.jpg"
 					alt="popular image" class="popular__img">
@@ -217,15 +209,16 @@
 			<article class="popular__card">
 				<img src="resources/home_img/main_volleyball_kim.jpg"
 					alt="popular image" class="popular__img">
-				<h3 class="popular__name">김연경 선수 멋지내요!</h3>
+				<h3 class="popular__name">김연경 선수 멋져요</h3>
 				<span class="popular__description">정권님의 후기</span> <span
 					class="popular__price">12.31만 뷰</span>
 				<button class="popular__button">
 					<i class="ri-star-line"></i>
 				</button>
 			</article>
-
 		</div>
+					<img src="resources/files/home/leaf-branch-4.png" alt="home image"
+				class="home__leaf-2">
 	</section>
 
 
@@ -238,14 +231,15 @@
 					자신만의 시선을 <br> 분석으로 보여주세요
 				</h2>
 
-				<p class="recently__description">많은 팬들이 팔로우할지도 모릅니다. 자유게시판에서 편하게 의견을 나누세요.</p>
+				<p class="recently__description">많은 팬들이 팔로우할지도 모릅니다. 자유게시판에서 편하게
+					의견을 나누세요.</p>
 				<a href="#" class="button"> 보러가기<i class="ri-arrow-right-line"></i>
 				</a> <img src="resources/files/home/spinach-leaf.png"
 					alt="recently image" class="recently__data-img">
 			</div>
 
-			<img src="resources/home_img/volleyball.jpg" alt="recently image"
-				class="recently__img">
+			<img src="resources/files/home/recently-new_pic.png"
+				alt="recently image" class="recently__img">
 		</div>
 
 		<img src="resources/files/home/leaf-branch-2.png" alt="recently image"
@@ -282,84 +276,83 @@
 		</div>
 	</section>
 	</main>
-	
-	
-  <script>
-    var Slider = function () {
 
-      var Images = function () {
-        $(".is-background").imgLiquid();
-      }
 
-      var Component = function () {
-        var $Slider = $('.js-slider');
+	<script>
+		var Slider = function() {
 
-        // bind event listener first
-        $Slider.on('ready.flickity', function () {
-          // Loader...
-          TweenMax.to($('.js-slider-loader'), 1, {
-            delay: 0.5,
-            autoAlpha: 0,
-            ease: Expo.easeInOut,
-            onComplete: function () {
-              // Slider...
-              TweenMax.to($Slider, 0.5, {
-                delay: 0,
-                autoAlpha: 1,
-                ease: Expo.easeInOut
-              });
+			var Images = function() {
+				$(".is-background").imgLiquid();
+			}
 
-              // Text...
-              TweenMax.to($('.slider__item__text h1'), 0.8, {
-                delay: 0.3,
-                autoAlpha: 1,
-                ease: Expo.easeInOut
-              });
-              TweenMax.to($('.slider__item__text p'), 0.8, {
-                delay: 0.6,
-                autoAlpha: 1,
-                ease: Expo.easeInOut
-              });
-              TweenMax.to($('.slider__item__text a'), 0.8, {
-                delay: 0.9,
-                autoAlpha: 1,
-                ease: Expo.easeInOut
-              });
-            }
-          });
-        });
+			var Component = function() {
+				var $Slider = $('.js-slider');
 
-        $Slider.flickity({
-          cellAlign: 'left',
-          contain: true,
-          draggable: true,
-          cellSelector: '.slider__item',
-          wrapAround: true,
-          autoPlay: 3600,
-          pauseAutoPlayOnHover: false,
-          prevNextButtons: false
-        });
+				// bind event listener first
+				$Slider.on('ready.flickity', function() {
+					// Loader...
+					TweenMax.to($('.js-slider-loader'), 1, {
+						delay : 0.2,
+						autoAlpha : 0,
+						ease : Expo.easeInOut,
+						onComplete : function() {
+							// Slider...
+							TweenMax.to($Slider, 0.5, {
+								delay : 0,
+								autoAlpha : 1,
+								ease : Expo.easeInOut
+							});
 
-        // Controls...
-        $('.js-slider-button-prev').on('click', function () {
-          $Slider.flickity('previous');
-        });
-        $('.js-slider-button-next').on('click', function () {
-          $Slider.flickity('next');
-        });
-      }
+							// Text...
+							TweenMax.to($('.slider__item__text h1'), 0.8, {
+								delay : 0.3,
+								autoAlpha : 1,
+								ease : Expo.easeInOut
+							});
+							TweenMax.to($('.slider__item__text p'), 0.8, {
+								delay : 0.6,
+								autoAlpha : 1,
+								ease : Expo.easeInOut
+							});
+							TweenMax.to($('.slider__item__text a'), 0.8, {
+								delay : 0.9,
+								autoAlpha : 1,
+								ease : Expo.easeInOut
+							});
+						}
+					});
+				});
 
-      return {
-        init: function () {
-          Images();
-          Component();
-        }
-      };
-    }();
+				$Slider.flickity({
+					cellAlign : 'left',
+					contain : true,
+					draggable : true,
+					cellSelector : '.slider__item',
+					wrapAround : true,
+					autoPlay : 3600,
+					pauseAutoPlayOnHover : false,
+					prevNextButtons : false
+				});
 
-    // Run...
-    Slider.init();
+				// Controls...
+				$('.js-slider-button-prev').on('click', function() {
+					$Slider.flickity('previous');
+				});
+				$('.js-slider-button-next').on('click', function() {
+					$Slider.flickity('next');
+				});
+			}
 
-  </script>
+			return {
+				init : function() {
+					Images();
+					Component();
+				}
+			};
+		}();
+
+		// Run...
+		Slider.init();
+	</script>
 </body>
 </html>
