@@ -29,8 +29,13 @@
 <img src="https://img.shields.io/badge/figma-black?style=for-the-badge&logo=figma&logoColor=white"> <img src="https://img.shields.io/badge/notion-000000?style=for-the-badge&logo=notion&logoColor=white"> <img src="https://img.shields.io/badge/discord-5865F2?style=for-the-badge&logo=discord&logoColor=white">
 
 ## 🧑담당업무
+* 팀장 김태형 : 총괄, Main페이지, WITH페이지, REVIEW페이지, DB설계
+* 팀원 임형규 : Login, SIGHT페이지, THE FAN 페이지
+* 팀원 송준우 : EVENT 페이지, NEWS 페이지, 지도API
+* 팀원 정권 : THE FAN 페이지, My페이지, 자료수집
 
 ## 🏐ERD
+
 
 ## 🏀View
 
