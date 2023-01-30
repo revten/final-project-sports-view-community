@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>TRIPPLE: Community</title>
 <link rel="stylesheet" href="resources/css/fan/fan.css">
 <%-- <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css">--%>
@@ -80,7 +80,7 @@
 				<!-- 1번줄 헤더 -->
 				<div class="app-content-header">
 					<!-- 왼쪽게시판 제목 -->
-					<h1 class="app-content-headerText">${board_name } 게시판</h1>
+					<h1 class="app-content-headerText">${board_name }게시판</h1>
 				</div>
 				<!-- 2번줄 헤더 -->
 				<div class="app-content-actions">
@@ -98,7 +98,9 @@
 						<div class="filter-button-wrapper">
 							<c:choose>
 								<c:when test="${sessionScope.loginAccount ne null}">
-									<button class="action-button" onclick="location.href='fan.reg.go?post_board=${param.post_board}'"> 새글쓰기</button>
+									<button class="action-button"
+										onclick="location.href='fan.reg.go?post_board=${param.post_board}'">
+										새글쓰기</button>
 								</c:when>
 								<c:otherwise>
 									<a href="fan.reg.go?post_board=${param.post_board}"
@@ -125,9 +127,9 @@
 							<div class="board__cell num">${p.post_id}</div>
 							<div class="board__cell category">${post_category}</div>
 							<div class="board__cell post_title">
-								<a
-									href="fan.detail.go?post_id=${p.post_id }&post_member=${p.post_member}">${p.post_title }
-									[${p.post_reply_count}]</a>
+								<span style="cursor: pointer"
+									onclick="location.href='fan.detail.go?post_id=${p.post_id }&post_member=${p.post_member}'">${p.post_title }
+									[${p.post_reply_count}]</span>
 							</div>
 							<div class="board__cell reg_date">
 								<c:choose>
@@ -144,26 +146,29 @@
 							<div class="board__cell nick">${p.member_nick}</div>
 							<div class="board__cell view_count">${p.post_hit_count}</div>
 						</div>
+						<hr
+							style="background: #f0f0f0; height: 0.5px; border: 0;">
 					</c:forEach>
 				</div>
 				<div class="board__bot-paging">
 					<c:if test="${curPage != 1}">
-						<span><a
-							href="fan.page.change?pg=1&post_board=${param.post_board }">[맨처음]</a></span>
-						<span><a
-							href="fan.page.change?pg=${curPage - 1}&post_board=${param.post_board }">
-								◀이전 </a></span>
+						<span><span style="cursor: pointer"
+							onclick="location.href='fan.page.change?pg=1&post_board=${param.post_board }'">[맨처음]</span></span>
+						<span><span style="cursor: pointer"
+							onclick="location.href='fan.page.change?pg=${curPage - 1}&post_board=${param.post_board }'">
+								◀이전 </span></span>
 					</c:if>
 					<c:forEach var="i" begin="1" end="${pageCount}">
-						<a href="fan.page.change?pg=${i}&post_board=${param.post_board }">
-							[${i}] </a>
+						<span style="cursor: pointer"
+							onclick="location.href='fan.page.change?pg=${i}&post_board=${param.post_board }'">
+							[${i}] </span>
 					</c:forEach>
 					<c:if test="${curPage != pageCount}">
-						<span> <a
-							href="fan.page.change?pg=${curPage + 1}&post_board=${param.post_board }">
-								다음▶ </a></span>
-						<span><a
-							href="fan.page.change?pg=${pageCount}&post_board=${param.post_board }">[맨끝]</a></span>
+						<span> <span style="cursor: pointer"
+							onclick="location.href='fan.page.change?pg=${curPage + 1}&post_board=${param.post_board }'">
+								다음▶ </span></span>
+						<span><span style="cursor: pointer"
+							onclick="location.href='fan.page.change?pg=${pageCount}&post_board=${param.post_board }'">[맨끝]</span></span>
 					</c:if>
 				</div>
 			</div>

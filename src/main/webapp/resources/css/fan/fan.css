@@ -38,10 +38,6 @@
 	font-size: 13px;
 }
 
-a:hover {
-	text-decoration: none;
-}
-
 p, figure {
 	margin: 0;
 	padding: 0;
@@ -72,7 +68,7 @@ p, figure {
 
 .card .title {
 	display: inline-block;
-	font-size: 8px;
+	font-size: 14px;
 	padding: 10px 10px 0;
 	text-decoration: none;
 }
@@ -112,9 +108,9 @@ p, figure {
 
 :root { 
 	--app-bg: #fff; 
-	--app-content-secondary-color: #f3f6fd;
-	--app-content-main-color: #1f1c2e;
-	--filter-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+	--app-content-secondary-color: #f3f6fd; 
+	--app-content-main-color: #1f1c2e; 
+	--filter-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px; 
 	--table-border: #1a2131; 
 	--table-header: #1a2131; 
 	--action-color: #2869ff; 
@@ -155,7 +151,7 @@ p, figure {
 
 .app-content-headerText {
 	color: var(--app-content-main-color);
-	font-size: 40px;
+	font-size: 20px;
 	line-height: 32px;
 	margin: 0;
 }
@@ -179,7 +175,7 @@ p, figure {
 
 .app-content-actions {
 	display: flex;
-	justify-content: space-between;
+	justify-content: center;
 	align-items: center;
 	padding: 16px 4px;
 }
@@ -363,7 +359,7 @@ p, figure {
 .filter-menu-buttons {
 	display: flex;
 	align-items: center;
-	justify-content: space-between;
+	justify-content: space-around;
 }
 
 .filter-button {
@@ -388,11 +384,13 @@ p, figure {
 	max-height: 100%;
 	overflow: auto;
 	padding: 0 4px;
+	justify-content: center;
 }
 
 .tableView .board__header {
 	display: flex;
 	align-items: center;
+	justify-content: center;
 	border-radius: 4px;
 	background-color: var(--app-content-secondary-color);
 	position: sticky;
@@ -402,6 +400,7 @@ p, figure {
 .tableView .board__row {
 	display: flex;
 	align-items: center;
+	justify-content: center;
 	border-radius: 4px;
 }
 
@@ -421,6 +420,7 @@ p, figure {
 	font-size: 14px;
 	display: flex;
 	align-items: center;
+	justify-content: center;
 }
 
 .tableView .board__cell img {
@@ -483,7 +483,7 @@ p, figure {
 }
 
 .board_container {
-	display:flex;
+	display: flex;
 	flex-direction: column;
 	margin-top: 20vh;
 	background-color: hsl(1, 1%, 93%);
@@ -499,20 +499,215 @@ p, figure {
 	position: relative;
 }
 
-.board__name{
+.board__bot-paging {
 	margin-top: 3vh;
+}
+
+.board__name {
+	margin-top: 3vh;
+}
+
+#goBoardBtn {
+	margin-top: 3vh;
+	margin-bottom: 3vh;
+	width: 5vw;
+	height: 5vh;
+}
+
+#createPostBtn {
+	margin-top: 3vh;
+	margin-bottom: 3vh;
+	width: 5vw;
+	height: 5vh;
+}
+
+.form-group {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+}
+
+.post__1st-line {
+	padding: 11px;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+}
+
+.post__title {
+	margin-left: 35vw;
+	font-size: 20px;
+}
+
+.post__date {
+	margin-top: 1vh;
+	margin-right: 5vw;
+}
+
+.post__2nd-line {
+	padding: 5px;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+}
+
+.post__nick {
+	margin-left: 7vw;
+}
+
+.post__element {
+	margin-top: 1vh;
+	margin-right: 6vw;
+}
+
+.post__content {
+	margin-top: 5vh;
+}
+
+.reply_reg_form{
+	margin-top: 5vh;
+	margin-bottom: 15px;
+    padding: 20px 15px 20px;
+    width: 65vw;
+    background: #fcfcfc;
+    border: 1px solid #ddd;
+    border-bottom-color: #ccc;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px -1px rgb(0 0 0 / 10%);
+}
+
+.reply__list{
+	padding: 5px;
+}
+
+.reply__div{
+	display: flex;
+	flex-direction: column;
+}
+
+.reply__update-btn {
+	display: inline-block;
+    position: relative;
+    margin: -2px 0 0 4px;
+    padding: 2px 7px;
+    border: 1px solid #ccc;
+    background: #fff;
+    border-radius: 7px;
+    color: #555;
+    font-size: 11px;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+.reply__delete-btn {
+	display: inline-block;
+    position: relative;
+    margin: -2px 0 0 4px;
+    padding: 2px 7px;
+    border: 1px solid #ccc;
+    background: #fff;
+    border-radius: 7px;
+    color: #555;
+    font-size: 11px;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+.reply__reg-btn{
+	display: inline-block;
+    position: relative;
+    margin: -2px 0 0 4px;
+    padding: 2px 7px;
+    border: 1px solid #ccc;
+    background: #fff;
+    border-radius: 7px;
+    color: #555;
+    font-size: 11px;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+.post__bot-btn{
+	display: inline-block;
+    position: relative;
+    margin: -2px 0 0 4px;
+    padding: 2px 7px;
+    border: 1px solid #ccc;
+    background: #fff;
+    border-radius: 7px;
+    margin-top: 10vh;
+    color: #555;
+    font-size: 11px;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+.sortInfo{
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	margin-top: 1vh;
+	margin-bottom: 1vh;
+}
+
+#LikeBtn{
+	display: inline-block;
+    position: relative;
+    margin: -2px 0 0 4px;
+    padding: 2px 7px;
+    border: 1px solid #ccc;
+    background: #fff;
+    border-radius: 7px;
+    color: #555;
+    font-size: 11px;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+#buttonArea{
+	margin-top: 5vh;
 }
 
 #goBoardBtn{
-	margin-top: 3vh;
-	margin-bottom: 3vh;
-	width: 5vw;
-	height: 5vh;
+	margin-top: 1vh;
+	display: inline-block;
+    position: relative;
+    margin: -2px 0 0 4px;
+    padding: 2px 7px;
+    border: 1px solid #ccc;
+    background: #fff;
+    border-radius: 7px;
+    color: #555;
+    font-size: 11px;
+    cursor: pointer;
+    white-space: nowrap;
 }
 
 #createPostBtn{
-	margin-top: 3vh;
-	margin-bottom: 3vh;
-	width: 5vw;
-	height: 5vh;
+	margin-top: 1vh;
+	display: inline-block;
+    position: relative;
+    margin: -2px 0 0 4px;
+    padding: 2px 7px;
+    border: 1px solid #ccc;
+    background: #fff;
+    border-radius: 7px;
+    color: #555;
+    font-size: 11px;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+.reply_writterNick{
+	margin-left: 15vh;
+}
+
+.reply__date{
+	margin-right: 15vh;
+}
+
+.reply__content{
+	display: flex;
+	justify-content: flex-start;
+	margin-left: 15vh;
 }

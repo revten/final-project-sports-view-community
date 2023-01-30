@@ -37,13 +37,13 @@
 	<br>
 	<br>
 	<br>
-	<div class="nav__menu" id="nav-menu" style="width:55%;align:center;">
+	<!-- <div class="nav__menu" id="nav-menu" style="width:55%;align:center;">
 				<ul class="nav__list">
 					<li class="nav__item"><a href="clubEvent.board.go"
 						class="nav__link">구단공식이벤트</a></li>
 						
-					<!-- <li class="nav__item"><a href="news.sports.go"
-						class="nav__link">스포츠</a></li> -->
+					<li class="nav__item"><a href="news.sports.go"
+						class="nav__link">스포츠</a></li>
 					<li class="nav__item"><a href="newsEvent.main.go"
 						class="nav__link">뉴스</a>
 					</li>
@@ -51,7 +51,7 @@
 						
 
 				</ul>
-		</div>
+		</div> -->
 		<br><br>
 		
 	<section class="swiper_section">
@@ -116,12 +116,12 @@
 		</div>
 
 	</section>
-<hr>
+<hr style="width: 1200px;">
 
 
 	<!--==================== 게시판 ====================-->
 	<div class="board__container">
-		<div class="board__top">
+		<%-- <div class="board__top">
 			<c:choose>
 				<c:when test="${sessionScope.loginAccount ne null}">
 					<a href=clubEvent.reg.go> 새글쓰기</a>
@@ -130,7 +130,7 @@
 					<a href="clubEvent.reg.go" onclick="alert('로그인하세요')">새글쓰기</a>
 				</c:otherwise>
 			</c:choose>
-		</div>
+		</div> --%>
 
 
 				<c:forEach var="p" items="${posts }">
@@ -191,11 +191,12 @@
 					<span><a href="clubEvent.page.change?pg=${pageCount}">[맨끝]</a></span>
 				</c:if>
 			</div>
+			<br>
+			<hr style="width: 1200px;">
 		</div>
 
 	</div>
-	<br>
-	<hr>
+	
 	<script>
 		function boardSearchCheck() {
 			let searchInput = document.boardSearchForm.search;

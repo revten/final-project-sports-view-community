@@ -6,6 +6,8 @@
 <head>
 <meta charset="UTF-8" />
 <title>Enjoy Sports</title>
+<!-- 경기장 JS -->
+<script src="resources/js/stadium/stadium_go.js"></script>
 
 <!-- --------------- FAVICON --------------- -->
 <link rel="shortcut icon" href="resources/files/home/favicon.png"
@@ -100,7 +102,6 @@
 					<li class="nav__item"><a href="news.main.go" class="nav__link">NEWS</a></li>
 				</ul>
 
-
 				<!-- close button -->
 				<div class="nav__close" id="nav-close">
 					<i class="ri-close-line"></i>
@@ -111,12 +112,10 @@
 					src="resources/files/home/leaf-branch-3.png" alt="nav image"
 					class="nav__img-2" />
 			</div>
-
-
 		</nav>
 	</header>
 
-	<div align="center"><jsp:include page="${contentPage }"></jsp:include></div>
+	<div class="content__page" align="center"><jsp:include page="${contentPage }"></jsp:include></div>
 
 	<br>
 	<br>
@@ -217,7 +216,7 @@
 	<!--=============== [JS MEMBER]===============-->
 	<script src="resources/js/account/account_go.js"></script>
 	<script src="resources/js/account/account_condition.js"></script>
-	<script src="resources/js/stadium/stadium_go.js"></script>
+	
 	<script src="resources/js/stadium/seat_detail.js"></script>
 	<script src="resources/js/myPage/myPage.js"></script>
 	<script src="resources/js/news/paging.js"></script>

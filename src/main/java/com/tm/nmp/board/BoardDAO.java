@@ -43,16 +43,22 @@ public class BoardDAO {
 	public void calcAllPostCount() {
 		BoardSelector bSelWithGo = new BoardSelector("", 0, 0, 11);
 		withGo = ss.getMapper(BoardMapper.class).calcAllPostCount(bSelWithGo);
+		
 		BoardSelector bSelReview = new BoardSelector("", 0, 0, 12);
 		review = ss.getMapper(BoardMapper.class).calcAllPostCount(bSelReview);
+		
 		BoardSelector bSelBaseBall = new BoardSelector("", 0, 0, 21);
 		baseball = ss.getMapper(BoardMapper.class).calcAllPostCount(bSelBaseBall);
+		
 		BoardSelector bSelSoccer = new BoardSelector("", 0, 0, 22);
 		soccer = ss.getMapper(BoardMapper.class).calcAllPostCount(bSelSoccer);
+		
 		BoardSelector bSelBasketball = new BoardSelector("", 0, 0, 23);
 		basketball = ss.getMapper(BoardMapper.class).calcAllPostCount(bSelBasketball);
+		
 		BoardSelector bSelVolley = new BoardSelector("", 0, 0, 24);
 		volleyball = ss.getMapper(BoardMapper.class).calcAllPostCount(bSelVolley);
+		
 		BoardSelector bSelClubEvent = new BoardSelector("", 0, 0, 31);
 		clubEvent = ss.getMapper(BoardMapper.class).calcAllPostCount(bSelClubEvent);
 	}
@@ -142,7 +148,7 @@ public class BoardDAO {
 		req.setAttribute("board_name", board_name);
 
 		List<PostVO> posts = ss.getMapper(BoardMapper.class).getAllPost(search);
-		System.out.println("asd" + posts);
+		System.out.println(posts);
 		req.setAttribute("posts", posts);
 
 		int pageCount = (int) Math.ceil(postCount / (double) count);

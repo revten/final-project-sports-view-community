@@ -9,20 +9,10 @@
 <body>
 	<main class="main"> <!--==================== HOME ====================-->
 	<section class="home section" id="home">
-		<div class="home__container container grid">
-			<img src="resources/home_img/main_synthesis.png" alt="home image"
+		<div class="home__container  grid">
+			<img src="resources/home_img/main_synthesis.jpg" alt="home image"
 				class="home__img">
-			<div class="home__data">
-				<h1 class="home__title">
-						<img src="resources/files/home/about-title.png" alt="home image">
-				</h1>
-				<p class="home__description"></p>
-
-				<a href="#" class="button"> <!-- rec5.main.go --> 경기좌석 보러가기 <i
-					class="ri-arrow-right-line"></i>
-				</a>
 			</div>
-		</div>
 
 		<img src="resources/files/home/leaf-branch-2.png" alt="home image"
 			class="home__leaf-1"> <img

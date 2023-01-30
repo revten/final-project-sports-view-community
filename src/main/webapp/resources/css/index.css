@@ -46,6 +46,7 @@
   border-radius: 50%;
   margin-right: 15px;
 }
+
  .info-area{
 	width : 100%;
 }
@@ -224,6 +225,7 @@ padding-block, padding-inline 은 요소의 쓰기모드 및 방향성, 텍스�
   font-size: 1.25rem;
   cursor: pointer;
 }
+
 .nav__menu{
   display: flex;
   justify-content: space-between;
@@ -311,16 +313,11 @@ padding-block, padding-inline 은 요소의 쓰기모드 및 방향성, 텍스�
 
 .home__container {
   row-gap: 3rem;
-  padding-top: 2rem;
 }
 
 .home__img {
-  width: 300px;
+  width: 100%;
   justify-self: center;
-}
-
-.home__data {
-  text-align: center;
 }
 
 .home__title {
@@ -915,7 +912,7 @@ padding-block, padding-inline 은 요소의 쓰기모드 및 방향성, 텍스�
   }
 
   .nav {
-    height: calc(var(--header-height) + 1.5rem);
+    height: calc(var(--header-height) + 1rem);
   }
 
   .home__container {
@@ -943,9 +940,8 @@ padding-block, padding-inline 은 요소의 쓰기모드 및 방향성, 텍스�
   }
 
   .home__img {
-    width: 600px;
+    width: 100%;
     position: absolute;
-    top: 5rem;
     right: 0rem;
   }
 
