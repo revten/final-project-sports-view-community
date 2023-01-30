@@ -635,13 +635,56 @@ p, figure {
     border: 1px solid #ccc;
     background: #fff;
     border-radius: 7px;
+    margin-top: 10vh;
     color: #555;
     font-size: 11px;
     cursor: pointer;
     white-space: nowrap;
 }
 
+.sortInfo{
+	display: flex;
+	flex-direction: row;
+	justify-content: space-evenly;
+	margin-top: 1vh;
+	margin-bottom: 1vh;
+}
+
 #LikeBtn{
+	display: inline-block;
+    position: relative;
+    margin: -2px 0 0 4px;
+    padding: 2px 7px;
+    border: 1px solid #ccc;
+    background: #fff;
+    border-radius: 7px;
+    color: #555;
+    font-size: 11px;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+#buttonArea{
+	margin-top: 5vh;
+}
+
+#goBoardBtn{
+	margin-top: 1vh;
+	display: inline-block;
+    position: relative;
+    margin: -2px 0 0 4px;
+    padding: 2px 7px;
+    border: 1px solid #ccc;
+    background: #fff;
+    border-radius: 7px;
+    color: #555;
+    font-size: 11px;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+#createPostBtn{
+	margin-top: 1vh;
 	display: inline-block;
     position: relative;
     margin: -2px 0 0 4px;
