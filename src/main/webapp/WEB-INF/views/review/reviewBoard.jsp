@@ -59,7 +59,7 @@
 				<div class="review__cell">
 					<div class="review__img">
 						<img
-							src="https://images-na.ssl-images-amazon.com/images/I/81WcnNQ-TBL.jpg"
+							src="https://images.pexels.com/photos/5184705/pexels-photo-5184705.jpeg?auto=compress&cs=tinysrgb&w=600"
 							alt="" class="review__photo">
 					</div>
 					<div class="review__content">
@@ -79,7 +79,7 @@
 				<div class="review__cell">
 					<div class="review__img">
 						<img
-							src="https://i.pinimg.com/originals/a8/b9/ff/a8b9ff74ed0f3efd97e09a7a0447f892.jpg"
+							src="https://images.pexels.com/photos/5246966/pexels-photo-5246966.jpeg?auto=compress&cs=tinysrgb&w=600"
 							alt="" class="review__photo">
 					</div>
 					<div class="review__content">
@@ -99,7 +99,7 @@
 				<div class="review__cell">
 					<div class="review__img">
 						<img
-							src="https://images-na.ssl-images-amazon.com/images/I/81af+MCATTL.jpg"
+							src="https://images.pexels.com/photos/159611/basketball-player-game-sport-159611.jpeg?auto=compress&cs=tinysrgb&w=600"
 							alt="" class="review__photo">
 					</div>
 					<div class="review__content">
@@ -119,7 +119,7 @@
 				<div class="review__cell">
 					<div class="review__img">
 						<img
-							src="https://images-na.ssl-images-amazon.com/images/I/81UWB7oUZ0L.jpg"
+							src="https://images.pexels.com/photos/6203676/pexels-photo-6203676.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
 							alt="" class="review__photo">
 					</div>
 					<div class="review__content">
