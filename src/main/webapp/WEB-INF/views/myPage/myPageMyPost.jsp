@@ -8,6 +8,19 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" href="resources/css/myPage/myPage.css" />
+<link rel="stylesheet" href="resources/css/fan/fan.css">
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/jquery.selectric/1.10.1/selectric.css">
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css">
+<!--=============== [JS]===============-->
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+<script
+	src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+<script
+	src="https://cdn.jsdelivr.net/jquery.selectric/1.10.1/jquery.selectric.min.js"></script>
+<script src="resources/js/fan/fanBoard.js"></script>
 </head>
 <body>
 	<div class="myPage_container">
@@ -45,37 +58,71 @@
 		</div>
 			<div class="main-container">
 				<div class="modify-container">
-					<c:choose>
+				<div align="center" class="myPage_title">내 글</div>
+					<%-- <c:choose>
 						<c:when test="${sessionScope.loginAccount eq null}">
 							<a href="" onclick="alert('로그인하세요')">새글쓰기</a>
 						</c:when>
 						<c:otherwise>
 							<a href="mypost.insert.go">새글쓰기</a>
 						</c:otherwise>
-					</c:choose>
-					
-					<table>
+					</c:choose> --%>
+					<div class="board__wrapper tableView">
+					<br>
+					<!-- 게시판 칼럼 (제목, 닉네임, 조회수 등등)-->
+					<div class="board__header">
+						<div class="board__cell num">카테고리</div>
+						<div class="board__cell post_title">제목</div>
+						<div class="board__cell reg_date">등록일</div>
+						<div class="board__cell view_count">조회수</div>
+					</div>
+					<!-- forEach문으로 돌릴 구간, 샘플을 위해서 일단 게시글 4개정도 남김, function 할땐 하나만 하면됨 -->
+					<c:forEach var="p" items="${MyPosts }">
+						<div class="board__row">
+							<div class="board__cell category">${p.post_category}</div>
+							<div class="board__cell post_title">
+								<a
+									href="fan.detail.go?post_id=${p.post_id }&post_member=${p.post_member}">${p.post_title }
+									[${p.post_reply_count}]</a>
+							</div>
+							<div class="board__cell reg_date">
+								<c:choose>
+									<c:when test="${p.post_update_date eq null }">
+										<fmt:formatDate value="${p.post_reg_date}"
+											pattern="yy-MM-dd HH:mm" />
+									</c:when>
+									<c:otherwise>
+										<fmt:formatDate value="${p.post_update_date}"
+											pattern="yy-MM-dd HH:mm" />
+									</c:otherwise>
+								</c:choose>
+							</div>
+							<div class="board__cell view_count">${p.post_hit_count}</div>
+						</div>
+					</c:forEach>
+				</div>
+					<%-- <table>
 						<thead>
 							<tr>
-								<th>카테고리&nbsp;&nbsp;</th>
-								<th>제목</th>
-								<th>시간</th>
-								<th>조회수</th>
+								<th colspan="1" style="border:1px solid black;">카테고리</th>
+								<th colspan="4" style="border:1px solid black;">제목</th>
+								<th colspan="2" style="border:1px solid black;">시간</th>
+								<th colspan="1" style="border:1px solid black;">조회수</th>
 							</tr>
 						</thead>
 						<tbody>
 							<c:forEach var="mpt" items="${MyPosts }">
 								<tr>
-									<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${mpt.post_category }</td>
-									<td><a style="cursor: pointer; color: blue;"
+									<td colspan="1" style="text-align: center;">${mpt.post_category }</td>
+									<td colspan="4"><a style="cursor: pointer; color: blue;"
 										href="myPage.myPost.detail.go?post_id=${mpt.post_id}&post_member=${mpt.post_member}">${mpt.post_title }</a></td>
-									<td><fmt:formatDate value="${mpt.post_reg_date }"
+									<td colspan="2"><fmt:formatDate value="${mpt.post_reg_date }"
 											pattern="yyyy-MM-dd HH:mm" /></td>
-									<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${mpt.post_hit_count }</td>
+									<td colspan="1" style="text-align: center;">${mpt.post_hit_count }</td>
 								</tr>
 							</c:forEach>
 						</tbody>
-					</table>
+					</table> --%>
 					<c:if test="${curPage !=1 and not empty curPage }">
 						<a href="mypost.page.change?p=${curPage-1 }" id="snsL">&lt;</a>
 					</c:if>

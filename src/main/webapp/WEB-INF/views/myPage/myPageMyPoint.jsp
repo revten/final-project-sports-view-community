@@ -45,7 +45,7 @@
 		</div>
 			<div class="main-container">
 				<div class="modify-container">
-				<h2 align="center">포인트</h2>
+				<div align="center" class="myPage_title">포인트</div>
 			<br><br>
 			<div class="input-container">
 				<b class="mypage_name">현재 포인트</b> <b class="text">${point.point }</b><br>
@@ -55,15 +55,15 @@
 				<b class="mypage_name">등급</b> <b class="text">${point.point_grade }</b><br>
 				<br>
 			</div>
-			<h3 align="center">적립내역</h3>
-					<div>
+			<div class="input-container">
+			<b class="mypage_name">적립내역</b>
+					<div style="width:205px; background-color: #f5d682;">
 						<c:forEach var="ppt" items="${plusPoint }">
-							<div>
-								<div>포인트${ppt.plusPoint }
+								<div style="border: 2px solid;">포인트${ppt.plusPoint } ||
 								 <fmt:formatDate value="${ppt.plusPoint_date }"
 										pattern="yyyy-MM-dd HH:mm" /></div>
-							</div>
 						</c:forEach>
+						</div>
 					</div>
 					</div>
 					</div>
