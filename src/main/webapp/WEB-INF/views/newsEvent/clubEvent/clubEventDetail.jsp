@@ -51,19 +51,6 @@
 		<div style="float: left;position: absolute;left: -9%;"><img src="resources/files/backgroundImg/ronaldo.png"></div>
 		<div style="float: right;position: absolute;top:400px; left : 66%;"><img src="resources/files/backgroundImg/messi.png"></div>
 	<!--==================== Nav바 ====================-->
-	<div class="nav__menu" id="nav-menu" style="width: 55%; align: center;">
-		<ul class="nav__list">
-			<li class="nav__item"><a href="newsEvent.main.go" class="nav__link">뉴스</a></li>
-			<li class="nav__item"><a href="clubEvent.board.go"
-				class="nav__link">구단공식이벤트</a></li>
-			
-		</ul>
-
-		<!-- close button -->
-		<div class="nav__close" id="nav-close">
-			<i class="ri-close-line"></i>
-		</div>
-	</div>
 	<br><br>
 
 
