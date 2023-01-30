@@ -41,6 +41,36 @@
 ![view설게_1](https://user-images.githubusercontent.com/97932245/215462904-4746b0c1-bb2c-4b9f-ba35-85ad1080e296.jpg)
 ![view설게_2](https://user-images.githubusercontent.com/97932245/215463839-533bb48d-78c1-4092-8f1b-4c600d652f92.jpg)
 ## 📌기능 코드
-
-
+### 카카오맵 API
+```javascript
+function stadium_map() {
+	baseballSetVal();
+	soccerSetVal();
+	basketballSetVal();
+	volleyballSetVal();
+	
+	var mapContainer = document.getElementById('map'), mapOption = {
+		center : new kakao.maps.LatLng(lat, lon),
+		level : 3
+	};
+	var map = new kakao.maps.Map(mapContainer, mapOption);
+	var markerPosition = new kakao.maps.LatLng(lat, lon);
+	var marker = new kakao.maps.Marker({
+		position : markerPosition
+	});
+	marker.setMap(map);
+	iwContent;
+	iwPosition = new kakao.maps.LatLng(lat, lon);
+	iwRemoveable = true;
+	var infowindow = new kakao.maps.InfoWindow({
+		position : iwPosition,
+		content : iwContent,
+		removable : iwRemoveable
+	});
+	infowindow.open(map, marker);
+	kakao.maps.event.addListener(marker, 'click', function() {
+		infowindow.open(map, marker);
+	});
+}
+```
 
