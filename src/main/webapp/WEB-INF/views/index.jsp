@@ -6,6 +6,8 @@
 <head>
 <meta charset="UTF-8" />
 <title>Enjoy Sports</title>
+<!-- 경기장 JS -->
+<script src="resources/js/stadium/stadium_go.js"></script>
 
 <!-- --------------- FAVICON --------------- -->
 <link rel="shortcut icon" href="resources/files/home/favicon.png"
@@ -214,7 +216,7 @@
 	<!--=============== [JS MEMBER]===============-->
 	<script src="resources/js/account/account_go.js"></script>
 	<script src="resources/js/account/account_condition.js"></script>
-	<script src="resources/js/stadium/stadium_go.js"></script>
+	
 	<script src="resources/js/stadium/seat_detail.js"></script>
 	<script src="resources/js/myPage/myPage.js"></script>
 	<script src="resources/js/news/paging.js"></script>
