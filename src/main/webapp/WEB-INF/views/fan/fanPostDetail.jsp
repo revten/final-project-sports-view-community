@@ -66,7 +66,8 @@
 				<div class="fanBoardDetail__main">
 					<section class="post section">
 						<div class="post__container">
-							<hr style="background: #a0a0a0; width: 86%; height: 0.5px; border: 0;">
+							<hr
+								style="background: #a0a0a0; width: 86%; height: 0.5px; border: 0;">
 							<div class="post__1st-line">
 								<div class="post__title">${post.post_title}</div>
 								<div class="post__date">
@@ -82,7 +83,8 @@
 									</c:choose>
 								</div>
 							</div>
-							<hr style="background: #a0a0a0; width: 86%; height: 0.5px; border: 0;">
+							<hr
+								style="background: #a0a0a0; width: 86%; height: 0.5px; border: 0;">
 							<div class="post__2nd-line">
 								<div class="post__nick">
 									<img style="width: 20px; height: 20px;"
@@ -94,7 +96,8 @@
 									스크랩수 <b>${post.post_scrap_count}</b>
 								</div>
 							</div>
-							<hr style="background: #c4c4c4; width: 86%; height: 0.5px; border: 0;">
+							<hr
+								style="background: #c4c4c4; width: 86%; height: 0.5px; border: 0;">
 							<div class="post__content">${post.post_content}</div>
 
 
@@ -136,31 +139,38 @@
 
 
 					<!--==================== 댓글 ====================-->
-					<section class="reply section">
+					<div class="reply__section">
 						<!-- 댓글 리스트 -->
-						<hr style="background: #a0a0a0; width: 86%; height: 0.5px; border: 0;">
+						<hr
+							style="background: #a0a0a0; width: 86%; height: 0.5px; border: 0;">
 						<div class="reply__list">
-								<span>댓글 리스트</span>
+							<span>댓글 리스트</span>
 							<c:forEach var="reply" items="${post.replies}">
-								<div class="reply__div"><p>
-								<hr style="margin-top: 5px; margin-left: 80px; background: #c4c4c4; width: 86%; height: 0.5px; border: 0;">
+								<div class="reply__div">
+									<p>
+									<hr
+										style="margin-top: 5px; margin-left: 80px; background: #c4c4c4; width: 86%; height: 0.5px; border: 0;">
 									<input class="reply__id" type="hidden" name="reply_id"
-										value="${reply.reply_id}"> <div
-										class="reply_writterNick">${reply.member_nick }</div> <div
-										class="reply__date"> <fmt:formatDate
-											value="${reply.reply_reg_date }" type="both"
+										value="${reply.reply_id}">
+									<div class="sortInfo">
+									<div class="reply_writterNick"><b>${reply.member_nick }</b></div>
+									<div class="reply__date">
+										<fmt:formatDate value="${reply.reply_reg_date }" type="both"
 											dateStyle="short" timeStyle="short" />
-									</div> <div class="reply__content">${reply.reply_content}</div> <div
-										class="reply__btn"> <c:if
+										<c:if
 											test="${reply.reply_member == sessionScope.loginAccount.member_id }">
 											<button class="reply__update-btn">수정</button>
 											<button class="reply__delete-btn">삭제</button>
-										</c:if><br>
+										</c:if>
+										<br>
 									</div>
+									</div>
+									<div class="reply__content">${reply.reply_content}</div>
 								</div>
 							</c:forEach>
 						</div>
-						<hr style="background: #a0a0a0; width: 86%; height: 0.5px; border: 0;">
+						<hr
+							style="background: #a0a0a0; width: 86%; height: 0.5px; border: 0;">
 						<!-- 댓글 등록 -->
 						<div class="reply_reg_form">
 							<!-- 로그인x면 댓글 쓸수 없다 -->
@@ -183,7 +193,7 @@
 								<button class="reply__reg-btn">등록</button>
 							</c:if>
 						</div>
-					</section>
+					</div>
 				</div>
 			</div>
 		</div>
