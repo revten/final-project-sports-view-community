@@ -53,9 +53,9 @@
 				</ul>
 		</div> -->
 		<br><br>
-		
+		<div style="float: left;position: absolute;left: -9%;"><img src="resources/files/backgroundImg/eventImg1.png"></div>
+		<div style="float: right;position: absolute;top:400px; left : 66%;"><img src="resources/files/backgroundImg/eventImg2.png"></div>
 	<section class="swiper_section">
-
 		<div class="swiper-container slideshow">
 
 			<div class="swiper-wrapper">

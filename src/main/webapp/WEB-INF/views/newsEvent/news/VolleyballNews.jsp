@@ -42,6 +42,11 @@
            </div>
 		</div> -->
 		<div class="div_news_content">
+		<div style="float: left;position: absolute;left: -9%;"><img src="resources/files/backgroundImg/volleyball1.png"></div>
+		<div style="float: left;position: absolute;top:400px;left: 70%;"><img src="resources/files/backgroundImg/volleyball3.png"></div>
+		<div style="float: right;position: absolute;top:200px; left : 66%;"><img src="resources/files/backgroundImg/volleyball2.png"></div>
+		<div style="float: right;position: absolute;top:800px; left : 66%;"><img src="resources/files/backgroundImg/event4.png"></div>
+		<div style="float: right;position: absolute;top:800px; left : -9%;"><img src="resources/files/backgroundImg/volleyball4.png"></div>
 		<div id="data-container"></div>
 		<div id="pagination"  style="margin-left: 29%;"></div>
 		</div>

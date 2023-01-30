@@ -115,6 +115,12 @@ function checkOne(element) {
 </script>
 </head>
 <body>
+<div style="float: left;position: absolute;top: 100px;left: 40%;"><img src="resources/files/backgroundImg/mypage1.png"></div>
+	<div style="float: right;position: absolute;top:-10px; left : 77%;"><img src="resources/files/backgroundImg/mypage2.png"></div>
+	<div style="float: right;position: absolute;top:400px; left : -7%;"><img src="resources/files/backgroundImg/mypage3.png"></div>
+	<div style="float: right;position: absolute;top:400px; left : 67%;"><img src="resources/files/backgroundImg/mypage4.png"></div>
+	<div style="float: right;position: absolute;top:650px; left : 30%;"><img src="resources/files/backgroundImg/mypage5.png"></div>
+	<div style="float: right;position: absolute;top:10px; left : -9%;"><img src="resources/files/backgroundImg/mypage6.png"></div>
 	<div class="myPage_container">
 		<div class="sidebar">
 			<div class="side-wrapper">
@@ -150,7 +156,7 @@ function checkOne(element) {
 			</div>
 		</div>
 		<div class="main-container">
-			<div class="modify-container">
+			<div class="modify-container2">
 			<div align="center" class="myPage_title">회원 정보 수정</div>
 				<form action="profile.reg.do" method="post"
 					onsubmit="return checkProfile()">

@@ -29,6 +29,10 @@
 		
 		
 		<div class="div_news_content">
+		<div style="float: left;position: absolute;left: -9%;"><img src="resources/files/backgroundImg/eventImg1.png"></div>
+		<div style="float: left;position: absolute;top:600px;left: -9%;"><img src="resources/files/backgroundImg/event3.png"></div>
+		<div style="float: right;position: absolute;top:400px; left : 66%;"><img src="resources/files/backgroundImg/eventImg2.png"></div>
+		<div style="float: right;position: absolute;top:800px; left : 66%;"><img src="resources/files/backgroundImg/event4.png"></div>
 		<div class="div_news">
 		<div id="SoccerNews"></div>
 		<div id="BaseballNews"></div>
