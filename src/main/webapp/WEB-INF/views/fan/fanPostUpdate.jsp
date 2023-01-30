@@ -17,11 +17,6 @@
 <script src="resources/js/fan/fanPost.js"></script>
 </head>
 <body>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
 	<div class="container-field">
 		<div class="board-main">
 			<!--==================== fan__best 부분 - 종목별 베스트 (각 게시판별로 CRUD별로 존재해야)  ====================-->

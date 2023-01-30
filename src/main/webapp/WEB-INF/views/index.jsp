@@ -49,8 +49,10 @@
 <link rel="stylesheet" href="resources/css/newsEvent/news.css" />
 <link rel="stylesheet" href="resources/css/stadium/stadium.css" />
 <link rel="stylesheet" href="resources/css/map/map.css" />
-<link rel="stylesheet" href="resources/css/watch/review.css" />
 <link rel="stylesheet" href="resources/css/newsEvent/clubEvent.css" />
+<link rel="stylesheet" href="resources/css/review.css" />
+<link rel="stylesheet" href="resources/css/withGo.css" />
+<link rel="stylesheet" href="resources/css/fan/fan.css">
 
 <!-- ---------------------------------------------------------------------------- -->
 </head>
@@ -84,13 +86,15 @@
 						class="nav__link">WITH</a></li>
 
 					<li class="nav__item"><a href="review.board.go?post_board=12"
-						class="nav__link">REVIEW</a></li></ul>
+						class="nav__link">REVIEW</a></li>
+				</ul>
 
 				<ul class="nav__list">
 					<li class="nav__item"><a href="index.go" class="nav__logo">
 							<img src="resources/files/home/logo.png" alt="logo image" />
 							TRIPPLE
-					</a></li></ul>
+					</a></li>
+				</ul>
 
 				<ul class="nav__list">
 					<li class="nav__item"><a href="fan.board.go?post_board=21"
@@ -115,7 +119,8 @@
 		</nav>
 	</header>
 
-	<div class="content__page" align="center"><jsp:include page="${contentPage }"></jsp:include></div>
+	<div class="content__page" align="center"><jsp:include
+			page="${contentPage }"></jsp:include></div>
 
 	<br>
 	<br>
@@ -130,8 +135,9 @@
 	<footer class="footer">
 		<div class="footer__container container grid">
 			<div>
-				<a href="#" class="footer__logo"> <img
-					src="resources/files/home/logo.png" alt="logo image" /> Travel
+				<a href="#" class="footer__logo" style="color: hsl(19, 16%, 15%);">
+					<img src="resources/files/home/logo.png" alt="logo image" />
+					TRIPPLE
 				</a>
 
 				<p class="footer__description">
@@ -141,17 +147,18 @@
 
 			<div class="footer__content">
 				<div>
-					<h3 class="footer__title">Main Menu</h3>
+					<h3 class="footer__title" style="color: hsl(19, 16%, 15%);">Main
+						Menu</h3>
 					<ul class="footer__links">
-						<li><a href="#" class="footer__link">Stdm</a></li>
-						<li><a href="#" class="footer__link">Cmnty</a></li>
-						<li><a href="#" class="footer__link">Insider</a></li>
-						<li><a href="#" class="footer__link">Games</a></li>
+						<li><a href="#" class="footer__link">SIGHT</a></li>
+						<li><a href="#" class="footer__link">WITH</a></li>
+						<li><a href="#" class="footer__link">REVIEW</a></li>
+						<li><a href="#" class="footer__link">THE FAN</a></li>
 					</ul>
 				</div>
 
 				<div>
-					<h3 class="footer__title">Information</h3>
+					<h3 class="footer__title" style="color: hsl(19, 16%, 15%);">Information</h3>
 					<ul class="footer__links">
 						<li><a href="#" class="footer__link">Team Miracle</a></li>
 						<li><a href="#" class="footer__link">Videos</a></li>
@@ -160,7 +167,7 @@
 				</div>
 
 				<div>
-					<h3 class="footer__title">Address</h3>
+					<h3 class="footer__title" style="color: hsl(19, 16%, 15%);">Address</h3>
 					<ul class="footer__links">
 						<li class="footer__information">서울특별시 미라클시 <br /> 미라클빌딩 777호
 						</li>
@@ -168,7 +175,8 @@
 				</div>
 
 				<div>
-					<h3 class="footer__title">Social Media</h3>
+					<h3 class="footer__title" style="color: hsl(19, 16%, 15%);">Social
+						Media</h3>
 					<ul class="footer__social">
 						<a href="https://www.facebook.com" target="_blank"
 							class="footer__social-link"> <i
@@ -216,11 +224,12 @@
 	<!--=============== [JS MEMBER]===============-->
 	<script src="resources/js/account/account_go.js"></script>
 	<script src="resources/js/account/account_condition.js"></script>
-	
+
 	<script src="resources/js/stadium/seat_detail.js"></script>
 	<script src="resources/js/myPage/myPage.js"></script>
 	<script src="resources/js/news/paging.js"></script>
 	<script src="resources/js/fan/fan_reply.js"></script>
 	<script src="resources/js/fan/fanPost.js"></script>
+
 </body>
 </html>

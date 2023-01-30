@@ -213,7 +213,7 @@ padding-block, padding-inline 은 요소의 쓰기모드 및 방향성, 텍스�
 }
 
 .nav__logo img {
-	height: 50px;
+  height: 50px;
   width: 25px;
 }
 
@@ -296,6 +296,7 @@ padding-block, padding-inline 은 요소의 쓰기모드 및 방향성, 텍스�
 
 /* 밑으로 스크롤할때 위 상단메뉴밑에 쉐도우 생기도록 */
 .bg-header {
+	
   background-color: var(--body-color);
   box-shadow: 0 2px 8px hsla(19, 64%, 24%, .1);
 }

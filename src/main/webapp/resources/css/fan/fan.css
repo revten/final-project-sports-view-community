@@ -6,6 +6,12 @@
 	background-color: #1b2431;
 }
 
+.app-content hr{
+	background: #a0a0a0;
+	height: 0.5px;
+	border: 0;
+}
+
 .board-main {
 	display: flex;
 	align-items: center;
@@ -29,9 +35,9 @@
 
 .container-field {
 	background-color: hsl(1, 1%, 93%);
-	margin-top: 12vh;
+	margin-top: 150px;
 	border-radius: 20px;
-	width: 1200px;
+	width: 1150px;
 	filter: drop-shadow(0px 20px 10px rgba(0, 0, 0, 0.3));
 	color: #202020;
 	font-family: "Montserrat", "Helvetica", "Open Sans", "Arial";
@@ -121,24 +127,22 @@ p, figure {
 .app-container {
 	border-radius: 4px;
 	width: 100%;
-	height: 100%;
+	height: 100%;;
 	max-height: 100%;
-	max-width: 1280px;
 	display: flex;
-	overflow: hidden;
 	box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-	max-width: 2000px;
 	margin: 0 auto;
 }
 
 .app-content {
-	padding: 16px;
+	width: 1150px;
+	margin-top: -3%;
+	padding-left: 8%;
+	padding-right: 8%;
 	background-color: var(--app-bg);
-	height: 100%;
-	flex: 1;
-	max-height: 100%;
+	min-height: 650px;
 	display: flex;
-	flex-direction: column;
+    flex-direction: column;
 }
 
 .app-content-header {
@@ -488,7 +492,7 @@ p, figure {
 	margin-top: 20vh;
 	background-color: hsl(1, 1%, 93%);
 	max-width: 1024px;
-	max-height: 800px;
+	height: 800px;
 	display: flex;
 	overflow: hidden;
 	width: 100%;
@@ -535,13 +539,11 @@ p, figure {
 }
 
 .post__title {
-	margin-left: 35vw;
 	font-size: 20px;
 }
 
 .post__date {
 	margin-top: 1vh;
-	margin-right: 5vw;
 }
 
 .post__2nd-line {
@@ -552,23 +554,21 @@ p, figure {
 }
 
 .post__nick {
-	margin-left: 7vw;
 }
 
 .post__element {
 	margin-top: 1vh;
-	margin-right: 6vw;
 }
 
 .post__content {
 	margin-top: 5vh;
+	min-height: 150px;
 }
 
 .reply_reg_form{
 	margin-top: 5vh;
 	margin-bottom: 15px;
     padding: 20px 15px 20px;
-    width: 65vw;
     background: #fcfcfc;
     border: 1px solid #ddd;
     border-bottom-color: #ccc;
@@ -635,11 +635,16 @@ p, figure {
     border: 1px solid #ccc;
     background: #fff;
     border-radius: 7px;
-    margin-top: 10vh;
     color: #555;
-    font-size: 11px;
+    font-size: 12px;
     cursor: pointer;
     white-space: nowrap;
+}
+
+.reply__content{
+	display: flex;
+	justify-content: flex-start;
+	margin-bottom: 15px;
 }
 
 .sortInfo{
@@ -698,16 +703,3 @@ p, figure {
     white-space: nowrap;
 }
 
-.reply_writterNick{
-	margin-left: 15vh;
-}
-
-.reply__date{
-	margin-right: 15vh;
-}
-
-.reply__content{
-	display: flex;
-	justify-content: flex-start;
-	margin-left: 15vh;
-}

@@ -50,14 +50,21 @@ $('.reply__reg-btn').click(function() {
 				console.log(JSON.stringify(reply)); 
 //				<fmt:formatDate value="${reply.reply_reg_date }" type="both" dateStyle="short" timeStyle="short" />
 				if(result > 0) {
-					let replyContent = `<div class="reply__div">
+					let replyContent = `
+					<div class="reply__div">
+						<p>
+						<hr>
 						<input class="reply__id" type="hidden" name="reply_id" value="${reply.reply_id}" >
-						<span class="reply_writterNick">${reply.member_nick}</span>
-						<span class="reply__date"> ${reply.reply_reg_date}</span>  
-						<span class="reply__content">${reply.reply_content}</span>
-						<span> <button class="reply__update-btn">수정</button>
-							<button class="reply__delete-btn">삭제</button>
-							<br></span>
+						<div class="sortInfo">
+							<div class="reply_writterNick"><b>${reply.member_nick}</b></div>
+							<div class="reply__date">
+								<fmt:formatDate value="${reply.reply_reg_date}" type="both" dateStyle="short" timeStyle="short" />						
+								<button class="reply__update-btn">수정</button>
+								<button class="reply__delete-btn">삭제</button>
+								<br>
+							</div>						
+						</div>						
+						<div class="reply__content">${reply.reply_content}</div>
 					</div>`;
 					
 				$('.reply__list').prepend(replyContent);
@@ -78,7 +85,7 @@ $('.reply__reg-btn').click(function() {
 // 댓글 삭제
 $(document).on('click', '.reply__delete-btn', function() {
 	
-	let reply__div = $(this).parent().parent();
+	let reply__div = $(this).parent().parent().parent();
 	
 	
 	let reply_id = 	$(reply__div).find('.reply__id').val();
@@ -100,7 +107,7 @@ $(document).on('click', '.reply__delete-btn', function() {
 			if(data > 0) {
 				reply__div.remove();
 			} else {
-				console.log('댓글 등록 실패');
+				console.log('댓글 삭제 실패');
 			}
 		},
 		error : function(){
