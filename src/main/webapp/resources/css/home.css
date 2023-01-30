@@ -1,8 +1,8 @@
 @charset "UTF-8";
 
 * {
-  --color-primary: rgb(15, 12, 88);
-  --color-secundary: #03D694;
+  --color-primary: rgba(238, 241, 255, 0.2);
+  --color-secundary: rgba(122, 185, 109, 0.7);
 }
 
 
