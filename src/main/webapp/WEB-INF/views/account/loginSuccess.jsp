@@ -14,10 +14,10 @@
 							class="icon-img">
 					</div> -->
 					<div>
-					<span style="font-size:15px;font-family:Georgia, Serif;">${sessionScope.loginAccount.member_id }</span>
-				<button class="mP_btn" onclick="goMyPage()">
-					<%-- ${sessionScope.loginAccount.member_id }의  --%>마이페이지</button>
-				<button class="mP_btn" onclick="logout()">로그아웃</button>
+					<span style="font-size:15px;font-family:Georgia, Serif;">${sessionScope.loginAccount.member_id }님</span>
+				<a class="mP_btn" onclick="goMyPage()">
+					<%-- ${sessionScope.loginAccount.member_id }의  --%>마이페이지</a>
+				<a class="mP_btn" onclick="logout()">로그아웃</a>
 				</div>
 			</div>
 	</div>

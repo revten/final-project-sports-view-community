@@ -16,37 +16,20 @@
 	<br>
 	<br>
 	<br>
-	<!-- <div class="nav__menu" id="nav-menu" style="width:55%;align:center;">
+	<div class="nav__menu" id="nav-menu" style="width:59%;align:center;">
 				<ul class="nav__list">
-					<li class="nav__item"><a href="clubEvent.board.go"
-						class="nav__link">구단공식이벤트</a></li>
+					<li class="nav__item"><a href='news.soccer.go'>축구</a></li>
 						
-					<li class="nav__item"><a href="news.sports.go"
-						class="nav__link">스포츠</a></li>
-					<li class="nav__item"><a href="newsEvent.main.go"
-						class="nav__link">뉴스</a>
-					</li>
-						
-						
-
+					<li class="nav__item"> <a href='news.baseball.go'>야구</a></li>
+					<li class="nav__item"><a href='news.basketball.go'>농구</a></li>
+					<li class="nav__item"> <a href='news.volleyball.go'>배구 </a></li>
 				</ul>
-		</div> -->
+		</div>
 		<br><br>
 		
-		<div class="div_news">
-		<div class="div_news_nav">
-		<div id="sidebar">
-		<nav class="navbar">
-		 <ul class="navbar__menu">
-            <li onclick="location.href='news.soccer.go'">축구</li>
-            <li onclick="location.href='news.baseball.go'">야구</li>
-            <li onclick="location.href='news.basketball.go'">농구</li>
-            <li onclick="location.href='news.volleyball.go'">배구 </li>
-          </ul>
-          </nav>
-           </div>
-		</div>
+		
 		<div class="div_news_content">
+		<div class="div_news">
 		<div id="SoccerNews"></div>
 		<div id="BaseballNews"></div>
 		<div id="BasketballNews"></div>
