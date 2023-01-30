@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>TRIPPLE: WithGo</title>
 <link rel="stylesheet" href="resources/css/watch/withGo.css" />
 
 </head>
@@ -25,23 +25,38 @@
 			<div class="withGo__header">
 				<!-- 왼쪽 검색바 -->
 				<div>
-				<input class="search-bar" placeholder="Search..." type="text">
+					<input class="search-bar" placeholder="Search..." type="text">
 				</div>
 				<div>
-					<h3 >With Go</h3>
+					<h3>With Go</h3>
 				</div>
 
-					<!-- 이동버튼 -->
-					<div class="move__button-wrapper">
-						<button class="action-button">
-							<span>직관후기</span>
-							<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-								viewBox="0 0 24 24" fill="none" stroke="currentColor"
-								stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-								class="feather feather-filter">
+				<!-- 이동버튼 -->
+				<div class="move__button-wrapper">
+					<c:choose>
+						<c:when test="${sessionScope.loginAccount ne null}">
+							<button class="action-button"
+								onclick="location.href='withGo.reg.go?post_board=${param.post_board}'">
+								<span>리뷰쓰기</span>
+								<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+									viewBox="0 0 24 24" fill="none" stroke="currentColor"
+									stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+									class="feather feather-filter">
 								<polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3" /></svg>
-						</button>
-					</div>
+							</button>
+						</c:when>
+						<c:otherwise>
+							<button class="action-button" onclick="alert('로그인하세요')">
+								<span>새글쓰기</span>
+								<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+									viewBox="0 0 24 24" fill="none" stroke="currentColor"
+									stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+									class="feather feather-filter">
+								<polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3" /></svg>
+							</button>
+						</c:otherwise>
+					</c:choose>
+				</div>
 			</div>
 
 			<!-- 게시글 테이블 시작 -->
@@ -145,138 +160,42 @@
 					</div>
 				</div>
 
-
-				<div class="products-row">
-					<button class="cell-more-button">
-						<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18"
-							viewBox="0 0 24 24" fill="none" stroke="currentColor"
-							stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-							class="feather feather-more-vertical">
+				<!-- resources/ckeditor/fileUpload/ -->
+				<c:forEach var="p" items="${posts }">
+					<div class="products-row">
+						<button class="cell-more-button">
+							<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18"
+								viewBox="0 0 24 24" fill="none" stroke="currentColor"
+								stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+								class="feather feather-more-vertical">
 							<circle cx="12" cy="12" r="1" />
 							<circle cx="12" cy="5" r="1" />
 							<circle cx="12" cy="19" r="1" /></svg>
-					</button>
-					<div class="product-cell image">
-						<img
-							src="https://images.unsplash.com/photo-1484154218962-a197022b5858?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Nnx8a2l0Y2hlbnxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=900&q=60"
-							alt="product"> <span>Lou</span>
+						</button>
+						<div class="product-cell image">
+							<img src="resources/ckeditor/fileUpload/${p.post_img}"
+								style="max-width: 300px"> <span><a
+								href="withGo.detail.go?post_id=${p.post_id }&post_member=${p.post_member}">${p.post_title }
+									[${p.post_reply_count}]</a></span>
+						</div>
+						<div class="product-cell category">
+							<span class="cell-label">스포츠:</span>${board_name}
+						</div>
+						<div class="product-cell status-cell">
+							<span class="cell-label">홈 팀:</span> <span
+								class="status disabled">Disabled</span>
+						</div>
+						<div class="product-cell sales">
+							<span class="cell-label">닉네임:</span>6
+						</div>
+						<div class="product-cell stock">
+							<span class="cell-label">경기날짜</span>46
+						</div>
+						<div class="product-cell price">
+							<span class="cell-label">등록일:</span>$710
+						</div>
 					</div>
-					<div class="product-cell category">
-						<span class="cell-label">Category:</span>Kitchen
-					</div>
-					<div class="product-cell status-cell">
-						<span class="cell-label">Status:</span> <span
-							class="status disabled">Disabled</span>
-					</div>
-					<div class="product-cell sales">
-						<span class="cell-label">Sales:</span>6
-					</div>
-					<div class="product-cell stock">
-						<span class="cell-label">Stock:</span>46
-					</div>
-					<div class="product-cell price">
-						<span class="cell-label">Price:</span>$710
-					</div>
-				</div>
-
-				<div class="products-row">
-					<button class="cell-more-button">
-						<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18"
-							viewBox="0 0 24 24" fill="none" stroke="currentColor"
-							stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-							class="feather feather-more-vertical">
-							<circle cx="12" cy="12" r="1" />
-							<circle cx="12" cy="5" r="1" />
-							<circle cx="12" cy="19" r="1" /></svg>
-					</button>
-					<div class="product-cell image">
-						<img
-							src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1yZWxhdGVkfDR8fHxlbnwwfHx8fA%3D%3D&auto=format&fit=crop&w=900&q=60"
-							alt="product"> <span>Yellow</span>
-					</div>
-					<div class="product-cell category">
-						<span class="cell-label">Category:</span>Decoration
-					</div>
-					<div class="product-cell status-cell">
-						<span class="cell-label">Status:</span> <span
-							class="status active">Active</span>
-					</div>
-					<div class="product-cell sales">
-						<span class="cell-label">Sales:</span>61
-					</div>
-					<div class="product-cell stock">
-						<span class="cell-label">Stock:</span>56
-					</div>
-					<div class="product-cell price">
-						<span class="cell-label">Price:</span>$360
-					</div>
-				</div>
-
-				<div class="products-row">
-					<button class="cell-more-button">
-						<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18"
-							viewBox="0 0 24 24" fill="none" stroke="currentColor"
-							stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-							class="feather feather-more-vertical">
-							<circle cx="12" cy="12" r="1" />
-							<circle cx="12" cy="5" r="1" />
-							<circle cx="12" cy="19" r="1" /></svg>
-					</button>
-					<div class="product-cell image">
-						<img
-							src="https://images.unsplash.com/photo-1595526114035-0d45ed16cfbf?ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8YmVkcm9vbXxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=900&q=60"
-							alt="product"> <span>Dreamy</span>
-					</div>
-					<div class="product-cell category">
-						<span class="cell-label">Category:</span>Bedroom
-					</div>
-					<div class="product-cell status-cell">
-						<span class="cell-label">Status:</span> <span
-							class="status disabled">Disabled</span>
-					</div>
-					<div class="product-cell sales">
-						<span class="cell-label">Sales:</span>41
-					</div>
-					<div class="product-cell stock">
-						<span class="cell-label">Stock:</span>66
-					</div>
-					<div class="product-cell price">
-						<span class="cell-label">Price:</span>$260
-					</div>
-				</div>
-
-				<div class="products-row">
-					<button class="cell-more-button">
-						<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18"
-							viewBox="0 0 24 24" fill="none" stroke="currentColor"
-							stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-							class="feather feather-more-vertical">
-							<circle cx="12" cy="12" r="1" />
-							<circle cx="12" cy="5" r="1" />
-							<circle cx="12" cy="19" r="1" /></svg>
-					</button>
-					<div class="product-cell image">
-						<img
-							src="https://images.unsplash.com/photo-1554995207-c18c203602cb?ixid=MnwxMjA3fDB8MHxzZWFyY2h8NXx8aW50ZXJpb3J8ZW58MHwwfDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=900&q=60"
-							alt="product"> <span>Boheme</span>
-					</div>
-					<div class="product-cell category">
-						<span class="cell-label">Category:</span>Furniture
-					</div>
-					<div class="product-cell status-cell">
-						<span class="cell-label">Status:</span> <span
-							class="status active">Active</span>
-					</div>
-					<div class="product-cell sales">
-						<span class="cell-label">Sales:</span>32
-					</div>
-					<div class="product-cell stock">
-						<span class="cell-label">Stock:</span>40
-					</div>
-					<div class="product-cell price">
-						<span class="cell-label">Price:</span>$350
-					</div>
-				</div>
+				</c:forEach>
 
 			</div>
 
