@@ -84,7 +84,7 @@ textColor: 'white'
 		</div>
 		<div class="main-container">
 			<div class="modify-container">
-			<h3 align="center">회원정보</h3>
+			<div align="center" class="myPage_title">회원정보</div>
 			<br><br>
 			<div class="input-container">
 				<b class="mypage_name">ID</b> <b class="text">${sessionScope.loginAccount.member_id }</b><br>

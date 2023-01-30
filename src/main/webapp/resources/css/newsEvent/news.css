@@ -78,7 +78,7 @@
 	box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3); */
 } 
 .div_news{
-	margin-left: 14%; margin-right: 25%;
+	margin-left: 8%; margin-right: 25%;
 }
 
 
@@ -90,6 +90,7 @@
 
 #sidebar {
 	width:100%;
+	float:left;
 }
 
 #sidebar ul {
@@ -106,14 +107,12 @@
 }
 
 .navbar__menu {
-	list-style: none;
 	color: black;
 }
 
 
 
 .navbar__icons {
-	list-style: none;
 	color: rgb(152, 187, 201);
 }
 

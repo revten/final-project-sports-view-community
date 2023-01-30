@@ -116,7 +116,7 @@
 		</div>
 
 	</section>
-<hr>
+<hr style="width: 1200px;">
 
 
 	<!--==================== 게시판 ====================-->
@@ -191,11 +191,12 @@
 					<span><a href="clubEvent.page.change?pg=${pageCount}">[맨끝]</a></span>
 				</c:if>
 			</div>
+			<br>
+			<hr style="width: 1200px;">
 		</div>
 
 	</div>
-	<br>
-	<hr>
+	
 	<script>
 		function boardSearchCheck() {
 			let searchInput = document.boardSearchForm.search;
