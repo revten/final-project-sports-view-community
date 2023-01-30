@@ -1,24 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
-<%-- <script>
-	$(function() {
-		ClassicEditor.create(document.querySelector('#editor'), {
-			language : "ko"
-		});
-	});
-</script>--%>
-<script>
-$(function () {
-	CKEDITOR.replace('editor', {
-		filebrowserUploadUrl : 'fileupload.do',
-	});
-}); // ck에디터 적용: 하기 내용 그대로 복붙하고 연결점(form action만 textarea의 name을 DB테이블의 컬럼에 맞춰서 수정해주면 됨
-</script>
+<title>TRIPPLE: WithGo</title>
+
 </head>
 <body>
 	<br>
@@ -27,20 +16,63 @@ $(function () {
 	<br>
 	<br>
 	<br>
-	<h3>같이 보러 가기</h3>
-	<form action="withGo.upload.do" method="POST">
-		<div class="form-group">
-			<label for="title">제목</label>
-			<input type="text" class="form-control"
-				id="title" name="wg_title">
-		</div>
-		<div class="form-group">
-			<label for="content"></label>
-			<textarea class="form-control" rows="5" id="editor" name="wg_content"></textarea>
-			<input type="hidden" name="wg_img" value="${bottomSplit }">
-			<input type="hidden" name="wg_video" value="-">
-		</div>
-		<button type="submit" id="createPostBtn" class="btn btn-primary" name="wg_cat" value="withGo"> 등록</button>
-	</form>
+	<div class="withGo__container">
+
+		<div class="app-content">
+
+			<!-- 2번줄 헤더 -->
+			<div class="withGo__header">
+				<!-- 왼쪽 검색바 -->
+				<div>
+					<input class="search-bar" placeholder="Search..." type="text">
+				</div>
+				<div>
+					<h3>With Go</h3>
+				</div>
+
+				<!-- 이동버튼 -->
+				<div class="move__button-wrapper">
+					<c:choose>
+						<c:when test="${sessionScope.loginAccount ne null}">
+							<button class="action-button"
+								onclick="location.href='withGo.reg.go?post_board=${param.post_board}'">
+								<span>리뷰쓰기</span>
+								<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+									viewBox="0 0 24 24" fill="none" stroke="currentColor"
+									stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+									class="feather feather-filter">
+								<polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3" /></svg>
+							</button>
+						</c:when>
+						<c:otherwise>
+							<button class="action-button" onclick="alert('로그인하세요')">
+								<span>새글쓰기</span>
+								<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+									viewBox="0 0 24 24" fill="none" stroke="currentColor"
+									stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+									class="feather feather-filter">
+								<polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3" /></svg>
+							</button>
+						</c:otherwise>
+					</c:choose>
+				</div>
+			</div>
+
+					<!-- 내용넣기 -->
+
+				
+					<!-- 컨텐트 끝 -->
+					
+				</div>
+			</div>
+
+	<script>
+		document.querySelector(".jsFilter").addEventListener(
+				"click",
+				function() {
+					document.querySelector(".filter-menu").classList
+							.toggle("active");
+				});
+	</script>
 </body>
 </html>
