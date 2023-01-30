@@ -18,11 +18,11 @@
 	<br>
 	<div class="nav__menu" id="nav-menu" style="width:59%;align:center;">
 				<ul class="nav__list">
-					<li class="nav__item"><a href='news.soccer.go'>축구</a></li>
+					<li class="nav__item"><a class="nav__link" href='news.soccer.go'>축구</a></li>
 						
-					<li class="nav__item"> <a href='news.baseball.go'>야구</a></li>
-					<li class="nav__item"><a href='news.basketball.go'>농구</a></li>
-					<li class="nav__item"> <a href='news.volleyball.go'>배구 </a></li>
+					<li class="nav__item"> <a class="nav__link" href='news.baseball.go'>야구</a></li>
+					<li class="nav__item"><a class="nav__link" href='news.basketball.go'>농구</a></li>
+					<li class="nav__item"> <a class="nav__link" href='news.volleyball.go'>배구 </a></li>
 				</ul>
 		</div>
 	<br><br>

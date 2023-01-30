@@ -116,7 +116,7 @@
 		</div>
 
 	</section>
-<hr style="width: 1200px;">
+<hr style="width: 1000px;min-width: 800px;">
 
 
 	<!--==================== 게시판 ====================-->
@@ -192,7 +192,7 @@
 				</c:if>
 			</div>
 			<br>
-			<hr style="width: 1200px;">
+			<hr style="width: 1000px;min-width: 800px;">
 		</div>
 
 	</div>
