@@ -35,7 +35,7 @@
 * 팀원 정권 : THE FAN 페이지, My페이지, 자료수집
 
 ## 🏐ERD
-
+![DB_설계](https://user-images.githubusercontent.com/97932245/215464069-100780fa-216c-428f-bb07-8783b07059c0.jpg)
 
 ## 🏀View
 ![view설게_1](https://user-images.githubusercontent.com/97932245/215462904-4746b0c1-bb2c-4b9f-ba35-85ad1080e296.jpg)
