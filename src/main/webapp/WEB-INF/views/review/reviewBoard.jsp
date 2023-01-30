@@ -11,6 +11,8 @@
 </head>
 
 <body>
+<div style="float: left;position: absolute;left: -14%;"><img src="resources/files/backgroundImg/review4.png"></div>
+	<div style="float: right;position: absolute;top:400px; left : 80%;"><img src="resources/files/backgroundImg/review5.png"></div>
 	<div class="watch__container">
 
 		<!-- watch 페이지 헤더 -->

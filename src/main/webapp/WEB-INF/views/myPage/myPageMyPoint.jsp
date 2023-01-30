@@ -10,12 +10,10 @@
 <link rel="stylesheet" href="resources/css/myPage/myPage.css" />
 </head>
 <body>
-<div style="float: left;position: absolute;top: 100px;left: 40%;"><img src="resources/files/backgroundImg/mypage1.png"></div>
-	<div style="float: right;position: absolute;top:-10px; left : 77%;"><img src="resources/files/backgroundImg/mypage2.png"></div>
-	<div style="float: right;position: absolute;top:400px; left : -7%;"><img src="resources/files/backgroundImg/mypage3.png"></div>
-	<div style="float: right;position: absolute;top:400px; left : 67%;"><img src="resources/files/backgroundImg/mypage4.png"></div>
-	<div style="float: right;position: absolute;top:650px; left : 30%;"><img src="resources/files/backgroundImg/mypage5.png"></div>
-	<div style="float: right;position: absolute;top:10px; left : -9%;"><img src="resources/files/backgroundImg/mypage6.png"></div>
+<div style="float: left;position: absolute;top: 100px;left: 30%;"><img src="resources/files/backgroundImg/basketball3.png"></div>
+	<div style="float: right;position: absolute;top:400px; left : 57%;"><img src="resources/files/backgroundImg/coach2.jpg"></div>
+	<div style="float: right;position: absolute;top:550px; left : 7%;"><img src="resources/files/backgroundImg/soccer1.png"></div>
+	<div style="float: right;position: absolute;top:50px; left : 1%;"><img src="resources/files/backgroundImg/mypage1.png"></div>
 	<div class="myPage_container">
 		<div class="sidebar">
 			<div class="side-wrapper">
