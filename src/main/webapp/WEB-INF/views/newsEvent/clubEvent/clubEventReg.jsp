@@ -71,7 +71,8 @@
 		</div>
 	</div>
 	<br><br>
-
+		<div style="float: left;position: absolute;left: -9%;"><img src="resources/files/backgroundImg/ronaldo.png"></div>
+		<div style="float: right;position: absolute;top:400px; left : 66%;"><img src="resources/files/backgroundImg/messi.png"></div>
 
 	<!--==================== 글등록칸 ====================-->
 	<main class="boardReg__Main">

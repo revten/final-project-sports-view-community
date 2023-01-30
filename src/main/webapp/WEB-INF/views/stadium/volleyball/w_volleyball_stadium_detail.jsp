@@ -23,13 +23,13 @@
 				src="resources/files/stadium/volleyball/seating_chart/${seat}"><br>
 			<map name="workmap">
 				<area style="cursor: pointer;" class="imgArea" id="12"
-					coords="73,0,432,114" shape="rect">
+					coords="-1,273,1023,0" shape="rect">
 				<area style="cursor: pointer;" class="imgArea" id="9"
-					coords="1,117,138,371" shape="rect">
+					coords="0,274,410,560" shape="rect">
 				<area style="cursor: pointer;" class="imgArea" id="3"
-					coords="364,117,499,371" shape="rect">
+					coords="609,273,1023,561" shape="rect">
 				<area style="cursor: pointer;" class="imgArea" id="6"
-					coords="84,373,419,498" shape="rect">
+					coords="-1,561,1023,795" shape="rect">
 			</map>
 			<button id="reserveBtn">예매하러 가기</button><button onclick="with_go_write_go()">같이 보러 가기</button>
 			<br><br><br>
