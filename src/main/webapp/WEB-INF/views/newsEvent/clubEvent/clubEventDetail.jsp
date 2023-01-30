@@ -48,7 +48,8 @@
 	<br>
 	<br>
 
-
+		<div style="float: left;position: absolute;left: -9%;"><img src="resources/files/backgroundImg/ronaldo.png"></div>
+		<div style="float: right;position: absolute;top:400px; left : 66%;"><img src="resources/files/backgroundImg/messi.png"></div>
 	<!--==================== Nav바 ====================-->
 	<div class="nav__menu" id="nav-menu" style="width: 55%; align: center;">
 		<ul class="nav__list">
