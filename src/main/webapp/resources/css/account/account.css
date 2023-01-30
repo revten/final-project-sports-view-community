@@ -184,6 +184,7 @@
 	border-radius: 5px;
 	transition: 0.25s;
 	cursor: pointer;
+	font-size: 10px;
 }
 
 .mP_btn:active {

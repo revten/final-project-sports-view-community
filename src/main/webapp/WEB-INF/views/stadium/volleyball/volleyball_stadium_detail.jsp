@@ -13,11 +13,12 @@
 	<br>
 	<br>
 	<br>
+	<span>아래 경기장 좌석을 클릭하여 상세 전경을 감상해보세요</span>
 	<div id="start"
 		style="position: relative; display: flex; flex-direction: column; justify-content: center; align-items: center; width: 1000px; height: 1000px;">
 		<div style="display: inline-block; align-items: flex-start;">
 			<img id="seat" usemap="#workmap"
-				style="position: relative; width: 1024px; height: 800px; margin: 300px 0px 10px 0px;"
+				style="position: relative; width: 1024px; height: 800px; margin: 450px 0px 10px 0px;"
 				src="resources/files/stadium/volleyball/seating_chart/${seat}"><br>
 			<map name="workmap">
 				<area style="cursor: pointer;" class="imgArea" id="12"
@@ -77,12 +78,13 @@
 	</script>
 	<!-- 전경 -->
 	<script type="text/javascript">
-		$('.imgArea').mouseover(function() {
+		$('.imgArea').click(function() {
 			let areaId = $(this).attr("id");
-			let imgName = "#test_" + areaId;
-			$(imgName).toggle('slow');
+			let urlParams = new URL(location.href).searchParams;
+			let team = urlParams.get('team');
+			let imgName = "test_" + areaId + ".jpg";
+			window.open("resources/final_img_file/volleyball_man/seating_chart/"+team+"/"+imgName,"teamImg","left=380px, height=800px, width=750px");
 		});
-
 		/*$(".imgArea").mouseover(function() {
 		 let areaId = $(this).attr("id");
 		 let imgName = "#test_"+areaId;
@@ -97,13 +99,13 @@
 		 $(imgName).css("display", "none");
 		 });*/
 	</script>
-	<script>
+	<!--  <script>
 		$('.imgArea').mouseleave(function() {
 			let areaId = $(this).attr("id");
 			let imgName = "#test_" + areaId;
 			$(imgName).toggle('slow');
-		});
-	</script>
+		}); 
+	</script> -->
 	<!-- ------------------map---------------------  -->
 	<script type="text/javascript"
 		src="//dapi.kakao.com/v2/maps/sdk.js?appkey=1950a2b56dd3863d5c5f75c779612745"></script>

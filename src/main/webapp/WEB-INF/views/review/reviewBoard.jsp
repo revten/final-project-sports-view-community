@@ -11,19 +11,13 @@
 </head>
 
 <body>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-
-
 	<div class="watch__container">
 
 		<!-- watch 페이지 헤더 -->
 		<div class="watch__header">
-			<input class="search-bar" placeholder="Search..." type="text">
+			<div class="watch__header-title">
+				<a href="review.board.go?post_board=12" class="nav__link" style="font-size:15px" >REVIEW</a>
+			</div>
 			<div class="watch__header-title">
 				스포츠 열기는<span> 모두와 함께</span>
 			</div>
@@ -146,16 +140,22 @@
 
 		<!-- 리뷰 : bot -->
 		<div class="watch__wrapper">
-
-
-
-
-			<!-- 리뷰 : bot right -->
 			<div class="review__posts__wrapper">
 
 				<!-- 리뷰 : bot right top -->
 				<div class="review__posts__menu">
-					<div class="review__posts__genre">Game Reviews</div>
+					<div class="review__posts__genre">
+						<!-- 왼쪽 검색바 -->
+						<form action="review.search.do" name="boardSearchForm"
+							onsubmit="return boardSearchCheck();">
+							<input type="hidden" name="post_board"
+								value="${param.post_board}">
+							<div id="snsSearchArea">
+								<input class="search-bar" name="search" type="search"
+									maxlength="10" autocomplete="off" placeholder="검색">
+							</div>
+						</form>
+					</div>
 					<div class="review__sports__types">
 						<a href="#" class="review__sports__type active"> All Sports</a> <a
 							href="#" class="review__sports__type"> Baseball</a> <a href="#"
@@ -165,31 +165,32 @@
 					</div>
 				</div>
 
+								
 				<!-- 리뷰 : bot right bot -->
 				<div class="review__posts">
 					<c:forEach var="p" items="${posts }">
-						<div class="review__post">
-							<div class="review__post__content-wrapper">
-								<img src="resources/ckeditor/fileUpload/${p.post_img}"
-									style="max-width: 300px">
-
-								<div class="review__post__content">
-
-									<div class="review__post__title">
-										<a
+					<div class="review__post">
+						<div class="review__post__content-wrapper">
+							<img src="resources/ckeditor/fileUpload/${p.post_img}" alt="" class=review__post__img>
+							<div class="review__post__content">
+								<div class="review__post__title"><a
 											href="review.detail.go?post_id=${p.post_id }&post_member=${p.post_member}">${p.post_title }
-											[${p.post_reply_count}]</a>
-									</div>
-									<div class="review__post__by">by ${p.member_nick}</div>
-									<div class="rate">
-										<span class="review__voters card-vote">${p.post_like_count}
-											추천</span>
-									</div>
-									<div class="review__sum card-sum">${p.post_content}</div>
+											[${p.post_reply_count}]</a></div>
+								<div class="review__post__by">by ${p.member_nick}</div>
+								<div class="rate">
+									<span class="review__voters card-vote">${p.post_like_count} 추천</span>
 								</div>
+								<div class="review__sum card-sum"> Readers of all ages and
+									walks of life have drawn inspiration and empowerment from
+									Elizabeth Gilbert’s books for years.</div>
+									<!-- ck에디터 안에 이미지주소도 들어있어서 이미지가 또 나온다 -->
 							</div>
 						</div>
+					</div>
+						
 					</c:forEach>
+
+					<!--샘플 -->
 					<div class="review__post">
 						<div class="review__post__content-wrapper">
 							<img
@@ -207,8 +208,33 @@
 							</div>
 						</div>
 					</div>
+					
+				</div>
+
+				<!-- 페이징 -->
+				<div class="board__bot-paging">
+					<c:if test="${curPage != 1}">
+						<span><span style="cursor: pointer"
+							onclick="location.href='review.page.change?pg=1&post_board=${param.post_board }'">[맨처음]</span></span>
+						<span><span style="cursor: pointer"
+							onclick="location.href='review.page.change?pg=${curPage - 1}&post_board=${param.post_board }'">
+								◀이전 </span></span>
+					</c:if>
+					<c:forEach var="i" begin="1" end="${pageCount}">
+						<span style="cursor: pointer"
+							onclick="location.href='review.page.change?pg=${i}&post_board=${param.post_board }'">
+							[${i}] </span>
+					</c:forEach>
+					<c:if test="${curPage != pageCount}">
+						<span> <span style="cursor: pointer"
+							onclick="location.href='review.page.change?pg=${curPage + 1}&post_board=${param.post_board }'">
+								다음▶ </span></span>
+						<span><span style="cursor: pointer"
+							onclick="location.href='review.page.change?pg=${pageCount}&post_board=${param.post_board }'">[맨끝]</span></span>
+					</c:if>
 				</div>
 			</div>
+
 		</div>
 	</div>
 
@@ -231,6 +257,6 @@
 		srWatch.reveal(`.watch__wrapper`, {
 			origin : 'right'
 		});
-	</script>
+	</script> 
 </body>
 </html>
