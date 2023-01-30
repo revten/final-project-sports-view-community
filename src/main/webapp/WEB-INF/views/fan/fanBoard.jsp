@@ -30,6 +30,9 @@
 	<br>
 	<br>
 	<main role="main" class="col-md-9 ml-sm-auto col-lg-10 my-3"> <!-- 부트스트랩 클래스명이라 main은 남겨야 할듯 -->
+	<div style="float: left;position: absolute;left: -9%;"><img src="resources/files/backgroundImg/eventImg1.png"></div>
+	<div style="float: right;position: absolute;top:400px; left : 66%;"><img src="resources/files/backgroundImg/eventImg2.png"></div>
+	<div style="float: left;position: absolute;top: 900px;left: -9%;"><img src="resources/files/backgroundImg/fan1.png"></div>
 	<div class="container-field">
 		<div class="board-main">
 			<!--==================== fan__best 부분 - 종목별 베스트 (각 게시판별로 CRUD별로 존재해야)  ====================-->
