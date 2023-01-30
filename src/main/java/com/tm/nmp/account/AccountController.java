@@ -51,7 +51,9 @@ public class AccountController {
 			System.out.println(watchingPage);
 			response.sendRedirect(watchingPage);	
 		}else {
-			req.setAttribute("contentPage", "account/loginPage.jsp");
+			// account.login.do가 실행되는 순간 loginPage가 Referer로 저장되어 loginPage를 보여주게됨
+			String watchingPage = (String) req.getHeader("Referer");
+			response.sendRedirect(watchingPage);	
 		}
 	}
 

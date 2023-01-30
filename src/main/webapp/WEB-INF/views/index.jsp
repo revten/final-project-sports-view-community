@@ -100,7 +100,6 @@
 					<li class="nav__item"><a href="news.main.go" class="nav__link">NEWS</a></li>
 				</ul>
 
-
 				<!-- close button -->
 				<div class="nav__close" id="nav-close">
 					<i class="ri-close-line"></i>
@@ -111,12 +110,10 @@
 					src="resources/files/home/leaf-branch-3.png" alt="nav image"
 					class="nav__img-2" />
 			</div>
-
-
 		</nav>
 	</header>
 
-	<div align="center"><jsp:include page="${contentPage }"></jsp:include></div>
+	<div class="content__page" align="center"><jsp:include page="${contentPage }"></jsp:include></div>
 
 	<br>
 	<br>
