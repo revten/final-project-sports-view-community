@@ -39,4 +39,5 @@
 
 ## 🏀View
 ![view설게_1](https://user-images.githubusercontent.com/97932245/215462904-4746b0c1-bb2c-4b9f-ba35-85ad1080e296.jpg)
+![view설게_2](https://user-images.githubusercontent.com/97932245/215463839-533bb48d-78c1-4092-8f1b-4c600d652f92.jpg)
 ## 📌기능 코드
