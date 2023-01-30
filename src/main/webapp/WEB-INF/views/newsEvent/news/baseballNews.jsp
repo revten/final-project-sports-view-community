@@ -17,7 +17,6 @@
 	<br>
 	<br>
 	<br>
-	<br>
 	<div style="float: left;position: absolute;left: -14%;"><img src="resources/files/backgroundImg/baseball1.png"></div>
 		<div style="float: left;position: absolute;top:600px;left: -9%;"><img src="resources/files/backgroundImg/baseball2.png"></div>
 		<div style="float: right;position: absolute;top:400px; left : 66%;"><img src="resources/files/backgroundImg/eventImg2.png"></div>
