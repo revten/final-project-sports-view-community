@@ -14,6 +14,12 @@
   align-items: center;
 }
 
+.reviewBoardDetail__main{
+	margin-top: -60px;
+	padding-left: 50px;
+	padding-right: 50px;
+}
+
 .search-bar {
   background-color: #f3f6fd;
   border: 1px solid #f3f6fd;
@@ -80,6 +86,7 @@
   background-color: var(--page-bg-color);
   margin: 0 auto;
   overflow: hidden;
+  margin-top: 150px;
   filter: drop-shadow(0px 20px 10px rgba(0, 0, 0, 0.3));
 }
 
@@ -88,7 +95,6 @@
   height: 70px;
   width: 100%;
   background-color: var(--page-bg-color);
-  padding: 0 30px;
   font-size: 14px;
   font-weight: 500;
   color: #8b939c;

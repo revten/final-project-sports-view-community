@@ -52,6 +52,7 @@
 <link rel="stylesheet" href="resources/css/newsEvent/clubEvent.css" />
 <link rel="stylesheet" href="resources/css/review.css" />
 <link rel="stylesheet" href="resources/css/withGo.css" />
+<link rel="stylesheet" href="resources/css/fan/fan.css">
 
 <!-- ---------------------------------------------------------------------------- -->
 </head>

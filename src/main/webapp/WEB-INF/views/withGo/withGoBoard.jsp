@@ -10,24 +10,18 @@
 
 </head>
 <body>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
 	<div class="withGo__container">
 
-		<div class="app-content">
+		<div class="withGo__content">
 
 			<!-- 2번줄 헤더 -->
-			<div class="withGo__header">
+			<div class="withGo__header" style="margin-bottom: 10px;">
 				<!-- 왼쪽 검색바 -->
 				<form action="withGo.search.do" name="boardSearchForm"
 					onsubmit="return boardSearchCheck();">
 					<input type="hidden" name="post_board" value="${param.post_board}">
 					<div id="snsSearchArea">
-						<input class="search-bar" name="search" type="search"
+						<input class="withGo__search-bar" name="search" type="search"
 							maxlength="10" autocomplete="off" placeholder="검색">
 					</div>
 				</form>
@@ -135,13 +129,5 @@
 
 		</div>
 	</div>
-	<script>
-		document.querySelector(".jsFilter").addEventListener(
-				"click",
-				function() {
-					document.querySelector(".filter-menu").classList
-							.toggle("active");
-				});
-	</script>
 </body>
 </html>

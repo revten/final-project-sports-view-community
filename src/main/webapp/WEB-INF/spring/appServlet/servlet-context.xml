@@ -92,7 +92,7 @@
 		<beans:property name="maxInMemorySize" value="10485760" />
 	</beans:bean>
 	<beans:bean id="bo" class="com.tm.nmp.board.BoardOption">
-		<beans:constructor-arg value="10"></beans:constructor-arg>
+		<beans:constructor-arg value="12"></beans:constructor-arg>
 	</beans:bean>
 
 </beans:beans>

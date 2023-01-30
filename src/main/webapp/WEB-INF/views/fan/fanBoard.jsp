@@ -24,11 +24,6 @@
 <script src="resources/js/fan/fanBoard.js"></script>
 </head>
 <body>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
 	<main role="main" class="col-md-9 ml-sm-auto col-lg-10 my-3"> <!-- 부트스트랩 클래스명이라 main은 남겨야 할듯 -->
 	<div class="container-field">
 		<div class="board-main">

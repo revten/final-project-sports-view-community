@@ -11,12 +11,6 @@
 </head>
 
 <body>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
 	<div class="watch__container">
 
 		<!-- watch 페이지 헤더 -->
@@ -245,7 +239,7 @@
 		</div>
 	</div>
 
-<	<script>
+	<script>
 		/*=============== 스크롤 나타나는 효과 ===============*/
 		const srWatch = ScrollReveal({ /* srSTM으로 한것은, sr이 메인에서 쓰여서. STM은 stadiumMain */
 			origin : 'top',
