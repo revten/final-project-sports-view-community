@@ -105,10 +105,12 @@
 							<input type="hidden" name="post_image" value="${bottomSplit}">
 							<input type="hidden" name="post_file" value="-">
 						</div>
-
+						
+						<div id="buttonArea">
 						<button id="goBoardBtn" type="button"
 							onclick="location.href='fan.board.go?post_board=21'">목록으로</button>
 						<button id="createPostBtn">등록</button>
+						</div>
 					</form>
 				</div>
 			</div>

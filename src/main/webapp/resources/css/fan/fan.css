@@ -552,12 +552,12 @@ p, figure {
 }
 
 .post__nick {
-	margin-left: 33vw;
+	margin-left: 7vw;
 }
 
 .post__element {
 	margin-top: 1vh;
-	margin-right: 5vw;
+	margin-right: 6vw;
 }
 
 .post__content {
@@ -567,7 +567,8 @@ p, figure {
 .reply_reg_form{
 	margin-top: 5vh;
 	margin-bottom: 15px;
-    padding: 12px 16px 20px;
+    padding: 20px 15px 20px;
+    width: 65vw;
     background: #fcfcfc;
     border: 1px solid #ddd;
     border-bottom-color: #ccc;
@@ -634,10 +635,19 @@ p, figure {
     border: 1px solid #ccc;
     background: #fff;
     border-radius: 7px;
+    margin-top: 10vh;
     color: #555;
     font-size: 11px;
     cursor: pointer;
     white-space: nowrap;
+}
+
+.sortInfo{
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	margin-top: 1vh;
+	margin-bottom: 1vh;
 }
 
 #LikeBtn{
@@ -652,4 +662,52 @@ p, figure {
     font-size: 11px;
     cursor: pointer;
     white-space: nowrap;
+}
+
+#buttonArea{
+	margin-top: 5vh;
+}
+
+#goBoardBtn{
+	margin-top: 1vh;
+	display: inline-block;
+    position: relative;
+    margin: -2px 0 0 4px;
+    padding: 2px 7px;
+    border: 1px solid #ccc;
+    background: #fff;
+    border-radius: 7px;
+    color: #555;
+    font-size: 11px;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+#createPostBtn{
+	margin-top: 1vh;
+	display: inline-block;
+    position: relative;
+    margin: -2px 0 0 4px;
+    padding: 2px 7px;
+    border: 1px solid #ccc;
+    background: #fff;
+    border-radius: 7px;
+    color: #555;
+    font-size: 11px;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+.reply_writterNick{
+	margin-left: 15vh;
+}
+
+.reply__date{
+	margin-right: 15vh;
+}
+
+.reply__content{
+	display: flex;
+	justify-content: flex-start;
+	margin-left: 15vh;
 }
