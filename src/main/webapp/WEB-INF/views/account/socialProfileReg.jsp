@@ -150,7 +150,7 @@ function checkOne(element) {
 			<!-- value="${ipv4 }"-->
 			<!-- member intro 인풋 창-->
 			<div class="profileReg__introInput-1">자기소개</div>
-			<textarea name="member_intro" cols="50" rows="10"></textarea>
+			<textarea name="member_intro" cols="50" rows="5"></textarea>
 			<!-- member club 선택 창 -->
 			<div>
 				<label>좋아하는 리그 선택</label> <select onchange="pick(this)">
