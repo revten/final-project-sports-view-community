@@ -30,8 +30,9 @@
 				<area style="cursor: pointer;" class="imgArea" id="6"
 					coords="-1,561,1023,795" shape="rect">
 			</map>
-			<button id="reserveBtn">예매하러 가기</button><button onclick="with_go_write_go()">같이 보러 가기</button>
-			<br><br><br>
+			<button id="reserveBtn">예매하러 가기</button>
+			<button onclick="with_go_write_go()">같이 보러 가기</button>
+			<br> <br> <br>
 			<!-- map div -->
 			<div id="map"
 				style="margin: 20px 0px 15px 0px; width: 800px; height: 500px;"></div>
@@ -78,13 +79,18 @@
 	</script>
 	<!-- 전경 -->
 	<script type="text/javascript">
-		$('.imgArea').click(function() {
-			let areaId = $(this).attr("id");
-			let urlParams = new URL(location.href).searchParams;
-			let team = urlParams.get('team');
-			let imgName = "test_" + areaId + ".jpg";
-			window.open("resources/final_img_file/soccer/seating_chart/"+team+"/"+imgName,"teamImg","left=380px, height=800px, width=750px");
-		});
+		$('.imgArea').click(
+				function() {
+					let areaId = $(this).attr("id");
+					let urlParams = new URL(location.href).searchParams;
+					let team = urlParams.get('team');
+					let imgName = "test_" + areaId + ".jpg";
+					window.open(
+							"resources/final_img_file/soccer/seating_chart/"
+									+ team + "/" + imgName, "teamImg",
+							"left=380px, height=800px, width=750px");
+				});
+
 		/*$(".imgArea").mouseover(function() {
 		 let areaId = $(this).attr("id");
 		 let imgName = "#test_"+areaId;

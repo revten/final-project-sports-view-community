@@ -48,21 +48,8 @@
 	<br>
 	<br>
 
-
+		
 	<!--==================== Nav바 ====================-->
-	<div class="nav__menu" id="nav-menu" style="width: 55%; align: center;">
-		<ul class="nav__list">
-			<li class="nav__item"><a href="newsEvent.main.go" class="nav__link">뉴스</a></li>
-			<li class="nav__item"><a href="clubEvent.board.go"
-				class="nav__link">구단공식이벤트</a></li>
-			
-		</ul>
-
-		<!-- close button -->
-		<div class="nav__close" id="nav-close">
-			<i class="ri-close-line"></i>
-		</div>
-	</div>
 	<br><br>
 
 
@@ -71,7 +58,7 @@
 	<section class="post section">
 		<div class="post__container">
 			<div class="post__1st-line">
-				<div class="post__title">탭:${post.post_category}&nbsp;제목:${post.post_title}</div>
+				<div class="post__title">탭:${post.post_category}제목:${post.post_title}</div>
 				<div class="post__date">
 					<c:choose>
 						<c:when test="${post.post_update_date eq null }">
@@ -88,8 +75,8 @@
 
 			<div class="post__2nd-line">
 				<div class="post__element">닉네임:${post.member_nick}</div>
-				<div class="post__element">NO.:${post.post_id }&nbsp;조회수:${post.post_hit_count }&nbsp;
-					추천수:${post.post_like_count}&nbsp;스크랩수:${post.post_scrap_count}</div>
+				<div class="post__element">NO.:${post.post_id }조회수:${post.post_hit_count }&nbsp;
+					추천수:${post.post_like_count}스크랩수:${post.post_scrap_count}</div>
 			</div>
 
 			<div class="post__content">${post.post_content}</div>
@@ -124,7 +111,7 @@
 		<table class="reply__table">
 			<tr>
 				<td><c:forEach var="pr" items="${post.replies }">
-						<span>${post.member_nick }</span>-&nbsp;${pr.reply_content }&nbsp;
+						<span>${post.member_nick }</span>-${pr.reply_content }
 	
 							<c:if test="${pr.reply_update_date eq null }">
 							<span>(<fmt:formatDate value="${pr.reply_reg_date }"
