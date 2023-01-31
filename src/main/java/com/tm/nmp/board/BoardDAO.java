@@ -320,19 +320,10 @@ public class BoardDAO {
 		// 리플을 등록한 사람도 세팅해주자
 		AccountDTO ac = (AccountDTO) req.getSession().getAttribute("loginAccount");
 		rp.setReply_member(ac.getMember_id());
-		
-/*		// 리플 카운트수 -> post테이블에도 업데이트
-		int post_id = Integer.parseInt( req.getParameter("reply_post"));
-		System.out.println("post_id:" + post_id);
-		rp.setReply_post(post_id);
-		
-		if (ss.getMapper(BoardMapper.class).updateReplyCount(rp) == 1) {
-			req.setAttribute("result", "댓글수 업데이트 성공");
-		} else {
-			req.setAttribute("result", "댓글수 업데이트 실패");
-		}*/
 
-		if (ss.getMapper(BoardMapper.class).regReply(rp) == 1) {
+		int a = ss.getMapper(BoardMapper.class).regReply(rp);
+		System.out.println(a);
+		if (a == -1) {
 			req.setAttribute("result", "댓글쓰기 성공");
 			// 생성토큰을 저장해두기
 			req.getSession().setAttribute("successToken", token);
@@ -352,7 +343,7 @@ public class BoardDAO {
 	}
 
 	public int deleteReply(HttpServletRequest req, ReplyVO rp) {
-		if (ss.getMapper(BoardMapper.class).deleteReply(rp) == 1) {
+		if (ss.getMapper(BoardMapper.class).deleteReply(rp) == -1) {
 			req.setAttribute("result", "댓글삭제 성공");
 			return 1;
 		} else {

@@ -48,7 +48,8 @@ $('.reply__reg-btn').click(function() {
 				// 받아온 resultVO=data의 replyVO를 담아준다
 				let reply = data.replyVO;
 				console.log(JSON.stringify(reply)); 
-//				<fmt:formatDate value="${reply.reply_reg_date }" type="both" dateStyle="short" timeStyle="short" />
+// <fmt:formatDate value="${reply.reply_reg_date }" type="both"
+// dateStyle="short" timeStyle="short" />
 				if(result > 0) {
 					let replyContent = `
 					<div class="reply__div">
@@ -83,12 +84,15 @@ $('.reply__reg-btn').click(function() {
 // ---------------------------------------------------------
 
 // 댓글 삭제
+// 글을 등록한 뒤에 바로 삭제를 하기위에서, 
+// 댓글 등록할때 쓴 $('.reply__reg-btn').click(function() {}형태를 쓰지 않았다.
 $(document).on('click', '.reply__delete-btn', function() {
 	
 	let reply__div = $(this).parent().parent().parent();
 	
 	
 	let reply_id = 	$(reply__div).find('.reply__id').val();
+	let reply_post = $(reply__div).find('.reply__post').val();
 	alert(reply_id);
 	
 	console.log(reply_id);	
@@ -98,7 +102,8 @@ $(document).on('click', '.reply__delete-btn', function() {
 		type : 'get',
 		dataType : 'json',
 		data : {
-			"reply_id" : reply_id
+			"reply_id" : reply_id,
+			"reply_post" : reply_post
 		},
 
 		success : function(data) {
@@ -115,6 +120,8 @@ $(document).on('click', '.reply__delete-btn', function() {
 		}
 	});
 });
+
+//---------------------------------------------------------
 
 $(document).on('click', '.reply__update-btn', function() {
 	

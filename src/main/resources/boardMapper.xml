@@ -27,9 +27,11 @@
 		member_nick from
 		(select * from post, member where post_member = member_id
 		and
-		post_title like '%'||#{search}||'%' and post_board = #{post_board} order
+		post_title like '%'||#{search}||'%' and post_board = #{post_board}
+		order
 		by post_reg_date desc))
-		where rn &gt; = #{start} and rn &lt; = #{end}
+		where rn &gt; = #{start} and rn &lt; =
+		#{end}
 
 		<!-- <choose> <when test="sort == 1"> order by rv_count desc </when> <when 
 			test="sort == 2"> order by rv_like desc </when> <otherwise> order by rv_date 
@@ -47,17 +49,21 @@
 	<select id="getAllReplies"
 		parameterType="com.tm.nmp.board.PostVO"
 		resultType="com.tm.nmp.board.ReplyVO">
-		select a.*, b.member_nick from reply a, member b where a.reply_post = #{post_id} and a.reply_member = b.member_id order by reply_reg_date
+		select a.*, b.member_nick from reply a, member b where
+		a.reply_post = #{post_id} and a.reply_member = b.member_id order by
+		reply_reg_date
 	</select>
-	
+
 	<insert id="regPost" parameterType="com.tm.nmp.board.PostVO">
 		insert into post values
-		(post_seq.nextval, #{post_board}, #{post_member},
+		(post_seq.nextval, #{post_board},
+		#{post_member},
 		null, null, null, <!-- 옵션value로 넣어줘야 (직관게시판 등록, 수정에서) -->
-		#{post_title}, #{post_category}, <!--  옵션value로 넣어줘야 (자유게시판 등록, 수정에서) -->
+		#{post_title}, #{post_category}, <!-- 옵션value로 넣어줘야 (자유게시판 등록, 수정에서) -->
 		sysdate, null, #{post_img},
 		#{post_file},
-		#{post_hit_count}, #{post_like_count},
+		#{post_hit_count},
+		#{post_like_count},
 		#{post_scrap_count},
 		#{post_reply_count},
 		#{post_reg_ip},#{post_content})
@@ -83,25 +89,44 @@
 		delete from post where
 		post_id = #{post_id}
 	</delete>
-	
+
 	<!-- 댓글 등록후 비동기로 댓글 하나만 받아올 필요가 있기 때문에 만들어줌 -->
 	<select id="getReply" resultType="com.tm.nmp.board.ReplyVO">
-		select a.*, b.member_nick from reply a,member b where reply_id = (
-			select max(reply_id) from reply
+		select a.*, b.member_nick from
+		reply a,member b where reply_id = (
+		select max(reply_id) from reply
 		) and a.reply_member = b.member_id
 	</select>
 
 	<insert id="regReply" parameterType="com.tm.nmp.board.ReplyVO">
+		BEGIN
 		insert into reply
-		values(reply_seq.nextval, #{reply_board}, #{reply_post},
+		values(reply_seq.nextval, #{reply_board},
+		#{reply_post},
 		#{reply_member}, #{reply_content},
-		sysdate, sysdate, #{reply_like_count},
-		#{reply_reg_ip})
+		sysdate, sysdate,
+		#{reply_like_count},
+		#{reply_reg_ip});
+
+		update post
+		set
+		post_reply_count = post_reply_count + 1
+		where post_id =
+		#{reply_post};
+		END;
 	</insert>
 
 	<delete id="deleteReply"
 		parameterType="com.tm.nmp.board.ReplyVO">
-		delete from reply where reply_id = #{reply_id}
+		BEGIN
+		delete from reply where reply_id = #{reply_id};
+
+		update post
+		set
+		post_reply_count = post_reply_count -1
+		where post_id =
+		#{reply_post};
+		END;
 	</delete>
 
 	<update id="updateReply"
@@ -115,11 +140,13 @@
 		reply_id
 		= #{reply_id}
 	</update>
-	
+
 	<!-- 조회수 -->
-	<update id="postCountUpdate" parameterType="com.tm.nmp.board.PostVO">
-        update post set post_hit_count = post_hit_count + 1 where post_id = #{post_id} 
-    </update>
+	<update id="postCountUpdate"
+		parameterType="com.tm.nmp.board.PostVO">
+		update post set post_hit_count = post_hit_count + 1 where post_id =
+		#{post_id}
+	</update>
 
 	<!-- 글의 번호와 로그인한 멤버의 정보를 파라미터로 가져온다 -->
 	<select id="likeCheck" parameterType="com.tm.nmp.board.LikeVO"
@@ -127,8 +154,8 @@
 		select count(*) from likes where like_post = #{like_post}
 		and like_member= #{like_member}
 	</select>
-	
-	
+
+
 
 
 	<insert id="likeUp" parameterType="com.tm.nmp.board.LikeVO">
@@ -137,13 +164,11 @@
 	</insert>
 
 	<delete id="likeDown" parameterType="com.tm.nmp.board.LikeVO">
-		delete  from likes where like_post = #{like_post} and like_member=#{like_member}
+		delete from likes where
+		like_post = #{like_post} and like_member=#{like_member}
 	</delete>
-	
-<!-- 	<update id="updateReplyCount" parameterType="com.tm.nmp.board.PostVO">
-		update post
-		set
-		post_reply_count = post_reply_count + 1
-		where post_id = #{reply_post}
-	</update> -->
+
+	<!-- <update id="updateReplyCount" parameterType="com.tm.nmp.board.PostVO"> 
+		update post set post_reply_count = post_reply_count + 1 where post_id = #{reply_post} 
+		</update> -->
 </mapper>

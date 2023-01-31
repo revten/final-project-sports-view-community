@@ -127,7 +127,7 @@
 							<div class="board__cell category">${post_category}</div>
 							<div class="board__cell post_title">
 								<span style="cursor: pointer"
-									onclick="location.href='fan.detail.go?post_id=${p.post_id }&post_member=${p.post_member}'">${p.post_title }
+									onclick="location.href='fan.detail.go?post_id=${p.post_id }&post_member=${p.post_member}'">${p.post_title }  <span>[${p.post_reply_count}]</span>
 									</span>
 							</div>
 							<div class="board__cell reg_date">
