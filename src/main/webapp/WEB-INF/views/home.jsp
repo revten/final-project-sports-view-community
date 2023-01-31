@@ -185,9 +185,9 @@
 		<div class="popular__container container grid">
 
 			<article class="popular__card">
-				<img src="resources/home_img/main_baseball3.jpg" alt="popular image"
+				<img src="resources/files/home/popular-review1.jpg" alt="popular image"
 					class="popular__img">
-				<h3 class="popular__name">한일전 승자는?</h3>
+				<h3 class="popular__name">우승을 보다 ㅠ</h3>
 				<span class="popular__description">임형규님의 후기</span> <span
 					class="popular__price">10.09만 뷰</span>
 				<button class="popular__button">
@@ -196,9 +196,9 @@
 			</article>
 			
 			<article class="popular__card">
-				<img src="resources/home_img/main_soccer_busan.jpg"
+				<img src="resources/files/home/popular-review2.png"
 					alt="popular image" class="popular__img">
-				<h3 class="popular__name">부산축구 이대로인가..</h3>
+				<h3 class="popular__name">미친열기 여농..</h3>
 				<span class="popular__description">송준우님의 후기</span> <span
 					class="popular__price">9.69만 뷰</span>
 				<button class="popular__button">
@@ -207,7 +207,7 @@
 			</article>
 
 			<article class="popular__card">
-				<img src="resources/home_img/main_volleyball_kim.jpg"
+				<img src="resources/files/home/popular-review3.jpg"
 					alt="popular image" class="popular__img">
 				<h3 class="popular__name">김연경 선수 멋져요</h3>
 				<span class="popular__description">정권님의 후기</span> <span

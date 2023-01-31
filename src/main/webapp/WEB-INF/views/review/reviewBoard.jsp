@@ -11,14 +11,16 @@
 </head>
 
 <body>
-<div style="float: left;position: absolute;left: -14%;"><img src="resources/files/backgroundImg/review4.png"></div>
-	<div style="float: right;position: absolute;top:400px; left : 80%;"><img src="resources/files/backgroundImg/review5.png"></div>
+	<div class="review__bg-1" style="float: right; position: absolute; top: 400px; left: 80%;">
+		<img src="resources/files/backgroundImg/review5.png">
+	</div>
 	<div class="watch__container">
 
 		<!-- watch 페이지 헤더 -->
 		<div class="watch__header">
 			<div class="watch__header-title">
-				<a href="review.board.go?post_board=12" class="nav__link" style="font-size:15px" >REVIEW</a>
+				<a href="review.board.go?post_board=12" class="nav__link"
+					style="font-size: 15px">REVIEW</a>
 			</div>
 			<div class="watch__header-title">
 				스포츠 열기는<span> 모두와 함께</span>
@@ -28,23 +30,11 @@
 					<c:when test="${sessionScope.loginAccount ne null}">
 						<button class="action-button"
 							onclick="location.href='review.reg.go?post_board=${param.post_board}'">
-							<span>리뷰쓰기</span>
-							<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-								viewBox="0 0 24 24" fill="none" stroke="currentColor"
-								stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-								class="feather feather-filter">
-								<polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3" /></svg>
-						</button>
+							새글쓰기</button>
 					</c:when>
 					<c:otherwise>
-						<button class="action-button" onclick="alert('로그인하세요')">
-							<span>리뷰쓰기</span>
-							<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-								viewBox="0 0 24 24" fill="none" stroke="currentColor"
-								stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-								class="feather feather-filter">
-								<polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3" /></svg>
-						</button>
+						<a href="review.reg.go?post_board=${param.post_board}"
+							onclick="alert('로그인하세요')">새글쓰기</a>
 					</c:otherwise>
 				</c:choose>
 			</div>
@@ -61,7 +51,7 @@
 				<div class="review__cell">
 					<div class="review__img">
 						<img
-							src="https://images-na.ssl-images-amazon.com/images/I/81WcnNQ-TBL.jpg"
+							src="https://images.pexels.com/photos/5184705/pexels-photo-5184705.jpeg?auto=compress&cs=tinysrgb&w=600"
 							alt="" class="review__photo">
 					</div>
 					<div class="review__content">
@@ -81,7 +71,8 @@
 				<div class="review__cell">
 					<div class="review__img">
 						<img
-							src="https://i.pinimg.com/originals/a8/b9/ff/a8b9ff74ed0f3efd97e09a7a0447f892.jpg"
+							src="https://images.pexels.com/photos/5246966/pexels-photo-5246966.jpeg?auto=compress&cs=tinysrgb&w=600
+"
 							alt="" class="review__photo">
 					</div>
 					<div class="review__content">
@@ -101,7 +92,7 @@
 				<div class="review__cell">
 					<div class="review__img">
 						<img
-							src="https://images-na.ssl-images-amazon.com/images/I/81af+MCATTL.jpg"
+							src="https://images.pexels.com/photos/159611/basketball-player-game-sport-159611.jpeg?auto=compress&cs=tinysrgb&w=600"
 							alt="" class="review__photo">
 					</div>
 					<div class="review__content">
@@ -121,7 +112,7 @@
 				<div class="review__cell">
 					<div class="review__img">
 						<img
-							src="https://images-na.ssl-images-amazon.com/images/I/81UWB7oUZ0L.jpg"
+							src="https://images.pexels.com/photos/6203676/pexels-photo-6203676.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
 							alt="" class="review__photo">
 					</div>
 					<div class="review__content">
@@ -167,32 +158,36 @@
 					</div>
 				</div>
 
-								
+
 				<!-- 리뷰 : bot right bot -->
 				<div class="review__posts">
 					<c:forEach var="p" items="${posts }">
-					<div class="review__post">
-						<div class="review__post__content-wrapper">
-							<img src="resources/ckeditor/fileUpload/${p.post_img}" alt="" class=review__post__img>
-							<div class="review__post__content">
-								<div class="review__post__title"><a
+						<div class="review__post">
+							<div class="review__post__content-wrapper">
+								<img src="resources/ckeditor/fileUpload/${p.post_img}" alt=""
+									class=review__post__img>
+								<div class="review__post__content">
+									<div class="review__post__title">
+										<a
 											href="review.detail.go?post_id=${p.post_id }&post_member=${p.post_member}">${p.post_title }
-											[${p.post_reply_count}]</a></div>
-								<div class="review__post__by">by ${p.member_nick}</div>
-								<div class="rate">
-									<span class="review__voters card-vote">${p.post_like_count} 추천</span>
-								</div>
-								<div class="review__sum card-sum"> Readers of all ages and
-									walks of life have drawn inspiration and empowerment from
-									Elizabeth Gilbert’s books for years.</div>
+											[${p.post_reply_count}]</a>
+									</div>
+									<div class="review__post__by">by ${p.member_nick}</div>
+									<div class="rate">
+										<span class="review__voters card-vote">${p.post_like_count}
+											추천</span>
+									</div>
+									<div class="review__sum card-sum">Readers of all ages and
+										walks of life have drawn inspiration and empowerment from
+										Elizabeth Gilbert’s books for years.</div>
 									<!-- ck에디터 안에 이미지주소도 들어있어서 이미지가 또 나온다 -->
+								</div>
 							</div>
 						</div>
-					</div>
-						
+
 					</c:forEach>
 
-					<!--샘플 -->
+					<<!-- 복사해서 샘플 넣기 --> -->
 					<div class="review__post">
 						<div class="review__post__content-wrapper">
 							<img
@@ -210,7 +205,7 @@
 							</div>
 						</div>
 					</div>
-					
+
 				</div>
 
 				<!-- 페이징 -->
@@ -242,23 +237,28 @@
 
 	<script>
 		/*=============== 스크롤 나타나는 효과 ===============*/
-		const srWatch = ScrollReveal({ /* srSTM으로 한것은, sr이 메인에서 쓰여서. STM은 stadiumMain */
+		const srReview = ScrollReveal({ 
 			origin : 'top',
-			distance : '60px',
+			distance : '90px',
 			duration : 2500,
 			delay : 400
 		//reset: true, // 애니메이션은 반복
 		})
-
-		srWatch.reveal(`.watch__header`, {
-			origin : 'top'
-		});
-		srWatch.reveal(`.review__slide`, {
-			origin : 'left'
-		});
-		srWatch.reveal(`.watch__wrapper`, {
+		
+		srReview.reveal(`.review__bg-1`, {
 			origin : 'right'
 		});
-	</script> 
+		
+		srReview.reveal(`.watch__container`, {
+			origin : 'top'
+		});
+
+		srReview.reveal(`.watch__header`, {
+			origin : 'top'
+		});
+		srReview.reveal(`.review__slide, .watch__wrapper`, {
+			origin : 'left'
+		});
+	</script>
 </body>
 </html>

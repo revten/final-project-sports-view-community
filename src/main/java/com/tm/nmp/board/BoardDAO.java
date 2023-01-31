@@ -11,7 +11,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.tm.nmp.account.AccountDTO;
-import com.tm.nmp.board.PostVO;
 
 @Service
 public class BoardDAO {
@@ -296,8 +295,10 @@ public class BoardDAO {
 	}
 
 	public ResultVO regReply(HttpServletRequest req, ReplyVO rp) {
+		
 		String token = req.getParameter("token");
 		// 리플등록시에 세션에 세팅해둔 토큰을 불러온다.
+		
 		String successToken = (String) req.getSession().getAttribute("successToken");
 		System.out.println("token : " + token);
 		
@@ -320,6 +321,8 @@ public class BoardDAO {
 		// 리플을 등록한 사람도 세팅해주자
 		AccountDTO ac = (AccountDTO) req.getSession().getAttribute("loginAccount");
 		rp.setReply_member(ac.getMember_id());
+		
+		
 
 		if (ss.getMapper(BoardMapper.class).regReply(rp) == 1) {
 			req.setAttribute("result", "댓글쓰기 성공");
@@ -335,6 +338,15 @@ public class BoardDAO {
 			System.out.println(resultVO.toString());
 			return resultVO;
 //			allReplyCount++;
+		}
+		
+		int post_id = Integer.parseInt( req.getParameter("reply_post"));
+		System.out.println(post_id);
+		
+		if (ss.getMapper(BoardMapper.class).updateReplyCount(post_id) == 1) {
+			req.setAttribute("result", "댓글수 업데이트 성공");
+		} else {
+			req.setAttribute("result", "댓글수 업데이트 실패");
 		}
 		return resultVO;
 

@@ -144,5 +144,22 @@
 				}
 		});
 	</script>
+	
+		<script>
+		/*=============== 스크롤 나타나는 효과 ===============*/
+		const srNews = ScrollReveal({ 
+			origin : 'top',
+			distance : '60px',
+			duration : 2500,
+			delay : 400
+		//reset: true, // 애니메이션은 반복
+		})
+
+		srNews.reveal(`.nav__menu, .div_news_content`);
+		srNews.reveal(`.div_news_content`, {
+			origin : 'bottom'
+		});
+
+	</script>
 </body>
 </html>

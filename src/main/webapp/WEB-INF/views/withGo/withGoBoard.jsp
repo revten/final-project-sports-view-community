@@ -10,8 +10,14 @@
 
 </head>
 <body>
-<div style="float: left;position: absolute;top: 800px;left: -9%;"><img src="resources/files/backgroundImg/with1.png"></div>
-	<div style="float: right;position: absolute;top:-10px; left : 77%;"><img src="resources/files/backgroundImg/with2.png"></div>
+	<div class="withGo__bg-leftTop"
+		style="float: left; position: absolute; top: 300px; left: -9%;">
+		<img src="resources/files/backgroundImg/with1.png">
+	</div>
+	<div class="withGo__bg-rightTop"
+		style="float: right; position: absolute; top: -10px; left: 77%;">
+		<img src="resources/files/backgroundImg/with2.png">
+	</div>
 	<div class="withGo__container">
 
 		<div class="withGo__content">
@@ -28,8 +34,8 @@
 					</div>
 				</form>
 				<div>
-					<a href="withGo.board.go?post_board=11"
-						class="nav__link ">WITH GO</a>
+					<a href="withGo.board.go?post_board=11" class="nav__link ">WITH
+						GO</a>
 				</div>
 
 				<!-- 이동버튼 -->
@@ -38,23 +44,11 @@
 						<c:when test="${sessionScope.loginAccount ne null}">
 							<button class="action-button"
 								onclick="location.href='withGo.reg.go?post_board=${param.post_board}'">
-								<span>새글쓰기</span>
-								<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-									viewBox="0 0 24 24" fill="none" stroke="currentColor"
-									stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-									class="feather feather-filter">
-								<polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3" /></svg>
-							</button>
+								새글쓰기</button>
 						</c:when>
 						<c:otherwise>
-							<button class="action-button" onclick="alert('로그인하세요')">
-								<span>새글쓰기</span>
-								<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-									viewBox="0 0 24 24" fill="none" stroke="currentColor"
-									stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-									class="feather feather-filter">
-								<polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3" /></svg>
-							</button>
+							<a href="withGo.reg.go?post_board=${param.post_board}"
+								onclick="alert('로그인하세요')">새글쓰기</a>
 						</c:otherwise>
 					</c:choose>
 				</div>
@@ -103,9 +97,48 @@
 						</div>
 					</div>
 				</c:forEach>
+				
+				<!-- 복사해서 샘플 넣기 -->
+				<div class="products-row">
+					<button class="cell-more-button">
+						<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18"
+							viewBox="0 0 24 24" fill="none" stroke="currentColor"
+							stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+							class="feather feather-more-vertical">
+							<circle cx="12" cy="12" r="1" />
+							<circle cx="12" cy="5" r="1" />
+							<circle cx="12" cy="19" r="1" /></svg>
+					</button>
+					<div class="product-cell image">
+						<img src="resources/ckeditor/fileUpload/${p.post_img}"> <span><a
+							href="withGo.detail.go?post_id=${p.post_id }&post_member=${p.post_member}">${p.post_title }
+								[${p.post_reply_count}]</a></span>
+					</div>
+
+					<!-- 나중에 팀 선택, 스포츠 선택을 추가해야함 -->
+					<div class="product-cell sales">
+						<span class="cell-label">닉네임:</span>${p.member_nick}
+					</div>
+					<div class="product-cell price">
+						<span class="cell-label">등록일:</span>
+						<c:choose>
+							<c:when test="${p.post_update_date eq null }">
+								<fmt:formatDate value="${p.post_reg_date}"
+									pattern="yy-MM-dd HH:mm" />
+							</c:when>
+							<c:otherwise>
+						수정 <fmt:formatDate value="${p.post_update_date}"
+									pattern="yy-MM-dd HH:mm" />
+							</c:otherwise>
+						</c:choose>
+					</div>
+					<div class="product-cell price">
+						<span class="cell-label">조회수:</span>${p.post_hit_count}
+					</div>
+				</div>
 			</div>
-			
-			
+
+
 			<div class="board__bot-paging">
 				<c:if test="${curPage != 1}">
 					<span><span style="cursor: pointer"
@@ -130,5 +163,30 @@
 
 		</div>
 	</div>
+	<script>
+		/*=============== 스크롤 나타나는 효과 ===============*/
+		const srWatch = ScrollReveal({
+			origin : 'top',
+			distance : '90px',
+			duration : 2500,
+			delay : 400
+		//reset: true, // 애니메이션은 반복
+		})
+
+		srWatch.reveal(`.withGo__bg-rightTop`, {
+			origin : 'top'
+		});
+
+		srWatch.reveal(`.withGo__bg-leftTop`, {
+			origin : 'left'
+		});
+
+		srWatch.reveal(`.withGo__header`, {
+			origin : 'bottom'
+		});
+		srWatch.reveal(`.withGo__container`, {
+			origin : 'left'
+		});
+	</script>
 </body>
 </html>

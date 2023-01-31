@@ -90,7 +90,7 @@
 
 	<script>
 		/*=============== 스크롤 나타나는 효과 ===============*/
-		const srSTM = ScrollReveal({ /* srSTM으로 한것은, sr이 메인에서 쓰여서. STM은 stadiumMain */
+		const srWithGo = ScrollReveal({ /* srSTM으로 한것은, sr이 메인에서 쓰여서. STM은 stadiumMain */
 			origin : 'top',
 			distance : '60px',
 			duration : 2500,
@@ -98,17 +98,17 @@
 		//reset: true, // 애니메이션은 반복
 		})
 
-		srSTM.reveal(`.stadiumMain__header, .stadiumMain__wrapper-2`);
-		srSTM.reveal(`.stadiumMain__wrapper-5`, {
+		srWithGo.reveal(`.stadiumMain__header, .stadiumMain__wrapper-2`);
+		srWithGo.reveal(`.stadiumMain__wrapper-5`, {
 			origin : 'bottom'
 		});
-		srSTM.reveal(`.stadiumMain__wrapper-1, .stadiumMain__wrapper-4`, {
+		srWithGo.reveal(`.stadiumMain__wrapper-1, .stadiumMain__wrapper-4`, {
 			origin : 'left'
 		});
-		srSTM.reveal(`.stadiumMain__wrapper-3, .stadiumMain__wrapper-6`, {
+		srWithGo.reveal(`.stadiumMain__wrapper-3, .stadiumMain__wrapper-6`, {
 			origin : 'right'
 		});
-		srSTM.reveal(`.popular__card`, {
+		srWithGo.reveal(`.popular__card`, {
 			interval : 100
 		});
 	</script>

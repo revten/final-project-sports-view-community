@@ -444,7 +444,7 @@ padding-block, padding-inline 은 요소의 쓰기모드 및 방향성, 텍스�
 
 .popular__card {
   position: relative;
-  background-color: var(--container-color);
+  background-color: rgba(253, 98, 0, 0.2);
   /* 전체 배경색보다 조금 연함 */
   padding: 7rem 2rem 1.5rem;
   box-shadow: 0 8px 20px hsla(19, 64%, 48%, .08);

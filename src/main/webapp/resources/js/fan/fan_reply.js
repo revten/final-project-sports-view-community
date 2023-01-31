@@ -58,7 +58,7 @@ $('.reply__reg-btn').click(function() {
 						<div class="sortInfo">
 							<div class="reply_writterNick"><b>${reply.member_nick}</b></div>
 							<div class="reply__date">
-								<fmt:formatDate value="${reply.reply_reg_date}" type="both" dateStyle="short" timeStyle="short" />						
+								"${reply.reply_reg_date}"					
 								<button class="reply__update-btn">수정</button>
 								<button class="reply__delete-btn">삭제</button>
 								<br>
