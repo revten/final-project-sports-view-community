@@ -12,9 +12,6 @@
 <body>
 <div style="float: left;position: absolute;top: 800px;left: -9%;"><img src="resources/files/backgroundImg/with1.png"></div>
 	<div style="float: right;position: absolute;top:-10px; left : 77%;"><img src="resources/files/backgroundImg/with2.png"></div>
-	<div style="float: right;position: absolute;top:300px; left : 7%;"><img src="resources/files/backgroundImg/with3.png"></div>
-	<div style="float: right;position: absolute;top:400px; left : 67%;"><img src="resources/files/backgroundImg/with4.png"></div>
-	<div style="float: right;position: absolute;top:750px; left : 40%;"><img src="resources/files/backgroundImg/with5.png"></div>
 	<div class="withGo__container">
 
 		<div class="withGo__content">

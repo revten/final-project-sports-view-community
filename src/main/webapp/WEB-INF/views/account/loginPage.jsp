@@ -26,6 +26,8 @@ pageEncoding="UTF-8"%>
 	<br />
 	<br>
 	<br>
+	<br>
+	<br>
 	<div class="animated bounceInDown">
 	<div id="login_area" class="login_area">
 		<div align="center">${r }</div>
