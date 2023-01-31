@@ -134,6 +134,8 @@ function checkOne(element) {
 	<br>
 	<br>
 	<br>
+	<br>
+	<br>
 	<div class="animated bounceInDown">
 	<div id="accountReg__contrainer">
 	<h1 class="login_title">회원 가입</h1>

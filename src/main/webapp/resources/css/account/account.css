@@ -27,7 +27,7 @@
   margin-left: 21%;
   text-align: center;
   transform: translateX(-50%);
-  background-color: rgba( 238, 241, 255, 0.3);
+  background-color: rgba(255, 255, 255, 0.6);
   border-radius: 9px;
   border-top: 10px solid #79a6fe;
   border-bottom: 10px solid #8BD17C;
@@ -41,7 +41,7 @@
   margin-left: 21%;
   text-align: center;
   transform: translateX(-50%);
-  background-color: rgba( 238, 241, 255, 0.3);
+  background-color: rgba(255, 255, 255, 0.6);
   border-radius: 9px;
   border-top: 10px solid #79a6fe;
   border-bottom: 10px solid #8BD17C;
@@ -85,8 +85,8 @@
 
 .loginBtn{
   border:0;
-  background: #7f5feb;
-  color: #dfdeee;
+  background: #b8a3ff;
+  color: #ffffff;
   border-radius: 100px;
   width: 140px;
   height: 30px;
@@ -96,8 +96,8 @@
 }
 .loginBtn2{
   border:0;
-  background: #7f5feb;
-  color: #dfdeee;
+  background: #b8a3ff;
+  color: #ffffff;
   border-radius: 100px;
   width: 140px;
   height: 30px;
@@ -108,8 +108,8 @@
 
 .emailBtn{
   border:0;
-  background: #7f5feb;
-  color: #dfdeee;
+  background: #b8a3ff;
+  color: #ffffff;
   border-radius: 100px;
   width: 140px;
   height: 30px;
@@ -119,8 +119,8 @@
 }
 .emailBtn2{
   border:0;
-  background: #7f5feb;
-  color: #dfdeee;
+  background: #b8a3ff;
+  color: #ffffff;
   border-radius: 100px;
   width: 140px;
   height: 30px;
@@ -130,7 +130,7 @@
 }
 
 .loginBtn:hover,.loginBtn2:hover,.emailBtn:hover,.emailBtn2:hover {
-  background: #5d33e6;
+  background: #7f62df;
 }
 
 .find_id,.find_pw{
