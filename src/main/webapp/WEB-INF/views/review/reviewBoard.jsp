@@ -187,26 +187,108 @@
 
 					</c:forEach>
 
-					<<!-- 복사해서 샘플 넣기 --> -->
+					<!-- 복사해서 샘플 넣기 -->
 					<div class="review__post">
 						<div class="review__post__content-wrapper">
 							<img
-								src="https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F6%2F2019%2F07%2Fchances-are-1-2000.jpg&q=85"
+								src="https://mblogthumb-phinf.pstatic.net/MjAxOTA1MDlfMTQx/MDAxNTU3MzkwMjAxOTY3.g6XFTOlHku4f5I3sCVhoJ8HgjbtF1_gi_56OccLy0twg.a1i6ueEWdwMjMyhntYnNutyVa3QNYHNsV6ZwSCrHo9Mg.JPEG.apsl_2004/22.jpg?type=w800"
 								alt="" class=review__post__img>
 							<div class="review__post__content">
-								<div class="review__post__title">Changes Are</div>
-								<div class="review__post__by">by Richard Russo</div>
+								<div class="review__post__title">대한민국 vs 콜롬비아</div>
+								<div class="review__post__by">by 인하대학교 아태물류학부</div>
 								<div class="rate">
 									<span class="review__voters card-vote">1.987 voters</span>
 								</div>
-								<div class="review__sum card-sum">Readers of all ages and
-									walks of life have drawn inspiration and empowerment from
-									Elizabeth Gilbert’s books for years.</div>
+								<div class="review__sum card-sum">지난 3월 26일, SIOL은 국가대표 친선경기 콜롬비아전을 직관하고 왔습니다.
+									서울월드컵경기장에서 열린 경기를 관람하기 위해 수업이 끝나자마자 전철을 타고 서울로 이동했습니다.</div>
+							</div>
+						</div>
+					</div>
+					<div class="review__post">
+						<div class="review__post__content-wrapper">
+							<img
+								src="https://cdn.pixabay.com/photo/2019/09/06/02/52/football-4455306__340.jpg"
+								alt="" class=review__post__img>
+							<div class="review__post__content">
+								<div class="review__post__title">축구선수</div>
+								<div class="review__post__by">by 어느 선수</div>
+								<div class="rate">
+									<span class="review__voters card-vote">2.998 voters</span>
+								</div>
+								<div class="review__sum card-sum">저희 SIOL은 축구를 좋아하는 학부생들의 소모임입니다.
+									실력에 상관없이 축구를 좋아하는 누구나 즐겁게 축구를 즐길 수 있는 곳입니다.
+									주 1회 정기모임을 통해 축구나 풋살을 즐기지만, 이외에도 다양한 행사를 통해 선수뿐만 아니라 매니저들도 함께 즐길 수 있습니다.</div>
+							</div>
+						</div>
+					</div>
+					<div class="review__post">
+						<div class="review__post__content-wrapper">
+							<img
+								src="https://mblogthumb-phinf.pstatic.net/MjAxOTA1MDlfMjYg/MDAxNTU3MzkwMjQ3NjQw.TSQAXwyxsSWRG2XaR3vYGG_MwFkt8DA_sk0lJ94MLoEg.QhROcTuuzoxuipAlq_Np0-y8_KPZ9VeB4d1Z1_fmOjEg.JPEG.apsl_2004/33.jpg?type=w800"
+								alt="" class=review__post__img>
+							<div class="review__post__content">
+								<div class="review__post__title">직관 갔다옴</div>
+								<div class="review__post__by">by 사람 5인</div>
+								<div class="rate">
+									<span class="review__voters card-vote">2.778 voters</span>
+								</div>
+								<div class="review__sum card-sum">직관 갔다 왔습니다.
+								티켓 인증 올림 ㅋ</div>
+							</div>
+						</div>
+					</div>
+					<div class="review__post">
+						<div class="review__post__content-wrapper">
+							<img
+								src="https://mblogthumb-phinf.pstatic.net/MjAxOTA1MDlfMTcw/MDAxNTU3MzkwMzI0MjIx.TgyA8T2HIm-onEILykZqM3V88RvsiO5G-TdLw8UaW8kg.0Nuazo3AlAw4He55zHaOYY4FeQAEi9sA6OXutyE6I6sg.JPEG.apsl_2004/44.jpg?type=w800"
+								alt="" class=review__post__img>
+							<div class="review__post__content">
+								<div class="review__post__title">경기장의 응원 열기</div>
+								<div class="review__post__by">by 무수히 많은 관객</div>
+								<div class="rate">
+									<span class="review__voters card-vote">3.5179 voters</span>
+								</div>
+								<div class="review__sum card-sum">사진으로만 봐도 당시의 응원 열기가 느껴지시나요?
+									이 경기에는 무려 63,488명의 관중이 모였으며, 국가대표 A매치 6경기 연속 매진이었다고 합니다.
+									최근 국가대표 축구에 대한 관심이 얼마나 커졌는지 알 수 있었습니다!</div>
+							</div>
+						</div>
+					</div>
+					<div class="review__post">
+						<div class="review__post__content-wrapper">
+							<img
+								src="https://blog.kakaocdn.net/dn/lnxWZ/btrOigASzde/JdOBKhJCMyR14IryiKQlkk/img.jpg"
+								alt="" class=review__post__img>
+							<div class="review__post__content">
+								<div class="review__post__title">안양 종합운동장</div>
+								<div class="review__post__by">매우 크진 않음</div>
+								<div class="rate">
+									<span class="review__voters card-vote">2.178 voters</span>
+								</div>
+								<div class="review__sum card-sum">안양 종합운동장이 매우 크진 않았기에, 어느 자리에 앉더라도 선수들 모습이 잘 보였습니다.
+(서포터석이 아닌 일반석은 어디든 OK)</div>
+							</div>
+						</div>
+					</div>
+					<div class="review__post">
+						<div class="review__post__content-wrapper">
+							<img
+								src="https://blog.kakaocdn.net/dn/PI0kP/btrOkSflFoW/UtgkVagJUSp1xvT9CZ2oj1/img.jpg"
+								alt="" class=review__post__img>
+							<div class="review__post__content">
+								<div class="review__post__title">경기장 주차장</div>
+								<div class="review__post__by">by 주차</div>
+								<div class="rate">
+									<span class="review__voters card-vote">2.11 voters</span>
+								</div>
+								<div class="review__sum card-sum">주차비는 5시간 기준 2천원으로 저렴했습니다.</div>
 							</div>
 						</div>
 					</div>
 
 				</div>
+					
+
 
 				<!-- 페이징 -->
 				<div class="board__bot-paging">
