@@ -140,7 +140,10 @@
 		delete  from likes where like_post = #{like_post} and like_member=#{like_member}
 	</delete>
 	
-
-
-
+<!-- 	<update id="updateReplyCount" parameterType="com.tm.nmp.board.PostVO">
+		update post
+		set
+		post_reply_count = post_reply_count + 1
+		where post_id = #{reply_post}
+	</update> -->
 </mapper>

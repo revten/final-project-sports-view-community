@@ -16,6 +16,8 @@
 	<br>
 	<br>
 	<br>
+	<br>
+	<br>
 	<div class="animated bounceInDown">
 	<div class="login_area">
 	<h1 class="login_title">아이디 찾기</h1>
