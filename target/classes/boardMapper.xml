@@ -144,6 +144,6 @@
 		update post
 		set
 		post_reply_count = post_reply_count + 1
-		where post_id = #{post_id}
+		where post_id = #{reply_post}
 	</update>
 </mapper>

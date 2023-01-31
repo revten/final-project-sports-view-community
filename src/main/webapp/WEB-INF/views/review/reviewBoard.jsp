@@ -187,7 +187,6 @@
 
 					</c:forEach>
 
-					<<!-- 복사해서 샘플 넣기 --> -->
 					<div class="review__post">
 						<div class="review__post__content-wrapper">
 							<img
