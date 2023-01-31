@@ -257,6 +257,7 @@ padding-block, padding-inline 은 요소의 쓰기모드 및 방향성, 텍스�
   color: var(--title-color);
   font-weight: var(--font-medium);
   transition: color .4s;
+  text-shadow: -1px 0 #ffffff, 0 1px #ffffff, 1px 0 #ffffff, 0 -1px #ffffff;
 }
 
 .nav__link:hover {
