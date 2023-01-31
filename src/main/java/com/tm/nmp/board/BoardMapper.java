@@ -33,8 +33,8 @@ public interface BoardMapper {
 
 	ReplyVO getReply();
 
-	int updateReplyCount(ReplyVO rp);
-
+/*	int updateReplyCount(ReplyVO rp);
+*/
 	
 
 }
