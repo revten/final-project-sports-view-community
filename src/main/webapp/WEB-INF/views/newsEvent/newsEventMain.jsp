@@ -148,10 +148,10 @@
 		<script>
 		/*=============== 스크롤 나타나는 효과 ===============*/
 		const srNews = ScrollReveal({ 
-			origin : 'top',
-			distance : '60px',
-			duration : 2500,
-			delay : 400
+			  origin: 'left',
+			  distance: '290px',
+			  duration: 2400,
+			  delay: 200
 		//reset: true, // 애니메이션은 반복
 		})
 

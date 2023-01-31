@@ -136,7 +136,6 @@ p, figure {
 
 .app-content {
 	width: 1150px;
-	margin-top: -3%;
 	padding-left: 8%;
 	padding-right: 8%;
 	background-color: var(--app-bg);

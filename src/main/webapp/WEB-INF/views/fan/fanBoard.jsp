@@ -25,8 +25,8 @@
 </head>
 <body>
 	<main role="main" class="col-md-9 ml-sm-auto col-lg-10 my-3"> <!-- 부트스트랩 클래스명이라 main은 남겨야 할듯 -->
-	<div style="float: left;position: absolute;left: -9%;"><img src="resources/files/backgroundImg/review1.png"></div>
-	<div style="float: right;position: absolute;top:400px; left : 86%;"><img src="resources/files/backgroundImg/review3.png"></div>
+	<div class="fan_bg-leftTop" style="float: left;position: absolute;left: -9%;"><img src="resources/files/backgroundImg/review1.png"></div>
+	<div class="fan_bg-RightTop" style="float: right;position: absolute;top:400px; left : 86%;"><img src="resources/files/backgroundImg/review3.png"></div>
 	<div style="float: right;position: absolute;top:800px; left : 66%;"><img src="resources/files/backgroundImg/review2.png"></div>
 	<div style="float: left;position: absolute;top: 900px;left: -9%;"><img src="resources/files/backgroundImg/fan1.png"></div>
 	<div class="container-field">
@@ -128,7 +128,7 @@
 							<div class="board__cell post_title">
 								<span style="cursor: pointer"
 									onclick="location.href='fan.detail.go?post_id=${p.post_id }&post_member=${p.post_member}'">${p.post_title }
-									[${p.post_reply_count}]</span>
+									</span>
 							</div>
 							<div class="board__cell reg_date">
 								<c:choose>
@@ -174,6 +174,23 @@
 		</div>
 	</div>
 	</main>
-	</main>
+	<script> 
+const srFan = ScrollReveal({
+	  origin: 'left',
+	  distance: '290px',
+	  duration: 2400,
+	  delay: 200
+	  //reset: true, // Animations repeat
+	})
+	srFan.reveal(`.container-field`);
+	srFan.reveal(`.board-main`, { origin: 'left' });
+	srFan.reveal(`.app-content`, { origin: 'bottom' });
+	srFan.reveal(`.fan_bg-leftTop`, { origin: 'left' });
+	srFan.reveal(`.fan_bg-RightTop`, { origin: 'right' });
+	srFan.reveal(`.app-container`, { origin: 'top' });
+	srFan.reveal(`.`, { interval: 100 });
+	</script>
+	
+	
 </body>
 </html>
