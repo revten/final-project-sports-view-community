@@ -68,4 +68,25 @@ pageEncoding="UTF-8"%>
       </div>
     </div>
   </body>
+  
+  
+    	<script>
+		/*=============== 스크롤 나타나는 효과 ===============*/
+		const srStad = ScrollReveal({ 
+			origin : 'bottom',
+			distance : '90px',
+			duration : 2500,
+			delay : 400
+		//reset: true, // 애니메이션은 반복
+		})
+		
+		srStad.reveal(`#stadium__container`, {
+			origin : 'bottom'
+		});
+		
+		srStad.reveal(`#stadium__area`, {
+			origin : 'bottom'
+		});
+
+	</script>
 </html>

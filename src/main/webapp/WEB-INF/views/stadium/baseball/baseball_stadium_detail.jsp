@@ -5,6 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script src="resources/js/stadium/stadium_go.js"></script>
 </head>
 <body>
 	<br>
@@ -13,10 +14,10 @@
 	<br>
 	<br>
 	<br>
-	<span>아래 경기장 좌석을 클릭하여 상세 전경을 감상해보세요</span>
+	<span class="stadium__notice">아래 경기장 좌석을 클릭하여 상세 전경을 감상해보세요</span>
 	<div id="start"
 		style="position: relative; display: flex; flex-direction: column; justify-content: center; align-items: center; width: 1000px; height: 1000px;">
-		<div style="display: inline-block; align-items: flex-start;">
+		<div class="stadium__seat" style="display: inline-block; align-items: flex-start;">
 			<img id="seat" usemap="#workmap"
 				style="position: relative; width: 1024px; height: 800px; margin: 450px 0px 10px 0px;"
 				src="resources/files/stadium/baseball/seating_chart/${seat}"><br>
@@ -30,7 +31,11 @@
 				<area style="cursor: pointer;" class="imgArea" id="6"
 					coords="-1,561,1023,795" shape="rect">
 			</map>
-			<button id="reserveBtn">예매하러 가기</button><button onclick="with_go_write_go()">같이 보러 가기</button>
+			<div>
+			<a id="reserveBtn">예매하러가기</a>
+			<a href="withGo.reg.go?post_board=11"
+								onclick="alert('로그인하세요')">함께보기</a>
+			</div>
 			<br><br><br>
 			<!-- map div -->
 			<div id="map"
@@ -112,6 +117,26 @@
 		src="//dapi.kakao.com/v2/maps/sdk.js?appkey=1950a2b56dd3863d5c5f75c779612745"></script>
 	<script type="text/javascript">
 		stadium_map();
+	</script>
+	
+	   	<script>
+		/*=============== 스크롤 나타나는 효과 ===============*/
+		const srStad2 = ScrollReveal({ 
+			origin : 'bottom',
+			distance : '90px',
+			duration : 2500,
+			delay : 400
+		//reset: true, // 애니메이션은 반복
+		})
+		
+		srStad2.reveal(`.stadium__seat`, {
+			origin : 'bottom'
+		});
+		
+		srStad2.reveal(`.stadium__notice`, {
+			origin : 'bottom'
+		});
+
 	</script>
 
 </body>

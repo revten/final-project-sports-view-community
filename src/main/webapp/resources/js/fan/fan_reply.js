@@ -89,8 +89,7 @@ $(document).on('click', '.reply__delete-btn', function() {
 	
 	
 	let reply_id = 	$(reply__div).find('.reply__id').val();
-	alert(reply_id);
-	
+
 	console.log(reply_id);	
 	
 	$.ajax({

@@ -76,4 +76,14 @@ public class MyPageController {
 		return "index";
 	}
 	
+	
+	@RequestMapping(value = "myPage.chart.go", method = RequestMethod.GET)
+	public String myPageChartGo(HttpServletRequest req, AccountDTO ac, PointVO pv, PlusPointVO ppv) {
+		TokenMaker.make(req);
+		acDAO.loginCheck(req);
+		
+		req.setAttribute("contentPage", "myPage/chart.jsp");
+		return "index";
+	}
+	
 }

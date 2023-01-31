@@ -42,7 +42,7 @@ p, figure {
 </style>
 </head>
 <body>
-
+z
 	<div class="chart-data">
 		<div class="row">
 			<div class="col-12 col-md-4">
@@ -60,8 +60,8 @@ p, figure {
 								else here</button>
 						</div>
 					</div>
-					<h3 class="title">Household Expenditure</h3>
-					<p class="tagline">Yearly</p>
+					<h3 class="title">욕덜먹은놈</h3>
+					<p class="tagline">임형규</p>
 					<canvas height="400" id="radarChartDark"></canvas>
 				</div>
 			</div>
@@ -80,8 +80,8 @@ p, figure {
 								else here</button>
 						</div>
 					</div>
-					<h3 class="title">Monthly revenue</h3>
-					<p class="tagline">2015 (in thousands US$)</p>
+					<h3 class="title">팀장한테 욕많이 먹은놈</h3>
+					<p class="tagline">송준우</p>
 					<canvas height="400" id="barChartHDark"></canvas>
 				</div>
 			</div>
@@ -100,8 +100,8 @@ p, figure {
 								else here</button>
 						</div>
 					</div>
-					<h3 class="title">Exports of Goods</h3>
-					<p class="tagline">2015 (in billion US$)</p>
+					<h3 class="title">욕 사서 먹는놈</h3>
+					<p class="tagline">정 권</p>
 					<canvas height="400" id="doughnutChartDark"></canvas>
 				</div>
 			</div>
