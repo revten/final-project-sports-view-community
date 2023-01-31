@@ -383,7 +383,6 @@
 
 	const slideshow = new Slideshow(document.querySelector('.slideshow'));
 
-
   </script>
 
 </body>

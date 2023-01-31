@@ -80,7 +80,7 @@ const sr = ScrollReveal({
   origin: 'top',
   distance: '60px',
   duration: 2000,
-  delay: 100
+  delay: 200
   //reset: true, // Animations repeat
 })
 
@@ -89,3 +89,20 @@ sr.reveal(`.home__data`, { origin: 'bottom' });
 sr.reveal(`.about__data, .recently__data`, { origin: 'left' });
 sr.reveal(`.about__img, .recently__img`, { origin: 'right' });
 sr.reveal(`.popular__card`, { interval: 100 });
+
+/*<script> 
+const sr = ScrollReveal({
+	  origin: 'top',
+	  distance: '60px',
+	  duration: 2000,
+	  delay: 200
+	  //reset: true, // Animations repeat
+	})
+
+	sr.reveal(`.`);
+	sr.reveal(`.`, { origin: 'bottom' });
+	sr.reveal(`.`, { origin: 'left' });
+	sr.reveal(`.`, { origin: 'right' });
+	sr.reveal(`.`, { interval: 100 });
+	</script>*/
+
