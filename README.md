@@ -1,5 +1,5 @@
-# TeamMiracleProjectSports
-## 📌팀명 : Miracle ✨
+# TRIPPLE : Sports View Community Site
+## 📌팀명 : Team Miracle ✨
 
 ## 📌소개
 대한민국 4대 스포츠 축구, 야구, 농구, 배구 경기들을 관람하고 싶은데 예매를 할 경우 좌석 자리가<br>
