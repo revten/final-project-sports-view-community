@@ -8,27 +8,22 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<div class="myPage__bg-1"
-		style="float: left; position: absolute; top: 100px; left: 30%;">
-		<img src="resources/files/backgroundImg/basketball3.png">
-	</div>
+	<!-- Background Pictures -->
 	<div class="myPage__bg-2"
 		style="float: right; position: absolute; top: 400px; left: 57%;">
-		<img src="resources/files/backgroundImg/coach2.jpg">
-	</div>
-	<div class="myPage__bg-3"
-		style="float: right; position: absolute; top: 550px; left: 7%;">
 		<img src="resources/files/backgroundImg/soccer1.png">
 	</div>
 	<div class="myPage__bg-4"
 		style="float: right; position: absolute; top: 50px; left: 1%;">
-		<img src="resources/files/backgroundImg/mypage1.png">
+		<img src="resources/files/backgroundImg/basketball3.png">
 	</div>
+	
+	
 	<div class="myPage_container">
 		<div class="sidebar">
 			<div class="side-wrapper">
 				<div class="side-menu">
-					</a> <a class="sidebar-link trending" href="myPage.info.go"
+					<a class="sidebar-link trending" href="myPage.info.go"
 						style="text-decoration: none"> <svg viewBox="0 0 24 24"
 							fill="currentColor">
       <path fill-rule="evenodd" clip-rule="evenodd"
@@ -48,17 +43,6 @@
 								d="M11.23 7.29V3.283c0-.427.34-.782.77-.782.385 0 .711.298.763.677l.007.104v4.01h4.78c2.38 0 4.335 1.949 4.445 4.38l.005.215v5.04c0 2.447-1.887 4.456-4.232 4.569l-.208.005H6.44c-2.38 0-4.326-1.94-4.435-4.379L2 16.905v-5.03c0-2.447 1.878-4.466 4.222-4.58l.208-.004h4.8v6.402l-1.6-1.652a.755.755 0 00-1.09 0 .81.81 0 00-.22.568c0 .157.045.32.14.459l.08.099 2.91 3.015c.14.155.34.237.55.237a.735.735 0 00.465-.166l.075-.071 2.91-3.015c.3-.31.3-.816 0-1.126a.755.755 0 00-1.004-.077l-.086.077-1.59 1.652V7.291h-1.54z" />
      </svg> 포인트 보기
 					</a>
-					<!-- <a class="sidebar-link" href="myPage.service.go" style="text-decoration: none"> <svg
-							viewBox="0 0 24 24" fill="currentColor">
-      <path fill-rule="evenodd" clip-rule="evenodd"
-								d="M17.769 8.382H22C22 4.985 19.964 3 16.516 3H7.484C4.036 3 2 4.985 2 8.338v7.324C2 19.015 4.036 21 7.484 21h9.032C19.964 21 22 19.015 22 15.662v-.313h-4.231c-1.964 0-3.556-1.552-3.556-3.466 0-1.915 1.592-3.467 3.556-3.467v-.034zm0 1.49h3.484c.413 0 .747.326.747.728v2.531a.746.746 0 01-.747.728H17.85c-.994.013-1.864-.65-2.089-1.595a1.982 1.982 0 01.433-1.652 2.091 2.091 0 011.576-.74zm.151 2.661h.329a.755.755 0 00.764-.745.755.755 0 00-.764-.746h-.329a.766.766 0 00-.54.213.727.727 0 00-.224.524c0 .413.34.75.764.754zM6.738 8.382h5.644a.755.755 0 00.765-.746.755.755 0 00-.765-.745H6.738a.755.755 0 00-.765.737c0 .413.341.75.765.754z" />
-     </svg> 고객센터
-					</a> <a class="sidebar-link" href="message.go" style="text-decoration: none"> <svg
-							viewBox="0 0 24 24" fill="currentColor">
-      <path fill-rule="evenodd" clip-rule="evenodd"
-								d="M17.769 8.382H22C22 4.985 19.964 3 16.516 3H7.484C4.036 3 2 4.985 2 8.338v7.324C2 19.015 4.036 21 7.484 21h9.032C19.964 21 22 19.015 22 15.662v-.313h-4.231c-1.964 0-3.556-1.552-3.556-3.466 0-1.915 1.592-3.467 3.556-3.467v-.034zm0 1.49h3.484c.413 0 .747.326.747.728v2.531a.746.746 0 01-.747.728H17.85c-.994.013-1.864-.65-2.089-1.595a1.982 1.982 0 01.433-1.652 2.091 2.091 0 011.576-.74zm.151 2.661h.329a.755.755 0 00.764-.745.755.755 0 00-.764-.746h-.329a.766.766 0 00-.54.213.727.727 0 00-.224.524c0 .413.34.75.764.754zM6.738 8.382h5.644a.755.755 0 00.765-.746.755.755 0 00-.765-.745H6.738a.755.755 0 00-.765.737c0 .413.341.75.765.754z" />
-     </svg> 쪽지
-					</a> -->
 				</div>
 			</div>
 		</div>

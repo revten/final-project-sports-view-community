@@ -5,9 +5,20 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link
+	href='https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.9.0/fullcalendar.min.css'
+	rel='stylesheet' />
+<link
+	href='https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.9.0/fullcalendar.print.css'
+	rel='stylesheet' media='print' />
+<link rel="stylesheet" href="resources/css/myPage/myPage.css" />
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script
+	src='https://fullcalendar.io/releases/fullcalendar/3.9.0/lib/moment.min.js'></script>
+<script
+	src='https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.9.0/fullcalendar.min.js'></script>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="resources/css/myPage/myPage.css" />
 </head>
 <body>
 	<!-- Background Pictures -->
@@ -49,30 +60,35 @@
 			</div>
 		</div>
 		<div class="main-container">
-			<div class="modify-container2">
-				<div align="center" class="myPage_title">포인트</div>
+			<div class="modify-container">
+				<div align="center" class="myPage_title">회원정보</div>
 				<br> <br>
 				<div class="input-container">
-					<b class="mypage_name">현재 포인트</b> <b class="text">${point.point }</b><br>
+					<b class="mypage_name">ID</b> <b class="text">${sessionScope.loginAccount.member_id }</b><br>
 					<br>
 				</div>
 				<div class="input-container">
-					<b class="mypage_name">등급</b> <b class="text">${point.point_grade }</b><br>
+					<b class="mypage_name">닉네임</b> <b class="text">${sessionScope.loginAccount.member_nick }</b><br>
 					<br>
 				</div>
 				<div class="input-container">
-					<b class="mypage_name">적립내역</b>
+					<b class="mypage_name">가입일자</b> <b class="text"> <fmt:formatDate
+							value="${sessionScope.loginAccount.member_reg_date }"
+							pattern="yyyy-MM-dd" />
+					</b><br> <br>
 				</div>
-				<div style="width: 205px; background-color: #f5d682;">
-					<c:forEach var="ppt" items="${plusPoint }">
-						<div class="board__row">
-							<div style="border: 2px solid;">
-								포인트${ppt.plusPoint } ||
-								<fmt:formatDate value="${ppt.plusPoint_date }"
-									pattern="yyyy-MM-dd HH:mm" />
-							</div>
-						</div>
-					</c:forEach>
+				<div class="input-container">
+					<b class="mypage_name">이메일</b> <b class="text">${sessionScope.loginAccount.member_email }</b><br>
+					<br>
+				</div>
+				<div class="input-container">
+					<b class="mypage_name">자기소개</b> <b class="text">${sessionScope.loginAccount.member_intro }</b><br>
+					<br>
+				</div>
+				<div class="button-container">
+					<button class="emailBtn2"
+						onclick="location.href='account.update.go'">내 정보 수정하기</button>
+					<button class="emailBtn2" onclick="bye();" type="button">탈퇴문의</button>
 				</div>
 			</div>
 		</div>

@@ -23,7 +23,6 @@
 	href="https://cdnjs.cloudflare.com/ajax/libs/flickity/1.0.0/flickity.css" />
 
 <!--=============== [JS CDN] ===============-->
-<!-- watch페이지 -->
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/flickity/1.0.0/flickity.pkgd.js"></script>
 <script src="//cdn.ckeditor.com/4.19.0/full/ckeditor.js"></script>
@@ -48,13 +47,12 @@
 <link rel="stylesheet" href="resources/css/account/account.css" />
 <link rel="stylesheet" href="resources/css/newsEvent/news.css" />
 <link rel="stylesheet" href="resources/css/stadium/stadium.css" />
-<link rel="stylesheet" href="resources/css/map/map.css" />
+<link rel="stylesheet" href="resources/css/stadium/map.css" />
 <link rel="stylesheet" href="resources/css/newsEvent/clubEvent.css" />
-<link rel="stylesheet" href="resources/css/review.css" />
-<link rel="stylesheet" href="resources/css/withGo.css" />
+<link rel="stylesheet" href="resources/css/review/review.css" />
+<link rel="stylesheet" href="resources/css/withGo/withGo.css" />
 <link rel="stylesheet" href="resources/css/fan/fan.css">
 
-<!-- ---------------------------------------------------------------------------- -->
 </head>
 
 <body>
@@ -224,7 +222,6 @@
 	<!--=============== [JS MEMBER]===============-->
 	<script src="resources/js/account/account_go.js"></script>
 	<script src="resources/js/account/account_condition.js"></script>
-
 	<script src="resources/js/stadium/seat_detail.js"></script>
 	<script src="resources/js/myPage/myPage.js"></script>
 	<script src="resources/js/news/paging.js"></script>

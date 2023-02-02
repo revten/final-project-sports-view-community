@@ -24,13 +24,13 @@
 
 .login_area{
   margin: 0;
-  margin-left: 21%;
+  margin-left: 18%;
   text-align: center;
   transform: translateX(-50%);
   background-color: rgba(255, 255, 255, 0.6);
   border-radius: 9px;
-  border-top: 10px solid #79a6fe;
-  border-bottom: 10px solid #8BD17C;
+  border-top: 10px solid #45484e;
+  border-bottom: 10px solid #45484e;
   width: 310px;
   height: 100%;
   box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
@@ -53,7 +53,7 @@
 
 .login_title {
   font-family: 'Source Sans Pro', sans-serif;
-  color: #5c6bc0; 
+  color: #45484e; 
   font-size: 16px;
   margin-top:14px;;
 }
@@ -63,7 +63,7 @@
 .input_id,.input_pw,.input_content{
   display: block;
   margin: 20px auto;
-  background: #d2daff;
+  background: #f0f0f2;
   border: 0;
   border-radius: 5px;
   padding: 14px 10px;
@@ -84,9 +84,9 @@
 
 
 .loginBtn{
-  border:0;
-  background: #b8a3ff;
-  color: #ffffff;
+  border:1;
+  border-color: #45484e;
+  color: #45484e;
   border-radius: 100px;
   width: 140px;
   height: 30px;
@@ -134,13 +134,13 @@
 }
 
 .find_id,.find_pw{
-	color: #5c6bc0;
+	color: #45484e;
   font-size: 12px;
   cursor: pointer;
 }
 
 .regBtn{
-	color: #8080ff;
+	color: #45484e;
 	cursor: pointer;
 }
 

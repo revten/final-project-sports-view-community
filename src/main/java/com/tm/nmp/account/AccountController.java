@@ -1,7 +1,6 @@
 package com.tm.nmp.account;
 
 import java.io.IOException;
-import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -117,18 +116,18 @@ public class AccountController {
 		return "index";
 	}
 	
-	@RequestMapping(value = "/account.modify.go", method = RequestMethod.GET)
+	@RequestMapping(value = "/account.update.go", method = RequestMethod.GET)
 	public String accountModifyGo(HttpServletRequest req) {
 		acDAO.loginCheck(req);
-		req.setAttribute("contentPage", "myPage/myPageModify.jsp");
+		req.setAttribute("contentPage", "myPage/myPageMyInfoUpdate.jsp");
 		return "index";
 	}
 
-	@RequestMapping(value = "/account.modify.do", method = RequestMethod.POST)
+	@RequestMapping(value = "/account.update.do", method = RequestMethod.POST)
 	public String accountModifyDo(HttpServletRequest req, AccountDTO ac) {
 		acDAO.loginCheck(req);
 		acDAO.accountUpdate(req, ac);
-		req.setAttribute("contentPage", "myPage/myPageInfo.jsp");
+		req.setAttribute("contentPage", "myPage/myPageMyInfo.jsp");
 		return "index";
 	}
 
@@ -188,24 +187,4 @@ public class AccountController {
 		return "index";
 	}
 
-	@ResponseBody
-	@RequestMapping(value = "/users/attendances", method = RequestMethod.GET, produces="application/json")
-	  public EventVo getCalendarList(HttpServletRequest request) {
-			AccountDTO a = (AccountDTO) request.getSession().getAttribute("loginAccount");
-			acDAO.getCalendarList("test");
-			EventVo eventVo = new EventVo();
-			return eventVo;
-		}
-/*		
-	@RequestMapping(value = "/users/attendances")
-	@ResponseBody
-		public String clickCalendar(@RequestParam(value="userId" , required = false) String userId) {
-
-			.... // Point 객체 생성해서 필드에 값 넣기 
-
-			pointService.insertCalendar(userId, point); 		// Date에 저장 & point 적립
-			return new SimpleDateFormat("yyyy-MM-dd")
-	               .format(Timestamp.valueOf(LocalDate.now().atStartOfDay()));
-		}
-		*/
 }

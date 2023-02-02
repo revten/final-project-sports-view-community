@@ -24,26 +24,12 @@ public class MyPageController {
 	
 	@Autowired
 	private PointDAO pDAO;
-	
-	@Autowired
-	private BoardDAO brDAO;
-	
-	@RequestMapping(value = "myPage.pointInfo.go", method = RequestMethod.GET)
-	public String myPagePointInfoGo(HttpServletRequest req, PointVO pv, PlusPointVO ppv) {
-		TokenMaker.make(req);
-		acDAO.loginCheck(req);
-		pDAO.showPoint(req, pv);
-		pDAO.showPlusPoint(req, ppv);
 		
-		req.setAttribute("contentPage", "myPage/myPageMyPoint.jsp");
-		return "index";
-	}
-	
 	@RequestMapping(value = "myPage.info.go", method = RequestMethod.GET)
 	public String myPageInfoGo(HttpServletRequest req, AccountDTO ac, PointVO pv, PlusPointVO ppv) {
 		TokenMaker.make(req);
 		acDAO.loginCheck(req);
-		req.setAttribute("contentPage", "myPage/myPageInfo.jsp");
+		req.setAttribute("contentPage", "myPage/myPageMyInfo.jsp");
 		return "index";
 	}
 	
@@ -56,23 +42,14 @@ public class MyPageController {
 		return "index";
 	}
 	
-	@RequestMapping(value = "myPage.myPost.detail.go", method = RequestMethod.GET)
-	public String myPageMyPostDetailGo(HttpServletRequest req, AccountDTO ac, PostVO pvo) {
+	@RequestMapping(value = "myPage.pointInfo.go", method = RequestMethod.GET)
+	public String myPagePointInfoGo(HttpServletRequest req, PointVO pv, PlusPointVO ppv) {
 		TokenMaker.make(req);
 		acDAO.loginCheck(req);
-		brDAO.getPost(req, pvo);
-		req.setAttribute("contentPage", "myPage/myPageMyPostDetail.jsp");
-		return "index";
-	}
-	
-	
-	
-	@RequestMapping(value = "myPage.service.go", method = RequestMethod.GET)
-	public String myPageMyServiceGo(HttpServletRequest req, AccountDTO ac, PointVO pv, PlusPointVO ppv) {
-		TokenMaker.make(req);
-		acDAO.loginCheck(req);
+		pDAO.showPoint(req, pv);
+		pDAO.showPlusPoint(req, ppv);
 		
-		req.setAttribute("contentPage", "myPage/myPageService.jsp");
+		req.setAttribute("contentPage", "myPage/myPageMyPoint.jsp");
 		return "index";
 	}
 	

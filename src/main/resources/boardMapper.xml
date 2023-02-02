@@ -155,9 +155,6 @@
 		and like_member= #{like_member}
 	</select>
 
-
-
-
 	<insert id="likeUp" parameterType="com.tm.nmp.board.LikeVO">
 		insert into likes
 		values(likes_seq.nextval, #{like_post}, #{like_member}, 1)
