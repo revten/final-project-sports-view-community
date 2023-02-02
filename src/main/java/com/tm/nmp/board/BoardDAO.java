@@ -43,22 +43,22 @@ public class BoardDAO {
 	public void calcAllPostCount() {
 		BoardSelector bSelWithGo = new BoardSelector("", 0, 0, 11);
 		withGo = ss.getMapper(BoardMapper.class).calcAllPostCount(bSelWithGo);
-		
+
 		BoardSelector bSelReview = new BoardSelector("", 0, 0, 12);
 		review = ss.getMapper(BoardMapper.class).calcAllPostCount(bSelReview);
-		
+
 		BoardSelector bSelBaseBall = new BoardSelector("", 0, 0, 21);
 		baseball = ss.getMapper(BoardMapper.class).calcAllPostCount(bSelBaseBall);
-		
+
 		BoardSelector bSelSoccer = new BoardSelector("", 0, 0, 22);
 		soccer = ss.getMapper(BoardMapper.class).calcAllPostCount(bSelSoccer);
-		
+
 		BoardSelector bSelBasketball = new BoardSelector("", 0, 0, 23);
 		basketball = ss.getMapper(BoardMapper.class).calcAllPostCount(bSelBasketball);
-		
+
 		BoardSelector bSelVolley = new BoardSelector("", 0, 0, 24);
 		volleyball = ss.getMapper(BoardMapper.class).calcAllPostCount(bSelVolley);
-		
+
 		BoardSelector bSelClubEvent = new BoardSelector("", 0, 0, 31);
 		clubEvent = ss.getMapper(BoardMapper.class).calcAllPostCount(bSelClubEvent);
 	}
@@ -300,8 +300,9 @@ public class BoardDAO {
 		// 리플등록시에 세션에 세팅해둔 토큰을 불러온다.
 		String successToken = (String) req.getSession().getAttribute("successToken");
 		System.out.println("token : " + token);
-		
-		// 리플등록 비동기 요청에 대한 대답으로 새토큰과 등록성공여부, 등록한 리플 정보를 조회해서 받은 ReplyVO를 담아줄 ResultVO 객체를 만든다.
+
+		// 리플등록 비동기 요청에 대한 대답으로 새토큰과 등록성공여부, 등록한 리플 정보를 조회해서 받은 ReplyVO를 담아줄 ResultVO
+		// 객체를 만든다.
 		ResultVO resultVO = new ResultVO();
 
 		// TokenMaker로 만든 토큰과 리플등록시에 만든 토큰을 비교한다.
@@ -311,12 +312,12 @@ public class BoardDAO {
 			System.out.println(resultVO.toString());
 			return resultVO;
 		}
-		
+
 		// 리플 등록시에 regIp가 not null이므로 세팅해주자
 		String regIp = getClientIp(req);
 		System.out.println(regIp);
 		rp.setReply_reg_ip(regIp);
-		
+
 		// 리플을 등록한 사람도 세팅해주자
 		AccountDTO ac = (AccountDTO) req.getSession().getAttribute("loginAccount");
 		rp.setReply_member(ac.getMember_id());
@@ -327,7 +328,7 @@ public class BoardDAO {
 			req.setAttribute("result", "댓글쓰기 성공");
 			// 생성토큰을 저장해두기
 			req.getSession().setAttribute("successToken", token);
-			
+
 			// 성공한 값으로 1을 넘김
 			resultVO.setResult(1);
 			resultVO.setToken((String) req.getAttribute("token"));
@@ -336,7 +337,6 @@ public class BoardDAO {
 			resultVO.setReplyVO(replyVO);
 			System.out.println(resultVO.toString());
 			return resultVO;
-//			allReplyCount++;
 		}
 		return resultVO;
 
@@ -352,13 +352,20 @@ public class BoardDAO {
 		}
 	}
 
-	public void updateReply(HttpServletRequest req, ReplyVO rp) {
-		if (ss.getMapper(BoardMapper.class).updateReply(rp) == 1) {
+	public ResultVO updateReply(HttpServletRequest req, ReplyVO rp) {
+		ResultVO resultVO = new ResultVO();
+		int a = ss.getMapper(BoardMapper.class).updateReply(rp);
+		System.out.println(a);
+		if (a == 1) {
+			resultVO.setResult(1);
+			ReplyVO replyVO = ss.getMapper(BoardMapper.class).getReply();
+			System.out.println(replyVO.toString());
+			resultVO.setReplyVO(replyVO);
+			System.out.println(resultVO.toString());
 			req.setAttribute("result", "댓글수정 성공");
-		} else {
-			req.setAttribute("result", "댓글수정 실패");
-		}
-		req.setAttribute("result", "댓글수정 실패");
+			return resultVO;
+		} 
+		return resultVO;
 	}
 
 	public static String getClientIp(HttpServletRequest req) {
@@ -445,7 +452,7 @@ public class BoardDAO {
 	}
 
 	public void viewBoardName(HttpServletRequest req) {
-		
+
 		String board_num = req.getParameter("post_board");
 		System.out.println(board_num);
 		String board_name = "";

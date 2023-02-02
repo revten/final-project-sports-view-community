@@ -209,16 +209,8 @@ public class FanBoardController {
 	}
 
 	@RequestMapping(value = "fanReply.update.do", method = RequestMethod.GET)
-	public String fanReplyUpdate(HttpServletRequest req, ReplyVO rp, PostVO p) {
-		TokenMaker.make(req);
-		if (acDAO.loginCheck(req)) {
-			brDAO.updateReply(req, rp);
-		} else {
-			req.setAttribute("contentPage", "account/loginPage.jsp");
-		}
-		brDAO.getPost(req, p);
-		req.setAttribute("contentPage", "fan/fanPostDetail.jsp");
-		return "index";
+	public @ResponseBody ResultVO fanReplyUpdate(HttpServletRequest req, ReplyVO rp) {
+		return brDAO.updateReply(req,rp);
 	}
 
 	// 좋아요 (진행중)

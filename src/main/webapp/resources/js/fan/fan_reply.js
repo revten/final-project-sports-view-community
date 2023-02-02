@@ -84,7 +84,7 @@ $('.reply__reg-btn').click(function() {
 // ---------------------------------------------------------
 
 // 댓글 삭제
-// 글을 등록한 뒤에 바로 삭제를 하기위에서, 
+// 글을 등록한 뒤에 바로 삭제를 하기위에서,
 // 댓글 등록할때 쓴 $('.reply__reg-btn').click(function() {}형태를 쓰지 않았다.
 $(document).on('click', '.reply__delete-btn', function() {
 	
@@ -121,20 +121,75 @@ $(document).on('click', '.reply__delete-btn', function() {
 	});
 });
 
-//---------------------------------------------------------
+// ---------------------------------------------------------
 
+// 수정버튼으로 바꿔주기
 $(document).on('click', '.reply__update-btn', function() {
 	
-	let reply__div = $(this).parent().parent();
+	let reply__div = $(this).parent().parent().parent();
 	let reply_id = 	$(reply__div).find('.reply__id').val();
 	alert(reply_id);
 	let reply_content = $(reply__div).find('.reply__content');
 	alert(reply_content);
 	
-	$(reply_content).html(`<input class="reply__content-reg" name="reply__content" maxlength="80" autocomplete="off" required>`);
-	// 
-	
+	$(reply_content).html(`<input class="reply__update-fin" name="reply__content" maxlength="80" autocomplete="off" required>`);
 });
 
-
+// 수정할 내용 입력하고 바로 다시 받아오기
+$('.reply__update-fin').click(function() {
+	
+	let reply__div = $(this).parent().parent().parent();
+	let reply_id = $(reply__div).find('.reply__id').val();
+	alert(reply_id);
+	let reply_content = $(reply__div).find('.reply__content');
+	console.log(reply_content);
+	
+	$.ajax({
+		url:"fanReply.update.do",
+		type : 'get',
+		dataType : 'json',
+		data : {
+			"reply_content" : reply_content,
+			"reply_id" : reply_id
+		},
+		
+		success : function(data) {
+			console.log('통신 성공');
+			console.log(data);
+			console.log(JSON.stringify(data));
+			
+			let result = (data.result)*1;
+			let reply = data.replyVO;
+			console.log(JSON.stringify(reply));
+			
+			if(result > 0) {
+				let replyContent = `
+					<div class="reply__div">
+						<p>
+						<hr>
+						<input class="reply__id" type="hidden" name="reply_id" value="${reply.reply_id}" >
+						<div class="sortInfo">
+							<div class="reply_writterNick"><b>${reply.member_nick}</b></div>
+							<div class="reply__date">
+								"${reply.reply_update_date}"					
+								<button class="reply__update-btn">수정</button>
+								<button class="reply__delete-btn">삭제</button>
+								<br>
+							</div>						
+						</div>						
+						<div class="reply__content">${reply.reply_content}</div>
+					</div>`;
+				
+					$('.reply__list').prepend(replyContent);
+					
+				} else {
+					console.log('댓글 등록 실패');
+			}
+			$('.reply__content').val('');
+			},
+			error: function(){
+			alert('통신실패');
+			}	
+		});
+	});
 });

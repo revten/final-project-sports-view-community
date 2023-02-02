@@ -13,7 +13,6 @@ import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
 
 import com.tm.nmp.board.PostVO;
-import com.tm.nmp.point.PointMapper;
 
 @Service
 public class AC_US_DAO {
@@ -90,20 +89,6 @@ public class AC_US_DAO {
 		req.getSession().setAttribute("loginAccount", null);
 	}
 
-	/*
-	 * public void searchIdDo(HttpServletRequest req, AccountDTO ac) {
-	 * ac.setAc_name(ac.getAc_name()); ac.setAc_email(ac.getAc_email()); AccountDTO
-	 * idSearch = ss.getMapper(AccountMapper.class).searchId(ac);
-	 * 
-	 * String getId = idSearch.getAc_id(); String result = getId;
-	 * 
-	 * int length = result.length();
-	 * 
-	 * String maskedId = "";
-	 * 
-	 * for (int i = 0; i < length; i++) { maskedId = i < length / 2 ? maskedId +
-	 * result.charAt(i) : maskedId + "*"; } req.setAttribute("result", maskedId); }
-	 */
 	public String memberEmailCheckDo(String member_email) {
 		Random random = new Random();
 		int checknum = random.nextInt(888888) + 111111;
@@ -276,16 +261,6 @@ public class AC_US_DAO {
 
 	}
 
-	public List<Calendar> getCalendarList(String userId) {
-		System.out.println(userId);
-		List<Calendar> dates = ss.getMapper(PointMapper.class).getCalendarList(userId);
-		for (Calendar c : dates) {
-			System.out.println(c.getCal_date());
-		}
-
-		return dates;
-
-	}
 
 	public void showAccount(AccountDTO ac, HttpServletRequest req) {
 		AccountDTO a = (AccountDTO) req.getSession().getAttribute("loginAccount");
