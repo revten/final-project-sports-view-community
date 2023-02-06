@@ -301,7 +301,7 @@
 	<script>
 		/*=============== 스크롤 나타나는 효과 ===============*/
 		const srWatch = ScrollReveal({
-			  origin: 'left',
+			  origin: 'right',
 			  distance: '290px',
 			  duration: 2400,
 			  delay: 200
@@ -309,18 +309,18 @@
 		})
 
 		srWatch.reveal(`.withGo__bg-rightTop`, {
-			origin : 'top'
+			origin : 'right'
 		});
 
 		srWatch.reveal(`.withGo__bg-leftTop`, {
-			origin : 'left'
+			origin : 'right'
 		});
 
 		srWatch.reveal(`.withGo__header`, {
-			origin : 'bottom'
+			origin : 'right'
 		});
 		srWatch.reveal(`.withGo__container`, {
-			origin : 'left'
+			origin : 'right'
 		});
 	</script>
 </body>

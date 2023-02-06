@@ -192,5 +192,20 @@
 			</div>
 		</div>
 	</div>
+		<script> 
+const srFanD = ScrollReveal({
+	  origin: 'right',
+	  distance: '290px',
+	  duration: 2400,
+	  delay: 200
+	  //reset: true, // Animations repeat
+	})
+	srFanD.reveal(`.container-field`);
+	srFanD.reveal(`.board-main`, { origin: 'right' });
+	srFanD.reveal(`.app-content`, { origin: 'right' });
+	srFanD.reveal(`.app-container`, { origin: 'right' });
+	srFanD.reveal(`.`, { interval: 100});
+	</script>
+	
 </body>
 </html>

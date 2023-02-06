@@ -176,19 +176,16 @@
 	</main>
 	<script> 
 const srFan = ScrollReveal({
-	  origin: 'left',
+	  origin: 'right',
 	  distance: '290px',
 	  duration: 2400,
 	  delay: 200
 	  //reset: true, // Animations repeat
 	})
-	srFan.reveal(`.container-field`);
-	srFan.reveal(`.board-main`, { origin: 'left' });
-	srFan.reveal(`.app-content`, { origin: 'bottom' });
+	srFan.reveal(`.container-field`, { origin: 'right' });
 	srFan.reveal(`.fan_bg-leftTop`, { origin: 'left' });
 	srFan.reveal(`.fan_bg-RightTop`, { origin: 'right' });
-	srFan.reveal(`.app-container`, { origin: 'top' });
-	srFan.reveal(`.`, { interval: 100 });
+	srFan.reveal(`.app-container`, { origin: 'right' });
 	</script>
 	
 	
