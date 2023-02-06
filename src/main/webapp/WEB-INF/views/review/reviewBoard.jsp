@@ -320,10 +320,10 @@
 	<script>
 		/*=============== 스크롤 나타나는 효과 ===============*/
 		const srReview = ScrollReveal({ 
-			origin : 'top',
-			distance : '90px',
-			duration : 2500,
-			delay : 400
+			origin : 'right',
+			distance : '290px',
+			duration : 2400,
+			delay : 200
 		//reset: true, // 애니메이션은 반복
 		})
 		
@@ -332,14 +332,14 @@
 		});
 		
 		srReview.reveal(`.watch__container`, {
-			origin : 'top'
+			origin : 'right'
 		});
 
 		srReview.reveal(`.watch__header`, {
-			origin : 'top'
+			origin : 'right'
 		});
 		srReview.reveal(`.review__slide, .watch__wrapper`, {
-			origin : 'left'
+			origin : 'right'
 		});
 	</script>
 </body>

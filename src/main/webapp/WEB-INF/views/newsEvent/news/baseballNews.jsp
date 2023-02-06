@@ -17,10 +17,14 @@
 	<br>
 	<br>
 	<br>
-	<div style="float: left;position: absolute;left: -14%;"><img src="resources/files/backgroundImg/baseball1.png"></div>
-		<div style="float: left;position: absolute;top:600px;left: -9%;"><img src="resources/files/backgroundImg/baseball2.png"></div>
-		<div style="float: right;position: absolute;top:400px; left : 66%;"><img src="resources/files/backgroundImg/eventImg2.png"></div>
-		<div style="float: right;position: absolute;top:800px; left : 66%;"><img src="resources/files/backgroundImg/baseball3.png"></div>
+	
+	<div  class="news__bg-left" style="float: left; position: absolute; left: -14%;">
+		<img src="resources/files/backgroundImg/baseball1.png">
+	</div>
+	<div  class="news__bg-right" style="float: right; position: absolute; top: 400px; left: 66%;">
+		<img src="resources/files/backgroundImg/eventImg2.png">
+	</div>
+	
 	<div class="nav__menu" id="nav-menu" style="width: 59%; align: center;">
 		<ul class="nav__list">
 			<li class="nav__item"><a href='news.soccer.go'>축구</a></li>
@@ -34,18 +38,6 @@
 	<br>
 
 	<div class="div_news">
-		<!-- <div class="div_news_nav">
-		<div id="sidebar">
-		<nav class="navbar">
-		 <ul class="navbar__menu">
-            <li onclick="location.href='news.soccer.go'">축구</li>
-            <li onclick="location.href='news.baseball.go'">야구</li>
-            <li onclick="location.href='news.basketball.go'">농구</li>
-            <li onclick="location.href='news.volleyball.go'">배구 </li>
-          </ul>
-          </nav>
-           </div>
-		</div> -->
 		<div class="div_news_content">
 			<div id="data-container"></div>
 			<div id="pagination" style="margin-left: 29%;"></div>
@@ -96,6 +88,18 @@
 						}
 					})
 		}
+	</script>
+		<script>
+		/*=============== 스크롤 나타나는 효과 ===============*/
+		const srNewsB = ScrollReveal({
+			origin : 'right',
+			distance : '290px',
+			duration : 2400,
+			delay : 200
+		//reset: true, // 애니메이션은 반복
+		})
+		srNewsB.reveal(`.news__bg-left`, {origin : 'left'});
+		srNewsB.reveal(`.div_news_content, .news__bg-right`, {origin : 'right'});
 	</script>
 </body>
 </html>
