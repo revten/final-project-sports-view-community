@@ -32,62 +32,30 @@ public class BoardDAO {
 		this.allPostCount = allPostCount;
 	}
 
-	private int withGo;
-	private int review;
-	private int baseball;
-	private int soccer;
-	private int basketball;
-	private int volleyball;
-	private int clubEvent;
+	
+	private int[] boardSelect = new int[] {11, 12, 21, 22, 23, 24, 31};
+	private int[] calcBoard = new int[7];
+	private int board_array_number;
 
 	public void calcAllPostCount() {
-		BoardSelector bSelWithGo = new BoardSelector("", 0, 0, 11);
-		withGo = ss.getMapper(BoardMapper.class).calcAllPostCount(bSelWithGo);
-
-		BoardSelector bSelReview = new BoardSelector("", 0, 0, 12);
-		review = ss.getMapper(BoardMapper.class).calcAllPostCount(bSelReview);
-
-		BoardSelector bSelBaseBall = new BoardSelector("", 0, 0, 21);
-		baseball = ss.getMapper(BoardMapper.class).calcAllPostCount(bSelBaseBall);
-
-		BoardSelector bSelSoccer = new BoardSelector("", 0, 0, 22);
-		soccer = ss.getMapper(BoardMapper.class).calcAllPostCount(bSelSoccer);
-
-		BoardSelector bSelBasketball = new BoardSelector("", 0, 0, 23);
-		basketball = ss.getMapper(BoardMapper.class).calcAllPostCount(bSelBasketball);
-
-		BoardSelector bSelVolley = new BoardSelector("", 0, 0, 24);
-		volleyball = ss.getMapper(BoardMapper.class).calcAllPostCount(bSelVolley);
-
-		BoardSelector bSelClubEvent = new BoardSelector("", 0, 0, 31);
-		clubEvent = ss.getMapper(BoardMapper.class).calcAllPostCount(bSelClubEvent);
+		for(int i = 0; i < boardSelect.length; i++) {
+			BoardSelector bs = new BoardSelector("", 0, 0, boardSelect[i]); 
+			calcBoard[i] = ss.getMapper(BoardMapper.class).calcAllPostCount(bs);
+			System.out.println(calcBoard[i]);
+		}
 	}
 
 	public void getAllPost(HttpServletRequest req, int pageNbr, int post_board, PostVO p) {
 
-		switch (post_board) {
-		case 11:
-			allPostCount = withGo;
-			break;
-		case 12:
-			allPostCount = review;
-			break;
-		case 21:
-			allPostCount = baseball;
-			break;
-		case 22:
-			allPostCount = soccer;
-			break;
-		case 23:
-			allPostCount = basketball;
-			break;
-		case 24:
-			allPostCount = volleyball;
-			break;
-		case 31:
-			allPostCount = clubEvent;
-			break;
+		for(int i = 0; i < boardSelect.length; i++) {			
+			if(boardSelect[i] == post_board) {
+				board_array_number = i;
+				break;
+			}
 		}
+		
+		allPostCount = calcBoard[board_array_number];
+		System.out.println("allPostCount : " + allPostCount);
 
 		int count = bo.getCountPerPage();
 		int start = (pageNbr - 1) * count + 1;
@@ -105,7 +73,8 @@ public class BoardDAO {
 			postCount = ss.getMapper(BoardMapper.class).calcAllPostCount(search);
 
 		}
-
+		System.out.println("postCount : " + postCount);
+		
 		int catNum = p.getPost_category();
 
 		String category = Integer.toString(catNum);
@@ -152,6 +121,8 @@ public class BoardDAO {
 		req.setAttribute("posts", posts);
 
 		int pageCount = (int) Math.ceil(postCount / (double) count);
+		System.out.println("pageCount : " + pageCount);
+		
 		req.setAttribute("pageCount", pageCount);
 		req.setAttribute("curPage", pageNbr);
 	}
@@ -205,29 +176,16 @@ public class BoardDAO {
 		System.out.println(post_board);
 		if (ss.getMapper(BoardMapper.class).regPost(p) == 1) {
 			System.out.println("글 등록 성공");
-			switch (post_board) {
-			case 11:
-				withGo++;
-				break;
-			case 12:
-				review++;
-				break;
-			case 21:
-				baseball++;
-				break;
-			case 22:
-				soccer++;
-				break;
-			case 23:
-				basketball++;
-				break;
-			case 24:
-				volleyball++;
-				break;
-			case 31:
-				clubEvent++;
-				break;
+			
+			for(int i = 0; i < boardSelect.length; i++) {			
+				if(boardSelect[i] == post_board) {
+					board_array_number = boardSelect[i];
+					break;
+				}
 			}
+			
+			calcBoard[board_array_number]++;
+			
 		} else {
 			System.err.println("글 등록 실패");
 		}
@@ -267,29 +225,16 @@ public class BoardDAO {
 		System.out.println(post_board);
 		if (ss.getMapper(BoardMapper.class).deletePost(p) == 1) {
 			req.setAttribute("result", "글삭제 성공");
-			switch (post_board) {
-			case 11:
-				withGo--;
-				break;
-			case 12:
-				review--;
-				break;
-			case 21:
-				baseball--;
-				break;
-			case 22:
-				soccer--;
-				break;
-			case 23:
-				basketball--;
-				break;
-			case 24:
-				volleyball--;
-				break;
-			case 31:
-				clubEvent--;
-				break;
+			
+			for(int i = 0; i < boardSelect.length; i++) {			
+				if(boardSelect[i] == post_board) {
+					board_array_number = boardSelect[i];
+					break;
+				}
 			}
+			
+			calcBoard[board_array_number]--;
+			
 		} else {
 			req.setAttribute("result", "글삭제실패");
 		}
