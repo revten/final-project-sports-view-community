@@ -35,14 +35,6 @@ public class FanBoardController {
 	@Autowired
 	private PointDAO ptDAO;
 
-	@RequestMapping(value = "fan.main.go", method = RequestMethod.GET)
-	public String fanMainGo(HttpServletRequest req, PostVO p) {
-		acDAO.wathingPage(req);
-		acDAO.loginCheck(req);
-		req.setAttribute("contentPage", "fan/fanBoard.jsp");
-		return "index";
-	}
-
 	@RequestMapping(value = "fan.board.go", method = RequestMethod.GET)
 	public String fanBoardGo(HttpServletRequest req, PostVO p) {
 		TokenMaker.make(req);

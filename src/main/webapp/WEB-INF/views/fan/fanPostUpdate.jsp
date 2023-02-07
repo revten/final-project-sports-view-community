@@ -13,8 +13,6 @@
 		});
 	});
 </script>
-<link rel="stylesheet" href="resources/css/fan/fan.css" />
-<script src="resources/js/fan/fanPost.js"></script>
 </head>
 <body>
 	<div class="container-field">

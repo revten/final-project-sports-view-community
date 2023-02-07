@@ -44,14 +44,14 @@
 
 <!--=============== [CSS MEMBER]===============-->
 <link rel="stylesheet" href="resources/css/index.css" />
-<link rel="stylesheet" href="resources/css/account/account.css" />
-<link rel="stylesheet" href="resources/css/newsEvent/news.css" />
-<link rel="stylesheet" href="resources/css/stadium/stadium.css" />
-<link rel="stylesheet" href="resources/css/stadium/map.css" />
-<link rel="stylesheet" href="resources/css/newsEvent/clubEvent.css" />
-<link rel="stylesheet" href="resources/css/review/review.css" />
-<link rel="stylesheet" href="resources/css/withGo/withGo.css" />
-<link rel="stylesheet" href="resources/css/fan/fan.css">
+<link rel="stylesheet" href="resources/css/account.css" />
+<link rel="stylesheet" href="resources/css/news.css" />
+<link rel="stylesheet" href="resources/css/stadium.css" />
+<link rel="stylesheet" href="resources/css/map.css" />
+<link rel="stylesheet" href="resources/css/clubEvent.css" />
+<link rel="stylesheet" href="resources/css/review.css" />
+<link rel="stylesheet" href="resources/css/withGo.css" />
+<link rel="stylesheet" href="resources/css/fan.css">
 
 </head>
 
@@ -227,6 +227,5 @@
 	<script src="resources/js/news/paging.js"></script>
 	<script src="resources/js/fan/fan_reply.js"></script>
 	<script src="resources/js/fan/fanPost.js"></script>
-
 </body>
 </html>

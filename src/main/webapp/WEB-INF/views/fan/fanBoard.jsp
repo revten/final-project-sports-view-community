@@ -7,28 +7,25 @@
 <head>
 <meta charset="UTF-8">
 <title>TRIPPLE: Community</title>
-<link rel="stylesheet" href="resources/css/fan/fan.css">
-<%-- <link rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css">--%>
-<link rel="stylesheet"
-	href="https://cdn.jsdelivr.net/jquery.selectric/1.10.1/selectric.css">
-<link rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css">
 <!--=============== [JS]===============-->
-<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
-<script
-	src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
-<script
-	src="https://cdn.jsdelivr.net/jquery.selectric/1.10.1/jquery.selectric.min.js"></script>
-<script src="resources/js/fan/fanBoard.js"></script>
+
 </head>
 <body>
 	<main role="main" class="col-md-9 ml-sm-auto col-lg-10 my-3"> <!-- 부트스트랩 클래스명이라 main은 남겨야 할듯 -->
-	<div class="fan_bg-leftTop" style="float: left;position: absolute;left: -9%;"><img src="resources/files/backgroundImg/review1.png"></div>
-	<div class="fan_bg-RightTop" style="float: right;position: absolute;top:400px; left : 86%;"><img src="resources/files/backgroundImg/review3.png"></div>
-	<div style="float: right;position: absolute;top:800px; left : 66%;"><img src="resources/files/backgroundImg/review2.png"></div>
-	<div style="float: left;position: absolute;top: 900px;left: -9%;"><img src="resources/files/backgroundImg/fan1.png"></div>
+	<div class="fan_bg-leftTop"
+		style="float: left; position: absolute; left: -9%;">
+		<img src="resources/files/backgroundImg/review1.png">
+	</div>
+	<div class="fan_bg-RightTop"
+		style="float: right; position: absolute; top: 400px; left: 86%;">
+		<img src="resources/files/backgroundImg/review3.png">
+	</div>
+	<div style="float: right; position: absolute; top: 800px; left: 66%;">
+		<img src="resources/files/backgroundImg/review2.png">
+	</div>
+	<div style="float: left; position: absolute; top: 900px; left: -9%;">
+		<img src="resources/files/backgroundImg/fan1.png">
+	</div>
 	<div class="container-field">
 		<div class="board-main">
 			<!--==================== fan__best 부분 - 종목별 베스트 (각 게시판별로 CRUD별로 존재해야)  ====================-->
@@ -127,8 +124,9 @@
 							<div class="board__cell category">${post_category}</div>
 							<div class="board__cell post_title">
 								<span style="cursor: pointer"
-									onclick="location.href='fan.detail.go?post_id=${p.post_id }&post_member=${p.post_member}'">${p.post_title }  <span>[${p.post_reply_count}]</span>
-									</span>
+									onclick="location.href='fan.detail.go?post_id=${p.post_id }&post_member=${p.post_member}'">${p.post_title }
+									<span>[${p.post_reply_count}]</span>
+								</span>
 							</div>
 							<div class="board__cell reg_date">
 								<c:choose>
@@ -145,8 +143,7 @@
 							<div class="board__cell nick">${p.member_nick}</div>
 							<div class="board__cell view_count">${p.post_hit_count}</div>
 						</div>
-						<hr
-							style="background: #f0f0f0; height: 0.5px; border: 0;">
+						<hr style="background: #f0f0f0; height: 0.5px; border: 0;">
 					</c:forEach>
 				</div>
 				<div class="board__bot-paging">
@@ -174,20 +171,28 @@
 		</div>
 	</div>
 	</main>
-	<script> 
-const srFan = ScrollReveal({
-	  origin: 'right',
-	  distance: '290px',
-	  duration: 2400,
-	  delay: 200
-	  //reset: true, // Animations repeat
-	})
-	srFan.reveal(`.container-field`, { origin: 'right' });
-	srFan.reveal(`.fan_bg-leftTop`, { origin: 'left' });
-	srFan.reveal(`.fan_bg-RightTop`, { origin: 'right' });
-	srFan.reveal(`.app-container`, { origin: 'right' });
+	<script>
+		const srFan = ScrollReveal({
+			origin : 'right',
+			distance : '290px',
+			duration : 2400,
+			delay : 200
+		//reset: true, // Animations repeat
+		})
+		srFan.reveal(`.container-field`, {
+			origin : 'right'
+		});
+		srFan.reveal(`.fan_bg-leftTop`, {
+			origin : 'left'
+		});
+		srFan.reveal(`.fan_bg-RightTop`, {
+			origin : 'right'
+		});
+		srFan.reveal(`.app-container`, {
+			origin : 'right'
+		});
 	</script>
-	
-	
+
+
 </body>
 </html>
