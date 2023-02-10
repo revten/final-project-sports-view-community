@@ -11,6 +11,10 @@
 
 핵심 아이디어는 https://myseatcheck.com/ 에서 가져왔음을 다시한번 밝혀두며 오로지 학습용 프로젝트로 제작하였습니다.<br>
 
+## 📌진행기간
+2022-01-08 ~ 2022-01-31<br>
+2022-03-31까지 추가 및 수정 등 업데이트 예정
+
 ## 📌기술스텍
 <img src="https://img.shields.io/badge/eclipse-2C2255?style=for-the-badge&logo=eclipse&logoColor=white"> <img src="https://img.shields.io/badge/vs code-0066CC?style=for-the-badge&logo=vscode&logoColor=white"> <img src="https://img.shields.io/badge/oracle-F80000?style=for-the-badge&logo=oracle&logoColor=white"> <img src="https://img.shields.io/badge/sourcetree-blue?style=for-the-badge&logo=sourcetree&logoColor=white"> <img src="https://img.shields.io/badge/github-181717?style=for-the-badge&logo=github&logoColor=white"> <img src="https://img.shields.io/badge/apache tomcat-F8DC75?style=for-the-badge&logo=apachetomcat&logoColor=black"> 
 
