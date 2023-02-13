@@ -16,9 +16,10 @@ https://myseatcheck.com의 초기 아이디어임을 다시한번 밝혀두며 �
 2022-03-31까지 추가 및 수정 등 업데이트 예정
 
 ## 📌프로젝트 진행과정 및 문서
-#### 학습내용의 기본에 충실하며 실제로 회사에서 프로젝트를 진행한다는 컨셉으로 돌입하였습니다.
-#### 노션을 프로젝트 진행과정 기록을 위해 팀의 홈페이지 개념으로 활용하였습니다.
-#### Notion : https://dusty-mandible-fdc.notion.site/69a438a4587f48f6b404422ea0fd600f?v=1bb9869d6c9c4e4397129719da3f49bc
+* 학습내용의 기본에 충실하며 실제로 회사에서 프로젝트를 진행한다는 컨셉으로 돌입하였습니다.
+* 노션을 프로젝트 진행과정 기록을 위해 팀의 홈페이지 개념으로 활용하였습니다.
+  * 프로젝트 기획 및 진행계획, 회의록, 사이트맵, IA다이아그램, 정보공유, 팀규칙, 코드규칙, 팀정보 등
+  * 노션주소 : https://dusty-mandible-fdc.notion.site/Team_Miracle-e577e65b76a7478f90e49c5b5507c894
 
 ## 📌기술스텍
 <img src="https://img.shields.io/badge/eclipse-2C2255?style=for-the-badge&logo=eclipse&logoColor=white"> <img src="https://img.shields.io/badge/vs code-0066CC?style=for-the-badge&logo=vscode&logoColor=white"> <img src="https://img.shields.io/badge/oracle-F80000?style=for-the-badge&logo=oracle&logoColor=white"> <img src="https://img.shields.io/badge/sourcetree-blue?style=for-the-badge&logo=sourcetree&logoColor=white"> <img src="https://img.shields.io/badge/github-181717?style=for-the-badge&logo=github&logoColor=white"> <img src="https://img.shields.io/badge/apache tomcat-F8DC75?style=for-the-badge&logo=apachetomcat&logoColor=black"> 
@@ -54,8 +55,22 @@ https://myseatcheck.com의 초기 아이디어임을 다시한번 밝혀두며 �
 ## 📌사이트 구조
 ![SiteMap](https://user-images.githubusercontent.com/109392408/215984046-90c81359-91e8-44b0-b035-d9cd642f1989.png)
 
+## 📌주요구상 및 설계
+
+### 1. IA DIAGRAM
+![IA_Chart](https://user-images.githubusercontent.com/109392408/216013940-7c71cd60-f605-415a-8310-477e479e8537.png)
+#### Figma  : https://www.figma.com/file/88oFAYgzGwmQusJZ6qw2zM/TM_Sports_IA-%2B-FLOW-Chart?node-id=0%3A1&t=cN2mjmtqNLmIzvpW-1
+
+### 2. 화면설계(초안)
+![view설게_1](https://user-images.githubusercontent.com/97932245/215462904-4746b0c1-bb2c-4b9f-ba35-85ad1080e296.jpg)
+![view설게_2](https://user-images.githubusercontent.com/97932245/215463839-533bb48d-78c1-4092-8f1b-4c600d652f92.jpg)
+
 ## 📌DB구조
-### 1. 주요 테이블
+
+### 1. ERD
+![ERD](https://user-images.githubusercontent.com/109392408/215984064-c0260cd6-5b84-47e0-9775-e56cd9f16f83.png)
+
+### 2. 주요 테이블
 
 ### *MEMBER*
 COLUMN_NAME|DATA_TYPE|NULLABLE|CONSTRAINT_TYPE|
@@ -99,20 +114,6 @@ POST_SCRAP_COUNT|NUMBER(5,0)|No|0||
 POST_REPLY_COUNT|NUMBER(5,0)|No|0||
 POST_REG_IP|VARCHAR2(100 CHAR)|No|||
 POST_CONTENT|VARCHAR2(2000 BYTE)|Yes|||
-
-### 2. ERD
-![ERD](https://user-images.githubusercontent.com/109392408/215984064-c0260cd6-5b84-47e0-9775-e56cd9f16f83.png)
-
-
-## 📌주요구상 및 설계
-
-### 1. IA DIAGRAM
-![IA_Chart](https://user-images.githubusercontent.com/109392408/216013940-7c71cd60-f605-415a-8310-477e479e8537.png)
-#### Figma  : https://www.figma.com/file/88oFAYgzGwmQusJZ6qw2zM/TM_Sports_IA-%2B-FLOW-Chart?node-id=0%3A1&t=cN2mjmtqNLmIzvpW-1
-
-### 2. 화면설계(초안)
-![view설게_1](https://user-images.githubusercontent.com/97932245/215462904-4746b0c1-bb2c-4b9f-ba35-85ad1080e296.jpg)
-![view설게_2](https://user-images.githubusercontent.com/97932245/215463839-533bb48d-78c1-4092-8f1b-4c600d652f92.jpg)
 
 ## 📌기능별소개
 *(코드는 일부만 기재하였습니다)*
