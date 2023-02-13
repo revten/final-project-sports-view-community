@@ -4,16 +4,21 @@
 ## 📌소개
 스포츠를 관람하기 위해 티켓사이트에서 예매할때 좌석별로 어떤 뷰를 보여주는지 답답했던 경험이 있었습니다.<br>
 우연히 https://myseatcheck.com/ 라는 배구경기장 좌석별로 직접 찍은 사진을 보여주는 사이트를 발견하였고, <br>
-멋진 아이디어의 사이트라는 팀원 전원의 공감대 속에 '우리는 이를 더 확장해서 구현해보자'는 목표를 설정하였습니다.<br>
+멋진 아이디어라는 팀원 전원의 공감대 속에 '우리는 이를 더 확장해서 구현해보자'는 목표를 설정하였습니다.<br>
 <br>
-실제로 가서 느낄 현장감을 미리 전달하여 예매에 도움을 주며 이를 매개체로 함께가고 후기를 공유할 공간을 마련하였고<br>
+실제로 가서 느낄 현장감을 미리 전달하여 예매에 도움을 주고 후기를 공유할 공간을 마련하였고<br>
 자유로운 소통과 함께 구단의 소식도 쉽게 접할 수 있는 사이트를 구현키로 하였습니다.<br>
 
-핵심 아이디어는 https://myseatcheck.com/ 에서 가져왔음을 다시한번 밝혀두며 오로지 학습용 프로젝트로 제작하였습니다.<br>
+https://myseatcheck.com의 초기 아이디어임을 다시한번 밝혀두며 오로지 학습용 프로젝트로 제작하였습니다.<br>
 
 ## 📌진행기간
 2022-01-08 ~ 2022-01-31<br>
 2022-03-31까지 추가 및 수정 등 업데이트 예정
+
+## 📌프로젝트 진행과정 및 문서
+#### 학습내용의 기본에 충실하며 실제로 회사에서 프로젝트를 진행한다는 컨셉으로 돌입하였습니다.
+#### 노션을 프로젝트 진행과정 기록을 위해 팀의 홈페이지 개념으로 활용하였습니다.
+#### Notion : https://dusty-mandible-fdc.notion.site/69a438a4587f48f6b404422ea0fd600f?v=1bb9869d6c9c4e4397129719da3f49bc
 
 ## 📌기술스텍
 <img src="https://img.shields.io/badge/eclipse-2C2255?style=for-the-badge&logo=eclipse&logoColor=white"> <img src="https://img.shields.io/badge/vs code-0066CC?style=for-the-badge&logo=vscode&logoColor=white"> <img src="https://img.shields.io/badge/oracle-F80000?style=for-the-badge&logo=oracle&logoColor=white"> <img src="https://img.shields.io/badge/sourcetree-blue?style=for-the-badge&logo=sourcetree&logoColor=white"> <img src="https://img.shields.io/badge/github-181717?style=for-the-badge&logo=github&logoColor=white"> <img src="https://img.shields.io/badge/apache tomcat-F8DC75?style=for-the-badge&logo=apachetomcat&logoColor=black"> 
@@ -24,8 +29,8 @@
 <img src="https://img.shields.io/badge/figma-black?style=for-the-badge&logo=figma&logoColor=white"> <img src="https://img.shields.io/badge/notion-000000?style=for-the-badge&logo=notion&logoColor=white"> <img src="https://img.shields.io/badge/discord-5865F2?style=for-the-badge&logo=discord&logoColor=white">
 
 ## 📌담당업무
-* 팀장 김태형 : 총괄, DB설계, css 구성/정리, 게시판 설계, 
-* 팀원 임형규 : 회원가입 및 로그인, 소셜API, SIGHT페이지, THE FAN CSS 구체화
+* 팀장 김태형 : 팀관리 및 문서총괄, DB설계, css 구성/정리, 게시판 설계, 
+* 팀원 임형규 : 회원가입 및 로그인, 소셜API, SIGHT페이지, THE FAN 게시판 CSS
 * 팀원 송준우 : API(지도 및 뉴스), EVENT와 NEWS 페이지, 배경선수 CSS, 회원포인트
 * 팀원 정권 : 마이페이지 담당, 전체자료수집, 게시판 초안 작성
 
@@ -45,9 +50,6 @@
   * 글을 작성시 포인트 획득 정책을 구성, 마이페이지에서 적립내역과 포인트 확인<br>
 * **Social Login**
   * 카카오, 네이버, 구글 로그인 API를 통하여 간편하게 로그인과 회원가입 유도
-  
-## 📌프로젝트 문서관리
-#### Notion : https://dusty-mandible-fdc.notion.site/69a438a4587f48f6b404422ea0fd600f?v=1bb9869d6c9c4e4397129719da3f49bc
 
 ## 📌사이트 구조
 ![SiteMap](https://user-images.githubusercontent.com/109392408/215984046-90c81359-91e8-44b0-b035-d9cd642f1989.png)
