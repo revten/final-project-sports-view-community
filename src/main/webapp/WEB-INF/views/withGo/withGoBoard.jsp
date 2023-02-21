@@ -7,21 +7,21 @@
 <head>
 <meta charset="UTF-8">
 <title>TRIPPLE: WithGo</title>
-
 </head>
+
 <body>
 	<div class="withGo__bg-leftTop"
 		style="float: left; position: absolute; top: 300px; left: -9%;">
 		<img src="resources/files/backgroundImg/with1.png">
 	</div>
+
 	<div class="withGo__bg-rightTop"
 		style="float: right; position: absolute; top: -10px; left: 77%;">
 		<img src="resources/files/backgroundImg/with2.png">
 	</div>
+
 	<div class="withGo__container">
-
 		<div class="withGo__content">
-
 			<!-- 2번줄 헤더 -->
 			<div class="withGo__header" style="margin-bottom: 10px;">
 				<!-- 왼쪽 검색바 -->
@@ -254,26 +254,9 @@
 						<span class="cell-label">조회수:</span>1
 					</div>
 				</div>
-				
-				
-				
-				
-				
-				
-				
 			</div>
-			
-			
-			
-			
-			
-			
-			
 
-
-
-
-
+			<!-- 페이징 -->
 			<div class="board__bot-paging">
 				<c:if test="${curPage != 1}">
 					<span><span style="cursor: pointer"
@@ -295,9 +278,9 @@
 						onclick="location.href='withGo.page.change?pg=${pageCount}&post_board=${param.post_board }'">[맨끝]</span></span>
 				</c:if>
 			</div>
-
 		</div>
 	</div>
+	
 	<script>
 		/*=============== 스크롤 나타나는 효과 ===============*/
 		const srWatch = ScrollReveal({

@@ -36,13 +36,13 @@ public class BoardDAO {
 	
 	// 여기도 수정 예정
 	private int[] calcBoard = new int[boardNumberList.getTotalBoard()];
-	private int board_array_number;
+	private int board_array_number; // 게시판들 순서
 
 	public void calcAllPostCount() {
 		for(int i = 0; i < boardNumberList.getTotalBoard(); i++) {
 			BoardSelector bs = new BoardSelector("", 0, 0, boardNumberList.getBoardNumberList()[i]); 
 			calcBoard[i] = ss.getMapper(BoardMapper.class).calcAllPostCount(bs);
-			System.out.println(calcBoard[i]);
+			System.out.println(calcBoard[i]); // 각 게시판별 총 게시글 수
 		}
 	}
 
