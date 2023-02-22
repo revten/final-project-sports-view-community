@@ -24,36 +24,36 @@ public class BoardDAO {
 
 	private int allPostCount;
 
-	public int getallPostCount() {
+	public int getAllPostCount() {
 		return allPostCount;
 	}
 
-	public void setallPostCount(int allPostCount) {
+	public void setAllPostCount(int allPostCount) {
 		this.allPostCount = allPostCount;
 	}
 
+	BoardNumberList boardNumberList = new BoardNumberList(); // 게시판 번호리스트
 	
-	private int[] boardSelect = new int[] {11, 12, 21, 22, 23, 24, 31};
-	private int[] calcBoard = new int[7];
-	private int board_array_number;
+	// 여기도 수정 예정
+	private int[] calcBoard = new int[boardNumberList.getTotalBoard()];
+	private int board_array_number; // 게시판들 순서
 
 	public void calcAllPostCount() {
-		for(int i = 0; i < boardSelect.length; i++) {
-			BoardSelector bs = new BoardSelector("", 0, 0, boardSelect[i]); 
+		for(int i = 0; i < boardNumberList.getTotalBoard(); i++) {
+			BoardSelector bs = new BoardSelector("", 0, 0, boardNumberList.getBoardNumberList()[i]); 
 			calcBoard[i] = ss.getMapper(BoardMapper.class).calcAllPostCount(bs);
-			System.out.println(calcBoard[i]);
+			System.out.println(calcBoard[i]); // 각 게시판별 총 게시글 수
 		}
 	}
 
 	public void getAllPost(HttpServletRequest req, int pageNbr, int post_board, PostVO p) {
 
-		for(int i = 0; i < boardSelect.length; i++) {			
-			if(boardSelect[i] == post_board) {
+		for(int i = 0; i < boardNumberList.getTotalBoard(); i++) {			
+			if(boardNumberList.getBoardNumberList()[i] == post_board) {
 				board_array_number = i;
 				break;
 			}
 		}
-		
 		allPostCount = calcBoard[board_array_number];
 		System.out.println("allPostCount : " + allPostCount);
 
@@ -71,7 +71,6 @@ public class BoardDAO {
 			search.setStart(start);
 			search.setEnd(end);
 			postCount = ss.getMapper(BoardMapper.class).calcAllPostCount(search);
-
 		}
 		System.out.println("postCount : " + postCount);
 		
@@ -113,7 +112,6 @@ public class BoardDAO {
 			board_name = "배구";
 			break;
 		}
-
 		req.setAttribute("board_name", board_name);
 
 		List<PostVO> posts = ss.getMapper(BoardMapper.class).getAllPost(search);
@@ -177,13 +175,12 @@ public class BoardDAO {
 		if (ss.getMapper(BoardMapper.class).regPost(p) == 1) {
 			System.out.println("글 등록 성공");
 			
-			for(int i = 0; i < boardSelect.length; i++) {			
-				if(boardSelect[i] == post_board) {
-					board_array_number = boardSelect[i];
+			for(int i = 0; i < boardNumberList.getTotalBoard(); i++) {			
+				if(boardNumberList.getBoardNumberList()[i] == post_board) {
+					board_array_number = boardNumberList.getBoardNumberList()[i];
 					break;
 				}
 			}
-			
 			calcBoard[board_array_number]++;
 			
 		} else {
@@ -226,13 +223,12 @@ public class BoardDAO {
 		if (ss.getMapper(BoardMapper.class).deletePost(p) == 1) {
 			req.setAttribute("result", "글삭제 성공");
 			
-			for(int i = 0; i < boardSelect.length; i++) {			
-				if(boardSelect[i] == post_board) {
-					board_array_number = boardSelect[i];
+			for(int i = 0; i < boardNumberList.getTotalBoard(); i++) {			
+				if(boardNumberList.getBoardNumberList()[i] == post_board) {
+					board_array_number = boardNumberList.getBoardNumberList()[i];
 					break;
 				}
 			}
-			
 			calcBoard[board_array_number]--;
 			
 		} else {

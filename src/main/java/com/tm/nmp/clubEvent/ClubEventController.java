@@ -1,4 +1,4 @@
-package com.tm.nmp.newsEvent;
+package com.tm.nmp.clubEvent;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -30,7 +30,7 @@ public class ClubEventController {
 		
 		brDAO.getAllPost(req, 1, 31, p);
 
-		req.setAttribute("contentPage", "newsEvent/clubEvent/clubEventBoard.jsp");
+		req.setAttribute("contentPage", "clubEvent/clubEventBoard.jsp");
 		return "index";
 	}
 
@@ -41,7 +41,7 @@ public class ClubEventController {
 		acDAO.wathingPage(req);
 		acDAO.loginCheck(req);
 		brDAO.getPost(req, p);
-		req.setAttribute("contentPage", "newsEvent/clubEvent/clubEventDetail.jsp");
+		req.setAttribute("contentPage", "clubEvent/clubEventDetail.jsp");
 		return "index";
 	}
 
@@ -50,7 +50,7 @@ public class ClubEventController {
 		TokenMaker.make(req);
 		acDAO.wathingPage(req);
 		if (acDAO.loginCheck(req)) {
-			req.setAttribute("contentPage", "newsEvent/clubEvent/clubEventReg.jsp");
+			req.setAttribute("contentPage", "clubEvent/clubEventReg.jsp");
 		} else {
 			req.setAttribute("contentPage", "account/loginPage.jsp");
 		}
@@ -63,7 +63,7 @@ public class ClubEventController {
 		acDAO.loginCheck(req);
 		brDAO.regPost(req, p);
 		brDAO.getAllPost(req, 1, 31, p);
-		req.setAttribute("contentPage", "newsEvent/clubEvent/clubEventBoard.jsp");
+		req.setAttribute("contentPage", "clubEvent/clubEventBoard.jsp");
 		return "index";
 	}
 
@@ -73,7 +73,7 @@ public class ClubEventController {
 		acDAO.wathingPage(req);
 		acDAO.loginCheck(req);
 		brDAO.getPost(req, p);
-		req.setAttribute("contentPage", "newsEvent/clubEvent/clubEventUpdate.jsp");
+		req.setAttribute("contentPage", "clubEvent/clubEventUpdate.jsp");
 		return "index";
 	}
 
@@ -84,7 +84,7 @@ public class ClubEventController {
 			brDAO.updatePost(req, p);
 		}
 		brDAO.getAllPost(req, 1, 31, p);
-		req.setAttribute("contentPage", "newsEvent/clubEvent/clubEventBoard.jsp");
+		req.setAttribute("contentPage", "clubEvent/clubEventBoard.jsp");
 		return "index";
 	}
 
@@ -96,7 +96,7 @@ public class ClubEventController {
 			brDAO.deletePost(req, p);
 		}
 		brDAO.getAllPost(req, 1, 31, p);
-		req.setAttribute("contentPage", "newsEvent/clubEvent/clubEventBoard.jsp");
+		req.setAttribute("contentPage", "clubEvent/clubEventBoard.jsp");
 		return "index";
 	}
 
@@ -107,7 +107,7 @@ public class ClubEventController {
 		acDAO.loginCheck(req);
 		int pg = Integer.parseInt(req.getParameter("pg"));
 		brDAO.getAllPost(req, pg, 31, p);
-		req.setAttribute("contentPage", "newsEvent/clubEvent/clubEventBoard.jsp");
+		req.setAttribute("contentPage", "clubEvent/clubEventBoard.jsp");
 		return "index";
 	}
 
@@ -116,7 +116,7 @@ public class ClubEventController {
 		acDAO.loginCheck(req);
 		brDAO.searchPost(req, bSel);
 		brDAO.getAllPost(req, 1, 31, p);
-		req.setAttribute("contentPage", "newsEvent/clubEvent/clubEventBoard.jsp");
+		req.setAttribute("contentPage", "clubEvent/clubEventBoard.jsp");
 		return "index";
 	}
 
@@ -127,7 +127,7 @@ public class ClubEventController {
 			brDAO.regReply(req, rp);
 		}
 		brDAO.getPost(req, p);
-		req.setAttribute("contentPage", "newsEvent/clubEvent/clubEventDetail.jsp");
+		req.setAttribute("contentPage", "clubEvent/clubEventDetail.jsp");
 		return "index";
 	}
 
@@ -138,7 +138,7 @@ public class ClubEventController {
 			brDAO.deleteReply(req, rp);
 		}
 		brDAO.getPost(req, p);
-		req.setAttribute("contentPage", "newsEvent/clubEvent/clubEventDetail.jsp");
+		req.setAttribute("contentPage", "clubEvent/clubEventDetail.jsp");
 		return "index";
 	}
 
@@ -149,7 +149,7 @@ public class ClubEventController {
 			brDAO.updateReply(req, rp);
 		}
 		brDAO.getPost(req, p);
-		req.setAttribute("contentPage", "newsEvent/clubEvent/clubEventDetail.jsp");
+		req.setAttribute("contentPage", "clubEvent/clubEventDetail.jsp");
 		return "index";
 	}
 }

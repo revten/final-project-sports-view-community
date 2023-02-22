@@ -20,7 +20,7 @@
 		<div class="watch__header">
 			<div class="watch__header-title">
 				<a href="review.board.go?post_board=12" class="nav__link"
-					style="font-size: 15px">REVIEW</a>
+					style="font-size: 15px">&nbsp;&nbsp;&nbsp;&nbsp;REVIEW</a>
 			</div>
 			<div class="watch__header-title">
 				스포츠 열기는<span> 모두와 함께</span>

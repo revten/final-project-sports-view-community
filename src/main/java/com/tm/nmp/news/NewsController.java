@@ -1,4 +1,4 @@
-package com.tm.nmp.newsEvent;
+package com.tm.nmp.news;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -24,7 +24,7 @@ public class NewsController {
     public String newsEventMainGo(HttpServletRequest req) {
         acDAO.wathingPage(req);
         acDAO.loginCheck(req);
-        req.setAttribute("contentPage", "newsEvent/newsEventMain.jsp");
+        req.setAttribute("contentPage", "news/newsEventMain.jsp");
         req.setAttribute("newsPage", "everyNews.jsp");
         return "index";
     }
@@ -32,35 +32,35 @@ public class NewsController {
 	@RequestMapping(value = "/news.soccer.go", method = RequestMethod.GET)
 	public String goSoccerNews(HttpServletRequest req) {
 		acDAO.loginCheck(req);
-		req.setAttribute("contentPage", "newsEvent/news/soccerNews.jsp");
+		req.setAttribute("contentPage", "news/soccerNews.jsp");
 		return "index";
 	}
 
 	@RequestMapping(value = "/news.baseball.go", method = RequestMethod.GET)
 	public String goBaseballNews(HttpServletRequest req) {
 		acDAO.loginCheck(req);
-		req.setAttribute("contentPage", "newsEvent/news/baseballNews.jsp");
+		req.setAttribute("contentPage", "news/baseballNews.jsp");
 		return "index";
 	}
 
 	@RequestMapping(value = "/news.basketball.go", method = RequestMethod.GET)
 	public String goBasketballNews(HttpServletRequest req) {
 		acDAO.loginCheck(req);
-		req.setAttribute("contentPage", "newsEvent/news/basketballNews.jsp");
+		req.setAttribute("contentPage", "news/basketballNews.jsp");
 		return "index";
 	}
 
 	@RequestMapping(value = "/news.volleyball.go", method = RequestMethod.GET)
 	public String goVolleyballNews(HttpServletRequest req) {
 		acDAO.loginCheck(req);
-		req.setAttribute("contentPage", "newsEvent/news/VolleyballNews.jsp");
+		req.setAttribute("contentPage", "news/VolleyballNews.jsp");
 		return "index";
 	}
 
 	@RequestMapping(value = "/news.sports.go", method = RequestMethod.GET)
 	public String goSportsNews(HttpServletRequest req) {
 		acDAO.loginCheck(req);
-		req.setAttribute("contentPage", "newsEvent/news/sportsNews.jsp");
+		req.setAttribute("contentPage", "news/sportsNews.jsp");
 		return "index";
 	}
 

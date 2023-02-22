@@ -140,17 +140,7 @@
 		</section>
 	</div>
 
-	<!-- 	<section class="home section" id="home">
-		<div class="home__container  grid">
-			<img src="resources/home_img/main_synthesis.jpg" alt="home image"
-				class="home__img">
-		</div>
-		
-		
-		
-
-
-	</section> --> <!--==================== ABOUT US (사이트 간단설명 섹션)====================-->
+<!--==================== ABOUT US (사이트 간단설명 섹션)====================-->
 	<section class="about section" id="about">
 		<div class="about__container container grid">
 			<div class="about__data">

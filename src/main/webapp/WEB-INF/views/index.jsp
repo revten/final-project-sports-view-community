@@ -21,6 +21,7 @@
 <!--=============== [CSS CDN]===============-->
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/flickity/1.0.0/flickity.css" />
+<!-- 리뷰 게시판 뗴지않고 움직이면 슬라이더가 움직임-->
 
 <!--=============== [JS CDN] ===============-->
 <script
@@ -47,6 +48,7 @@
 <link rel="stylesheet" href="resources/css/account.css" />
 <link rel="stylesheet" href="resources/css/news.css" />
 <link rel="stylesheet" href="resources/css/stadium.css" />
+<link rel="stylesheet" href="resources/css/stadiumMain.css" />
 <link rel="stylesheet" href="resources/css/map.css" />
 <link rel="stylesheet" href="resources/css/clubEvent.css" />
 <link rel="stylesheet" href="resources/css/review.css" />
@@ -78,7 +80,7 @@
 			<div class="nav__menu" id="nav-menu">
 				<ul class="nav__list">
 					<li class="nav__item"><a href="stadium.main.go"
-						class="nav__link">SIGHT</a></li>
+						class="nav__link">STADIUM</a></li>
 
 					<li class="nav__item"><a href="withGo.board.go?post_board=11"
 						class="nav__link">WITH</a></li>
