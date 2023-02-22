@@ -1,4 +1,4 @@
-package com.tm.nmp.mypage;
+package com.tm.nmp.myPage;
 
 import javax.servlet.http.HttpServletRequest;
 

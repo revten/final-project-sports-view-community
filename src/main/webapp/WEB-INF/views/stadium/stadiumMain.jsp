@@ -5,7 +5,6 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="resources/css/stadium/stadiumMain.css" />
 </head>
 <script type="text/javascript">
 	//<![CDATA[

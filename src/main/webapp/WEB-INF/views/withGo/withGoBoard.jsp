@@ -47,8 +47,10 @@
 								새글쓰기</button>
 						</c:when>
 						<c:otherwise>
+						<div>
 							<a href="withGo.reg.go?post_board=${param.post_board}"
 								onclick="alert('로그인하세요')">새글쓰기</a>
+								</div>
 						</c:otherwise>
 					</c:choose>
 				</div>

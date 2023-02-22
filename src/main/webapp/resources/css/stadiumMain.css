@@ -36,22 +36,6 @@
 	padding: 10px;
 }
 
-.name {
-	position: relative;
-	font-size: 16px;
-	display: inline-block;
-}
-
-.name:after {
-	content: "";
-	position: absolute;
-	width: calc(100% + 10px);
-	height: 1px;
-	background-color: #000;
-	bottom: -4px;
-	left: 0;
-}
-
 .stadiumMain__box {
 	position: relative;
 	max-height: 300px;
