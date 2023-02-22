@@ -18,6 +18,9 @@ https://myseatcheck.com의 초기 아이디어임을 다시한번 밝혀두며 �
 * 이에따라, 노션의 팀스페이스를 활용하여 팀의 프로젝트 홈페이지 개념으로 활용하였습니다.
   * 프로젝트 기획 및 진행계획, 회의록, 사이트맵, IA다이아그램, 정보공유, 팀규칙, 코드규칙, 팀정보 등 기록
   * 노션주소 : https://dusty-mandible-fdc.notion.site/Team_Miracle-e577e65b76a7478f90e49c5b5507c894
+* 아래의 발표PPT를 보시면, 웹사이트 사진과 개발과정 및 기능에 대한 소개를 보실 수 있습니다.
+  * [발표PPT](https://github.com/RevTK/final-project-sports-view-community/blob/master/Miracleppt.pptx)
+
 
 ## 📌기술스텍
 <img src="https://img.shields.io/badge/eclipse-2C2255?style=for-the-badge&logo=eclipse&logoColor=white"> <img src="https://img.shields.io/badge/vs code-0066CC?style=for-the-badge&logo=vscode&logoColor=white"> <img src="https://img.shields.io/badge/oracle-F80000?style=for-the-badge&logo=oracle&logoColor=white"> <img src="https://img.shields.io/badge/sourcetree-blue?style=for-the-badge&logo=sourcetree&logoColor=white"> <img src="https://img.shields.io/badge/github-181717?style=for-the-badge&logo=github&logoColor=white"> <img src="https://img.shields.io/badge/apache tomcat-F8DC75?style=for-the-badge&logo=apachetomcat&logoColor=black"> 
@@ -332,9 +335,6 @@ const srFan = ScrollReveal({
 	</script>
 ```
 
-## 추가소식
-시간적 부족함으로 인하여 기획했던 것보다 구현내용이 부족합니다.<br>
-각 팀원마다 개별 공부계획이 있는만큼 자발적 인원에 한하여 v2로 업그레이드 예정입니다.
 
 ## 팀원정보
 팀원|이메일|
