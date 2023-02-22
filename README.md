@@ -1,74 +1,134 @@
-# TRIPPLE : Sports View Community Site
-## 📌팀명 : Team Miracle ✨
+# Sports View Community Site
+## ✨Team Miracle✨
 
-## 📌소개
-스포츠를 관람하기 위해 티켓사이트에서 예매할때 좌석별로 어떤 뷰를 보여주는지 답답했던 경험이 있었습니다.<br>
-우연히 https://myseatcheck.com/ 라는 배구경기장 좌석별로 직접 찍은 사진을 보여주는 사이트를 발견하였고, <br>
-멋진 아이디어라는 팀원 전원의 공감대 속에 '우리는 이를 더 확장해서 구현해보자'는 목표를 설정하였습니다.<br>
+<!-- (메인 이미지) -->
+<br/><br/>
+
+## 📌들어가며
+우리는 보통 스포츠 경기를 관람하기 위해 티켓사이트에서 예매를 주로 진행합니다.<br>
+그러나 경기장마다 좌석별로 어떤 뷰를 보여주는지 어떤 느낌일지 제대로 알기 어렵습니다.<br>
+우연히 배구경기장 좌석별로 직접 찍은 사진을 보여주는 사이트를 발견하였고, <br>
+이 사이트를 기반으로 커뮤니티형 사이트로 확장시켜 구현해보자는 목표를 설정하였습니다.<br>
 <br>
 실제로 가서 느낄 현장감을 미리 전달하여 예매에 도움을 주고 후기를 공유할 공간을 마련하였고<br>
 자유로운 소통과 함께 구단의 소식도 쉽게 접할 수 있는 사이트를 구현키로 하였습니다.<br>
+https://myseatcheck.com의 초기 아이디어임을 다시한번 밝혀두며 오로지 학습용 프로젝트로 제작하였습니다.
+<br/><br/><br/><br/>
 
-https://myseatcheck.com의 초기 아이디어임을 다시한번 밝혀두며 오로지 학습용 프로젝트로 제작하였습니다.<br>
+## 📌기본정보
+### 1. 진행기간
+2023-01-08 ~ 2023-01-31
+<br/><br/>
 
-## 📌진행기간
-2022-01-08 ~ 2022-01-31<br>
-2022-03-31까지 추가 및 수정 등 업데이트 예정
+### 2.프로젝트 진행과정 및 문서
+* 배운 내용에 충실하며 기획단계부터 실제 회사에서 프로젝트를 진행한다는 자세로 임하였습니다.
+* [팀홈페이지(노션)-click](https://dusty-mandible-fdc.notion.site/Team_Miracle-e577e65b76a7478f90e49c5b5507c894)<br>
+: 노션의 팀스페이스를 활용하여 팀의 프로젝트 홈페이지 개념으로 활용하였습니다.<br>
+  (프로젝트 기획 및 진행계획, 회의록, 사이트맵, IA다이아그램, 정보공유, 규칙, 팀정보 등)
+* [발표PPT-click](https://github.com/RevTK/final-project-sports-view-community/blob/master/Miracleppt.pptx)<br>
+: 웹사이트 사진과 개발과정 및 기능에 대해 간단한 소개를 보실 수 있습니다.
+<br/><br/>
 
-## 📌프로젝트 진행과정 및 문서
-* 학습내용의 기본에 충실하며 실제로 회사에서 프로젝트를 진행한다는 컨셉으로 돌입하였습니다.
-* 노션을 프로젝트 진행과정 기록을 위해 팀의 홈페이지 개념으로 활용하였습니다.
-  * 프로젝트 기획 및 진행계획, 회의록, 사이트맵, IA다이아그램, 정보공유, 팀규칙, 코드규칙, 팀정보 등
-  * 노션주소 : https://dusty-mandible-fdc.notion.site/Team_Miracle-e577e65b76a7478f90e49c5b5507c894
-
-## 📌기술스텍
+### 3.사용스텍
 <img src="https://img.shields.io/badge/eclipse-2C2255?style=for-the-badge&logo=eclipse&logoColor=white"> <img src="https://img.shields.io/badge/vs code-0066CC?style=for-the-badge&logo=vscode&logoColor=white"> <img src="https://img.shields.io/badge/oracle-F80000?style=for-the-badge&logo=oracle&logoColor=white"> <img src="https://img.shields.io/badge/sourcetree-blue?style=for-the-badge&logo=sourcetree&logoColor=white"> <img src="https://img.shields.io/badge/github-181717?style=for-the-badge&logo=github&logoColor=white"> <img src="https://img.shields.io/badge/apache tomcat-F8DC75?style=for-the-badge&logo=apachetomcat&logoColor=black"> 
 
 
 <img src="https://img.shields.io/badge/JAVA-007396?style=for-the-badge&logo=JAVA&logoColor=white"> <img src="https://img.shields.io/badge/javascript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=white"> <img src="https://img.shields.io/badge/css-1572B6?style=for-the-badge&logo=css3&logoColor=white"> <img src="https://img.shields.io/badge/html-E34F26?style=for-the-badge&logo=html5&logoColor=white"> <img src="https://img.shields.io/badge/ajax-1572B6?style=for-the-badge&logo=ajax&logoColor=white"> <img src="https://img.shields.io/badge/jquery-0769AD?style=for-the-badge&logo=jquery&logoColor=white"> <img src="https://img.shields.io/badge/mybatis-black?style=for-the-badge&logo=mybatis&logoColor=white"> <img src="https://img.shields.io/badge/spring-6DB33F?style=for-the-badge&logo=spring&logoColor=white"> 
 
 <img src="https://img.shields.io/badge/figma-black?style=for-the-badge&logo=figma&logoColor=white"> <img src="https://img.shields.io/badge/notion-000000?style=for-the-badge&logo=notion&logoColor=white"> <img src="https://img.shields.io/badge/discord-5865F2?style=for-the-badge&logo=discord&logoColor=white">
+<br/><br/>
 
-## 📌담당업무
+### 4.담당업무
 * 팀장 김태형 : 팀관리 및 문서총괄, DB설계, css 구성/정리, 게시판 설계, 
 * 팀원 임형규 : 회원가입 및 로그인, 소셜API, SIGHT페이지, THE FAN 게시판 CSS
 * 팀원 송준우 : API(지도 및 뉴스), EVENT와 NEWS 페이지, 배경선수 CSS, 회원포인트
 * 팀원 정권 : 마이페이지 담당, 전체자료수집, 게시판 초안 작성
+<br/><br/><br/><br/>
 
-## 📌페이지별 구현요약
-* **Stadium Sight**
-  * 우리나라 스포츠 4대리그 남여 각 구장별 4방향의 현장사진 확인 가능<br>
-  * 예매하러가기와 구장 위치가 표시된 지도를 추가하여 편의성 도모<br>
-* **WithGO / Review**
-  * 애니메이션 효과를 통하여 기존 커뮤니티 게시판과는 다른 공간 구현<br>
-* **The Fan**
-  * 스포츠별 게시판을 나누고 및 각 게시판별 잡담, 질문, 정보 등의 카테고리<br>
-  * 커뮤니티 게시판의 기본에 충실한 구성<br>
-* **News**
-  * 네이버 뉴스 api를 통하여 언론사의 스포츠별 뉴스를 손쉽게 확인<br>
-  * 구단 공식 이벤트페이지에선 구단이 광고할수 있는 슬라이드 공간 마련<br>
-* **My Page Point**
-  * 글을 작성시 포인트 획득 정책을 구성, 마이페이지에서 적립내역과 포인트 확인<br>
-* **Social Login**
-  * 카카오, 네이버, 구글 로그인 API를 통하여 간편하게 로그인과 회원가입 유도
+
+## 📌페이지 및 메뉴별 기능
+
+### STADIUM
+  * 우리나라 스포츠 4대리그 각 구장별 페이지 마련 (총 **구단, **구장)
+  * 구장별 페이지에서 4방향의 현장사진 확인 가능 (총 ***개 사진 수집)
+  * 각 구장에 해당하는 예매하러가기 링크와 지도 위치를 넣어 편의성 도모 (카카오API)
+  * 같이보러가기 글을 바로 쓸 수 있도록 설계
+
+### WithGo
+  * 경기를 함께 보러가는 글을 올릴 수 있는 공간
+  * 심플한 바둑판형 게시판
+    * The Fan의 게시판 CRUD 구조가 같아 샘플 게시글만 있고 CRUD 구현은 되어있지 않습니다
+  
+### Review
+  * 경기관람 후기를 올리는 공간
+  * 상단에 인기 리뷰글을 배치하여 다른 느낌의 게시판 구성
+    * The Fan의 게시판 CRUD 구조가 같아 샘플 게시글만 있고 CRUD 구현은 되어있지 않습니다
+  
+### The Fan
+  * 커뮤니티 사이트의 게시판 기본에 충실한 구성으로 CRUD 구현<br>
+  * 스포츠별 게시판을 나누고 및 각 게시판별 잡담, 질문, 정보 등의 카테고리
+  
+### Event
+  * 구단 이벤트 및 홍보할 수 있는 공간으로,
+  * 대형 슬라이더에 구단의 이벤트를 등록하도록 디자인
+  
+### News
+  * 언론사의 스포츠 뉴스를 종목별로 접할 수 있는 공간
+  * 네이버 뉴스 api를 활용
+  
+### 마이페이지
+  * 나의 가입 정보 보기 및 수정 그리고 내가 쓸 글을 확인할 수 있는 페이지
+  * 글을 작성시 포인트 획득, 마이페이지에서 적립내역과 포인트 확인
+  
+### 회원관리
+  * 회원가입
+      *	일반가입과 소셜가입(네이버,구글,카카오) 회원 구분
+      * 일반가입은 이메일 인증을 거쳐야만 가입 완료토록 설계
+      * 소셜가입은 이메일 인증없이 추가정보 받아 가입
+
+  * 로그인
+      * 일반로그인과 소셜로그인 구분, API를 통하여 간편하게 로그인
+  * 비밀번호 찾기
+      * 이메일 인증을 통한 비밀번호 찾기
+  * 회원정보 수정 및 탈퇴
+  
+### 그 외
+  * 로그인후 홈화면이 아닌 보던 페이지로 이동
+  * 첫 화면 접속시 전체 게시글 DB를 불러와 각 게시판 조회시 시간절약
+  * 게시판 최소 7개가 필요하여 하나의 로직(BoardDAO)에서 컨트롤되도록 설계<br/>
+    (각 게시판별로 DB 테이블과 DAO, Interface, Mapper를 만들며 시작했으나 삭제후 통합)
+ * 글 등록시 CK4 에디터 적용
+ * 게시글의 댓글 ajax 처리 / 새로고침후 자동등록방지
+  * 여러 css 라이브러리 사용 scrollreveal, flickity, TweenMax..
+    * scrollreveal : 스크롤 내리면 화면이 나타나는 효과
+    * flickity : 클릭을 떼지않고 움직여 슬라이더 이동
+  * 홈화면 한정
+    * 자바스크립트를 통해 화면이 일정부분 내려가면 스크롤업 버튼 효과
+    * 미디어쿼리를 이용한 반응형 
+  
+  <br/><br/>
 
 ## 📌사이트 구조
 ![SiteMap](https://user-images.githubusercontent.com/109392408/215984046-90c81359-91e8-44b0-b035-d9cd642f1989.png)
+<br/><br/><br/><br/>
+
 
 ## 📌주요구상 및 설계
 
 ### 1. IA DIAGRAM
-![IA_Chart](https://user-images.githubusercontent.com/109392408/216013940-7c71cd60-f605-415a-8310-477e479e8537.png)
-#### Figma  : https://www.figma.com/file/88oFAYgzGwmQusJZ6qw2zM/TM_Sports_IA-%2B-FLOW-Chart?node-id=0%3A1&t=cN2mjmtqNLmIzvpW-1
+<img src="https://user-images.githubusercontent.com/109392408/216013940-7c71cd60-f605-415a-8310-477e479e8537.png"  width="700" height="400"/><br/>
+[피그마 문서 원본](https://www.figma.com/file/88oFAYgzGwmQusJZ6qw2zM/TM_Sports_IA-%2B-FLOW-Chart?node-id=0%3A1&t=cN2mjmtqNLmIzvpW-1)
 
 ### 2. 화면설계(초안)
-![view설게_1](https://user-images.githubusercontent.com/97932245/215462904-4746b0c1-bb2c-4b9f-ba35-85ad1080e296.jpg)
-![view설게_2](https://user-images.githubusercontent.com/97932245/215463839-533bb48d-78c1-4092-8f1b-4c600d652f92.jpg)
+<img src="https://user-images.githubusercontent.com/97932245/215462904-4746b0c1-bb2c-4b9f-ba35-85ad1080e296.jpg"  width="700" height="300"/>
+<img src="https://user-images.githubusercontent.com/97932245/215463839-533bb48d-78c1-4092-8f1b-4c600d652f92.jpg"  width="700" height="300"/>
+<br/><br/><br/><br/>
 
 ## 📌DB구조
 
 ### 1. ERD
-![ERD](https://user-images.githubusercontent.com/109392408/215984064-c0260cd6-5b84-47e0-9775-e56cd9f16f83.png)
+<img src="https://user-images.githubusercontent.com/109392408/215984064-c0260cd6-5b84-47e0-9775-e56cd9f16f83.png"  width="700" height="400"/>
+<br/><br/>
 
 ### 2. 주요 테이블
 
@@ -115,7 +175,9 @@ POST_REPLY_COUNT|NUMBER(5,0)|No|0||
 POST_REG_IP|VARCHAR2(100 CHAR)|No|||
 POST_CONTENT|VARCHAR2(2000 BYTE)|Yes|||
 
-## 📌기능별소개
+<br/><br/><br/><br/>
+
+## 📌기능별 사용코드
 *(코드는 일부만 기재하였습니다)*
 ### 1. 팀별 경기장 좌석과 관람사진 
 * 구장별 사진은 switch 문으로 값을 세팅<br>
@@ -141,14 +203,8 @@ function baseballSetVal() {
 		lon = 126.867104761712;
 		iwContent = '<div style="padding:10px;"> 고척 스카이돔 <br><a href="https://map.kakao.com/link/map/고척 스카이돔,37.4982338495579,126.867104761712" style="color:blue" target="_blank">큰지도보기</a> <a href="https://map.kakao.com/link/to/고척 스카이돔,37.4982338495579,126.867104761712" style="color:blue" target="_blank">길찾기</a></div>';
 		break;
-	case "lg":
-		reserveUrl = 'https://www.lgtwins.com/service/html.ncd?baRs=OUT_DS&view=%2Fpc_twins%2Fticket%2Fticketbuy&actID=BR_RetrieveTicketing';
-		lat = 37.5121513808403;
-		lon = 127.071909507224;
-		iwContent = '<div style="padding:10px;">서울종합운동장야구장<br><a href="https://map.kakao.com/link/map/서울종합운동장 야구장,37.5121513808403,127.071909507224" style="color:blue" target="_blank">큰지도보기</a> <a href="https://map.kakao.com/link/to/서울종합운동장 야구장,37.5121513808403,127.071909507224" style="color:blue" target="_blank">길찾기</a></div>';
-		break;
 		
-	// 코드가 길어지는 관계로 3팀으로 줄였습니다.
+	// 코드가 길어지는 관계로 2팀으로 줄였습니다.
 	
 	default:
 		break;
@@ -159,6 +215,8 @@ function baseballSetVal() {
 
 }
 ```
+
+<br/><br/>
 
 ### 2. 카카오맵 API
 ```javascript
@@ -193,6 +251,9 @@ function stadium_map() {
 }
 
 ```
+
+<br/><br/>
+
 ### 3. 회원가입 이메일 인증
 ```javascript
 $(function() {
@@ -217,6 +278,8 @@ $(function() {
 	});
 });
 ```
+
+<br/><br/>
 
 ### 4. 게시글 조회수 및 댓글기능
 * 중복조회수가 되지 않도록 설정
@@ -260,6 +323,9 @@ $(function() {
 
 	}
 ```
+
+<br/>
+
 * 댓글등록 - 새로고침을 하여도 등록되지 않도록 설계 등
 ```java
 	public ResultVO regReply(HttpServletRequest req, ReplyVO rp) {
@@ -310,6 +376,8 @@ $(function() {
 	}
 ```
 
+<br/><br/>
+
 ### 5. 화면스크롤 라이브러리
 ```JSP
 <!-- --------------- SCROLLREVEAL CDN --------------- -->
@@ -332,6 +400,8 @@ const srFan = ScrollReveal({
 	srFan.reveal(`.`, { interval: 100 });
 	</script>
 ```
+
+<br/><br/>
 
 ## 팀원정보
 팀원|이메일|
