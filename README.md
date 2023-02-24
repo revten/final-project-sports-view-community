@@ -4,7 +4,7 @@
 <!-- (메인 이미지) -->
 <br/><br/>
 
-## 📌들어가며
+## 📌Intro
 우리는 보통 스포츠 경기를 관람하기 위해 티켓사이트에서 예매를 주로 진행합니다.<br>
 그러나 경기장마다 좌석별로 어떤 뷰를 보여주는지 어떤 느낌일지 제대로 알기 어렵습니다.<br>
 우연히 배구경기장 좌석별로 직접 찍은 사진을 보여주는 사이트를 발견하였고, <br>
@@ -99,7 +99,7 @@ https://myseatcheck.com의 초기 아이디어임을 다시한번 밝혀두며 �
     (각 게시판별로 DB 테이블과 DAO, Interface, Mapper를 만들며 시작했으나 삭제후 통합)
  * 글 등록시 CK4 에디터 적용
  * 게시글의 댓글 ajax 처리 / 새로고침후 자동등록방지
-  * 여러 css 라이브러리 사용 scrollreveal, flickity, TweenMax..
+  *  라이브러리 사용 scrollreveal, flickity, TweenMax..
     * scrollreveal : 스크롤 내리면 화면이 나타나는 효과
     * flickity : 클릭을 떼지않고 움직여 슬라이더 이동
   * 홈화면 한정
