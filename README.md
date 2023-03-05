@@ -1,7 +1,7 @@
 # Sports View Community Site
 ## ✨Team Miracle✨
 
-<!-- (메인 이미지) -->
+<img width="70%" src="https://user-images.githubusercontent.com/109392408/222941172-e5b38119-28fe-4004-8fc0-752ee8e79ef1.gif"/>
 <br/><br/>
 
 ## 📌Intro
