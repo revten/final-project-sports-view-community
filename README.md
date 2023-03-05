@@ -97,11 +97,12 @@ https://myseatcheck.com의 초기 아이디어임을 다시한번 밝혀두며 �
   * 첫 화면 접속시 전체 게시글 DB를 불러와 각 게시판 조회시 시간절약
   * 게시판 최소 7개가 필요하여 하나의 로직(BoardDAO)에서 컨트롤되도록 설계<br/>
     (각 게시판별로 DB 테이블과 DAO, Interface, Mapper를 만들며 시작했으나 삭제후 통합)
- * 글 등록시 CK4 에디터 적용
+ * 글 등록시 CK4 에디터 적용 https://ckeditor.com/ckeditor-4/ 
  * 게시글의 댓글 ajax 처리 / 새로고침후 자동등록방지
-  *  라이브러리 사용 scrollreveal, flickity, TweenMax..
-    * scrollreveal : 스크롤 내리면 화면이 나타나는 효과
-    * flickity : 클릭을 떼지않고 움직여 슬라이더 이동
+ *  라이브러리 사용
+    * ScrollReveal : 스크롤시 화면의 요소가 등장 https://scrollrevealjs.org/ 
+    * Flickity : 캐러셀 라이브러리 https://flickity.metafizzy.co
+    * imgLiquid : 컨테이너에 맞게 이미지 크기를 조절 https://github.com/karacas/imgLiquid
   * 홈화면 한정
     * 자바스크립트를 통해 화면이 일정부분 내려가면 스크롤업 버튼 효과
     * 미디어쿼리를 이용한 반응형 
