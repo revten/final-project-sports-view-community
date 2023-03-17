@@ -25,10 +25,8 @@ public class ClubEventController {
 
 	@RequestMapping(value = "clubEvent.board.go", method = RequestMethod.GET)
 	public String clubEventBoardGO(HttpServletRequest req, PostVO p) {
-		TokenMaker.make(req);
 		acDAO.loginCheck(req);
-		
-		brDAO.getAllPost(req, 1, 31, p);
+		brDAO.getAllPost(req, 1, p);
 
 		req.setAttribute("contentPage", "clubEvent/clubEventBoard.jsp");
 		return "index";
@@ -36,7 +34,6 @@ public class ClubEventController {
 
 	@RequestMapping(value = "clubEvent.detail.go", method = RequestMethod.GET)
 	public String clubEventDetail(HttpServletRequest req, PostVO p) {
-		TokenMaker.make(req);
 		BoardOption.clearSearch(req);
 		acDAO.wathingPage(req);
 		acDAO.loginCheck(req);
@@ -47,7 +44,6 @@ public class ClubEventController {
 
 	@RequestMapping(value = "clubEvent.reg.go", method = RequestMethod.GET)
 	public String clubEventRegGo(HttpServletRequest req, PostVO p) {
-		TokenMaker.make(req);
 		acDAO.wathingPage(req);
 		if (acDAO.loginCheck(req)) {
 			req.setAttribute("contentPage", "clubEvent/clubEventReg.jsp");
@@ -59,17 +55,16 @@ public class ClubEventController {
 
 	@RequestMapping(value = "clubEvent.reg.do", method = RequestMethod.POST)
 	public String clubEventRegDo(HttpServletRequest req, PostVO p) {
-		TokenMaker.make(req);
+
 		acDAO.loginCheck(req);
 		brDAO.regPost(req, p);
-		brDAO.getAllPost(req, 1, 31, p);
+		brDAO.getAllPost(req, 1, p);
 		req.setAttribute("contentPage", "clubEvent/clubEventBoard.jsp");
 		return "index";
 	}
 
 	@RequestMapping(value = "clubEvent.update.go", method = RequestMethod.GET)
 	public String clubEventUpdateGo(HttpServletRequest req, PostVO p) {
-		TokenMaker.make(req);
 		acDAO.wathingPage(req);
 		acDAO.loginCheck(req);
 		brDAO.getPost(req, p);
@@ -83,30 +78,28 @@ public class ClubEventController {
 		if (acDAO.loginCheck(req)) {
 			brDAO.updatePost(req, p);
 		}
-		brDAO.getAllPost(req, 1, 31, p);
+		brDAO.getAllPost(req, 1, p);
 		req.setAttribute("contentPage", "clubEvent/clubEventBoard.jsp");
 		return "index";
 	}
 
 	@RequestMapping(value = "clubEvent.delete.do", method = RequestMethod.GET)
 	public String clubEventDeleteDo(HttpServletRequest req, PostVO p) {
-		TokenMaker.make(req);
 		BoardOption.clearSearch(req);
 		if (acDAO.loginCheck(req)) {
 			brDAO.deletePost(req, p);
 		}
-		brDAO.getAllPost(req, 1, 31, p);
+		brDAO.getAllPost(req, 1, p);
 		req.setAttribute("contentPage", "clubEvent/clubEventBoard.jsp");
 		return "index";
 	}
 
 	@RequestMapping(value = "/clubEvent.page.change", method = RequestMethod.GET)
 	public String clubEventPageChange(HttpServletRequest req, PostVO p) {
-		TokenMaker.make(req);
 		acDAO.wathingPage(req);
 		acDAO.loginCheck(req);
 		int pg = Integer.parseInt(req.getParameter("pg"));
-		brDAO.getAllPost(req, pg, 31, p);
+		brDAO.getAllPost(req, pg, p);
 		req.setAttribute("contentPage", "clubEvent/clubEventBoard.jsp");
 		return "index";
 	}
@@ -115,7 +108,7 @@ public class ClubEventController {
 	public String clubEventSearchDo(HttpServletRequest req, BoardSelector bSel, PostVO p) {
 		acDAO.loginCheck(req);
 		brDAO.searchPost(req, bSel);
-		brDAO.getAllPost(req, 1, 31, p);
+		brDAO.getAllPost(req, 1, p);
 		req.setAttribute("contentPage", "clubEvent/clubEventBoard.jsp");
 		return "index";
 	}

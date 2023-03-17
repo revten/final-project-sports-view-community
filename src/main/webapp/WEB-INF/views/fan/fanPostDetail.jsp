@@ -11,9 +11,9 @@
 
 <body>
 	<div class="container-field">
-	
+
 		<div class="board-main">
-		
+
 			<!--==================== fan__best 부분 - 종목별 베스트 (각 게시판별로 CRUD별로 존재해야)  ====================-->
 			<div class="card-list">
 				<!-- 맨위에 fan__best 부분 - 상위글 보여주는 부분 -->
@@ -73,7 +73,7 @@
 												pattern="yy-MM-dd HH:mm" />
 										</c:when>
 										<c:otherwise>
-						수정 <fmt:formatDate value="${post.post_update_date}"
+											<fmt:formatDate value="${post.post_update_date}"
 												pattern="yy-MM-dd HH:mm" />
 										</c:otherwise>
 									</c:choose>
@@ -81,9 +81,7 @@
 							</div>
 							<hr>
 							<div class="post__2nd-line">
-								<div class="post__nick">
-									${post.member_nick}
-								</div>
+								<div class="post__nick">${post.member_nick}</div>
 								<div class="post__element">
 									조회수 <b>${post.post_hit_count }</b> 추천수 <b>${post.post_like_count}</b>
 									스크랩수 <b>${post.post_scrap_count}</b>
@@ -107,23 +105,12 @@
 											</c:when>
 											<c:otherwise>
 												<button class="post__bot-btn"
-													onclick="location.href='fan.update.go?post_id=${post.post_id}&post_member=${post.post_member}'">수정</button>
+													onclick="location.href='fan.update.go?post_id=${post.post_id}&post_member=${post.post_member}&post_board=${post.post_board }'">수정</button>
 												<button class="post__bot-btn"
 													onclick="deletePost(${post.post_id}, ${post.post_board});">삭제</button>
 											</c:otherwise>
 										</c:choose>
 									</c:when>
-									<c:otherwise>
-										<c:choose>
-											<c:when test="${sessionScope.loginAccount eq null}">
-												<button id="LikeBtn" onclick="alert('로그인하세요')">추천</button>
-											</c:when>
-											<c:otherwise>
-												<button id="LikeBtn"
-													onclick="likeCheck(${likeCheck}, ${post.post_id}, ${sessionScope.loginAccount.member_id})">추천</button>
-											</c:otherwise>
-										</c:choose>
-									</c:otherwise>
 								</c:choose>
 							</div>
 						</div>
@@ -134,7 +121,7 @@
 					<div class="reply__section">
 						<!-- 댓글 리스트 -->
 						<hr>
-							<div style="font-size: 15px">댓글 리스트</div>
+						<div style="font-size: 15px">댓글 리스트</div>
 						<div class="reply__list">
 							<c:forEach var="reply" items="${post.replies}">
 								<div class="reply__div">
@@ -189,7 +176,9 @@
 			</div>
 		</div>
 	</div>
-		<script> 
+
+
+	<script> 
 const srFanD = ScrollReveal({
 	  origin: 'right',
 	  distance: '290px',
@@ -203,6 +192,6 @@ const srFanD = ScrollReveal({
 	srFanD.reveal(`.app-container`, { origin: 'right' });
 	srFanD.reveal(`.`, { interval: 100});
 	</script>
-	
+
 </body>
 </html>

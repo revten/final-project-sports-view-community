@@ -68,6 +68,7 @@
 					<h1 class="app-content-headerText">${board_name }게시판</h1>
 				</div>
 				<!-- 2번줄 헤더 -->
+				
 				<div class="app-content-actions">
 					<form action="fan.reg.do" method="POST"
 						onsubmit="return checkForm()" name="postRegForm"
@@ -99,7 +100,7 @@
 						
 						<div id="buttonArea">
 						<button id="goBoardBtn" type="button"
-							onclick="location.href='fan.board.go?post_board=21'">목록으로</button>
+							onclick="location.href='fan.board.go?post_board=${param.post_board}'">목록으로</button>
 						<button id="createPostBtn">등록</button>
 						</div>
 					</form>
