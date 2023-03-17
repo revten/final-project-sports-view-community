@@ -54,6 +54,7 @@
 <link rel="stylesheet" href="resources/css/review.css" />
 <link rel="stylesheet" href="resources/css/withGo.css" />
 <link rel="stylesheet" href="resources/css/fan.css">
+<link rel="stylesheet" href="resources/css/myPage.css" />
 
 </head>
 

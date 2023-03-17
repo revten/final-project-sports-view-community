@@ -1,5 +1,6 @@
 package com.tm.nmp.board;
 
+import java.util.HashMap;
 import java.util.List;
 
 import javax.servlet.http.Cookie;
@@ -11,7 +12,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.tm.nmp.account.AccountDTO;
-import com.tm.nmp.board.PostVO;
 
 @Service
 public class BoardDAO {
@@ -21,7 +21,10 @@ public class BoardDAO {
 
 	@Autowired
 	private BoardOption bo;
-
+	
+	@Autowired
+	private BoardNumberList boardNumberList;
+	
 	private int allPostCount;
 
 	public int getAllPostCount() {
@@ -31,30 +34,20 @@ public class BoardDAO {
 	public void setAllPostCount(int allPostCount) {
 		this.allPostCount = allPostCount;
 	}
-
-	BoardNumberList boardNumberList = new BoardNumberList(); // 게시판 번호리스트
 	
-	// 여기도 수정 예정
-	private int[] calcBoard = new int[boardNumberList.getTotalBoard()];
-	private int board_array_number; // 게시판들 순서
-
+	private HashMap<Integer, Integer> calcPostCount = new HashMap<Integer, Integer>();
+	
 	public void calcAllPostCount() {
-		for(int i = 0; i < boardNumberList.getTotalBoard(); i++) {
-			BoardSelector bs = new BoardSelector("", 0, 0, boardNumberList.getBoardNumberList()[i]); 
-			calcBoard[i] = ss.getMapper(BoardMapper.class).calcAllPostCount(bs);
-			System.out.println(calcBoard[i]); // 각 게시판별 총 게시글 수
+		for(int i : boardNumberList.getBoardNumberList()) {
+			BoardSelector bs = new BoardSelector("", 0, 0, i);
+			calcPostCount.put(i, ss.getMapper(BoardMapper.class).calcAllPostCount(bs));
+			System.out.println("게시판번호 " + i + " : " + calcPostCount.get(i)); // 각 게시판별 총 게시글 수
 		}
 	}
 
 	public void getAllPost(HttpServletRequest req, int pageNbr, int post_board, PostVO p) {
 
-		for(int i = 0; i < boardNumberList.getTotalBoard(); i++) {			
-			if(boardNumberList.getBoardNumberList()[i] == post_board) {
-				board_array_number = i;
-				break;
-			}
-		}
-		allPostCount = calcBoard[board_array_number];
+		allPostCount = calcPostCount.get(p.getPost_board());
 		System.out.println("allPostCount : " + allPostCount);
 
 		int count = bo.getCountPerPage();
@@ -136,11 +129,10 @@ public class BoardDAO {
 	}
 
 	public void regPost(HttpServletRequest req, PostVO p) {
-		/*
-		 * String token = req.getParameter("token"); String successToken = (String)
-		 * req.getSession().getAttribute("successToken"); if
-		 * (token.equals(successToken)) { return; }
-		 */
+		
+		System.out.println(p.getPost_board());
+		allPostCount = calcPostCount.get(p.getPost_board());
+		System.out.println("등록전 게시글수 : " + allPostCount);
 
 		AccountDTO ac = (AccountDTO) req.getSession().getAttribute("loginAccount");
 		p.setPost_member(ac.getMember_id());
@@ -170,19 +162,10 @@ public class BoardDAO {
 		// 위 split 내용을 wg_img 컬럼에 set해준 것
 //		p.setPost_content(p_txt.replace("\r\n", "<br>"));
 
-		int post_board = p.getPost_board();
-		System.out.println(post_board);
 		if (ss.getMapper(BoardMapper.class).regPost(p) == 1) {
 			System.out.println("글 등록 성공");
-			
-			for(int i = 0; i < boardNumberList.getTotalBoard(); i++) {			
-				if(boardNumberList.getBoardNumberList()[i] == post_board) {
-					board_array_number = boardNumberList.getBoardNumberList()[i];
-					break;
-				}
-			}
-			calcBoard[board_array_number]++;
-			
+			calcPostCount.replace(p.getPost_board(), allPostCount++);
+			System.out.println("등록후 게시글수 : " + allPostCount);
 		} else {
 			System.err.println("글 등록 실패");
 		}
@@ -218,18 +201,15 @@ public class BoardDAO {
 	}
 
 	public void deletePost(HttpServletRequest req, PostVO p) {
-		int post_board = p.getPost_board();
-		System.out.println(post_board);
+		
+		System.out.println(p.getPost_board());
+		allPostCount = calcPostCount.get(p.getPost_board());
+		System.out.println("삭제전 게시글수 : " + allPostCount);
+		
 		if (ss.getMapper(BoardMapper.class).deletePost(p) == 1) {
-			req.setAttribute("result", "글삭제 성공");
-			
-			for(int i = 0; i < boardNumberList.getTotalBoard(); i++) {			
-				if(boardNumberList.getBoardNumberList()[i] == post_board) {
-					board_array_number = boardNumberList.getBoardNumberList()[i];
-					break;
-				}
-			}
-			calcBoard[board_array_number]--;
+			System.out.println("글 삭제 성공");
+			calcPostCount.replace(p.getPost_board(), allPostCount--);
+			System.out.println("삭제후 게시글수 : " + allPostCount);
 			
 		} else {
 			req.setAttribute("result", "글삭제실패");
@@ -373,7 +353,6 @@ public class BoardDAO {
 		 * req.setAttribute("result", "조회수 성공"); }else { req.setAttribute("result",
 		 * "조회수 실패"); }
 		 */
-
 	}
 
 	public void likeUp(HttpServletRequest req, LikeVO lk) {
