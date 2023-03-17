@@ -91,6 +91,22 @@
 		<beans:property name="maxUploadSize" value="52428800" />
 		<beans:property name="maxInMemorySize" value="10485760" />
 	</beans:bean>
+
+	<beans:bean id="boardNumberList"
+		class="com.tm.nmp.board.BoardNumberList">
+		<beans:constructor-arg>
+			<beans:list>
+				<beans:value>11</beans:value> <!-- withGo -->
+				<beans:value>12</beans:value> <!-- review -->
+				<beans:value>21</beans:value> <!-- baseball -->
+				<beans:value>22</beans:value> <!-- soccer -->
+				<beans:value>23</beans:value> <!-- basketball -->
+				<beans:value>24</beans:value> <!-- volleyball -->
+				<beans:value>31</beans:value> <!-- clubEvent -->
+			</beans:list>
+		</beans:constructor-arg>
+	</beans:bean>
+
 	<beans:bean id="bo" class="com.tm.nmp.board.BoardOption">
 		<beans:constructor-arg value="12"></beans:constructor-arg>
 	</beans:bean>

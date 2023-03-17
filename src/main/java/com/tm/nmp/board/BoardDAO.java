@@ -1,5 +1,6 @@
 package com.tm.nmp.board;
 
+import java.util.HashMap;
 import java.util.List;
 
 import javax.servlet.http.Cookie;
@@ -11,7 +12,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.tm.nmp.account.AccountDTO;
-import com.tm.nmp.board.PostVO;
 
 @Service
 public class BoardDAO {
@@ -21,41 +21,27 @@ public class BoardDAO {
 
 	@Autowired
 	private BoardOption bo;
-
-	private int allPostCount;
-
-	public int getAllPostCount() {
-		return allPostCount;
-	}
-
-	public void setAllPostCount(int allPostCount) {
-		this.allPostCount = allPostCount;
-	}
-
-	BoardNumberList boardNumberList = new BoardNumberList(); // 게시판 번호리스트
 	
-	// 여기도 수정 예정
-	private int[] calcBoard = new int[boardNumberList.getTotalBoard()];
-	private int board_array_number; // 게시판들 순서
-
+	@Autowired
+	private BoardNumberList boardNumberList;
+	
+	private int allPostCount;
+	
+	// 각 게시판별로 게시글수 저장
+	private HashMap<Integer, Integer> calcPostCount = new HashMap<Integer, Integer>();
 	public void calcAllPostCount() {
-		for(int i = 0; i < boardNumberList.getTotalBoard(); i++) {
-			BoardSelector bs = new BoardSelector("", 0, 0, boardNumberList.getBoardNumberList()[i]); 
-			calcBoard[i] = ss.getMapper(BoardMapper.class).calcAllPostCount(bs);
-			System.out.println(calcBoard[i]); // 각 게시판별 총 게시글 수
+		for(int i : boardNumberList.getBoardNumberList()) {
+			BoardSelector bs = new BoardSelector("", 0, 0, i);
+			calcPostCount.put(i, ss.getMapper(BoardMapper.class).calcAllPostCount(bs));
+			System.out.println("게시판번호 " + i + " : " + calcPostCount.get(i)); // 각 게시판별 총 게시글 수
 		}
 	}
 
-	public void getAllPost(HttpServletRequest req, int pageNbr, int post_board, PostVO p) {
+	
+	public void getAllPost(HttpServletRequest req, int pageNbr, PostVO p) {
 
-		for(int i = 0; i < boardNumberList.getTotalBoard(); i++) {			
-			if(boardNumberList.getBoardNumberList()[i] == post_board) {
-				board_array_number = i;
-				break;
-			}
-		}
-		allPostCount = calcBoard[board_array_number];
-		System.out.println("allPostCount : " + allPostCount);
+		allPostCount = calcPostCount.get(p.getPost_board());
+		System.out.println("전체 게시글 수 : " + allPostCount);
 
 		int count = bo.getCountPerPage();
 		int start = (pageNbr - 1) * count + 1;
@@ -65,7 +51,7 @@ public class BoardDAO {
 		int postCount = 0;
 
 		if (search == null) {
-			search = new BoardSelector("", start, end, post_board);
+			search = new BoardSelector("", start, end, p.getPost_board());
 			postCount = allPostCount;
 		} else {
 			search.setStart(start);
@@ -125,35 +111,39 @@ public class BoardDAO {
 		req.setAttribute("curPage", pageNbr);
 	}
 
+	
 	public void searchPost(HttpServletRequest req, BoardSelector bSel) {
 		req.getSession().setAttribute("search", bSel);
 	}
 
+	
 	public void getPost(HttpServletRequest req, PostVO p) {
 		PostVO post = ss.getMapper(BoardMapper.class).getPost(p);
 		post.setReplies(ss.getMapper(BoardMapper.class).getAllReplies(p));
 		req.setAttribute("post", post);
 	}
 
+	
 	public void regPost(HttpServletRequest req, PostVO p) {
-		/*
-		 * String token = req.getParameter("token"); String successToken = (String)
-		 * req.getSession().getAttribute("successToken"); if
-		 * (token.equals(successToken)) { return; }
-		 */
+		
+		System.out.println("게시판 번호 : " + p.getPost_board());
+		allPostCount = calcPostCount.get(p.getPost_board());
+		System.out.println("등록전 게시글수 : " + allPostCount);
+		allPostCount++;
 
 		AccountDTO ac = (AccountDTO) req.getSession().getAttribute("loginAccount");
 		p.setPost_member(ac.getMember_id());
 
 		String regIp = getClientIp(req);
-		System.out.println(regIp);
+		System.out.println("등록 ip : " + regIp);
 		p.setPost_reg_ip(regIp);
 
 		String str = p.getPost_content();
 		System.out.println("전체(글내용) 경로 :" + str);
 		String tit = p.getPost_title();
 		System.out.println("제목 :" + tit);
-
+		
+		// ck4의 컨텐츠에 img 자체가 저장되어 이미지만에 대한 정보를 DB에 저장하기 위한 작업
 		if (str.contains("img")) {
 			String[] contentSplit = str.split("/");
 			String topSplit = contentSplit[5];
@@ -167,27 +157,16 @@ public class BoardDAO {
 			p.setPost_img("");
 		}
 
-		// 위 split 내용을 wg_img 컬럼에 set해준 것
-//		p.setPost_content(p_txt.replace("\r\n", "<br>"));
-
-		int post_board = p.getPost_board();
-		System.out.println(post_board);
 		if (ss.getMapper(BoardMapper.class).regPost(p) == 1) {
 			System.out.println("글 등록 성공");
-			
-			for(int i = 0; i < boardNumberList.getTotalBoard(); i++) {			
-				if(boardNumberList.getBoardNumberList()[i] == post_board) {
-					board_array_number = boardNumberList.getBoardNumberList()[i];
-					break;
-				}
-			}
-			calcBoard[board_array_number]++;
-			
+			calcPostCount.replace(p.getPost_board(), allPostCount);
+			System.out.println("등록후 게시글수 : " + allPostCount);
 		} else {
 			System.err.println("글 등록 실패");
 		}
 	}
 
+	
 	public void updatePost(HttpServletRequest req, PostVO p) {
 
 		String regIp = getClientIp(req);
@@ -217,25 +196,25 @@ public class BoardDAO {
 		}
 	}
 
+
 	public void deletePost(HttpServletRequest req, PostVO p) {
-		int post_board = p.getPost_board();
-		System.out.println(post_board);
+		
+		System.out.println("게시판 번호 : " + p.getPost_board());
+		allPostCount = calcPostCount.get(p.getPost_board());
+		System.out.println("삭제전 게시글수 : " + allPostCount);
+		allPostCount--;
+		
 		if (ss.getMapper(BoardMapper.class).deletePost(p) == 1) {
-			req.setAttribute("result", "글삭제 성공");
-			
-			for(int i = 0; i < boardNumberList.getTotalBoard(); i++) {			
-				if(boardNumberList.getBoardNumberList()[i] == post_board) {
-					board_array_number = boardNumberList.getBoardNumberList()[i];
-					break;
-				}
-			}
-			calcBoard[board_array_number]--;
+			System.out.println("글 삭제 성공");
+			calcPostCount.replace(p.getPost_board(), allPostCount);
+			System.out.println("삭제후 게시글수 : " + allPostCount);
 			
 		} else {
 			req.setAttribute("result", "글삭제실패");
 		}
 	}
 
+	
 	public ResultVO regReply(HttpServletRequest req, ReplyVO rp) {
 		String token = req.getParameter("token");
 		// 리플등록시에 세션에 세팅해둔 토큰을 불러온다.
@@ -280,9 +259,9 @@ public class BoardDAO {
 			return resultVO;
 		}
 		return resultVO;
-
 	}
 
+	
 	public int deleteReply(HttpServletRequest req, ReplyVO rp) {
 		if (ss.getMapper(BoardMapper.class).deleteReply(rp) == -1) {
 			req.setAttribute("result", "댓글삭제 성공");
@@ -293,6 +272,7 @@ public class BoardDAO {
 		}
 	}
 
+	
 	public ResultVO updateReply(HttpServletRequest req, ReplyVO rp) {
 		ResultVO resultVO = new ResultVO();
 		int a = ss.getMapper(BoardMapper.class).updateReply(rp);
@@ -309,6 +289,7 @@ public class BoardDAO {
 		return resultVO;
 	}
 
+	
 	public static String getClientIp(HttpServletRequest req) {
 
 		String[] header_IPs = { "HTTP_CLIENT_IP", "HTTP_X_FORWARDED_FOR", "HTTP_X_FORWARDED",
@@ -326,18 +307,7 @@ public class BoardDAO {
 		return req.getRemoteAddr();
 	}
 
-	// 좋아요를 누른 회원인지 아닌지 체크하기
-	public void likeCheck(HttpServletRequest req, PostVO p) {
-		AccountDTO ac = (AccountDTO) req.getSession().getAttribute("loginAccount");
-		LikeVO lk = new LikeVO();
-		lk.setLike_member(ac.getMember_id());
-		lk.setLike_post(p.getPost_id());
-		int likeCheck = ss.getMapper(BoardMapper.class).likeCheck(lk);
-		System.out.println("likeCheck: " + likeCheck);
-		req.setAttribute("likeCheck", likeCheck);
-
-	}
-
+	
 	public void postCountUpdate(HttpServletRequest req, HttpServletResponse res, PostVO p) {
 
 		Cookie[] cookies = req.getCookies();
@@ -367,15 +337,9 @@ public class BoardDAO {
 
 			ss.getMapper(BoardMapper.class).postCountUpdate(p);
 		}
-
-		/*
-		 * if(ss.getMapper(BoardMapper.class).postCountUpdate(p) == 1) {
-		 * req.setAttribute("result", "조회수 성공"); }else { req.setAttribute("result",
-		 * "조회수 실패"); }
-		 */
-
 	}
 
+	
 	public void likeUp(HttpServletRequest req, LikeVO lk) {
 		if (ss.getMapper(BoardMapper.class).likeUp(lk) == 1) {
 			req.setAttribute("result", "댓글수정 성공");
@@ -383,15 +347,7 @@ public class BoardDAO {
 			req.setAttribute("result", "댓글수정 실패");
 		}
 	}
-
-	public void likeDown(HttpServletRequest req, LikeVO lk) {
-		if (ss.getMapper(BoardMapper.class).likeDown(lk) == 1) {
-			req.setAttribute("result", "댓글수정 성공");
-		} else {
-			req.setAttribute("result", "댓글수정 실패");
-		}
-	}
-
+	
 	public void viewBoardName(HttpServletRequest req) {
 
 		String board_num = req.getParameter("post_board");

@@ -27,7 +27,6 @@ public class MyPageController {
 		
 	@RequestMapping(value = "myPage.info.go", method = RequestMethod.GET)
 	public String myPageInfoGo(HttpServletRequest req, AccountDTO ac, PointVO pv, PlusPointVO ppv) {
-		TokenMaker.make(req);
 		acDAO.loginCheck(req);
 		req.setAttribute("contentPage", "myPage/myPageMyInfo.jsp");
 		return "index";
@@ -35,7 +34,6 @@ public class MyPageController {
 	
 	@RequestMapping(value = "myPage.myPost.go", method = RequestMethod.GET)
 	public String myPageMyPostGo(HttpServletRequest req, AccountDTO ac, PostVO pvo) {
-		TokenMaker.make(req);
 		acDAO.loginCheck(req);
 		acDAO.getMyPosts(req, pvo);
 		req.setAttribute("contentPage", "myPage/myPageMyPost.jsp");
@@ -44,7 +42,6 @@ public class MyPageController {
 	
 	@RequestMapping(value = "myPage.pointInfo.go", method = RequestMethod.GET)
 	public String myPagePointInfoGo(HttpServletRequest req, PointVO pv, PlusPointVO ppv) {
-		TokenMaker.make(req);
 		acDAO.loginCheck(req);
 		pDAO.showPoint(req, pv);
 		pDAO.showPlusPoint(req, ppv);
