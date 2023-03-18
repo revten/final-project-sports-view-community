@@ -340,14 +340,6 @@ public class BoardDAO {
 	}
 
 	
-	public void likeUp(HttpServletRequest req, LikeVO lk) {
-		if (ss.getMapper(BoardMapper.class).likeUp(lk) == 1) {
-			req.setAttribute("result", "댓글수정 성공");
-		} else {
-			req.setAttribute("result", "댓글수정 실패");
-		}
-	}
-	
 	public void viewBoardName(HttpServletRequest req) {
 
 		String board_num = req.getParameter("post_board");

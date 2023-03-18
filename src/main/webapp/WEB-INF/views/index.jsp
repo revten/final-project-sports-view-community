@@ -101,7 +101,7 @@
 					<li class="nav__item"><a href="fan.board.go?post_board=21"
 						class="nav__link">THE FAN</a></li>
 
-					<li class="nav__item"><a href="clubEvent.board.go"
+					<li class="nav__item"><a href="clubEvent.board.go?post_board=31"
 						class="nav__link">EVENT</a></li>
 
 					<li class="nav__item"><a href="news.main.go" class="nav__link">NEWS</a></li>

@@ -23,12 +23,6 @@ public interface BoardMapper {
 
 	int updateReply(ReplyVO rp);
 
-	int likeCheck(LikeVO lk);
-
-	int likeUp(LikeVO lk);
-
-	int likeDown(LikeVO lk);
-	
 	int postCountUpdate(PostVO p);
 
 	ReplyVO getReply();
