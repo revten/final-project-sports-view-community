@@ -48,7 +48,7 @@ function checkForm2() {
 	return true;
 }
 
-// ==================== 좋아요 기능 ====================
+/*// ==================== 좋아요 기능 ====================
 function likeCheck(a, b, c) {
 	let likeCheck = a;
 	let like_post = b;
@@ -92,7 +92,7 @@ function likeCheck(a, b, c) {
 
 		})
 	}
-}
+}*/
 
 // ==================== 글삭제 확인 ====================
 function deletePost(n, b) {

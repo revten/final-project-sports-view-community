@@ -104,5 +104,5 @@ const sr = ScrollReveal({
 	sr.reveal(`.`, { origin: 'left' });
 	sr.reveal(`.`, { origin: 'right' });
 	sr.reveal(`.`, { interval: 100 });
-	</script>*/
+</script>*/
 

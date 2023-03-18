@@ -36,21 +36,6 @@
 	<br>
 	<br>
 	<br>
-	<!-- <div class="nav__menu" id="nav-menu" style="width:55%;align:center;">
-				<ul class="nav__list">
-					<li class="nav__item"><a href="clubEvent.board.go"
-						class="nav__link">구단공식이벤트</a></li>
-						
-					<li class="nav__item"><a href="news.sports.go"
-						class="nav__link">스포츠</a></li>
-					<li class="nav__item"><a href="newsEvent.main.go"
-						class="nav__link">뉴스</a>
-					</li>
-						
-						
-
-				</ul>
-		</div> -->
 		<br><br>
 <div style="float: left;position: absolute;left: -9%;"><img src="resources/files/backgroundImg/messi.png"></div>
 		<div style="float: right;position: absolute;top:400px; left : 75.5%;"><img src="resources/files/backgroundImg/ronaldo.png"></div>
@@ -79,26 +64,6 @@
 					</div>
 					<span class="slide-title">Chicken</span>
 				</div>
-
-				<!--         <div class="swiper-slide slide">
-            <div class="slide-imageswiper-lazy" data-background="https://images.unsplash.com/photo-1538083024336-555cf8943ddc?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=66b476a51b19889e13182c0e4827af18&auto=format&fit=crop&w=1950&q=80">
-            </div>
-            </div>
-            <span class="slide-title">Exotic places</span>
-          </div>
-        
-          <div class="swiper-slide slide">
-            <div class="slide-image swiper-lazy" data-background="https://images.unsplash.com/photo-1500375592092-40eb2168fd21?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=e07d2457879a4e15577ec75a31023e47&auto=format&fit=crop&w=2134&q=80">
-            </div>
-            <span class="slide-title">Meet ocean</span>
-          </div>
-        
-          <div class="swiper-slide slide">
-            <div class="slide-image swiper-lazy" data-background="https://images.unsplash.com/photo-1482059470115-0aadd6bf6834?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=267bba9a4e280ec64388fe8fb01e9d1b&auto=format&fit=crop&w=1950&q=80">
-            </div>
-            <span class="slide-title">Around the world</span>
-          </div> -->
-
 			</div>
 
 			<div class="slideshow-pagination"></div>
