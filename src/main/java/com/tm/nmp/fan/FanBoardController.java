@@ -63,7 +63,7 @@ public class FanBoardController {
 	}
 
 	@RequestMapping(value = "fan.reg.do", method = RequestMethod.POST)
-	public String fanRegDo(RedirectAttributes redir, HttpServletRequest req, PostVO p, PointVO pv, PlusPointVO ppv) {
+	public String fanRegDo(HttpServletRequest req, PostVO p, PointVO pv, PlusPointVO ppv) {
 
 		if (acDAO.loginCheck(req)) {
 			brDAO.regPost(req, p);
@@ -80,8 +80,7 @@ public class FanBoardController {
 		} else {
 			req.setAttribute("contentPage", "account/loginPage.jsp");
 		}
-		redir.addAttribute("post_board", p.getPost_board());
-		return "redirect:fan.board.go?post_board={post_board}";
+		return "redirect:fan.board.go?post_board=" + p.getPost_board();
 	}
 
 	@RequestMapping(value = "fan.detail.go", method = RequestMethod.GET)
