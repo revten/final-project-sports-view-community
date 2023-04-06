@@ -35,9 +35,9 @@
 		<beans:property name="driverClassName"
 			value="oracle.jdbc.driver.OracleDriver" />
 		<beans:property name="url"
-			value="jdbc:oracle:thin:@N5B2F80APV3OW27T_high?TNS_ADMIN=C:/miracle/Wallet_N5B2F80APV3OW27T" />
-		<beans:property name="username" value="ADMIN" />
-		<beans:property name="password" value="Soldesk802jw" />
+			value="jdbc:oracle:thin:@VNFOZP5V0P896GE5_high?TNS_ADMIN=C:/wallet/Wallet_VNFOZP5V0P896GE5" />
+		<beans:property name="username" value="admin" />
+		<beans:property name="password" value="1q2w3e4r5t6Y" />
 	</beans:bean>
 
 	<beans:bean id="transactionManager"

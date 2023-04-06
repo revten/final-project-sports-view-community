@@ -42,7 +42,7 @@ public class FanBoardController {
 		// 홈에서 더 팬을 눌렀을때 우선 야구 게시판이 뜨게 설정해둠
 		BoardOption.clearSearch(req);
 		brDAO.getAllPost(req, 1, p); // 1은 첫페이지를 보여달라
-		req.setAttribute("contentPage", "fan/fanBoard.jsp");
+		req.setAttribute("contentPage", "fanBoard/fanBoard.jsp");
 		return "index";
 	}
 
@@ -54,7 +54,7 @@ public class FanBoardController {
 		acDAO.wathingPage(req);
 		// 글을 쓰려면 로그인을 하라는 것
 		if (acDAO.loginCheck(req)) {
-			req.setAttribute("contentPage", "fan/fanPostReg.jsp");
+			req.setAttribute("contentPage", "fanBoard/fanPostReg.jsp");
 			brDAO.viewBoardName(req);
 		} else {
 			req.setAttribute("contentPage", "account/loginPage.jsp");
@@ -75,7 +75,7 @@ public class FanBoardController {
 			// 등록후에는 그 게시판 전체글을 보여줄것이라서
 			BoardOption.clearSearch(req);
 			brDAO.getAllPost(req, 1, p);
-			req.setAttribute("contentPage", "fan/fanBoard.jsp");
+			req.setAttribute("contentPage", "fanBoard/fanBoard.jsp");
 
 		} else {
 			req.setAttribute("contentPage", "account/loginPage.jsp");
@@ -89,7 +89,7 @@ public class FanBoardController {
 
 		brDAO.getPost(req, p); // 게시글 넘버로 불러오는 것이라 굳이 게시판 넘버가 필요없다
 		brDAO.postCountUpdate(req, res, p);
-		req.setAttribute("contentPage", "fan/fanPostDetail.jsp");
+		req.setAttribute("contentPage", "fanBoard/fanPostDetail.jsp");
 		return "index";
 	}
 
@@ -99,7 +99,7 @@ public class FanBoardController {
 
 		if (acDAO.loginCheck(req)) {
 			brDAO.getPost(req, p);
-			req.setAttribute("contentPage", "fan/fanPostUpdate.jsp");
+			req.setAttribute("contentPage", "fanBoard/fanPostUpdate.jsp");
 		} else {
 			req.setAttribute("contentPage", "account/loginPage.jsp");
 		}
@@ -112,7 +112,7 @@ public class FanBoardController {
 		if (acDAO.loginCheck(req)) {
 			brDAO.updatePost(req, p);
 			brDAO.getPost(req, p);
-			req.setAttribute("contentPage", "fan/fanPostDetail.jsp");
+			req.setAttribute("contentPage", "fanBoard/fanPostDetail.jsp");
 		} else {
 			req.setAttribute("contentPage", "account/loginPage.jsp");
 		}
@@ -128,7 +128,7 @@ public class FanBoardController {
 			// 삭제후 전체글 조회
 			BoardOption.clearSearch(req);
 			brDAO.getAllPost(req, 1, p);
-			req.setAttribute("contentPage", "fan/fanBoard.jsp");
+			req.setAttribute("contentPage", "fanBoard/fanBoard.jsp");
 		} else {
 			req.setAttribute("contentPage", "account/loginPage.jsp");
 		}
@@ -142,7 +142,7 @@ public class FanBoardController {
 
 		int pg = Integer.parseInt(req.getParameter("pg"));
 		brDAO.getAllPost(req, pg, p);
-		req.setAttribute("contentPage", "fan/fanBoard.jsp");
+		req.setAttribute("contentPage", "fanBoard/fanBoard.jsp");
 		return "index";
 	}
 
@@ -152,7 +152,7 @@ public class FanBoardController {
 
 		brDAO.searchPost(req, bSel);
 		brDAO.getAllPost(req, 1, p);
-		req.setAttribute("contentPage", "fan/fanBoard.jsp");
+		req.setAttribute("contentPage", "fanBoard/fanBoard.jsp");
 		return "index";
 	}
 

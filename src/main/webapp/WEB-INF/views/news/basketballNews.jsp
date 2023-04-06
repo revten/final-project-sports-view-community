@@ -10,13 +10,8 @@
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/paginationjs/2.1.4/pagination.css" />
 </head>
+
 <body>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
 	<div class="nav__menu" id="nav-menu" style="width: 59%; align: center;">
 		<ul class="nav__list">
 			<li class="nav__item"><a class="nav__link" href='news.soccer.go'>축구</a></li>
@@ -28,25 +23,15 @@
 				href='news.volleyball.go'>배구 </a></li>
 		</ul>
 	</div>
-	<br>
-	<br>
 
+	<!-- ====== News Main ====== -->
 	<div class="div_news">
-		<div class="news__bg-left"
-			style="float: left; position: absolute; left: -9%;">
-			<img src="resources/files/backgroundImg/basketball1.png">
-		</div>
-		<div class="news__bg-right"
-			style="float: right; position: absolute; top: 400px; left: 66%;">
-			<img src="resources/files/backgroundImg/basketball2.png">
-		</div>
-		
 		<div class="div_news_content">
 			<div id="data-container"></div>
 			<div id="pagination" style="margin-left: 29%;"></div>
 		</div>
 	</div>
-	
+
 	<script type="text/javascript">
 		$(function() {
 			// 인코딩
