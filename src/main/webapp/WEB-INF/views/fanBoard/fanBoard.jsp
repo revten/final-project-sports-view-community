@@ -11,21 +11,7 @@
 
 </head>
 <body>
-	<main role="main" class="col-md-9 ml-sm-auto col-lg-10 my-3"> <!-- 부트스트랩 클래스명이라 main은 남겨야 할듯 -->
-	<div class="fan_bg-leftTop"
-		style="float: left; position: absolute; left: -9%;">
-		<img src="resources/files/backgroundImg/review1.png">
-	</div>
-	<div class="fan_bg-RightTop"
-		style="float: right; position: absolute; top: 400px; left: 86%;">
-		<img src="resources/files/backgroundImg/review3.png">
-	</div>
-	<div style="float: right; position: absolute; top: 800px; left: 66%;">
-		<img src="resources/files/backgroundImg/review2.png">
-	</div>
-	<div style="float: left; position: absolute; top: 900px; left: -9%;">
-		<img src="resources/files/backgroundImg/fan1.png">
-	</div>
+	<main role="main" class="col-md-9 ml-sm-auto col-lg-10 my-3">
 	<div class="container-field">
 		<div class="board-main">
 			<!--==================== fan__best 부분 - 종목별 베스트 (각 게시판별로 CRUD별로 존재해야)  ====================-->

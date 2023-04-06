@@ -24,8 +24,7 @@ public class NewsController {
     public String newsEventMainGo(HttpServletRequest req) {
         acDAO.wathingPage(req);
         acDAO.loginCheck(req);
-        req.setAttribute("contentPage", "news/newsEventMain.jsp");
-        req.setAttribute("newsPage", "everyNews.jsp");
+        req.setAttribute("contentPage", "everyNews.jsp");
         return "index";
     }
 
@@ -53,14 +52,7 @@ public class NewsController {
 	@RequestMapping(value = "/news.volleyball.go", method = RequestMethod.GET)
 	public String goVolleyballNews(HttpServletRequest req) {
 		acDAO.loginCheck(req);
-		req.setAttribute("contentPage", "news/VolleyballNews.jsp");
-		return "index";
-	}
-
-	@RequestMapping(value = "/news.sports.go", method = RequestMethod.GET)
-	public String goSportsNews(HttpServletRequest req) {
-		acDAO.loginCheck(req);
-		req.setAttribute("contentPage", "news/sportsNews.jsp");
+		req.setAttribute("contentPage", "news/volleyballNews.jsp");
 		return "index";
 	}
 

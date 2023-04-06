@@ -53,7 +53,7 @@
 <link rel="stylesheet" href="resources/css/clubEvent.css" />
 <link rel="stylesheet" href="resources/css/review.css" />
 <link rel="stylesheet" href="resources/css/withGo.css" />
-<link rel="stylesheet" href="resources/css/fan.css">
+<link rel="stylesheet" href="resources/css/fanBoard.css">
 <link rel="stylesheet" href="resources/css/myPage.css" />
 
 </head>
@@ -120,17 +120,10 @@
 		</nav>
 	</header>
 
+	<!--==================== home.jsp ====================-->
+
 	<div class="content__page" align="center"><jsp:include
 			page="${contentPage }"></jsp:include></div>
-
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
 
 	<!--==================== FOOTER ====================-->
 	<footer class="footer">
