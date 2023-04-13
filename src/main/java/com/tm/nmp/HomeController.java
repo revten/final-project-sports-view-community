@@ -59,4 +59,12 @@ public class HomeController {
 		req.setAttribute("contentPage", "myPage/myPageMain.jsp");
 		return "index";
 	}
+	
+	@RequestMapping(value = "/admin.main.go", method = RequestMethod.GET)
+	public String adminMainGo(HttpServletRequest req) {
+		acDAO.wathingPage(req);
+		acDAO.loginCheck(req);
+		req.setAttribute("contentPage", "admin/adminMain.jsp");
+		return "index";
+	}
 }
