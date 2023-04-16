@@ -71,9 +71,9 @@
 				<div class="nav__toggle" id="nav-toggle">
 					<i class="ri-apps-line"></i>
 				</div>
-				<div>
+<%-- 				<div>
 					<a class="nav__link"><jsp:include page="${loginPage }"></jsp:include></a>
-				</div>
+				</div> --%>
 			</div>
 
 

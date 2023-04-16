@@ -16,25 +16,25 @@ public class HomeController {
 	@Autowired
 	private AC_US_DAO acDAO;
 
-	@Autowired
-	private BoardDAO brDAO;
-
-	private boolean firstReq;
-
-	public HomeController() {
-		firstReq = true;
-	}
+//	@Autowired
+//	private BoardDAO brDAO;
+//
+//	private boolean firstReq;
+//
+//	public HomeController() {
+//		firstReq = true;
+//	}
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(HttpServletRequest req) {
 
-		if (firstReq) {
-			brDAO.calcAllPostCount();
-			firstReq = false;
-		}
-
-		acDAO.wathingPage(req);
-		acDAO.loginCheck(req);
+//		if (firstReq) {
+//			brDAO.calcAllPostCount();
+//			firstReq = false;
+//		}
+//
+//		acDAO.wathingPage(req);
+//		acDAO.loginCheck(req);
 		req.setAttribute("contentPage", "home.jsp");
 		return "index";
 	}
