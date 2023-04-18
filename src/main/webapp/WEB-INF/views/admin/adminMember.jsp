@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h1>관리자 페이지</h1>
+	<h1>회원 관리</h1>
 </body>
 </html>

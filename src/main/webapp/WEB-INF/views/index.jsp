@@ -76,8 +76,6 @@
 				</div> --%>
 			</div>
 
-
-
 			<div class="nav__menu" id="nav-menu">
 				<ul class="nav__list">
 					<li class="nav__item"><a href="stadium.main.go"
