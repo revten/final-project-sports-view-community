@@ -2,52 +2,54 @@
 ## ✨Team Miracle✨
 
 <img width="70%" src="https://user-images.githubusercontent.com/109392408/222941172-e5b38119-28fe-4004-8fc0-752ee8e79ef1.gif"/>
-<br/><br/>
+<br/>
 
-## 📌Intro
+## 📌프로젝트 소개
+### ❓선택배경
 우리는 보통 스포츠 경기를 관람하기 위해 티켓사이트에서 예매를 주로 진행합니다.<br>
 그러나 경기장마다 좌석별로 어떤 뷰를 보여주는지 어떤 느낌일지 제대로 알기 어렵습니다.<br>
 우연히 배구경기장 좌석별로 직접 찍은 사진을 보여주는 사이트를 발견하였고, <br>
 이 사이트를 기반으로 커뮤니티형 사이트로 확장시켜 구현해보자는 목표를 설정하였습니다.<br>
-<br>
-실제로 가서 느낄 현장감을 미리 전달하여 예매에 도움을 주고 후기를 공유할 공간을 마련하였고<br>
-자유로운 소통과 함께 구단의 소식도 쉽게 접할 수 있는 사이트를 구현키로 하였습니다.<br>
-https://myseatcheck.com의 초기 아이디어임을 다시한번 밝혀두며 오로지 학습용 프로젝트로 제작하였습니다.
-<br/><br/><br/><br/>
 
-## 📌기본정보
-### 1. 진행기간
-2023-01-08 ~ 2023-01-31
-<br/><br/>
 
-### 2.프로젝트 진행과정 및 문서
-* 배운 내용에 충실하며 기획단계부터 실제 회사에서 프로젝트를 진행한다는 자세로 임하였습니다.
-* [팀홈페이지(노션)-click](https://dusty-mandible-fdc.notion.site/Team_Miracle-e577e65b76a7478f90e49c5b5507c894)<br>
-: 노션의 팀스페이스를 활용하여 팀의 프로젝트 홈페이지 개념으로 활용하였습니다.<br>
-  (프로젝트 기획 및 진행계획, 회의록, 사이트맵, IA다이아그램, 정보공유, 규칙, 팀정보 등)
-* [발표PPT-click](https://github.com/RevTK/final-project-sports-view-community/blob/master/Miracleppt.pptx)<br>
-: 웹사이트 사진과 개발과정 및 기능에 대해 간단한 소개를 보실 수 있습니다.
-<br/><br/>
+### 🏃개발목적
+- 스포츠 팬들의 현장감 있는 구장 방향별 직관 사진 제공을 통한 니즈 충족
+- 실감가는 경기 관람 후기를 통한 정보 공유
+- 각종 스포츠 소식을 전달해주는 뉴스와 구단 이벤트
+- https://myseatcheck.com에서 초기 아이디어를 얻었음을 밝힙니다.
+<br/>
 
-### 3.사용스텍
+## 📌프로젝트 정보
+### ⌛진행기간
+- 2023-01-08 ~ 2023-01-31
+### ♻️기본환경
+- OS **:** Window 10
+- Java, 전자정부프레임워크3.9(SpringMVC)
+- Oracle Database / Oracle Cloud
+
+### 🏗️사용스택
 <img src="https://img.shields.io/badge/eclipse-2C2255?style=for-the-badge&logo=eclipse&logoColor=white"> <img src="https://img.shields.io/badge/vs code-0066CC?style=for-the-badge&logo=vscode&logoColor=white"> <img src="https://img.shields.io/badge/oracle-F80000?style=for-the-badge&logo=oracle&logoColor=white"> <img src="https://img.shields.io/badge/sourcetree-blue?style=for-the-badge&logo=sourcetree&logoColor=white"> <img src="https://img.shields.io/badge/github-181717?style=for-the-badge&logo=github&logoColor=white"> <img src="https://img.shields.io/badge/apache tomcat-F8DC75?style=for-the-badge&logo=apachetomcat&logoColor=black"> 
 
 
 <img src="https://img.shields.io/badge/JAVA-007396?style=for-the-badge&logo=JAVA&logoColor=white"> <img src="https://img.shields.io/badge/javascript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=white"> <img src="https://img.shields.io/badge/css-1572B6?style=for-the-badge&logo=css3&logoColor=white"> <img src="https://img.shields.io/badge/html-E34F26?style=for-the-badge&logo=html5&logoColor=white"> <img src="https://img.shields.io/badge/ajax-1572B6?style=for-the-badge&logo=ajax&logoColor=white"> <img src="https://img.shields.io/badge/jquery-0769AD?style=for-the-badge&logo=jquery&logoColor=white"> <img src="https://img.shields.io/badge/mybatis-black?style=for-the-badge&logo=mybatis&logoColor=white"> <img src="https://img.shields.io/badge/spring-6DB33F?style=for-the-badge&logo=spring&logoColor=white"> 
 
 <img src="https://img.shields.io/badge/figma-black?style=for-the-badge&logo=figma&logoColor=white"> <img src="https://img.shields.io/badge/notion-000000?style=for-the-badge&logo=notion&logoColor=white"> <img src="https://img.shields.io/badge/discord-5865F2?style=for-the-badge&logo=discord&logoColor=white">
-<br/><br/>
 
-### 4.담당업무
+### 🔗링크
+* [팀홈페이지(노션)-click](https://dusty-mandible-fdc.notion.site/Team_Miracle-e577e65b76a7478f90e49c5b5507c894)<br>
+: 노션의 팀스페이스를 활용하여 팀의 프로젝트 홈페이지 개념으로 활용하였습니다.<br>
+  (프로젝트 기획 및 진행계획, 회의록, 사이트맵, IA다이아그램, 정보공유, 규칙, 팀정보 등)
+* [발표PPT-click](https://github.com/RevTK/final-project-sports-view-community/blob/master/Miracleppt.pptx)<br>
+: 웹사이트 사진과 개발과정 및 기능에 대해 간단한 소개를 보실 수 있습니다.
+
+### 🎆팀원소개
 * 팀장 김태형 : 팀문서 작성/관리, 회원/게시판 DB, FAN 게시판, CSS 라이브러리 배분, 전체 보완
 * 팀원 임형규 : 회원가입 및 로그인, 소셜API, STADIUM페이지, FAN 게시판 CSS, withGo/review 페이지 초안
 * 팀원 송준우 : 지도 및 뉴스 API, EVENT와 NEWS 페이지, 배경선수 CSS, 회원포인트 설계 및 DB, 로그인 CSS
 * 팀원 정  권 : 마이페이지 게시판 담당, 전체자료 수집, 사진 정리/검수, STADIUM 페이지 
-<br/><br/><br/><br/>
-
+<br/>
 
 ## 📌페이지 및 메뉴별 기능
-
 ### STADIUM
   * 우리나라 스포츠 4대리그 각 구장별 페이지 마련 (52구장 좌석표, 구단 로고)
   * 구장별 페이지에서 4방향의 현장사진 확인 가능 (932개 이상 사진 수집)
