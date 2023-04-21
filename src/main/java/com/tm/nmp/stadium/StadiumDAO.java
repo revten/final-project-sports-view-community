@@ -7,13 +7,13 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.tm.nmp.account.AC_US_DAO;
+import com.tm.nmp.account.accountDAO;
 
 @Service
 public class StadiumDAO {
 	
 	@Autowired
-	private AC_US_DAO acDAO;
+	private accountDAO acDAO;
 
 	@RequestMapping(value = "/stadium.main.go", method = RequestMethod.GET)
 	public String stadiumMainGo(HttpServletRequest req) {

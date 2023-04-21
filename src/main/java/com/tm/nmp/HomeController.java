@@ -7,14 +7,14 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.tm.nmp.account.AC_US_DAO;
+import com.tm.nmp.account.accountDAO;
 import com.tm.nmp.board.BoardDAO;
 
 @Controller
 public class HomeController {
 
 	@Autowired
-	private AC_US_DAO acDAO;
+	private accountDAO acDAO;
 
 //	@Autowired
 //	private BoardDAO brDAO;
