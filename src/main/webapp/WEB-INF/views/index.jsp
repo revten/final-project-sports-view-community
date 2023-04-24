@@ -80,7 +80,8 @@
 				<ul class="nav__list">
 					<li class="nav__item"><a href="stadium.main.go"
 						class="nav__link">STADIUM</a></li>
-					<li class="nav__item"><a href="news.main.go" class="nav__link">NEWS</a></li>
+					<li class="nav__item"><a href="review.board.go?post_board=12"
+						class="nav__link">REVIEW</a></li>
 					<li class="nav__item"><a href="fan.board.go?post_board=21"
 						class="nav__link">THE FAN</a></li>
 				</ul>
@@ -94,9 +95,8 @@
 
 				<ul class="nav__list">
 					<li class="nav__item"><a href="withGo.board.go?post_board=11"
-						class="nav__link">WITH</a></li>
-					<li class="nav__item"><a href="review.board.go?post_board=12"
-						class="nav__link">REVIEW</a></li>
+						class="nav__link">STORE</a></li>
+					<li class="nav__item"><a href="news.main.go" class="nav__link">NEWS</a></li>
 					<li class="nav__item"><a
 						href="clubEvent.board.go?post_board=31" class="nav__link">EVENT</a></li>
 				</ul>
