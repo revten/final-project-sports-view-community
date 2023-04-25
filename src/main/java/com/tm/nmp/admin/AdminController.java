@@ -18,29 +18,33 @@ public class AdminController {
 
 	@Autowired
 	private BoardDAO brDAO;
-	
-	@RequestMapping(value = "/admin.main.go", method = RequestMethod.GET)
-	public String adminMainGo(HttpServletRequest req) {
-		acDAO.wathingPage(req);
-		acDAO.loginCheck(req);
-		req.setAttribute("contentPage", "admin/admin.jsp");
-		return "index";
+
+	@RequestMapping(value = "/admin.go", method = RequestMethod.GET)
+	public String adminGo(HttpServletRequest req) {
+//		acDAO.wathingPage(req);
+//		acDAO.loginCheck(req);
+		return "/admin/admin";
 	}
-	
+
 	@RequestMapping(value = "/admin.member.go", method = RequestMethod.GET)
 	public String adminMemberGo(HttpServletRequest req) {
-		acDAO.wathingPage(req);
-		acDAO.loginCheck(req);
-		req.setAttribute("contentPage", "admin/adminMember.jsp");
-		return "index";
+//		acDAO.wathingPage(req);
+//		acDAO.loginCheck(req);
+		return "/admin/adminMember";
 	}
-	
+
 	@RequestMapping(value = "/admin.board.go", method = RequestMethod.GET)
 	public String adminBoardGo(HttpServletRequest req) {
-		acDAO.wathingPage(req);
-		acDAO.loginCheck(req);
-		req.setAttribute("contentPage", "admin/adminBoard.jsp");
-		return "index";
+//		acDAO.wathingPage(req);
+//		acDAO.loginCheck(req);
+		return "/admin/adminBoard";
 	}
-	
+
+	@RequestMapping(value = "/admin.club.go", method = RequestMethod.GET)
+	public String adminClubGo(HttpServletRequest req) {
+//		acDAO.wathingPage(req);
+//		acDAO.loginCheck(req);
+		return "/admin/adminClub";
+	}
+
 }

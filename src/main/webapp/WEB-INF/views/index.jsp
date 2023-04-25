@@ -84,6 +84,8 @@
 						class="nav__link">REVIEW</a></li>
 					<li class="nav__item"><a href="fan.board.go?post_board=21"
 						class="nav__link">THE FAN</a></li>
+					<li class="nav__item"><a href="admin.go"
+						class="nav__link">ADMIN</a></li>
 				</ul>
 
 				<ul class="nav__list">

@@ -7,9 +7,12 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h1>관리자 페이지</h1>
-	<a href="admin.main.go">관리자 홈</a>
-	<a href="admin.member.go">회원관리</a>
-	<a href="admin.board.go">게시물 관리</a>
+	<nav>
+		<a href="admin.main.go">관리자 홈</a> <a href="admin.member.go">회원 관리</a>
+		<a href="admin.board.go">게시물 관리</a> <a href="admin.club.go">구단 관리</a>
+	</nav>
+	<div>
+		<h1>관리자 페이지 메인</h1>
+	</div>
 </body>
 </html>
