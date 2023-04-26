@@ -120,20 +120,24 @@
 							<td class=""><input type="file" name="seat" /></td>
 						</tr>
 						<tr>
-							<th>구장사진3</th>
-							<td class=""><input type="file" name="stadium_img" /></td>
+							<th>구장사진</th>
+							<td class=""><input type="file" name="seat" /></td>
 						</tr>
 						<tr>
-							<th>구장사진6</th>
-							<td class=""><input type="file" name="stadium_img" /></td>
+							<th>직관사진3</th>
+							<td class=""><input type="file" name="sight" /></td>
 						</tr>
 						<tr>
-							<th>구장사진9</th>
-							<td class=""><input type="file" name="stadium_img" /></td>
+							<th>직관사진6</th>
+							<td class=""><input type="file" name="sight" /></td>
 						</tr>
 						<tr>
-							<th>구장사진12</th>
-							<td class=""><input type="file" name="stadium_img" /></td>
+							<th>직관사진9</th>
+							<td class=""><input type="file" name="sight" /></td>
+						</tr>
+						<tr>
+							<th>직관사진12</th>
+							<td class=""><input type="file" name="sight" /></td>
 						</tr>
 					</tbody>
 				</table>
