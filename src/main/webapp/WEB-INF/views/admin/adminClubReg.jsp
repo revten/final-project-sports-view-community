@@ -58,7 +58,8 @@
 		<main>
 		<h2 class="main title">구단 등록</h2>
 
-		<form method="post" action="adminClub.reg.do" enctype="multipart/form-data">
+		<form method="post" action="adminClub.reg.do"
+			enctype="multipart/form-data">
 			<div class="margin-top first">
 				<table class="table">
 					<tbody>
@@ -112,29 +113,34 @@
 						</tr>
 						<tr>
 							<th>로고사진</th>
-							<td class=""><input type="file" name="file" /></td>
+							<td class=""><input type="file" name="logo" /></td>
+						</tr>
+						<tr>
+							<th>좌석사진</th>
+							<td class=""><input type="file" name="seat" /></td>
 						</tr>
 						<tr>
 							<th>구장사진3</th>
-							<td class=""><input type="file" name="file" /></td>
+							<td class=""><input type="file" name="stadium_img" /></td>
 						</tr>
 						<tr>
 							<th>구장사진6</th>
-							<td class=""><input type="file" name="file" /></td>
+							<td class=""><input type="file" name="stadium_img" /></td>
 						</tr>
 						<tr>
 							<th>구장사진9</th>
-							<td class=""><input type="file" name="file" /></td>
+							<td class=""><input type="file" name="stadium_img" /></td>
 						</tr>
 						<tr>
 							<th>구장사진12</th>
-							<td class=""><input type="file" name="file" /></td>
+							<td class=""><input type="file" name="stadium_img" /></td>
 						</tr>
 					</tbody>
 				</table>
 			</div>
 			<div class="">
-				<input class="" type="submit" value="등록" /> <a class="" href="adminClub">취소</a>
+				<input class="" type="submit" value="등록" /> <a class=""
+					href="adminClub">취소</a>
 			</div>
 		</form>
 		</main>
