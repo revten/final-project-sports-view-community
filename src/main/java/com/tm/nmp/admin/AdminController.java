@@ -26,25 +26,38 @@ public class AdminController {
 		return "/admin/admin";
 	}
 
-	@RequestMapping(value = "/admin.member.go", method = RequestMethod.GET)
+	@RequestMapping(value = "/adminUser.go", method = RequestMethod.GET)
 	public String adminMemberGo(HttpServletRequest req) {
 //		acDAO.wathingPage(req);
 //		acDAO.loginCheck(req);
-		return "/admin/adminMember";
+		return "/admin/adminUser";
 	}
 
-	@RequestMapping(value = "/admin.board.go", method = RequestMethod.GET)
+	@RequestMapping(value = "/adminBoard.go", method = RequestMethod.GET)
 	public String adminBoardGo(HttpServletRequest req) {
 //		acDAO.wathingPage(req);
 //		acDAO.loginCheck(req);
 		return "/admin/adminBoard";
 	}
 
-	@RequestMapping(value = "/admin.club.go", method = RequestMethod.GET)
+	@RequestMapping(value = "/adminClub.go", method = RequestMethod.GET)
 	public String adminClubGo(HttpServletRequest req) {
 //		acDAO.wathingPage(req);
 //		acDAO.loginCheck(req);
 		return "/admin/adminClub";
 	}
-
+	
+	@RequestMapping(value = "/adminClub.reg.go", method = RequestMethod.GET)
+	public String adminClubRegGo(HttpServletRequest req) {
+//		acDAO.wathingPage(req);
+//		acDAO.loginCheck(req);
+		return "/admin/adminClubReg";
+	}
+	
+	@RequestMapping(value = "/adminClub.reg.do", method = RequestMethod.GET)
+	public String adminClubRegDo(HttpServletRequest req) {
+//		acDAO.wathingPage(req);
+//		acDAO.loginCheck(req);
+		return "/admin/adminClub";
+	}
 }
