@@ -29,6 +29,7 @@ public class BoardDAO {
 	
 	// 각 게시판별로 게시글수 저장
 	private HashMap<Integer, Integer> calcPostCount = new HashMap<Integer, Integer>();
+	
 	public void calcAllPostCount() {
 		for(int i : boardNumberList.getBoardNumberList()) {
 			BoardSelector bs = new BoardSelector("", 0, 0, i);

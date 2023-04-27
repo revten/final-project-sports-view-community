@@ -1,0 +1,8 @@
+.admin__container {
+	display: flex;
+	margin-left: auto;
+	margin-right: auto;
+	width: 960px;
+	height: inherit;
+	position: relative;
+}

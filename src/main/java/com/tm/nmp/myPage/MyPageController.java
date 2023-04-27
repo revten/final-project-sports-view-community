@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.tm.nmp.TokenMaker;
-import com.tm.nmp.account.AC_US_DAO;
+import com.tm.nmp.account.accountDAO;
 import com.tm.nmp.account.AccountDTO;
 import com.tm.nmp.board.BoardDAO;
 import com.tm.nmp.board.PostVO;
@@ -20,7 +20,7 @@ import com.tm.nmp.point.PointVO;
 public class MyPageController {
 
 	@Autowired
-	private AC_US_DAO acDAO;
+	private accountDAO acDAO;
 	
 	@Autowired
 	private PointDAO pDAO;

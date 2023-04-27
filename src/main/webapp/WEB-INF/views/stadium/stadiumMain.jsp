@@ -6,22 +6,9 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
-<script type="text/javascript">
-	//<![CDATA[
-	$(document).ready(function() {
-		$('.bxslider').bxSlider({
-			auto : true,
-			pause : 2000,
-			autoHover : true,
-			slideWidth : 800,
-			slideMargin : 5,
-		});
-	});
-	//]]>
-</script>
 <body>
 	<div class="stadiumMain__container">
-			<p class="stadiumMain__header">오늘은 어떤 스포츠를 즐길까요?</p>
+		<p class="stadiumMain__header">오늘은 어떤 스포츠를 즐길까요?</p>
 		<div class="stadiumMain__content">
 			<div class="stadiumMain__wrapper-1" onclick="stadiumBaseball()">
 				<div class="stadiumMain__box stadiumMain__vintage">
@@ -61,7 +48,6 @@
 			<div class="stadiumMain__wrapper-5" onclick="stadiumVolleyball2()">
 				<div class="stadiumMain__box stadiumMain__blury-card">
 					<img src="resources/files/stadium/main/volleyballWomen.png"
-						"
 						alt="volleyballWomen">
 					<div class="stadiumMain__frame">
 						<h2>V-league Women</h2>
@@ -72,7 +58,6 @@
 			<div class="stadiumMain__wrapper-6" onclick="stadiumBasketball2()">
 				<div class="stadiumMain__box stadiumMain__zoom-out">
 					<img src="resources/files/stadium/main/basketballWomen.png"
-						"
 						alt="basketballWomen">
 					<div class="stadiumMain__frame">
 						<h2>
@@ -85,8 +70,19 @@
 			</div>
 		</div>
 	</div>
-
-
+	<script type="text/javascript">
+		//<![CDATA[
+		$(document).ready(function() {
+			$('.bxslider').bxSlider({
+				auto : true,
+				pause : 2000,
+				autoHover : true,
+				slideWidth : 800,
+				slideMargin : 5,
+			});
+		});
+		//]]>
+	</script>
 	<script>
 		/*=============== 스크롤 나타나는 효과 ===============*/
 		const srWithGo = ScrollReveal({ /* srSTM으로 한것은, sr이 메인에서 쓰여서. STM은 stadiumMain */

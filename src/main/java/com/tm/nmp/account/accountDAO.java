@@ -15,7 +15,7 @@ import org.springframework.stereotype.Service;
 import com.tm.nmp.board.PostVO;
 
 @Service
-public class AC_US_DAO {
+public class accountDAO {
 
 	@Autowired
 	private SqlSession ss;

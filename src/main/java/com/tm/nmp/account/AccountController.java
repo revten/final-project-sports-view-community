@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 public class AccountController {
 	
 	@Autowired
-	private AC_US_DAO acDAO;
+	private accountDAO acDAO;
 	
 	@RequestMapping(value = "/account.reg.go", method = RequestMethod.GET)
 	public String accountRegGo(HttpServletRequest req) {

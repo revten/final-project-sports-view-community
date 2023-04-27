@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tm.nmp.admin.AdminMapper">
+	<insert id="regClubInfo" parameterType="ClubDTO">
+		insert into club values(
+		#{club_id}, #{club_name}, #{club_name_eng}, #{sports_id}, #{league_id}, #{city},
+		#{stadium_name}, #{stadium_address}, #{found_year}, #{website},
+		#{intro}, sysdate
+		)
+	</insert>
+</mapper>

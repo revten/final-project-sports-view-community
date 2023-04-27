@@ -1,0 +1,57 @@
+@charset "UTF-8";
+
+@font-face {
+	font-family: 'GangwonEdu_OTFBoldA';
+	src:
+		url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2201-2@1.0/GangwonEdu_OTFBoldA.woff')
+		format('woff');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'MICEGothic Bold';
+	src:
+		url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2206-01@1.0/MICEGothic Bold.woff2')
+		format('woff2');
+	font-weight: 700;
+	font-style: normal;
+}
+
+
+body {
+	margin: 0;
+	padding: 0;
+}
+
+.adminClub__list {
+	display: flex;
+}
+
+.adminClub__list__item {
+	font-weight: 600;
+	color: white;
+	background-color: #8D8D8D;
+	width: calc(33.3% - 1px);
+	margin-right: 1px;
+	text-align: center;
+	padding: 22px 0px;
+	cursor: pointer;
+}
+
+.adminClub__category__selected {
+	background-color: #8EC3B0;
+}
+
+.adminClub__category__item-1 {
+	display: none;
+}
+
+.adminClub__category__item-2 {
+	display: none;
+}
+
+.adminClub__category__item-on {
+	display: block;
+	position: relative;
+}

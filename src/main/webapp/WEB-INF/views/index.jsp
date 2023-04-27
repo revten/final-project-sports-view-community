@@ -47,8 +47,8 @@
 <link rel="stylesheet" href="resources/css/index.css" />
 <link rel="stylesheet" href="resources/css/account.css" />
 <link rel="stylesheet" href="resources/css/news.css" />
-<link rel="stylesheet" href="resources/css/stadium.css" />
-<link rel="stylesheet" href="resources/css/stadiumMain.css" />
+<link rel="stylesheet" href="resources/css/stadium/stadium.css" />
+<link rel="stylesheet" href="resources/css/stadium/stadiumMain.css" />
 <link rel="stylesheet" href="resources/css/map.css" />
 <link rel="stylesheet" href="resources/css/clubEvent.css" />
 <link rel="stylesheet" href="resources/css/review.css" />
@@ -71,7 +71,7 @@
 				<div class="nav__toggle" id="nav-toggle">
 					<i class="ri-apps-line"></i>
 				</div>
-<%-- 				<div>
+				<%-- 				<div>
 					<a class="nav__link"><jsp:include page="${loginPage }"></jsp:include></a>
 				</div> --%>
 			</div>
@@ -80,12 +80,12 @@
 				<ul class="nav__list">
 					<li class="nav__item"><a href="stadium.main.go"
 						class="nav__link">STADIUM</a></li>
-
-					<li class="nav__item"><a href="withGo.board.go?post_board=11"
-						class="nav__link">WITH</a></li>
-
 					<li class="nav__item"><a href="review.board.go?post_board=12"
 						class="nav__link">REVIEW</a></li>
+					<li class="nav__item"><a href="fan.board.go?post_board=21"
+						class="nav__link">THE FAN</a></li>
+					<li class="nav__item"><a href="admin.go"
+						class="nav__link">ADMIN</a></li>
 				</ul>
 
 				<ul class="nav__list">
@@ -96,13 +96,11 @@
 				</ul>
 
 				<ul class="nav__list">
-					<li class="nav__item"><a href="fan.board.go?post_board=21"
-						class="nav__link">THE FAN</a></li>
-
-					<li class="nav__item"><a href="clubEvent.board.go?post_board=31"
-						class="nav__link">EVENT</a></li>
-
+					<li class="nav__item"><a href="withGo.board.go?post_board=11"
+						class="nav__link">STORE</a></li>
 					<li class="nav__item"><a href="news.main.go" class="nav__link">NEWS</a></li>
+					<li class="nav__item"><a
+						href="clubEvent.board.go?post_board=31" class="nav__link">EVENT</a></li>
 				</ul>
 
 				<!-- close button -->
