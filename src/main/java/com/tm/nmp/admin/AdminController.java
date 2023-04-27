@@ -18,6 +18,9 @@ public class AdminController {
 
 	@Autowired
 	private BoardDAO brDAO;
+	
+	@Autowired
+	private AdminDAO adminDAO;
 
 	@RequestMapping(value = "/admin.go", method = RequestMethod.GET)
 	public String adminGo(HttpServletRequest req) {
@@ -54,10 +57,12 @@ public class AdminController {
 		return "/admin/adminClubReg";
 	}
 	
-	@RequestMapping(value = "/adminClub.reg.do", method = RequestMethod.GET)
-	public String adminClubRegDo(HttpServletRequest req) {
+	@RequestMapping(value = "/adminClub.reg.do", method = RequestMethod.POST)
+	public String adminClubRegDo(HttpServletRequest req, ClubDTO c) {
 //		acDAO.wathingPage(req);
 //		acDAO.loginCheck(req);
+		
+		adminDAO.regClubInfo(req, c);
 		return "/admin/adminClub";
 	}
 }

@@ -77,15 +77,28 @@
 						</tr>
 						<tr>
 							<th>종목</th>
-							<td class=""><input type="text" name="sports" /></td>
+							<td class=""><select name="sports_id">
+									<option value="1">야구</option>
+									<option value="2">축구</option>
+									<option value="3">농구</option>
+									<option value="4">배구</option>
+							</select></td>
 						</tr>
 						<tr>
 							<th>리그</th>
-							<td class=""><input type="text" name="league" /></td>
+							<td class=""><select name="league_id">
+									<option value="101">KBO</option>
+									<option value="201">K-LEAGUE</option>
+									<option value="301">KBL</option>
+									<option value="351">WKBL</option>
+									<option value="401">V-LEAGUE(남)</option>
+									<option value="451">V-LEAGUE(여)</option>
+
+							</select></td>
 						</tr>
 						<tr>
 							<th>남녀</th>
-							<td class=""><input type="text" name="gender" /></td>
+							<td class="">남녀</td>
 						</tr>
 						<tr>
 							<th>연고도시</th>
