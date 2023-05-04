@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.tm.nmp.account.accountDAO;
 import com.tm.nmp.board.BoardDAO;
+import com.tm.nmp.board.BoardOption;
 
 @Controller
 public class AdminController {
@@ -44,9 +45,10 @@ public class AdminController {
 	}
 
 	@RequestMapping(value = "/adminClub.go", method = RequestMethod.GET)
-	public String adminClubGo(HttpServletRequest req) {
+	public String adminClubGo(HttpServletRequest req, BoardOption bo) {
 //		acDAO.wathingPage(req);
 //		acDAO.loginCheck(req);
+		adminDAO.getClubViewList(req, bo);
 		return "/admin/adminClub";
 	}
 	
@@ -65,4 +67,6 @@ public class AdminController {
 		adminDAO.regClubInfo(req, c);
 		return "/admin/adminClub";
 	}
+	
+	
 }

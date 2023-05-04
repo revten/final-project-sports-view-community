@@ -62,16 +62,17 @@
 			<form class="">
 				<fieldset>
 					<legend class="hidden">구단 검색 필드</legend>
-					<label class="hidden">검색분류</label> <select name="field">
-						<option ${(param.field == "club_name")?"selected":"" }
-							value="club_name">구단</option>
-						<option ${(param.field == "sports")?"selected":"" } value="sports">스포츠</option>
+					<label class="hidden">검색분류</label>
+					<select name="field">
+						<option ${(param.field == "name")?"selected":"" }
+							value="name">구단</option>
+						<option ${(param.field == "sports_name")?"selected":"" } value="sports_name">스포츠</option>
 					</select>
 					<!-- 검색후 검색한 필드 그대로 나타나도록 설정한 것 -->
 					<label class="hidden">검색어</label>
 					<!-- 검색후 검색한 단어 그대로 나타나도록 설정한 것 -->
-					<input type="text" name="query" value="${param.query }" /> <input
-						class="" type="submit" value="검색" />
+					<input type="text" name="search" value="${param.search }" />
+					<input class="" type="submit" value="검색" />
 				</fieldset>
 			</form>
 		</div>
@@ -80,31 +81,40 @@
 			<table class="table" border=1>
 				<thead>
 					<tr>
+						<th class="">종목</th>
+						<th class="">리그명</th>
+						<th class="">남녀부</th>
 						<th class="">구단코드</th>
 						<th class="">구단명</th>
-						<th class="">종목</th>
-						<th class="">리그</th>
-						<th class="">연고도시</th>
+						<th class="">연고지</th>
 						<th class="">홈구장명</th>
-						<th class="">로고사진</th>
-						<th class="">구장사진수</th>
-						<th class="">등록일</th>
+						<th class="">사진수</th>
+						<th class="">최초등록일</th>
+						<th class="">수정일</th>
 					</tr>
 				</thead>
 				<tbody>
-					<c:forEach var="c" items="${list }">
+					<c:forEach var="c" items="${clubs }">
 						<tr>
-							<td>${c.club_id}</td>
+							<td>${c.sports_name}</td>
+							<td>${c.league_name}</td>
+							<td>${c.league_gender}</td>
+							<td>${c.id}</td>
 							<td class="title indent text-align-left"><a
-								href="detail?id=${c.club_id }">${nc.club_name}</a></td>
-							<td>${c.sports}</td>
-							<td>${c.league}</td>
+								href="detail?id=${c.id }">${c.name}</a></td>
 							<td>${c.city}</td>
 							<td>${c.stadium_name}</td>
-							<td>로고사진</td>
-							<td>구장사진수</td>
+							<td>${c.images_count }</td>
 							<td><fmt:formatDate value="${c.reg_date}"
 									pattern="yyyy-MM-dd" /></td>
+							<td><c:choose>
+									<c:when test="${c.update_date eq null }">
+									</c:when>
+									<c:otherwise>
+										<fmt:formatDate value="${c.update_date}"
+											pattern="yy-MM-dd HH:mm" />
+									</c:otherwise>
+								</c:choose></td>
 						</tr>
 					</c:forEach>
 				</tbody>

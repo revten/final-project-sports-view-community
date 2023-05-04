@@ -1,11 +1,10 @@
 package com.tm.nmp.board;
 
 public class BoardSelector {
-
+	
 	private String search;
 	private int start;
 	private int end;
-
 	private int post_board;
 
 	public BoardSelector() {

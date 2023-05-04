@@ -1,32 +1,36 @@
 package com.tm.nmp.admin;
 
 import java.util.Date;
+import java.util.List;
 
 public class ClubDTO {
-	private int club_id;
-	private String club_name;
-	private String club_name_eng;
+	private int id;
+	private String name;
+	private String name_eng;
 	private int sports_id;
 	private int league_id;
 	private String city;
 	private String stadium_name;
 	private String stadium_address;
-	private int found_year;
+	private String found_year;
 	private String website;
 	private String intro;
 	private Date reg_date;
+	private Date update_date;
+	private List<ClubImageDTO> clubImages;
 
 	public ClubDTO() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public ClubDTO(int club_id, String club_name, String club_name_eng, int sports_id, int league_id, String city,
-			String stadium_name, String stadium_address, int found_year, String website, String intro, Date reg_date) {
+	public ClubDTO(int id, String name, String name_eng, int sports_id, int league_id, String city, String stadium_name,
+			String stadium_address, String found_year, String website, String intro, Date reg_date, Date update_date,
+			List<ClubImageDTO> clubImages) {
 		super();
-		this.club_id = club_id;
-		this.club_name = club_name;
-		this.club_name_eng = club_name_eng;
+		this.id = id;
+		this.name = name;
+		this.name_eng = name_eng;
 		this.sports_id = sports_id;
 		this.league_id = league_id;
 		this.city = city;
@@ -36,30 +40,32 @@ public class ClubDTO {
 		this.website = website;
 		this.intro = intro;
 		this.reg_date = reg_date;
+		this.update_date = update_date;
+		this.clubImages = clubImages;
 	}
 
-	public int getClub_id() {
-		return club_id;
+	public int getId() {
+		return id;
 	}
 
-	public void setClub_id(int club_id) {
-		this.club_id = club_id;
+	public void setId(int id) {
+		this.id = id;
 	}
 
-	public String getClub_name() {
-		return club_name;
+	public String getName() {
+		return name;
 	}
 
-	public void setClub_name(String club_name) {
-		this.club_name = club_name;
+	public void setName(String name) {
+		this.name = name;
 	}
 
-	public String getClub_name_eng() {
-		return club_name_eng;
+	public String getName_eng() {
+		return name_eng;
 	}
 
-	public void setClub_name_eng(String club_name_eng) {
-		this.club_name_eng = club_name_eng;
+	public void setName_eng(String name_eng) {
+		this.name_eng = name_eng;
 	}
 
 	public int getSports_id() {
@@ -102,11 +108,11 @@ public class ClubDTO {
 		this.stadium_address = stadium_address;
 	}
 
-	public int getFound_year() {
+	public String getFound_year() {
 		return found_year;
 	}
 
-	public void setFound_year(int found_year) {
+	public void setFound_year(String found_year) {
 		this.found_year = found_year;
 	}
 
@@ -134,12 +140,29 @@ public class ClubDTO {
 		this.reg_date = reg_date;
 	}
 
+	public Date getUpdate_date() {
+		return update_date;
+	}
+
+	public void setUpdate_date(Date update_date) {
+		this.update_date = update_date;
+	}
+
+	public List<ClubImageDTO> getClubImages() {
+		return clubImages;
+	}
+
+	public void setClubImages(List<ClubImageDTO> clubImages) {
+		this.clubImages = clubImages;
+	}
+
 	@Override
 	public String toString() {
-		return "ClubDTO [club_id=" + club_id + ", club_name=" + club_name + ", club_name_eng=" + club_name_eng
-				+ ", sports_id=" + sports_id + ", league_id=" + league_id + ", city=" + city + ", stadium_name="
-				+ stadium_name + ", stadium_address=" + stadium_address + ", found_year=" + found_year + ", website="
-				+ website + ", intro=" + intro + ", reg_date=" + reg_date + "]";
+		return "ClubDTO [id=" + id + ", name=" + name + ", name_eng=" + name_eng + ", sports_id=" + sports_id
+				+ ", league_id=" + league_id + ", city=" + city + ", stadium_name=" + stadium_name
+				+ ", stadium_address=" + stadium_address + ", found_year=" + found_year + ", website=" + website
+				+ ", intro=" + intro + ", reg_date=" + reg_date + ", update_date=" + update_date + ", clubImages="
+				+ clubImages + "]";
 	}
 
 }

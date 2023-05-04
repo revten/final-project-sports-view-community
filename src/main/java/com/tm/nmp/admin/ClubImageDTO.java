@@ -3,30 +3,34 @@ package com.tm.nmp.admin;
 import java.util.Date;
 
 public class ClubImageDTO {
-	private int club_image_id;
+	private int id;
 	private int club_id;
-	private String sort;
+	private int sort;
+	private String file_name;
 	private Date reg_date;
+	private Date update_date;
 
 	public ClubImageDTO() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public ClubImageDTO(int club_image_id, int club_id, String sort, Date reg_date) {
+	public ClubImageDTO(int id, int club_id, int sort, String file_name, Date reg_date, Date update_date) {
 		super();
-		this.club_image_id = club_image_id;
+		this.id = id;
 		this.club_id = club_id;
 		this.sort = sort;
+		this.file_name = file_name;
 		this.reg_date = reg_date;
+		this.update_date = update_date;
 	}
 
-	public int getClub_image_id() {
-		return club_image_id;
+	public int getId() {
+		return id;
 	}
 
-	public void setClub_image_id(int club_image_id) {
-		this.club_image_id = club_image_id;
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	public int getClub_id() {
@@ -37,12 +41,20 @@ public class ClubImageDTO {
 		this.club_id = club_id;
 	}
 
-	public String getSort() {
+	public int getSort() {
 		return sort;
 	}
 
-	public void setSort(String sort) {
+	public void setSort(int sort) {
 		this.sort = sort;
+	}
+
+	public String getFile_name() {
+		return file_name;
+	}
+
+	public void setFile_name(String file_name) {
+		this.file_name = file_name;
 	}
 
 	public Date getReg_date() {
@@ -53,10 +65,18 @@ public class ClubImageDTO {
 		this.reg_date = reg_date;
 	}
 
+	public Date getUpdate_date() {
+		return update_date;
+	}
+
+	public void setUpdate_date(Date update_date) {
+		this.update_date = update_date;
+	}
+
 	@Override
 	public String toString() {
-		return "ClubImageDTO [club_image_id=" + club_image_id + ", club_id=" + club_id + ", sort=" + sort
-				+ ", reg_date=" + reg_date + "]";
+		return "ClubImageDTO [id=" + id + ", club_id=" + club_id + ", sort=" + sort + ", file_name=" + file_name
+				+ ", reg_date=" + reg_date + ", update_date=" + update_date + "]";
 	}
 
 }

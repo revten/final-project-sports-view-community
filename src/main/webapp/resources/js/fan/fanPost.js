@@ -1,6 +1,6 @@
 // ==================== 전체글 조회에서 검색 ====================
 function boardSearchCheck() {
-	var searchInput = document.boardSearchForm.search;
+	let searchInput = document.boardSearchForm.search;
 
 	if (isEmpty(searchInput)) {
 		alert("?");

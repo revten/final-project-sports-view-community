@@ -3,9 +3,30 @@
 <mapper namespace="com.tm.nmp.admin.AdminMapper">
 	<insert id="regClubInfo" parameterType="ClubDTO">
 		insert into club values(
-		#{club_id}, #{club_name}, #{club_name_eng}, #{sports_id}, #{league_id}, #{city},
-		#{stadium_name}, #{stadium_address}, #{found_year}, #{website},
+		#{club_id}, #{club_name}, #{club_name_eng}, #{sports_id},
+		#{league_id}, #{city},
+		#{stadium_name}, #{stadium_address},
+		#{found_year}, #{website},
 		#{intro}, sysdate
 		)
 	</insert>
+
+	<select id="getAllClub" parameterType="ClubViewDTO"
+		resultType="com.tm.nmp.admin.ClubViewDTO">
+
+	</select>
+
+	<select id="calcAllClubCount" parameterType="String"
+		resultType="java.lang.Integer">
+		select count(id) from (select rownum nun, n.* from (select
+		* from v_adminclublist where '%'||#{field}||'%' like
+		'%'||#{search}||'%' order by id)n)
+	</select>
+
+	<select id="getClubViewList" parameterType="com.tm.nmp.board.BoardOption"
+		resultType="com.tm.nmp.admin.ClubViewDTO">
+		select * from (select rownum num, n.* from (select * from
+		v_adminclublist where '%'||#{field}||'%' like
+		'%'||#{search}||'%' order by id)n)
+	</select>
 </mapper>
