@@ -11,22 +11,15 @@
 		)
 	</insert>
 
-	<select id="getAllClub" parameterType="ClubViewDTO"
-		resultType="com.tm.nmp.admin.ClubViewDTO">
-
-	</select>
-
 	<select id="calcAllClubCount" parameterType="String"
 		resultType="java.lang.Integer">
 		select count(id) from (select rownum nun, n.* from (select
-		* from v_adminclublist where '%'||#{field}||'%' like
+		* from v_adminclublist where #{field} like
 		'%'||#{search}||'%' order by id)n)
 	</select>
 
 	<select id="getClubViewList" parameterType="com.tm.nmp.board.BoardOption"
-		resultType="com.tm.nmp.admin.ClubViewDTO">
-		select * from (select rownum num, n.* from (select * from
-		v_adminclublist where '%'||#{field}||'%' like
-		'%'||#{search}||'%' order by id)n)
+		resultType="com.tm.nmp.admin.ClubView">
+		select * from (select rownum num, n.* from (select * from v_adminclublist where ${field} like '%'||UPPER(#{search})||'%' order by id)n)
 	</select>
 </mapper>

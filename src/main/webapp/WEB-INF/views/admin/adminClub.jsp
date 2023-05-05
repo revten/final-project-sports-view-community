@@ -59,7 +59,7 @@
 		<h2 class="main title">구단 조회</h2>
 
 		<div class="">
-			<form class="">
+			<form action="adminClub.go" class="" >
 				<fieldset>
 					<legend class="hidden">구단 검색 필드</legend>
 					<label class="hidden">검색분류</label>

@@ -10,6 +10,6 @@ public interface AdminMapper {
 
 	int calcAllClubCount(String field, String search);
 
-	List<ClubViewDTO> getClubViewList(BoardOption bo);
+	List<ClubView> getClubViewList(BoardOption bo);
 
 }

@@ -1,5 +1,6 @@
 package com.tm.nmp.admin;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -8,9 +9,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.tm.nmp.board.BoardMapper;
 import com.tm.nmp.board.BoardOption;
-import com.tm.nmp.board.PostVO;
 
 @Service
 public class AdminDAO {
@@ -18,8 +17,6 @@ public class AdminDAO {
 	@Autowired
 	private SqlSession ss;
 	
-	@Autowired
-	private BoardOption bo;
 	
 	private int allClubCount;
 	
@@ -41,19 +38,21 @@ public class AdminDAO {
 		}
 	}
 
-	public void getClubViewList(HttpServletRequest req, BoardOption bo) {
+	public void getClubViewList(HttpServletRequest req) {
 		// TODO Auto-generated method stub
 
 //		String field = (String) req.getSession().getAttribute("field");
 //		String search = (String) req.getSession().getAttribute("search");
-//		
+		
+		BoardOption bo = new BoardOption(0, "name", "", 0, 0, 0);
+		
 		String field = req.getParameter("field");
-		System.out.println(field);
+		System.out.println("field : " + field);
 		String search = req.getParameter("search");
-		System.out.println(search);
+		System.out.println("search : " + search);
 		
 		if(field == null) {
-			bo.setField("");
+			bo.setField("name");
 		} else {
 			bo.setField(field);
 		}
@@ -63,8 +62,12 @@ public class AdminDAO {
 		} else {
 			bo.setSearch(search);
 		}
-
-		List<ClubViewDTO> clubs = ss.getMapper(AdminMapper.class).getClubViewList(bo);
+		
+		System.out.println("getField : " + bo.getField());
+		System.out.println("getSearch : " + bo.getSearch());
+		List<ClubView> clubs = new ArrayList<>();	
+		clubs = ss.getMapper(AdminMapper.class).getClubViewList(bo);
+		System.out.println(clubs.size());
 		req.setAttribute("clubs", clubs);
 	}
 }
