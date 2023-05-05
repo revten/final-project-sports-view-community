@@ -39,9 +39,8 @@ public class FanBoardController {
 		System.out.println(p.getPost_board());
 		acDAO.wathingPage(req);
 		acDAO.loginCheck(req);
-		// 홈에서 더 팬을 눌렀을때 우선 야구 게시판이 뜨게 설정해둠
-		BoardOption.clearSearch(req);
-		brDAO.getAllPost(req, 1, p); // 1은 첫페이지를 보여달라
+
+		brDAO.getAllPost(req, 1, p);
 		req.setAttribute("contentPage", "fanBoard/fanBoard.jsp");
 		return "index";
 	}
@@ -52,7 +51,7 @@ public class FanBoardController {
 	@RequestMapping(value = "fan.reg.go", method = RequestMethod.GET)
 	public String fanRegGo(HttpServletRequest req, PostVO p) {
 		acDAO.wathingPage(req);
-		// 글을 쓰려면 로그인을 하라는 것
+
 		if (acDAO.loginCheck(req)) {
 			req.setAttribute("contentPage", "fanBoard/fanPostReg.jsp");
 			brDAO.viewBoardName(req);
@@ -72,8 +71,6 @@ public class FanBoardController {
 			int plusPoint = Integer.parseInt(req.getParameter("plusPoint"));
 			ptDAO.calcAddPostAndAddCommentPoint(req, pv, ppv, plusPoint);
 
-			// 등록후에는 그 게시판 전체글을 보여줄것이라서
-			BoardOption.clearSearch(req);
 			brDAO.getAllPost(req, 1, p);
 			req.setAttribute("contentPage", "fanBoard/fanBoard.jsp");
 
@@ -125,8 +122,6 @@ public class FanBoardController {
 		if (acDAO.loginCheck(req)) {
 			brDAO.deletePost(req, p);
 
-			// 삭제후 전체글 조회
-			BoardOption.clearSearch(req);
 			brDAO.getAllPost(req, 1, p);
 			req.setAttribute("contentPage", "fanBoard/fanBoard.jsp");
 		} else {

@@ -60,11 +60,12 @@ public class AdminController {
 	}
 	
 	@RequestMapping(value = "/adminClub.reg.do", method = RequestMethod.POST)
-	public String adminClubRegDo(HttpServletRequest req, ClubDTO c) {
+	public String adminClubRegDo(HttpServletRequest req, ClubDTO c,  BoardOption bo) {
 //		acDAO.wathingPage(req);
 //		acDAO.loginCheck(req);
 		
 		adminDAO.regClubInfo(req, c);
+		adminDAO.getClubViewList(req, bo);
 		return "/admin/adminClub";
 	}
 	

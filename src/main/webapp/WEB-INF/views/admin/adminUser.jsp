@@ -16,13 +16,13 @@
 <script src="resources/js/admin/adminBoard.js"></script>
 <script src="resources/js/admin/adminClub.js"></script>
 <script src="resources/js/admin/adminUser.js"></script>
-<link rel="stylesheet" href="resources/css/admin.css" />
-<link rel="stylesheet" href="resources/css/adminBoard.css" />
-<link rel="stylesheet" href="resources/css/adminClub.css" />
-<link rel="stylesheet" href="resources/css/adminUser.css" />
+<link rel="stylesheet" href="resources/css/admin/admin.css" />
+<link rel="stylesheet" href="resources/css/admin/adminBoard.css" />
+<link rel="stylesheet" href="resources/css/admin/adminClub.css" />
+<link rel="stylesheet" href="resources/css/admin/adminUser.css" />
 </head>
 <body>
-	<div class="">
+	<div class="admin__container">
 		<!-- aside 부분 -->
 		<aside class="aside">
 			<h1>ADMIN PAGE</h1>

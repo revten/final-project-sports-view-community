@@ -123,29 +123,29 @@
 
 
 		<!-- 페이징 -->
-		<div class="">
+		<div class="" style="display: flex">
 			<div>
 				<c:if test="${bo.startPage>1 }">
-					<a href="?page=${bo.startPage-1}&field=${bo.field }&search=${bo.search}" class="btn btn-prev">이전</a>
+					<a href="adminClub.go?page=${bo.startPage-1}&field=${bo.field }&search=${bo.search}" class="btn btn-prev">이전</a>
 				</c:if>
 				<c:if test="${bo.startPage<=1 }">
 					<span class="btn btn-prev" onclick="alert('이전 페이지가 없습니다.');">이전</span>
 				</c:if>
 			</div>
-
+			
 			<ul class="-list- center">
 				<c:forEach begin="0" end="${bo.endPage }" var="i">
 					<!-- 현제 페이지 번호 하이라이트 (oragne : 에 홑따옴표 쓴것 주목) -->
 					<c:if test="${(bo.startPage+i) <= bo.totalPages }">
 						<li><a class="-text- ${(bo.curPage==(bo.startPage+i))?'orange':'' } bold"
-							href="?page=${bo.startPage+i}&field=${bo.field }&search=${bo.search}">${bo.startPage+i}</a></li>
+							href="adminClub.go?page=${bo.startPage+i}&field=${bo.field }&search=${bo.search}">${bo.startPage+i}</a></li>
 					</c:if>
 				</c:forEach>
 			</ul>
 
 			<div>
 				<c:if test="${bo.startPage+5<=bo.totalPages }">
-					<a href="?page=${bo.startPage+5}&field=${bo.field }&search=${bo.search}" class="btn btn-next">다음</a>
+					<a href="adminClub.go?page=${bo.startPage+5}&field=${bo.field }&search=${bo.search}" class="btn btn-next">다음</a>
 				</c:if>
 				<c:if test="${bo.startPage+5>bo.totalPages }">
 					<span class="btn btn-next" onclick="alert('다음 페이지가 없습니다.');">다음</span>
