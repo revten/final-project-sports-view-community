@@ -45,10 +45,10 @@ public class AdminController {
 	}
 
 	@RequestMapping(value = "/adminClub.go", method = RequestMethod.GET)
-	public String adminClubGo(HttpServletRequest req) {
+	public String adminClubGo(HttpServletRequest req, BoardOption bo) {
 //		acDAO.wathingPage(req);
 //		acDAO.loginCheck(req);
-		adminDAO.getClubViewList(req);
+		adminDAO.getClubViewList(req, bo);
 		return "/admin/adminClub";
 	}
 	

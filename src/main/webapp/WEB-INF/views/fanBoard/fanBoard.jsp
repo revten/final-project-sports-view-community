@@ -103,6 +103,7 @@
 						<div class="board__cell nick">닉네임</div>
 						<div class="board__cell view_count">조회수</div>
 					</div>
+					
 					<!-- forEach문으로 돌릴 구간, 샘플을 위해서 일단 게시글 4개정도 남김, function 할땐 하나만 하면됨 -->
 					<c:forEach var="p" items="${posts }">
 						<div class="board__row">
@@ -132,6 +133,7 @@
 						<hr style="background: #f0f0f0; height: 0.5px; border: 0;">
 					</c:forEach>
 				</div>
+				
 				<div class="board__bot-paging">
 					<c:if test="${curPage != 1}">
 						<span><span style="cursor: pointer"
@@ -140,11 +142,13 @@
 							onclick="location.href='fan.page.change?pg=${curPage - 1}&post_board=${param.post_board }'">
 								◀이전 </span></span>
 					</c:if>
+					
 					<c:forEach var="i" begin="1" end="${pageCount}">
 						<span style="cursor: pointer"
 							onclick="location.href='fan.page.change?pg=${i}&post_board=${param.post_board }'">
 							[${i}] </span>
 					</c:forEach>
+					
 					<c:if test="${curPage != pageCount}">
 						<span> <span style="cursor: pointer"
 							onclick="location.href='fan.page.change?pg=${curPage + 1}&post_board=${param.post_board }'">

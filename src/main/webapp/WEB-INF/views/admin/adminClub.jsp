@@ -64,14 +64,14 @@
 					<legend class="hidden">구단 검색 필드</legend>
 					<label class="hidden">검색분류</label>
 					<select name="field">
-						<option ${(param.field == "name")?"selected":"" }
+						<option ${(bo.field == "name")?"selected":"" }
 							value="name">구단</option>
-						<option ${(param.field == "sports_name")?"selected":"" } value="sports_name">스포츠</option>
+						<option ${(bo.field == "sports_name")?"selected":"" } value="sports_name">스포츠</option>
 					</select>
 					<!-- 검색후 검색한 필드 그대로 나타나도록 설정한 것 -->
 					<label class="hidden">검색어</label>
 					<!-- 검색후 검색한 단어 그대로 나타나도록 설정한 것 -->
-					<input type="text" name="search" value="${param.search }" />
+					<input type="text" name="search" value="${bo.search }" />
 					<input class="" type="submit" value="검색" />
 				</fieldset>
 			</form>
@@ -122,48 +122,32 @@
 		</div>
 
 
-		<!-- 페이징을 위한 설정 --> <c:set var="page"
-			value="${(param.p == null)?1:param.p }" /> <!-- 한 화면에 페이지 번호 5개 -->
-		<c:set var="startNum" value="${page-(page-1)%5 }" /> <!-- 컨트롤러에서 서비스를 통해 총 게시물수 계산부터 -->
-		<!-- 소수점은 올림 해줘야 되므로 fn 불러와서 서보자 --> <c:set var="lastNum"
-			value="${fn:substringBefore(Math.ceil(count/10), '.')}" />
-
-		<div class="">
-			<h3 class="hidden">현재 페이지</h3>
-			<div>
-				<!-- 현재 페이지 -->
-				<span class="text-strong">${(empty param.p)?1:param.p}</span> /
-				${lastNum} pages
-			</div>
-		</div>
-
 		<!-- 페이징 -->
 		<div class="">
 			<div>
-				<c:if test="${startNum>1 }">
-					<a href="?p=${startNum-1}&f=&q=" class="btn btn-prev">이전</a>
+				<c:if test="${bo.startPage>1 }">
+					<a href="?page=${bo.startPage-1}&field=${bo.field }&search=${bo.search}" class="btn btn-prev">이전</a>
 				</c:if>
-				<c:if test="${startNum<=1 }">
+				<c:if test="${bo.startPage<=1 }">
 					<span class="btn btn-prev" onclick="alert('이전 페이지가 없습니다.');">이전</span>
 				</c:if>
 			</div>
 
 			<ul class="-list- center">
-				<c:forEach begin="0" end="4" var="i">
+				<c:forEach begin="0" end="${bo.endPage }" var="i">
 					<!-- 현제 페이지 번호 하이라이트 (oragne : 에 홑따옴표 쓴것 주목) -->
-					<c:if test="${(startNum+i) <= lastNum }">
-						<li><a
-							class="-text- ${(page==(startNum+i))?'orange':'' } bold"
-							href="?p=${startNum+i}&f=${param.f }&q=${param.q}">${startNum+i}</a></li>
+					<c:if test="${(bo.startPage+i) <= bo.totalPages }">
+						<li><a class="-text- ${(bo.curPage==(bo.startPage+i))?'orange':'' } bold"
+							href="?page=${bo.startPage+i}&field=${bo.field }&search=${bo.search}">${bo.startPage+i}</a></li>
 					</c:if>
 				</c:forEach>
 			</ul>
 
 			<div>
-				<c:if test="${startNum+5<=lastNum }">
-					<a href="?p=${startNum+5}&f=&q=" class="btn btn-next">다음</a>
+				<c:if test="${bo.startPage+5<=bo.totalPages }">
+					<a href="?page=${bo.startPage+5}&field=${bo.field }&search=${bo.search}" class="btn btn-next">다음</a>
 				</c:if>
-				<c:if test="${startNum+5>lastNum }">
+				<c:if test="${bo.startPage+5>bo.totalPages }">
 					<span class="btn btn-next" onclick="alert('다음 페이지가 없습니다.');">다음</span>
 				</c:if>
 			</div>

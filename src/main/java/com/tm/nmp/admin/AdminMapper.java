@@ -8,8 +8,8 @@ public interface AdminMapper {
 
 	int regClubInfo(ClubDTO c);
 
-	int calcAllClubCount(String field, String search);
+	List<ClubListView> getClubViewList(BoardOption bo);
 
-	List<ClubView> getClubViewList(BoardOption bo);
+	int calcAllClubCount(BoardOption bo);
 
 }

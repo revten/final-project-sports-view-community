@@ -1,6 +1,5 @@
 package com.tm.nmp.admin;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -17,15 +16,11 @@ public class AdminDAO {
 	@Autowired
 	private SqlSession ss;
 	
-	
 	private int allClubCount;
 	
-	public int calcAllClubCount() {
-		return calcAllClubCount("", "");
-	}
 	
-	public int calcAllClubCount(String field, String search) {
-		allClubCount = ss.getMapper(AdminMapper.class).calcAllClubCount(field, search);
+	public int calcAllClubCount(BoardOption bo) {
+		allClubCount = ss.getMapper(AdminMapper.class).calcAllClubCount(bo);
 		System.out.println("전체 구단 수 : " + allClubCount);
 		return allClubCount;
 	}
@@ -38,36 +33,37 @@ public class AdminDAO {
 		}
 	}
 
-	public void getClubViewList(HttpServletRequest req) {
-		// TODO Auto-generated method stub
-
-//		String field = (String) req.getSession().getAttribute("field");
-//		String search = (String) req.getSession().getAttribute("search");
+	public void getClubViewList(HttpServletRequest req, BoardOption bo) {
 		
-		BoardOption bo = new BoardOption(0, "name", "", 0, 0, 0);
+//		allClubCount = calcAllClubCount();
+//		System.out.println(allClubCount);
+		req.getParameter("page");
+	
 		
-		String field = req.getParameter("field");
-		System.out.println("field : " + field);
-		String search = req.getParameter("search");
-		System.out.println("search : " + search);
-		
-		if(field == null) {
+		if(bo.getField() == null) {
 			bo.setField("name");
-		} else {
-			bo.setField(field);
 		}
-		
-		if(search == null) {
+		if(bo.getSearch() == null) {
 			bo.setSearch("");
+		}		
+
+		allClubCount = calcAllClubCount(bo); // 총 게시글 수
+		System.out.println("조회구단수 : " + allClubCount);
+		if(req.getParameter("page") == null) {
+			bo.setCurPage(1); // 현재 보여주는 페이지
 		} else {
-			bo.setSearch(search);
+			int page = Integer.parseInt(req.getParameter("page"));
+			bo.setCurPage(page);
 		}
+		bo.setCountPerPage(3); // 한 페이장 게시글 수
+		bo.setStartNum((bo.getCurPage() - 1) * bo.getCountPerPage() + 1);  // 한 페이지의 첫 글
+		bo.setEndNum(bo.getStartNum() + (bo.getCountPerPage() - 1)); // 한 페이지의 마지막 글
+		bo.setStartPage(bo.getCurPage()-(bo.getCurPage()-1)%5); // 한화면에 보여줄 페이지 목록 처음
+		bo.setEndPage(4);// 한화면에 보여줄 페이지 목록 마지막
+		bo.setTotalPages((int) Math.ceil(allClubCount / (double) bo.getCountPerPage())); // 총 페이지수
+		req.setAttribute("bo", bo);
 		
-		System.out.println("getField : " + bo.getField());
-		System.out.println("getSearch : " + bo.getSearch());
-		List<ClubView> clubs = new ArrayList<>();	
-		clubs = ss.getMapper(AdminMapper.class).getClubViewList(bo);
-		System.out.println(clubs.size());
+		List<ClubListView> clubs = ss.getMapper(AdminMapper.class).getClubViewList(bo);
 		req.setAttribute("clubs", clubs);
 	}
 }

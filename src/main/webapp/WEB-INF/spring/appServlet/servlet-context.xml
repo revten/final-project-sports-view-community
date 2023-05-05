@@ -111,6 +111,6 @@
 	</beans:bean>
 	
 	<!-- 페이지당 보여줄 게시물 수  -->
-	<beans:bean id="bo" class="com.tm.nmp.board.BoardOption" p:countPerPage="12" />
+	<beans:bean id="bo" class="com.tm.nmp.board.BoardOption" p:countPerPage="12" p:field="name"  p:search=""/>
 
 </beans:beans>

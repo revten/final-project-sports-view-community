@@ -3,20 +3,20 @@ package com.tm.nmp.admin;
 import java.util.Date;
 import java.util.List;
 
-public class ClubView extends ClubDTO {
+public class ClubListView extends ClubDTO {
 
 	private String sports_name;
 	private String league_name;
 	private int league_gender;
 	private int images_count;
 
-	public ClubView() {
+	public ClubListView() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
 	
-	public ClubView(int id, String name, String city,
+	public ClubListView(int id, String name, String city,
 			String stadium_name, String stadium_address, Date reg_date,
 			Date update_date, List<ClubImageDTO> clubImages, String sports_name, String league_name, int league_gender, int images_count) {
 		super(id, name, "", 0, 0, city, stadium_name, stadium_address, "", "", "",

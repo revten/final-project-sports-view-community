@@ -61,46 +61,6 @@ public class BoardDAO {
 		}
 		System.out.println("postCount : " + postCount);
 		
-		int catNum = p.getPost_category();
-
-		String category = Integer.toString(catNum);
-
-		switch (category) {
-		case "0":
-			category = "잡담";
-			break;
-		case "1":
-			category = "질문";
-			break;
-		case "2":
-			category = "정보";
-			break;
-		case "3":
-			category = "분석";
-			break;
-		}
-
-		req.setAttribute("post_category", category);
-
-		int board_num = p.getPost_board();
-
-		String board_name = "";
-		switch (board_num) {
-		case 21:
-			board_name = "야구";
-			break;
-		case 22:
-			board_name = "축구";
-			break;
-		case 23:
-			board_name = "농구";
-			break;
-		case 24:
-			board_name = "배구";
-			break;
-		}
-		req.setAttribute("board_name", board_name);
-
 		List<PostVO> posts = ss.getMapper(BoardMapper.class).getAllPost(search);
 		System.out.println(posts);
 		req.setAttribute("posts", posts);

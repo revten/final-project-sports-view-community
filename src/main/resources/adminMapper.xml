@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.tm.nmp.admin.AdminMapper">
+
 	<insert id="regClubInfo" parameterType="ClubDTO">
 		insert into club values(
 		#{club_id}, #{club_name}, #{club_name_eng}, #{sports_id},
@@ -11,15 +12,12 @@
 		)
 	</insert>
 
-	<select id="calcAllClubCount" parameterType="String"
-		resultType="java.lang.Integer">
-		select count(id) from (select rownum nun, n.* from (select
-		* from v_adminclublist where #{field} like
-		'%'||#{search}||'%' order by id)n)
+	<select id="calcAllClubCount" resultType="java.lang.Integer">
+		select count(id) from (select rownum nun, n.* from (select * from v_clubList where ${field} like '%'||#{search}||'%' order by id)n)
 	</select>
 
-	<select id="getClubViewList" parameterType="com.tm.nmp.board.BoardOption"
-		resultType="com.tm.nmp.admin.ClubView">
-		select * from (select rownum num, n.* from (select * from v_adminclublist where ${field} like '%'||UPPER(#{search})||'%' order by id)n)
+	<select id="getClubViewList" parameterType="com.tm.nmp.board.BoardOption" resultType="com.tm.nmp.admin.ClubListView">
+		select * from (select rownum num, n.* from (select * from v_clubList where ${field} like '%'||UPPER(#{search})||'%' order by id)n)
+		where num between #{startNum} and #{endNum}
 	</select>
 </mapper>
