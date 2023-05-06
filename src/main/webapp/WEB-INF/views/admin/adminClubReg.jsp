@@ -65,64 +65,59 @@
 					<tbody>
 						<tr>
 							<th>구단코드</th>
-							<td class=""><input type="text" name="id" required/></td>
+							<td class=""><input class="admin__clubCode"type="text" name="id" required /></td>
 						</tr>
 						<tr>
 							<th>구단명</th>
-							<td class=""><input type="text" name="name" required/></td>
+							<td class=""><input type="text" name="name" required /></td>
 						</tr>
 						<tr>
 							<th>구단명(영문)</th>
-							<td class=""><input type="text" name="name_eng" required/></td>
+							<td class=""><input type="text" name="name_eng" required /></td>
 						</tr>
 						<tr>
 							<th>종목</th>
-							<td class="">
-								<select name="sports_id" required>
+							<td class=""><select name="sports_id" required>
 									<option value="1">야구</option>
 									<option value="2">축구</option>
 									<option value="3">농구</option>
 									<option value="4">배구</option>
-								</select>
-							</td>
+							</select></td>
 						</tr>
 						<tr>
 							<th>리그</th>
-							<td class="">
-								<select name="league_id" required>
+							<td class=""><select name="league_id" required>
 									<option value="101">KBO</option>
 									<option value="201">K-LEAGUE</option>
 									<option value="301">KBL</option>
 									<option value="351">WKBL</option>
 									<option value="401">V-LEAGUE(남)</option>
 									<option value="451">V-LEAGUE(여)</option>
-								</select>
-							</td>
+							</select></td>
 						</tr>
 						<tr>
 							<th>남녀</th>
-							<td class="">
-								<select name="league_id" required>
+							<td class=""><select name="league_id" required>
 									<option value="0">남</option>
 									<option value="1">녀</option>
-								</select>
-							</td>
+							</select></td>
 						</tr>
 						<tr>
 							<th>연고도시</th>
-							<td class=""><input type="text" name="city" required/></td>
+							<td class=""><input type="text" name="city" required /></td>
 						</tr>
 						<tr>
 							<th>홈구장명</th>
-							<td class=""><input type="text" name="stadium_name" required/></td>
+							<td class=""><input type="text" name="stadium_name" required /></td>
 						</tr>
 						<tr>
 							<th>홈구장주소</th>
-							<td class=""><input type="text" name="stadium_address" required/></td>
+							<td class=""><input type="text" name="stadium_address"
+								required /></td>
 						</tr>
 						<tr>
 							<th>창단년도</th>
-							<td class=""><input type="text" name="found_year" required/></td>
+							<td class=""><input type="text" name="found_year" required /></td>
 						</tr>
 						<tr>
 							<th>구단 홈페이지</th>
@@ -133,43 +128,61 @@
 							<td><textarea class="content" name="intro"></textarea></td>
 						</tr>
 						<hr>
-						<tr>
-							<th>로고사진</th>
-							<td class=""><input type="file" name="logo" /></td>
-						</tr>
-						<tr>
-							<th>좌석사진</th>
-							<td class=""><input type="file" name="seat" /></td>
-						</tr>
-						<tr>
-							<th>구장사진</th>
-							<td class=""><input type="file" name="seat" /></td>
-						</tr>
-						<tr>
-							<th>직관사진3</th>
-							<td class=""><input type="file" name="sight" /></td>
-						</tr>
-						<tr>
-							<th>직관사진6</th>
-							<td class=""><input type="file" name="sight" /></td>
-						</tr>
-						<tr>
-							<th>직관사진9</th>
-							<td class=""><input type="file" name="sight" /></td>
-						</tr>
-						<tr>
-							<th>직관사진12시</th>
-							<td class=""><input type="file" name="sight" /></td>
-						</tr>
 					</tbody>
 				</table>
 			</div>
+
+			<div>
+				<div class="uploadWrap">
+					<div>로고 사진</div>
+					<input type="file" onchange="setThumbnail(event);">
+					<button onclick="uploadClubImg()">업로드</button>
+				</div>
+
+				<div class="uploadWrap">
+					<div>좌석 사진</div>
+					<input type="file" onchange="setThumbnail(event);">
+					<button onclick="uploadImage()">업로드</button>
+				</div>
+
+				<div class="uploadWrap">
+					<div>구장 사진</div>
+					<input type="file" onchange="setThumbnail(event);">
+					<button onclick="uploadImage()">업로드</button>
+				</div>
+
+				<div class="uploadWrap">
+					<div>직관사진3</div>
+					<input type="file" onchange="setThumbnail(event);">
+					<button onclick="uploadImage()">업로드</button>
+				</div>
+
+				<div class="uploadWrap">
+					<div>직관사진6</div>
+					<input type="file" onchange="setThumbnail(event);">
+					<button onclick="uploadImage()">업로드</button>
+				</div>
+
+				<div class="uploadWrap">
+					<div>직관사진9</div>
+					<input type="file" onchange="setThumbnail(event);">
+					<button onclick="uploadImage()">업로드</button>
+				</div>
+
+				<div class="uploadWrap">
+					<div>직관사진12</div>
+					<input type="file" onchange="setThumbnail(event);">
+					<button onclick="uploadImage()">업로드</button>
+				</div>
+			</div>
+
 			<div class="">
-				<a class=""	href="adminClub">취소</a>
-				<input class="" type="submit" value="등록" />
+				<a class="" href="adminClub">취소</a> <input class="" type="submit"
+					value="등록" />
 			</div>
 		</form>
 		</main>
 	</div>
+
 </body>
 </html>

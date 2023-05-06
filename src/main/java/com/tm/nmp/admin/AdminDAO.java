@@ -66,4 +66,9 @@ public class AdminDAO {
 		List<ClubListView> clubs = ss.getMapper(AdminMapper.class).getClubViewList(bo);
 		req.setAttribute("clubs", clubs);
 	}
+
+	public int uploadImage(HttpServletRequest req) {
+		
+		return allClubCount;
+	}
 }

@@ -8,12 +8,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.tm.nmp.TokenMaker;
 import com.tm.nmp.account.accountDAO;
 import com.tm.nmp.board.BoardDAO;
-import com.tm.nmp.board.BoardOption;
 import com.tm.nmp.board.BoardSelector;
 import com.tm.nmp.board.PostVO;
 import com.tm.nmp.board.ReplyVO;
