@@ -60,19 +60,9 @@ public class AdminController {
 		return "/admin/adminClubReg";
 	}
 
-	@RequestMapping(value = "/adminClub.reg.do", method = RequestMethod.POST)
-	public String adminClubRegDo(HttpServletRequest req, ClubDTO c, BoardOption bo) {
-//		acDAO.wathingPage(req);
-//		acDAO.loginCheck(req);
-
-		adminDAO.regClubInfo(req, c);
-		adminDAO.getClubViewList(req, bo);
-		return "/admin/adminClub";
+	@RequestMapping(value = "/adminClub.uploadImage.do", method = RequestMethod.POST)
+	public @ResponseBody int adminClubImageUpload(HttpServletRequest req, ClubImageDTO ci) {
+		return adminDAO.uploadImage(req, ci);
 	}
-
-	@RequestMapping(value = "/adminClub.image.upload.do", method = RequestMethod.POST)
-	public @ResponseBody int adminClubImageUpload(HttpServletRequest req, ClubDTO c, BoardOption bo) {
-		return adminDAO.uploadImage(req);
-	}
-
+		
 }

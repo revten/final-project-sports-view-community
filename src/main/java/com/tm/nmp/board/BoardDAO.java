@@ -210,7 +210,6 @@ public class BoardDAO {
 			// 생성토큰을 저장해두기
 			req.getSession().setAttribute("successToken", token);
 
-			// 성공한 값으로 1을 넘김
 			resultVO.setResult(1);
 			resultVO.setToken((String) req.getAttribute("token"));
 			ReplyVO replyVO = ss.getMapper(BoardMapper.class).getReply();

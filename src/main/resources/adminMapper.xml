@@ -13,10 +13,11 @@
 		resultType="com.tm.nmp.admin.ClubListView">
 		select * from (select rownum num, n.* from (select * from
 		v_clubList where ${field} like '%'||UPPER(#{search})||'%' order by
-		id) n)
+		id)
+		n)
 		where num between #{startNum} and #{endNum}
 	</select>
-	
+
 	<insert id="regClubInfo" parameterType="ClubDTO">
 		INSERT INTO tb_club (
 		id,
@@ -42,6 +43,19 @@
 		#{found_year},
 		#{website},
 		#{intro}
+		)
+	</insert>
+
+	<insert id="uploadImage" parameterType="ClubImageDTO">
+		insert into tb_club_image (
+		club_id,
+		sort,
+		file_name
+		)
+		values (
+		#{club_id},
+		#{sort},
+		#{file_name}
 		)
 	</insert>
 

@@ -34,22 +34,22 @@
 			<nav class="">
 				<h1>회원 관리</h1>
 				<ul>
-					<li><a href="admin.user.go">회원 조회</a></li>
+					<li><a href="adminUser.go">회원 조회</a></li>
 					<li><a href="">탈퇴회원 관리</a></li>
 				</ul>
 			</nav>
 			<nav class="">
 				<h1>게시물 관리</h1>
 				<ul>
-					<li><a href="admin.board.go">게시물 조회</a></li>
+					<li><a href="adminBoard.go">게시물 조회</a></li>
 					<li><a href="">게시물 관리</a></li>
 				</ul>
 			</nav>
 			<nav class="">
 				<h1>구단 관리</h1>
 				<ul>
-					<li><a href="admin.club.go">구단 조회</a></li>
-					<li><a href="">구단 등록</a></li>
+					<li><a href="adminClub.go">구단 조회</a></li>
+					<li><a href="adminClub.reg.go">구단 등록</a></li>
 				</ul>
 			</nav>
 		</aside>
@@ -58,14 +58,15 @@
 		<main>
 		<h2 class="main title">구단 등록</h2>
 
-		<form method="post" action="adminClub.reg.do"
+		<form id="adminClubInfo-reg" method="post" action="adminClub.reg.do"
 			enctype="multipart/form-data">
 			<div class="margin-top first">
 				<table class="table">
 					<tbody>
 						<tr>
 							<th>구단코드</th>
-							<td class=""><input class="admin__clubCode"type="text" name="id" required /></td>
+							<td class=""><input class="admin__clubCode" type="text"
+								name="id" required /></td>
 						</tr>
 						<tr>
 							<th>구단명</th>
@@ -93,13 +94,6 @@
 									<option value="351">WKBL</option>
 									<option value="401">V-LEAGUE(남)</option>
 									<option value="451">V-LEAGUE(여)</option>
-							</select></td>
-						</tr>
-						<tr>
-							<th>남녀</th>
-							<td class=""><select name="league_id" required>
-									<option value="0">남</option>
-									<option value="1">녀</option>
 							</select></td>
 						</tr>
 						<tr>
@@ -131,58 +125,58 @@
 					</tbody>
 				</table>
 			</div>
-
-			<div>
-				<div class="uploadWrap">
-					<div>로고 사진</div>
-					<input type="file" onchange="setThumbnail(event);">
-					<button onclick="uploadClubImg()">업로드</button>
-				</div>
-
-				<div class="uploadWrap">
-					<div>좌석 사진</div>
-					<input type="file" onchange="setThumbnail(event);">
-					<button onclick="uploadImage()">업로드</button>
-				</div>
-
-				<div class="uploadWrap">
-					<div>구장 사진</div>
-					<input type="file" onchange="setThumbnail(event);">
-					<button onclick="uploadImage()">업로드</button>
-				</div>
-
-				<div class="uploadWrap">
-					<div>직관사진3</div>
-					<input type="file" onchange="setThumbnail(event);">
-					<button onclick="uploadImage()">업로드</button>
-				</div>
-
-				<div class="uploadWrap">
-					<div>직관사진6</div>
-					<input type="file" onchange="setThumbnail(event);">
-					<button onclick="uploadImage()">업로드</button>
-				</div>
-
-				<div class="uploadWrap">
-					<div>직관사진9</div>
-					<input type="file" onchange="setThumbnail(event);">
-					<button onclick="uploadImage()">업로드</button>
-				</div>
-
-				<div class="uploadWrap">
-					<div>직관사진12</div>
-					<input type="file" onchange="setThumbnail(event);">
-					<button onclick="uploadImage()">업로드</button>
-				</div>
-			</div>
-
-			<div class="">
-				<a class="" href="adminClub">취소</a> <input class="" type="submit"
-					value="등록" />
-			</div>
 		</form>
-		</main>
-	</div>
 
+		<div>
+			<div class="uploadWrap">
+				<div>로고사진</div>
+				<input type="file" onchange="setThumbnail(event);" id="image-file">
+				<button onclick="uploadClubImg(0)">업로드</button>
+			</div>
+
+			<div class="uploadWrap">
+				<div>구장사진</div>
+				<input type="file" onchange="setThumbnail(event);">
+				<button onclick="uploadImage(1)">업로드</button>
+			</div>
+
+			<div class="uploadWrap">
+				<div>좌석사진</div>
+				<input type="file" onchange="setThumbnail(event);">
+				<button onclick="uploadImage(2)">업로드</button>
+			</div>
+
+			<div class="uploadWrap">
+				<div>직관사진3시</div>
+				<input type="file" onchange="setThumbnail(event);">
+				<button onclick="uploadImage(3)">업로드</button>
+			</div>
+
+			<div class="uploadWrap">
+				<div>직관사진 6시</div>
+				<input type="file" onchange="setThumbnail(event);">
+				<button onclick="uploadImage(3)">업로드</button>
+			</div>
+
+			<div class="uploadWrap">
+				<div>직관사진9시</div>
+				<input type="file" onchange="setThumbnail(event);">
+				<button onclick="uploadImage(3)">업로드</button>
+			</div>
+
+			<div class="uploadWrap">
+				<div>직관사진12시</div>
+				<input type="file" onchange="setThumbnail(event);">
+				<button onclick="uploadImage(3)">업로드</button>
+			</div>
+		</div>
+
+		<div class="">
+			<a class="" href="adminClub">취소</a>
+			<button type="submit" form="adminClubInfo-reg">등록</button>
+		</div>
+		</main>
+		
+	</div>
 </body>
 </html>

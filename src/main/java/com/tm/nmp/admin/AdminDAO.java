@@ -1,5 +1,6 @@
 package com.tm.nmp.admin;
 
+import java.io.File;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -8,6 +9,8 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.oreilly.servlet.MultipartRequest;
+import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 import com.tm.nmp.board.BoardOption;
 
 @Service
@@ -38,7 +41,6 @@ public class AdminDAO {
 //		allClubCount = calcAllClubCount();
 //		System.out.println(allClubCount);
 		req.getParameter("page");
-	
 		
 		if(bo.getField() == null) {
 			bo.setField("name");
@@ -67,8 +69,40 @@ public class AdminDAO {
 		req.setAttribute("clubs", clubs);
 	}
 
-	public int uploadImage(HttpServletRequest req) {
+	public int uploadImage(HttpServletRequest req, ClubImageDTO ci) {
 		
-		return allClubCount;
+		String path = req.getSession().getServletContext().getRealPath("resources/files");
+		MultipartRequest mr = null;
+		int result = 0;
+		try {
+			mr = new MultipartRequest(req, path, 31457200, "utf-8", new DefaultFileRenamePolicy());
+			System.out.println(mr.getFilesystemName("file_name"));
+			
+			int club_id = Integer.parseInt(mr.getParameter("club_id"));
+			int sort = Integer.parseInt(mr.getParameter("sort"));
+			
+			ci.setClub_id(club_id);
+			ci.setSort(sort);
+			
+			String file_name = mr.getFilesystemName("file_name");
+			ci.setFile_name(file_name);
+			System.out.println("저장되는 경로(실제 서버) : " + path);
+			System.out.println("사진 이름 : " + file_name);
+			
+			result = ss.getMapper(AdminMapper.class).uploadImage(ci);
+			System.out.println(result);
+			if( result ==1) {
+				req.setAttribute("result", "성공");
+			}else {
+				req.setAttribute("result", "실패");
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			String fileName = mr.getFilesystemName("file_name");
+			new File(path + "/" + fileName).delete();
+			req.setAttribute("result", "업로드 실패");
+		}
+		return result;
 	}
 }

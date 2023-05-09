@@ -23,7 +23,7 @@
 </head>
 <body>
 	<div class="admin__container">
-		<!-- aside 부분 -->
+		<!--==================== NAV ====================-->
 		<aside class="aside">
 			<h1>ADMIN PAGE</h1>
 			<nav class="">
@@ -53,6 +53,88 @@
 				</ul>
 			</nav>
 		</aside>
+
+		<!--==================== MAIN ====================-->
+
+		<main>
+
+		<h2 class="main title">구단 등록</h2>
+
+		<form id="adminClubInfo-reg" method="post" action="adminClub.reg.do"
+			enctype="multipart/form-data">
+			<div class="margin-top first">
+				<table class="table">
+					<tbody>
+						<tr>
+							<th>구단코드</th>
+							<td class="">${club.id}</td>
+						</tr>
+						<tr>
+							<th>구단명</th>
+							<td class="">${club.name}</td>
+						</tr>
+						<tr>
+							<th>구단명(영문)</th>
+							<td class="">${club.name_eng}</td>
+						</tr>
+						<tr>
+							<th>종목</th>
+							<td class="">${club.sports_name}</td>
+						</tr>
+						<tr>
+							<th>리그</th>
+							<td class="">${club.league_name}</td>
+						</tr>
+						<tr>
+							<th>연고도시</th>
+							<td class="">${}</td>
+						</tr>
+						<tr>
+							<th>홈구장명</th>
+							<td class="">${}</td>
+						</tr>
+						<tr>
+							<th>홈구장주소</th>
+							<td class="">${}</td>
+						</tr>
+						<tr>
+							<th>창단년도</th>
+							<td class="">${}</td>
+						</tr>
+						<tr>
+							<th>구단 홈페이지</th>
+							<td class="">${}</td>
+						</tr>
+						<tr>
+							<th>구단 소개</th>
+							<td>${}</td>
+						</tr>
+						<hr>
+					</tbody>
+				</table>
+			</div>
+		</form>
+
+		<div>
+			<c:forEach var="cl" items=${clubImages }>
+				<div>로고사진</div>
+				<div>구장사진</div>
+				<div>좌석사진</div>
+				<div>직관사진3시</div>
+				<div>직관사진 6시</div>
+				<div>직관사진9시</div>
+				<div>직관사진12시</div>
+			</c:forEach>
+		</div>
+
+		<div class="">
+			<a class="" href="adminClub">취소</a>
+			<button type="submit" form="adminClubInfo-reg">등록</button>
+		</div>
+
+
+		</main>
+
 	</div>
 </body>
 </html>
