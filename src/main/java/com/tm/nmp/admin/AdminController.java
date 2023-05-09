@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.tm.nmp.account.accountDAO;
 import com.tm.nmp.board.BoardDAO;
@@ -61,8 +62,8 @@ public class AdminController {
 	}
 
 	@RequestMapping(value = "/adminClub.uploadImage.do", method = RequestMethod.POST)
-	public @ResponseBody int adminClubImageUpload(HttpServletRequest req, ClubImageDTO ci) {
-		return adminDAO.uploadImage(req, ci);
+	public @ResponseBody int adminClubImageUpload(HttpServletRequest req, ClubImageDTO ci, MultipartFile file) {
+		return adminDAO.uploadImage(req, ci, file);
 	}
 		
 }

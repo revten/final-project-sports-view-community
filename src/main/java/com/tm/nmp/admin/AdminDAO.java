@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
@@ -69,7 +70,9 @@ public class AdminDAO {
 		req.setAttribute("clubs", clubs);
 	}
 
-	public int uploadImage(HttpServletRequest req, ClubImageDTO ci) {
+	public int uploadImage(HttpServletRequest req, ClubImageDTO ci, MultipartFile file) {
+		
+		logger.info("----");
 		
 		String path = req.getSession().getServletContext().getRealPath("resources/files");
 		MultipartRequest mr = null;

@@ -131,43 +131,37 @@
 			<div class="uploadWrap">
 				<div>로고사진</div>
 				<input type="file" onchange="setThumbnail(event);" id="image-file">
-				<button onclick="uploadClubImg(0)">업로드</button>
+				<button onclick="uploadClubImg(1)">업로드</button>
 			</div>
 
 			<div class="uploadWrap">
 				<div>구장사진</div>
 				<input type="file" onchange="setThumbnail(event);">
-				<button onclick="uploadImage(1)">업로드</button>
 			</div>
 
 			<div class="uploadWrap">
 				<div>좌석사진</div>
 				<input type="file" onchange="setThumbnail(event);">
-				<button onclick="uploadImage(2)">업로드</button>
 			</div>
 
 			<div class="uploadWrap">
 				<div>직관사진3시</div>
 				<input type="file" onchange="setThumbnail(event);">
-				<button onclick="uploadImage(3)">업로드</button>
 			</div>
 
 			<div class="uploadWrap">
 				<div>직관사진 6시</div>
 				<input type="file" onchange="setThumbnail(event);">
-				<button onclick="uploadImage(3)">업로드</button>
 			</div>
 
 			<div class="uploadWrap">
 				<div>직관사진9시</div>
 				<input type="file" onchange="setThumbnail(event);">
-				<button onclick="uploadImage(3)">업로드</button>
 			</div>
 
 			<div class="uploadWrap">
 				<div>직관사진12시</div>
 				<input type="file" onchange="setThumbnail(event);">
-				<button onclick="uploadImage(3)">업로드</button>
 			</div>
 		</div>
 
