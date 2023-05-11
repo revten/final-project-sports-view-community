@@ -68,7 +68,7 @@
 							<td class=""><input class="admin__clubCode" type="text"
 								name="id" required /></td>
 						</tr>
-						<tr>
+<!-- 						<tr>
 							<th>구단명</th>
 							<td class=""><input type="text" name="name" required /></td>
 						</tr>
@@ -120,57 +120,57 @@
 						<tr>
 							<th>구단 소개</th>
 							<td><textarea class="content" name="intro"></textarea></td>
-						</tr>
+						</tr> -->
 						<hr>
 					</tbody>
 				</table>
 			</div>
+
+			<div>
+				<div class="uploadImage">
+					<div>로고사진</div>
+					<input type="file" onchange="imagePreview(event);" name="image">
+				</div>
+
+				<div class="uploadImage">
+					<div>구장사진</div>
+					<input type="file" onchange="imagePreview(event);" name="image">
+				</div>
+
+				<div class="uploadImage">
+					<div>좌석사진</div>
+					<input type="file" onchange="imagePreview(event);" name="image">
+				</div>
+
+				<div class="uploadImage">
+					<div>직관사진3시</div>
+					<input type="file" onchange="imagePreview(event);" name="image">
+				</div>
+
+				<div class="uploadImage">
+					<div>직관사진 6시</div>
+					<input type="file" onchange="imagePreview(event);" name="image">
+				</div>
+
+				<div class="uploadImage">
+					<div>직관사진9시</div>
+					<input type="file" onchange="imagePreview(event);" name="image">
+				</div>
+
+				<div class="uploadImage">
+					<div>직관사진12시</div>
+					<input type="file" onchange="imagePreview(event);" name="image">
+					<input type="hidden" name="sort" value="3">
+				</div>
+			</div>
 		</form>
-
-		<div>
-			<div class="uploadWrap">
-				<div>로고사진</div>
-				<input type="file" onchange="setThumbnail(event);" id="image-file">
-				<button onclick="uploadClubImg(1)">업로드</button>
-			</div>
-
-			<div class="uploadWrap">
-				<div>구장사진</div>
-				<input type="file" onchange="setThumbnail(event);">
-			</div>
-
-			<div class="uploadWrap">
-				<div>좌석사진</div>
-				<input type="file" onchange="setThumbnail(event);">
-			</div>
-
-			<div class="uploadWrap">
-				<div>직관사진3시</div>
-				<input type="file" onchange="setThumbnail(event);">
-			</div>
-
-			<div class="uploadWrap">
-				<div>직관사진 6시</div>
-				<input type="file" onchange="setThumbnail(event);">
-			</div>
-
-			<div class="uploadWrap">
-				<div>직관사진9시</div>
-				<input type="file" onchange="setThumbnail(event);">
-			</div>
-
-			<div class="uploadWrap">
-				<div>직관사진12시</div>
-				<input type="file" onchange="setThumbnail(event);">
-			</div>
-		</div>
-
+		<hr>
 		<div class="">
 			<a class="" href="adminClub">취소</a>
 			<button type="submit" form="adminClubInfo-reg">등록</button>
 		</div>
 		</main>
-		
+
 	</div>
 </body>
 </html>
