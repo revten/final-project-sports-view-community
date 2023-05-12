@@ -46,7 +46,7 @@
 		)
 	</insert>
 
-	<insert id="uploadImage" parameterType="ClubImageDTO">
+	<insert id="insertClubImages" parameterType="map">
 		insert into tb_club_image (
 		club_id,
 		sort,

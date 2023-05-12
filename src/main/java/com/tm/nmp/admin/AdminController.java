@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
@@ -72,12 +73,11 @@ public class AdminController {
 	}
 
 	@RequestMapping(value = "/adminClub.reg.do", method = RequestMethod.POST)
-	public String adminClubReg(HttpServletRequest req, ClubDTO c, ClubImageDTO ci, MultipartHttpServletRequest mhsr)
-			throws IOException {
+	public String adminClubReg(@RequestParam("image") List<MultipartFile> filelist, HttpServletRequest req, ClubDTO c,
+			ClubImageDTO ci) throws IOException {
 		System.out.println("adminClub.reg.do");
 		System.out.println(c.getId());
 
-		List<MultipartFile> list = mhsr.getFiles("image");
 		List<ClubImageDTO> images = new ArrayList<>();
 
 		/*
@@ -85,33 +85,42 @@ public class AdminController {
 		 * aa.setSort(0); } }
 		 */
 
-		for (MultipartFile mf : list) {
-			if (mf.getSize() != 0) {
-				String fileName = mf.getOriginalFilename();
-				String uploadFolder = "";
+		for (MultipartFile file : filelist) {
+			if (!file.isEmpty()) {
 				ci.setClub_id(c.getId());
+				String fileName = file.getOriginalFilename();
 				ci.setFile_name(fileName);
-
+				
 				if (fileName.contains("logo")) {
-					uploadFolder = req.getSession().getServletContext().getRealPath("resources/files/admin/logo");
+					ci.setSort(0);
 				} else if (fileName.contains("stadium")) {
-					uploadFolder = req.getSession().getServletContext().getRealPath("resources/files/admin/stadium");
+					ci.setSort(1);
 				} else if (fileName.contains("seat")) {
-					uploadFolder = req.getSession().getServletContext().getRealPath("resources/files/admin/seat");
+					ci.setSort(2);
 				} else if (fileName.contains("view")) {
-					uploadFolder = req.getSession().getServletContext()
-							.getRealPath("resources/files/admin/view" + c.getId());
+					ci.setSort(3);
 				}
-				System.out.println(ci.getSort());
-				mf.transferTo(new File(uploadFolder, fileName));
-/*				logger.info("파일 이름 {}", mf.getOriginalFilename());
-				logger.info("파일 크기 {}", mf.getSize());*/
+
+				String uploadFolder = req.getSession().getServletContext()
+						.getRealPath("resources/files/club_images/" + c.getId());
+				File uploadPath = new File(uploadFolder);
+				if (!uploadPath.exists()) {
+					uploadPath.mkdirs();
+				}
+				logger.info("파일  업로드 폴더 {}", uploadPath);
+
+				// 파일 저장
+				file.transferTo(new File(uploadPath, fileName));
+				logger.info("파일 이름 {}", file.getOriginalFilename());
+				logger.info("분류 {}", ci.getSort());
+
+				logger.info("파일 크기 {}", file.getSize());
 				images.add(ci);
 			}
 		}
-		/*
-		 * int result = adminDAO.regClubInfo(c); adminDAO.insertClubImages(c);
-		 */
+		adminDAO.regClubInfo(c);
+		adminDAO.insertClubImages(images);
+
 		return "/admin/adminClub";
 	}
 

@@ -27,6 +27,7 @@ public class AdminDAO {
 
 	public int calcAllClubCount(BoardOption bo) {
 		allClubCount = ss.getMapper(AdminMapper.class).calcAllClubCount(bo);
+		
 		System.out.println("전체 구단 수 : " + allClubCount);
 		return allClubCount;
 	}
@@ -62,11 +63,12 @@ public class AdminDAO {
 		req.setAttribute("clubs", clubs);
 	}
 
-	public int regClubInfo(ClubDTO c) {
-		return ss.getMapper(AdminMapper.class).regClubInfo(c);
+	public void regClubInfo(ClubDTO c) {
+		ss.getMapper(AdminMapper.class).regClubInfo(c);
 	}
 
-	public void insertClubImages(ClubDTO c) {
+	public void insertClubImages(List<ClubImageDTO> images) {
+		ss.getMapper(AdminMapper.class).insertClubImages(images);
 	}
 
 	public int updateImage(HttpServletRequest req, ClubImageDTO ci, MultipartFile multipartFile) {

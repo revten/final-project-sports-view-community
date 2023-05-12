@@ -10,8 +10,11 @@ public interface AdminMapper {
 
 	int regClubInfo(ClubDTO c);
 
+	void insertClubImages(List<ClubImageDTO> images);
+
 	List<ClubListView> getClubViewList(BoardOption bo);
 
 	int calcAllClubCount(BoardOption bo);
+
 
 }
