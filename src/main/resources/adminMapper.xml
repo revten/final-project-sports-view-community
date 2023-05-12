@@ -57,4 +57,15 @@
 		select * from dual
 	</insert>
 
+	<select id="getClubDetail" resultType="ClubListView">
+		select c.*, s.name sports_name, l.name league_name from tb_club c, tb_sports
+		s, tb_league l where
+		c.sports_id = s.id and c.league_id = l.id and c.id = #{id}
+	</select>
+	
+	<select id="getClubImages" resultType="ClubImageDTO">
+		select * from tb_club_image	where club_id = #{id}
+	
+	</select>
+
 </mapper>

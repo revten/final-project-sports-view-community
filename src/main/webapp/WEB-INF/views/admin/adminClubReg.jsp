@@ -21,6 +21,7 @@
 <link rel="stylesheet" href="resources/css/admin/adminClub.css" />
 <link rel="stylesheet" href="resources/css/admin/adminUser.css" />
 </head>
+
 <body>
 	<div class="admin__container">
 		<!--==================== NAV ====================-->

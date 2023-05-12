@@ -1,7 +1,5 @@
 package com.tm.nmp.admin;
 
-import java.io.File;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -54,7 +52,7 @@ public class AdminDAO {
 			int page = Integer.parseInt(req.getParameter("page"));
 			bo.setCurPage(page);
 		}
-		bo.setCountPerPage(3); // 한 페이장 게시글 수
+		bo.setCountPerPage(10); // 한 페이장 게시글 수
 		bo.setStartNum((bo.getCurPage() - 1) * bo.getCountPerPage() + 1); // 한 페이지의 첫 글
 		bo.setEndNum(bo.getStartNum() + (bo.getCountPerPage() - 1)); // 한 페이지의 마지막 글
 		bo.setStartPage(bo.getCurPage() - (bo.getCurPage() - 1) % 5); // 한화면에 보여줄 페이지 목록 처음
@@ -73,8 +71,18 @@ public class AdminDAO {
 	public void insertClubImages(List<ClubImageDTO> images) {
 		sst.insert("AdminMapper.insertClubImages", images);
 	}
+	
+	public ClubListView getClubDetail(int id) {
+		return sst.selectOne("AdminMapper.getClubDetail", id);
+	}
+	
+	public List<ClubImageDTO> getClubImages(int id) {
+		return sst.selectList("AdminMapper.getClubImages", id);
+	} 
 
 	public int updateImage(HttpServletRequest req, ClubImageDTO ci, MultipartFile multipartFile) {
 		return 1;
 	}
+
+
 }

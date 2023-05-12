@@ -101,7 +101,7 @@
 							<td>${c.league_gender}</td>
 							<td>${c.id}</td>
 							<td class="title indent text-align-left"><a
-								href="detail?id=${c.id }">${c.name}</a></td>
+								href="adminClub.detail.go?id=${c.id }">${c.name}</a></td>
 							<td>${c.city}</td>
 							<td>${c.stadium_name}</td>
 							<td>${c.images_count }</td>
@@ -129,7 +129,7 @@
 					<a href="adminClub.go?page=${bo.startPage-1}&field=${bo.field }&search=${bo.search}" class="btn btn-prev">이전</a>
 				</c:if>
 				<c:if test="${bo.startPage<=1 }">
-					<span class="btn btn-prev" onclick="alert('이전 페이지가 없습니다.');">이전</span>
+					<span class="btn btn-prev" onclick="alert('첫 페이지입니다.');">이전</span>
 				</c:if>
 			</div>
 			

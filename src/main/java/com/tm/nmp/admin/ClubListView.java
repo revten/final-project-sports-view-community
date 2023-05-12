@@ -18,9 +18,9 @@ public class ClubListView extends ClubDTO {
 	
 	public ClubListView(int id, String name, String city,
 			String stadium_name, String stadium_address, Date reg_date,
-			Date update_date, List<ClubImageDTO> clubImages, String sports_name, String league_name, int league_gender, int images_count) {
+			Date update_date, String sports_name, String league_name, int league_gender, int images_count) {
 		super(id, name, "", 0, 0, city, stadium_name, stadium_address, "", "", "",
-				reg_date, update_date, clubImages);
+				reg_date, update_date);
 		
 		this.sports_name = sports_name;
 		this.league_name = league_name;

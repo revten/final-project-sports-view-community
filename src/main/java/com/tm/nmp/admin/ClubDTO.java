@@ -17,7 +17,6 @@ public class ClubDTO {
 	private String intro;
 	private Date reg_date;
 	private Date update_date;
-	private List<ClubImageDTO> clubImages;
 
 	public ClubDTO() {
 		super();
@@ -25,8 +24,7 @@ public class ClubDTO {
 	}
 
 	public ClubDTO(int id, String name, String name_eng, int sports_id, int league_id, String city, String stadium_name,
-			String stadium_address, String found_year, String website, String intro, Date reg_date, Date update_date,
-			List<ClubImageDTO> clubImages) {
+			String stadium_address, String found_year, String website, String intro, Date reg_date, Date update_date) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -41,7 +39,6 @@ public class ClubDTO {
 		this.intro = intro;
 		this.reg_date = reg_date;
 		this.update_date = update_date;
-		this.clubImages = clubImages;
 	}
 
 	public int getId() {
@@ -148,21 +145,13 @@ public class ClubDTO {
 		this.update_date = update_date;
 	}
 
-	public List<ClubImageDTO> getClubImages() {
-		return clubImages;
-	}
-
-	public void setClubImages(List<ClubImageDTO> clubImages) {
-		this.clubImages = clubImages;
-	}
-
 	@Override
 	public String toString() {
 		return "ClubDTO [id=" + id + ", name=" + name + ", name_eng=" + name_eng + ", sports_id=" + sports_id
 				+ ", league_id=" + league_id + ", city=" + city + ", stadium_name=" + stadium_name
 				+ ", stadium_address=" + stadium_address + ", found_year=" + found_year + ", website=" + website
 				+ ", intro=" + intro + ", reg_date=" + reg_date + ", update_date=" + update_date + ", clubImages="
-				+ clubImages + "]";
+				+ "]";
 	}
 
 }

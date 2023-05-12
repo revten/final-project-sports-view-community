@@ -20,7 +20,18 @@
 <link rel="stylesheet" href="resources/css/admin/adminBoard.css" />
 <link rel="stylesheet" href="resources/css/admin/adminClub.css" />
 <link rel="stylesheet" href="resources/css/admin/adminUser.css" />
+<script type="text/javascript">
+	$(function() {
+		$("#sports_option").val(${club.sports_id}).attr("selected", "selected");
+		$("#league_option").val(${club.league_id}).attr("selected", "selected");
+	});
+</script>
+
+
 </head>
+
+
+
 <body>
 	<div class="admin__container">
 		<!--==================== NAV ====================-->
@@ -66,19 +77,22 @@
 						<tr>
 							<th>구단코드</th>
 							<td class=""><input class="admin__clubCode" type="text"
-								name="id" required /></td>
+								name="id" placeholder="${club.id}" required /></td>
 						</tr>
 						<tr>
 							<th>구단명</th>
-							<td class=""><input type="text" name="name" required /></td>
+							<td class=""><input type="text" name="name"
+								placeholder="${club.name}" required /></td>
 						</tr>
 						<tr>
 							<th>구단명(영문)</th>
-							<td class=""><input type="text" name="name_eng" required /></td>
+							<td class=""><input type="text" name="name_eng"
+								placeholder="${club.name_eng}" required /></td>
 						</tr>
 						<tr>
 							<th>종목</th>
-							<td class=""><select name="sports_id" required>
+							<td class=""><select id="sports_option" name="sports_id"
+								required>
 									<option value="1">야구</option>
 									<option value="2">축구</option>
 									<option value="3">농구</option>
@@ -87,7 +101,8 @@
 						</tr>
 						<tr>
 							<th>리그</th>
-							<td class=""><select name="league_id" required>
+							<td class=""><select id="league_option" name="league_id"
+								required>
 									<option value="101">KBO</option>
 									<option value="201">K-LEAGUE</option>
 									<option value="301">KBL</option>
@@ -98,28 +113,33 @@
 						</tr>
 						<tr>
 							<th>연고도시</th>
-							<td class=""><input type="text" name="city" required /></td>
+							<td class=""><input type="text" name="city"
+								placeholder="${club.city}" required /></td>
 						</tr>
 						<tr>
 							<th>홈구장명</th>
-							<td class=""><input type="text" name="stadium_name" required /></td>
+							<td class=""><input type="text" name="stadium_name"
+								placeholder="${club.stadium_name}" required /></td>
 						</tr>
 						<tr>
 							<th>홈구장주소</th>
 							<td class=""><input type="text" name="stadium_address"
-								required /></td>
+								placeholder="${club.stadium_address}" required /></td>
 						</tr>
 						<tr>
 							<th>창단년도</th>
-							<td class=""><input type="text" name="found_year" required /></td>
+							<td class=""><input type="text" name="found_year"
+								placeholder="${club.found_year}" required /></td>
 						</tr>
 						<tr>
 							<th>구단 홈페이지</th>
-							<td class=""><input type="text" name="website" /></td>
+							<td class=""><input type="text" name="website"
+								placeholder="${club.website}" /></td>
 						</tr>
 						<tr>
 							<th>구단 소개</th>
-							<td><textarea class="content" name="intro"></textarea></td>
+							<td><textarea class="content" name="intro"
+									placeholder="${club.intro}"></textarea></td>
 						</tr>
 						<hr>
 					</tbody>
@@ -130,42 +150,63 @@
 		<div>
 			<div class="uploadWrap">
 				<div>로고사진</div>
+				<c:if test="${clubImages.sort eq 0 }">
+					<img alt="" src="">
+				</c:if>
 				<input type="file" onchange="setThumbnail(event);" id="image-file">
-				<button onclick="uploadClubImg(0)">업로드</button>
+				<button onclick="uploadClubImg(0)">사진 교체</button>
 			</div>
 
 			<div class="uploadWrap">
 				<div>구장사진</div>
+				<c:if test="${clubImages.sort eq 0 }">
+					<img alt="" src="">
+				</c:if>
 				<input type="file" onchange="setThumbnail(event);">
-				<button onclick="uploadImage(1)">업로드</button>
+				<button onclick="uploadImage(1)">사진 교체</button>
 			</div>
 
 			<div class="uploadWrap">
 				<div>좌석사진</div>
+				<c:if test="${clubImages.sort eq 0 }">
+					<img alt="" src="">
+				</c:if>
 				<input type="file" onchange="setThumbnail(event);">
 				<button onclick="uploadImage(2)">업로드</button>
 			</div>
 
 			<div class="uploadWrap">
 				<div>직관사진3시</div>
+				<c:if test="${clubImages.sort eq 0 }">
+					<img alt="" src="">
+				</c:if>
 				<input type="file" onchange="setThumbnail(event);">
 				<button onclick="uploadImage(3)">업로드</button>
 			</div>
 
 			<div class="uploadWrap">
 				<div>직관사진 6시</div>
+				<c:if test="${clubImages.sort eq 0 }">
+					<img alt="" src="">
+				</c:if>
 				<input type="file" onchange="setThumbnail(event);">
 				<button onclick="uploadImage(3)">업로드</button>
 			</div>
 
 			<div class="uploadWrap">
 				<div>직관사진9시</div>
+				<c:if test="${clubImages.sort eq 0 }">
+					<img alt="" src="">
+				</c:if>
 				<input type="file" onchange="setThumbnail(event);">
 				<button onclick="uploadImage(3)">업로드</button>
 			</div>
 
 			<div class="uploadWrap">
 				<div>직관사진12시</div>
+				<c:if test="${clubImages.sort eq 0 }">
+					<img alt="" src="">
+				</c:if>
 				<input type="file" onchange="setThumbnail(event);">
 				<button onclick="uploadImage(3)">업로드</button>
 			</div>
@@ -176,7 +217,7 @@
 			<button type="submit" form="adminClubInfo-reg">등록</button>
 		</div>
 		</main>
-		
+
 	</div>
 </body>
 </html>
