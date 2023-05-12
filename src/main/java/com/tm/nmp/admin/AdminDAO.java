@@ -7,6 +7,7 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.ibatis.session.SqlSession;
+import org.mybatis.spring.SqlSessionTemplate;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +21,9 @@ public class AdminDAO {
 
 	@Autowired
 	private SqlSession ss;
+	
+	@Autowired
+	private SqlSessionTemplate sst;
 
 	private int allClubCount;
 
@@ -64,48 +68,14 @@ public class AdminDAO {
 	}
 
 	public void regClubInfo(ClubDTO c) {
-		ss.getMapper(AdminMapper.class).regClubInfo(c);
+		sst.insert("AdminMapper.regClubInfo", c);
 	}
 
 	public void insertClubImages(List<ClubImageDTO> images) {
-		ss.getMapper(AdminMapper.class).insertClubImages(images);
+		sst.insert("AdminMapper.insertClubImages", images);
 	}
 
 	public int updateImage(HttpServletRequest req, ClubImageDTO ci, MultipartFile multipartFile) {
-
-		// MultipartFile : 스프링 프레임워크에서 제공하는 타입
-		// (1) 파일 저장할 위치 설정
-		String uploadFolder = req.getSession().getServletContext().getRealPath("resources/files");
-//		String  = "C:\\Users\\kamir\\Desktop\\Projects\\FinalProject\\final-project-sports-view-community\\src\\main\\webapp\\resources\\files";
-
-		// uploadFolder\\k-003.png으로 조립
-		// 이렇게 업로드 하겠다라고 설계
-		File saveFile = new File(uploadFolder, multipartFile.getOriginalFilename());
-		int result = 0;
-		try {
-//			transferTo() : 물리적으로 파일 업로드가 됨
-			multipartFile.transferTo(saveFile);
-			int club_id = Integer.parseInt(req.getParameter("club_id"));
-			int sort = Integer.parseInt(req.getParameter("sort"));
-
-			ci.setClub_id(club_id);
-			ci.setSort(sort);
-			ci.setFile_name(saveFile.getName());
-
-			result = ss.getMapper(AdminMapper.class).uploadImage(ci);
-			System.out.println(result);
-
-			if (result == 1) {
-				req.setAttribute("result", "성공");
-			} else {
-				req.setAttribute("result", "실패");
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-			new File(uploadFolder + "/" + saveFile).delete();
-		}
-
-		return result;
+		return 1;
 	}
-
 }

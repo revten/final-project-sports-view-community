@@ -73,24 +73,17 @@ public class AdminController {
 	}
 
 	@RequestMapping(value = "/adminClub.reg.do", method = RequestMethod.POST)
-	public String adminClubReg(@RequestParam("image") List<MultipartFile> filelist, HttpServletRequest req, ClubDTO c,
-			ClubImageDTO ci) throws IOException {
-		System.out.println("adminClub.reg.do");
-		System.out.println(c.getId());
+	public String adminClubReg(@RequestParam("image") List<MultipartFile> filelist, HttpServletRequest req, ClubDTO c)
+			throws IOException {
 
 		List<ClubImageDTO> images = new ArrayList<>();
-
-		/*
-		 * for (ClubImageDTO aa : images) { if (aa.getFile_name().contains("logo")) {
-		 * aa.setSort(0); } }
-		 */
-
 		for (MultipartFile file : filelist) {
 			if (!file.isEmpty()) {
+				ClubImageDTO ci = new ClubImageDTO();
 				ci.setClub_id(c.getId());
 				String fileName = file.getOriginalFilename();
 				ci.setFile_name(fileName);
-				
+
 				if (fileName.contains("logo")) {
 					ci.setSort(0);
 				} else if (fileName.contains("stadium")) {
@@ -108,19 +101,21 @@ public class AdminController {
 					uploadPath.mkdirs();
 				}
 				logger.info("파일  업로드 폴더 {}", uploadPath);
-
 				// 파일 저장
 				file.transferTo(new File(uploadPath, fileName));
 				logger.info("파일 이름 {}", file.getOriginalFilename());
 				logger.info("분류 {}", ci.getSort());
-
 				logger.info("파일 크기 {}", file.getSize());
-				images.add(ci);
+				images.add(ci);// 파일 업로드가 성공한 경우에만 리스트에 추가
 			}
 		}
-		adminDAO.regClubInfo(c);
+		for (ClubImageDTO i : images) {
+			System.out.println("구단코드 : " + i.getClub_id());
+			System.out.println("사진종류 : " + i.getSort());
+			System.out.println("파일명 : " + i.getFile_name());
+		}
+		/* adminDAO.regClubInfo(c); */
 		adminDAO.insertClubImages(images);
-
 		return "/admin/adminClub";
 	}
 

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.tm.nmp.admin.AdminMapper">
+<mapper namespace="AdminMapper">
 
 	<select id="calcAllClubCount" resultType="java.lang.Integer">
 		select count(id) from
@@ -46,17 +46,13 @@
 		)
 	</insert>
 
-	<insert id="insertClubImages" parameterType="map">
-		insert into tb_club_image (
-		club_id,
-		sort,
-		file_name
-		)
-		values (
-		#{club_id},
-		#{sort},
-		#{file_name}
-		)
+	<insert id="insertClubImages" parameterType="list">
+		insert all
+		<foreach collection="list" item="item">
+			into tb_club_image (club_id, sort, file_name)
+			values (#{item.club_id},#{item.sort},#{item.file_name})
+		</foreach>
+		select * from dual
 	</insert>
 
 </mapper>
