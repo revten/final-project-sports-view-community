@@ -49,8 +49,10 @@
 	<insert id="insertClubImages" parameterType="list">
 		insert all
 		<foreach collection="list" item="item">
-			into tb_club_image (club_id, sort, file_name)
-			values (#{item.club_id},#{item.sort},#{item.file_name})
+			into tb_club_image (club_id,
+			sort, file_name)
+			values
+			(#{item.club_id},#{item.sort},#{item.file_name})
 		</foreach>
 		select * from dual
 	</insert>

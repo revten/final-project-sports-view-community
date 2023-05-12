@@ -68,7 +68,7 @@
 							<td class=""><input class="admin__clubCode" type="text"
 								name="id" required /></td>
 						</tr>
-<!-- 						<tr>
+						<tr>
 							<th>구단명</th>
 							<td class=""><input type="text" name="name" required /></td>
 						</tr>
@@ -120,7 +120,7 @@
 						<tr>
 							<th>구단 소개</th>
 							<td><textarea class="content" name="intro"></textarea></td>
-						</tr> -->
+						</tr>
 						<hr>
 					</tbody>
 				</table>

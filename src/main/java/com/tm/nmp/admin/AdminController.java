@@ -114,7 +114,7 @@ public class AdminController {
 			System.out.println("사진종류 : " + i.getSort());
 			System.out.println("파일명 : " + i.getFile_name());
 		}
-		/* adminDAO.regClubInfo(c); */
+		adminDAO.regClubInfo(c);
 		adminDAO.insertClubImages(images);
 		return "/admin/adminClub";
 	}

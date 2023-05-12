@@ -30,9 +30,8 @@ public class AdminDAO {
 	private static final Logger logger = LoggerFactory.getLogger(AdminDAO.class);
 
 	public int calcAllClubCount(BoardOption bo) {
-		allClubCount = ss.getMapper(AdminMapper.class).calcAllClubCount(bo);
-		
-		System.out.println("전체 구단 수 : " + allClubCount);
+		allClubCount = sst.selectOne("AdminMapper.calcAllClubCount", bo);
+		logger.info("전체 구단 수", allClubCount);
 		return allClubCount;
 	}
 
@@ -63,7 +62,7 @@ public class AdminDAO {
 		bo.setTotalPages((int) Math.ceil(allClubCount / (double) bo.getCountPerPage())); // 총 페이지수
 		req.setAttribute("bo", bo);
 
-		List<ClubListView> clubs = ss.getMapper(AdminMapper.class).getClubViewList(bo);
+		List<ClubListView> clubs = sst.selectList("AdminMapper.getClubViewList", bo);
 		req.setAttribute("clubs", clubs);
 	}
 
