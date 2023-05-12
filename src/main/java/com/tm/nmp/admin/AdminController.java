@@ -136,8 +136,8 @@ public class AdminController {
 		System.out.println(id);
 		ClubListView club = adminDAO.getClubDetail(id);
 		req.setAttribute("club", club);
-/*		List<ClubImageDTO> cli = adminDAO.getClubImages(id);
-		req.setAttribute("clubImages", cli);*/
+		List<ClubImageDTO> ci = adminDAO.getClubImages(id);
+		req.setAttribute("clubImages", ci);
 		return "/admin/adminClubUpdate";
 	}
 	

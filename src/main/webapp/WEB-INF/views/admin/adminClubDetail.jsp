@@ -117,70 +117,91 @@
 		<hr>
 
 		<div>
-			<div>로고사진</div>
-			<c:forEach var="ci" items="${clubImages }">
-				<c:if test="${ci.sort eq 0 }">
-					<img alt=""
-						src="resources/files/club_images/${ci.club_id }/${ci.file_name}"
-						width="200">
-				</c:if>
-			</c:forEach>
+			<div>
+				<h3>로고사진</h3>
+				<c:forEach var="ci" items="${clubImages }">
+					<c:if test="${ci.sort eq 0 }">
+						<img alt=""
+							src="resources/files/club_images/${ci.club_id }/${ci.file_name}"
+							width="200">
+					</c:if>
+				</c:forEach>
+			</div>
 			<hr>
-			<div>구장사진</div>
-			<c:forEach var="ci" items="${clubImages }">
-				<c:if test="${ci.sort eq 1 }">
-					<img alt=""
-						src="resources/files/club_images/${ci.club_id }/${ci.file_name}"
-						width="200">
-				</c:if>
-			</c:forEach>
+
+			<div>
+				<h3>구장사진</h3>
+				<c:forEach var="ci" items="${clubImages }">
+					<c:if test="${ci.sort eq 1 }">
+						<img alt=""
+							src="resources/files/club_images/${ci.club_id }/${ci.file_name}"
+							width="200">
+					</c:if>
+				</c:forEach>
+			</div>
 			<hr>
-			<div>좌석사진</div>
-			<c:forEach var="ci" items="${clubImages }">
-				<c:if test="${ci.sort eq 2 }">
-					<img alt=""
-						src="resources/files/club_images/${ci.club_id }/${ci.file_name}"
-						width="200">
-				</c:if>
-			</c:forEach>
+
+			<div>
+				<h3>좌석사진</h3>
+				<c:forEach var="ci" items="${clubImages }">
+					<c:if test="${ci.sort eq 2 }">
+						<img alt=""
+							src="resources/files/club_images/${ci.club_id }/${ci.file_name}"
+							width="200">
+					</c:if>
+				</c:forEach>
+			</div>
 			<hr>
-			<div>직관사진3시</div>
-			<c:forEach var="ci" items="${clubImages }">
-				<c:if test="${ci.sort eq 3 && fn:contains(ci.file_name, '3') }">
-					<img alt=""
-						src="resources/files/club_images/${ci.club_id }/${ci.file_name}"
-						width="200">
-				</c:if>
-			</c:forEach>
+
+			<div>
+				<h3>직관사진3시</h3>
+				<c:forEach var="ci" items="${clubImages }">
+					<c:if test="${ci.sort eq 3 && fn:contains(ci.file_name, '3') }">
+						<img alt=""
+							src="resources/files/club_images/${ci.club_id }/${ci.file_name}"
+							width="200">
+					</c:if>
+				</c:forEach>
+			</div>
 			<hr>
-			<div>직관사진 6시</div>
-			<c:forEach var="ci" items="${clubImages }">
-				<c:if test="${ci.sort eq 3 && fn:contains(ci.file_name, '6') }">
-					<img alt=""
-						src="resources/files/club_images/${ci.club_id }/${ci.file_name}"
-						width="200">
-				</c:if>
-			</c:forEach>
+
+			<div>
+				<h3>직관사진 6시</h3>
+				<c:forEach var="ci" items="${clubImages }">
+					<c:if test="${ci.sort eq 3 && fn:contains(ci.file_name, '6') }">
+						<img alt=""
+							src="resources/files/club_images/${ci.club_id }/${ci.file_name}"
+							width="200">
+					</c:if>
+				</c:forEach>
+			</div>
 			<hr>
-			<div>직관사진9시</div>
-			<c:forEach var="ci" items="${clubImages }">
-				<c:if test="${ci.sort eq 3 && fn:contains(ci.file_name, '9') }">
-					<img alt=""
-						src="resources/files/club_images/${ci.club_id }/${ci.file_name}"
-						width="200">
-				</c:if>
-			</c:forEach>
+
+			<div>
+				<h3>직관사진9시</h3>
+				<c:forEach var="ci" items="${clubImages }">
+					<c:if test="${ci.sort eq 3 && fn:contains(ci.file_name, '9') }">
+						<img alt=""
+							src="resources/files/club_images/${ci.club_id }/${ci.file_name}"
+							width="200">
+					</c:if>
+				</c:forEach>
+			</div>
 			<hr>
-			<div>직관사진12시</div>
-			<c:forEach var="ci" items="${clubImages }">
-				<c:if test="${ci.sort eq 3 && fn:contains(ci.file_name, '12')}">
-					<img alt=""
-						src="resources/files/club_images/${ci.club_id }/${ci.file_name}"
-						width="200">
-				</c:if>
-			</c:forEach>
+
+			<div>
+				<h3>직관사진12시</h3>
+				<c:forEach var="ci" items="${clubImages }">
+					<c:if test="${ci.sort eq 3 && fn:contains(ci.file_name, '12')}">
+						<img alt=""
+							src="resources/files/club_images/${ci.club_id }/${ci.file_name}"
+							width="200">
+					</c:if>
+				</c:forEach>
+			</div>
 		</div>
 		<hr>
+		
 		<div class="">
 			<a class="" onclick="history.back()">이전으로</a> <a class=""
 				href="adminClub.update.go?id=${club.id }">수정</a>

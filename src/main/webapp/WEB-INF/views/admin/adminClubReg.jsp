@@ -129,39 +129,44 @@
 
 			<div>
 				<div class="uploadImage">
-					<div>로고사진</div>
+					<h3>로고사진</h3>
 					<input type="file" onchange="imagePreview(event);" name="image">
 				</div>
+				<hr>
 
 				<div class="uploadImage">
-					<div>구장사진</div>
+					<h3>구장사진</h3>
 					<input type="file" onchange="imagePreview(event);" name="image">
 				</div>
+				<hr>
 
 				<div class="uploadImage">
-					<div>좌석사진</div>
+					<h3>좌석사진</h3>
 					<input type="file" onchange="imagePreview(event);" name="image">
 				</div>
+				<hr>
 
 				<div class="uploadImage">
-					<div>직관사진3시</div>
+					<h3>직관사진3시</h3>
 					<input type="file" onchange="imagePreview(event);" name="image">
 				</div>
+				<hr>
 
 				<div class="uploadImage">
-					<div>직관사진 6시</div>
+					<h3>직관사진 6시</h3>
 					<input type="file" onchange="imagePreview(event);" name="image">
 				</div>
+				<hr>
 
 				<div class="uploadImage">
-					<div>직관사진9시</div>
+					<h3>직관사진9시</h3>
 					<input type="file" onchange="imagePreview(event);" name="image">
 				</div>
+				<hr>
 
 				<div class="uploadImage">
-					<div>직관사진12시</div>
+					<h3>직관사진12시</h3>
 					<input type="file" onchange="imagePreview(event);" name="image">
-					<input type="hidden" name="sort" value="3">
 				</div>
 			</div>
 		</form>

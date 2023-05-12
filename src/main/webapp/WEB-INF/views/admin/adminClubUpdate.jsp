@@ -67,7 +67,7 @@
 
 		<!--==================== MAIN ====================-->
 		<main>
-		<h2 class="main title">구단 등록</h2>
+		<h2 class="main title">구단 수정</h2>
 
 		<form id="adminClubInfo-reg" method="post" action="adminClub.reg.do"
 			enctype="multipart/form-data">
@@ -148,70 +148,132 @@
 		</form>
 
 		<div>
-			<div class="uploadWrap">
-				<div>로고사진</div>
-				<c:if test="${clubImages.sort eq 0 }">
-					<img alt="" src="">
-				</c:if>
-				<input type="file" onchange="setThumbnail(event);" id="image-file">
-				<button onclick="uploadClubImg(0)">사진 교체</button>
+			<div>
+				<h3>로고사진</h3>
+				<div>
+					<c:forEach var="ci" items="${clubImages }">
+						<c:if test="${ci.sort eq 0 }">
+							<img alt=""
+								src="resources/files/club_images/${ci.club_id }/${ci.file_name}"
+								width="200">
+						</c:if>
+					</c:forEach>
+				</div>
+				<div class="uploadWrap">
+					<input type="file" onchange="imagePreview(event);" id="image-file">
+					<button onclick="uploadClubImg(0)">사진 교체</button>
+				</div>
 			</div>
+			<hr>
 
-			<div class="uploadWrap">
-				<div>구장사진</div>
-				<c:if test="${clubImages.sort eq 0 }">
-					<img alt="" src="">
-				</c:if>
-				<input type="file" onchange="setThumbnail(event);">
-				<button onclick="uploadImage(1)">사진 교체</button>
+			<div>
+				<h3>구장사진</h3>
+				<div>
+					<c:forEach var="ci" items="${clubImages }">
+						<c:if test="${ci.sort eq 1 }">
+							<img alt=""
+								src="resources/files/club_images/${ci.club_id }/${ci.file_name}"
+								width="200">
+						</c:if>
+					</c:forEach>
+				</div>
+				<div class="uploadWrap">
+					<input type="file" onchange="imagePreview(event);">
+					<button onclick="uploadImage(1)">사진 교체</button>
+				</div>
 			</div>
+			<hr>
 
-			<div class="uploadWrap">
-				<div>좌석사진</div>
-				<c:if test="${clubImages.sort eq 0 }">
-					<img alt="" src="">
-				</c:if>
-				<input type="file" onchange="setThumbnail(event);">
-				<button onclick="uploadImage(2)">업로드</button>
+			<div>
+				<h3>좌석사진</h3>
+				<div>
+					<c:forEach var="ci" items="${clubImages }">
+						<c:if test="${ci.sort eq 2 }">
+							<img alt=""
+								src="resources/files/club_images/${ci.club_id }/${ci.file_name}"
+								width="200">
+						</c:if>
+					</c:forEach>
+				</div>
+				<div class="uploadWrap">
+					<input type="file" onchange="imagePreview(event);">
+					<button onclick="uploadImage(2)">업로드</button>
+				</div>
 			</div>
-
-			<div class="uploadWrap">
-				<div>직관사진3시</div>
-				<c:if test="${clubImages.sort eq 0 }">
-					<img alt="" src="">
-				</c:if>
-				<input type="file" onchange="setThumbnail(event);">
-				<button onclick="uploadImage(3)">업로드</button>
+			<hr>
+			<div>
+				<h3>직관사진3시</h3>
+				<div>
+					<c:forEach var="ci" items="${clubImages }">
+						<c:if test="${ci.sort eq 3 && fn:contains(ci.file_name, '3')}">
+							<img alt=""
+								src="resources/files/club_images/${ci.club_id }/${ci.file_name}"
+								width="200">
+						</c:if>
+					</c:forEach>
+				</div>
+				<div class="uploadWrap">
+					<input type="file" onchange="imagePreview(event);">
+					<button onclick="uploadImage(3)">업로드</button>
+				</div>
 			</div>
+			<hr>
 
-			<div class="uploadWrap">
-				<div>직관사진 6시</div>
-				<c:if test="${clubImages.sort eq 0 }">
-					<img alt="" src="">
-				</c:if>
-				<input type="file" onchange="setThumbnail(event);">
-				<button onclick="uploadImage(3)">업로드</button>
+			<div>
+				<h3>직관사진 6시</h3>
+				<div>
+					<c:forEach var="ci" items="${clubImages }">
+						<c:if test="${ci.sort eq 3 && fn:contains(ci.file_name, '6')}">
+							<img alt=""
+								src="resources/files/club_images/${ci.club_id }/${ci.file_name}"
+								width="200">
+						</c:if>
+					</c:forEach>
+				</div>
+				<div class="uploadWrap">
+					<input type="file" onchange="imagePreview(event);">
+					<button onclick="uploadImage(3)">업로드</button>
+				</div>
 			</div>
+			<hr>
 
-			<div class="uploadWrap">
-				<div>직관사진9시</div>
-				<c:if test="${clubImages.sort eq 0 }">
-					<img alt="" src="">
-				</c:if>
-				<input type="file" onchange="setThumbnail(event);">
-				<button onclick="uploadImage(3)">업로드</button>
+			<div>
+				<h3>직관사진9시</h3>
+				<div>
+					<c:forEach var="ci" items="${clubImages }">
+						<c:if test="${ci.sort eq 3 && fn:contains(ci.file_name, '9')}">
+							<img alt=""
+								src="resources/files/club_images/${ci.club_id }/${ci.file_name}"
+								width="200">
+						</c:if>
+					</c:forEach>
+				</div>
+				<div class="uploadWrap">
+					<input type="file" onchange="imagePreview(event);">
+					<button onclick="uploadImage(3)">업로드</button>
+				</div>
 			</div>
+			<hr>
 
-			<div class="uploadWrap">
-				<div>직관사진12시</div>
-				<c:if test="${clubImages.sort eq 0 }">
-					<img alt="" src="">
-				</c:if>
-				<input type="file" onchange="setThumbnail(event);">
-				<button onclick="uploadImage(3)">업로드</button>
+			<div>
+				<h3>직관사진12시</h3>
+				<div>
+					<c:forEach var="ci" items="${clubImages }">
+						<c:if test="${ci.sort eq 3 && fn:contains(ci.file_name, '12')}">
+							<img alt=""
+								src="resources/files/club_images/${ci.club_id }/${ci.file_name}"
+								width="200">
+						</c:if>
+					</c:forEach>
+				</div>
+				<div class="uploadWrap">
+					<input type="file" onchange="imagePreview(event);">
+					<button onclick="uploadImage(3)">업로드</button>
+				</div>
 			</div>
 		</div>
-
+		<hr>
+		
 		<div class="">
 			<a class="" href="adminClub">취소</a>
 			<button type="submit" form="adminClubInfo-reg">등록</button>
