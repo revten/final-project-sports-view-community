@@ -3,11 +3,10 @@ function imagePreview(event) {
 
 	// 이벤트 대상자의 부모를 기준으로 움직이도록
 	let uploadImage = event.target.parentNode;
-
 	// 이미지 변경할때 이미지 계속 늘어나지 않도록 기존 이미지 삭제
 	// 버튼 계속 늘어나지 않도록 기존 버튼 삭제
 	let pre_img = $(uploadImage).find('img'); // find().val()로 하지 않는 것에 유의
-	let pre_del = $(uploadImage).find('button'); 
+	let pre_del = $(uploadImage).find('.pre_del'); 
 	if ($(pre_img).length) {
 		$(pre_img).remove();
 		$(pre_del).remove();
@@ -44,22 +43,23 @@ function imagePreview(event) {
 }
 
 // 이미지 업로드
-function uploadClubImg(a) {
-
+function uploadClubImg(sort) {
+	
 	let formData = new FormData(); // FormData 객체 생성
+	
+	let uploadWrap = event.target.parentNode; // 상위 div 클래스 uploadWrap. $(this).parent(); 가 안 먹힌다.
+	let imageInput = $(uploadWrap).find('input')[0]; // 
 
-	const imageInput = $("#image-file")[0];
-	console.log("imageInput: ", imageInput.files)
-	formData.append("file_name", imageInput.files[0]);
+	formData.append("file", imageInput.files[0]); // file 타입 선택, text타입은 ('#text').val()
+	formData.append("club_id", $("#admin__clubCode").val());
+	formData.append("sort", sort);
 
-	console.log("club_id : ", $(".admin__clubCode").val());
-	formData.append("club_id", $(".admin__clubCode").val());
-
-	console.log("sort : ", a);
-	formData.append("sort", a);
+	for (let key of formData.keys()) {
+		console.log(key, ":", formData.get(key));
+	}
 
 	$.ajax({
-		url : 'adminClub.uploadImage.do',
+		url : 'adminClub.insertImage.do',
 		type : 'POST',
 		data : formData,
 		// processData,contentType은 반드시 false여야 전송됨
@@ -69,8 +69,8 @@ function uploadClubImg(a) {
 		contentType : false,
 	}).done(function(response) {
 		console.log("response : ", JSON.stringify(response));
-		$("#image-file").val('');
-		$(".pre_img").empty();
+		$(uploadWrap).find('input').val('');
+		$(uploadWrap).find(".pre_img").remove();
 		alert('업로드 완료');
 	}).fail(function(data) {
 		if (data.responseCode)

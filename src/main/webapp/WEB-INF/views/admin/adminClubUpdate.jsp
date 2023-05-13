@@ -69,15 +69,17 @@
 		<main>
 		<h2 class="main title">구단 수정</h2>
 
-		<form id="adminClubInfo-reg" method="post" action="adminClub.reg.do"
-			enctype="multipart/form-data">
+		<form id="adminClubInfo-update" method="post"
+			action="adminClub.update.do" enctype="multipart/form-data">
 			<div class="margin-top first">
 				<table class="table">
 					<tbody>
 						<tr>
 							<th>구단코드</th>
 							<td class=""><input class="admin__clubCode" type="text"
-								name="id" placeholder="${club.id}" required /></td>
+								name="id" placeholder="${club.id}" required /> <input
+								id="admin__clubCode" type="hidden" value="${club.id}" /></td>
+
 						</tr>
 						<tr>
 							<th>구단명</th>
@@ -156,12 +158,13 @@
 							<img alt=""
 								src="resources/files/club_images/${ci.club_id }/${ci.file_name}"
 								width="200">
+							<input type="hidden" value="${ci.id}" id="clubImage-id" />
 						</c:if>
 					</c:forEach>
 				</div>
 				<div class="uploadWrap">
 					<input type="file" onchange="imagePreview(event);" id="image-file">
-					<button onclick="uploadClubImg(0)">사진 교체</button>
+					<button onclick="uploadClubImg(0)">업로드</button>
 				</div>
 			</div>
 			<hr>
@@ -178,8 +181,8 @@
 					</c:forEach>
 				</div>
 				<div class="uploadWrap">
-					<input type="file" onchange="imagePreview(event);">
-					<button onclick="uploadImage(1)">사진 교체</button>
+					<input type="file" onchange="imagePreview(event);" id="image-file">
+					<button onclick="uploadClubImg(1)">업로드</button>
 				</div>
 			</div>
 			<hr>
@@ -196,8 +199,8 @@
 					</c:forEach>
 				</div>
 				<div class="uploadWrap">
-					<input type="file" onchange="imagePreview(event);">
-					<button onclick="uploadImage(2)">업로드</button>
+					<input type="file" onchange="imagePreview(event);" id="image-file">
+					<button onclick="uploadClubImg(2)">업로드</button>
 				</div>
 			</div>
 			<hr>
@@ -213,8 +216,8 @@
 					</c:forEach>
 				</div>
 				<div class="uploadWrap">
-					<input type="file" onchange="imagePreview(event);">
-					<button onclick="uploadImage(3)">업로드</button>
+					<input type="file" onchange="imagePreview(event);" id="image-file">
+					<button onclick="uploadClubImg(3)">업로드</button>
 				</div>
 			</div>
 			<hr>
@@ -231,8 +234,8 @@
 					</c:forEach>
 				</div>
 				<div class="uploadWrap">
-					<input type="file" onchange="imagePreview(event);">
-					<button onclick="uploadImage(3)">업로드</button>
+					<input type="file" onchange="imagePreview(event);" id="image-file">
+					<button onclick="uploadClubImg(3)">업로드</button>
 				</div>
 			</div>
 			<hr>
@@ -249,8 +252,8 @@
 					</c:forEach>
 				</div>
 				<div class="uploadWrap">
-					<input type="file" onchange="imagePreview(event);">
-					<button onclick="uploadImage(3)">업로드</button>
+					<input type="file" onchange="imagePreview(event);" id="image-file">
+					<button onclick="uploadClubImg(3)">업로드</button>
 				</div>
 			</div>
 			<hr>
@@ -267,16 +270,16 @@
 					</c:forEach>
 				</div>
 				<div class="uploadWrap">
-					<input type="file" onchange="imagePreview(event);">
-					<button onclick="uploadImage(3)">업로드</button>
+					<input type="file" onchange="imagePreview(event);" id="image-file">
+					<button onclick="uploadClubImg(3)">업로드</button>
 				</div>
 			</div>
 		</div>
 		<hr>
-		
+
 		<div class="">
-			<a class="" href="adminClub">취소</a>
-			<button type="submit" form="adminClubInfo-reg">등록</button>
+			<a class="" href="adminClub.go">취소</a>
+			<button type="submit" form="adminClubInfo-update">수정완료</button>
 		</div>
 		</main>
 

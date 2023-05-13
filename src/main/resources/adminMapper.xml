@@ -57,15 +57,27 @@
 		select * from dual
 	</insert>
 
+	<insert id="insertOneClubImage" parameterType="ClubImageDTO" >
+		insert into tb_club_image(club_id, sort, file_name)
+		values
+		(#{club_id},#{sort},#{file_name})
+	</insert>
+<!-- 	
+	<update id="updateClubImage">
+		update 
+	
+	</update>
+	 -->
+
 	<select id="getClubDetail" resultType="ClubListView">
-		select c.*, s.name sports_name, l.name league_name from tb_club c, tb_sports
-		s, tb_league l where
-		c.sports_id = s.id and c.league_id = l.id and c.id = #{id}
+		select c.*, s.name
+		sports_name, l.name league_name from tb_club c, tb_sports s, tb_league l 
+		where c.sports_id = s.id and c.league_id = l.id and c.id = #{id}
 	</select>
-	
+
 	<select id="getClubImages" resultType="ClubImageDTO">
-		select * from tb_club_image	where club_id = #{id}
-	
+		select * from
+		tb_club_image where club_id = #{id}
 	</select>
 
 </mapper>

@@ -68,6 +68,7 @@
 							<th>구단코드</th>
 							<td class=""><input class="admin__clubCode" type="text"
 								name="id" required /></td>
+								
 						</tr>
 						<tr>
 							<th>구단명</th>

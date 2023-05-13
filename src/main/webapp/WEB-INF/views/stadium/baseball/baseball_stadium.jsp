@@ -18,11 +18,11 @@ pageEncoding="UTF-8"%>
         <div id="stadium__img">
           <a style="cursor: pointer" onclick="baseballStadiumGo('ssg')">
             <img style="width: 100px; height: 100px; cursor: pointer"
-            src=resources/files/stadium/baseball/ssg_landers.svg>
+            src=resources/files/club_images/1001/logo.svg>
           </a>
           <a style="cursor: pointer" onclick="baseballStadiumGo('kiwoom')">
             <img style="width: 100px; height: 100px; cursor: pointer"
-            src=resources/files/stadium/baseball/kiwoom.svg>
+            src=resources/files/club_images/1002/logo.svg>>
           </a>
           <a style="cursor: pointer" onclick="baseballStadiumGo('lg')">
             <img style="width: 100px; height: 100px; cursor: pointer"
