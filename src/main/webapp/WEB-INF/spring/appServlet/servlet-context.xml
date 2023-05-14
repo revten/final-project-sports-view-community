@@ -59,6 +59,7 @@
 				<beans:value>classpath:boardMapper.xml</beans:value>
 				<beans:value>classpath:pointMapper.xml</beans:value>
 				<beans:value>classpath:adminMapper.xml</beans:value>
+				<beans:value>classpath:stadiumMapper.xml</beans:value>
 			</beans:list>
 		</beans:property>
 	</beans:bean>

@@ -12,9 +12,11 @@ public interface AdminMapper {
 
 	ClubListView getClubDetail(int id);
 
-	List<ClubImageDTO> getClubImages(int id);
+	List<ClubImageDTO> getClubImages(int club_id);
+	
+	ClubImageDTO getRecentClubImage(int id);
 
-	int regClubInfo(ClubDTO c);
+	int insertClubInfo(ClubDTO c);
 
 	void insertClubImages(List<ClubImageDTO> images);
 

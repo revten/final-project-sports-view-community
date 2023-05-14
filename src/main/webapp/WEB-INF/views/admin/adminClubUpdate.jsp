@@ -150,9 +150,9 @@
 		</form>
 
 		<div>
-			<div>
+			<div class="clubImageWrap">
 				<h3>로고사진</h3>
-				<div>
+				<div class="uploaded__image">
 					<c:forEach var="ci" items="${clubImages }">
 						<c:if test="${ci.sort eq 0 }">
 							<img alt=""
@@ -169,9 +169,9 @@
 			</div>
 			<hr>
 
-			<div>
+			<div class="clubImageWrap">
 				<h3>구장사진</h3>
-				<div>
+				<div class="uploaded__image">
 					<c:forEach var="ci" items="${clubImages }">
 						<c:if test="${ci.sort eq 1 }">
 							<img alt=""
@@ -187,9 +187,9 @@
 			</div>
 			<hr>
 
-			<div>
+			<div class="clubImageWrap">
 				<h3>좌석사진</h3>
-				<div>
+				<div class="uploaded__image">
 					<c:forEach var="ci" items="${clubImages }">
 						<c:if test="${ci.sort eq 2 }">
 							<img alt=""
@@ -204,9 +204,9 @@
 				</div>
 			</div>
 			<hr>
-			<div>
+			<div class="clubImageWrap">
 				<h3>직관사진3시</h3>
-				<div>
+				<div class="uploaded__image">
 					<c:forEach var="ci" items="${clubImages }">
 						<c:if test="${ci.sort eq 3 && fn:contains(ci.file_name, '3')}">
 							<img alt=""
@@ -222,9 +222,9 @@
 			</div>
 			<hr>
 
-			<div>
+			<div class="clubImageWrap">
 				<h3>직관사진 6시</h3>
-				<div>
+				<div class="uploaded__image">
 					<c:forEach var="ci" items="${clubImages }">
 						<c:if test="${ci.sort eq 3 && fn:contains(ci.file_name, '6')}">
 							<img alt=""
@@ -240,9 +240,9 @@
 			</div>
 			<hr>
 
-			<div>
+			<div class="clubImageWrap">
 				<h3>직관사진9시</h3>
-				<div>
+				<div class="uploaded__image">
 					<c:forEach var="ci" items="${clubImages }">
 						<c:if test="${ci.sort eq 3 && fn:contains(ci.file_name, '9')}">
 							<img alt=""
@@ -258,9 +258,9 @@
 			</div>
 			<hr>
 
-			<div>
+			<div class="clubImageWrap">
 				<h3>직관사진12시</h3>
-				<div>
+				<div class="uploaded__image">
 					<c:forEach var="ci" items="${clubImages }">
 						<c:if test="${ci.sort eq 3 && fn:contains(ci.file_name, '12')}">
 							<img alt=""

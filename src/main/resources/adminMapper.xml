@@ -13,71 +13,49 @@
 		resultType="com.tm.nmp.admin.ClubListView">
 		select * from (select rownum num, n.* from (select * from
 		v_clubList where ${field} like '%'||UPPER(#{search})||'%' order by
-		id)
-		n)
+		id)n)
 		where num between #{startNum} and #{endNum}
 	</select>
 
-	<insert id="regClubInfo" parameterType="ClubDTO">
+	<select id="getClubDetail" resultType="ClubListView">
+		select c.*, s.name sports_name, l.name league_name from tb_club c, tb_sports s, tb_league l
+		where c.sports_id = s.id and c.league_id = l.id and c.id = #{id}
+	</select>
+
+	<select id="getClubImages" resultType="ClubImageDTO">
+		select * from tb_club_image where club_id = #{club_id}
+	</select>
+
+	<select id="getRecentClubImage" resultType="ClubImageDTO">
+		select * from tb_club_image where id = (select max(id) from tb_club_image)
+	</select>
+
+	<insert id="insertClubInfo" parameterType="ClubDTO">
 		INSERT INTO tb_club (
-		id,
-		name,
-		name_eng,
-		sports_id,
-		league_id,
-		city,
-		stadium_name,
-		stadium_address,
-		found_year,
-		website,
-		intro
+		id, name, name_eng, sports_id, league_id, city, stadium_name,
+		stadium_address, found_year, website, intro
 		) VALUES (
-		#{id},
-		#{name},
-		#{name_eng},
-		#{sports_id},
-		#{league_id},
-		#{city},
-		#{stadium_name},
-		#{stadium_address},
-		#{found_year},
-		#{website},
-		#{intro}
+		#{id}, #{name}, #{name_eng}, #{sports_id}, #{league_id}, #{city}, #{stadium_name},
+		#{stadium_address}, #{found_year}, #{website}, #{intro}
 		)
 	</insert>
 
 	<insert id="insertClubImages" parameterType="list">
 		insert all
 		<foreach collection="list" item="item">
-			into tb_club_image (club_id,
-			sort, file_name)
-			values
-			(#{item.club_id},#{item.sort},#{item.file_name})
+			into tb_club_image (
+			club_id, sort, file_name
+			) values (
+			#{item.club_id},#{item.sort},#{item.file_name})
 		</foreach>
 		select * from dual
 	</insert>
 
-	<insert id="insertOneClubImage" parameterType="ClubImageDTO" >
-		insert into tb_club_image(club_id, sort, file_name)
-		values
-		(#{club_id},#{sort},#{file_name})
+	<insert id="insertOneClubImage" parameterType="ClubImageDTO">
+		insert into tb_club_image(
+		club_id, sort, file_name
+		) values (
+		#{club_id},#{sort},#{file_name})
 	</insert>
-<!-- 	
-	<update id="updateClubImage">
-		update 
-	
-	</update>
-	 -->
-
-	<select id="getClubDetail" resultType="ClubListView">
-		select c.*, s.name
-		sports_name, l.name league_name from tb_club c, tb_sports s, tb_league l 
-		where c.sports_id = s.id and c.league_id = l.id and c.id = #{id}
-	</select>
-
-	<select id="getClubImages" resultType="ClubImageDTO">
-		select * from
-		tb_club_image where club_id = #{id}
-	</select>
-
+	<!-- <update id="updateClubImage"> update </update> -->
 </mapper>

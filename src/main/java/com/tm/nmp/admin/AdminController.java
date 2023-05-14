@@ -34,7 +34,7 @@ public class AdminController {
 	private AdminDAO adminDAO;
 
 	private static final Logger logger = LoggerFactory.getLogger(AdminController.class);
-	
+
 	private int allClubCount;
 
 	@RequestMapping(value = "/admin.go", method = RequestMethod.GET)
@@ -62,7 +62,7 @@ public class AdminController {
 	public String getClubViewList(HttpServletRequest req, BoardOption bo) {
 //		acDAO.wathingPage(req);
 //		acDAO.loginCheck(req);
-	
+
 		req.getParameter("page");
 
 		if (bo.getField() == null) {
@@ -71,8 +71,8 @@ public class AdminController {
 		if (bo.getSearch() == null) {
 			bo.setSearch("");
 		}
-		
-		allClubCount = adminDAO.calcAllClubCount(bo); // 총 게시글 수	
+
+		allClubCount = adminDAO.calcAllClubCount(bo); // 총 게시글 수
 		logger.info("전체 구단 수", allClubCount);
 
 		System.out.println("조회구단수 : " + allClubCount);
@@ -89,22 +89,35 @@ public class AdminController {
 		bo.setEndPage(4);// 한화면에 보여줄 페이지 목록 마지막
 		bo.setTotalPages((int) Math.ceil(allClubCount / (double) bo.getCountPerPage())); // 총 페이지수
 		req.setAttribute("bo", bo);
-		
-		List<ClubListView> clubs  = adminDAO.getClubViewList(bo);
+
+		List<ClubListView> clubs = adminDAO.getClubViewList(bo);
 		req.setAttribute("clubs", clubs);
 
 		return "/admin/adminClub";
 	}
 
+	@RequestMapping(value = "/adminClub.detail.go", method = RequestMethod.GET)
+	public String getClubDetail(HttpServletRequest req) {
+		int id = Integer.parseInt(req.getParameter("id"));
+		logger.info("club_id", id);
+
+		ClubListView club = adminDAO.getClubDetail(id);
+		req.setAttribute("club", club);
+
+		List<ClubImageDTO> ci = adminDAO.getClubImages(id);
+		req.setAttribute("clubImages", ci);
+		return "/admin/adminClubDetail";
+	}
+
 	@RequestMapping(value = "/adminClub.reg.go", method = RequestMethod.GET)
-	public String adminClubRegGo(HttpServletRequest req) {
+	public String adminClubInsertGo(HttpServletRequest req) {
 //		acDAO.wathingPage(req);
 //		acDAO.loginCheck(req);
 		return "/admin/adminClubReg";
 	}
 
 	@RequestMapping(value = "/adminClub.reg.do", method = RequestMethod.POST)
-	public String adminClubReg(@RequestParam("image") List<MultipartFile> filelist, HttpServletRequest req, ClubDTO c)
+	public String insertClubInfo(@RequestParam("image") List<MultipartFile> filelist, HttpServletRequest req, ClubDTO c)
 			throws IOException {
 
 		List<ClubImageDTO> images = new ArrayList<>();
@@ -145,47 +158,15 @@ public class AdminController {
 			System.out.println("사진종류 : " + i.getSort());
 			System.out.println("파일명 : " + i.getFile_name());
 		}
-		adminDAO.regClubInfo(c);
+		adminDAO.insertClubInfo(c);
 		adminDAO.insertClubImages(images);
 		return "/admin/adminClub";
 	}
 
-	@RequestMapping(value = "/adminClub.detail.go", method = RequestMethod.GET)
-	public String getClubDetail(HttpServletRequest req) {
-		int id = Integer.parseInt(req.getParameter("id"));
-		System.out.println(id);
-		ClubListView club = adminDAO.getClubDetail(id);
-		req.setAttribute("club", club);
-		List<ClubImageDTO> ci = adminDAO.getClubImages(id);
-		req.setAttribute("clubImages", ci);
-		return "/admin/adminClubDetail";
-	}
-
-	@RequestMapping(value = "/adminClub.update.go", method = RequestMethod.GET)
-	public String updateClubGo(HttpServletRequest req) {
-		int id = Integer.parseInt(req.getParameter("id"));
-		System.out.println(id);
-		ClubListView club = adminDAO.getClubDetail(id);
-		req.setAttribute("club", club);
-		List<ClubImageDTO> ci = adminDAO.getClubImages(id);
-		req.setAttribute("clubImages", ci);
-		return "/admin/adminClubUpdate";
-	}
-
-	@RequestMapping(value = "/adminClub.update.do", method = RequestMethod.GET)
-	public String updateClub(HttpServletRequest req) {
-		int id = Integer.parseInt(req.getParameter("id"));
-		System.out.println(id);
-
-		return "/admin/adminClub";
-	}
-
 	@ResponseBody
-	@RequestMapping(value = "/adminClub.insertImage.do", method = RequestMethod.POST)
-	public List<ClubImageDTO> adminClubInsertImage(HttpServletRequest req, ClubImageDTO ci, MultipartFile file) {
-		int id = ci.getClub_id();
+	@RequestMapping(value = "/adminClub.insertOneImage.do", method = RequestMethod.POST)
+	public ClubImageDTO adminClubInsertOneImage(HttpServletRequest req, ClubImageDTO ci, MultipartFile file) {
 
-		System.out.println(id);
 		if (!file.isEmpty()) {
 			String fileName = file.getOriginalFilename();
 			ci.setFile_name(fileName);
@@ -211,7 +192,26 @@ public class AdminController {
 		}
 
 		int result = adminDAO.insertOneClubImage(ci);
-		return adminDAO.getClubImages(id);
+		return adminDAO.getRecentClubImage();
+	}
+
+	@RequestMapping(value = "/adminClub.update.go", method = RequestMethod.GET)
+	public String updateClubGo(HttpServletRequest req) {
+		int club_id = Integer.parseInt(req.getParameter("id"));
+		logger.info("club_id", club_id);
+
+		ClubListView club = adminDAO.getClubDetail(club_id);
+		req.setAttribute("club", club);
+
+		List<ClubImageDTO> ci = adminDAO.getClubImages(club_id);
+		req.setAttribute("clubImages", ci);
+		return "/admin/adminClubUpdate";
+	}
+
+	@RequestMapping(value = "/adminClub.update.do", method = RequestMethod.GET)
+	public String updateClub(HttpServletRequest req, ClubDTO c) {
+//		adminDAO.updateClubInfo(c);
+		return "/admin/adminClub";
 	}
 
 	@RequestMapping(value = "/adminClub.updateImage.do", method = RequestMethod.POST)

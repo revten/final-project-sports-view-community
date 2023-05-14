@@ -1,5 +1,7 @@
 package com.tm.nmp.stadium;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,6 +10,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.tm.nmp.account.accountDAO;
+import com.tm.nmp.admin.AdminDAO;
+import com.tm.nmp.admin.ClubImageDTO;
 
 @Controller
 public class StadiumController {
@@ -17,6 +21,9 @@ public class StadiumController {
 	
 	@Autowired
 	private StadiumDAO sdDAO;
+	
+	@Autowired
+	private AdminDAO adminDAO;
 	
 	@RequestMapping(value = "/stadium.main.go", method = RequestMethod.GET)
 	public String stadiumMainGo(HttpServletRequest req) {
@@ -119,6 +126,33 @@ public class StadiumController {
 		sdDAO.viewVolleyballSeat(req);
 		sdDAO.viewVolleyballSeatDetail(req);
 		req.setAttribute("contentPage", "stadium/volleyball/w_volleyball_stadium_detail.jsp");
+		return "index";
+	}
+	
+	@RequestMapping(value = "/league.clubList.go", method = RequestMethod.GET)
+	public String getLogoBySports(HttpServletRequest req) {
+		
+		int league_id = Integer.parseInt(req.getParameter("league_id"));
+		System.out.println(league_id);
+		
+		List<ClubImageDTO> clubImages = sdDAO.getLogoBySports(league_id);
+		
+		req.setAttribute("clubImages", clubImages);
+		req.setAttribute("contentPage", "stadium/stadiumClub.jsp");
+		return "index";
+	}
+	
+	
+	@RequestMapping(value = "/stadium.detail.go", method = RequestMethod.GET)
+	public String getStadiumDetail(HttpServletRequest req) {
+		
+		int club_id = Integer.parseInt(req.getParameter("club_id"));
+		System.out.println(club_id);
+		
+		List<ClubImageDTO> clubImages = adminDAO.getClubImages(club_id);
+		
+		req.setAttribute("clubImages", clubImages);
+		req.setAttribute("contentPage", "stadium/stadiumDetail.jsp");
 		return "index";
 	}
 	

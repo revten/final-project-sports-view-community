@@ -22,20 +22,24 @@ public class AdminDAO {
 		return sst.selectList("AdminMapper.getClubViewList", bo);
 	}
 
-	public void regClubInfo(ClubDTO c) {
-		sst.insert("AdminMapper.regClubInfo", c);
-	}
-
-	public void insertClubImages(List<ClubImageDTO> images) {
-		sst.insert("AdminMapper.insertClubImages", images);
-	}
-
 	public ClubListView getClubDetail(int id) {
 		return sst.selectOne("AdminMapper.getClubDetail", id);
 	}
 
-	public List<ClubImageDTO> getClubImages(int id) {
-		return sst.selectList("AdminMapper.getClubImages", id);
+	public List<ClubImageDTO> getClubImages(int club_id) {
+		return sst.selectList("AdminMapper.getClubImages", club_id);
+	}
+
+	public ClubImageDTO getRecentClubImage() {
+		return sst.selectOne("AdminMapper.getRecentClubImage");
+	}
+
+	public void insertClubInfo(ClubDTO c) {
+		sst.insert("AdminMapper.insertClubInfo", c);
+	}
+
+	public void insertClubImages(List<ClubImageDTO> images) {
+		sst.insert("AdminMapper.insertClubImages", images);
 	}
 
 	public int insertOneClubImage(ClubImageDTO ci) {

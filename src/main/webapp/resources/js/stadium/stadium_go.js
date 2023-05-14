@@ -1,8 +1,4 @@
 /* 야구 */
-function stadiumBaseball() {
-	location.href = "baseball.go";
-}
-
 function baseballStadiumGo(team) {
 	location.href = "baseball.stadium.go.detail?team=" + team;
 }
@@ -118,10 +114,6 @@ function baseballSetVal() {
 }
 
 /* 축구 */
-function stadiumSoccer() {
-	location.href = "soccer.go";
-}
-
 function soccerStadiumGo(team) {
 	location.href = "soccer.stadium.go.detail?team=" + team;
 }
@@ -215,14 +207,6 @@ function soccerSetVal() {
 
 }
 /* 농구 */
-function stadiumBasketball() {
-	location.href = "basketball.go";
-}
-
-function stadiumBasketball2() {
-	location.href = "basketball2.go";
-}
-
 function basketballStadiumGo(team) {
 	location.href = "basketball.stadium.go.detail?team=" + team;
 }
@@ -350,14 +334,6 @@ function basketballSetVal() {
 
 }
 /* 배구 */
-function stadiumVolleyball() {
-	location.href = "volleyball.go";
-}
-
-function stadiumVolleyball2() {
-	location.href = "volleyball2.go";
-}
-
 function volleyballStadiumGo(team) {
 	location.href = "volleyball.stadium.go.detail?team=" + team;
 }

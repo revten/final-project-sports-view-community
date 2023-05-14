@@ -1,19 +1,26 @@
 package com.tm.nmp.stadium;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 
+import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.tm.nmp.account.accountDAO;
+import com.tm.nmp.admin.ClubImageDTO;
 
 @Service
 public class StadiumDAO {
 	
 	@Autowired
 	private accountDAO acDAO;
+	
+	@Autowired
+	private SqlSessionTemplate sst;
 
 	@RequestMapping(value = "/stadium.main.go", method = RequestMethod.GET)
 	public String stadiumMainGo(HttpServletRequest req) {
@@ -402,6 +409,10 @@ public class StadiumDAO {
 		default:
 			break;
 		}
+	}
+	
+	public List<ClubImageDTO> getLogoBySports(int league_id) {
+		return sst.selectList("StadiumMapper.getLogoBySports", league_id);
 	}
 
 }

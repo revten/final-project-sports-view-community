@@ -5,7 +5,7 @@ function imagePreview(event) {
 	let uploadImage = event.target.parentNode;
 	// 이미지 변경할때 이미지 계속 늘어나지 않도록 기존 이미지 삭제
 	// 버튼 계속 늘어나지 않도록 기존 버튼 삭제
-	let pre_img = $(uploadImage).find('img'); // find().val()로 하지 않는 것에 유의
+	let pre_img = $(uploadImage).find('img');
 	let pre_del = $(uploadImage).find('.pre_del'); 
 	if ($(pre_img).length) {
 		$(pre_img).remove();
@@ -47,10 +47,12 @@ function uploadClubImg(sort) {
 	
 	let formData = new FormData(); // FormData 객체 생성
 	
-	let uploadWrap = event.target.parentNode; // 상위 div 클래스 uploadWrap. $(this).parent(); 가 안 먹힌다.
-	let imageInput = $(uploadWrap).find('input')[0]; // 
+	let uploadWrap = event.target.parentNode; // 상위 div 클래스 uploadWrap.
+												// $(this).parent();가 안 먹힌다.
+	let imageInput = $(uploadWrap).find('input')[0];
 
-	formData.append("file", imageInput.files[0]); // file 타입 선택, text타입은 ('#text').val()
+	formData.append("file", imageInput.files[0]); // file 타입 선택, text타입은
+													// ('#text').val()
 	formData.append("club_id", $("#admin__clubCode").val());
 	formData.append("sort", sort);
 
@@ -59,7 +61,7 @@ function uploadClubImg(sort) {
 	}
 
 	$.ajax({
-		url : 'adminClub.insertImage.do',
+		url : 'adminClub.insertOneImage.do',
 		type : 'POST',
 		data : formData,
 		// processData,contentType은 반드시 false여야 전송됨
@@ -72,6 +74,14 @@ function uploadClubImg(sort) {
 		$(uploadWrap).find('input').val('');
 		$(uploadWrap).find(".pre_img").remove();
 		alert('업로드 완료');
+		
+		// 업로드한 사진 바로 보여주기
+		let ci = response;
+		console.log(JSON.stringify(ci)); 
+		let ciContent = `<img alt="" src="resources/files/club_images/${ci.club_id }/${ci.file_name}" width="200">`;
+				
+		$(uploadWrap).parent().find('.uploaded__image').prepend(ciContent);
+		
 	}).fail(function(data) {
 		if (data.responseCode)
 			console.log(data.responseCode);
