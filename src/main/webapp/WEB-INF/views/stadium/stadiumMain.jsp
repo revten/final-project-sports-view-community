@@ -9,6 +9,10 @@
 <body>
 	<div class="stadiumMain__container">
 		<p class="stadiumMain__header">오늘은 어떤 스포츠를 즐길까요?</p>
+		
+		<!-- 검색 -->
+		<div> 검색 영역 </div>
+		
 		<div class="stadiumMain__content">
 			<div class="stadiumMain__wrapper-1" onclick="location.href='league.clubList.go?league_id=101'">
 				<div class="stadiumMain__box stadiumMain__vintage">

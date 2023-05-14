@@ -16,9 +16,10 @@
 	<br>
 	<br>
 	<br>
-	<span>아래 경기장 좌석을 클릭하여 상세 전경을 감상해보세요</span>
+	<span>아래 경기장 좌석을 클릭하여 상세 전경을 감상해보세요!</span>
 
 	<c:forEach var="ci" items="${clubImages }">
+		<c:set var="club_id" value="${ci.club_id }"></c:set>
 		<c:if test="${ci.sort eq 0 }">
 			<c:set var="logo" value="${ci.file_name }"></c:set>
 		</c:if>
@@ -29,16 +30,16 @@
 			<c:set var="seat" value="${ci.file_name }"></c:set>
 		</c:if>
 		<c:if test="${ci.sort eq 3 && fn:contains(ci.file_name, '3') }">
-			<c:set var="view_3-3" value="${ci.file_name }"></c:set>
+			<c:set var="view_3_3" value="${ci.file_name }"></c:set>
 		</c:if>
 		<c:if test="${ci.sort eq 3 && fn:contains(ci.file_name, '6') }">
-			<c:set var="view_3-6" value="${ci.file_name }"></c:set>
+			<c:set var="view_3_6" value="${ci.file_name }"></c:set>
 		</c:if>
 		<c:if test="${ci.sort eq 3 && fn:contains(ci.file_name, '9') }">
-			<c:set var="view_3-9" value="${ci.file_name }"></c:set>
+			<c:set var="view_3_9" value="${ci.file_name }"></c:set>
 		</c:if>
 		<c:if test="${ci.sort eq 3 && fn:contains(ci.file_name, '12') }">
-			<c:set var="view_3-12" value="${ci.file_name }"></c:set>
+			<c:set var="view_3_12" value="${ci.file_name }"></c:set>
 		</c:if>
 	</c:forEach>
 
@@ -47,15 +48,15 @@
 		<div style="display: inline-block; align-items: flex-start;">
 			<img id="seat" usemap="#workmap"
 				style="position: relative; width: 1024px; height: 800px; margin: 450px 0px 10px 0px;"
-				src="resources/files/${ci.club_id }/${seat}"><br>
+				src="resources/files/club_images/${club_id }/${seat}"><br>
 			<map name="workmap">
-				<area style="cursor: pointer;" class="imgArea" id="12"
+				<area style="cursor: pointer;" class="imgArea" id="${view_3_12}"
 					coords="-1,273,1023,0" shape="rect">
-				<area style="cursor: pointer;" class="imgArea" id="9"
+				<area style="cursor: pointer;" class="imgArea" id="${view_3_9}"
 					coords="0,274,410,560" shape="rect">
-				<area style="cursor: pointer;" class="imgArea" id="3"
+				<area style="cursor: pointer;" class="imgArea" id="${view_3_3}"
 					coords="609,273,1023,561" shape="rect">
-				<area style="cursor: pointer;" class="imgArea" id="6"
+				<area style="cursor: pointer;" class="imgArea" id="${view_3_6}"
 					coords="-1,561,1023,795" shape="rect">
 			</map>
 			<button id="reserveBtn">예매하러 가기</button>
@@ -84,13 +85,14 @@
 	<script type="text/javascript">
 		$('.imgArea').click(
 				function() {
-					let areaId = $(this).attr("id");
+					let view = $(this).attr("id");
+					
 					let urlParams = new URL(location.href).searchParams;
-					let team = urlParams.get('team');
-					let imgName = "test_" + areaId + ".jpg";
+					let club_id = urlParams.get('club_id');
+					
 					window.open(
-							"resources/final_img_file/baseball/seating_chart/"
-									+ team + "/" + imgName, "teamImg",
+							"resources/files/club_images/"
+									+ club_id + "/" + view, "teamImg",
 							"left=380px, height=800px, width=750px");
 				});
 	</script>
