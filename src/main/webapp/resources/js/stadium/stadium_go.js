@@ -1,3 +1,95 @@
+$(function() {
+
+	let area0 = [ {
+		text : "전체",
+		id : "0"
+	}, {
+		text : "야구",
+		id : "1"
+	}, {
+		text : "축구",
+		id : "2"
+	}, {
+		text : "농구",
+		id : "3"
+	}, {
+		text : "배구",
+		id : "4"
+	} ];
+
+	let area1 = [ {
+		text : "전체",
+		id : "0"
+	}, {
+		text : "KBO",
+		id : "101"
+	} ];
+	let area2 = [ {
+		text : "전체",
+		id : "0"
+	}, {
+		text : "K-LEAGUE",
+		id : "201"
+	} ];
+	let area3 = [ {
+		text : "전체",
+		id : "0"
+	}, {
+		text : "KBL",
+		id : "301"
+	}, {
+		text : "WKBL",
+		id : "351"
+	} ];
+	let area4 = [ {
+		text : "전체",
+		id : "0"
+	}, {
+		text : "V-LEAGUE(남)",
+		id : "401"
+	}, {
+		text : "V-LEAGUE(여)",
+		id : "451"
+	} ];
+
+	// 스포츠/리그 선택 박스 초기화
+
+	// ^= --> 속성name이 sports인것
+	$("select[name^=sports]").each(
+			function() {
+
+				$selsports = $(this);
+				$.each(area0, function(index, item) {
+					$selsports.append("<option value='" + item.id + "'>"
+							+ item.text + "</option>");
+				});
+				$selsports.next().append("<option value=''>리그 선택</option>");
+			});
+
+	// 스포츠 선택시 리그 설정
+	$("select[name^=sports]").change(
+			function() {
+				let area = "area"
+						+ $("option", $(this)).index(
+								$("option:selected", $(this))); // 선택 스포츠의 리그
+																// Array
+				let $league = $(this).next(); // 선택영역 군구 객체
+				$("option", $league).remove(); // 리그 초기화
+
+				if (area == "area0")
+					$league.append("<option value=''>리그 선택</option>");
+				else {
+					$.each(eval(area), function(index, item) {
+						$league.append("<option value='" + item.id + "'>"
+								+ item.text + "</option>");
+					});
+				}
+			});
+
+});
+
+
+
 /* 야구 */
 function stadium_map() {
 	baseballSetVal();

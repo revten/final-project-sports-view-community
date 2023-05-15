@@ -129,6 +129,8 @@ public class StadiumController {
 		return "index";
 	}
 	
+	
+	
 	@RequestMapping(value = "/league.clubList.go", method = RequestMethod.GET)
 	public String getLogoBySports(HttpServletRequest req) {
 		
