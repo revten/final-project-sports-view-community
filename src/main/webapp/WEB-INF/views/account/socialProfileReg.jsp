@@ -121,7 +121,7 @@ function checkOne(element) {
 	<br>
 	<br>
 	<h1>추가 정보 입력</h1>
-	<div id="accountReg__contrainer">
+	<div id="accountReg__container">
 		<form action="profile.reg.do" method="post"
 			onsubmit="return checkProfile()">
 			<!-- member 아이디 히든 창 -->

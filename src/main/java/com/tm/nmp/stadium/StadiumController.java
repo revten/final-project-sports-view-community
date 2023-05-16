@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.tm.nmp.account.accountDAO;
 import com.tm.nmp.admin.AdminDAO;
 import com.tm.nmp.admin.ClubImageDTO;
+import com.tm.nmp.board.BoardOption;
 
 @Controller
 public class StadiumController {
@@ -129,21 +130,18 @@ public class StadiumController {
 		return "index";
 	}
 	
-	
-	
 	@RequestMapping(value = "/league.clubList.go", method = RequestMethod.GET)
 	public String getLogoBySports(HttpServletRequest req) {
 		
-		int league_id = Integer.parseInt(req.getParameter("league_id"));
-		System.out.println(league_id);
+		int sports_id = Integer.parseInt(req.getParameter("sports_id"));
+		System.out.println(sports_id);
 		
-		List<ClubImageDTO> clubImages = sdDAO.getLogoBySports(league_id);
+		List<ClubImageDTO> clubImages = sdDAO.getLogoBySports(sports_id);
 		
 		req.setAttribute("clubImages", clubImages);
 		req.setAttribute("contentPage", "stadium/stadiumClub.jsp");
 		return "index";
 	}
-	
 	
 	@RequestMapping(value = "/stadium.detail.go", method = RequestMethod.GET)
 	public String getStadiumDetail(HttpServletRequest req) {

@@ -212,12 +212,15 @@
 	<!--=============== [JS MEMBER]===============-->
 	<script src="resources/js/account/account_go.js"></script>
 	<script src="resources/js/account/account_condition.js"></script>
+	<script src="resources/js/account/account_check.js"></script>
+	
+	<script src="resources/js/stadium/stadium_go.js"></script>
+	<script src="resources/js/stadium/stadiumDetail.js"></script>
 	<script src="resources/js/stadium/seat_detail.js"></script>
+	
 	<script src="resources/js/myPage/myPage.js"></script>
 	<script src="resources/js/news/paging.js"></script>
 	<script src="resources/js/fan/fan_reply.js"></script>
 	<script src="resources/js/fan/fanPost.js"></script>
-	<script src="resources/js/stadium/stadiumDetail.js"></script>
-	<script src="resources/js/stadium/stadium_go.js"></script>
 </body>
 </html>

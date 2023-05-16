@@ -55,7 +55,7 @@ $(function() {
 	// 스포츠/리그 선택 박스 초기화
 
 	// ^= --> 속성name이 sports인것
-	$("select[name^=sports]").each(
+	$("select[name^=sports_id]").each(
 			function() {
 
 				$selsports = $(this);
@@ -67,7 +67,7 @@ $(function() {
 			});
 
 	// 스포츠 선택시 리그 설정
-	$("select[name^=sports]").change(
+	$("select[name^=sports_id]").change(
 			function() {
 				let area = "area"
 						+ $("option", $(this)).index(

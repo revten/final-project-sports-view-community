@@ -19,8 +19,8 @@
             <button class="btn">검색</button>
           </div>
           <div id="city">
-            <select name="sports" id="sports"></select>
-            <select name="league" id="league"></select>
+            <select name="sports_id" id="sports"></select>
+            <select name="league_id" id="league"></select>
           </div>
         </div>
       </form>
