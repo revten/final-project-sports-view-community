@@ -5,6 +5,15 @@ import java.util.List;
 import com.tm.nmp.board.PostVO;
 
 public interface AccountMapper {
+	
+	int idCheck(String id);
+	
+	int regAccount(AccountDTO ac);
+	
+	int regFavoriteClub(List<FavoriteClubDTO> favoriteClubs);
+	
+	
+	
 
 	AccountDTO accountLogin(AccountDTO ac);
 
@@ -18,9 +27,6 @@ public interface AccountMapper {
 
 	int socialIdCheck(AccountDTO ac);
 
-	int regAccount(AccountDTO ac);
-
-	int idCheck(String id);
 	
 	void regProfile(AccountDTO ac);
 
@@ -29,5 +35,6 @@ public interface AccountMapper {
 	List<PostVO> getMyPosts(PostVO pVO);
 
 	PostVO getMyDeatailPosts(PostVO pvo);
+
 
 }

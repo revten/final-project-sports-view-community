@@ -3,26 +3,13 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
-<c:set var="path" value="${pageContext.request.contextPath }"></c:set>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>회원가입 - Enjoy Sports</title>
-<link rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css" />
-<style>
-.id_ok {
-	color: #008000;
-	display: none;
-}
-
-.id_already {
-	color: #6A82FB;
-	display: none;
-}
-</style>
-
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css" />
+<script src="resources/js/account/account_check.js"></script>
 <script>
 function pick(e){
 	
@@ -113,22 +100,9 @@ function pick(e){
 		opt.innerText = d[x].text;
 		target.appendChild(opt);
 	}
-	
 }
 </script>
-<script>
-function checkOne(element) {
-	  
-	  const checkboxes 
-	      = document.getElementsByName("member_subs");
-	  
-	  checkboxes.forEach((cb) => {
-	    cb.checked = false;
-	  })
-	  
-	  element.checked = true;
-	}
-</script>
+
 </head>
 <body>
 	<br>
@@ -141,61 +115,60 @@ function checkOne(element) {
 	<br>
 	<br>
 	<br>
+	
 	<div class="animated bounceInDown">
+		
 		<div id="accountReg__container">
 			<h1 class="login_title">회원 가입</h1>
-			<form action="account.reg.do" method="post"
-				onsubmit="return checkReg()">
-				<!-- <div class="accountReg__idInput-1">아이디</div> -->
-				<div class="accountReg__idInput-2">
-					<!-- member 아이디 인풋 창 -->
-					<input class="input_id" placeholder="아이디(영어와 숫자 조합 5-12자)"
-						id="idInput" name="member_id" oninput="checkId()"> <input
-						id="idConfirm" type="hidden" value="0"> <span
-						class="id_ok">중복되지 않은 아이디입니다.</span> <span class="id_already">누군가
-						이 아이디를 사용하고 있어요.</span>
+			<form action="account.reg.do" method="post" onsubmit="return checkReg()">
+				
+				<!--  아이디 입력 -->
+				<div class="accountReg__idInput">
+					<input class="input_id" placeholder="아이디(영어,소문자,숫자 5-12)" id="idInput" name="id" oninput="checkId()">
+					<input id="idConfirm" type="hidden" value="0">
+					<span class="id__good">사용가능 합니다.</span>
+					<span class="id__bad">아이디 양식을 확인해 주세요</span>
 				</div>
-				<!-- <div class="accountReg__pwInput-1">비밀번호</div> -->
-				<div class="accountReg__pwInput-2">
-					<!-- member 비밀번호 인풋 창 -->
-					<input class="input_id" placeholder="비밀번호(영어와 숫자, 특수문자 조합 7-12자)"
-						type="password" id="pwInput" name="member_pwd">
+				<button type="button" onclick="checkSameId()">중복확인</button>
+				
+				<!-- 비밀번호 인풋 -->
+				<div class="accountReg__pwdInput">
+					<input class="input_pwd" placeholder="비밀번호(영어+숫자+특수문자 7-20)" type="password" id="pwdInput" name="password"  oninput="checkPwd()">
+					<span class="pwd__good">사용가능 합니다.</span>
+					<span class="pwd__bad">비밀번호 양식을 확인해 주세요</span>
 				</div>
-				<!-- <div class="accountReg__pwInput-1">비밀번호 확인</div> -->
-				<div class="accountReg__pwInput-2">
-					<input class="input_id" placeholder="비밀번화 확인" type="password"
-						id="pwInput2" name="member_pwdConfirm"> <font
-						id="pwConfirm" size="2"></font>
+				<!-- 비밀번호 확인란 -->
+				<div class="accountReg__pwdInput">
+					<input class="input_pwd" placeholder="비밀번호 확인" type="password" id="pwdInput2">
+					<font id="pwdConfirm" size="2"></font>
 				</div>
-				<!-- member nick 인풋 창 -->
-				<!-- <div>닉네임</div> -->
-				<input class="input_id" placeholder="닉네임" id="member_nick"
-					name="member_nick">
-				<!--  member ip adress 히든 창 -->
-				<input type="hidden" name="member_auth_type" value="0"> <input
-					type="hidden" name="member_reg_type" value="0"> <input
-					type="hidden" id="ipv4" name="member_reg_ip"
-					value="<%=request.getRemoteAddr()%>">
-				<!-- value="${ipv4 }"-->
-				<!-- <div class="accountReg__emailInput-1">이메일</div> -->
-				<div class="accountReg__emailInput-2">
-					<!-- member 이메일 인풋 창 -->
-					<input class="input_id" placeholder="이메일" type="email"
-						id="search_member_email" name="member_email">
-					<button class="emailBtn2" type="button" id="member_email_check">이메일
-						인증</button>
-					<input class="input_id" placeholder="인증번호를 입력해주세요" id="email_num"
-						disabled="disabled"> <input type="hidden" id="valid">
-					<span id="mail-check-warn"></span> <span id="emailcheckResult"></span>
-					<p>
+				
+				<!-- nickname 인풋 -->
+				<input class="input_id" placeholder="닉네임" id="member_nick" name="nickname">
+
+				<!-- 이메일 인증 인풋 -->
+				<div class="accountReg__emailInput">
+					<input class="input_id" placeholder="이메일" type="email" id="search_member_email" name="email">
+					<button class="emailBtn2" type="button" id="email_auth">이메일 인증</button>
+					
+					<input class="input_id" placeholder="인증번호를 입력해주세요" id="checkNum" disabled="disabled">
+					<input type="hidden" id="valid">
+					<span id="mail-check-warn"></span>
+					<span id="emailcheckResult"></span>
 				</div>
-				<!-- member intro 인풋 창-->
-				<!-- <div class="profileReg__introInput-1">자기소개</div> -->
-				<textarea class="input_content" placeholder="자기소개"
-					name="member_intro" cols="50" rows="10"></textarea>
-				<!-- member club 선택 창 -->
+				
+				<div> 추가 정보 (선택)</div>
+				<!-- 휴대폰 cellphone -->
+				<div name="cellphone">휴대폰</div>
+				<!-- 성별 gender -->
+				<div name="gender">성별</div>
+				<!-- 생일 birthday -->
+				<div name="birthday">생일</div>
+
+				<!-- 관신구단 선택 -->
 				<div>
-					<label>좋아하는 리그 선택</label> <select onchange="pick(this)">
+					<label>좋아하는 리그 선택</label>
+					<select onchange="pick(this)">
 						<option>리그를 선택해주세요</option>
 						<option value="KBO" id="league">야구</option>
 						<option value="K-LEAGUE" id="league">축구</option>
@@ -206,23 +179,16 @@ function checkOne(element) {
 					</select>
 				</div>
 				<div>
-					<label>좋아하는 구단 선택</label> <select name="club_id" id="club_id">
+					<label>좋아하는 구단 선택</label>
+					<select name="club_id" id="club_id">
 						<option value="0">구단을 선택해주세요</option>
 					</select>
 				</div>
-				<!-- profile subs 동의 인풋 창 -->
-				<div>
-					<input type="checkbox" name="member_subs" checked value="1"
-						onclick="checkOne(this)"> <label for="profile_subs">
-						이메일 수신 동의</label>
-				</div>
-				<div>
-					<input type="checkbox" name="member_subs" value="0"
-						onclick="checkOne(this)"> <label for="profile_subs">
-						이메일 수신 거부</label>
-				</div>
-				<input type="hidden" name="member_admin" value="0"> <br>
-				<button id="reg" class="emailBtn2" style="margin-bottom: 15px;">가입</button>
+
+				<!-- 가입 타입 0:기본, 1:소셜 -->
+				<input type="hidden" name="join_type" value="0">
+				
+				<button type="submit" id="reg" class="emailBtn2" style="margin-bottom: 15px;">가입</button>
 			</form>
 		</div>
 	</div>

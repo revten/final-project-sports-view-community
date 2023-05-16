@@ -5,8 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8" />
-<title>Enjoy Sports</title>
-<
+<title>Enjoy Sports</title> <
 <!-- --------------- FAVICON --------------- -->
 <link rel="shortcut icon" href="resources/files/home/favicon.png"
 	type="image/x-icon" />
@@ -69,9 +68,9 @@
 				<div class="nav__toggle" id="nav-toggle">
 					<i class="ri-apps-line"></i>
 				</div>
-				<%-- 				<div>
+				<div>
 					<a class="nav__link"><jsp:include page="${loginPage }"></jsp:include></a>
-				</div> --%>
+				</div>
 			</div>
 
 			<div class="nav__menu" id="nav-menu">
@@ -82,8 +81,7 @@
 						class="nav__link">REVIEW</a></li>
 					<li class="nav__item"><a href="fan.board.go?post_board=21"
 						class="nav__link">THE FAN</a></li>
-					<li class="nav__item"><a href="admin.go"
-						class="nav__link">ADMIN</a></li>
+					<li class="nav__item"><a href="admin.go" class="nav__link">ADMIN</a></li>
 				</ul>
 
 				<ul class="nav__list">
@@ -213,11 +211,12 @@
 	<script src="resources/js/account/account_go.js"></script>
 	<script src="resources/js/account/account_condition.js"></script>
 	<script src="resources/js/account/account_check.js"></script>
-	
+	<script src="resources/js/account/account_validCheck.js"></script>
+
 	<script src="resources/js/stadium/stadium_go.js"></script>
 	<script src="resources/js/stadium/stadiumDetail.js"></script>
 	<script src="resources/js/stadium/seat_detail.js"></script>
-	
+
 	<script src="resources/js/myPage/myPage.js"></script>
 	<script src="resources/js/news/paging.js"></script>
 	<script src="resources/js/fan/fan_reply.js"></script>

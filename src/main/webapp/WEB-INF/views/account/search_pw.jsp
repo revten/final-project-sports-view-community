@@ -31,7 +31,7 @@
 					<button type="button" id="email_check" class="emailBtn">이메일
 						인증</button>
 					<br> <input class="input_id" placeholder="인증번호를 입력해주세요"
-						id="email_num" disabled="disabled"> <input type="hidden"
+						id="checkNum" disabled="disabled"> <input type="hidden"
 						id="valid"> <span id="mail-check-warn"></span> <span
 						id="emailcheckResult"></span>
 					<button class="loginBtn2">확인</button>

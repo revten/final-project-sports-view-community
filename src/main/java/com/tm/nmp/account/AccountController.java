@@ -1,6 +1,7 @@
 package com.tm.nmp.account;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -19,6 +20,7 @@ public class AccountController {
 	@Autowired
 	private accountDAO acDAO;
 	
+	// 회원가입 페이지로 이동
 	@RequestMapping(value = "/account.reg.go", method = RequestMethod.GET)
 	public String accountRegGo(HttpServletRequest req) {
 		acDAO.loginCheck(req);
@@ -26,20 +28,36 @@ public class AccountController {
 		return "index";
 	}
 	
+	// 아이디 중복 검사
+	@RequestMapping(value = "/account.id.check", method = RequestMethod.POST)
+	@ResponseBody
+	public int idCheck(@RequestParam("id") String id) {
+		int result = acDAO.idCheck(id);
+		return result;
+	}
+	
+	// 회원가입
 	@RequestMapping(value = "/account.reg.do", method = RequestMethod.POST)
 	public String accountRegDo(HttpServletRequest req, AccountDTO ac) {
 		acDAO.accountRegDo(req, ac);
+		
+		if(ac.getFavorite_clubs()!= null) {
+			
+		}
+		
 		acDAO.accountLoginDo(req, ac);
 		acDAO.loginCheck(req);
+		
 		req.setAttribute("contentPage", "home.jsp");
 		return "index";
 	}
 	
-	@RequestMapping(value = "/account.id.check", method = RequestMethod.POST)
+	// 이메일 인증
+	@RequestMapping(value = "/email.auth.do", method = RequestMethod.GET)
 	@ResponseBody
-	public int idCheck(@RequestParam("member_id") String id) {
-		int cnt = acDAO.idCheck(id);
-		return cnt;
+	public String userEmailCheckDo(HttpServletRequest req, String email) {
+		acDAO.loginCheck(req);
+		return acDAO.emailAuthDo(email);
 	}
 	
 	@RequestMapping(value = "/account.login.do", method = RequestMethod.POST)
@@ -94,19 +112,6 @@ public class AccountController {
 		return "index";
 	}
 	
-	@RequestMapping(value = "/member.email.check.do", method = RequestMethod.GET)
-	@ResponseBody
-	public String userEmailCheckDo(HttpServletRequest req, String member_email) {
-		acDAO.loginCheck(req);
-		return acDAO.memberEmailCheckDo(member_email);
-	}
-	
-	@RequestMapping(value = "/email.check.do", method = RequestMethod.GET)
-	@ResponseBody
-	public String emailCheckDo(HttpServletRequest req, String ac_email) {
-		acDAO.loginCheck(req);
-		return acDAO.emailCheckDo(ac_email);
-	}
 	
 	@RequestMapping(value = "/change.pw.do", method = RequestMethod.POST)
 	public String changePwDo(HttpServletRequest req, AccountDTO ac) {

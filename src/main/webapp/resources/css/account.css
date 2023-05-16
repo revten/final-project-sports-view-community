@@ -20,7 +20,16 @@
 	height: 10px;
 }
 
+/* 아아디,비밀번호 유효성 검사 */
+.id__good, .pwd__good {
+	color: #008000;
+	display: none;
+}
 
+.id__bad, .pwd__bad {
+	color: #ff0000;
+	display: none;
+}
 
 .login_area{
   margin: 0;
@@ -57,10 +66,10 @@
   font-size: 16px;
   margin-top:14px;;
 }
-.input_id,.input_pw{
+.input_id,.input_pwd{
 	height:30px;
 }
-.input_id,.input_pw,.input_content{
+.input_id,.input_pwd,.input_content{
   display: block;
   margin: 20px auto;
   background: #f0f0f2;
@@ -80,8 +89,6 @@
 ::-webkit-input-placeholder {
   color: #565f79;
 }
-
-
 
 .loginBtn{
   border:1;
@@ -133,7 +140,7 @@
   background: #7f62df;
 }
 
-.find_id,.find_pw{
+.find_id,.find_pwd{
 	color: #45484e;
   font-size: 12px;
   cursor: pointer;
@@ -144,7 +151,7 @@
 	cursor: pointer;
 }
 
-.find_id:hover,.find_pw:hover,.regBtn:hover {
+.find_id:hover,.find_pwd:hover,.regBtn:hover {
   color: #5d33e6;
 }
 

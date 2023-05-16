@@ -7,6 +7,8 @@ import javax.mail.internet.MimeMessage;
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.ibatis.session.SqlSession;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
@@ -19,6 +21,9 @@ public class accountDAO {
 
 	@Autowired
 	private SqlSession ss;
+	
+	
+	private static final Logger logger = LoggerFactory.getLogger(accountDAO.class);
 
 	@Autowired
 	private JavaMailSender mailSender;
@@ -51,6 +56,7 @@ public class accountDAO {
 		return req.getRemoteAddr();
 	}
 
+	// 회원가입
 	public void accountRegDo(HttpServletRequest req, AccountDTO ac) {
 		if (ss.getMapper(AccountMapper.class).regAccount(ac) == 1) {
 			// pv.setUserId(ac.getMember_id());
@@ -60,6 +66,19 @@ public class accountDAO {
 			System.out.println("가입 실패");
 		}
 	}
+	
+	// 회원가입시 관심 클럽 등록
+	public void regFavoriteClub(List<FavoriteClubDTO> favoriteClubs) {
+		if (ss.getMapper(AccountMapper.class).regFavoriteClub(favoriteClubs) == 1) {
+			System.out.println("성공");
+		} else {
+			System.out.println("실패");
+		}		
+	}
+
+	
+	
+	
 
 	public void accountLoginDo(HttpServletRequest req, AccountDTO ac) {
 		AccountDTO dbAccount = ss.getMapper(AccountMapper.class).accountLogin(ac);
@@ -89,39 +108,13 @@ public class accountDAO {
 		req.getSession().setAttribute("loginAccount", null);
 	}
 
-	public String memberEmailCheckDo(String member_email) {
+	public String emailAuthDo(String email) {
 		Random random = new Random();
 		int checknum = random.nextInt(888888) + 111111;
 
 		// 이메일 보낼 양식
-		String setFrom = "frvlv@naver.com";
-		String toMail = member_email;
-		String title = "비밀번호 인증 이메일 입니다.";
-		String content = "인증번호는 " + checknum + " 입니다.";
-		try {
-			// 내용들을 담기
-			MimeMessage mes = mailSender.createMimeMessage();
-			MimeMessageHelper helper = new MimeMessageHelper(mes, true, "utf-8");
-			helper.setFrom(setFrom);
-			helper.setTo(toMail);
-			helper.setSubject(title);
-			helper.setText(content);
-			mailSender.send(mes);
-
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-
-		return Integer.toString(checknum);
-	}
-
-	public String emailCheckDo(String ac_email) {
-		Random random = new Random();
-		int checknum = random.nextInt(888888) + 111111;
-
-		// 이메일 보낼 양식
-		String setFrom = "frvlv@naver.com";
-		String toMail = ac_email;
+		String setFrom = "trainst37@naver.com";
+		String toMail = email;
 		String title = "비밀번호 인증 이메일 입니다.";
 		String content = "인증번호는 " + checknum + " 입니다.";
 		try {
@@ -184,7 +177,6 @@ public class accountDAO {
 
 	public int idCheck(String id) {
 		int cnt = ss.getMapper(AccountMapper.class).idCheck(id);
-		System.out.println("cnt: " + cnt);
 		return cnt;
 	}
 
@@ -194,7 +186,7 @@ public class accountDAO {
 
 			String member_id = req.getParameter("member_id");
 			String member_pwd = " ";
-			String member_nick = " ";
+			String nickname = " ";
 			int member_auth_type = 1;
 			int member_reg_type = Integer.parseInt(req.getParameter("member_reg_type"));
 			String member_reg_ip = " ";
@@ -215,7 +207,7 @@ public class accountDAO {
 
 			ac.setMember_id(member_id);
 			ac.setMember_pwd(member_pwd);
-			ac.setMember_nick(member_nick);
+			ac.setMember_nick(nickname);
 			ac.setMember_auth_type(member_auth_type);
 			ac.setMember_reg_ip(member_reg_ip);
 			ac.setMember_email(member_email);
@@ -240,14 +232,14 @@ public class accountDAO {
 			req.setCharacterEncoding("utf-8");
 			
 			String member_pwd = req.getParameter("member_pwd");
-			String member_nick = req.getParameter("member_nick");
+			String nickname = req.getParameter("member_nick");
 			String member_reg_ip = req.getParameter("member_reg_ip");
 			String member_intro = req.getParameter("member_intro");
 			int member_subs = Integer.parseInt(req.getParameter("member_subs"));
 			int club_id = Integer.parseInt(req.getParameter("club_id"));
 			
 			ac.setMember_pwd(member_pwd);
-			ac.setMember_nick(member_nick);
+			ac.setMember_nick(nickname);
 			ac.setMember_reg_ip(member_reg_ip);
 			ac.setMember_intro(member_intro);
 			ac.setMember_subs(member_subs);
@@ -275,8 +267,6 @@ public class accountDAO {
 		req.setAttribute("MyPosts", myPosts);
 		
 	}
-
-	
 
 
 }
