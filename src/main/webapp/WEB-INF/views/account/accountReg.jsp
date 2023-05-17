@@ -159,11 +159,11 @@ function pick(e){
 				
 				<div> 추가 정보 (선택)</div>
 				<!-- 휴대폰 cellphone -->
-				<div name="cellphone">휴대폰</div>
+				<div>휴대폰</div>
 				<!-- 성별 gender -->
-				<div name="gender">성별</div>
+				<div >성별</div>
 				<!-- 생일 birthday -->
-				<div name="birthday">생일</div>
+				<div >생일</div>
 
 				<!-- 관신구단 선택 -->
 				<div>
@@ -178,6 +178,7 @@ function pick(e){
 						<option value="V-LEAGUE(W)" id="league">여자 배구</option>
 					</select>
 				</div>
+
 				<div>
 					<label>좋아하는 구단 선택</label>
 					<select name="club_id" id="club_id">

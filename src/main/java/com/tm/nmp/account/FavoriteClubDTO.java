@@ -1,7 +1,7 @@
 package com.tm.nmp.account;
 
 public class FavoriteClubDTO {
-	private int user_id;
+	private String user_id;
 	private int club_id;
 
 	public FavoriteClubDTO() {
@@ -9,17 +9,17 @@ public class FavoriteClubDTO {
 		// TODO Auto-generated constructor stub
 	}
 
-	public FavoriteClubDTO(int user_id, int club_id) {
+	public FavoriteClubDTO(String user_id, int club_id) {
 		super();
 		this.user_id = user_id;
 		this.club_id = club_id;
 	}
 
-	public int getUser_id() {
+	public String getUser_id() {
 		return user_id;
 	}
 
-	public void setUser_id(int user_id) {
+	public void setUser_id(String user_id) {
 		this.user_id = user_id;
 	}
 

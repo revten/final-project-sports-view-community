@@ -4,15 +4,15 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title></title>
 </head>
 <body>
 	<div id="loginSuccessArea">
 		<div class="info-area">
 			<div>
-				<span style="font-size: 11px; font-family: Georgia, Serif;">${sessionScope.loginAccount.member_id }님</span>
-				<a class="mP_btn" onclick="goMyPage()"> <%-- ${sessionScope.loginAccount.member_id }의  --%>마이페이지
-				</a> <a class="mP_btn" onclick="logout()">로그아웃</a>
+				<span>${sessionScope.loginAccount.id }님</span>
+				<a class="mP_btn" onclick="goMyPage()">마이페이지</a>
+				<a class="mP_btn" onclick="logout()">로그아웃</a>
 			</div>
 		</div>
 	</div>

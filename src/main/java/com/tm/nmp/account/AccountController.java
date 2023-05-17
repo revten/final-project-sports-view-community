@@ -1,6 +1,7 @@
 package com.tm.nmp.account;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -42,10 +43,20 @@ public class AccountController {
 		acDAO.accountRegDo(req, ac);
 		
 		if(ac.getFavorite_clubs()!= null) {
-			
+			List<FavoriteClubDTO> favoriteClubs = new ArrayList<>();
+			for(FavoriteClubDTO f : ac.getFavorite_clubs()) {
+				FavoriteClubDTO fc = new FavoriteClubDTO();
+				fc.setUser_id(ac.getId());
+				fc.setClub_id(f.getClub_id());
+				
+				favoriteClubs.add(f);
+			}
+			acDAO.regFavoriteClub(favoriteClubs);
 		}
 		
-		acDAO.accountLoginDo(req, ac);
+		
+		
+//		acDAO.accountLoginDo(req, ac);
 		acDAO.loginCheck(req);
 		
 		req.setAttribute("contentPage", "home.jsp");
@@ -60,9 +71,11 @@ public class AccountController {
 		return acDAO.emailAuthDo(email);
 	}
 	
+	// 로그인 하기
 	@RequestMapping(value = "/account.login.do", method = RequestMethod.POST)
 	public void accountLoginDo(HttpServletRequest req, AccountDTO ac, HttpServletResponse response) throws IOException, ServletException {
 		acDAO.accountLoginDo(req, ac);
+		
 		if(acDAO.loginCheck(req)) {
 			String watchingPage = (String) req.getSession().getAttribute("watchingPage");
 			System.out.println(watchingPage);
@@ -74,6 +87,7 @@ public class AccountController {
 		}
 	}
 
+	// 로그아웃 하기
 	@RequestMapping(value = "/account.logout.do", method = RequestMethod.GET)
 	public String accountLogoutDo(HttpServletRequest req, AccountDTO ac) {
 		acDAO.accountLogoutDo(req, ac);
@@ -81,6 +95,10 @@ public class AccountController {
 		req.setAttribute("contentPage", "home.jsp");
 		return "index";
 	}
+	
+
+	
+	
 	
 	@RequestMapping(value = "/search.id.go", method = RequestMethod.GET)
 	public String searchIdGo(HttpServletRequest req) {

@@ -147,12 +147,12 @@ function checkReg() {
 	let email_input = $("#search_member_email");
 	let email = $("#search_member_email").val();
 	
-	if (lessThan(id, 5) || moreThan(id, 13) || idContain(id)) { 
+/*	if (lessThan(id, 5) || moreThan(id, 13) || idContain(id)) { 
 		alert("아이디 양식을 확인해주세요");
 		id_input.focus();
 		id_input.value = "";
 		return false;
-	}
+	}*/
 
 	if (!chkPwd(pwd)) {
 		alert("비밀번호 양식을 확인해주세요");

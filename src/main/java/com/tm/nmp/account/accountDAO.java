@@ -19,15 +19,15 @@ import com.tm.nmp.board.PostVO;
 @Service
 public class accountDAO {
 
-	@Autowired
-	private SqlSession ss;
-	
-	
 	private static final Logger logger = LoggerFactory.getLogger(accountDAO.class);
 
 	@Autowired
+	private SqlSession ss;
+	
+	@Autowired
 	private JavaMailSender mailSender;
-
+	
+	// 로그인 영역 표시
 	public boolean loginCheck(HttpServletRequest req) {
 		AccountDTO a = (AccountDTO) req.getSession().getAttribute("loginAccount");
 		if (a != null) {
@@ -37,25 +37,42 @@ public class accountDAO {
 		req.setAttribute("loginPage", "account/login.jsp");
 		return false;
 	}
-
-	public static String getClientIp(HttpServletRequest req) {
-
-		String[] header_IPs = { "HTTP_CLIENT_IP", "HTTP_X_FORWARDED_FOR", "HTTP_X_FORWARDED",
-				"HTTP_X_CLUSTER_CLIENT_IP", "HTTP_FORWARDED_FOR", "HTTP_FORWARDED", "X-Forwarded-For",
-				"Proxy-Client-IP", "WL-Proxy-Client-IP" };
-
-		for (String header : header_IPs) {
-			String ip = req.getHeader(header);
-
-			if (ip != null && !"unknown".equalsIgnoreCase(ip) && ip.length() != 0) {
-
-				return ip;
-			}
+	
+	// .go가 매핑되는 순간, 이 메서드가 동작하면서 페이지 URL을 저장한다
+	public void wathingPage(HttpServletRequest req) {
+		String watchingPage = req.getRequestURL().toString();
+		String param = req.getQueryString();
+		if (req.getQueryString() != null) {
+			watchingPage = watchingPage + "?" + param; // 수정할 글의 번호도 있으니까
 		}
-
-		return req.getRemoteAddr();
+		req.getSession().setAttribute("watchingPage", watchingPage);
 	}
+	
+	// 이메일 인증
+	public String emailAuthDo(String email) {
+		Random random = new Random();
+		int checknum = random.nextInt(888888) + 111111;
 
+		// 이메일 보낼 양식
+		String setFrom = "trainst37@naver.com";
+		String toMail = email;
+		String title = "비밀번호 인증 이메일 입니다.";
+		String content = "인증번호는 " + checknum + " 입니다.";
+		try {
+			// 내용들을 담기
+			MimeMessage mes = mailSender.createMimeMessage();
+			MimeMessageHelper helper = new MimeMessageHelper(mes, true, "utf-8");
+			helper.setFrom(setFrom);
+			helper.setTo(toMail);
+			helper.setSubject(title);
+			helper.setText(content);
+			mailSender.send(mes);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return Integer.toString(checknum);
+	}
+	
 	// 회원가입
 	public void accountRegDo(HttpServletRequest req, AccountDTO ac) {
 		if (ss.getMapper(AccountMapper.class).regAccount(ac) == 1) {
@@ -76,14 +93,11 @@ public class accountDAO {
 		}		
 	}
 
-	
-	
-	
-
+	// 로그인 하기
 	public void accountLoginDo(HttpServletRequest req, AccountDTO ac) {
 		AccountDTO dbAccount = ss.getMapper(AccountMapper.class).accountLogin(ac);
 		if (dbAccount != null) {
-			if (ac.getMember_pwd().equals(dbAccount.getMember_pwd())) {
+			if (ac.getPassword().equals(dbAccount.getPassword())) {
 				req.getSession().setAttribute("loginAccount", dbAccount);
 				req.getSession().setMaxInactiveInterval(60 * 60);
 			}else {
@@ -94,45 +108,30 @@ public class accountDAO {
 		}
 	}
 	
-	// .go가 매핑되는 순간, 이 메서드가 동작하면서 페이지 URL을 저장한다
-	public void wathingPage(HttpServletRequest req) {
-		String watchingPage = req.getRequestURL().toString();
-		String param = req.getQueryString();
-		if (req.getQueryString() != null) {
-			watchingPage = watchingPage + "?" + param; // 수정할 글의 번호도 있으니까
-		}
-		req.getSession().setAttribute("watchingPage", watchingPage);
-	}
-
+	// 로그아웃
 	public void accountLogoutDo(HttpServletRequest req, AccountDTO ac) {
 		req.getSession().setAttribute("loginAccount", null);
-	}
+	}	
+	
+	
+	
 
-	public String emailAuthDo(String email) {
-		Random random = new Random();
-		int checknum = random.nextInt(888888) + 111111;
-
-		// 이메일 보낼 양식
-		String setFrom = "trainst37@naver.com";
-		String toMail = email;
-		String title = "비밀번호 인증 이메일 입니다.";
-		String content = "인증번호는 " + checknum + " 입니다.";
-		try {
-			// 내용들을 담기
-			MimeMessage mes = mailSender.createMimeMessage();
-			MimeMessageHelper helper = new MimeMessageHelper(mes, true, "utf-8");
-			helper.setFrom(setFrom);
-			helper.setTo(toMail);
-			helper.setSubject(title);
-			helper.setText(content);
-			mailSender.send(mes);
-
-		} catch (Exception e) {
-			e.printStackTrace();
+	public static String getClientIp(HttpServletRequest req) {
+		String[] header_IPs = { "HTTP_CLIENT_IP", "HTTP_X_FORWARDED_FOR", "HTTP_X_FORWARDED",
+				"HTTP_X_CLUSTER_CLIENT_IP", "HTTP_FORWARDED_FOR", "HTTP_FORWARDED", "X-Forwarded-For",
+				"Proxy-Client-IP", "WL-Proxy-Client-IP" };
+		for (String header : header_IPs) {
+			String ip = req.getHeader(header);
+			if (ip != null && !"unknown".equalsIgnoreCase(ip) && ip.length() != 0) {
+				return ip;
+			}
 		}
-
-		return Integer.toString(checknum);
+		return req.getRemoteAddr();
 	}
+
+
+
+
 
 	public void changePwDo(HttpServletRequest req, AccountDTO ac) {
 		if (ss.getMapper(AccountMapper.class).changePwDo(ac) == 1) {

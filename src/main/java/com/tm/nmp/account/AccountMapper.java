@@ -11,12 +11,12 @@ public interface AccountMapper {
 	int regAccount(AccountDTO ac);
 	
 	int regFavoriteClub(List<FavoriteClubDTO> favoriteClubs);
-	
-	
-	
 
 	AccountDTO accountLogin(AccountDTO ac);
 
+
+	
+	
 	int changePwDo(AccountDTO ac);
 
 	AccountDTO searchId(AccountDTO ac);

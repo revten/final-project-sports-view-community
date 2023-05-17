@@ -11,12 +11,12 @@
 		insert into tb_user
 		(id, nickname, join_type, email, phone, gender, birthday)
 		values
-		(#{id}, #{nickname}, #{join_type}, #{join_type}, #{phone}, #{gender}, #{birthday});
+		(#{id}, #{nickname}, #{join_type}, #{email}, #{phone, jdbcType=VARCHAR}, #{gender}, #{birthday, jdbcType=VARCHAR});
 
 		insert into tb_password
 		(user_id, password, salt)
 		values
-		(#{id}, #{password}, #{salt});
+		(#{id}, #{password}, #{salt, jdbcType=VARCHAR});
 		END;
 	</insert>
 	
@@ -30,20 +30,18 @@
 		select * from dual
 	</insert>
 
-
-	
-	<select id="accountLogin"
-		resultType="com.tm.nmp.account.AccountDTO">
-		select * from member where member_id =
-		#{member_id}
+	<select id="accountLogin" resultType="com.tm.nmp.account.AccountDTO">
+		select u.*, p.password from tb_user u, tb_password p
+		where u.id = p.user_id and u.id = #{id}
 	</select>
+	
+	
+	
 	
 	<select id="showAccount" resultType="com.tm.nmp.account.AccountDTO">
 	select * from member where member_id = #{member_id}
 	</select>
 	
-
-
 	<select id="searchId"
 		parameterType="com.tm.nmp.account.AccountDTO"
 		resultType="com.tm.nmp.account.AccountDTO">

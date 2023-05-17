@@ -36,12 +36,15 @@
 			<div align="center">${r }</div>
 			<h1 class="login_title">로그인</h1>
 			<span class="error animated tada" id="msg"></span>
+			
 			<form class="login_form" name="loginForm" action="account.login.do" method="post" onsubmit="return checkStuff()">
-				<input name="member_id" class="input_id" id="idInput" placeholder="아이디" />
-				<input name="member_pwd" type="password" class="input_pwd" id="pwInput" placeholder="비밀번호" /><br>
+			
+				<input name="id" class="input_id" id="idInput" placeholder="아이디" />
+				<input name="password" type="password" class="input_pwd" id="pwInput" placeholder="비밀번호" /><br>
+				
 				<a class="find_id" type="button" href="search.id.go">아이디</a>&nbsp;·&nbsp;
-				<a class="find_pw" type="button" href="search.pw.go">비밀번호 찾기</a><br />
-				<br>
+				<a class="find_pw" type="button" href="search.pw.go">비밀번호 찾기</a>
+				<br><br>
 				<button type="submit" class="loginBtn">로그인</button>
 				<br>
 				<div class="reg-area"></div>
@@ -224,14 +227,14 @@
 
 	<script type="text/javascript">
 		function checkStuff() {
-			var email = document.getElementById("idInput");
-			var password = document.getElementById("pwInput");
-			var msg = document.getElementById("msg");
+			let idInput = document.getElementById("idInput");
+			let password = document.getElementById("pwInput");
+			let msg = document.getElementById("msg");
 
-			if (email.value == "") {
+			if (idInput.value == "") {
 				msg.style.display = "block";
 				msg.innerHTML = "아이디를 입력해주세요";
-				email.focus();
+				idInput.focus();
 				return false;
 			} else {
 				msg.innerHTML = "";
