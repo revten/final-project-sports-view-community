@@ -210,10 +210,11 @@ const autoHyphen = (target) => {
 	  .replace(/^(\d{0,3})(\d{0,4})(\d{0,4})$/g, "$1-$2-$3").replace(/(\-{1,2})$/g, "");
 	}
 
+// 휴대폰 인증
 function sendSMS() {
 	let phoneNumber = $("#phone").val();
 
-	if (phoneNumber == "") {
+	if (isEmpty(phoneNumber)) {
 		let phoneInput = $("#phone");
 		alert("휴대폰 번호를 입력해주세요.");
 		phoneInput.focus();

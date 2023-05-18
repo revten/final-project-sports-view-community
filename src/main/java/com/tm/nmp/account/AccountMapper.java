@@ -2,6 +2,7 @@ package com.tm.nmp.account;
 
 import java.util.List;
 
+import com.tm.nmp.admin.ClubImageDTO;
 import com.tm.nmp.board.PostVO;
 
 public interface AccountMapper {
@@ -9,6 +10,8 @@ public interface AccountMapper {
 	int idCheck(String id);
 	
 	int regAccount(AccountDTO ac);
+	
+	List<ClubImageDTO> getAllClubLogos();
 	
 	int regFavoriteClub(List<FavoriteClubDTO> favoriteClubs);
 
@@ -35,6 +38,8 @@ public interface AccountMapper {
 	List<PostVO> getMyPosts(PostVO pVO);
 
 	PostVO getMyDeatailPosts(PostVO pvo);
+
+
 
 
 }

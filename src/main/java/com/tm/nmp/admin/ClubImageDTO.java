@@ -10,12 +10,16 @@ public class ClubImageDTO {
 	private Date reg_date;
 	private Date update_date;
 
+	private int league_id;
+	private String club_name;
+
 	public ClubImageDTO() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public ClubImageDTO(int id, int club_id, int sort, String file_name, Date reg_date, Date update_date) {
+	public ClubImageDTO(int id, int club_id, int sort, String file_name, Date reg_date, Date update_date, int league_id,
+			String club_name) {
 		super();
 		this.id = id;
 		this.club_id = club_id;
@@ -23,6 +27,8 @@ public class ClubImageDTO {
 		this.file_name = file_name;
 		this.reg_date = reg_date;
 		this.update_date = update_date;
+		this.league_id = league_id;
+		this.club_name = club_name;
 	}
 
 	public int getId() {
@@ -73,10 +79,27 @@ public class ClubImageDTO {
 		this.update_date = update_date;
 	}
 
+	public int getLeague_id() {
+		return league_id;
+	}
+
+	public void setLeague_id(int league_id) {
+		this.league_id = league_id;
+	}
+
+	public String getClub_name() {
+		return club_name;
+	}
+
+	public void setClub_name(String club_name) {
+		this.club_name = club_name;
+	}
+
 	@Override
 	public String toString() {
 		return "ClubImageDTO [id=" + id + ", club_id=" + club_id + ", sort=" + sort + ", file_name=" + file_name
-				+ ", reg_date=" + reg_date + ", update_date=" + update_date + "]";
+				+ ", reg_date=" + reg_date + ", update_date=" + update_date + ", league_id=" + league_id
+				+ ", club_name=" + club_name + "]";
 	}
 
 }

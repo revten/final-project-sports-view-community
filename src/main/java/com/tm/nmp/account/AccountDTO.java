@@ -19,16 +19,13 @@ public class AccountDTO {
 	private Date reg_date;
 	private Date update_date;
 
-	private List<FavoriteClubDTO> favorite_clubs; // tb_favorite_club 테이블
-
 	public AccountDTO() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
 	public AccountDTO(String id, String password, String salt, Date password_update_date, String nickname,
-			int join_type, String email, String phone, int gender, String birthday, Date reg_date, Date update_date,
-			List<FavoriteClubDTO> favorite_clubs) {
+			int join_type, String email, String phone, int gender, String birthday, Date reg_date, Date update_date) {
 		super();
 		this.id = id;
 		this.password = password;
@@ -42,7 +39,6 @@ public class AccountDTO {
 		this.birthday = birthday;
 		this.reg_date = reg_date;
 		this.update_date = update_date;
-		this.favorite_clubs = favorite_clubs;
 	}
 
 	public String getId() {
@@ -141,26 +137,12 @@ public class AccountDTO {
 		this.update_date = update_date;
 	}
 
-	public List<FavoriteClubDTO> getFavorite_clubs() {
-		return favorite_clubs;
-	}
-
-	public void setFavorite_clubs(List<FavoriteClubDTO> favorite_clubs) {
-		this.favorite_clubs = favorite_clubs;
-	}
-
 	@Override
 	public String toString() {
 		return "AccountDTO [id=" + id + ", password=" + password + ", salt=" + salt + ", password_update_date="
 				+ password_update_date + ", nickname=" + nickname + ", join_type=" + join_type + ", email=" + email
 				+ ", phone=" + phone + ", gender=" + gender + ", birthday=" + birthday + ", reg_date=" + reg_date
-				+ ", update_date=" + update_date + ", favorite_clubs=" + favorite_clubs + ", getId()=" + getId()
-				+ ", getPassword()=" + getPassword() + ", getSalt()=" + getSalt() + ", getPassword_update_date()="
-				+ getPassword_update_date() + ", getNickname()=" + getNickname() + ", getJoin_type()=" + getJoin_type()
-				+ ", getEmail()=" + getEmail() + ", getPhone()=" + getPhone() + ", getGender()=" + getGender()
-				+ ", getBirthday()=" + getBirthday() + ", getReg_date()=" + getReg_date() + ", getUpdate_date()="
-				+ getUpdate_date() + ", getFavorite_clubs()=" + getFavorite_clubs() + ", getClass()=" + getClass()
-				+ ", hashCode()=" + hashCode() + ", toString()=" + super.toString() + "]";
+				+ ", update_date=" + update_date + "]";
 	}
 
 }

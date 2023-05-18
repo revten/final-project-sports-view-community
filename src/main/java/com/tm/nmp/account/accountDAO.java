@@ -18,6 +18,7 @@ import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
 
+import com.tm.nmp.admin.ClubImageDTO;
 import com.tm.nmp.board.PostVO;
 
 import net.nurigo.java_sdk.api.Message;
@@ -115,7 +116,8 @@ public class accountDAO {
 
 	// 회원가입
 	public void accountRegDo(HttpServletRequest req, AccountDTO ac) {
-		if (ss.getMapper(AccountMapper.class).regAccount(ac) == 1) {
+		if (ss.getMapper(AccountMapper.class).regAccount(ac) != 0) {
+			
 			// pv.setUserId(ac.getMember_id());
 			// ss.getMapper(PointMapper.class).pointTable(pv);
 			System.out.println("가입 성공");
@@ -307,6 +309,10 @@ public class accountDAO {
 		List<PostVO> myPosts = ss.getMapper(AccountMapper.class).getMyPosts(postVO);
 		req.setAttribute("MyPosts", myPosts);
 
+	}
+
+	public List<ClubImageDTO> getAllClubLogos() {
+		return ss.getMapper(AccountMapper.class).getAllClubLogos();
 	}
 
 }

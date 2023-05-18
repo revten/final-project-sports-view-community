@@ -20,6 +20,11 @@
 		END;
 	</insert>
 	
+	<select id="getAllClubLogos" resultType="ClubImageDTO">
+		select ci.*, c.league_id, c.name club_name from tb_club_image ci, tb_club c
+		where ci.club_id = c.id and sort = 0 order by club_id
+	</select>
+	
 	<insert id="regFavoriteClub" parameterType="list">
 		insert all
 		<foreach collection="list" item="item">
