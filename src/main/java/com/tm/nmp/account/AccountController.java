@@ -54,9 +54,7 @@ public class AccountController {
 			acDAO.regFavoriteClub(favoriteClubs);
 		}
 		
-		
-		
-//		acDAO.accountLoginDo(req, ac);
+		acDAO.accountLoginDo(req, ac);
 		acDAO.loginCheck(req);
 		
 		req.setAttribute("contentPage", "home.jsp");
@@ -69,6 +67,13 @@ public class AccountController {
 	public String userEmailCheckDo(HttpServletRequest req, String email) {
 		acDAO.loginCheck(req);
 		return acDAO.emailAuthDo(email);
+	}
+	
+	// 휴대폰 인증 (회원가입)
+	@RequestMapping(value = "/sendSms.do")
+	@ResponseBody
+	public String sendSms(HttpServletRequest req) throws Exception {
+		return acDAO.sendSms(req);
 	}
 	
 	// 로그인 하기
@@ -86,12 +91,13 @@ public class AccountController {
 			response.sendRedirect(watchingPage);	
 		}
 	}
-
+	
 	// 로그아웃 하기
 	@RequestMapping(value = "/account.logout.do", method = RequestMethod.GET)
-	public String accountLogoutDo(HttpServletRequest req, AccountDTO ac) {
-		acDAO.accountLogoutDo(req, ac);
+	public String accountLogoutDo(HttpServletRequest req, HttpServletResponse resp, AccountDTO ac) {
+		acDAO.accountLogoutDo(req, resp, ac);
 		acDAO.loginCheck(req);
+		
 		req.setAttribute("contentPage", "home.jsp");
 		return "index";
 	}

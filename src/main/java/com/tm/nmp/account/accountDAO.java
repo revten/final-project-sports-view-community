@@ -1,12 +1,16 @@
 package com.tm.nmp.account;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Random;
 
 import javax.mail.internet.MimeMessage;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.apache.ibatis.session.SqlSession;
+import org.json.simple.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +20,9 @@ import org.springframework.stereotype.Service;
 
 import com.tm.nmp.board.PostVO;
 
+import net.nurigo.java_sdk.api.Message;
+import net.nurigo.java_sdk.exceptions.CoolsmsException;
+
 @Service
 public class accountDAO {
 
@@ -23,10 +30,10 @@ public class accountDAO {
 
 	@Autowired
 	private SqlSession ss;
-	
+
 	@Autowired
 	private JavaMailSender mailSender;
-	
+
 	// 로그인 영역 표시
 	public boolean loginCheck(HttpServletRequest req) {
 		AccountDTO a = (AccountDTO) req.getSession().getAttribute("loginAccount");
@@ -37,7 +44,7 @@ public class accountDAO {
 		req.setAttribute("loginPage", "account/login.jsp");
 		return false;
 	}
-	
+
 	// .go가 매핑되는 순간, 이 메서드가 동작하면서 페이지 URL을 저장한다
 	public void wathingPage(HttpServletRequest req) {
 		String watchingPage = req.getRequestURL().toString();
@@ -47,7 +54,7 @@ public class accountDAO {
 		}
 		req.getSession().setAttribute("watchingPage", watchingPage);
 	}
-	
+
 	// 이메일 인증
 	public String emailAuthDo(String email) {
 		Random random = new Random();
@@ -72,7 +79,40 @@ public class accountDAO {
 		}
 		return Integer.toString(checknum);
 	}
-	
+
+	// 휴대폰 인증 coolsms
+	public String sendSms(HttpServletRequest req) throws CoolsmsException {
+
+		String api_key = "NCS7QARZ4KC7D3TV";
+		String api_secret = "BSWCYXI3HQUQE1QMS17RMT5BD9EQAPHV";
+		Message coolsms = new Message(api_key, api_secret); // 수신번호(문자를 받을 사람)
+
+		Random rand = new Random();
+		String numStr = "";
+		for (int i = 0; i < 4; i++) {
+			String ran = Integer.toString(rand.nextInt(10));
+			numStr += ran;
+		}
+
+		HashMap<String, String> set = new HashMap<String, String>();
+		set.put("to", req.getParameter("num")); // 발신번호(문자를 보낼 사람) jsp에서 전송한 발신번호를 받아 map에 저장한다.
+		set.put("from", "01050950203"); // 문자내용
+		set.put("type", "sms"); // 문자 타입
+		set.put("text", "인증번호 : [" + numStr + "]");
+		set.put("app_version", "test app 1.2");
+		logger.info("set", set);
+
+		System.out.println(set);
+		try {
+			JSONObject result = coolsms.send(set); // 보내기&전송결과받기
+			return numStr;
+		} catch (CoolsmsException e) {
+			System.out.println(e.getMessage());
+			System.out.println(e.getCode());
+			return null;
+		}
+	}
+
 	// 회원가입
 	public void accountRegDo(HttpServletRequest req, AccountDTO ac) {
 		if (ss.getMapper(AccountMapper.class).regAccount(ac) == 1) {
@@ -83,14 +123,14 @@ public class accountDAO {
 			System.out.println("가입 실패");
 		}
 	}
-	
+
 	// 회원가입시 관심 클럽 등록
 	public void regFavoriteClub(List<FavoriteClubDTO> favoriteClubs) {
 		if (ss.getMapper(AccountMapper.class).regFavoriteClub(favoriteClubs) == 1) {
 			System.out.println("성공");
 		} else {
 			System.out.println("실패");
-		}		
+		}
 	}
 
 	// 로그인 하기
@@ -100,21 +140,28 @@ public class accountDAO {
 			if (ac.getPassword().equals(dbAccount.getPassword())) {
 				req.getSession().setAttribute("loginAccount", dbAccount);
 				req.getSession().setMaxInactiveInterval(60 * 60);
-			}else {
+			} else {
 				req.setAttribute("r", "비밀번호 오류!");
 			}
-		}else {
+		} else {
 			req.setAttribute("r", "존재하지 않는 회원");
 		}
 	}
-	
+
 	// 로그아웃
-	public void accountLogoutDo(HttpServletRequest req, AccountDTO ac) {
+	public void accountLogoutDo(HttpServletRequest req, HttpServletResponse resp, AccountDTO ac) {
+
 		req.getSession().setAttribute("loginAccount", null);
-	}	
-	
-	
-	
+
+		Cookie loginCookie = new Cookie("loginCookie", null); // choiceCookieName(쿠키 이름)에 대한 값을 null로 지정
+
+		loginCookie.setPath("/");
+		loginCookie.setMaxAge(0); // 유효시간을 0으로 설정
+
+		logger.info("유효기간 체크 : ", loginCookie.getMaxAge());
+		logger.info("값 체크 :  " + loginCookie.getValue());
+		resp.addCookie(loginCookie);
+	}
 
 	public static String getClientIp(HttpServletRequest req) {
 		String[] header_IPs = { "HTTP_CLIENT_IP", "HTTP_X_FORWARDED_FOR", "HTTP_X_FORWARDED",
@@ -128,10 +175,6 @@ public class accountDAO {
 		}
 		return req.getRemoteAddr();
 	}
-
-
-
-
 
 	public void changePwDo(HttpServletRequest req, AccountDTO ac) {
 		if (ss.getMapper(AccountMapper.class).changePwDo(ac) == 1) {
@@ -229,21 +272,21 @@ public class accountDAO {
 	public void regProfile(HttpServletRequest req, AccountDTO ac) {
 		try {
 			req.setCharacterEncoding("utf-8");
-			
+
 			String member_pwd = req.getParameter("member_pwd");
 			String nickname = req.getParameter("member_nick");
 			String member_reg_ip = req.getParameter("member_reg_ip");
 			String member_intro = req.getParameter("member_intro");
 			int member_subs = Integer.parseInt(req.getParameter("member_subs"));
 			int club_id = Integer.parseInt(req.getParameter("club_id"));
-			
+
 			ac.setMember_pwd(member_pwd);
 			ac.setMember_nick(nickname);
 			ac.setMember_reg_ip(member_reg_ip);
 			ac.setMember_intro(member_intro);
 			ac.setMember_subs(member_subs);
 			ac.setClub_id(club_id);
-			
+
 			ss.getMapper(AccountMapper.class).regProfile(ac);
 
 		} catch (Exception e) { // TODO Auto-generated catch block
@@ -251,7 +294,6 @@ public class accountDAO {
 		}
 
 	}
-
 
 	public void showAccount(AccountDTO ac, HttpServletRequest req) {
 		AccountDTO a = (AccountDTO) req.getSession().getAttribute("loginAccount");
@@ -264,8 +306,7 @@ public class accountDAO {
 		postVO.setPost_member(req.getParameter("post_member"));
 		List<PostVO> myPosts = ss.getMapper(AccountMapper.class).getMyPosts(postVO);
 		req.setAttribute("MyPosts", myPosts);
-		
-	}
 
+	}
 
 }

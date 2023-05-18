@@ -157,15 +157,33 @@ function pick(e){
 					<span id="emailcheckResult"></span>
 				</div>
 				
-				<div> 추가 정보 (선택)</div>
-				<!-- 휴대폰 cellphone -->
-				<div>휴대폰</div>
+				<!-- 휴대폰 인증 cellphone -->
+				<div class="account_type">
+					<label for="phone">휴대폰 인증</label>
+					<input class="input_id" id="phone" type="text" name="phone" title="전화번호 입력" oninput="autoHyphen(this)" size="13" maxlength="13"
+							placeholder=" '-' 입력 X" required />
+					<button class="emailBtn2" type="button" id="sendMessage" onclick="sendSMS()">인증번호 전송</button>
+					<br>
+					<!-- <input id="checkNum" type="hidden" value="123456"> --> 
+					<input class="input_id" id="userNum" type="text" size="13" maxlength="6">
+					<button class="emailBtn2" type="button" id="completeAuth">인증확인</button>
+				</div>
+					
 				<!-- 성별 gender -->
-				<div >성별</div>
+				<h4 >성별</h4>
+				<div>
+					<label for="gender_man"><b> 남자 :</b></label>
+					<input id="gender_man" type="radio" name="gender" value="0">
+					<label for="gender_woman"><b> 여자 :</b></label>
+					<input id="gender_woman" type="radio" name="gender" value="1">
+				</div>
+				
 				<!-- 생일 birthday -->
-				<div >생일</div>
+				<h4 >생일</h4>
+				<div><input type="date" name="birthday"/> </div>
 
 				<!-- 관신구단 선택 -->
+				<h4 >나의 관심 구단</h4>
 				<div>
 					<label>좋아하는 리그 선택</label>
 					<select onchange="pick(this)">
