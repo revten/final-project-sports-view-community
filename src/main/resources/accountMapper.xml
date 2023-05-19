@@ -2,10 +2,12 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.tm.nmp.account.AccountMapper">
 
+	<!-- 아이디 중복체크 -->
 	<select id="idCheck" parameterType="String" resultType="int">
 		select count(*) from tb_user where id = #{id}
 	</select>
 	
+	<!-- 회원가입하기 -->
 	<insert id="regAccount" parameterType="com.tm.nmp.account.AccountDTO">
 		BEGIN
 		insert into tb_user
@@ -20,11 +22,13 @@
 		END;
 	</insert>
 	
+	<!-- 회원가입창 구단 로고들 불러오기 -->
 	<select id="getAllClubLogos" resultType="ClubImageDTO">
 		select ci.*, c.league_id, c.name club_name from tb_club_image ci, tb_club c
 		where ci.club_id = c.id and sort = 0 order by club_id
 	</select>
 	
+	<!-- 회원가입시 관심 구단 등록 -->
 	<insert id="regFavoriteClub" parameterType="list">
 		insert all
 		<foreach collection="list" item="item">
@@ -35,6 +39,7 @@
 		select * from dual
 	</insert>
 
+	<!--  -->
 	<select id="accountLogin" resultType="com.tm.nmp.account.AccountDTO">
 		select u.*, p.password from tb_user u, tb_password p
 		where u.id = p.user_id and u.id = #{id}

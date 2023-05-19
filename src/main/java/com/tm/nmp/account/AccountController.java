@@ -28,7 +28,7 @@ public class AccountController {
 	public String accountRegGo(HttpServletRequest req) {
 		acDAO.loginCheck(req);
 
-		// 관심 구단 등록 위한 이미지
+		// 회원가입시 구단 로고 이미지 불러오기
 		List<ClubImageDTO> clubImages = acDAO.getAllClubLogos();
 		req.setAttribute("clubImages", clubImages);
 
@@ -46,15 +46,23 @@ public class AccountController {
 
 	// 회원가입
 	@RequestMapping(value = "/account.reg.do", method = RequestMethod.POST)
-	public String accountRegDo(HttpServletRequest req, AccountDTO ac, List<FavoriteClubDTO> fc) {
+	public String accountRegDo(HttpServletRequest req, AccountDTO ac) {
+		
 		acDAO.accountRegDo(req, ac);
-
-		if (fc != null) {
-			for (FavoriteClubDTO f : fc) {
-				f.setUser_id(ac.getId());
+		
+		// 회원가입시 관심 구단 등록
+		String[] fcChosen = req.getParameterValues("club_id");
+		List <FavoriteClubDTO> fcList = new ArrayList<>();
+		if (fcChosen != null) {
+			for (String f : fcChosen) {
+				FavoriteClubDTO fc = new FavoriteClubDTO();
+				fc.setUser_id(ac.getId());
+				fc.setClub_id(Integer.parseInt(f));
+				fcList.add(fc);
 			}
-			acDAO.regFavoriteClub(fc);
+			acDAO.regFavoriteClub(fcList);
 		}
+		
 		acDAO.accountLoginDo(req, ac);
 		acDAO.loginCheck(req);
 		req.setAttribute("contentPage", "home.jsp");

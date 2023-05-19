@@ -7,13 +7,17 @@ import com.tm.nmp.board.PostVO;
 
 public interface AccountMapper {
 	
+	// 아이디 중복체크
 	int idCheck(String id);
 	
+	// 회원가입하기
 	int regAccount(AccountDTO ac);
 	
+	// 회원가입창 구단 로고들 불러오기
 	List<ClubImageDTO> getAllClubLogos();
 	
-	int regFavoriteClub(List<FavoriteClubDTO> favoriteClubs);
+	// 회원가입시 관심 구단 등록
+	void regFavoriteClub(List<FavoriteClubDTO> favoriteClubs);
 
 	AccountDTO accountLogin(AccountDTO ac);
 

@@ -113,7 +113,12 @@ public class accountDAO {
 			return null;
 		}
 	}
-
+	
+	// 회원가입시 구단 로고 이미지 불러오기
+	public List<ClubImageDTO> getAllClubLogos() {
+		return ss.getMapper(AccountMapper.class).getAllClubLogos();
+	}
+	
 	// 회원가입
 	public void accountRegDo(HttpServletRequest req, AccountDTO ac) {
 		if (ss.getMapper(AccountMapper.class).regAccount(ac) != 0) {
@@ -126,13 +131,9 @@ public class accountDAO {
 		}
 	}
 
-	// 회원가입시 관심 클럽 등록
+	// 회원가입시 관심 구단 등록
 	public void regFavoriteClub(List<FavoriteClubDTO> favoriteClubs) {
-		if (ss.getMapper(AccountMapper.class).regFavoriteClub(favoriteClubs) == 1) {
-			System.out.println("성공");
-		} else {
-			System.out.println("실패");
-		}
+		ss.getMapper(AccountMapper.class).regFavoriteClub(favoriteClubs);
 	}
 
 	// 로그인 하기
@@ -311,8 +312,5 @@ public class accountDAO {
 
 	}
 
-	public List<ClubImageDTO> getAllClubLogos() {
-		return ss.getMapper(AccountMapper.class).getAllClubLogos();
-	}
 
 }
