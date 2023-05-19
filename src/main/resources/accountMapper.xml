@@ -45,6 +45,17 @@
 		where u.id = p.user_id and u.id = #{id}
 	</select>
 	
+	<!-- 아이디 찾기 -->
+	<select id="searchId" parameterType="map" resultType="String">
+		select id from tb_user where nickname = #{nickname} and email = #{email}
+	</select>
+	
+	<!-- 비밀번호 변경하기 -->
+	<update id="changePwDo" parameterType="com.tm.nmp.account.AccountDTO">
+		update tb_password password = #{password} where user_id =
+		#{id}
+	</update>
+	
 	
 	
 	
@@ -52,18 +63,7 @@
 	select * from member where member_id = #{member_id}
 	</select>
 	
-	<select id="searchId"
-		parameterType="com.tm.nmp.account.AccountDTO"
-		resultType="com.tm.nmp.account.AccountDTO">
-		select * from account where ac_name = #{ac_name} and
-		ac_email = #{ac_email}
-	</select>
 
-	<update id="changePwDo"
-		parameterType="com.tm.nmp.account.AccountDTO">
-		update account set ac_pw = #{ac_pw} where ac_id=
-		#{ac_id}
-	</update>
 
 	<select id="socialIdCheck" resultType="int">
 		select count(*) from

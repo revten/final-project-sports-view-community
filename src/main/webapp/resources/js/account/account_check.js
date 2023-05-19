@@ -246,3 +246,76 @@ function sendSMS() {
 		}
 	});
 };
+
+// 비밀번호 찾기 유효성 검사
+function searchPw() {
+
+	let email_input = $("#search_member_email");
+	let email = $("#search_member_email").val();
+
+	// 이메일 양식
+	if (!checkEmail(email)) {
+		alert("이메일 양식이 잘못되었습니다");
+		email_input.focus();
+		email_input.value = "";
+		return false;
+	}
+
+	// 이메일 인증 여부
+	let inputNum = $('#checkNum').val();
+	if (inputNum == '' || nick == undefined || nick == null || nick == 'null') {
+		alert("이메일 인증을 완료해주세요");
+		return false;
+	}
+
+	// 이메일 인증번호
+	if (inputNum == $('#valid').val()) {
+		alert('성공적으로 인증되었습니다.');
+		$('#search_member_email').attr("disabled", false);
+	} else {
+		alert('인증 번호가 일치하지 않습니다.');
+		return false;
+	}
+};
+
+function changePw() {
+	let pwd_input = $("#pwdInput");
+	let pwd = $("#pwdInput").val();
+
+	if (!chkPwd(pwd)) {
+		alert("비밀번호 양식을 확인해주세요");
+		pwd_input.focus();
+		pwd_input.value = "";
+		return false;
+	}
+};
+
+// ID 찾기
+function searchId() {
+	let searchId_nickname = $('#searchId-nickname').val();
+	let searchId_email = $('#searchId-email').val();
+
+	// 예외처리 부분
+
+	$.ajax({
+		url : "search.id.do",
+		type: "POST",
+		data : {
+			"nickname" : searchId_nickname,
+			"email" : searchId_email
+		}
+	}).done(function(res) {
+		console.log("result", res);
+		if (res != 0) {
+			$("#success-modal").fadeIn(300);
+			$(".success-modal").fadeIn(300);
+			$('#idFind-auth-hidden').val(res);
+			$('.findId_span').text(res);
+		} else {
+			$("#fail-modal").fadeIn(300);
+			$(".fail-modal").fadeIn(300);
+			$('#idFind-auth-hidden').val(res);fail-modal
+			$('.findId_span').text(res);			
+		}
+	});
+}

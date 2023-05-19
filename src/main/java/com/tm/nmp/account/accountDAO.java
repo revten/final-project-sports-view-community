@@ -2,6 +2,7 @@ package com.tm.nmp.account;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Random;
 
 import javax.mail.internet.MimeMessage;
@@ -18,6 +19,7 @@ import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
 
+import com.project.camping.account.AccountMapper;
 import com.tm.nmp.admin.ClubImageDTO;
 import com.tm.nmp.board.PostVO;
 
@@ -37,6 +39,7 @@ public class accountDAO {
 
 	// 로그인 영역 표시
 	public boolean loginCheck(HttpServletRequest req) {
+		
 		AccountDTO a = (AccountDTO) req.getSession().getAttribute("loginAccount");
 		if (a != null) {
 			req.setAttribute("loginPage", "account/loginSuccess.jsp");
@@ -55,7 +58,13 @@ public class accountDAO {
 		}
 		req.getSession().setAttribute("watchingPage", watchingPage);
 	}
-
+	
+	// 아이디 중복 검사
+	public int idCheck(String id) {
+		int cnt = ss.getMapper(AccountMapper.class).idCheck(id);
+		return cnt;
+	}
+	
 	// 이메일 인증
 	public String emailAuthDo(String email) {
 		Random random = new Random();
@@ -165,20 +174,20 @@ public class accountDAO {
 		logger.info("값 체크 :  " + loginCookie.getValue());
 		resp.addCookie(loginCookie);
 	}
+	
+	// 아이디 찾기
+	public String searchId(HttpServletRequest req) {
+		String nickname = req.getParameter("nickname");
+		String email = req.getParameter("email");
 
-	public static String getClientIp(HttpServletRequest req) {
-		String[] header_IPs = { "HTTP_CLIENT_IP", "HTTP_X_FORWARDED_FOR", "HTTP_X_FORWARDED",
-				"HTTP_X_CLUSTER_CLIENT_IP", "HTTP_FORWARDED_FOR", "HTTP_FORWARDED", "X-Forwarded-For",
-				"Proxy-Client-IP", "WL-Proxy-Client-IP" };
-		for (String header : header_IPs) {
-			String ip = req.getHeader(header);
-			if (ip != null && !"unknown".equalsIgnoreCase(ip) && ip.length() != 0) {
-				return ip;
-			}
-		}
-		return req.getRemoteAddr();
+		Map<String, String> findId = new HashMap<String, String>();
+		findId.put("nickname", nickname);
+		findId.put("email", email);
+
+		return ss.getMapper(AccountMapper.class).searchId(findId);
 	}
-
+	
+	// 비밀번호 변경하기
 	public void changePwDo(HttpServletRequest req, AccountDTO ac) {
 		if (ss.getMapper(AccountMapper.class).changePwDo(ac) == 1) {
 			System.out.println("변경 완료");
@@ -186,6 +195,10 @@ public class accountDAO {
 		}
 	}
 
+	
+	
+	
+	
 	public void accountUpdate(HttpServletRequest req, AccountDTO ac) {
 		if (ss.getMapper(AccountMapper.class).accountUpdate(ac) == 1) {
 			System.out.println("수정 완료");
@@ -219,11 +232,8 @@ public class accountDAO {
 			System.out.println("로그인 실패");
 		}
 	}
+	
 
-	public int idCheck(String id) {
-		int cnt = ss.getMapper(AccountMapper.class).idCheck(id);
-		return cnt;
-	}
 
 	public void socialReg(HttpServletRequest req, AccountDTO ac) {
 		try {
@@ -311,6 +321,18 @@ public class accountDAO {
 		req.setAttribute("MyPosts", myPosts);
 
 	}
-
+	
+	public static String getClientIp(HttpServletRequest req) {
+		String[] header_IPs = { "HTTP_CLIENT_IP", "HTTP_X_FORWARDED_FOR", "HTTP_X_FORWARDED",
+				"HTTP_X_CLUSTER_CLIENT_IP", "HTTP_FORWARDED_FOR", "HTTP_FORWARDED", "X-Forwarded-For",
+				"Proxy-Client-IP", "WL-Proxy-Client-IP" };
+		for (String header : header_IPs) {
+			String ip = req.getHeader(header);
+			if (ip != null && !"unknown".equalsIgnoreCase(ip) && ip.length() != 0) {
+				return ip;
+			}
+		}
+		return req.getRemoteAddr();
+	}
 
 }

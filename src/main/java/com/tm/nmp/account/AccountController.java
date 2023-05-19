@@ -47,12 +47,12 @@ public class AccountController {
 	// 회원가입
 	@RequestMapping(value = "/account.reg.do", method = RequestMethod.POST)
 	public String accountRegDo(HttpServletRequest req, AccountDTO ac) {
-		
+
 		acDAO.accountRegDo(req, ac);
-		
+
 		// 회원가입시 관심 구단 등록
 		String[] fcChosen = req.getParameterValues("club_id");
-		List <FavoriteClubDTO> fcList = new ArrayList<>();
+		List<FavoriteClubDTO> fcList = new ArrayList<>();
 		if (fcChosen != null) {
 			for (String f : fcChosen) {
 				FavoriteClubDTO fc = new FavoriteClubDTO();
@@ -62,7 +62,7 @@ public class AccountController {
 			}
 			acDAO.regFavoriteClub(fcList);
 		}
-		
+
 		acDAO.accountLoginDo(req, ac);
 		acDAO.loginCheck(req);
 		req.setAttribute("contentPage", "home.jsp");
@@ -111,6 +111,7 @@ public class AccountController {
 		return "index";
 	}
 
+	// 아이디 찾는 창으로
 	@RequestMapping(value = "/search.id.go", method = RequestMethod.GET)
 	public String searchIdGo(HttpServletRequest req) {
 		acDAO.loginCheck(req);
@@ -118,14 +119,14 @@ public class AccountController {
 		return "index";
 	}
 
-	/*
-	 * @RequestMapping(value = "/search.id.do", method = RequestMethod.POST) public
-	 * String searchIdDo(HttpServletRequest req, AccountDTO ac) {
-	 * acDAO.searchIdDo(req, ac); acDAO.loginCheck(req);
-	 * req.setAttribute("contentPage", "account/search_result_id.jsp"); return
-	 * "index"; }
-	 */
+	// 아이디 찾기
+	@RequestMapping(value = "/search.id.do", method = RequestMethod.POST)
+	@ResponseBody
+	public String searchId(HttpServletRequest req) {
+		return acDAO.searchId(req);
+	}
 
+	// 비밀번호 찾기 페이지로 이동
 	@RequestMapping(value = "/search.pw.go", method = RequestMethod.GET)
 	public String searchPwGo(HttpServletRequest req) {
 		acDAO.loginCheck(req);
@@ -133,19 +134,20 @@ public class AccountController {
 		return "index";
 	}
 
-	@RequestMapping(value = "/search.pw.do", method = RequestMethod.POST)
+	// 비밀번호 변경 페이지로 이동
+	@RequestMapping(value = "/change.pw.go", method = RequestMethod.GET)
 	public String searchPwDo(HttpServletRequest req, AccountDTO ac) {
 		acDAO.loginCheck(req);
-		req.setAttribute("Account", ac);
 		req.setAttribute("contentPage", "account/pwReg.jsp");
 		return "index";
 	}
 
+	// 비밀번호 변경하기
 	@RequestMapping(value = "/change.pw.do", method = RequestMethod.POST)
 	public String changePwDo(HttpServletRequest req, AccountDTO ac) {
+		acDAO.loginCheck(req);
 		acDAO.changePwDo(req, ac);
 		req.setAttribute("contentPage", "home.jsp");
-		acDAO.loginCheck(req);
 		return "index";
 	}
 
