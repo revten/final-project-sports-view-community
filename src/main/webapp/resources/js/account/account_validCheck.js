@@ -1,6 +1,13 @@
-/**
- * 
- */
+// 글자 넣었을때 -> 글자수가 모자라면 true, 괜찮으면 false
+function minLength(id, length) {
+	return id.length < length;
+}
+
+function maxLength(id, length) {
+	return id.length > length;
+}
+
+
 // <input>이 한글/특수문자/대문자 포함하면 true(=문제가 있는걸로 만들겠다), 아니면 false
 // 허용하고 싶은것만
 function idContain(id) {
@@ -13,17 +20,8 @@ function idContain(id) {
 	}
 }
 
-// 글자 넣었을때 -> 글자수가 모자라면 true, 괜찮으면 false
-function lessThan(id, length) {
-	return id.length < length;
-}
-
-function moreThan(id, length) {
-	return id.length > length;
-}
-
 // 비밀번호 양식 유효성 검사, 정규식 사용
-function chkPwd(str) {
+function pwdForm(str) {
 	let reg_pwd = /^(?=.*?[a-zA-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$ %^&*-]).{7,20}$/;
 
 	if (!reg_pwd.test(str)) {
@@ -34,7 +32,7 @@ function chkPwd(str) {
 }
 
 // 이메일 양식 체크
-function checkEmail(str) {
+function emailForm(str) {
 	let reg_email = /(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))/;
 	if (!reg_email.test(str)) {
 		return false;

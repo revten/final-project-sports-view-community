@@ -24,16 +24,24 @@
 			<h1 class="login_title">비밀번호 찾기</h1>
 			
 			<form class="content" action="change.pw.go" onsubmit="return searchPw()">
-				<!-- 이메일 인증 인풋 -->
-				<div class="accountReg__emailInput">
-					<input class="input_id" placeholder="이메일" type="email" id="search_member_email" name="email">
-					<button class="emailBtn2" type="button" id="email_auth">이메일 인증</button>
-					
-					<input class="input_id" placeholder="인증번호를 입력해주세요" id="checkNum" disabled="disabled">
-					<input type="hidden" id="valid">
-					<span id="mail-check-warn"></span>
-					<span id="emailcheckResult"></span>
+				<div>
+					<input class="input_id" id="id-input" name="id" placeholder="아이디를 입력해주세요" required>
 				</div>
+				
+				<!-- 이메일 인증 -->
+				<div class="accountReg__emailInput">
+					<!-- 이메일 입력 -->
+					<input class="input_id" id="email-input" name="email"  placeholder="이메일" type="email" >
+					<button class="emailBtn2" id="email-send-btn" type="button">이메일 인증</button>
+					<!-- 받은 인증번호 저장-->
+					<input type="hidden" id="email-certNum">
+					<!-- 인증번호 입력 -->					
+					<input class="input_id"  id="email-certNum-input" placeholder="인증번호를 입력해주세요" disabled="disabled"  type="text" size="13" maxlength="6" >
+					
+					<button class="emailBtn2" id="email-auth-complete-btn" disabled="disabled" type="button">인증확인</button>
+				</div>
+				
+				<button class="emailBtn2" style="margin-bottom: 15px;">비밀번호 변경</button>
 			</form>
 			
 			<div>

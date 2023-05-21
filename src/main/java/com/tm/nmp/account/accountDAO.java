@@ -131,7 +131,6 @@ public class accountDAO {
 	// 회원가입
 	public void accountRegDo(HttpServletRequest req, AccountDTO ac) {
 		if (ss.getMapper(AccountMapper.class).regAccount(ac) != 0) {
-			
 			// pv.setUserId(ac.getMember_id());
 			// ss.getMapper(PointMapper.class).pointTable(pv);
 			System.out.println("가입 성공");

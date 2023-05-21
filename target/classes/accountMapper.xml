@@ -52,8 +52,7 @@
 	
 	<!-- 비밀번호 변경하기 -->
 	<update id="changePwDo" parameterType="com.tm.nmp.account.AccountDTO">
-		update tb_password password = #{password} where user_id =
-		#{id}
+		update tb_password set password = #{password} where user_id = #{id}
 	</update>
 	
 	

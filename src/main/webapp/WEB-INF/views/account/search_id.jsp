@@ -95,6 +95,7 @@
 			</div>
 		</div>
 
+		<!-- 모달 -->
 		<div>
 			<div id="success-modal"></div>
 			<input type="hidden" id="idFind-auth-hidden">

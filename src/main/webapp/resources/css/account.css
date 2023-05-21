@@ -21,12 +21,12 @@
 }
 
 /* 아아디,비밀번호 유효성 검사 */
-.id__good, .pwd__good {
+.id__good, .pwd__good, .nickname__good {
 	color: #008000;
 	display: none;
 }
 
-.id__bad, .pwd__bad {
+.id__bad, .pwd__bad, .nickname__bad {
 	color: #ff0000;
 	display: none;
 }

@@ -47,7 +47,7 @@ public class AccountController {
 	// 회원가입
 	@RequestMapping(value = "/account.reg.do", method = RequestMethod.POST)
 	public String accountRegDo(HttpServletRequest req, AccountDTO ac) {
-
+		System.out.println(ac.getEmail());
 		acDAO.accountRegDo(req, ac);
 
 		// 회원가입시 관심 구단 등록
@@ -151,6 +151,11 @@ public class AccountController {
 		return "index";
 	}
 
+	
+	
+	
+	
+	
 	@RequestMapping(value = "/account.update.go", method = RequestMethod.GET)
 	public String accountModifyGo(HttpServletRequest req) {
 		acDAO.loginCheck(req);

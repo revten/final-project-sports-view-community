@@ -14,10 +14,10 @@
 	<br>
 	<br>
 	<form action="change.pw.do" method="post" onsubmit="return changePw();">
-		<input type="hidden" value="${sessionScope.loginAccount.id}}" name="id">
+		<input type="hidden" value="${param.id}" name="id">
 		<!-- 비밀번호 인풋 -->
 		<div class="accountReg__pwdInput">
-			<input class="input_pwd" placeholder="비밀번호(영어+숫자+특수문자 7-20)" type="password" id="pwdInput" name="password"  oninput="checkPwd()">
+			<input class="input_pwd" placeholder="비밀번호(영어+숫자+특수문자 7-20)" type="password" id="pwd-input" name="password"  oninput="checkPwd()">
 			<span class="pwd__good">사용가능 합니다.</span>
 			<span class="pwd__bad">비밀번호 양식을 확인해 주세요</span>
 		</div>
