@@ -151,34 +151,22 @@ public class AccountController {
 		return "index";
 	}
 
-	
-	
-	
-	
-	
-	@RequestMapping(value = "/account.update.go", method = RequestMethod.GET)
-	public String accountModifyGo(HttpServletRequest req) {
-		acDAO.loginCheck(req);
-		req.setAttribute("contentPage", "myPage/myPageMyInfoUpdate.jsp");
-		return "index";
-	}
-
-	@RequestMapping(value = "/account.update.do", method = RequestMethod.POST)
-	public String accountModifyDo(HttpServletRequest req, AccountDTO ac) {
-		acDAO.loginCheck(req);
-		acDAO.accountUpdate(req, ac);
-		req.setAttribute("contentPage", "myPage/myPageMyInfo.jsp");
-		return "index";
-	}
-
+	// 회원탈퇴
 	@RequestMapping(value = "/account.delete.go", method = RequestMethod.GET)
-	public String myPageDeleteGo(HttpServletRequest req, AccountDTO ac) {
-		acDAO.accountDelete(req, ac);
-		acDAO.accountLogoutDo(req, ac);
+	public String myPageDeleteGo(HttpServletRequest req) {
+		
+		String id = req.getParameter("ac_id");
+		System.out.println(id);
+		
+		acDAO.deleteAccount(req, id);
+
 		acDAO.loginCheck(req);
 		req.setAttribute("contentPage", "home.jsp");
 		return "index";
 	}
+
+
+
 
 	@RequestMapping(value = "/social.id.check", method = RequestMethod.GET)
 	@ResponseBody
@@ -216,15 +204,24 @@ public class AccountController {
 
 		return "profile_index";
 	}
+	
 
-	@RequestMapping(value = "/profile.reg.do", method = RequestMethod.POST)
-	public String profileRegDo(HttpServletRequest req, AccountDTO ac) {
-		acDAO.regProfile(req, ac);
-		acDAO.accountLoginDo(req, ac);
+	
+
+	@RequestMapping(value = "/account.update.go", method = RequestMethod.GET)
+	public String accountModifyGo(HttpServletRequest req) {
 		acDAO.loginCheck(req);
-		req.setAttribute("contentPage", "home.jsp");
-
+		req.setAttribute("contentPage", "myPage/myPageMyInfoUpdate.jsp");
 		return "index";
 	}
+
+	@RequestMapping(value = "/account.update.do", method = RequestMethod.POST)
+	public String accountModifyDo(HttpServletRequest req, AccountDTO ac) {
+		acDAO.loginCheck(req);
+		acDAO.accountUpdate(req, ac);
+		req.setAttribute("contentPage", "myPage/myPageMyInfo.jsp");
+		return "index";
+	}
+
 
 }

@@ -55,6 +55,10 @@
 		update tb_password set password = #{password} where user_id = #{id}
 	</update>
 	
+	<!-- 탈퇴하기 -->
+	<delete id="deleteAccount" parameterType="String">
+		delete from account where id = #{id}
+	</delete>
 	
 	
 	
@@ -79,10 +83,6 @@
 		#{ac_email} where ac_id = #{ac_id}
 	</update>
 
-	<delete id="accountDelete"
-		parameterType="com.tm.nmp.account.AccountDTO">
-		delete from account where ac_id = #{ac_id}
-	</delete>
 	
 	<select id="getMyPosts" resultType="com.tm.nmp.board.PostVO">
 		select * from post where post_member = #{post_member} order by post_reg_date desc
@@ -91,10 +91,5 @@
 	<select id="getMyDeatailPosts" resultType="com.tm.nmp.board.PostVO">
 		select * from post where post_member = #{post_member}
 	</select>
-	
-	
-	
-	
-	
-	
+
 </mapper>

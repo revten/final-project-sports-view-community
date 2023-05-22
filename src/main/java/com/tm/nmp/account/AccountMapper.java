@@ -29,20 +29,17 @@ public interface AccountMapper {
 	// 비밀번호 변경하기
 	int changePwDo(AccountDTO ac);
 	
-	
-	
+	// 탈퇴하기
+	int deleteAccount(String id);
+
 	
 
-	AccountDTO searchId(AccountDTO ac);
 
 	int accountUpdate(AccountDTO ac);
 
-	int accountDelete(AccountDTO ac);
-
 	int socialIdCheck(AccountDTO ac);
 
-	
-	void regProfile(AccountDTO ac);
+
 
 	List<AccountDTO> showAccount(AccountDTO ac);
 	

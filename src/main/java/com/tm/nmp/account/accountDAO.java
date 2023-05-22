@@ -39,7 +39,7 @@ public class accountDAO {
 
 	// 로그인 영역 표시
 	public boolean loginCheck(HttpServletRequest req) {
-		
+
 		AccountDTO a = (AccountDTO) req.getSession().getAttribute("loginAccount");
 		if (a != null) {
 			req.setAttribute("loginPage", "account/loginSuccess.jsp");
@@ -58,13 +58,13 @@ public class accountDAO {
 		}
 		req.getSession().setAttribute("watchingPage", watchingPage);
 	}
-	
+
 	// 아이디 중복 검사
 	public int idCheck(String id) {
 		int cnt = ss.getMapper(AccountMapper.class).idCheck(id);
 		return cnt;
 	}
-	
+
 	// 이메일 인증
 	public String emailAuthDo(String email) {
 		Random random = new Random();
@@ -122,12 +122,12 @@ public class accountDAO {
 			return null;
 		}
 	}
-	
+
 	// 회원가입시 구단 로고 이미지 불러오기
 	public List<ClubImageDTO> getAllClubLogos() {
 		return ss.getMapper(AccountMapper.class).getAllClubLogos();
 	}
-	
+
 	// 회원가입
 	public void accountRegDo(HttpServletRequest req, AccountDTO ac) {
 		if (ss.getMapper(AccountMapper.class).regAccount(ac) != 0) {
@@ -173,7 +173,7 @@ public class accountDAO {
 		logger.info("값 체크 :  " + loginCookie.getValue());
 		resp.addCookie(loginCookie);
 	}
-	
+
 	// 아이디 찾기
 	public String searchId(HttpServletRequest req) {
 		String nickname = req.getParameter("nickname");
@@ -185,12 +185,21 @@ public class accountDAO {
 
 		return ss.getMapper(AccountMapper.class).searchId(findId);
 	}
-	
+
 	// 비밀번호 변경하기
 	public void changePwDo(HttpServletRequest req, AccountDTO ac) {
 		if (ss.getMapper(AccountMapper.class).changePwDo(ac) == 1) {
 			System.out.println("변경 완료");
 			req.getSession().setAttribute("loginAccount", ss.getMapper(AccountMapper.class).accountLogin(ac));
+		}
+	}
+
+	// 탈퇴하기
+	public void deleteAccount(HttpServletRequest req, String id) {
+		if (ss.getMapper(AccountMapper.class).deleteAccount(id) == 1) {
+			req.setAttribute("result", "탈퇴 성공");
+		} else {
+			req.setAttribute("result", "탈퇴실패");
 		}
 	}
 
@@ -204,14 +213,6 @@ public class accountDAO {
 			req.getSession().setAttribute("loginAccount", ac);
 		} else {
 			System.out.println("수정 실패");
-		}
-	}
-
-	public void accountDelete(HttpServletRequest req, AccountDTO ac) {
-		if (ss.getMapper(AccountMapper.class).accountDelete(ac) == 1) {
-			req.setAttribute("result", "탈퇴 성공");
-		} else {
-			req.setAttribute("result", "탈퇴실패");
 		}
 	}
 
@@ -231,8 +232,6 @@ public class accountDAO {
 			System.out.println("로그인 실패");
 		}
 	}
-	
-
 
 	public void socialReg(HttpServletRequest req, AccountDTO ac) {
 		try {
@@ -281,31 +280,6 @@ public class accountDAO {
 		}
 	}
 
-	public void regProfile(HttpServletRequest req, AccountDTO ac) {
-		try {
-			req.setCharacterEncoding("utf-8");
-
-			String member_pwd = req.getParameter("member_pwd");
-			String nickname = req.getParameter("member_nick");
-			String member_reg_ip = req.getParameter("member_reg_ip");
-			String member_intro = req.getParameter("member_intro");
-			int member_subs = Integer.parseInt(req.getParameter("member_subs"));
-			int club_id = Integer.parseInt(req.getParameter("club_id"));
-
-			ac.setMember_pwd(member_pwd);
-			ac.setMember_nick(nickname);
-			ac.setMember_reg_ip(member_reg_ip);
-			ac.setMember_intro(member_intro);
-			ac.setMember_subs(member_subs);
-			ac.setClub_id(club_id);
-
-			ss.getMapper(AccountMapper.class).regProfile(ac);
-
-		} catch (Exception e) { // TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-
-	}
 
 	public void showAccount(AccountDTO ac, HttpServletRequest req) {
 		AccountDTO a = (AccountDTO) req.getSession().getAttribute("loginAccount");
@@ -320,7 +294,7 @@ public class accountDAO {
 		req.setAttribute("MyPosts", myPosts);
 
 	}
-	
+
 	public static String getClientIp(HttpServletRequest req) {
 		String[] header_IPs = { "HTTP_CLIENT_IP", "HTTP_X_FORWARDED_FOR", "HTTP_X_FORWARDED",
 				"HTTP_X_CLUSTER_CLIENT_IP", "HTTP_FORWARDED_FOR", "HTTP_FORWARDED", "X-Forwarded-For",
