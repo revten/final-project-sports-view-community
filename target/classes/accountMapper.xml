@@ -39,9 +39,9 @@
 		select * from dual
 	</insert>
 
-	<!--  -->
+	<!-- 로그인하기 -->
 	<select id="accountLogin" resultType="com.tm.nmp.account.AccountDTO">
-		select u.*, p.password from tb_user u, tb_password p
+		select u.*, p.password, p.salt from tb_user u, tb_password p
 		where u.id = p.user_id and u.id = #{id}
 	</select>
 	

@@ -19,7 +19,7 @@ import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
 
-import com.project.camping.account.AccountMapper;
+import com.tm.nmp.SHA256Util;
 import com.tm.nmp.admin.ClubImageDTO;
 import com.tm.nmp.board.PostVO;
 
@@ -130,6 +130,19 @@ public class accountDAO {
 
 	// 회원가입
 	public void accountRegDo(HttpServletRequest req, AccountDTO ac) {
+
+		// salt 생성
+		String salt = SHA256Util.generateSalt();
+		// db에 저장할 salt 세팅
+		ac.setSalt(salt);
+
+		// 유저가 입력한 password
+		String password = ac.getPassword();
+		// 유저가 입력한 password와 위에서 생성한 satl를 조합하여 password 완성
+		password = SHA256Util.getEncrypt(password, salt);
+		// db에 저장할 최종 password를 세팅
+		ac.setPassword(password);
+
 		if (ss.getMapper(AccountMapper.class).regAccount(ac) != 0) {
 			// pv.setUserId(ac.getMember_id());
 			// ss.getMapper(PointMapper.class).pointTable(pv);
@@ -146,9 +159,21 @@ public class accountDAO {
 
 	// 로그인 하기
 	public void accountLoginDo(HttpServletRequest req, AccountDTO ac) {
+
 		AccountDTO dbAccount = ss.getMapper(AccountMapper.class).accountLogin(ac);
+
 		if (dbAccount != null) {
-			if (ac.getPassword().equals(dbAccount.getPassword())) {
+
+			// db에 저장된 salt 가져오기
+			String dbSalt = dbAccount.getSalt();
+			// 유저가 입력한 password 가져오기
+			String password = ac.getPassword();
+
+			// db에서 가져온 salt와 유저가 입력한 password 조합하여 최종 password 산출
+			password = SHA256Util.getEncrypt(password, dbSalt);
+
+			// db에 저장된 password와 최종 산출된 password를 비교
+			if (password.equals(dbAccount.getPassword())) {
 				req.getSession().setAttribute("loginAccount", dbAccount);
 				req.getSession().setMaxInactiveInterval(60 * 60);
 			} else {
@@ -203,10 +228,6 @@ public class accountDAO {
 		}
 	}
 
-	
-	
-	
-	
 	public void accountUpdate(HttpServletRequest req, AccountDTO ac) {
 		if (ss.getMapper(AccountMapper.class).accountUpdate(ac) == 1) {
 			System.out.println("수정 완료");
@@ -279,7 +300,6 @@ public class accountDAO {
 			e.printStackTrace();
 		}
 	}
-
 
 	public void showAccount(AccountDTO ac, HttpServletRequest req) {
 		AccountDTO a = (AccountDTO) req.getSession().getAttribute("loginAccount");

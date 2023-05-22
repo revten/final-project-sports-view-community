@@ -20,7 +20,7 @@ public interface AccountMapper {
 	// 회원가입시 관심 구단 등록
 	void regFavoriteClub(List<FavoriteClubDTO> favoriteClubs);
 	
-	//
+	// 로그인 하기
 	AccountDTO accountLogin(AccountDTO ac);
 	
 	// 아이디 찾기
