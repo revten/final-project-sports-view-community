@@ -68,9 +68,12 @@
 				<div class="nav__toggle" id="nav-toggle">
 					<i class="ri-apps-line"></i>
 				</div>
+				
+				<!--==================== login area - loginSucces.jsp ====================-->
 				<div>
 					<a class="nav__link"><jsp:include page="${loginPage }"></jsp:include></a>
 				</div>
+				
 			</div>
 
 			<div class="nav__menu" id="nav-menu">
@@ -81,7 +84,6 @@
 						class="nav__link">REVIEW</a></li>
 					<li class="nav__item"><a href="fan.board.go?post_board=21"
 						class="nav__link">THE FAN</a></li>
-					<li class="nav__item"><a href="admin.go" class="nav__link">ADMIN</a></li>
 				</ul>
 
 				<ul class="nav__list">

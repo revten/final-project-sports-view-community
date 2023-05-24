@@ -219,7 +219,7 @@ public class accountDAO {
 		}
 	}
 
-	// 탈퇴하기
+	// 회원 탈퇴하기
 	public void deleteAccount(HttpServletRequest req, String id) {
 		if (ss.getMapper(AccountMapper.class).deleteAccount(id) == 1) {
 			req.setAttribute("result", "탈퇴 성공");

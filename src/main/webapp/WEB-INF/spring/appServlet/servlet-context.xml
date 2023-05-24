@@ -18,10 +18,10 @@
 		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.1.xsd
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
 		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.3.xsd">
-
 	<annotation-driven />
 	<context:annotation-config />
 	<tx:annotation-driven />
+	
 	<resources mapping="/resources/**" location="/resources/" />
 
 	<beans:bean
@@ -116,5 +116,19 @@
 	<!-- 페이지당 보여줄 게시물 수 -->
 	<beans:bean id="bo" class="com.tm.nmp.board.BoardOption"
 		p:countPerPage="12" p:field="name" p:search="" />
+
+	<!-- 인터셉터 적용 -->
+	<interceptors>
+		<interceptor>
+			<mapping path="/account.login.do"></mapping>
+			<beans:bean id="loginIntreceptor"
+				class="com.tm.nmp.interceptor.LoginInterceptor"></beans:bean>
+		</interceptor>
+		<interceptor>
+			<mapping path="/admin/**"></mapping>
+			<beans:bean id="AdminIntreceptor"
+				class="com.tm.nmp.interceptor.AdminInterceptor"></beans:bean>
+		</interceptor>
+	</interceptors>
 
 </beans:beans>

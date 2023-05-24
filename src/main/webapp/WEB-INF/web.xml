@@ -23,7 +23,8 @@
 		</servlet-class>
 		<init-param>
 			<param-name>contextConfigLocation</param-name>
-			<param-value>/WEB-INF/spring/appServlet/servlet-context.xml
+			<param-value>
+				/WEB-INF/spring/appServlet/servlet-context.xml
 			</param-value>
 		</init-param>
 		<load-on-startup>1</load-on-startup>
@@ -42,7 +43,7 @@
 			<param-name>encoding</param-name>
 			<param-value>UTF-8</param-value>
 		</init-param>
-		
+
 		<init-param>
 			<param-name>forceEncoding</param-name>
 			<param-value>true</param-value>
@@ -54,7 +55,7 @@
 		<filter-name>encodingFilter</filter-name>
 		<url-pattern>/*</url-pattern>
 	</filter-mapping>
-	
+
 	<error-page>
 		<error-code>404</error-code>
 		<location>/WEB-INF/views/errorPage.jsp</location>

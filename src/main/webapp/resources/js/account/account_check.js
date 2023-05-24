@@ -229,7 +229,7 @@ $(function() {
 });
 
 
-// 회원가입 버튼 눌렀을때, 전체적으로 다시 한번 검사
+// 회원가입 버튼 눌렀을때, 전체적으로 다시 한번 검사 -> 최종 유효성 검사
 // 닉네임 양식 + 이메일 인증 여부 + 아이디 중복 여부 확인
 function checkReg() {
 	
@@ -354,3 +354,16 @@ function changePw() {
 		return false;
 	}
 };
+
+
+// login area
+function logout() {
+	let ok = confirm("로그아웃 하시겠습니까?")
+	if(ok){
+		location.href='account.logout.do';
+	}
+}
+
+function goMyPage() {
+		location.href='myPage.main.go';
+}

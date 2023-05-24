@@ -141,7 +141,7 @@ public class StadiumController {
 		List<ClubImageDTO> clubImages = sdDAO.getLogoBySports(sports_id);
 		
 		req.setAttribute("clubImages", clubImages);
-		req.setAttribute("contentPage", "stadium/stadiumClub.jsp");
+		req.setAttribute("contentPage", "stadium/stadiumClubList.jsp");
 		return "index";
 	}
 	

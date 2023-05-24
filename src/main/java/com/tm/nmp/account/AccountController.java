@@ -8,6 +8,8 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,12 +22,17 @@ import com.tm.nmp.admin.ClubImageDTO;
 @Controller
 public class AccountController {
 
+	private static final Logger logger = LoggerFactory.getLogger(AccountController.class);
+	
 	@Autowired
 	private accountDAO acDAO;
 
-	// 회원가입 페이지로 이동
-	@RequestMapping(value = "/account.reg.go", method = RequestMethod.GET)
+	// 회원가입 페이지로 이동 
+	@RequestMapping(value = "account.reg.go", method = RequestMethod.GET)
 	public String accountRegGo(HttpServletRequest req) {
+		
+		logger.info("회원가입 페이지");
+		
 		acDAO.loginCheck(req);
 
 		// 회원가입시 구단 로고 이미지 불러오기
@@ -37,16 +44,21 @@ public class AccountController {
 	}
 
 	// 아이디 중복 검사
-	@RequestMapping(value = "/account.id.check", method = RequestMethod.POST)
+	@RequestMapping(value = "/id.check", method = RequestMethod.POST)
 	@ResponseBody
 	public int idCheck(@RequestParam("id") String id) {
+		
+		logger.info("아이디 중복 검사");
+		
 		int result = acDAO.idCheck(id);
 		return result;
 	}
 
-	// 회원가입
-	@RequestMapping(value = "/account.reg.do", method = RequestMethod.POST)
+	// 회원가입 하기
+	@RequestMapping(value = "/reg.do", method = RequestMethod.POST)
 	public String accountRegDo(HttpServletRequest req, AccountDTO ac) {
+		
+		logger.info("회원가입 하기");
 		
 		acDAO.accountRegDo(req, ac);
 
@@ -152,7 +164,7 @@ public class AccountController {
 		return "index";
 	}
 
-	// 회원탈퇴
+	// 회원 탈퇴하기
 	@RequestMapping(value = "/account.delete.go", method = RequestMethod.GET)
 	public String myPageDeleteGo(HttpServletRequest req) {
 		
