@@ -57,8 +57,8 @@ public class PointDAO {
 	public void calcAddPostAndAddCommentPoint(HttpServletRequest req,PointVO pv, PlusPointVO ppv, int plusPoint) {
 		
 		AccountDTO ac = (AccountDTO) req.getSession().getAttribute("loginAccount");
-		pv.setPoint_member(ac.getMember_id());
-		ppv.setPlusPoint_member(ac.getMember_id());
+		pv.setPoint_member(ac.getId());
+		ppv.setPlusPoint_member(ac.getId());
 		ppv.setPlusPoint(plusPoint);
 		
 		// 현재 포인트 조회
@@ -99,14 +99,14 @@ public class PointDAO {
 
 	public void showPoint(HttpServletRequest req, PointVO pv) {
 		AccountDTO ac = (AccountDTO) req.getSession().getAttribute("loginAccount");
-		pv.setPoint_member(ac.getMember_id());
+		pv.setPoint_member(ac.getId());
 		req.setAttribute("point", ss.getMapper(PointMapper.class).getPoint(pv));
 		
 	}
 
 	public void showPlusPoint(HttpServletRequest req, PlusPointVO ppv) {
 		AccountDTO ac = (AccountDTO) req.getSession().getAttribute("loginAccount");
-		ppv.setPlusPoint_member(ac.getMember_id());
+		ppv.setPlusPoint_member(ac.getId());
 		List<PlusPointVO> plusPoint = ss.getMapper(PointMapper.class).getPlusPoint(ppv);
 		req.setAttribute("plusPoint", plusPoint);
 	}

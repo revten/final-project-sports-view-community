@@ -93,7 +93,7 @@ public class BoardDAO {
 		allPostCount++;
 
 		AccountDTO ac = (AccountDTO) req.getSession().getAttribute("loginAccount");
-		p.setPost_member(ac.getMember_id());
+		p.setPost_member(ac.getId());
 
 		String regIp = getClientIp(req);
 		System.out.println("등록 ip : " + regIp);
@@ -201,7 +201,7 @@ public class BoardDAO {
 
 		// 리플을 등록한 사람도 세팅해주자
 		AccountDTO ac = (AccountDTO) req.getSession().getAttribute("loginAccount");
-		rp.setReply_member(ac.getMember_id());
+		rp.setReply_member(ac.getId());
 
 		int a = ss.getMapper(BoardMapper.class).regReply(rp);
 		System.out.println(a);

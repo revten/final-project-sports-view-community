@@ -238,8 +238,8 @@ public class accountDAO {
 	}
 
 	public int socialIdCheck(AccountDTO ac) {
-		System.out.println(ac.getMember_id());
-		System.out.println(ac.getMember_reg_type());
+		System.out.println(ac.getId());
+		System.out.println(ac.getJoin_type());
 		return ss.getMapper(AccountMapper.class).socialIdCheck(ac);
 	}
 
@@ -303,7 +303,7 @@ public class accountDAO {
 
 	public void showAccount(AccountDTO ac, HttpServletRequest req) {
 		AccountDTO a = (AccountDTO) req.getSession().getAttribute("loginAccount");
-		a.setMember_id(a.getMember_id());
+		a.setId(a.getId());
 		List<AccountDTO> Account = ss.getMapper(AccountMapper.class).showAccount(ac);
 		req.setAttribute("account", Account);
 	}
