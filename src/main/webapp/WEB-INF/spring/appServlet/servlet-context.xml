@@ -125,7 +125,7 @@
 				class="com.tm.nmp.interceptor.LoginInterceptor"></beans:bean>
 		</interceptor>
 		<interceptor>
-			<mapping path="/admin/**"></mapping>
+			<mapping path="/admin.**"></mapping>
 			<beans:bean id="AdminIntreceptor"
 				class="com.tm.nmp.interceptor.AdminInterceptor"></beans:bean>
 		</interceptor>

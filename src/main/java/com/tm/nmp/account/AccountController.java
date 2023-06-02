@@ -44,7 +44,7 @@ public class AccountController {
 	}
 
 	// 아이디 중복 검사
-	@RequestMapping(value = "/id.check", method = RequestMethod.POST)
+	@RequestMapping(value = "/account.id.check", method = RequestMethod.POST)
 	@ResponseBody
 	public int idCheck(@RequestParam("id") String id) {
 		
@@ -55,7 +55,7 @@ public class AccountController {
 	}
 
 	// 회원가입 하기
-	@RequestMapping(value = "/reg.do", method = RequestMethod.POST)
+	@RequestMapping(value = "/account.reg.do", method = RequestMethod.POST)
 	public String accountRegDo(HttpServletRequest req, AccountDTO ac) {
 		
 		logger.info("회원가입 하기");
