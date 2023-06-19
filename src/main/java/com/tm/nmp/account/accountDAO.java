@@ -12,8 +12,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.ibatis.session.SqlSession;
 import org.json.simple.JSONObject;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
@@ -23,13 +21,13 @@ import com.tm.nmp.SHA256Util;
 import com.tm.nmp.admin.ClubImageDTO;
 import com.tm.nmp.board.PostVO;
 
+import lombok.extern.slf4j.Slf4j;
 import net.nurigo.java_sdk.api.Message;
 import net.nurigo.java_sdk.exceptions.CoolsmsException;
 
 @Service
+@Slf4j
 public class accountDAO {
-
-	private static final Logger logger = LoggerFactory.getLogger(accountDAO.class);
 
 	@Autowired
 	private SqlSession ss;
@@ -106,7 +104,7 @@ public class accountDAO {
 		set.put("type", "sms"); // 문자 타입
 		set.put("text", "인증번호 : [" + numStr + "]");
 		set.put("app_version", "test app 1.2");
-		logger.info("set", set);
+		log.info("set", set);
 
 		System.out.println(set);
 		try {
@@ -190,8 +188,8 @@ public class accountDAO {
 		loginCookie.setPath("/");
 		loginCookie.setMaxAge(0); // 유효시간을 0으로 설정
 
-		logger.info("유효기간 체크 : ", loginCookie.getMaxAge());
-		logger.info("값 체크 :  " + loginCookie.getValue());
+		log.info("유효기간 체크 : ", loginCookie.getMaxAge());
+		log.info("값 체크 :  " + loginCookie.getValue());
 		resp.addCookie(loginCookie);
 	}
 

@@ -41,17 +41,17 @@
 
 
 <!--=============== [CSS MEMBER]===============-->
-<link rel="stylesheet" href="resources/css/index.css" />
-<link rel="stylesheet" href="resources/css/account.css" />
-<link rel="stylesheet" href="resources/css/news.css" />
-<link rel="stylesheet" href="resources/css/stadium/stadium.css" />
-<link rel="stylesheet" href="resources/css/stadium/stadiumMain.css" />
-<link rel="stylesheet" href="resources/css/map.css" />
-<link rel="stylesheet" href="resources/css/clubEvent.css" />
-<link rel="stylesheet" href="resources/css/review.css" />
-<link rel="stylesheet" href="resources/css/withGo.css" />
-<link rel="stylesheet" href="resources/css/fanBoard.css">
-<link rel="stylesheet" href="resources/css/myPage.css" />
+<link rel="stylesheet" href="/resources/css/index.css" />
+<link rel="stylesheet" href="/resources/css/account.css" />
+<link rel="stylesheet" href="/resources/css/news.css" />
+<link rel="stylesheet" href="/resources/css/stadium/stadium.css" />
+<link rel="stylesheet" href="/resources/css/stadium/stadiumMain.css" />
+<link rel="stylesheet" href="/resources/css/map.css" />
+<link rel="stylesheet" href="/resources/css/clubEvent.css" />
+<link rel="stylesheet" href="/resources/css/review.css" />
+<link rel="stylesheet" href="/resources/css/withGo.css" />
+<link rel="stylesheet" href="/resources/css/fanBoard.css">
+<link rel="stylesheet" href="/resources/css/myPage.css" />
 
 </head>
 
@@ -78,7 +78,7 @@
 
 			<div class="nav__menu" id="nav-menu">
 				<ul class="nav__list">
-					<li class="nav__item"><a href="stadium.main.go"
+					<li class="nav__item"><a href="stadium/main"
 						class="nav__link">STADIUM</a></li>
 					<li class="nav__item"><a href="review.board.go?post_board=12"
 						class="nav__link">REVIEW</a></li>
@@ -207,21 +207,21 @@
 	</a>
 
 	<!--=============== MAIN JS ===============-->
-	<script src="resources/js/index.js"></script>
+	<script src="/resources/js/index.js"></script>
 
 	<!--=============== [JS MEMBER]===============-->
-	<script src="resources/js/account/account_go.js"></script>
-	<script src="resources/js/account/account_condition.js"></script>
-	<script src="resources/js/account/account_check.js"></script>
-	<script src="resources/js/account/account_validCheck.js"></script>
+	<script src="/resources/js/account/account_go.js"></script>
+	<script src="/resources/js/account/account_condition.js"></script>
+	<script src="/resources/js/account/account_check.js"></script>
+	<script src="/resources/js/account/account_validCheck.js"></script>
 
-	<script src="resources/js/stadium/stadium_go.js"></script>
-	<script src="resources/js/stadium/stadiumDetail.js"></script>
-	<script src="resources/js/stadium/seat_detail.js"></script>
+	<script src="/resources/js/stadium/stadium_go.js"></script>
+	<script src="/resources/js/stadium/stadiumDetail.js"></script>
+	<script src="/resources/js/stadium/seat_detail.js"></script>
 
-	<script src="resources/js/myPage/myPage.js"></script>
-	<script src="resources/js/news/paging.js"></script>
-	<script src="resources/js/fan/fan_reply.js"></script>
-	<script src="resources/js/fan/fanPost.js"></script>
+	<script src="/resources/js/myPage/myPage.js"></script>
+	<script src="/resources/js/news/paging.js"></script>
+	<script src="/resources/js/fan/fan_reply.js"></script>
+	<script src="/resources/js/fan/fanPost.js"></script>
 </body>
 </html>

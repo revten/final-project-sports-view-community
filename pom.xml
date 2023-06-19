@@ -68,6 +68,7 @@
 			<artifactId>commons-dbcp2</artifactId>
 			<version>2.5.0</version>
 		</dependency>
+		
 		<!-- Spring환경에서 DB와 연결 할 수 있게 -->
 		<dependency>
 			<groupId>org.springframework</groupId>
@@ -123,6 +124,7 @@
 			<artifactId>jaxb-impl</artifactId>
 			<version>2.3.1</version>
 		</dependency>
+		
 		<!-- JSON 데이터 처리를 위한 dependency -->
 		<!-- https://mvnrepository.com/artifact/org.codehaus.jackson/jackson-mapper-asl -->
 		<dependency>
@@ -235,6 +237,15 @@
 			<artifactId>junit</artifactId>
 			<version>4.7</version>
 			<scope>test</scope>
+		</dependency>
+		
+		<!-- lombok -->
+		<!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
+		<dependency>
+		    <groupId>org.projectlombok</groupId>
+		    <artifactId>lombok</artifactId>
+		    <version>1.18.12</version>
+		    <scope>provided</scope>
 		</dependency>
 
 		<!-- SMS SEND -->

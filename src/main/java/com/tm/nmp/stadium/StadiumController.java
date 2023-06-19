@@ -15,6 +15,7 @@ import com.tm.nmp.admin.ClubImageDTO;
 import com.tm.nmp.board.BoardOption;
 
 @Controller
+@RequestMapping(value = "/stadium")
 public class StadiumController {
 
 	@Autowired
@@ -26,7 +27,7 @@ public class StadiumController {
 	@Autowired
 	private AdminDAO adminDAO;
 	
-	@RequestMapping(value = "/stadium.main.go", method = RequestMethod.GET)
+	@RequestMapping(value = "main", method = RequestMethod.GET)
 	public String stadiumMainGo(HttpServletRequest req) {
 		acDAO.wathingPage(req);
 		acDAO.loginCheck(req);

@@ -19,10 +19,12 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.tm.nmp.admin.ClubImageDTO;
 
+import lombok.extern.slf4j.Slf4j;
+
 @Controller
+@Slf4j
 public class AccountController {
 
-	private static final Logger logger = LoggerFactory.getLogger(AccountController.class);
 	
 	@Autowired
 	private accountDAO acDAO;
@@ -31,7 +33,7 @@ public class AccountController {
 	@RequestMapping(value = "account.reg.go", method = RequestMethod.GET)
 	public String accountRegGo(HttpServletRequest req) {
 		
-		logger.info("회원가입 페이지");
+		log.info("회원가입 페이지");
 		
 		acDAO.loginCheck(req);
 
@@ -48,7 +50,7 @@ public class AccountController {
 	@ResponseBody
 	public int idCheck(@RequestParam("id") String id) {
 		
-		logger.info("아이디 중복 검사");
+		log.info("아이디 중복 검사");
 		
 		int result = acDAO.idCheck(id);
 		return result;
@@ -58,7 +60,7 @@ public class AccountController {
 	@RequestMapping(value = "/account.reg.do", method = RequestMethod.POST)
 	public String accountRegDo(HttpServletRequest req, AccountDTO ac) {
 		
-		logger.info("회원가입 하기");
+		log.info("회원가입 하기");
 		
 		acDAO.accountRegDo(req, ac);
 
