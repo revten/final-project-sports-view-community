@@ -41,10 +41,6 @@ public class accountDAO {
 	public boolean loginCheck(HttpServletRequest req) {
 
 		AccountDTO a = (AccountDTO) req.getSession().getAttribute("loginAccount");
-		if (a != null) {
-			req.setAttribute("loginPage", "account/loginSuccess.jsp");
-			return true;
-		}
 		req.setAttribute("loginPage", "account/login.jsp");
 		return false;
 	}
