@@ -23,6 +23,7 @@ import lombok.extern.slf4j.Slf4j;
 
 @Controller
 @Slf4j
+@RequestMapping(value = "/account")
 public class AccountController {
 
 	
@@ -30,7 +31,7 @@ public class AccountController {
 	private accountDAO acDAO;
 
 	// 회원가입 페이지로 이동 
-	@RequestMapping(value = "account.reg.go", method = RequestMethod.GET)
+	@RequestMapping(value = "/reg.go", method = RequestMethod.GET)
 	public String accountRegGo(HttpServletRequest req) {
 		
 		log.info("회원가입 페이지");
@@ -46,7 +47,7 @@ public class AccountController {
 	}
 
 	// 아이디 중복 검사
-	@RequestMapping(value = "/account.id.check", method = RequestMethod.POST)
+	@RequestMapping(value = "/id.check", method = RequestMethod.POST)
 	@ResponseBody
 	public int idCheck(@RequestParam("id") String id) {
 		
@@ -57,7 +58,7 @@ public class AccountController {
 	}
 
 	// 회원가입 하기
-	@RequestMapping(value = "/account.reg.do", method = RequestMethod.POST)
+	@RequestMapping(value = "/reg.do", method = RequestMethod.POST)
 	public String accountRegDo(HttpServletRequest req, AccountDTO ac) {
 		
 		log.info("회원가입 하기");
@@ -99,7 +100,7 @@ public class AccountController {
 	}
 
 	// 로그인 하기
-	@RequestMapping(value = "/account.login.do", method = RequestMethod.POST)
+	@RequestMapping(value = "/login.do", method = RequestMethod.POST)
 	public void accountLoginDo(HttpServletRequest req, AccountDTO ac, HttpServletResponse response)
 			throws IOException, ServletException {
 		
@@ -110,14 +111,14 @@ public class AccountController {
 			System.out.println(watchingPage);
 			response.sendRedirect(watchingPage);
 		} else {
-			// account.login.do가 실행되는 순간 loginPage가 Referer로 저장되어 loginPage를 보여주게됨
+			//login.do가 실행되는 순간 loginPage가 Referer로 저장되어 loginPage를 보여주게됨
 			String watchingPage = (String) req.getHeader("Referer");
 			response.sendRedirect(watchingPage);
 		}
 	}
 
 	// 로그아웃 하기
-	@RequestMapping(value = "/account.logout.do", method = RequestMethod.GET)
+	@RequestMapping(value = "/logout.do", method = RequestMethod.GET)
 	public String accountLogoutDo(HttpServletRequest req, HttpServletResponse resp, AccountDTO ac) {
 		acDAO.accountLogoutDo(req, resp, ac);
 		acDAO.loginCheck(req);
@@ -167,7 +168,7 @@ public class AccountController {
 	}
 
 	// 회원 탈퇴하기
-	@RequestMapping(value = "/account.delete.go", method = RequestMethod.GET)
+	@RequestMapping(value = "/delete.go", method = RequestMethod.GET)
 	public String myPageDeleteGo(HttpServletRequest req) {
 		
 		String id = req.getParameter("ac_id");
@@ -223,14 +224,14 @@ public class AccountController {
 
 	
 
-	@RequestMapping(value = "/account.update.go", method = RequestMethod.GET)
+	@RequestMapping(value = "/update.go", method = RequestMethod.GET)
 	public String accountModifyGo(HttpServletRequest req) {
 		acDAO.loginCheck(req);
 		req.setAttribute("contentPage", "myPage/myPageMyInfoUpdate.jsp");
 		return "index";
 	}
 
-	@RequestMapping(value = "/account.update.do", method = RequestMethod.POST)
+	@RequestMapping(value = "/update.do", method = RequestMethod.POST)
 	public String accountModifyDo(HttpServletRequest req, AccountDTO ac) {
 		acDAO.loginCheck(req);
 		acDAO.accountUpdate(req, ac);

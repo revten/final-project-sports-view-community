@@ -12,13 +12,15 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.tm.nmp.account.accountDAO;
 import com.tm.nmp.admin.AdminController;
 
+import lombok.extern.slf4j.Slf4j;
+
 @Controller
+@Slf4j
 public class HomeController {
 
 	@Autowired
 	private accountDAO acDAO;
-
-	private static final Logger logger = LoggerFactory.getLogger(AdminController.class);	
+	
 //	@Autowired
 //	private BoardDAO brDAO;
 //
@@ -37,6 +39,7 @@ public class HomeController {
 //		}
 //
 //		acDAO.wathingPage(req);
+		log.info("메인진입");
 		acDAO.loginCheck(req);
 		req.setAttribute("contentPage", "home.jsp");
 		return "index";
@@ -48,7 +51,7 @@ public class HomeController {
 		return home(req);
 	}
 
-	@RequestMapping(value = "/account.login.go", method = RequestMethod.GET)
+	@RequestMapping(value = "/account/login.go", method = RequestMethod.GET)
 	public String accountLoginGo(HttpServletRequest req) {
 		acDAO.loginCheck(req);
 		req.setAttribute("contentPage", "account/loginPage.jsp");

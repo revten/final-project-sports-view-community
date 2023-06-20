@@ -15,7 +15,11 @@ import com.tm.nmp.board.BoardSelector;
 import com.tm.nmp.board.PostVO;
 import com.tm.nmp.board.ReplyVO;
 
+import lombok.extern.slf4j.Slf4j;
+
 @Controller
+@Slf4j
+@RequestMapping(value = "/clubEvent")
 public class ClubEventController {
 	@Autowired
 	private accountDAO acDAO;
@@ -25,6 +29,7 @@ public class ClubEventController {
 
 	@RequestMapping(value = "clubEvent.board.go", method = RequestMethod.GET)
 	public String clubEventBoardGO(HttpServletRequest req, PostVO p) {
+		log.info("clubEvent 메인 진입");
 		acDAO.loginCheck(req);
 		brDAO.getAllPost(req, 1, p);
 

@@ -9,12 +9,16 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.tm.nmp.account.AccountController;
 import com.tm.nmp.account.accountDAO;
 import com.tm.nmp.admin.AdminDAO;
 import com.tm.nmp.admin.ClubImageDTO;
 import com.tm.nmp.board.BoardOption;
 
+import lombok.extern.slf4j.Slf4j;
+
 @Controller
+@Slf4j
 @RequestMapping(value = "/stadium")
 public class StadiumController {
 
@@ -29,6 +33,7 @@ public class StadiumController {
 	
 	@RequestMapping(value = "main", method = RequestMethod.GET)
 	public String stadiumMainGo(HttpServletRequest req) {
+		log.info("stadium 메인 진입");
 		acDAO.wathingPage(req);
 		acDAO.loginCheck(req);
 		

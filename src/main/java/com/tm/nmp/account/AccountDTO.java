@@ -2,8 +2,11 @@ package com.tm.nmp.account;
 
 import java.util.Date;
 
+import org.springframework.stereotype.Component;
+
 import lombok.Data;
 
+@Component
 @Data
 public class AccountDTO {
 	private String id; // tb_user 테이블

@@ -87,7 +87,7 @@
 				</div>
 				<div class="button-container">
 					<button class="emailBtn2"
-						onclick="location.href='account.update.go'">내 정보 수정하기</button>
+						onclick="location.href='update.go'">내 정보 수정하기</button>
 					<button class="emailBtn2" onclick="bye();" type="button">탈퇴문의</button>
 				</div>
 			</div>

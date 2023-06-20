@@ -18,7 +18,11 @@ import com.tm.nmp.point.PlusPointVO;
 import com.tm.nmp.point.PointDAO;
 import com.tm.nmp.point.PointVO;
 
+import lombok.extern.slf4j.Slf4j;
+
 @Controller
+@Slf4j
+@RequestMapping(value = "/review")
 public class ReviewController {
 	
 	@Autowired
@@ -33,6 +37,7 @@ public class ReviewController {
 	
 	@RequestMapping(value = "review.board.go", method = RequestMethod.GET)
 	public String reviewBoardGo(HttpServletRequest req, PostVO p) {
+		log.info("review 메인 진입");
 		acDAO.wathingPage(req);
 		acDAO.loginCheck(req);
 		

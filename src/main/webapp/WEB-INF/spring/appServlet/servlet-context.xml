@@ -120,7 +120,7 @@
 	<!-- 인터셉터 적용 -->
 	<interceptors>
 		<interceptor>
-			<mapping path="/account.login.do"></mapping>
+			<mapping path="/account/login.do"></mapping>
 			<beans:bean id="loginIntreceptor"
 				class="com.tm.nmp.interceptor.LoginInterceptor"></beans:bean>
 		</interceptor>

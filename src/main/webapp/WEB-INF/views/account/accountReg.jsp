@@ -28,7 +28,7 @@
 		
 		<div id="accountReg__container">
 			<h1 class="login_title">회원 가입</h1>
-			<form action="account.reg.do" method="post" onsubmit="return checkReg()">
+			<form action="reg.do" method="post" onsubmit="return checkReg()">
 				
 				<!--  아이디 입력 -->
 				<div class="accountReg__idInput">

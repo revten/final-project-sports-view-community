@@ -247,6 +247,15 @@
 			<scope>test</scope>
 		</dependency>
 		
+		<!-- spring-test 추가 -->
+		<!-- https://mvnrepository.com/artifact/org.springframework/spring-test -->
+		<dependency>
+    		<groupId>org.springframework</groupId>
+		    <artifactId>spring-test</artifactId>
+    		<version>${org.springframework-version}</version>
+    		<scope>test</scope>
+		</dependency>
+		
 		<!-- lombok -->
 		<!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
 		<dependency>
@@ -262,6 +271,13 @@
 			<artifactId>javaSDK</artifactId>
 			<version>2.2</version>
 		</dependency>
+		
+		<!-- https://mvnrepository.com/artifact/com.zaxxer/HikariCP -->
+		<dependency>
+		    <groupId>com.zaxxer</groupId>
+		    <artifactId>HikariCP</artifactId>
+		    <version>3.4.2</version>
+		</dependency>	
 
 	</dependencies>
 

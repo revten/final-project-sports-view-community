@@ -10,8 +10,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.tm.nmp.account.accountDAO;
+import com.tm.nmp.fan.FanBoardController;
+
+import lombok.extern.slf4j.Slf4j;
 
 @Controller
+@Slf4j
+@RequestMapping(value = "/news")
 public class NewsController {
 
 	@Autowired
@@ -22,6 +27,7 @@ public class NewsController {
 	
 	@RequestMapping(value = "/news.main.go", method = RequestMethod.GET)
     public String newsEventMainGo(HttpServletRequest req) {
+		log.info("news 메인 진입");
         acDAO.wathingPage(req);
         acDAO.loginCheck(req);
         req.setAttribute("contentPage", "everyNews.jsp");

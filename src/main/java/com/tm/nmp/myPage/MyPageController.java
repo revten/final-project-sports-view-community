@@ -12,11 +12,16 @@ import com.tm.nmp.account.accountDAO;
 import com.tm.nmp.account.AccountDTO;
 import com.tm.nmp.board.BoardDAO;
 import com.tm.nmp.board.PostVO;
+import com.tm.nmp.fan.FanBoardController;
 import com.tm.nmp.point.PlusPointVO;
 import com.tm.nmp.point.PointDAO;
 import com.tm.nmp.point.PointVO;
 
+import lombok.extern.slf4j.Slf4j;
+
 @Controller
+@Slf4j
+@RequestMapping(value = "/myPage")
 public class MyPageController {
 
 	@Autowired
@@ -27,6 +32,7 @@ public class MyPageController {
 		
 	@RequestMapping(value = "myPage.info.go", method = RequestMethod.GET)
 	public String myPageInfoGo(HttpServletRequest req, AccountDTO ac, PointVO pv, PlusPointVO ppv) {
+		log.info("myPage 메인 진입");
 		acDAO.loginCheck(req);
 		req.setAttribute("contentPage", "myPage/myPageMyInfo.jsp");
 		return "index";

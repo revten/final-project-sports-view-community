@@ -1,8 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd">
-	
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+
 	<!-- Root Context: defines shared resources visible to all other web components -->
-		
+
+<!-- 	<context:component-scan
+		base-package="com.tm.nmp" />
+
+	<bean id="hikariConfig" class="com.zaxxer.hikari.HikariConfig">
+		<property name="driverClassName" value="oracle.jdbc.pool.OracleDataSource"></property>
+		<property name="jdbcUrl" value="jdbc:oracle:thin:@VNFOZP5V0P896GE5_high?TNS_ADMIN=C:/wallet/Wallet_VNFOZP5V0P896GE5"></property>
+		Oracle 11g 경우 value="jdbc:oracle:thin:@URL주소:1521:XE"
+		Oracle 19 경우 value="jdbc:oracle:thin:@URL주소:1521:orcl"
+		<property name="username" value="admin"></property>
+		<property name="password" value="1q2w3e4r5t6Y"></property>
+	</bean>
+
+	<bean id="dataSource" class="com.zaxxer.hikari.HikariDataSource" destroy-method="close">
+		<constructor-arg ref="hikariConfig"></constructor-arg>
+	</bean> -->
+	
+
 </beans>

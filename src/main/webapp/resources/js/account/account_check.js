@@ -21,7 +21,7 @@ function checkSameId() {
 		alert("아이디 양식 먼저 확인해주세요");
 	} else {
 		$.ajax({
-			url : 'account.id.check',
+			url : 'id.check',
 			type : 'POST', // POST 방식으로 전달
 			data : {
 				id : id
@@ -319,7 +319,7 @@ function searchPw() {
 	console.log('id', id);
 	
 	$.ajax({
-		url : 'account.id.check',
+		url : 'id.check',
 		type : 'POST', // POST 방식으로 전달
 		async: false,
 		data : {
@@ -360,7 +360,7 @@ function changePw() {
 function logout() {
 	let ok = confirm("로그아웃 하시겠습니까?")
 	if(ok){
-		location.href='account.logout.do';
+		location.href='logout.do';
 	}
 }
 

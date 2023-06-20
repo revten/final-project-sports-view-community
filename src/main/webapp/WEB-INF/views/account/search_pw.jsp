@@ -45,7 +45,7 @@
 			</form>
 			
 			<div>
-				이미 회원이신가요?&nbsp;&nbsp;&nbsp; <a href="account.login.go">로그인</a>
+				이미 회원이신가요?&nbsp;&nbsp;&nbsp; <a href="/account/login.go">로그인</a>
 			</div>
 			<div>
 				아직 회원이 아니신가요?&nbsp;&nbsp;&nbsp;<a href="account.reg.go">회원가입</a>

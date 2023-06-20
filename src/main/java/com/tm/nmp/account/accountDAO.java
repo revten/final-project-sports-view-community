@@ -39,7 +39,7 @@ public class accountDAO {
 	public boolean loginCheck(HttpServletRequest req) {
 
 		AccountDTO a = (AccountDTO) req.getSession().getAttribute("loginAccount");
-		req.setAttribute("loginPage", "account/login.jsp");
+		req.setAttribute("loginPage", "account/loginArea.jsp");
 		return false;
 	}
 

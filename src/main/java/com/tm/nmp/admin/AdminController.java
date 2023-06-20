@@ -22,6 +22,7 @@ import com.tm.nmp.board.BoardDAO;
 import com.tm.nmp.board.BoardOption;
 
 @Controller
+@RequestMapping(value = "/admin")
 public class AdminController {
 
 	@Autowired

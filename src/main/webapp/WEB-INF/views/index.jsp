@@ -78,27 +78,35 @@
 
 			<div class="nav__menu" id="nav-menu">
 				<ul class="nav__list">
-					<li class="nav__item"><a href="stadium/main"
-						class="nav__link">STADIUM</a></li>
-					<li class="nav__item"><a href="review.board.go?post_board=12"
-						class="nav__link">REVIEW</a></li>
-					<li class="nav__item"><a href="fan.board.go?post_board=21"
-						class="nav__link">THE FAN</a></li>
+					<li class="nav__item">
+						<a href="/stadium/main" class="nav__link">STADIUM</a>
+					</li>
+					<li class="nav__item">
+						<a href="/review/board.go?post_board=12" class="nav__link">REVIEW</a>
+					</li>
+					<li class="nav__item">
+						<a href="/fan/board.go?post_board=21" class="nav__link">THE FAN</a>
+					</li>
 				</ul>
 
 				<ul class="nav__list">
-					<li class="nav__item"><a href="index.go" class="nav__logo">
-							<img src="resources/files/home/logo.png" alt="logo image" />
-							TRIPPLE
-					</a></li>
+					<li class="nav__item">
+						<a href="/index.go" class="nav__logo">
+							<img src="/resources/files/home/logo.png" alt="logo image" /> TRIPPLE
+						</a>
+					</li>
 				</ul>
 
 				<ul class="nav__list">
-					<li class="nav__item"><a href="withGo.board.go?post_board=11"
-						class="nav__link">STORE</a></li>
-					<li class="nav__item"><a href="news.main.go" class="nav__link">NEWS</a></li>
-					<li class="nav__item"><a
-						href="clubEvent.board.go?post_board=31" class="nav__link">EVENT</a></li>
+					<li class="nav__item">
+						<a href="/withGo/board.go?post_board=11" class="nav__link">STORE</a>
+					</li>
+					<li class="nav__item">
+						<a href="/news/main.go" class="nav__link">NEWS</a>
+					</li>
+					<li class="nav__item">
+						<a href="/clubEvent/board.go?post_board=31" class="nav__link">EVENT</a>
+					</li>
 				</ul>
 
 				<!-- close button -->
@@ -106,25 +114,24 @@
 					<i class="ri-close-line"></i>
 				</div>
 
-				<img src="resources/files/home/leaf-branch-4.png" alt="nav image"
-					class="nav__img-1" /> <img
-					src="resources/files/home/leaf-branch-3.png" alt="nav image"
-					class="nav__img-2" />
+				<img src="/resources/files/home/leaf-branch-4.png" alt="nav image" class="nav__img-1" />
+				<img src="/resources/files/home/leaf-branch-3.png" alt="nav image" class="nav__img-2" />
 			</div>
 		</nav>
 	</header>
 
 	<!--==================== home.jsp ====================-->
 
-	<div class="content__page" align="center"><jsp:include
-			page="${contentPage }"></jsp:include></div>
+	<div class="content__page" align="center">
+		<jsp:include page="${contentPage }"></jsp:include>
+	</div>
 
 	<!--==================== FOOTER ====================-->
 	<footer class="footer">
 		<div class="footer__container container grid">
 			<div>
 				<a href="#" class="footer__logo" style="color: hsl(19, 16%, 15%);">
-					<img src="resources/files/home/logo.png" alt="logo image" />
+					<img src="/resources/files/home/logo.png" alt="logo image" />
 					TRIPPLE
 				</a>
 
@@ -180,24 +187,20 @@
 				</div>
 			</div>
 
-			<img src="resources/files/home/spring-onion.png" alt="footer image"
-				class="footer__onion" /> <img
-				src="resources/files/home/spinach-leaf.png" alt="footer image"
-				class="footer__spinach" /> <img
-				src="resources/files/home/leaf-branch-4.png" alt="footer image"
-				class="footer__leaf" />
+			<img src="/resources/files/home/spring-onion.png" alt="footer image" class="footer__onion" />
+			<img src="/resources/files/home/spinach-leaf.png" alt="footer image" class="footer__spinach" />
+			<img src="/resources/files/home/leaf-branch-4.png" alt="footer image" class="footer__leaf" />
 		</div>
 
 		<div class="footer__info container">
 			<div class="footer__card">
-				<img src="resources/files/home/footer-card-1.png" alt="footer image" />
-				<img src="resources/files/home/footer-card-2.png" alt="footer image" />
-				<img src="resources/files/home/footer-card-3.png" alt="footer image" />
-				<img src="resources/files/home/footer-card-4.png" alt="footer image" />
+				<img src="/resources/files/home/footer-card-1.png" alt="footer image" />
+				<img src="/resources/files/home/footer-card-2.png" alt="footer image" />
+				<img src="/resources/files/home/footer-card-3.png" alt="footer image" />
+				<img src="/resources/files/home/footer-card-4.png" alt="footer image" />
 			</div>
 
-			<span class="footer__copy"> &#169; Copyright TeamMiracle. All
-				rights reserved </span>
+			<span class="footer__copy"> &#169; Copyright TeamMiracle. All rights reserved </span>
 		</div>
 	</footer>
 

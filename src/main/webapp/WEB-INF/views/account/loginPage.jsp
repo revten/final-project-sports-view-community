@@ -37,7 +37,7 @@
 			<h1 class="login_title">로그인</h1>
 			<span class="error animated tada" id="msg"></span>
 			
-			<form class="login_form" name="loginForm" action="account.login.do" method="post" onsubmit="return checkStuff()">
+			<form class="login_form" name="loginForm" action="login.do" method="post" onsubmit="return checkStuff()">
 			
 				<input name="id" class="input_id" id="idInput" placeholder="아이디" />
 				<input name="password" type="password" class="input_pwd" id="pwInput" placeholder="비밀번호" /><br>
@@ -71,7 +71,7 @@
 					data-shape="rectangular" data-logo_alignment="left"></div>
 			</div>
 			
-			<a class="regBtn" href="account.reg.go">회원가입</a>
+			<a class="regBtn" href="reg.go">회원가입</a>
 			
 		</div>
 	</div>

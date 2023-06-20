@@ -16,11 +16,16 @@ import com.tm.nmp.board.BoardSelector;
 import com.tm.nmp.board.PostVO;
 import com.tm.nmp.board.ReplyVO;
 import com.tm.nmp.board.ResultVO;
+import com.tm.nmp.clubEvent.ClubEventController;
 import com.tm.nmp.point.PlusPointVO;
 import com.tm.nmp.point.PointDAO;
 import com.tm.nmp.point.PointVO;
 
+import lombok.extern.slf4j.Slf4j;
+
 @Controller
+@Slf4j
+@RequestMapping(value = "/fan")
 public class FanBoardController {
 
 	@Autowired
@@ -34,6 +39,7 @@ public class FanBoardController {
 
 	@RequestMapping(value = "fan.board.go", method = RequestMethod.GET)
 	public String fanBoardGo(HttpServletRequest req, PostVO p) {
+		log.info("fan 메인 진입");
 		System.out.println(p.getPost_board());
 		acDAO.wathingPage(req);
 		acDAO.loginCheck(req);
