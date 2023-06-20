@@ -9,11 +9,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.tm.nmp.account.AccountController;
-import com.tm.nmp.account.accountDAO;
-import com.tm.nmp.admin.AdminDAO;
+import com.tm.nmp.account.AccountDAO;
+import com.tm.nmp.admin.AdminDAOo;
 import com.tm.nmp.admin.ClubImageDTO;
 import com.tm.nmp.board.BoardOption;
+import com.tm.nmp.controller.AccountController;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -23,15 +23,15 @@ import lombok.extern.slf4j.Slf4j;
 public class StadiumController {
 
 	@Autowired
-	private accountDAO acDAO;
+	private AccountDAO acDAO;
 	
 	@Autowired
 	private StadiumDAO sdDAO;
 	
 	@Autowired
-	private AdminDAO adminDAO;
+	private AdminDAOo adminDAO;
 	
-	@RequestMapping(value = "main", method = RequestMethod.GET)
+	@RequestMapping(value = "/main", method = RequestMethod.GET)
 	public String stadiumMainGo(HttpServletRequest req) {
 		log.info("stadium 메인 진입");
 		acDAO.wathingPage(req);
@@ -44,7 +44,6 @@ public class StadiumController {
 	@RequestMapping(value = "/baseball.go", method = RequestMethod.GET)
 	public String baseballGo(HttpServletRequest req) {
 		acDAO.loginCheck(req);
-		
 		req.setAttribute("contentPage", "stadium/baseball/baseball_stadium.jsp");
 		return "index";
 	}

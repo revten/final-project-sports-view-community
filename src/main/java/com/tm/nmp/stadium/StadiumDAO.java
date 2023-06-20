@@ -10,14 +10,14 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.tm.nmp.account.accountDAO;
+import com.tm.nmp.account.AccountDAO;
 import com.tm.nmp.admin.ClubImageDTO;
 
 @Service
 public class StadiumDAO {
 	
 	@Autowired
-	private accountDAO acDAO;
+	private AccountDAO acDAO;
 	
 	@Autowired
 	private SqlSessionTemplate sst;

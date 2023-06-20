@@ -11,7 +11,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.tm.nmp.account.AccountDTO;
+import com.tm.nmp.model.AccountVO;
 
 @Service
 public class BoardDAO {
@@ -92,7 +92,7 @@ public class BoardDAO {
 		System.out.println("등록전 게시글수 : " + allPostCount);
 		allPostCount++;
 
-		AccountDTO ac = (AccountDTO) req.getSession().getAttribute("loginAccount");
+		AccountVO ac = (AccountVO) req.getSession().getAttribute("loginAccount");
 		p.setPost_member(ac.getId());
 
 		String regIp = getClientIp(req);
@@ -200,7 +200,7 @@ public class BoardDAO {
 		rp.setReply_reg_ip(regIp);
 
 		// 리플을 등록한 사람도 세팅해주자
-		AccountDTO ac = (AccountDTO) req.getSession().getAttribute("loginAccount");
+		AccountVO ac = (AccountVO) req.getSession().getAttribute("loginAccount");
 		rp.setReply_member(ac.getId());
 
 		int a = ss.getMapper(BoardMapper.class).regReply(rp);

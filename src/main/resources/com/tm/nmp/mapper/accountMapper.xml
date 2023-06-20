@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.tm.nmp.account.AccountMapper">
+<mapper namespace="com.tm.nmp.mapper.AccountMapper">
 
 	<!-- 아이디 중복체크 -->
 	<select id="idCheck" parameterType="String" resultType="int">
@@ -8,7 +8,7 @@
 	</select>
 	
 	<!-- 회원가입하기 -->
-	<insert id="regAccount" parameterType="com.tm.nmp.account.AccountDTO">
+	<insert id="regAccount" parameterType="com.tm.nmp.model.AccountVO">
 		BEGIN
 		insert into tb_user
 		(id, nickname, join_type, email, phone, gender, birthday)
@@ -40,7 +40,7 @@
 	</insert>
 
 	<!-- 로그인하기 -->
-	<select id="accountLogin" resultType="com.tm.nmp.account.AccountDTO">
+	<select id="accountLogin" resultType="com.tm.nmp.model.AccountVO">
 		select u.*, p.password, p.salt from tb_user u, tb_password p
 		where u.id = p.user_id and u.id = #{id}
 	</select>
@@ -51,7 +51,7 @@
 	</select>
 	
 	<!-- 비밀번호 변경하기 -->
-	<update id="changePwDo" parameterType="com.tm.nmp.account.AccountDTO">
+	<update id="changePwDo" parameterType="com.tm.nmp.model.AccountVO">
 		update tb_password set password = #{password} where user_id = #{id}
 	</update>
 	
@@ -62,7 +62,7 @@
 	
 	
 	
-	<select id="showAccount" resultType="com.tm.nmp.account.AccountDTO">
+	<select id="showAccount" resultType="com.tm.nmp.model.AccountVO">
 	select * from member where member_id = #{member_id}
 	</select>
 	
@@ -75,8 +75,7 @@
 		#{member_reg_type}
 	</select>
 
-	<update id="accountUpdate"
-		parameterType="com.tm.nmp.account.AccountDTO">
+	<update id="accountUpdate" parameterType="com.tm.nmp.model.AccountVO">
 		update account set ac_pw = #{ac_pw}, ac_name =
 		#{ac_name},ac_nick = #{ac_nick}, ac_addr =
 		#{ac_addr}, ac_email =

@@ -1,10 +1,12 @@
-package com.tm.nmp.account;
+package com.tm.nmp.mapper;
 
 import java.util.List;
 import java.util.Map;
 
 import com.tm.nmp.admin.ClubImageDTO;
 import com.tm.nmp.board.PostVO;
+import com.tm.nmp.model.AccountVO;
+import com.tm.nmp.model.FavoriteClubDTO;
 
 public interface AccountMapper {
 	
@@ -12,7 +14,7 @@ public interface AccountMapper {
 	int idCheck(String id);
 	
 	// 회원가입하기
-	int regAccount(AccountDTO ac);
+	int regAccount(AccountVO ac);
 	
 	// 회원가입창 구단 로고들 불러오기
 	List<ClubImageDTO> getAllClubLogos();
@@ -21,27 +23,26 @@ public interface AccountMapper {
 	void regFavoriteClub(List<FavoriteClubDTO> favoriteClubs);
 	
 	// 로그인 하기
-	AccountDTO accountLogin(AccountDTO ac);
+	AccountVO accountLogin(AccountVO ac);
 	
 	// 아이디 찾기
 	String searchId(Map<String, String> findId);
 	
 	// 비밀번호 변경하기
-	int changePwDo(AccountDTO ac);
+	int changePwDo(AccountVO ac);
 	
 	// 탈퇴하기
 	int deleteAccount(String id);
 
-	
 
 
-	int accountUpdate(AccountDTO ac);
+	int accountUpdate(AccountVO ac);
 
-	int socialIdCheck(AccountDTO ac);
+	int socialIdCheck(AccountVO ac);
 
 
 
-	List<AccountDTO> showAccount(AccountDTO ac);
+	List<AccountVO> showAccount(AccountVO ac);
 	
 	List<PostVO> getMyPosts(PostVO pVO);
 

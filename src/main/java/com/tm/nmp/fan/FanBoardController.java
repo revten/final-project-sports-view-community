@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.tm.nmp.TokenMaker;
-import com.tm.nmp.account.accountDAO;
+import com.tm.nmp.account.AccountDAO;
 import com.tm.nmp.board.BoardDAO;
 import com.tm.nmp.board.BoardSelector;
 import com.tm.nmp.board.PostVO;
@@ -32,12 +32,12 @@ public class FanBoardController {
 	private BoardDAO brDAO;
 
 	@Autowired
-	private accountDAO acDAO;
+	private AccountDAO acDAO;
 
 	@Autowired
 	private PointDAO ptDAO;
 
-	@RequestMapping(value = "fan.board.go", method = RequestMethod.GET)
+	@RequestMapping(value = "/board.go", method = RequestMethod.GET)
 	public String fanBoardGo(HttpServletRequest req, PostVO p) {
 		log.info("fan 메인 진입");
 		System.out.println(p.getPost_board());
@@ -52,7 +52,7 @@ public class FanBoardController {
 // --------------------------------------------------------------------------------------
 
 	// 게시글
-	@RequestMapping(value = "fan.reg.go", method = RequestMethod.GET)
+	@RequestMapping(value = "/reg.go", method = RequestMethod.GET)
 	public String fanRegGo(HttpServletRequest req, PostVO p) {
 		acDAO.wathingPage(req);
 
@@ -65,7 +65,7 @@ public class FanBoardController {
 		return "index";
 	}
 
-	@RequestMapping(value = "fan.reg.do", method = RequestMethod.POST)
+	@RequestMapping(value = "/reg.do", method = RequestMethod.POST)
 	public String fanRegDo(HttpServletRequest req, PostVO p, PointVO pv, PlusPointVO ppv) {
 
 		if (acDAO.loginCheck(req)) {
@@ -84,7 +84,7 @@ public class FanBoardController {
 		return "redirect:fan.board.go?post_board=" + p.getPost_board();
 	}
 
-	@RequestMapping(value = "fan.detail.go", method = RequestMethod.GET)
+	@RequestMapping(value = "/detail.go", method = RequestMethod.GET)
 	public String fanDetailGo(HttpServletRequest req, HttpServletResponse res, PostVO p) {
 		acDAO.wathingPage(req);
 
@@ -94,7 +94,7 @@ public class FanBoardController {
 		return "index";
 	}
 
-	@RequestMapping(value = "fan.update.go", method = RequestMethod.GET)
+	@RequestMapping(value = "/update.go", method = RequestMethod.GET)
 	public String fanUpdateGo(HttpServletRequest req, PostVO p) {
 		acDAO.wathingPage(req);
 
@@ -107,7 +107,7 @@ public class FanBoardController {
 		return "index";
 	}
 
-	@RequestMapping(value = "fan.update.do", method = RequestMethod.POST)
+	@RequestMapping(value = "/update.do", method = RequestMethod.POST)
 	public String fanUpdateDo(HttpServletRequest req, PostVO p) {
 
 		if (acDAO.loginCheck(req)) {
@@ -120,7 +120,7 @@ public class FanBoardController {
 		return "index";
 	}
 
-	@RequestMapping(value = "fan.delete.do", method = RequestMethod.GET)
+	@RequestMapping(value = "/delete.do", method = RequestMethod.GET)
 	public String fanDeleteDo(HttpServletRequest req, PostVO p) {
 
 		if (acDAO.loginCheck(req)) {
@@ -134,7 +134,7 @@ public class FanBoardController {
 		return "index";
 	}
 
-	@RequestMapping(value = "/fan.page.change", method = RequestMethod.GET)
+	@RequestMapping(value = "/page.change", method = RequestMethod.GET)
 	public String fanPageChange(HttpServletRequest req, PostVO p) {
 		acDAO.wathingPage(req);
 		acDAO.loginCheck(req);
@@ -145,7 +145,7 @@ public class FanBoardController {
 		return "index";
 	}
 
-	@RequestMapping(value = "/fan.search.do", method = RequestMethod.GET)
+	@RequestMapping(value = "/search.do", method = RequestMethod.GET)
 	public String fanSearchDo(HttpServletRequest req, BoardSelector bSel, PostVO p) {
 		acDAO.loginCheck(req);
 

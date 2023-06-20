@@ -9,7 +9,6 @@
 <meta charset="UTF-8">
 <title>회원가입 - Enjoy Sports</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css" />
-<script src="resources/js/account/account_check.js"></script>
 </head>
 
 <body>

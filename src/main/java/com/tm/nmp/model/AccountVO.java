@@ -1,4 +1,4 @@
-package com.tm.nmp.account;
+package com.tm.nmp.model;
 
 import java.util.Date;
 
@@ -8,7 +8,7 @@ import lombok.Data;
 
 @Component
 @Data
-public class AccountDTO {
+public class AccountVO {
 	private String id; // tb_user 테이블
 
 	private String password; // tb_password 테이블

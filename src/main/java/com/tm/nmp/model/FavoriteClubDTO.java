@@ -1,4 +1,4 @@
-package com.tm.nmp.account;
+package com.tm.nmp.model;
 
 import lombok.Data;
 

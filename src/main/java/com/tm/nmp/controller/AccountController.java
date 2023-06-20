@@ -1,4 +1,4 @@
-package com.tm.nmp.account;
+package com.tm.nmp.controller;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -17,7 +17,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.tm.nmp.account.AccountDAO;
 import com.tm.nmp.admin.ClubImageDTO;
+import com.tm.nmp.model.AccountVO;
+import com.tm.nmp.model.FavoriteClubDTO;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -28,7 +31,14 @@ public class AccountController {
 
 	
 	@Autowired
-	private accountDAO acDAO;
+	private AccountDAO acDAO;
+	
+	@RequestMapping(value = "/login.go", method = RequestMethod.GET)
+	public String accountLoginGo(HttpServletRequest req) {
+		acDAO.loginCheck(req);
+		req.setAttribute("contentPage", "account/loginPage.jsp");
+		return "index";
+	}
 
 	// 회원가입 페이지로 이동 
 	@RequestMapping(value = "/reg.go", method = RequestMethod.GET)
@@ -59,7 +69,7 @@ public class AccountController {
 
 	// 회원가입 하기
 	@RequestMapping(value = "/reg.do", method = RequestMethod.POST)
-	public String accountRegDo(HttpServletRequest req, AccountDTO ac) {
+	public String accountRegDo(HttpServletRequest req, AccountVO ac) {
 		
 		log.info("회원가입 하기");
 		
@@ -101,7 +111,7 @@ public class AccountController {
 
 	// 로그인 하기
 	@RequestMapping(value = "/login.do", method = RequestMethod.POST)
-	public void accountLoginDo(HttpServletRequest req, AccountDTO ac, HttpServletResponse response)
+	public void accountLoginDo(HttpServletRequest req, AccountVO ac, HttpServletResponse response)
 			throws IOException, ServletException {
 		
 		acDAO.accountLoginDo(req, ac);
@@ -119,7 +129,7 @@ public class AccountController {
 
 	// 로그아웃 하기
 	@RequestMapping(value = "/logout.do", method = RequestMethod.GET)
-	public String accountLogoutDo(HttpServletRequest req, HttpServletResponse resp, AccountDTO ac) {
+	public String accountLogoutDo(HttpServletRequest req, HttpServletResponse resp, AccountVO ac) {
 		acDAO.accountLogoutDo(req, resp, ac);
 		acDAO.loginCheck(req);
 
@@ -152,7 +162,7 @@ public class AccountController {
 
 	// 비밀번호 변경 페이지로 이동
 	@RequestMapping(value = "/change.pw.go", method = RequestMethod.GET)
-	public String searchPwDo(HttpServletRequest req, AccountDTO ac) {
+	public String searchPwDo(HttpServletRequest req, AccountVO ac) {
 		acDAO.loginCheck(req);
 		req.setAttribute("contentPage", "account/pwReg.jsp");
 		return "index";
@@ -160,7 +170,7 @@ public class AccountController {
 
 	// 비밀번호 변경하기
 	@RequestMapping(value = "/change.pw.do", method = RequestMethod.POST)
-	public String changePwDo(HttpServletRequest req, AccountDTO ac) {
+	public String changePwDo(HttpServletRequest req, AccountVO ac) {
 		acDAO.loginCheck(req);
 		acDAO.changePwDo(req, ac);
 		req.setAttribute("contentPage", "home.jsp");
@@ -186,20 +196,20 @@ public class AccountController {
 
 	@RequestMapping(value = "/social.id.check", method = RequestMethod.GET)
 	@ResponseBody
-	public int socialIdCheck(HttpServletRequest req, AccountDTO ac) {
+	public int socialIdCheck(HttpServletRequest req, AccountVO ac) {
 		acDAO.loginCheck(req);
 		return acDAO.socialIdCheck(ac);
 	}
 
 	@RequestMapping(value = "/socialLogin.go", method = RequestMethod.GET)
-	public String socialRegGo(AccountDTO a, HttpServletRequest req) {
+	public String socialRegGo(AccountVO a, HttpServletRequest req) {
 		acDAO.loginCheck(req);
 		req.setAttribute("contentPage", "account/socialLogin.jsp");
 		return "index";
 	}
 
 	@RequestMapping(value = "/social.login.do", method = RequestMethod.GET)
-	public String socialLoginDo(HttpServletRequest req, AccountDTO ac) {
+	public String socialLoginDo(HttpServletRequest req, AccountVO ac) {
 		if (req.getParameter("member_id") != null) {
 			acDAO.socialLogin(req, ac);
 			acDAO.loginCheck(req);
@@ -212,7 +222,7 @@ public class AccountController {
 	}
 
 	@RequestMapping(value = "/social.reg.do", method = RequestMethod.GET)
-	public String socialRegDo(HttpServletRequest req, AccountDTO ac) {
+	public String socialRegDo(HttpServletRequest req, AccountVO ac) {
 		acDAO.socialReg(req, ac);
 		acDAO.accountLoginDo(req, ac);
 		acDAO.loginCheck(req);
@@ -232,7 +242,7 @@ public class AccountController {
 	}
 
 	@RequestMapping(value = "/update.do", method = RequestMethod.POST)
-	public String accountModifyDo(HttpServletRequest req, AccountDTO ac) {
+	public String accountModifyDo(HttpServletRequest req, AccountVO ac) {
 		acDAO.loginCheck(req);
 		acDAO.accountUpdate(req, ac);
 		req.setAttribute("contentPage", "myPage/myPageMyInfo.jsp");

@@ -12,14 +12,14 @@
 <script src="https://code.jquery.com/jquery-3.6.3.min.js"
 	integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU="
 	crossorigin="anonymous"></script>
-<script src="resources/js/admin/admin.js"></script>
-<script src="resources/js/admin/adminBoard.js"></script>
-<script src="resources/js/admin/adminClub.js"></script>
-<script src="resources/js/admin/adminUser.js"></script>
-<link rel="stylesheet" href="resources/css/admin/admin.css" />
-<link rel="stylesheet" href="resources/css/admin/adminBoard.css" />
-<link rel="stylesheet" href="resources/css/admin/adminClub.css" />
-<link rel="stylesheet" href="resources/css/admin/adminUser.css" />
+<script src="/resources/js/admin/admin.js"></script>
+<script src="/resources/js/admin/adminBoard.js"></script>
+<script src="/resources/js/admin/adminClub.js"></script>
+<script src="/resources/js/admin/adminUser.js"></script>
+<link rel="stylesheet" href="/resources/css/admin/admin.css" />
+<link rel="stylesheet" href="/resources/css/admin/adminBoard.css" />
+<link rel="stylesheet" href="/resources/css/admin/adminClub.css" />
+<link rel="stylesheet" href="/resources/css/admin/adminUser.css" />
 </head>
 <script type="text/javascript">
 	

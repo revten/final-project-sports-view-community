@@ -8,11 +8,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.tm.nmp.TokenMaker;
-import com.tm.nmp.account.accountDAO;
-import com.tm.nmp.account.AccountDTO;
+import com.tm.nmp.account.AccountDAO;
 import com.tm.nmp.board.BoardDAO;
 import com.tm.nmp.board.PostVO;
 import com.tm.nmp.fan.FanBoardController;
+import com.tm.nmp.model.AccountVO;
 import com.tm.nmp.point.PlusPointVO;
 import com.tm.nmp.point.PointDAO;
 import com.tm.nmp.point.PointVO;
@@ -25,13 +25,13 @@ import lombok.extern.slf4j.Slf4j;
 public class MyPageController {
 
 	@Autowired
-	private accountDAO acDAO;
+	private AccountDAO acDAO;
 	
 	@Autowired
 	private PointDAO pDAO;
 		
 	@RequestMapping(value = "myPage.info.go", method = RequestMethod.GET)
-	public String myPageInfoGo(HttpServletRequest req, AccountDTO ac, PointVO pv, PlusPointVO ppv) {
+	public String myPageInfoGo(HttpServletRequest req, AccountVO ac, PointVO pv, PlusPointVO ppv) {
 		log.info("myPage 메인 진입");
 		acDAO.loginCheck(req);
 		req.setAttribute("contentPage", "myPage/myPageMyInfo.jsp");
@@ -39,7 +39,7 @@ public class MyPageController {
 	}
 	
 	@RequestMapping(value = "myPage.myPost.go", method = RequestMethod.GET)
-	public String myPageMyPostGo(HttpServletRequest req, AccountDTO ac, PostVO pvo) {
+	public String myPageMyPostGo(HttpServletRequest req, AccountVO ac, PostVO pvo) {
 		acDAO.loginCheck(req);
 		acDAO.getMyPosts(req, pvo);
 		req.setAttribute("contentPage", "myPage/myPageMyPost.jsp");

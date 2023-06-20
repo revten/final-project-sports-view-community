@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.tm.nmp.account.accountDAO;
+import com.tm.nmp.account.AccountDAO;
 import com.tm.nmp.fan.FanBoardController;
 
 import lombok.extern.slf4j.Slf4j;
@@ -20,7 +20,7 @@ import lombok.extern.slf4j.Slf4j;
 public class NewsController {
 
 	@Autowired
-	private accountDAO acDAO;
+	private AccountDAO acDAO;
 
 	@Autowired
 	private NewsDAO nsDAO;

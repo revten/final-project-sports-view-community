@@ -15,7 +15,7 @@
 	<br>
 	<br>
 <script>
-var naver_id_login = new naver_id_login("Q141vzvaIl6ZvPN2b4UJ", "http://localhost/nmp/account.reg.go");
+var naver_id_login = new naver_id_login("Q141vzvaIl6ZvPN2b4UJ", "http://localhost/nmp/account/reg.go");
 //alert(naver_id_login.oauthParams.access_token);
 naver_id_login.get_naver_userprofile("naverSignInCallback()");
 

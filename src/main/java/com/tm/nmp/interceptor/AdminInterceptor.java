@@ -6,7 +6,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.web.servlet.HandlerInterceptor;
 
-import com.tm.nmp.account.AccountDTO;
+import com.tm.nmp.model.AccountVO;
 
 public class AdminInterceptor implements HandlerInterceptor {
 
@@ -16,7 +16,7 @@ public class AdminInterceptor implements HandlerInterceptor {
 
 		HttpSession session = request.getSession();
 
-		AccountDTO ac = (AccountDTO) session.getAttribute("Account");
+		AccountVO ac = (AccountVO) session.getAttribute("Account");
 		
 		if(ac == null ||  ac.getId() != "admin") { // 관리자 계정이 아닐 경우
 			

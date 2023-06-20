@@ -20,6 +20,9 @@ import org.springframework.stereotype.Service;
 import com.tm.nmp.SHA256Util;
 import com.tm.nmp.admin.ClubImageDTO;
 import com.tm.nmp.board.PostVO;
+import com.tm.nmp.mapper.AccountMapper;
+import com.tm.nmp.model.AccountVO;
+import com.tm.nmp.model.FavoriteClubDTO;
 
 import lombok.extern.slf4j.Slf4j;
 import net.nurigo.java_sdk.api.Message;
@@ -27,7 +30,7 @@ import net.nurigo.java_sdk.exceptions.CoolsmsException;
 
 @Service
 @Slf4j
-public class accountDAO {
+public class AccountDAO {
 
 	@Autowired
 	private SqlSession ss;
@@ -38,7 +41,7 @@ public class accountDAO {
 	// 로그인 영역 표시
 	public boolean loginCheck(HttpServletRequest req) {
 
-		AccountDTO a = (AccountDTO) req.getSession().getAttribute("loginAccount");
+		AccountVO a = (AccountVO) req.getSession().getAttribute("loginAccount");
 		req.setAttribute("loginPage", "account/loginArea.jsp");
 		return false;
 	}
@@ -123,7 +126,7 @@ public class accountDAO {
 	}
 
 	// 회원가입
-	public void accountRegDo(HttpServletRequest req, AccountDTO ac) {
+	public void accountRegDo(HttpServletRequest req, AccountVO ac) {
 
 		// salt 생성
 		String salt = SHA256Util.generateSalt();
@@ -152,9 +155,9 @@ public class accountDAO {
 	}
 
 	// 로그인 하기
-	public void accountLoginDo(HttpServletRequest req, AccountDTO ac) {
+	public void accountLoginDo(HttpServletRequest req, AccountVO ac) {
 
-		AccountDTO dbAccount = ss.getMapper(AccountMapper.class).accountLogin(ac);
+		AccountVO dbAccount = ss.getMapper(AccountMapper.class).accountLogin(ac);
 
 		if (dbAccount != null) {
 
@@ -179,7 +182,7 @@ public class accountDAO {
 	}
 
 	// 로그아웃
-	public void accountLogoutDo(HttpServletRequest req, HttpServletResponse resp, AccountDTO ac) {
+	public void accountLogoutDo(HttpServletRequest req, HttpServletResponse resp, AccountVO ac) {
 
 		req.getSession().setAttribute("loginAccount", null);
 
@@ -206,7 +209,7 @@ public class accountDAO {
 	}
 
 	// 비밀번호 변경하기
-	public void changePwDo(HttpServletRequest req, AccountDTO ac) {
+	public void changePwDo(HttpServletRequest req, AccountVO ac) {
 		if (ss.getMapper(AccountMapper.class).changePwDo(ac) == 1) {
 			System.out.println("변경 완료");
 			req.getSession().setAttribute("loginAccount", ss.getMapper(AccountMapper.class).accountLogin(ac));
@@ -222,7 +225,7 @@ public class accountDAO {
 		}
 	}
 
-	public void accountUpdate(HttpServletRequest req, AccountDTO ac) {
+	public void accountUpdate(HttpServletRequest req, AccountVO ac) {
 		if (ss.getMapper(AccountMapper.class).accountUpdate(ac) == 1) {
 			System.out.println("수정 완료");
 			req.getSession().setAttribute("loginAccount", ac);
@@ -231,14 +234,14 @@ public class accountDAO {
 		}
 	}
 
-	public int socialIdCheck(AccountDTO ac) {
+	public int socialIdCheck(AccountVO ac) {
 		System.out.println(ac.getId());
 		System.out.println(ac.getJoin_type());
 		return ss.getMapper(AccountMapper.class).socialIdCheck(ac);
 	}
 
-	public void socialLogin(HttpServletRequest req, AccountDTO ac) {
-		AccountDTO dbMember = ss.getMapper(AccountMapper.class).accountLogin(ac);
+	public void socialLogin(HttpServletRequest req, AccountVO ac) {
+		AccountVO dbMember = ss.getMapper(AccountMapper.class).accountLogin(ac);
 		if (dbMember != null) {
 			System.out.println("로그인 성공");
 			req.getSession().setAttribute("loginAccount", dbMember);
@@ -248,7 +251,7 @@ public class accountDAO {
 		}
 	}
 
-	public void socialReg(HttpServletRequest req, AccountDTO ac) {
+	public void socialReg(HttpServletRequest req, AccountVO ac) {
 		try {
 			req.setCharacterEncoding("utf-8");
 
@@ -295,10 +298,10 @@ public class accountDAO {
 		}
 	}
 
-	public void showAccount(AccountDTO ac, HttpServletRequest req) {
-		AccountDTO a = (AccountDTO) req.getSession().getAttribute("loginAccount");
+	public void showAccount(AccountVO ac, HttpServletRequest req) {
+		AccountVO a = (AccountVO) req.getSession().getAttribute("loginAccount");
 		a.setId(a.getId());
-		List<AccountDTO> Account = ss.getMapper(AccountMapper.class).showAccount(ac);
+		List<AccountVO> Account = ss.getMapper(AccountMapper.class).showAccount(ac);
 		req.setAttribute("account", Account);
 	}
 

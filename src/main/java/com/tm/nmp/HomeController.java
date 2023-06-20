@@ -9,7 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.tm.nmp.account.accountDAO;
+import com.tm.nmp.account.AccountDAO;
 import com.tm.nmp.admin.AdminController;
 
 import lombok.extern.slf4j.Slf4j;
@@ -19,7 +19,7 @@ import lombok.extern.slf4j.Slf4j;
 public class HomeController {
 
 	@Autowired
-	private accountDAO acDAO;
+	private AccountDAO acDAO;
 	
 //	@Autowired
 //	private BoardDAO brDAO;
@@ -51,12 +51,7 @@ public class HomeController {
 		return home(req);
 	}
 
-	@RequestMapping(value = "/account/login.go", method = RequestMethod.GET)
-	public String accountLoginGo(HttpServletRequest req) {
-		acDAO.loginCheck(req);
-		req.setAttribute("contentPage", "account/loginPage.jsp");
-		return "index";
-	}
+
 	
 	@RequestMapping(value = "/myPage.main.go", method = RequestMethod.GET)
 	public String myPageMainGo(HttpServletRequest req) {

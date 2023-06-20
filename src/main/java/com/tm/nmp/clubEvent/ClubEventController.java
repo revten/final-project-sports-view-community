@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.tm.nmp.TokenMaker;
-import com.tm.nmp.account.accountDAO;
+import com.tm.nmp.account.AccountDAO;
 import com.tm.nmp.board.BoardDAO;
 import com.tm.nmp.board.BoardOption;
 import com.tm.nmp.board.BoardSelector;
@@ -22,7 +22,7 @@ import lombok.extern.slf4j.Slf4j;
 @RequestMapping(value = "/clubEvent")
 public class ClubEventController {
 	@Autowired
-	private accountDAO acDAO;
+	private AccountDAO acDAO;
 
 	@Autowired
 	private BoardDAO brDAO;

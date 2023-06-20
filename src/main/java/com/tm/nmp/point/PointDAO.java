@@ -8,7 +8,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.tm.nmp.account.AccountDTO;
+import com.tm.nmp.model.AccountVO;
 
 @Service
 public class PointDAO {
@@ -56,7 +56,7 @@ public class PointDAO {
 	// 게시판, 댓글로 받을 포인트
 	public void calcAddPostAndAddCommentPoint(HttpServletRequest req,PointVO pv, PlusPointVO ppv, int plusPoint) {
 		
-		AccountDTO ac = (AccountDTO) req.getSession().getAttribute("loginAccount");
+		AccountVO ac = (AccountVO) req.getSession().getAttribute("loginAccount");
 		pv.setPoint_member(ac.getId());
 		ppv.setPlusPoint_member(ac.getId());
 		ppv.setPlusPoint(plusPoint);
@@ -98,14 +98,14 @@ public class PointDAO {
 	
 
 	public void showPoint(HttpServletRequest req, PointVO pv) {
-		AccountDTO ac = (AccountDTO) req.getSession().getAttribute("loginAccount");
+		AccountVO ac = (AccountVO) req.getSession().getAttribute("loginAccount");
 		pv.setPoint_member(ac.getId());
 		req.setAttribute("point", ss.getMapper(PointMapper.class).getPoint(pv));
 		
 	}
 
 	public void showPlusPoint(HttpServletRequest req, PlusPointVO ppv) {
-		AccountDTO ac = (AccountDTO) req.getSession().getAttribute("loginAccount");
+		AccountVO ac = (AccountVO) req.getSession().getAttribute("loginAccount");
 		ppv.setPlusPoint_member(ac.getId());
 		List<PlusPointVO> plusPoint = ss.getMapper(PointMapper.class).getPlusPoint(ppv);
 		req.setAttribute("plusPoint", plusPoint);
