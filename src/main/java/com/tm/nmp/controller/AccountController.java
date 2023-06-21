@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.tm.nmp.account.AccountDAO;
 import com.tm.nmp.admin.ClubImageDTO;
@@ -111,28 +112,38 @@ public class AccountController {
 
 	// 로그인 하기
 	@RequestMapping(value = "/login.do", method = RequestMethod.POST)
-	public void accountLoginDo(HttpServletRequest req, AccountVO ac, HttpServletResponse response)
+	public String accountLoginDo(HttpServletRequest req, AccountVO ac, HttpServletResponse response, RedirectAttributes rttr)
 			throws IOException, ServletException {
 		
 		acDAO.accountLoginDo(req, ac);
 
 		if (acDAO.loginCheck(req)) {
-			String watchingPage = (String) req.getSession().getAttribute("watchingPage");
-			System.out.println(watchingPage);
-			response.sendRedirect(watchingPage);
-		} else {
 			//login.do가 실행되는 순간 loginPage가 Referer로 저장되어 loginPage를 보여주게됨
-			String watchingPage = (String) req.getHeader("Referer");
-			response.sendRedirect(watchingPage);
+			System.out.println("로그인 성공");
+			String watchingPage = (String) req.getSession().getAttribute("watchingPage");
+			if(watchingPage != null) {
+				System.out.println(watchingPage);
+				return "redirect:" + watchingPage;
+				
+			} else {
+				return "redirect:/index.go";
+			}
+
+		} else {
+			System.out.println("로그인 실패");
+			rttr.addFlashAttribute("message", "비밀번호 확인하세요");
+			return "redirect:login.go";
 		}
 	}
 
 	// 로그아웃 하기
 	@RequestMapping(value = "/logout.do", method = RequestMethod.GET)
 	public String accountLogoutDo(HttpServletRequest req, HttpServletResponse resp, AccountVO ac) {
+		log.info("로그아웃 진입");
 		acDAO.accountLogoutDo(req, resp, ac);
 		acDAO.loginCheck(req);
-
+		
+		log.info("로그아웃 실행");
 		req.setAttribute("contentPage", "home.jsp");
 		return "index";
 	}

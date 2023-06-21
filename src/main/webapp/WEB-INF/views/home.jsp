@@ -14,7 +14,7 @@
 	src="https://cdnjs.cloudflare.com/ajax/libs/imgLiquid/0.9.944/js/imgLiquid-min.js"></script>
 <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
 
-<link rel="stylesheet" href="resources/css/home.css" />
+<link rel="stylesheet" href="/resources/css/home.css" />
 
 </head>
 <body>
@@ -41,7 +41,7 @@
 			<article class="slider__item" role="item" data-num="1">
 				<!--IMAGE-->
 				<div class="slider__item__image is-background">
-					<img src="resources/files/home/home_main-1.jpg" alt="website">
+					<img src="/resources/files/home/home_main-1.jpg" alt="website">
 				</div>
 				<!--IMAGE-->
 
@@ -61,7 +61,7 @@
 			<article class="slider__item" role="item" data-num="2">
 				<!--IMAGE-->
 				<div class="slider__item__image is-background">
-					<img src="resources/files/home/home_main-2.jpg" alt="website">
+					<img src="/resources/files/home/home_main-2.jpg" alt="website">
 				</div>
 				<!--IMAGE-->
 
@@ -81,7 +81,7 @@
 			<article class="slider__item" role="item" data-num="3">
 				<!--IMAGE-->
 				<div class="slider__item__image is-background">
-					<img src="resources/files/home/home_main-3.jpg" alt="website">
+					<img src="/resources/files/home/home_main-3.jpg" alt="website">
 				</div>
 				<!--IMAGE-->
 
@@ -101,7 +101,7 @@
 			<article class="slider__item" role="item" data-num="4">
 				<!--IMAGE-->
 				<div class="slider__item__image is-background">
-					<img src="resources/files/home/home_main-4.jpg" alt="website">
+					<img src="/resources/files/home/home_main-4.jpg" alt="website">
 				</div>
 				<!--IMAGE-->
 
@@ -121,7 +121,7 @@
 			<article class="slider__item" role="item" data-num="5">
 				<!--IMAGE-->
 				<div class="slider__item__image is-background">
-					<img src="resources/files/home/home_main-5.jpg" alt="website">
+					<img src="/resources/files/home/home_main-5.jpg" alt="website">
 				</div>
 				<!--IMAGE-->
 
@@ -147,8 +147,8 @@
 				<span class="section__subtitle">About Team Miracle</span>
 				<h2 class="section__title about__title">
 					<div>
-						팬들만의 쉼터 <img src="resources/files/home/about-title.png"
-							alt="about image">
+						팬들만의 쉼터 
+						<img src="/resources/files/home/about-title.png" alt="about image">
 					</div>
 				</h2>
 
@@ -156,12 +156,12 @@
 					공유합니다. 자신으로 인하여 다른 팬이 더 즐거운 경기를 관람하게 됩니다.</p>
 			</div>
 
-			<img src="resources/files/home/about-main.png" alt="about image"
+			<img src="/resources/files/home/about-main.png" alt="about image"
 				class="about__img"> <img
-				src="resources/files/home/leaf-branch-2.png" alt="home image"
+				src="/resources/files/home/leaf-branch-2.png" alt="home image"
 				class="home__leaf-1">
 		</div>
-		<img src="resources/files/home/leaf-branch-1.png" alt="about image"
+		<img src="/resources/files/home/leaf-branch-1.png" alt="about image"
 			class="about__leaf">
 	</section>
 
@@ -175,7 +175,7 @@
 		<div class="popular__container container grid">
 
 			<article class="popular__card">
-				<img src="resources/files/home/popular-review1.jpg" alt="popular image"
+				<img src="/resources/files/home/popular-review1.jpg" alt="popular image"
 					class="popular__img">
 				<h3 class="popular__name">우승을 보다 ㅠ</h3>
 				<span class="popular__description">임형규님의 후기</span> <span
@@ -186,7 +186,7 @@
 			</article>
 			
 			<article class="popular__card">
-				<img src="resources/files/home/popular-review2.png"
+				<img src="/resources/files/home/popular-review2.png"
 					alt="popular image" class="popular__img">
 				<h3 class="popular__name">미친열기 여농..</h3>
 				<span class="popular__description">송준우님의 후기</span> <span
@@ -197,7 +197,7 @@
 			</article>
 
 			<article class="popular__card">
-				<img src="resources/files/home/popular-review3.jpg"
+				<img src="/resources/files/home/popular-review3.jpg"
 					alt="popular image" class="popular__img">
 				<h3 class="popular__name">김연경 선수 멋져요</h3>
 				<span class="popular__description">정권님의 후기</span> <span
@@ -207,7 +207,7 @@
 				</button>
 			</article>
 		</div>
-					<img src="resources/files/home/leaf-branch-4.png" alt="home image"
+					<img src="/resources/files/home/leaf-branch-4.png" alt="home image"
 				class="home__leaf-2">
 	</section>
 
@@ -224,17 +224,17 @@
 				<p class="recently__description">많은 팬들이 팔로우할지도 모릅니다. 자유게시판에서 편하게
 					의견을 나누세요.</p>
 				<a href="#" class="button"> 보러가기<i class="ri-arrow-right-line"></i>
-				</a> <img src="resources/files/home/spinach-leaf.png"
+				</a> <img src="/resources/files/home/spinach-leaf.png"
 					alt="recently image" class="recently__data-img">
 			</div>
 
-			<img src="resources/files/home/recently-new_pic.png"
+			<img src="/resources/files/home/recently-new_pic.png"
 				alt="recently image" class="recently__img">
 		</div>
 
-		<img src="resources/files/home/leaf-branch-2.png" alt="recently image"
+		<img src="/resources/files/home/leaf-branch-2.png" alt="recently image"
 			class="recently__leaf-1"> <img
-			src="resources/files/home/leaf-branch-3.png" alt="recently image"
+			src="/resources/files/home/leaf-branch-3.png" alt="recently image"
 			class="recently__leaf-2">
 	</section>
 
@@ -243,7 +243,7 @@
 	<section class="newsletter section">
 		<div class="newsletter__container container">
 			<div class="newsletter__content grid">
-				<img src="resources/files/home/newsletter-sushi.png"
+				<img src="/resources/files/home/newsletter-sushi.png"
 					alt="newsletter image" class="newsletter__img">
 
 				<div class="newsletter__data">
@@ -261,7 +261,7 @@
 				</div>
 			</div>
 
-			<img src="resources/files/home/spinach-leaf.png"
+			<img src="/resources/files/home/spinach-leaf.png"
 				alt="newsletter image" class="newsletter__spinach">
 		</div>
 	</section>

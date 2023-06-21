@@ -43,7 +43,11 @@ public class AccountDAO {
 
 		AccountVO a = (AccountVO) req.getSession().getAttribute("loginAccount");
 		req.setAttribute("loginPage", "account/loginArea.jsp");
-		return false;
+		if(a != null) {
+			return true;
+		}else {
+			return false;
+		}
 	}
 
 	// .go가 매핑되는 순간, 이 메서드가 동작하면서 페이지 URL을 저장한다
@@ -159,6 +163,8 @@ public class AccountDAO {
 
 		AccountVO dbAccount = ss.getMapper(AccountMapper.class).accountLogin(ac);
 
+		int result = 0;
+		
 		if (dbAccount != null) {
 
 			// db에 저장된 salt 가져오기
@@ -173,11 +179,7 @@ public class AccountDAO {
 			if (password.equals(dbAccount.getPassword())) {
 				req.getSession().setAttribute("loginAccount", dbAccount);
 				req.getSession().setMaxInactiveInterval(60 * 60);
-			} else {
-				req.setAttribute("r", "비밀번호 오류!");
-			}
-		} else {
-			req.setAttribute("r", "존재하지 않는 회원");
+			} 
 		}
 	}
 

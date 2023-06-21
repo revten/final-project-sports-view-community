@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -33,7 +36,6 @@
 	<div class="animated bounceInDown">
 	
 		<div id="login_area" class="login_area">
-			<div align="center">${r }</div>
 			<h1 class="login_title">로그인</h1>
 			<span class="error animated tada" id="msg"></span>
 			
@@ -42,10 +44,13 @@
 				<input name="id" class="input_id" id="idInput" placeholder="아이디" />
 				<input name="password" type="password" class="input_pwd" id="pwInput" placeholder="비밀번호" /><br>
 				
+				<div align="center">${message}</div>
+				
 				<a class="find_id" type="button" href="search.id.go">아이디</a>&nbsp;·&nbsp;
 				<a class="find_pw" type="button" href="search.pw.go">비밀번호 찾기</a>
 				<br><br>
 				<button type="submit" class="loginBtn">로그인</button>
+
 				<br>
 				<div class="reg-area"></div>
 				<br>
