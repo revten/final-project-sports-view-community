@@ -12,42 +12,43 @@
 
 		<!-- 검색 -->
 		<div>검색 영역</div>
-      <form action="stadium.clubSearch.do" class="" onsubmit="return searchCampingSite()">
-        <div id="">
-          <div id="">
-            <input id="" placeholder="검색어 입력" name="searchValue"/>
-            <button class="btn">검색</button>
-          </div>
-          <div id="city">
-            <select name="sports_id" id="sports"></select>
-            <select name="league_id" id="league"></select>
-          </div>
-        </div>
-      </form>
+		<form action="getClubList.go" class="" onsubmit="return searchClub()">
+			<div id="">
+				<div id="">
+					<input id="search-club-input" placeholder="검색어 입력"
+						name="searchValue" />
+					<button class="btn">검색</button>
+				</div>
+				<div id="city">
+					<select name="sports_id" id="sports"></select>
+					<select name="league_id" id="league"></select>
+				</div>
+			</div>
+		</form>
 
 		<div class="stadiumMain__content">
-			<div class="stadiumMain__wrapper-1"
-				onclick="location.href='league.clubList.go?league_id=101'">
+			<div class="stadiumMain__wrapper-1" onclick="location.href='getClubList.go?sports_id=1&league_id=101'">
 				<div class="stadiumMain__box stadiumMain__vintage">
-					<img src="resources/files/stadium/main/baseball.png" alt="baseball">
+					<img src="/resources/files/stadium/main/baseball.png"
+						alt="baseball">
 					<!-- 그림크기 900x900이 반응형까지 최적화임 -->
 					<h2>KBO</h2>
 					<p>It ain't over till it's over.</p>
 				</div>
 			</div>
 			<div class="stadiumMain__wrapper-2"
-				onclick="location.href='league.clubList.go?league_id=201'">
+				onclick="location.href='getClubList.go?sports_id=2&league_id=201'">
 				<div class="stadiumMain__box stadiumMain__w-content">
-					<img src="resources/files/stadium/main/soccer.png" alt="soccer">
+					<img src="/resources/files/stadium/main/soccer.png" alt="soccer">
 					<div class="stadiumMain__frame">
 						<h2>No sweat, no sweet!</h2>
 					</div>
 				</div>
 			</div>
 			<div class="stadiumMain__wrapper-3"
-				onclick="location.href='league.clubList.go?league_id=301'">
+				onclick="location.href='getClubList.go?sports_id=3&league_id=301'">
 				<div class="stadiumMain__box stadiumMain__postcard">
-					<img src="resources/files/stadium/main/basketballMen.png"
+					<img src="/resources/files/stadium/main/basketballMen.png"
 						alt="basketballMen">
 					<h2>
 						KBL, make each day
@@ -56,18 +57,18 @@
 				</div>
 			</div>
 			<div class="stadiumMain__wrapper-4"
-				onclick="location.href='league.clubList.goleague_id=401'">
+				onclick="location.href='getClubList.go?sports_id=4&league_id=401'">
 				<div class="stadiumMain__box stadiumMain__zoom-in">
-					<img src="resources/files/stadium/main/volleyball.png"
+					<img src="/resources/files/stadium/main/volleyball.png"
 						alt="volleyball">
 					<h2>Invite from KOVO</h2>
 					<p>V-league men</p>
 				</div>
 			</div>
 			<div class="stadiumMain__wrapper-5"
-				onclick="location.href='league.clubList.go?league_id=351'">
+				onclick="location.href='getClubList.go?sports_id=3&league_id=351'">
 				<div class="stadiumMain__box stadiumMain__blury-card">
-					<img src="resources/files/stadium/main/volleyballWomen.png"
+					<img src="/resources/files/stadium/main/volleyballWomen.png"
 						alt="volleyballWomen">
 					<div class="stadiumMain__frame">
 						<h2>V-league Women</h2>
@@ -76,10 +77,10 @@
 				</div>
 			</div>
 			<div class="stadiumMain__wrapper-6"
-				onclick="location.href='league.clubList.go?league_id=451'">
+				onclick="location.href='getClubList.go?sports_id=4&league_id=451'">
 				<!-- stadiumBasketball2 -->
 				<div class="stadiumMain__box stadiumMain__zoom-out">
-					<img src="resources/files/stadium/main/basketballWomen.png"
+					<img src="/resources/files/stadium/main/basketballWomen.png"
 						alt="basketballWomen">
 					<div class="stadiumMain__frame">
 						<h2>

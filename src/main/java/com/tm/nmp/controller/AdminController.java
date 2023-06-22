@@ -1,4 +1,4 @@
-package com.tm.nmp.admin;
+package com.tm.nmp.controller;
 
 import java.io.File;
 import java.io.IOException;
@@ -7,8 +7,6 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,9 +15,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.tm.nmp.account.AccountDAO;
-import com.tm.nmp.board.BoardDAO;
 import com.tm.nmp.board.BoardOption;
+import com.tm.nmp.model.ClubDTO;
+import com.tm.nmp.model.ClubImageDTO;
+import com.tm.nmp.model.ClubListView;
+import com.tm.nmp.service.AdminService;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -65,7 +65,7 @@ public class AdminController {
 			boardOption.setSearch("");
 		}
 
-		// 총 게시글 수
+		// 총 구단 수
 		allClubCount = adminSv.calcAllClubCount(boardOption); 
 		log.info("전체 구단 수", allClubCount);
 
@@ -216,6 +216,7 @@ public class AdminController {
 		return "/admin/adminClub";
 	}
 
+	// 구단 이미지 수정
 	@RequestMapping(value = "/adminClub.updateImage.do", method = RequestMethod.POST)
 	public @ResponseBody List<ClubImageDTO> adminClubUpdateImage(HttpServletRequest req, ClubImageDTO ci,
 			MultipartFile file) {

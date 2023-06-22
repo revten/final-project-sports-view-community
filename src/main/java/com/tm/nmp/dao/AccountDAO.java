@@ -1,4 +1,4 @@
-package com.tm.nmp.account;
+package com.tm.nmp.dao;
 
 import java.util.HashMap;
 import java.util.List;
@@ -18,10 +18,10 @@ import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
 
 import com.tm.nmp.SHA256Util;
-import com.tm.nmp.admin.ClubImageDTO;
 import com.tm.nmp.board.PostVO;
 import com.tm.nmp.mapper.AccountMapper;
 import com.tm.nmp.model.AccountVO;
+import com.tm.nmp.model.ClubImageDTO;
 import com.tm.nmp.model.FavoriteClubDTO;
 
 import lombok.extern.slf4j.Slf4j;
@@ -278,7 +278,7 @@ public class AccountDAO {
 			int club_id = 0;
 			int member_admin = 0;
 
-			ac.setMember_id(member_id);
+/*			ac.setMember_id(member_id);
 			ac.setMember_pwd(member_pwd);
 			ac.setMember_nick(nickname);
 			ac.setMember_auth_type(member_auth_type);
@@ -287,7 +287,7 @@ public class AccountDAO {
 			ac.setMember_intro(member_intro);
 			ac.setMember_subs(member_subs);
 			ac.setClub_id(club_id);
-			ac.setMember_admin(member_admin);
+			ac.setMember_admin(member_admin);*/
 
 			if (ss.getMapper(AccountMapper.class).regAccount(ac) == 1) {
 				System.out.println("회원 가입 성공");

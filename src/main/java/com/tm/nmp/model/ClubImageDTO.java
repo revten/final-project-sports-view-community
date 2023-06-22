@@ -1,4 +1,4 @@
-package com.tm.nmp.admin;
+package com.tm.nmp.model;
 
 import java.util.Date;
 
@@ -13,13 +13,15 @@ public class ClubImageDTO {
 	private int league_id;
 	private String club_name;
 
+	private int favored;
+
 	public ClubImageDTO() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
 	public ClubImageDTO(int id, int club_id, int sort, String file_name, Date reg_date, Date update_date, int league_id,
-			String club_name) {
+			String club_name, int favored) {
 		super();
 		this.id = id;
 		this.club_id = club_id;
@@ -29,6 +31,7 @@ public class ClubImageDTO {
 		this.update_date = update_date;
 		this.league_id = league_id;
 		this.club_name = club_name;
+		this.favored = favored;
 	}
 
 	public int getId() {
@@ -95,11 +98,12 @@ public class ClubImageDTO {
 		this.club_name = club_name;
 	}
 
-	@Override
-	public String toString() {
-		return "ClubImageDTO [id=" + id + ", club_id=" + club_id + ", sort=" + sort + ", file_name=" + file_name
-				+ ", reg_date=" + reg_date + ", update_date=" + update_date + ", league_id=" + league_id
-				+ ", club_name=" + club_name + "]";
+	public int getFavored() {
+		return favored;
+	}
+
+	public void setFavored(int favored) {
+		this.favored = favored;
 	}
 
 }

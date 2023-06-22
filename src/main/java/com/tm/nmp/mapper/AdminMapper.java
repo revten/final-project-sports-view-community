@@ -1,8 +1,11 @@
-package com.tm.nmp.admin;
+package com.tm.nmp.mapper;
 
 import java.util.List;
 
 import com.tm.nmp.board.BoardOption;
+import com.tm.nmp.model.ClubDTO;
+import com.tm.nmp.model.ClubImageDTO;
+import com.tm.nmp.model.ClubListView;
 
 public interface AdminMapper {
 

@@ -10,7 +10,7 @@
 
 	<select id="getClubViewList"
 		parameterType="com.tm.nmp.board.BoardOption"
-		resultType="com.tm.nmp.admin.ClubListView">
+		resultType="com.tm.nmp.model.ClubListView">
 		select * from (select rownum num, n.* from (select * from
 		v_clubList where ${field} like '%'||UPPER(#{search})||'%' order by
 		id)n)

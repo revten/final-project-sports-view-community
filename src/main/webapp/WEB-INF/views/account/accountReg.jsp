@@ -104,7 +104,7 @@
 					<c:forEach var='ci' items='${clubImages }'>
 						<c:if test="${ci.league_id eq 101 }">
 							<input type="checkbox" id="size" name="club_id" value="${ci.club_id }"/>
-							<img title="${ci.club_name }" style="width: 30px; height: 30px; cursor: pointer" src="resources/files/club_images/${ci.club_id }/${ci.file_name}">
+							<img title="${ci.club_name }" style="width: 30px; height: 30px; cursor: pointer" src="/resources/files/club_images/${ci.club_id }/${ci.file_name}">
 					</c:if>
 					</c:forEach>
 				</div>
@@ -124,7 +124,7 @@
 					<c:forEach var='ci' items='${clubImages }'>
 						<c:if test="${ci.league_id eq 201 }">
 							<input type="checkbox" id="size" name="club_id" value="${ci.club_id }"/>
-							<img title="${ci.club_name }" style="width: 30px; height: 30px; cursor: pointer" src="resources/files/club_images/${ci.club_id }/${ci.file_name}">
+							<img title="${ci.club_name }" style="width: 30px; height: 30px; cursor: pointer" src="/resources/files/club_images/${ci.club_id }/${ci.file_name}">
 					</c:if>
 					</c:forEach>
 				</div>
@@ -134,7 +134,7 @@
 					<c:forEach var='ci' items='${clubImages }'>
 						<c:if test="${ci.league_id eq 301 }">
 							<input type="checkbox" id="size" name="club_id" value="${ci.club_id }"/>
-							<img title="${ci.club_name }" style="width: 30px; height: 30px; cursor: pointer" src="resources/files/club_images/${ci.club_id }/${ci.file_name}">
+							<img title="${ci.club_name }" style="width: 30px; height: 30px; cursor: pointer" src="/resources/files/club_images/${ci.club_id }/${ci.file_name}">
 					</c:if>
 					</c:forEach>
 				</div>
@@ -144,7 +144,7 @@
 					<c:forEach var='ci' items='${clubImages }'>
 						<c:if test="${ci.league_id eq 351 }">
 							<input type="checkbox" id="size" name="club_id" value="${ci.club_id }"/>
-							<img title="${ci.club_name }" style="width: 30px; height: 30px; cursor: pointer" src="resources/files/club_images/${ci.club_id }/${ci.file_name}">
+							<img title="${ci.club_name }" style="width: 30px; height: 30px; cursor: pointer" src="/resources/files/club_images/${ci.club_id }/${ci.file_name}">
 					</c:if>
 					</c:forEach>
 				</div>
@@ -154,7 +154,7 @@
 					<c:forEach var='ci' items='${clubImages }'>
 						<c:if test="${ci.league_id eq 401 }">
 							<input type="checkbox" id="size" name="club_id" value="${ci.club_id }"/>
-							<img title="${ci.club_name }" style="width: 30px; height: 30px; cursor: pointer" src="resources/files/club_images/${ci.club_id }/${ci.file_name}">
+							<img title="${ci.club_name }" style="width: 30px; height: 30px; cursor: pointer" src="/resources/files/club_images/${ci.club_id }/${ci.file_name}">
 					</c:if>
 					</c:forEach>
 				</div>
@@ -164,7 +164,7 @@
 					<c:forEach var='ci' items='${clubImages }'>
 						<c:if test="${ci.league_id eq 451 }">
 							<input type="checkbox" id="size" name="club_id" value="${ci.club_id }"/>
-							<img title="${ci.club_name }" style="width: 30px; height: 30px; cursor: pointer" src="resources/files/club_images/${ci.club_id }/${ci.file_name}">
+							<img title="${ci.club_name }" style="width: 30px; height: 30px; cursor: pointer" src="/resources/files/club_images/${ci.club_id }/${ci.file_name}">
 					</c:if>
 					</c:forEach>
 				</div>

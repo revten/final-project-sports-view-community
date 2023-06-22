@@ -73,7 +73,7 @@ $(function() {
 						+ $("option", $(this)).index(
 								$("option:selected", $(this))); // 선택 스포츠의 리그
 																// Array
-				let $league = $(this).next(); // 선택영역 군구 객체
+				let $league = $(this).next(); // 선택영역 리그 객체
 				$("option", $league).remove(); // 리그 초기화
 
 				if (area == "area0")
@@ -87,6 +87,29 @@ $(function() {
 			});
 
 });
+
+// 검색어 유효성 검사
+function searchClub() {
+
+	let searchVal = $('#search-input').val();
+	console.log(searchVal);
+
+	// 아무것도 입력되지 않았으면
+	if (searchVal === '') {
+		alert("검색어를 입력하세요");
+		$('#search-club-input').focus();
+		return false;
+	}
+
+	// 두글자 이상 입력
+	if (searchVal.length < 2) {
+		alert("검색어는 두 글자 이상 입력하세요.");
+		$('#search-club-input').focus();
+		return false;
+	}
+
+	return true;
+}
 
 
 
@@ -513,4 +536,67 @@ function volleyballSetVal() {
 		window.open(reserveUrl);
 	})
 
+}
+
+
+// 관심 등록 및 해제
+function heartClick(no) {
+	let src = $('.club-fav-img-' + no).attr('src');
+	
+	console.log("current src : " + src);
+	
+	let userId = $('#stadium-login-id-'+ no).val();
+	let clubId = $('#stadium-club-id-' + no).val();
+	
+	console.log("userId : " + userId);
+	console.log("clubId : " + clubId);
+	
+	// 로그인 되지 않았다면 처리
+	if (userId == '') {
+		alert('로그인이 필요한 서비스입니다.');
+		return;
+	}
+	
+	// 로그인 되었다면
+	if (src == '/resources/files/icons/fav_not.png') {
+		// 관심등록 상태
+		$('.club-fav-img-' + no).attr('src',
+				'/resources/files/icons/fav.png');
+
+		$(".club-fav-img-" + no).animate({
+			width: "25px" 
+		}, 300 ); 
+		
+		$(".club-fav-img-" + no).animate({			
+			width: "20px"	
+		}, 300 ); 
+		
+		// 관심등록을 DB에 반영
+		$.ajax({
+			url: "create.club.fav",
+			type: "GET",
+			data: {"user_id": userId,
+				   "club_id": clubId}
+		}).done(function(res) {
+			console.log(res);
+			console.log("생성 성공");
+			$('.club-fav-count-' + clubId).text(res); 
+		});
+	} else {
+		// 관심등록 해제
+		$('.club-fav-img-' + no).attr('src',
+				'/resources/files/icons/fav_not.png');
+		
+		// 관심등록 해제를 DB에 반영
+		$.ajax({
+			url: "delete.club.fav",
+			type: "GET",
+			data: {"user_id": userId,
+				   "club_id": clubId}
+		}).done(function(res) {
+			console.log(res);
+			console.log("삭제 성공!!");
+			$('.club-fav-count-' + clubId).text(res); 
+		});
+	}
 }

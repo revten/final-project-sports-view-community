@@ -1,4 +1,4 @@
-package com.tm.nmp.admin;
+package com.tm.nmp.service;
 
 import java.util.List;
 
@@ -6,6 +6,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.tm.nmp.board.BoardOption;
+import com.tm.nmp.dao.AdminDAO;
+import com.tm.nmp.model.ClubDTO;
+import com.tm.nmp.model.ClubImageDTO;
+import com.tm.nmp.model.ClubListView;
 
 @Service
 public class AdminServiceImpl implements AdminService {
@@ -55,6 +59,12 @@ public class AdminServiceImpl implements AdminService {
 	@Override
 	public ClubImageDTO getRecentClubImage() {
 		return adminDAO.getRecentClubImage();
+	}
+
+	// 구단 이미지 수정
+	@Override
+	public int updateClubImage(ClubImageDTO ci) {
+		return adminDAO.updateClubImage(ci);
 	}
 	
 }

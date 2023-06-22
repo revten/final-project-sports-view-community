@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.tm.nmp.account.AccountDAO;
+import com.tm.nmp.dao.AccountDAO;
 import com.tm.nmp.fan.FanBoardController;
 
 import lombok.extern.slf4j.Slf4j;

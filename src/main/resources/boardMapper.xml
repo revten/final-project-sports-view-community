@@ -9,8 +9,7 @@
 		where post_member =
 		member_id
 		and post_title like '%'||#{search}||'%'
-		and post_board =
-		#{post_board}
+		and post_board = #{post_board}
 	</select>
 
 	<select id="getAllPost"

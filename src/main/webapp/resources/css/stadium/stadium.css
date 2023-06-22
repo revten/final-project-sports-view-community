@@ -12,19 +12,13 @@
 	box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
 
-#stadium__area{
-	margin-right: 5vw;
-}
-
-#stadium__img{
-	display: flex;
-	flex-direction: row;
-	justify-content: center;
-	margin-top: 5vh;
+#stadium-club-list{
+	display: grid;
+	grid-template-columns: repeat(4, auto);
+	gap: 1rem;
 }
 
 #stadium__img img{
-	margin-left: 10vw;
 }
 
 #test_north {
@@ -142,4 +136,14 @@ polygon {
 
 polygon:hover {
 	fill: red;
+}
+
+.club-fav-img {
+  width: 20px;
+  margin-left: 10px;
+}
+
+.club-fav-img-tag {
+  width: 20px;
+  margin: auto 0px;
 }

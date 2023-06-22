@@ -3,9 +3,9 @@ package com.tm.nmp.mapper;
 import java.util.List;
 import java.util.Map;
 
-import com.tm.nmp.admin.ClubImageDTO;
 import com.tm.nmp.board.PostVO;
 import com.tm.nmp.model.AccountVO;
+import com.tm.nmp.model.ClubImageDTO;
 import com.tm.nmp.model.FavoriteClubDTO;
 
 public interface AccountMapper {

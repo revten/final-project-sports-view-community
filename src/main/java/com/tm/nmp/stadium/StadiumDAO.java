@@ -10,8 +10,11 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.tm.nmp.account.AccountDAO;
-import com.tm.nmp.admin.ClubImageDTO;
+import com.project.camping.main.MainMapper;
+import com.tm.nmp.board.BoardOption;
+import com.tm.nmp.dao.AccountDAO;
+import com.tm.nmp.model.ClubImageDTO;
+import com.tm.nmp.model.FavoriteClubDTO;
 
 @Service
 public class StadiumDAO {
@@ -411,8 +414,27 @@ public class StadiumDAO {
 		}
 	}
 	
-	public List<ClubImageDTO> getLogoBySports(int league_id) {
-		return sst.selectList("StadiumMapper.getLogoBySports", league_id);
+	public List<ClubImageDTO> getLogoBySports(BoardOption boardOption) {
+		return sst.selectList("StadiumMapper.getLogoBySports", boardOption);
+	}
+
+	public int calcAllClubCount(BoardOption boardOption) {
+		return sst.selectOne("StadiumMapper.calcAllClubCount", boardOption);
+	}
+
+	// 관심 구단 등록 여부
+	public int checkClubFavored(FavoriteClubDTO fvClub) {
+		return sst.selectOne("StadiumMapper.checkClubFavored", fvClub).equals(1) ? 1 : 0;
+	}
+	
+	// 관심 구단 등록
+	public int createClubFav(FavoriteClubDTO fvClub) {
+		return sst.insert("StadiumMapper.createClubFav", fvClub) == 1 ? sst.selectOne("StadiumMapper.getClubFavoredCount", fvClub) : 0;
+	}
+
+	// 관심 구단 해제
+	public int deleteClubFav(FavoriteClubDTO fvClub) {
+		return sst.delete("StadiumMapper.deleteClubFav", fvClub) == 1 ? sst.selectOne("StadiumMapper.getClubFavoredCount", fvClub) : 0;
 	}
 
 }

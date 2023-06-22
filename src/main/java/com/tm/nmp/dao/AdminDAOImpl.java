@@ -1,4 +1,4 @@
-package com.tm.nmp.admin;
+package com.tm.nmp.dao;
 
 import java.util.List;
 
@@ -7,6 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.tm.nmp.board.BoardOption;
+import com.tm.nmp.model.ClubDTO;
+import com.tm.nmp.model.ClubImageDTO;
+import com.tm.nmp.model.ClubListView;
 
 @Repository //AdminDAO 객체 생성
 public class AdminDAOImpl implements AdminDAO {
@@ -56,6 +59,12 @@ public class AdminDAOImpl implements AdminDAO {
 	@Override
 	public ClubImageDTO getRecentClubImage() {
 		return sst.selectOne("AdminMapper.getRecentClubImage");
+	}
+
+	// 구단 이미지 수정
+	@Override
+	public int updateClubImage(ClubImageDTO ci) {
+		return sst.insert("AdminMapper.updateClubImage", ci);
 	}
 
 }

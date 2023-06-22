@@ -1,7 +1,6 @@
-package com.tm.nmp.admin;
+package com.tm.nmp.model;
 
 import java.util.Date;
-import java.util.List;
 
 public class ClubListView extends ClubDTO {
 

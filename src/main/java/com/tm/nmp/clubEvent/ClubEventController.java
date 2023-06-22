@@ -8,12 +8,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.tm.nmp.TokenMaker;
-import com.tm.nmp.account.AccountDAO;
 import com.tm.nmp.board.BoardDAO;
 import com.tm.nmp.board.BoardOption;
 import com.tm.nmp.board.BoardSelector;
 import com.tm.nmp.board.PostVO;
 import com.tm.nmp.board.ReplyVO;
+import com.tm.nmp.dao.AccountDAO;
 
 import lombok.extern.slf4j.Slf4j;
 

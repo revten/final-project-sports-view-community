@@ -48,7 +48,7 @@
 		<div style="display: inline-block; align-items: flex-start;">
 			<img id="seat" usemap="#workmap"
 				style="position: relative; width: 1024px; height: 800px; margin: 450px 0px 10px 0px;"
-				src="resources/files/club_images/${club_id }/${seat}"><br>
+				src="/resources/files/club_images/${club_id }/${seat}"><br>
 			<map name="workmap">
 				<area style="cursor: pointer;" class="imgArea" id="${view_3_12}"
 					coords="-1,273,1023,0" shape="rect">
@@ -68,13 +68,13 @@
 		</div>
 		<!-- 전경 사진 -->
 		<img style="display: none" id="test_3"
-			src="resources/final_img_file/baseball/seating_chart/${seatDetail }/test_3.jpg">
+			src="/resources/final_img_file/baseball/seating_chart/${seatDetail }/test_3.jpg">
 		<img style="display: none" id="test_9"
-			src="resources/final_img_file/baseball/seating_chart/${seatDetail }/test_9.jpg">
+			src="/resources/final_img_file/baseball/seating_chart/${seatDetail }/test_9.jpg">
 		<img style="display: none" id="test_6"
-			src="resources/final_img_file/baseball/seating_chart/${seatDetail }/test_6.jpg">
+			src="/resources/final_img_file/baseball/seating_chart/${seatDetail }/test_6.jpg">
 		<img style="display: none" id="test_12"
-			src="resources/final_img_file/baseball/seating_chart/${seatDetail }/test_12.jpg">
+			src="/resources/final_img_file/baseball/seating_chart/${seatDetail }/test_12.jpg">
 	</div>
 	<br>
 	<br>
@@ -91,7 +91,7 @@
 					let club_id = urlParams.get('club_id');
 					
 					window.open(
-							"resources/files/club_images/"
+							"/resources/files/club_images/"
 									+ club_id + "/" + view, "teamImg",
 							"left=380px, height=800px, width=750px");
 				});

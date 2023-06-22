@@ -9,8 +9,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.tm.nmp.account.AccountDAO;
-import com.tm.nmp.admin.AdminController;
+import com.tm.nmp.controller.AdminController;
+import com.tm.nmp.dao.AccountDAO;
 
 import lombok.extern.slf4j.Slf4j;
 

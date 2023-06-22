@@ -1,8 +1,44 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="StadiumMapper">
-	<select id="getLogoBySports" resultType="ClubImageDTO">
-		select ci.*, c.league_id from tb_club_image ci, tb_club c
-		where ci.club_id = c.id and c.league_id = #{league_id} and sort = 0
+
+	<!-- 전체 구단수 -->
+	<select id="calcAllClubCount" resultType="java.lang.Integer">
+		select count(id) from tb_club where 
+		sports_id like '%'||#{field, jdbcType=VARCHAR}||'%' and	
+		league_id like '%'||#{field2, jdbcType=VARCHAR}||'%' and	
+		name like '%'||#{search, jdbcType=VARCHAR}||'%'
 	</select>
+
+	<!-- 구단 이미지 및 구단들 조회 -->
+	<select id="getLogoBySports" resultType="ClubImageDTO" parameterType="com.tm.nmp.board.BoardOption">
+		select ci.*, c.league_id, c.sports_id from tb_club_image ci, tb_club c
+		where ci.club_id = c.id and 
+		c.sports_id like '%'||#{field, jdbcType=VARCHAR}||'%' and	
+		c.league_id like '%'||#{field2, jdbcType=VARCHAR}||'%' and
+		sort = 0 and c.name like '%'||#{search, jdbcType=VARCHAR}||'%'
+	</select>
+	
+	<!-- 관심구단 등록 여부 -->
+	<select id="checkClubFavored" parameterType="com.tm.nmp.model.FavoriteClubDTO" resultType="int" >
+		select count(*) from tb_favorite_club
+		where club_id = #{club_id} and club_id = #{club_id}
+	</select>
+	
+	<!-- 관심구단 등록 -->
+	<insert id="createClubFav">
+		insert into tb_favorite_club values( #{user_id}, #{club_id})
+	</insert>
+	
+	<!-- 관심구단 해제 -->
+	<delete id="deleteClubFav">
+		delete tb_favorite_club where user_id = #{user_id} and club_id = #{club_id}
+	</delete>
+	
+	<!-- 관심구단으로 등록한 회원수 -->
+	<select id="getClubFavoredCount" parameterType="com.tm.nmp.model.FavoriteClubDTO" resultType="int">
+		select count(*) from tb_favorite_club
+		where user_id = #{user_id}
+	</select>
+	
 </mapper>
